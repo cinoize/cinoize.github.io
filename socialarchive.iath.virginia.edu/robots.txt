@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Explore - Social Networks and Archival Context</title>
+
+<!-- JQuery -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width">
+<link rel="apple-touch-icon" href="images/snac-icon.png"/>
+
+<meta property="og:title" content="Social Networks and Archival Context">
+<meta property="og:image" content="http://snaccooperative.org/images/snac-icon.png">
+<meta property="og:description" content="SNAC is an aggregate of biographical information about people, both individuals and groups, who created or are documented in historical resources. Users can search for names of individual people, organizations, and families; browse featured descriptions; and discover and locate connected historical resources.">
+
+<link rel="search"
+      type="application/opensearchdescription+xml"
+      title="Social Networks and Archival Context"
+      href="http://snaccooperative.org/opensearch.xml">
+
+<!-- SNAC HRT Template code -->
+<link href="http://snaccooperative.org/css/hrt/hrt.css"
+            media="all"
+            rel="stylesheet"
+            type="text/css"></link>
+<link href="http://bioghist.s3-website-us-east-1.amazonaws.com/build/stylesheets/grunticon/icons.data.svg.css" rel="stylesheet">
+<script data-xsl-asset="javascripts/modernizr.js"
+        src="http://bioghist.s3-website-us-east-1.amazonaws.com/build/javascripts/modernizr.js"
+        charset="utf-8"
+        type="text/javascript"></script>
+<style>
+   .icon-ind, .icon-fam, .icon-org          { margin-left: 2px; }
+   .icon-ind.x2, .icon-fam.x2, .icon-org.x2 { margin-top:  5px; }
+   .sprite-icons-worldcat, .sprite-icons-wikipedia, .sprite-icons-archivegrid,
+   .sprite-icons-viaf, .sprite-icons-dpla, .sprite-icons-idlocgov
+   { float: left;
+   margin-right: 0.33em; }
+</style>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+<!-- Helper Scripts -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Select Upgrades -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js"></script>
+<link rel="stylesheet" href="http://snaccooperative.org/css/select2-bootstrap.min.css">
+
+<!-- SNAC Styles -->
+<link rel="stylesheet" href="http://snaccooperative.org/css/snac.css">
+
+<!-- SNAC Javascript -->
+<script src="http://snaccooperative.org/javascript/scripts.js"></script>
+<script src="http://snaccooperative.org/javascript/wikipedia_image.js"></script>
+<script src="http://snaccooperative.org/javascript/search.js"></script>
+<script src="http://snaccooperative.org/javascript/html2canvas.js"></script>
+<script src="http://snaccooperative.org/javascript/feedback.js"></script>
+
+
+<meta name="viewport" content="initial-scale = 1.0" />
+
+<style>
+.theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.snac > p > .btn {
+    margin: 5px 0;
+}
+
+.snac .navbar .container {
+    width: auto;
+}
+.tab-pane {
+
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+         .list-comments {
+         column-width: 15em;
+         -moz-column-width: 15em;
+         -webkit-column-width: 15em;
+         column-gap: .5em;
+         -moz-column-gap: .5em;
+         -webkit-column-gap: .5em;
+         }
+
+         .thumbnail {
+         display: inline-block;
+         margin:  0px;
+         margin-bottom: 0.5em;
+         padding:  0px;
+         width:100%;
+         }
+
+         .wikipedia_thumbnail {
+             width: 100%;
+             border: 0px;
+             padding: 0px;
+         }
+
+         .wikipedia_thumbnail img {
+             width: 100%;
+             border: 0px;
+             padding: 0px;
+         }
+
+         .wikipedia_thumbnail div {
+             width: 100%;
+             padding: 3px;
+             margin: 0px;
+             left: 0px;
+             bottom: 0px;
+         }
+          .wikipedia_thumbnail div a:hover {
+              color: #ffffff;
+          }
+
+         .wikipedia_thumbnail .wikipedia-caption {
+             font-size: 12px;
+             margin-top: 0px;
+             margin-bottom: 3px;
+         }
+
+         .wikipedia_thumbnail .wikipedia-byline {
+             font-size: 9px;
+             margin-top: 0px;
+             margin-bottom: 3px;
+         }
+
+         .thumbnail img:hover {
+         opacity: 0.66;
+         filter: alpha(opacity=66);
+         }
+
+</style>
+<script>
+$(document).ready(function() {
+
+    // Remove any images that don't load.  Since they come from
+    // Wikidata, we cannot be sure on page render if they still
+    // exist on the remote server.
+    $("img")
+        .on('error', function() { 
+            var id = $(this).attr('id');
+            $("#thumbnail_" + id).remove();
+            console.log("error loading image"); 
+        })
+        .attr("src", $(this).attr("src"));
+
+});
+</script>
+
+</head>
+<body role="document">
+
+
+                <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-19136667-3', 'auto');
+            ga('send', 'pageview');
+        </script>
+            
+    <script>
+        var snacUrl = "http://snaccooperative.org";
+    </script>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand active" href="http://snaccooperative.org"><span class="snac-name-header">snac</span></a><!--<span class="snac-fullname-header"> | social networks and archival context</span>-->
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="http://snaccooperative.org/search"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>
+                <!--  -->
+            </ul>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://snaccooperative.org/static/about/about.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-question-circle"></i> Help <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://snaccooperative.org/api_help">Rest API Commands</a></li>
+                    <!--  -->
+                        <li role="separator" class="divider"></li>
+                        <li><a href="http://snaccooperative.org/contact">Contact Us</a></li>
+                    </ul>
+                    </li>
+
+            <!--  -->
+                <li><a href="http://snaccooperative.org/login?r=http%3A%2F%2Fsnaccooperative.org%2F%3Fredirected%3D1"><i class="fa fa-sign-in"></i> Login</a></li>
+            <!--   -->
+                </ul>
+            </div>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+    
+<div class="container snac" role="main">
+    <h1>Social Networks and Archival Context</h1>
+
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    Welcome to SNAC.  You have been redirected to the new SNAC web interface; please update your bookmarks.  If you are looking for the documents previously available via socialarchive.iath.virginia.edu, please click the "About" link above.
+                            </div>
+    
+		<form class="form-horizontal" id="search_form" method="GET" action="?">
+			<div class="well well-lg text-center search-box">
+                    <input type="hidden" id="count" name="count" value="10">
+                    <input type="hidden" id="start" name="start" value="0">
+					<div class="input-group select2-bootstrap-append">
+                        <span class="search-entity-type">
+                            <select id="entityType" name="entity_type" class="search-entity-type-select search-select">
+                                <option value="" selected>All Types</option>
+                                <option value="person" >Person</option>
+                                <option value="corporateBody" >Corporate Body</option>
+                                <option value="family" >Family</option>
+                            </select>
+                        </span>
+						<input type="text" class="form-control search-box-text"
+							placeholder="Search for..." id="searchbox" name="term" value="">
+                        <span class="input-group-btn search-box-button">
+                             <button class="btn btn-default" type="submit" id="searchbutton" name="command" value="search">Search</button>
+                        </span>
+					</div>
+			</div>
+		</form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="azgrid" style="position: relative; height: 100%">
+                <div class="row list-comments">
+                                        <div class="thumbnail" id="thumbnail_img_1">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/18100818">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Jimmaloney.jpg?width=300"
+                                     alt="[thumbnail]" id="img_1"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Jimmaloney.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Jimmaloney.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/18100818">Maloney, Jim, 1948-</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_2">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/72117481">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/William%20D.%20Jelks.jpg?width=300"
+                                     alt="[thumbnail]" id="img_2"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:William%20D.%20Jelks.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:William%20D.%20Jelks.jpg">
+                                            unknown</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:William%20D.%20Jelks.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/72117481">Jelks, William Dorsey, 1855-1931</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_3">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/44397449">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Governor%20William%20Calvin%20Oates.jpg?width=300"
+                                     alt="[thumbnail]" id="img_3"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Governor%20William%20Calvin%20Oates.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Governor%20William%20Calvin%20Oates.jpg">
+                                            unknown</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Governor%20William%20Calvin%20Oates.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/44397449">Oates, William C. (William Calvin), 1835-1910</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_4">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/26775443">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Johnnie%20To.jpg?width=300"
+                                     alt="[thumbnail]" id="img_4"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Johnnie%20To.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/26775443">To, Johnny.</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_5">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/19305853">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Louie%20Austen%20-%20Amadeus%20Awards%202013%20a.jpg?width=300"
+                                     alt="[thumbnail]" id="img_5"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Louie%20Austen%20-%20Amadeus%20Awards%202013%20a.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/Manfred Werner (User:Tsui">
+                                            Manfred Werner (Tsui</a> -
+                                                                                                                <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">
+                                            CC BY-SA 3.0</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/19305853">Austen, Louie</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_6">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/68453893">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Lorenzo%20Bellini.jpg?width=300"
+                                     alt="[thumbnail]" id="img_6"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Lorenzo%20Bellini.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Lorenzo%20Bellini.jpg">
+                                            unknown</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Lorenzo%20Bellini.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/68453893">Bellini, Lorenzo, 1643-1704</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_7">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/19135001">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Statue%20of%20Victor%20Hasselblad.jpg?width=300"
+                                     alt="[thumbnail]" id="img_7"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Statue%20of%20Victor%20Hasselblad.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/User:Ankara">
+                                            Ankara</a> -
+                                                                                                                <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">
+                                            CC BY-SA 3.0</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/19135001">Hasselblad, Victor, 1906-1978</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_8">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/62992701">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Louis-Philippe%20refuse%20la%20couronne%20de%20Belgique.jpg?width=300"
+                                     alt="[thumbnail]" id="img_8"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Louis-Philippe%20refuse%20la%20couronne%20de%20Belgique.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/62992701">Gosse, Nicolas-Louis-François 1787-1878</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_9">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/62060599">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Professor%20Joseph%20Nye%20and%20Dr%20Robin%20Niblett%20-%20Chatham%20House%202013%20%28cropped%29.jpg?width=300"
+                                     alt="[thumbnail]" id="img_9"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Professor%20Joseph%20Nye%20and%20Dr%20Robin%20Niblett%20-%20Chatham%20House%202013%20%28cropped%29.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/62060599">Nye, Joseph S.</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_10">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/50523916">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Roger%20Moore%20Allan%20Warren.jpg?width=300"
+                                     alt="[thumbnail]" id="img_10"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Sir%20Roger%20Moore%20Allan%20Warren.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/User:Allan warren">
+                                            Allan warren</a> -
+                                                                                                                <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">
+                                            CC BY-SA 3.0</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/50523916">Moore, Roger, 1927-...</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_11">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/68767394">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Charles%20H.%20Elston.jpg?width=300"
+                                     alt="[thumbnail]" id="img_11"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Charles%20H.%20Elston.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/68767394">Elston, Charles Henry, 1891-1980</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_12">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/74797978">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Paul-Fagius.jpg?width=300"
+                                     alt="[thumbnail]" id="img_12"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Paul-Fagius.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/74797978">Fagius, Paul, 1504-1549</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_13">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/26023486">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Cazals%20Fernand%20Fau%20La%20Plume.png?width=300"
+                                     alt="[thumbnail]" id="img_13"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Cazals%20Fernand%20Fau%20La%20Plume.png">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Cazals%20Fernand%20Fau%20La%20Plume.png">
+                                            Fernand Fau</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Cazals%20Fernand%20Fau%20La%20Plume.png">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/26023486">Cazals, F.-A. (Frédéric-Auguste), 1865-1941</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_14">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/46695043">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Frederick%20William%20Hope.gif?width=300"
+                                     alt="[thumbnail]" id="img_14"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Frederick%20William%20Hope.gif">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/46695043">Hope, F.W. (Frederick William), 1797-1862</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_15">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/24347709">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Edwin%20Gordon%20Blackmore%20%281898%29.jpg?width=300"
+                                     alt="[thumbnail]" id="img_15"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Edwin%20Gordon%20Blackmore%20%281898%29.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Edwin%20Gordon%20Blackmore%20%281898%29.jpg">
+                                            unknown</a> -
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/24347709">Blackmore, Edwin Gordon, 1837-</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_16">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/37587184">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Bust%20of%20Paul%20Johannes%20Tillich%20%28daylight%29.JPG?width=300"
+                                     alt="[thumbnail]" id="img_16"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Bust%20of%20Paul%20Johannes%20Tillich%20%28daylight%29.JPG">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/User:Musickna">
+                                            Musickna</a> -
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/37587184">Tillich, Paul, 1886-1965</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_17">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/62139848">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Alex%20Sanders.jpg?width=300"
+                                     alt="[thumbnail]" id="img_17"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Alex%20Sanders.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/62139848">Sanders, Alex 1966-....</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_18">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/26453486">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Earl%20Long%20portrait.jpg?width=300"
+                                     alt="[thumbnail]" id="img_18"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Earl%20Long%20portrait.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Earl%20Long%20portrait.jpg">
+                                            State of Louisiana.</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Earl%20Long%20portrait.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/26453486">Long, Earl Kemp, 1895-1960</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_19">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/31440079">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Ignaz%20Jastrow%201895.jpg?width=300"
+                                     alt="[thumbnail]" id="img_19"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Ignaz%20Jastrow%201895.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Ignaz%20Jastrow%201895.jpg">
+                                            unknown</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Ignaz%20Jastrow%201895.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/31440079">Jastrow, Ignaz, 1856-1937</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_20">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/30200184">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Whigfield1cropped.jpg?width=300"
+                                     alt="[thumbnail]" id="img_20"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Whigfield1cropped.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/30200184">Whigfield</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_21">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/44979375">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Harold%20Sherman%20psychical%20researcher.png?width=300"
+                                     alt="[thumbnail]" id="img_21"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Harold%20Sherman%20psychical%20researcher.png">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Harold%20Sherman%20psychical%20researcher.png">
+                                            Anonymous</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Harold%20Sherman%20psychical%20researcher.png">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/44979375">Sherman, Harold M. (Harold Morrow), 1898-1987</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_22">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/30990980">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Jorge%20Drexler%202011%201.jpg?width=300"
+                                     alt="[thumbnail]" id="img_22"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Jorge%20Drexler%202011%201.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/User:Zeroth">
+                                            Zeroth</a> -
+                                                                                                                <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">
+                                            CC BY-SA 3.0</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/30990980">Campodónico, Juan, 1971-</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_23">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/45503834">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Original%20Caption%20-%20Hon.%20Stephen%20R.%20Mallory%2C%20Florida.%20Corrected%20Caption%20-%20Hon.%20George%20E.%20Pugh%2C%20Ohio%20-%20NARA%20-%20528727.jpg?width=300"
+                                     alt="[thumbnail]" id="img_23"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Original%20Caption%20-%20Hon.%20Stephen%20R.%20Mallory%2C%20Florida.%20Corrected%20Caption%20-%20Hon.%20George%20E.%20Pugh%2C%20Ohio%20-%20NARA%20-%20528727.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/45503834">Pugh, George E. (George Ellis), 1822-1876</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_24">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/43819540">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Irmgard%20Bartenieff.jpg?width=300"
+                                     alt="[thumbnail]" id="img_24"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Irmgard%20Bartenieff.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/User:Laban Institute">
+                                            Laban Institute</a> -
+                                                                                                                <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode">
+                                            CC BY-SA 3.0</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/43819540">Bartenieff, Irmgard</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_25">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/55248192">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Bateson2.jpg?width=300"
+                                     alt="[thumbnail]" id="img_25"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Bateson2.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/55248192">Bateson, William, 1861-1926</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_26">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/5859070">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/William%20Marshall00a.jpg?width=300"
+                                     alt="[thumbnail]" id="img_26"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:William%20Marshall00a.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:William%20Marshall00a.jpg">
+                                            John Moir  (1775 - 1857)</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:William%20Marshall00a.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/5859070">Marshall, William, 1749-1833</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_27">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/66632470">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/John%20Strong%20Perry%20Tatlock.jpg?width=300"
+                                     alt="[thumbnail]" id="img_27"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:John%20Strong%20Perry%20Tatlock.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:John%20Strong%20Perry%20Tatlock.jpg">
+                                            unknown</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:John%20Strong%20Perry%20Tatlock.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/66632470">Tatlock, John S. P. (John Strong Perry), 1876-1948</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_28">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/19209177">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Isaacpuseygrayindiana.jpg?width=300"
+                                     alt="[thumbnail]" id="img_28"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Isaacpuseygrayindiana.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Isaacpuseygrayindiana.jpg">
+                                            Who-When-What Company</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Isaacpuseygrayindiana.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/19209177">Gray, Isaac P. (Isaac Pusey), 1828-1895</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_29">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/60161989">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/EdgarSelwyn%20NYPL.jpeg?width=300"
+                                     alt="[thumbnail]" id="img_29"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:EdgarSelwyn%20NYPL.jpeg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                                                        </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/60161989">Selwyn, Edgar, 1875-1944</a>
+                            </h4>
+                        </div>
+                    </div>
+                                        <div class="thumbnail" id="thumbnail_img_30">
+                        <div style="float: none;" class="wikipedia_thumbnail">
+                            <a href="http://snaccooperative.org/view/55231605">
+                                <img src="http://commons.wikimedia.org/wiki/Special:FilePath/Dean%20Acheson.jpg?width=300"
+                                     alt="[thumbnail]" id="img_30"></img>
+                            </a>
+                            <div>
+                                <p class="wikipedia-caption">
+                                    <a href="https://commons.wikimedia.org/wiki/File:Dean%20Acheson.jpg">Image from Wikimedia Commons</a>
+                                </p>
+                                <p class="wikipedia-byline">
+                                                                            <a href="https://commons.wikimedia.org/wiki/File:Dean%20Acheson.jpg">
+                                            Yoichi Okamoto</a> -
+                                                                                                                <a href="https://commons.wikimedia.org/wiki/File:Dean%20Acheson.jpg">
+                                            Public Domain</a>
+                                                                    </p>
+
+
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <!--<div class="text-muted">4 related collections</div>-->
+                            <h4>
+                                <a href="http://snaccooperative.org/view/55231605">Acheson, Dean, 1893-1971</a>
+                            </h4>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+        <div class="footer footer-inverse">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-content">
+                    <p class="text-center">
+                    <img src="http://snaccooperative.org/images/paper_dolls_art2.png"/><br/>
+                    Social Networks and Archival Context
+                    </p>
+                    <p class="text-center" style="margin-top: 5px;">
+                        <a href="https://twitter.com/snaccooperative" title="Visit us on Twitter">
+                            <i class="fa fa-2x fa-twitter-square" style="vertical-align: middle" aria-hidden="true"></i></a>
+                        <a href="http://snaccooperative.org/contact" title="Contact us"><span class="fa-stack fa-sm">
+                                  <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x" style="color: #000"></i>
+                            </span></a>
+                        <a href="http://snaccooperative.org/static/terms.html" title="Terms and Information"><span class="fa-stack fa-sm">
+                                  <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-life-ring fa-stack-1x" style="color: #000"></i>
+                            </span></a>
+                    </p>
+                </div>
+                <div class="col-md-4 footer-content">
+                    <h3 class="">Sponsors</h3>
+                    <p class="">
+                    <a href="http://www.mellon.org" target="_blank">The Andrew W. Mellon Foundation</a><br>
+                    <a href="http://www.imls.gov" target="_blank">Institute of Museum and Library Services</a><br>
+                    <a href="http://www.neh.gov" target="_blank">National Endowment for the Humanities</a>
+                    </p>
+                </div>
+                <div class="col-md-4 footer-content">
+                    <h3 class="">Collaborators</h3>
+                    <p class="">
+                    <a href="http://library.virginia.edu" target="_blank">UVa Library</a><br>
+                    <a href="http://www.iath.virginia.edu" target="_blank">UVa IATH</a><br>
+                    <a href="http://www.ischool.berkeley.edu" target="_blank">UC Berkeley School of Information</a><br>
+                    <a href="http://www.cdlib.org" target="_blank">California Digital Library</a><br>
+                    <a href="http://www.archives.gov" target="_blank">National Archives and Records Administration</a></p> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

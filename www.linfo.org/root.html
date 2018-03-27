@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns= "http://www.w3.org/1999/xhtml">
+<head> 
+
+<link rel="stylesheet" type="text/css" href="belug1.css" />
+
+<title>What is root? -- definition by The Linux Information Project (LINFO)</title></head>
+
+<body bgcolor="#ffffff">
+
+<a href="http://www.linfo.org/index.html">LINFO</a>
+
+<br /><br /><center><h2>root Definition</h2></center><br />
+
+<table width="520" align="center"><tr><td>
+
+
+
+<p>
+<i>root</i> is the user name or account that by default has access to all <a href="http://www.linfo.org/command.html">commands</a> and <a href="http://www.linfo.org/file.html">files</a> on a <a href="http://www.linfo.org/linuxdef.html">Linux</a> or other <a href="http://www.linfo.org/unix-like.html">Unix-like</a> <a href="http://www.linfo.org/operating_system.html">operating system</a>. It is also referred to as the <i>root account</i>, <i>root user</i> and the <i>superuser</i>.
+</p>
+
+<p>
+The word <i>root</i> also has several additional, related meanings when used as part of other terms, and thus it can be a source of confusion to people new to Unix-like systems. 
+</p>
+
+<p>
+One of these is the <a href="http://www.linfo.org/root_directory.html"><i>root directory</i></a>, which is the <i>top level directory</i> on a system. That is, it is the <a href="http://www.linfo.org/directory.html">directory</a> in which all other directories, including their subdirectories, and files reside. The root directory is designated by a <a href="http://www.linfo.org/forward_slash.html">forward slash</a> ( / ). 
+</p>
+
+<p>
+Another is <a href="http://www.linfo.org/slash_root.html"><i>/root</i></a> (pronounced <i>slash root</i>), which is the root user's <a href="http://www.linfo.org/home_directory.html"><i>home directory</i></a>. A home directory is the primary repository of a user's files, including that user's configuration files, and it is usually the directory in which a user finds itself when it <a href="http://www.linfo.org/login_def.html">logs into</a> a system. /root is a subdirectory of the root directory, as indicated by the forward slash that begins its name, and should not to be confused with that directory. Home directories for users other than root are by default created in the <a href="http://www.linfo.org/home.html"><i>/home</i></a> directory, which is another standard subdirectory of the root directory.   
+</p>
+
+<p>
+<i>Root privileges</i> are the powers that the root account has on the system. The root account is the most privileged on the system and has absolute power over it (i.e., complete access to all files and commands). Among root's powers are the ability to modify the system in any way desired and to grant and revoke <a href="http://www.linfo.org/permissions.html"><i>access permissions</i></a> (i.e., the ability to read, modify and execute specific files and directories) for other users, including any of those that are by default reserved for root.  
+</p>
+
+<p>
+A <a href="http://www.linfo.org/rootkit.html"><i>rootkit</i></a> is a set of <a href="http://www.linfo.org/software.html">software</a> tools secretly installed by an intruder into a <a href="http://www.linfo.org/computer.html">computer</a> that allows such intruder to use that computer for its own, usually nefarious, purposes when desired. Well designed rootkits are able to obtain <i>root access</i> (i.e., access to the root account rather than just to a user account) and to hide most or all traces of their presence and activities.   
+</p>
+
+<p>
+The use of the term <i>root</i> for the all-powerful administrative user may have arisen from the fact that root is the only account having <i>write permissions</i> (i.e., permission to modify files) in the root directory. The root directory, in turn, takes its name from the fact that the <a href="http://www.linfo.org/filesystem.html"><i>filesystems</i></a> (i.e., the entire hierarchy of directories that is used to organize files) in Unix-like operating systems have been designed with a <a href="http://www.linfo.org/directory_tree.html">tree-like</a> (although inverted) structure in which all directories branch off from a single directory that is analogous to the root of a tree. 
+</p>
+
+<p>
+The original <a href="http://www.linfo.org/unix_upper.html">UNIX</a> operating system, on which Linux and other Unix-like systems are based, was designed from the very beginning as a multi-user system because personal computers did not yet exist and each user was connected to the <i>mainframe</i> computer (i.e., a large, centralized computer) via a <i>dumb</i> (i.e., very simple) terminal. Thus it was necessary to have a mechanism for separating and protecting the files of the individual users while allowing them to use the system simultaneously. It was also necessary to have a means for enabling a system administrator to perform such tasks as entering user directories and files to correct individual problems, granting and revoking powers for ordinary users, and accessing critical system files to repair or upgrade the system. 
+</p>
+
+</p>
+Every user account is automatically assigned an identification number, the <a href="http://www.linfo.org/uid.html">UID</a> (i.e., user ID), by a Unix-like system, and the system uses these numbers instead of the user names to identify and keep track of the users. Root always has a UID of zero. This can be verified by logging in as root (if using a home computer or other system that permits this operation) and running the <a href="http://www.linfo.org/echo.html"><i>echo</i></a> command to display the UID of the current user, i.e.,
+</p>
+
+<blockquote>
+<p>
+<code>echo $UID</code>
+</p>
+</blockquote>
+
+<p>
+echo is used to repeat on the screen what is typed in after it. The dollar sign preceding UID tells echo to display its value rather than its name.
+</p>
+
+<p>
+The UID for root (as well as for all other users) can also be seen by looking at <a href="http://www.linfo.org/etc_passwd.html"><i>/etc/passwd</i></a>, which is the configuration file for user <a href="http://www.linfo.org/data.html">data</a>. This file can be viewed (by default by all users) by using the <a href="http://www.linfo.org/cat.html"><i>cat</i></a> command (which is commonly employed to read files), i.e., 
+</p>
+
+<blockquote>
+<p>
+<code>cat /etc/passwd | less </code>
+</p>
+</blockquote>
+
+<p>
+The output of <i>cat /etc/passwd</i> in this example is <a href="http://www.linfo.org/pipe.html"><i>piped</i></a> (i.e., transferred) to the <i>less</i> command to allow it to be read one screenful at a time, which is useful if the file is a long one. The line of output for root will look something like <i>root:x:0:0:root:/root:/bin/bash</i>. The first column shows the user name and the third column shows the UID, which can be seen to be zero.  
+</p>
+
+<p>
+The permissions system in Unix-like operating systems is set by default to prevent access by ordinary users to critical parts of the system and to files and directories belonging to other users. Thus, it can be very tempting for users new to such systems, especially those who are accustomed to systems with a weak permissions system or without any permissions system (e.g., Microsoft Windows or the older versions of the Macintosh), to bypass this permissions system on their personal computers by logging directly into the root account and staying there. Although this provides momentary relief, it should be avoided and ordinary work on the system should be done via an ordinary user account.
+</p>
+
+<p>
+This is because it is very easy to damage a Unix-like system when using it as root -- much easier than to damage most other types of operating systems. The designers of most other operating systems devised methods of protecting the system and data to compensate for the lack of a <a href="http://www.linfo.org/robust.html">robust</a> permissions system. 
+</p>
+
+<p>
+However, an important principle of Unix-like operating systems is the provision of maximum flexibility to configure the system, and thus the root user is fully empowered. Unix-like systems assume that the system administrator knows exactly what he or she is doing and that only such individual(s) will be using the root account. Thus, there is virtually no safety net for the root user in the event of a careless error, such as damaging or deleting a critical system file (which could make the entire system inoperable). 
+</p>
+
+<p>
+Adding to the danger of routinely using the system as root is the fact that all <a href="http://www.linfo.org/process.html"><i>processes</i></a> (i.e., <a href="http://www.linfo.org/instance.html">instances</a> of <a href="http://www.linfo.org/program.html">programs</a> in execution) started by the root user have root privileges. Because even the most widely used and well-tested <a href="http://www.linfo.org/appslist.html">application programs</a> contain numerous programming errors (due to the huge amount of code required and its great complexity), a skilled attacker can often find and exploit such an error to obtain control of a system when a program is run with root privileges rather than using an ordinary user account, with its very limited privileges. 
+</p>
+
+<p>
+A critical means for preventing users from directly damaging Unix-like systems or increasing the vulnerability of such systems to damage by others is the avoidance of using the root account except when absolutely necessary, even by knowledgeable and experienced system administrators. That is, rather than routinely logging into the system as root, administrators should log in with their ordinary user accounts and then use commands, such as <a href="http://www.linfo.org/su.html"><i>su</i></a>, <a href="http://www.linfo.org/kdesu.html"><i>kdesu</i></a> and <i>sudo</i>, that provide them with root privileges only as needed and without requiring a new login.  
+</p>
+
+<p>
+For example, to become root with su merely requires typing
+</p>
+
+<blockquote>
+<p>
+<code>su</code>
+</p>
+</blockquote>
+
+<p>
+at the <a href="http://www.linfo.org/command_line.html"><i>command line</i></a> (i.e., in the all-text mode), pressing the Enter key and supplying the root password. The account of the previous user can be returned to by pressing the Ctrl and <i>d</i> keys simultaneously or by typing the word <i>exit</i> and then pressing the Enter key.
+</p>
+
+<p>
+The security associated with using su can be increased by using its <i>-c</i> <a href="http://www.linfo.org/option.html">option</a>, which terminates it and causes an immediate return to the former user account after the current command has completed execution or after any program that it has launched has been closed.
+</p>
+
+<p>
+Tasks that require root privileges include moving files or directories into or out of <i>system directories</i> (i.e., directories that are critical to the functioning of the operating system), copying files into system directories, granting or revoking user privileges, some system repairs, and the installation of some application programs. By default, it is not necessary to be root to be able to read most configuration files and <a href="http://www.linfo.org/documentation.html">documentation</a> files in system directories, although it is necessary to be root to modify them. 
+</p>
+
+<p>
+Root privileges are usually required for installing software in RPM (Red Hat Package Manager) package format because of the need to write to system directories. If an application program is being <i>compiled</i> (i.e., converted into runnable form) from <a href="http://www.linfo.org/source_code.html"><i>source code</i></a> (i.e., its original, human-readable form), however, it can usually be configured to install and run from a user's home directory. Root privileges are not needed by an ordinary user to compile and install software in its home directory. Compiling software as root should be avoided for security reasons.
+</p>
+
+<p>
+On large systems used by businesses and other organizations, there will likely be several system administrators. Each will have its own account in which it will ordinarily work (and the activities of which will be automatically recorded in system logs for security and repair purposes) but will also have access to the root account for use when necessary. The system administrator(s) might grant limited root privileges to some individuals, such as assistant administrators. 
+</p>
+
+
+</td></tr></table>
+
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+     
+
+<p class="copy">Created May 29, 2005. Updated October 27, 2007.<br />
+Copyright &#169; 2005 - 2007 The Linux Information Project. All Rights Reserved.</p>
+
+
+
+</body></html>
