@@ -1,6 +1,6 @@
 
 echo `date`
-#wget -r -p -k -l 1 -H --retry 0 --wait 0 --timeout 34 --tries 1  http://douci.ml/fix.html >>wget.log 2>>wget2.log
+wget -r -p -k -l 1 -H --retry 0 --wait 0 --timeout 34 --tries 1  http://douci.ml/fix.html >>wget.log 2>>wget2.log
 echo `date`
 #cp -R fromthemachine.org/* .
 cp -R douci.ml/* .
@@ -27,5 +27,5 @@ echo `date`
 git add .
 echo `date`
 
-mv douci.ml ../douciml
+mv douci.ml ../douciml2
 #mv fromthemachine.org ../oldit2
