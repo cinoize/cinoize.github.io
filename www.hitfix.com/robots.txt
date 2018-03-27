@@ -1,0 +1,1267 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>	   <html class="no-js" lang="en"> <![endif]-->
+	<head>
+		<script type="text/javascript">
+			/* observer-7.4.1 */!function t(e,n,o){function r(a,s){if(!n[a]){if(!e[a]){var u="function"==typeof require&&require;if(!s&&u)return u(a,!0);if(i)return i(a,!0);var d=new Error("Cannot find module '"+a+"'");throw d.code="MODULE_NOT_FOUND",d}var c=n[a]={exports:{}};e[a][0].call(c.exports,function(t){var n=e[a][1][t];return r(n||t)},c,c.exports,t,e,n,o)}return n[a].exports}for(var i="function"==typeof require&&require,a=0;a<o.length;a++)r(o[a]);return r}({1:[function(t,e,n){"use strict";function o(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"NEW_SCRIPT_EVENT",n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},o=new r(e,{detail:n});t.dispatchEvent(o)}var r=t(3);e.exports=o},{3:3}],2:[function(t,e,n){"use strict";function o(t){t.adonis=t.adonis||{},t.adonis.scriptStatuses={},t.adonis.requestStatuses={};var e=t.XMLHttpRequest.prototype.open;t.XMLHttpRequest.prototype.open=function(n,o){this.addEventListener("error",function(e){0===this.status?t.adonis.scriptStatuses[o]="error":t.adonis.scriptStatuses[o]="load"}),this.addEventListener("load",function(e){t.adonis.scriptStatuses[o]="load"}),this.addEventListener("loadend",function(e){t.adonis.requestStatuses[o]=this.status,r(t)});var i=[].slice.call(arguments,0);return e.apply(this,i)}}var r=t(1);e.exports={wrapXMLHttpRequest:o}},{1:1}],3:[function(t,e,n){(function(t){var n=t.CustomEvent;e.exports=function(){try{var t=new n("cat",{detail:{foo:"bar"}});return"cat"===t.type&&"bar"===t.detail.foo}catch(t){}return!1}()?n:"undefined"!=typeof document&&"function"==typeof document.createEvent?function(t,e){var n=document.createEvent("CustomEvent");return e?n.initCustomEvent(t,e.bubbles,e.cancelable,e.detail):n.initCustomEvent(t,!1,!1,void 0),n}:function(t,e){var n=document.createEventObject();return n.type=t,e?(n.bubbles=Boolean(e.bubbles),n.cancelable=Boolean(e.cancelable),n.detail=e.detail):(n.bubbles=!1,n.cancelable=!1,n.detail=void 0),n}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],4:[function(t,e,n){"use strict";function o(t,e,n,o){"addEventListener"in t?t.addEventListener(e,n,o):"attachEvent"in t&&t.attachEvent("on"+e,n)}var r=t(2),i=t(1);!function(){window.adonis=window.adonis||{},window.adonis.scriptStatuses={},r.wrapXMLHttpRequest(window),o(document,"load",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="load",i(window))},!0),o(document,"error",function(t){t.target&&"SCRIPT"===t.target.nodeName&&(window.adonis.scriptStatuses[t.target.src]="error",i(window))},!0)}()},{1:1,2:2}]},{},[4]);
+		</script>
+		<meta charset="UTF-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=1000,maximum-scale=1.0">
+				<link rel="apple-touch-icon" href="https://s0.wp.com/wp-content/themes/vip/uproxx/assets/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="https://s0.wp.com/wp-content/themes/vip/uproxx/assets/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="https://s0.wp.com/wp-content/themes/vip/uproxx/assets/images/apple-touch-icon-114x114.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+		<link rel="alternate" type="application/rss+xml" title="UPROXX RSS Feed" href="https://feeds.feedburner.com/uproxx/features" />
+
+		<meta name="keywords" content="hitfix" />
+		<script src='https://r-login.wordpress.com/remote-login.php?action=js&amp;host=uproxx.com&amp;id=60970621&amp;t=1522177818&amp;back=https%3A%2F%2Fuproxx.com%2Fhitfix%2F' type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//uproxx.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="UPROXX &raquo; HitFix Category Feed" href="https://uproxx.com/category/hitfix/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1516999477h&ver=4.9.5-beta1-42868"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='all-css-0-1' href='https://s1.wp.com/_static/??-eJy1VNuW2yAM/KES2m2zferptwCWMQkginAc//3Kdpw4m8vxbtsXDhIzA0gDskvCYCwQiywNBCB5cEm2KePxKKn0HjaG6It8ilNEUEgy8JQRpqWCYQU1+da6eOaxTnHRnuPgyFySO5LkndlP4/9VF6PazR6hFbOowQycD0mVARGgcgo8k2J5RgvpdWYN00aZPT3Dd4nRQuuUgUjwGFwbptPd8h6XoMMDRFHVaWzT2s7eZ0dV3AG4ACFg/FuVCmhfMH28m9bVXCTVQ14675JdocjHqTBL1VbOMkJQg7mINnuSqdVsg1H5zrKYlj9hQcLBaLWKptd4lLs/LeR+M8efE1xcn8N//S7egwu/jl54UBVkjSpXJ0e9T3/8HJ2r7PCRzDu5CrTKQmdnm2LYPHf6/RC0vv1U2IlG1owTqgPCAOMOy8QmuDVOv1bUiIVKVpPfz9FKrdtf9d6XuvwpTuUjNE554RhyHUxkJyOWaXGePFO1gMKj4QthvApE7ZW7LfOCmkF7tDy14y0u4aPbNz+k9aiVHwC/w69v25ev37c/ty/b3Rs/TI79?cssminify=yes' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var UPX = {"Site":{"name":"UPROXX","domain":"uproxx.com","fb_app_id":"117400151618132","twitter_handle":"UPROXX"},"PageData":{"type":"landing","format":"digest","status":"","id":"","url":"","canonical":"","shorturl":"","title":"","summary":"","image":"","image_fb":"","image_tw":"","thumbnail":"","editorial":false},"SocoData":{"site_id":10,"user_id":0,"logged_in":"false","back_url":"https:\/\/uproxx.com\/"},"UserData":""};
+var THRED = {"Site":{"name":"UPROXX","domain":"uproxx.com","fb_app_id":"117400151618132","twitter_handle":"UPROXX"},"PageData":{"type":"landing","format":"digest","status":"","id":"","url":"","canonical":"","shorturl":"","title":"","summary":"","image":"","image_fb":"","image_tw":"","thumbnail":"","editorial":false},"SocoData":{"site_id":10,"user_id":0,"logged_in":"false","back_url":"https:\/\/uproxx.com\/"},"UserData":""};
+var uproxxsso_back = "https:\/\/uproxx.com\/";
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var uproxx_sticky_leaderboard_options = {"time":"5","is_sticky":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJylU+1OwzAMfCGyABqg/UA8S5p4rdt8ESfdx9PjdoNtrGKdkCpFsc/ny9mVmyjQa1sMkGz5+yyQdsdj0dKD/AsgHNZJZVg49N9gHXwGnwesCxVaEIUgqZpjTLQOE7gYKDsgYtBE9lIS+h5hcxPWQo5KdyIB4f6KNTfA/WSPUZaYwnYrFRHk8YE6JGCgq9CDubfwNr4Hb0KSlFVGLSsbdKfMeJybeO548QYSjewTNl93iLbU6EluAvcSZh0HEubqcojCc9v+bplHUwfnY0h50IH/EzJbgSoGx92hhjuLkizvS6nsoIqmsuKQnS/vcBU8xoy+/rk7JH0K/gazK91OWFA8myqoZAY119F7jXaBKz3u07xRXxY3SDmc/to5O9uMUrniw70/vTw/rl6Xq7dV+wUSGo8B'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://uproxx.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel='openid.server' href='https://uproxx.wordpress.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://uproxx.wordpress.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://uproxx.com/osd.xml" title="UPROXX" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+				<meta name="Googlebot-News" content="noindex,nofollow"/>
+	<!--Adomik randomizer for ad call key value targeting-->
+<script type='text/javascript'>
+	window.Adomik = window.Adomik || {};
+	Adomik.randomAdGroup = function() {
+		var rand = Math.random();
+		switch (false) {
+			case !(rand < 0.09): return "ad_ex" + (Math.floor(100 * rand));
+			case !(rand < 0.10): return "ad_bc";
+			default: return "ad_opt";
+		}
+	};
+</script>
+
+<script type="text/javascript">
+	var THRED = THRED || {};
+	THRED.AdDelivery = {"id":"dfp-5aba971a17b14","site":"uproxx","section":"hitfix","title":"HitFix","category":"hitfix","pagetype":"landing","zones":[{"name":"Interstitial","slug":"woven-interstitial","sizes":"[[1,1]]"},{"name":"Leaderboard","slug":"woven-leaderboard","sizes":"[[970,1],[970,250],[970,66],[970,90],[970,500],[970,550],[1600,520],[728,90]]"},{"name":"Sitewide_Interstitial","slug":"woven-sw-interstitial","sizes":"[[1,1]]"}],"campaign":"","tag":"","url":"https:\/\/uproxx.com\/category\/hitfix\/","articleID":"","cflag":0,"mature":0,"currentPos":0,"display":[],"position":"top"};
+</script>
+<script type="text/javascript" async src="//js-sec.indexww.com/ht/htw-woven.js"></script>
+
+<!-- Start: GPT Async -->
+<script type='text/javascript'>
+	var gptadslots=[];
+	var googletag = googletag || {};
+	googletag.cmd = googletag.cmd || [];
+
+	(function(){ var gads = document.createElement('script');
+		gads.async = true; gads.type = 'text/javascript';
+		var useSSL = 'https:' == document.location.protocol;
+		gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+		var node = document.getElementsByTagName('script')[0];
+		node.parentNode.insertBefore(gads, node);
+	})();
+</script>
+<!-- Init Audigent -->
+<script type="text/javascript" src="https://seg.ad.gt/api/v1/segments.js"></script>
+<script type="text/javascript">
+    if ( typeof( au_seg ) != 'undefined' ) {
+        au_segments = au_seg.segments || [];
+        googletag.cmd.push(function() { googletag.pubads().setTargeting('AU_SEG', au_segments); });
+    }
+</script>
+<script type="text/javascript">
+	googletag.cmd.push(function() {
+gptadslots["woven-interstitial-slot"] = googletag.defineSlot("/30013909/uproxx_hitfix_landing_interstitial", [[1,1]], "woven-interstitial").setTargeting("ad_group", Adomik.randomAdGroup()).addService(googletag.pubads());
+gptadslots["woven-leaderboard-slot"] = googletag.defineSlot("/30013909/uproxx_hitfix_landing_leaderboard", [[970,1],[970,250],[970,66],[970,90],[970,500],[970,550],[1600,520],[728,90]], "woven-leaderboard").setTargeting("ad_group", Adomik.randomAdGroup()).addService(googletag.pubads());
+gptadslots["woven-sw-interstitial-slot"] = googletag.defineSlot("/30013909/uproxx_sitewide_interstitial", [[1,1]], "woven-sw-interstitial").setTargeting("ad_group", Adomik.randomAdGroup()).addService(googletag.pubads());
+		googletag.pubads().setTargeting('Title', THRED.AdDelivery.title).setTargeting('Topic', THRED.AdDelivery.topic).setTargeting('Tag', THRED.AdDelivery.tag).setTargeting('Tags', THRED.AdDelivery.tag).setTargeting('cflag', THRED.AdDelivery.cflag).setTargeting('mature', THRED.AdDelivery.mature).setTargeting('articleID', THRED.AdDelivery.articleID).setTargeting('URL', THRED.PageData.url).setTargeting('campaign', THRED.AdDelivery.campaign);
+		googletag.pubads().collapseEmptyDivs();
+				googletag.pubads().disableInitialLoad();
+				googletag.pubads().enableSingleRequest();
+		googletag.pubads().enableAsyncRendering();
+		
+		googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+			jQuery.event.trigger('slotRenderEnded', event);
+		});
+		
+		googletag.enableServices();
+	});
+</script>
+		<!-- Amazon A9 -->
+	<script>
+	!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function()
+	{q("f",arguments)},setDisplayBids:function(){},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(
+	A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+	apstag.init({
+		pubID: '3153',
+		adServer: 'googletag',
+		bidTimeout: 2e3
+	});
+
+	apstag.fetchBids(
+		{ slots: apstagPrepareSlots([{"slotID":"woven-interstitial","sizes":[[1,1]]},{"slotID":"woven-leaderboard","sizes":[[970,1],[970,250],[970,66],[970,90],[970,500],[970,550],[1600,520],[728,90]]},{"slotID":"woven-sw-interstitial","sizes":[[1,1]]}]) },
+		function(bids) {
+			googletag.cmd.push(function() {
+				apstag.setDisplayBids();
+				headertag.pubads().refresh();
+			});
+		}
+	);
+
+	/**
+	 * Exclude 1x1 and 2x2 slot sizes for the A9
+	 * @param {Array} slots
+	 * @returns {Array}
+	 */
+	function apstagPrepareSlots(slots){
+		if(!slots || !slots.length){
+			return slots;
+		}
+
+		var filtered = [];
+
+		for(var i = 0; i < slots.length; i++){
+			var slot = slots[i];
+			var sizes = [];
+
+			for(var j = 0; j < slot.sizes.length; j++){
+				var size = slot.sizes[j];
+				if(size[0] > 3 && size[1] > 3){
+					sizes.push(size);
+				}
+			}
+
+			if(sizes.length){
+				slot.sizes = sizes;
+				filtered.push(slot);
+			}
+		}
+
+		return filtered;
+	}
+	</script>
+	
+<!-- Fallback to GPT //-->
+<script type="text/javascript">
+   googletag.cmd.push(function() {
+      if (typeof window.headertag === 'undefined' || window.headertag.apiReady !== true) {
+         window.headertag = googletag;
+      }
+   });
+</script>
+<link rel="canonical" href="https://uproxx.com/hitfix/" />
+<title>HitFix</title>	<meta name="google-site-verification" content="370ZQZwYhpp3OFLpudIZ11ONRN8X1ZhGglPMAFJ6GKw" />
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-4046454-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<script type="text/javascript" src="//www.zergnet.com/zerg-inf-multi.js"></script>
+
+<script type="text/javascript">
+	var _sf_startpt = (new Date()).getTime();
+	uproxx_site_domain = 'uproxx.com';
+	var uproxx_tpl_dir = "https://s0.wp.com/wp-content/themes/vip/uproxx";
+</script>
+
+
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="UPROXX" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="The Culture Of Now" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://uproxx.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/bae760df0e3bd64e122a0b36facaee58?s=16" /><style type="text/css" id="syntaxhighlighteranchor"></style>
+		<script>document.domain = "uproxx.com";</script>
+	</head>
+	<body class="archive category category-hitfix category-432130144 mp6 customizer-styles-applied uproxx-section uproxx-section-hitfix">
+		<script type="text/javascript">
+			/* wrapper-7.4.1 */!function t(e,n,r){function o(a,c){if(!n[a]){if(!e[a]){var d="function"==typeof require&&require;if(!c&&d)return d(a,!0);if(i)return i(a,!0);var u=new Error("Cannot find module '"+a+"'");throw u.code="MODULE_NOT_FOUND",u}var s=n[a]={exports:{}};e[a][0].call(s.exports,function(t){var n=e[a][1][t];return o(n||t)},s,s.exports,t,e,n,r)}return n[a].exports}for(var i="function"==typeof require&&require,a=0;a<r.length;a++)o(r[a]);return o}({1:[function(t,e,n){"use strict";!function(){function t(){n&&console.log.apply(console,arguments)}function e(t,n,r,o,i,a,c,d,u,s,f){var l=function(){!0===t&&console.log.apply(console,arguments)},g=['<script type="text/javascript">(',e.toString(),")(",[t.toString(),n.toString(),r.toString(),o.toString(),i.toString(),a.toString(),c.toString(),d.toString(),u.toString(),s.toString(),"'"+window.location.origin+"'"].join(",").toString(),")<","/script>"].join("");n()(HTMLIFrameElement,"name",r(),o(g)),n()(HTMLIFrameElement,"contentDocument",c(a(g),i()),d()),n()(HTMLIFrameElement,"contentWindow",u(a(g),i()),s()),window.failed_urls=window.failed_urls||[];var p=["script","img"];document.addEventListener("load",function(t){l("withinIframe load event",t.target),!t.target||"SCRIPT"!==t.target.nodeName&&"IMG"!==t.target.nodeName||(t.target._loadState="load")},!0),document.addEventListener("error",function(t){l("withinIframe error event",t.target),!t.target||"SCRIPT"!==t.target.nodeName&&"IMG"!==t.target.nodeName||(t.target._loadState="error",window.failed_urls=window.failed_urls||[],window.failed_urls.push(t.target.src))},!0),window.addEventListener("message",function(t){if(t.origin===f){var e=t.data.eventName;if(void 0!==e)switch(e){case"frameLoaded":case"bubbleup":window.parent.postMessage(t.data,f)}if(void 0!==t.data.iframeId){l("message received "+t.data.iframeId);var n=t.data,r=function t(e){var n={originIframeId:e.iframeId,readyState:document.readyState,requestData:[],cssData:[]},r=e.srcSubstrings;if(void 0!==r)for(var o=document.querySelectorAll(p.join(",")),i=0;i<o.length;i++){var a=o[i];if(a.src){var c=r.some(function(t){return-1!==a.src.indexOf(t)});if(c){if(void 0===a._loadState)return l("Wait for event from "+a.src),a.addEventListener("load",function(){t(e)}),void a.addEventListener("error",function(){t(e)});n.requestData.push({type:a.nodeName,src:a.src,state:a._loadState})}}}var d=e.displayTypes,u=e.cssAttributes;void 0!==d&&void 0!==u&&(o=document.querySelectorAll(d.join(",")),Array.prototype.forEach.call(o,function(t){var e=window.getComputedStyle(t),r={};u.forEach(function(t){r[t]=e.getPropertyValue(t)}),n.cssData.push({type:t.nodeName,id:t.id,class:t.getAttribute("class"),cssAttributes:r})})),l("send response "+e.iframeId),n.failed_urls=window.failed_urls,parent.postMessage(n,f)};!function(t){"loading"!==document.readyState?t():document.addEventListener("DOMContentLoaded",t)}(function(){r(n)})}}})}window.adonisHash=window.adonisHash||window.location.hash||"";var n=-1!==window.adonisHash.indexOf("adonis-logging"),r=function(){return function(t,e,n,r){var o=Object.getOwnPropertyDescriptor(t.prototype,e);Object.defineProperty(t.prototype,e,{get:function(){return n(o.get,this,arguments)},set:function(){return r(o.set,this,arguments)},enumerable:!0})}},o=function(){return function(t,e,n){return t.apply(e,n)}},i=function(e){return function(n,r,o){try{var i=o[0];if(-1!==i.indexOf("html")){var a=i.split(";"),c=a[1],d=parseInt(c)+e.length;a[1]=d.toString(),i=a.join(";"),i=i.replace("<head>","<head>"+e),o[0]=i}}catch(e){t(e)}return n.apply(r,o)}},a=function(){return function(t){var e=!1;if(t.src&&0!==t.src.indexOf("javascript:")&&0!==t.src.indexOf("about:blank")){var n=document.createElement("a");n.href=t.src;n.host===window.location.host&&(e=!0)}else e=!0;return e}},c=function(e){return function(n,r){var o=r.write;r.write=function(n){try{if(!this._injected){var r=/<(?!(body|head|html|doctype))([^>!\/\s]+)/i;r.test(n)&&(n=n.replace(r,function(t){return e+t})),this._injected=!0}}catch(e){t(e)}return o.call(this,n)}}},d=function(e,n){return function(r,o,i){var a=r.apply(o,i);try{if(o.contentDocumentDecorated)return a;o.contentDocumentDecorated=!0,n(o)&&e(o,a)}catch(e){t(e)}return a}},u=function(){return function(t,e,n){return t.apply(e,n)}},s=function(e,n){return function(r,o,i){var a=r.apply(o,i);try{if(o.contentWindowDecorated)return a;if(o.contentWindowDecorated=!0,n(o))try{e(o,a.document)}catch(e){t("The following frame was supposed to be friendly but we got a security violation while attempting to decorate:",o)}}catch(e){t(e)}return a}},f=function(){return function(t,e,n){return t.apply(e,n)}},l=['<script type="text/javascript">(',e.toString(),")(",[n.toString(),r.toString(),o.toString(),i.toString(),a.toString(),c.toString(),d.toString(),u.toString(),s.toString(),f.toString(),"'"+window.location.origin+"'"].join(",").toString(),")<","/script>"].join("");r()(HTMLIFrameElement,"name",o(),i(l)),r()(HTMLIFrameElement,"contentDocument",d(c(l),a()),u()),r()(HTMLIFrameElement,"contentWindow",s(c(l),a()),f())}()},{}]},{},[1]);
+		</script>
+
+		<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PKWDQ9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKWDQ9');</script>
+<!-- End Google Tag Manager -->
+
+<img src="//dbg52463.moatads.com?a=5a7216d001e44d7f8e401aa5705d27f8" style="display:none;" />
+<img src="//d5i9o0tpq9sa1.cloudfront.net?a=5a7216d001e44d7f8e401aa5705d27f8" style="display:none;" />
+<script type="text/javascript">(function(){var a=document,b=a.createElement("script"),a=a.getElementsByTagName("script")[0];b.type="text/javascript";b.async=!0;b.src="https://z.moatads.com/wovencontent654pYot17/moatcontent.js";a.parentNode.insertBefore(b,a)})();</script>
+<script async="async" data-client-id="AfdAOHOAQNEEARC" type="text/javascript" src="//d3qxwzhswv93jk.cloudfront.net/esf.js"></script>
+
+
+		<div id="skin"></div>
+
+		<div class="masthead">
+		<div class="outer-wrapper" id="woven-leaderboard-wrapper"><div class="container"><div id="woven-leaderboard" adonis-marker><script type="text/javascript">googletag.cmd.push(function() { headertag.display('woven-leaderboard'); });</script></div></div></div>		</div>
+
+				<div class="uproxx-main-navigation small-state">
+						<div id="woven-leaderboard-placeholder"></div>
+			<div class="header-uproxx-main-navmenu">
+				<div class="header-uproxx-small-logo"><a href="/"><span>UPROXX</span></a></div>
+		<ul id="menu-primary-navigation-hitfix" class="menu"><li id="menu-item-1893014" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893014"><a href="/sepinwall/" class="nav-item">What&#8217;s Alan Watching</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+<li id="menu-item-1893016" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893016"><a href="/movies/" class="nav-item">Movies</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+<li id="menu-item-1893017" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893017"><a href="/tv/" class="nav-item">TV</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+<li id="menu-item-1893019" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1893019"><a href="/gaming/" class="nav-item">Gaming</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+<li id="menu-item-400174101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-400174101"><a href="/topic/comics/" class="nav-item">Comics</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+<li id="menu-item-400165773" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-400165773"><a href="/" class="nav-item">UPROXX Home</a>
+<!-- subnav start -->
+<div class="uproxx-dropdown initializing ">
+<div class="uproxx-dropdown-inner">
+</div>
+<!-- uproxx-dropdown-inner end -->
+</div>
+<!-- subnav end -->
+</li>
+<!-- end_el -->
+</ul>		<div class="uproxx-social-navigation-container" data-icons="6">
+			<div class="uproxx-search">	<form role="search" method="get" class="search-form" action="https://uproxx.com/">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:" />
+		</label>
+		<input type="submit" class="search-submit" value="Search" />
+	</form>
+	</div>
+			<div class="uproxx-social"><ul id="menu-main-social-navigation" class="social-list"><li id="menu-item-1169977" class="uproxx-info menu-item menu-item-type-custom menu-item-object-custom menu-item-1169977"><a href="/about/"><span>About</span></a>
+<div class="uproxx-info-subnav">
+	<ul>
+		<li><a href="/about/">About</a></li>
+		<li><a href="http://uproxxmediagroup.com/">Corporate</a></li>
+		<li><a href="/privacy/">Privacy</a></li>
+		<li><a href="/terms-of-use/">Terms</a></li>
+	</ul>
+</div>
+
+</li>
+<li id="menu-item-1157661" class="uproxx-facebook menu-item menu-item-type-custom menu-item-object-custom uproxx-social-group menu-item-1157661"><a href="https://www.facebook.com/UPROXX"><span>Facebook</span></a>
+
+</li>
+<li id="menu-item-1157662" class="uproxx-twitter menu-item menu-item-type-custom menu-item-object-custom uproxx-social-group menu-item-1157662"><a href="https://twitter.com/uproxx"><span>Twitter</span></a>
+
+</li>
+<li id="menu-item-400426028" class="uproxx-instagram menu-item menu-item-type-custom menu-item-object-custom uproxx-social-group menu-item-400426028"><a href="https://www.instagram.com/uproxx/"><span>Instagram</span></a>
+
+</li>
+<li id="menu-item-1157663" class="uproxx-youtube menu-item menu-item-type-custom menu-item-object-custom uproxx-social-group menu-item-1157663"><a href="http://youtube.com/UPROXX"><span>YouTube</span></a><div class="social-dropdown">
+	<div class="social-dropdown-inner">
+		<div class="header">Get UPROXX Everywhere.</div>
+		<div style="position:relative; display:flex;">
+			<div class="social-widget">
+				<div class="fb-like" data-href="https://www.facebook.com/UPROXX/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" data-width="75"></div>
+			</div>
+			<div class="social-widget">
+				<a href="https://twitter.com/UPROXX" class="twitter-follow-button" data-show-count="false">Follow @UPROXX</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			</div>
+			<div class="social-widget">
+				<a href="https://www.instagram.com/uproxx/" class="instagram-follow-button">Follow UPROXX</a>
+			</div>
+			<div class="social-widget">
+				<div class="g-ytsubscribe" data-channel="UPROXX" data-layout="default" data-count="default" data-onytevent="onYtEvent"></div>
+				<script src="https://apis.google.com/js/platform.js"></script>
+			</div>
+			<div class="social-widget">
+				<a class="shareflip" href="https://flipboard.com/@Uproxx"><img src="https://cdn.flipboard.com/badges/flipboard_srsw.png" /> FlipBoard</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</li>
+<li id="menu-item-1157664" class="uproxx-user menu-item menu-item-type-custom menu-item-object-custom menu-item-1157664"><a href="#"><span>Member</span></a>
+
+<div class="uproxx-social-sso-subnav">
+	<ul>
+			<li><a href="#uproxx-sso-signup" class="uproxx-sso-modal" onclick="build_signup_dialog(); return false;">Sign Up</a></li>
+		<li><a href="#uproxx-sso-signin" class="uproxx-sso-modal" onclick="build_login_dialog(); return false;">Sign In</a></li>
+		</ul>
+</div>
+</li>
+</ul></div>		</div>
+					</div>
+		</div>
+
+				<div id="home-buzz-slider" class="carousel slick">
+		<div id="post-401215439" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>&#039;Ready Player One&#039; Is A Visually Dazzling Satire Of Consumer Culture</h2>
+							<h3>Vince Mancini reviews Steven Spielberg&#039;s &#039;Ready Player One,&#039; a film so dazzling that it nearly transcends its asinine source material.</h3>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/vince/" title="Posts by Vince Mancini" class="author url fn" rel="author">Vince Mancini</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">2 hours ago</span>
+			<a class="comment-count comment-count-num-9" href="https://uproxx.com/filmdrunk/ready-player-one-review-steven-spielberg/#comments">9 Comments</a>		</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/filmdrunk/ready-player-one-review-steven-spielberg/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/ready-player-one-tfeat-uproxx.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="&#8216;Ready Player One&#8217; Is Both Visually Dazzling And An Unintentional Satire Of Consumer Culture" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401212471" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>There Is Always A Cost, And Other Takeaways From This Week&#039;s &#039;The Walking Dead&#039;</h2>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/the-walking-dead-recap-maggie-cost-season-8-episode-13/#comments">2 Comments</a>		</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/tv/the-walking-dead-recap-maggie-cost-season-8-episode-13/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/the-walking-dead-episode-813-maggie-cohan-9351.jpg?quality=95&#038;w=905&#038;h=400&#038;crop=1" width="970" height="400" alt="There Is Always A Cost, And Other Takeaways From This Week&#8217;s &#8216;The Walking Dead&#8217;" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401201132" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>Steven S. DeKnight Can&#8217;t Believe ‘Pacific Rim Uprising’ Exists Either</h2>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/mike-ryan/" title="Posts by Mike Ryan" class="author url fn" rel="author">Mike Ryan</a></span>
+			<span class="published-date uproxx-the-date">03.19.18</span>
+			<span class="published-date uproxx-time-diff">1 week ago</span>
+					</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/movies/steve-s-deknight-interview-pacific-rim-uprising-director/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/pr2-caro.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="Steven S. DeKnight Can&#8217;t Believe ‘Pacific Rim Uprising’ Exists Either" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401203680" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>‘Pacific Rim Uprising’ Is A Dumb Movie That Knows It&#8217;s A Dumb Movie</h2>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/mike-ryan/" title="Posts by Mike Ryan" class="author url fn" rel="author">Mike Ryan</a></span>
+			<span class="published-date uproxx-the-date">03.20.18</span>
+			<span class="published-date uproxx-time-diff">1 week ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/movies/pacific-rim-uprising-review/#comments">2 Comments</a>		</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/movies/pacific-rim-uprising-review/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/pru-caro.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="‘Pacific Rim Uprising’ Is A Dumb Movie That Knows It&#8217;s A Dumb Movie" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401207947" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>Jay Pharoah Is Really Big On Gas Station Wine</h2>
+							<h3>A conversation with &#039;SNL&#039; alum Jay Pharoah about his starring role in Steven Soderbergh’s iPhone-shot psychological thriller, &#039;Unsane.&#039;</h3>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/mike-ryan/" title="Posts by Mike Ryan" class="author url fn" rel="author">Mike Ryan</a></span>
+			<span class="published-date uproxx-the-date">03.22.18</span>
+			<span class="published-date uproxx-time-diff">5 days ago</span>
+					</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/movies/jay-pharoah-unsane-snl-interview/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/jay-pharoe-tfeat-uproxx.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="Jay Pharoah Tells Us All About Working On The iPhone-Shot ‘Unsane’ And Why He Thinks His Obama Disappeared On ‘SNL’" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401205659" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>Steven Soderbergh&#8217;s &#8216;Unsane&#8217; Sends Claire Foy Into A Threatening Wonderland</h2>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/amy-nicholson/" title="Posts by Amy Nicholson" class="author url fn" rel="author">Amy Nicholson</a></span>
+			<span class="published-date uproxx-the-date">03.21.18</span>
+			<span class="published-date uproxx-time-diff">6 days ago</span>
+					</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/movies/unsane-review-steven-soderbergh-claire-foy/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/unsane-caro.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="Steven Soderbergh&#8217;s &#8216;Unsane&#8217; Sends Claire Foy Into A Threatening Wonderland" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401193076" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>&#039;The Magicians&#039; Casts A Spell To Beat The Serialization Blues</h2>
+							<h3>Uproxx TV critic Alan Sepinwall on the third season of &#039;The Magicians,&#039; a run of episodes stuffed with plot but also distinct pleasures.</h3>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/alan-sepinwall/" title="Posts by Alan Sepinwall" class="author url fn" rel="author">Alan Sepinwall</a></span>
+			<span class="published-date uproxx-the-date">03.14.18</span>
+			<span class="published-date uproxx-time-diff">2 weeks ago</span>
+			<a class="comment-count comment-count-num-4" href="https://uproxx.com/sepinwall/the-magicians-season-3-review-syfy-under-pressure/#comments">4 Comments</a>		</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/sepinwall/the-magicians-season-3-review-syfy-under-pressure/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/magicians-tfeat-uproxx.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="&#8216;The Magicians&#8217; Casts A Spell To Beat The Serialization Blues" class="img-responsive" />
+	</a>
+</div>
+<div id="post-401136346" class="uproxx-featured-article-post">
+	<div class="uproxx-slide-content uproxx-slide-content-bg">
+		<div class="slide-caption slide-short">
+			<h2>&#039;Jessica Jones&#039; Season Two Gets Better As It Goes, But Not Without Flaws</h2>
+					</div>
+		<div class="slide-author">
+					<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/alan-sepinwall/" title="Posts by Alan Sepinwall" class="author url fn" rel="author">Alan Sepinwall</a></span>
+			<span class="published-date uproxx-the-date">03.09.18</span>
+			<span class="published-date uproxx-time-diff">3 weeks ago</span>
+			<a class="comment-count comment-count-num-11" href="https://uproxx.com/sepinwall/jessica-jones-season-2-recap-spoilers-review-netflix-marvel/#comments">11 Comments</a>		</div>
+				</div>
+	</div>
+	<a class="slide-image image-holder" href="https://uproxx.com/sepinwall/jessica-jones-season-2-recap-spoilers-review-netflix-marvel/">
+		<img src="https://uproxx.files.wordpress.com/2018/03/jesica-j-uproxx.jpg?quality=95&#038;w=970&#038;h=400&#038;crop=1" width="970" height="400" alt="Flaws And All, &#8216;Jessica Jones&#8217; Season Two Gets Better As It Goes Along" class="img-responsive" />
+	</a>
+</div>
+		</div>
+		<script>
+		try {
+			uproxx_header_ctrl.init();
+		}catch(e){
+			
+		}
+	</script>
+
+		<!-- Outer Wrapper Start -->
+		<div class="outer-wrapper">
+			<!-- Content Start -->
+			<div class="container">
+
+					<a class="section-header-link" href="https://uproxx.com/hitfix/">
+		<div id="section-header" class="section-header">
+			<div class="section-header-img"></div>
+		</div>
+	</a>
+
+<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="stories">
+	<div class="row">
+				<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401216723"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/deadpool-2-green-band-trailer/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/deadpool-2-x-force-xforce_fox-brightened.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="&#8216;Deadpool 2&#8217; Gets A &#8216;Clean&#8217; Trailer With A Less Pornographic Joke" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/deadpool-2-green-band-trailer/" rel="bookmark">&#8216;Deadpool 2&#8217; Gets A &#8216;Clean&#8217; Trailer With A Less Pornographic Joke</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">1 hour ago</span>
+					</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401215439"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/filmdrunk/ready-player-one-review-steven-spielberg/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/readyplayeronefeature.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="&#8216;Ready Player One&#8217; Is Both Visually Dazzling And An Unintentional Satire Of Consumer Culture" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/filmdrunk/ready-player-one-review-steven-spielberg/" rel="bookmark">&#8216;Ready Player One&#8217; Is Both Visually Dazzling And An Unintentional Satire Of Consumer Culture</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/vince/" title="Posts by Vince Mancini" class="author url fn" rel="author">Vince Mancini</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">2 hours ago</span>
+			<a class="comment-count comment-count-num-9" href="https://uproxx.com/filmdrunk/ready-player-one-review-steven-spielberg/#comments">9 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401214534"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/mark-hamill-george-lucas-star-wars-episode-ix-original-ending-luke-skywalker/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/the-last-jedi-luke.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="Mark Hamill Shares George Lucas&#8217; Fate For Luke Skywalker In &#8216;Star Wars: Episode IX&#8217;" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/mark-hamill-george-lucas-star-wars-episode-ix-original-ending-luke-skywalker/" rel="bookmark">Mark Hamill Shares George Lucas&#8217; Fate For Luke Skywalker In &#8216;Star Wars: Episode IX&#8217;</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">5 hours ago</span>
+			<a class="comment-count comment-count-num-3" href="https://uproxx.com/hitfix/mark-hamill-george-lucas-star-wars-episode-ix-original-ending-luke-skywalker/#comments">3 Comments</a>		</div>
+			</div>
+</div>
+			</div>
+						<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401131328"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/best-netflix-original-series-right-now-ranked/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/love-grid-uproxx.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The 50 Best Netflix Original Series Right Now, Ranked" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/best-netflix-original-series-right-now-ranked/" rel="bookmark">The 50 Best Netflix Original Series Right Now, Ranked</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">6 hours ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/best-netflix-original-series-right-now-ranked/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401214173"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/movies/best-horror-movies-on-netflix-right-now-scariest-films-ranked/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/the-decent.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The 20 Best Horror Movies On Netflix Right Now, Ranked" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/movies/best-horror-movies-on-netflix-right-now-scariest-films-ranked/" rel="bookmark">The 20 Best Horror Movies On Netflix Right Now, Ranked</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/alex-diedrick/" title="Posts by Alex Diedrick" class="author url fn" rel="author">Alex Diedrick</a>, <a href="https://uproxx.com/author/dariel-figueroa/" title="Posts by Dariel Figueroa" class="author url fn" rel="author">Dariel Figueroa</a> and <a href="https://uproxx.com/author/chris-eggertsen/" title="Posts by Chris Eggertsen" class="author url fn" rel="author">Chris Eggertsen</a></span>
+			<span class="published-date uproxx-the-date">03.27.18</span>
+			<span class="published-date uproxx-time-diff">7 hours ago</span>
+					</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401215212"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/gina-rodriguez-carmen-sandiego-live-action-movie-netflix/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/jane-the-virgin-gina-rodriguez.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="Gina Rodriguez Will Star In Netflix&#8217;s Live-Action &#8216;Carmen Sandiego&#8217; Movie" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/gina-rodriguez-carmen-sandiego-live-action-movie-netflix/" rel="bookmark">Gina Rodriguez Will Star In Netflix&#8217;s Live-Action &#8216;Carmen Sandiego&#8217; Movie</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/alyssa-fikse/" title="Posts by Alyssa Fikse" class="author url fn" rel="author">Alyssa Fikse</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">16 hours ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/gina-rodriguez-carmen-sandiego-live-action-movie-netflix/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+			</div>
+							<div class="story-row">
+					<span class="pagebreak leaderboard">
+						<div id="dfp-5aba971a24585-container" class="ad-unit ajax-post-ad pending" data-id="dfp-5aba971a24585" data-site="uproxx" data-section="hitfix" data-title="HitFix" data-category="hitfix" data-pagetype="landing" data-zones="" data-campaign="" data-tag="" data-url="https://uproxx.com/category/hitfix/" data-articleID="" data-cflag="0" data-mature="0" data-currentPos="0" data-display="" data-position="top" data-zone="uproxx_hitfix_landing_footer" data-sizes="[[728,90],[970,250],[728,1],[970,66],[970,90],[970,500],[970,550],[970,520],&quot;fluid&quot;]"></div>	<script>
+		if(window.woven_dfp){
+			woven_dfp.displayAds();
+		}
+	</script>
+					</span>
+				</div>
+							<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401214612"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/dale-death-walking-dead-quit/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/dale-death-walking-dead.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="A &#8216;Walking Dead&#8217; Actor Reveals He Demanded To Be Killed Off The Show" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/dale-death-walking-dead-quit/" rel="bookmark">A &#8216;Walking Dead&#8217; Actor Reveals He Demanded To Be Killed Off The Show</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">22 hours ago</span>
+			<a class="comment-count comment-count-num-6" href="https://uproxx.com/tv/dale-death-walking-dead-quit/#comments">6 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401213704"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/filmdrunk/this-week-posters-superfly/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/posters-grid-uproxx-13.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="This Week In Posters: &#8216;Isle Of Dogs&#8217; Doggies Everywhere And More" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/filmdrunk/this-week-posters-superfly/" rel="bookmark">This Week In Posters: &#8216;Isle Of Dogs&#8217; Doggies Everywhere And More</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/vince/" title="Posts by Vince Mancini" class="author url fn" rel="author">Vince Mancini</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-33" href="https://uproxx.com/filmdrunk/this-week-posters-superfly/#comments">33 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401214186"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/captain-marvel-cast-full-list-brie-larson/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/captain-marvel1.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The &#8216;Captain Marvel&#8217; Cast Is Filled With Familiar Marvel Cinematic Universe Names" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/captain-marvel-cast-full-list-brie-larson/" rel="bookmark">The &#8216;Captain Marvel&#8217; Cast Is Filled With Familiar Marvel Cinematic Universe Names</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-12" href="https://uproxx.com/hitfix/captain-marvel-cast-full-list-brie-larson/#comments">12 Comments</a>		</div>
+			</div>
+</div>
+			</div>
+						<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401213850"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/izombie-this-weeks-geeky-tv-march-26/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/izombie-goon-struck.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="&#8216;iZombie&#8217; Has A Split Personality On This Week&#8217;s Geeky TV" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/izombie-this-weeks-geeky-tv-march-26/" rel="bookmark">&#8216;iZombie&#8217; Has A Split Personality On This Week&#8217;s Geeky TV</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dan-seitz/" title="Posts by Dan Seitz" class="author url fn" rel="author">Dan Seitz</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+					</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401213376"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/when-will-stranger-things-season-3-take-place-spoilers-details/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/eleven-screaming.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="We Now Know When &#8216;Stranger Things&#8217; Season 3 Will Take Place" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/when-will-stranger-things-season-3-take-place-spoilers-details/" rel="bookmark">We Now Know When &#8216;Stranger Things&#8217; Season 3 Will Take Place</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/when-will-stranger-things-season-3-take-place-spoilers-details/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401213477"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/avengers-deadpool-dying-fan-wish-twitter/">
+				<img src="https://uproxx.files.wordpress.com/2018/02/infinity-war-avengers.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The Avengers And Deadpool Answered The Call To Help A Dying Fan&#8217;s Wish Come True" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/avengers-deadpool-dying-fan-wish-twitter/" rel="bookmark">The Avengers And Deadpool Answered The Call To Help A Dying Fan&#8217;s Wish Come True</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/josh-kurp/" title="Posts by Josh Kurp" class="author url fn" rel="author">Josh Kurp</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+					</div>
+			</div>
+</div>
+			</div>
+							<div class="story-row">
+					<span class="pagebreak promo-footer">
+						
+<div id="wvn_promo_footer">
+	<div id='woven-footer' adonis-marker>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { headertag.display('woven-footer'); });
+		</script>
+	</div>           		
+</div>					</span>
+				</div>
+						<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212471"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/the-walking-dead-recap-maggie-cost-season-8-episode-13/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/the-walking-dead-episode-813-maggie-cohan-935.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="There Is Always A Cost, And Other Takeaways From This Week&#8217;s &#8216;The Walking Dead&#8217;" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/the-walking-dead-recap-maggie-cost-season-8-episode-13/" rel="bookmark">There Is Always A Cost, And Other Takeaways From This Week&#8217;s &#8216;The Walking Dead&#8217;</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/the-walking-dead-recap-maggie-cost-season-8-episode-13/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212749"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/fear-the-walking-dead-trailer-fourth-season/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/dillahunt-fear-the-walking-dead-trailer.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The Fourth Season Trailer For The Rebooted &#8216;Fear The Walking Dead&#8217; Is Absolutely Terrific" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/fear-the-walking-dead-trailer-fourth-season/" rel="bookmark">The Fourth Season Trailer For The Rebooted &#8216;Fear The Walking Dead&#8217; Is Absolutely Terrific</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.26.18</span>
+			<span class="published-date uproxx-time-diff">1 day ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/tv/fear-the-walking-dead-trailer-fourth-season/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212184"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/is-tara-going-to-die-the-walking-dead/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/the-walking-dead-episode-813-maggie-cohan-935.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="&#8216;The Walking Dead&#8217; Takes Another Unwelcome Departure From The Comics" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/is-tara-going-to-die-the-walking-dead/" rel="bookmark">&#8216;The Walking Dead&#8217; Takes Another Unwelcome Departure From The Comics</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.25.18</span>
+			<span class="published-date uproxx-time-diff">2 days ago</span>
+			<a class="comment-count comment-count-num-6" href="https://uproxx.com/tv/is-tara-going-to-die-the-walking-dead/#comments">6 Comments</a>		</div>
+			</div>
+</div>
+			</div>
+						<div class="story-row">
+			<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212141"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/tv/morgan-you-know-what-it-is-walking-dead/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/amc_twd_s6a_sp_604.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="Morgan&#8217;s &#8216;You Know What It Is&#8217; Callback From &#8216;The Walking Dead&#8217;" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/tv/morgan-you-know-what-it-is-walking-dead/" rel="bookmark">Morgan&#8217;s &#8216;You Know What It Is&#8217; Callback From &#8216;The Walking Dead&#8217;</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dustin-rowles/" title="Posts by Dustin Rowles" class="author url fn" rel="author">Dustin Rowles</a></span>
+			<span class="published-date uproxx-the-date">03.25.18</span>
+			<span class="published-date uproxx-time-diff">2 days ago</span>
+					</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212711"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/into-the-badlands-season-3-trailer/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/intothebadlands.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="AMC Unveils The Brutal And Badass Season 3 Trailer For &#8216;Into The Badlands&#8217;" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/into-the-badlands-season-3-trailer/" rel="bookmark">AMC Unveils The Brutal And Badass Season 3 Trailer For &#8216;Into The Badlands&#8217;</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dan-macrae/" title="Posts by Dan MacRae" class="author url fn" rel="author">Dan MacRae</a></span>
+			<span class="published-date uproxx-the-date">03.25.18</span>
+			<span class="published-date uproxx-time-diff">2 days ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/hitfix/into-the-badlands-season-3-trailer/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+<div class="col-xs-4 post-grid-third grid-post"
+	 data-post_id="401212507"	>
+	<div class="story">
+		<div class="img">
+			<a class="image-holder" href="https://uproxx.com/hitfix/james-wan-aquaman-trailer-delay/">
+				<img src="https://uproxx.files.wordpress.com/2018/03/justiceleagueaquaman.jpg?w=300&#038;h=210&#038;crop=1&#038;quality=95" width="300" height="210" alt="The Director Of &#8216;Aquaman&#8217; Stomps Out Teaser Rumors, Explains Why We Haven&#8217;t Seen A Trailer Yet" class="img-responsive" />
+			</a>
+		</div>
+				<h2>
+			<a href="https://uproxx.com/hitfix/james-wan-aquaman-trailer-delay/" rel="bookmark">The Director Of &#8216;Aquaman&#8217; Stomps Out Teaser Rumors, Explains Why We Haven&#8217;t Seen A Trailer Yet</a>
+		</h2>
+				<div class="author">
+						<span class="authorname"><a href="https://uproxx.com/author/dan-macrae/" title="Posts by Dan MacRae" class="author url fn" rel="author">Dan MacRae</a></span>
+			<span class="published-date uproxx-the-date">03.25.18</span>
+			<span class="published-date uproxx-time-diff">2 days ago</span>
+			<a class="comment-count comment-count-num-2" href="https://uproxx.com/hitfix/james-wan-aquaman-trailer-delay/#comments">2 Comments</a>		</div>
+			</div>
+</div>
+			</div>
+			
+	<div id="infinite-wrapper"></div>
+
+	</div>
+
+</div>
+
+				<div id="sticky_stop"></div>
+
+			</div>
+			<!-- Content End -->
+		</div>
+		<!-- Outer Wrapper End -->
+		<!-- wpcom_wp_footer -->
+<script type="text/html" id="wvn_native_tpl">
+	
+	<div class="wvn_native_experience_title">Advertisement</div>
+	
+	<div class="wvn_native_experience <%- theme %> <%= usebgcolor ? "usebgcolor" : "" %> <%= colorbar ? "colorbar" : "" %>">
+		<div class="img">
+			<a href="<%- full_click_url %>"><img src="<%- image %>" width="300" height="210" alt="" scale="0"></a>
+		</div>
+		<div class="meta">
+			<div class="sponsored">Sponsored</div>
+			<h2><a href="<%- full_click_url %>" rel="bookmark"><%- title %></a></h2>
+
+			<div class="brand">
+				<%- promotedline %>: <%- brandname %>
+			</div>
+
+			<% if(imptracker1) { %>
+				<img src="<%- imptracker1 %>" alt="" width="1" height="1" class="wvn_native_tracker_img" />
+			<% } %>
+			<% if(imptracker2) { %>
+				<img src="<%- imptracker2 %>" alt="" width="1" height="1" class="wvn_native_tracker_img" />
+			<% } %>
+			<% if(imptracker3) { %>
+				<img src="<%- imptracker3 %>" alt="" width="1" height="1" class="wvn_native_tracker_img" />
+			<% } %>
+		</div>
+	</div>
+</script>
+<div id="woven-interstitial">
+	<script type='text/javascript'>
+	googletag.cmd.push(function() { headertag.display('woven-interstitial'); });
+	</script>
+</div>
+<div id="woven-sw-interstitial">
+	<script type='text/javascript'>
+	googletag.cmd.push(function() { headertag.display('woven-sw-interstitial'); });
+	</script>
+</div>	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId      : '126407544039926',
+		  version    : 'v2.3',
+		  channelUrl : '//uproxx.com/wp-content/themes/vip/uproxx/assets/fb_channel.html',
+		  status     : true,
+		  cookie     : true,
+		  xfbml      : true
+		});
+	  };
+	  (function(d, debug){
+		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement('script'); js.id = id; js.async = true;
+		 js.src = "//connect.facebook.com/en_US/sdk.js";
+		 ref.parentNode.insertBefore(js, ref);
+	   }(document, false));
+	</script>
+
+	<script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','//connect.facebook.net/en_US/fbevents.js');
+	fbq( 'init', '722969591073270' );
+	fbq( 'track', 'PageView' );
+	fbq( 'track', 'Lead' );
+	</script>
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=722969591073270&ev=PageView&noscript=1" /></noscript>
+	<!-- Quantcast Tag --> 
+<script type="text/javascript">
+	var _qacct = "p-73t-O7FWprUTo";
+	var _qevents = _qevents || [];
+	(function() {
+		var elem = document.createElement('script');
+		elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+		elem.async = true;
+		elem.type = "text/javascript";
+		var scpt = document.getElementsByTagName('script')[0];
+		scpt.parentNode.insertBefore(elem, scpt);  
+	})();
+</script>
+<script type="text/javascript"> 
+	_qevents.push({ 
+		qacct:"p-73t-O7FWprUTo"
+	}); 
+</script> 
+<noscript> 
+	<div style="display:none;"><img src="//pixel.quantserve.com/pixel/p-73t-O7FWprUTo.gif" border="0" height="1" width="1" alt="Quantcast"/> </div> 
+</noscript> 
+<!-- End Quantcast tag -->
+
+<!-- Begin comScore Tag -->
+	<script type="text/javascript">
+		document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	COMSCORE.beacon({ c1:2, c2:8430760, c3:"", c4:"", c5:"", c6:"", c15:""});
+	</script>
+	<noscript>
+		<img src="https://sb.scorecardresearch.com/p?c1=2&c2=8430760&c3=&c4=&c5=&c6=&c15=&cj=1" />
+	</noscript>
+<!-- End comScore Tag -->
+
+<!-- Start Chartbeat -->
+<script type="text/javascript">
+var _sf_async_config = {"uid":11578,"domain":"uproxx.com","sections":"UPROXX,HITFIX","useCanonical":true};
+(function(){
+	function loadChartbeat() {
+		window._sf_endpt=(new Date()).getTime();
+		var e = document.createElement('script');
+		e.setAttribute('language', 'javascript');
+		e.setAttribute('type', 'text/javascript');
+		e.setAttribute('src',
+		(("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") + "js/chartbeat.js");
+		document.body.appendChild(e);
+	}
+
+	jQuery(document).ready( loadChartbeat ); 
+})();
+</script>
+<!-- End Chartbeat -->
+
+
+<script src="//tags.crwdcntrl.net/c/6184/cc_af.js"></script> 
+
+<!-- Twitter Tracking //-->
+<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+<script type="text/javascript">
+	twttr.conversion.trackPid('l68nb', { tw_sale_amount: 0, tw_order_quantity: 0 });
+</script>
+<noscript><img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l68nb&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" /><img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l68nb&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" /></noscript>
+<!-- END Twitter Tracking //-->
+
+<script type="text/javascript" src="https://cdn-widgets-woven.netdna-ssl.com/thred/track.js" async></script>
+
+<script type="text/javascript">
+(function() {
+	function async_load(script_url) { 
+		var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://'); 
+		var s = document.createElement('script'); 
+		s.src = protocol + script_url; 
+		var x = document.getElementsByTagName('script')[0]; 
+		x.parentNode.insertBefore(s, x); 
+	}
+	bm_website_code = '9B59CD4FD69949FE';
+	jQuery( document ).ready(function() {
+		async_load( 'asset.pagefair.com/measure.min.js' );
+	});
+	jQuery( document ).ready(function() {
+		async_load( 'asset.pagefair.net/ads.min.js' );
+	});
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "UPROXX",
+  "url": "https://uproxx.com/",
+  "image": "https://uproxx.com/wp-content/themes/vip/uproxx/assets/images/logo-large-b.png",
+  "potentialAction": {
+	"@type": "SearchAction",
+	"target": "https://uproxx.com/?s={search_term_string}",
+	"query-input": "required name=search_term_string"
+  },
+  "sameAs" : [
+	"https://www.facebook.com/UPROXX",
+	"https://www.twitter.com/UPROXX",
+	"https://plus.google.com/+uproxx",
+	"https://instagram.com/uproxx/",
+	"https://en.wikipedia.org/wiki/Uproxx"
+  ]
+}
+</script>
+<div class="uproxx-footer-navigation"><ul id="menu-footer-navigation" class="menu"><li id="menu-item-uproxx-logo" class="menu-item menu-item-type-custom"><a href="/" class="logo">UPROXX</a></li><li id="menu-item-1157666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157666"><a href="http://jobs.uproxx.com/">Job at Uproxx</a></li>
+<li id="menu-item-1157667" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157667"><a href="mailto:info@uproxx.com">Contact</a></li>
+<li id="menu-item-1157668" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157668"><a href="mailto:info@uproxx.com">Advertising</a></li>
+<li id="menu-item-1157669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157669"><a href="/about/">About UPROXX</a></li>
+<li id="menu-item-1157670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157670"><a href="/privacy/">Privacy Policy</a></li>
+<li id="menu-item-1157671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157671"><a href="/about/">Staff</a></li>
+</ul><div class="powered_by">Powered by <a href="https://vip.wordpress.com/?utm_source=vip_powered_wpcom&#038;utm_medium=web&#038;utm_campaign=VIP            0.000000ooterredit&#038;utm_term=uproxx.com" rel="generator nofollow" class="powered-by-wpcom">WordPress.com VIP</a></div></div>		<div style="display:none">
+	</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var uproxx_main_object = {"uproxx_site_url":"https:\/\/uproxx.com","fb_app_id":"117400151618132"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var uproxx_misc_settings = {"carousel_settings":{"limit":"8","autoplay":"1","autoplay_speed":"5500","arrows":"1","dots":"1","draggable":"1","lazyload":"ondemand","pause_on_hover":"1","speed":"300","cache_time":"5"}};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wovenis = {"location":"category-432130144","ajaxurl":"https:\/\/uproxx.com\/wp-json\/wovenis\/v1\/","search_term":""};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var uproxx_sso_object = {"ajax_url":"https:\/\/uproxx.wordpress.com\/wp-admin\/admin-ajax.php","security":"ca9eba56ac","uproxxsso_enabled":"1","uproxxsso_logged_in":"false","uproxxsso_back":"https:\/\/uproxx.com"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcomVipAnalytics = {"is_404":"0","is_home":"0","is_single":"0","is_front_page":"0","is_archive":"1","percentToTrack":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJytk9FugzAMRX9oIWurbnuZ9i0muK0hJFkcKPz9TFlb1HUaVHuJch37+CpO9DEo411Cl3TJusCWDIYuK/lJT47qRgXb7MmxtlQh688GGzyAKyzG2+R0wFpSWgq6CdF3nT7XjlIxpkRuf9E1sbkGxQZbMtW4ZjW5vxsAS/mpdAz8v6V78fldjr5Fp8jtyFFCxSZ6ayeub06W22c/YHbgTJ/7Tpcyn9hnZ50FkJt8EPrNasFSAQlv9bwB/YJmKfEVCZSzcfco6qqWvBbRO7KoJIFhjzMmKnMsfNScIJHRufeJU4QwwC7i3pVMftBaDbzyhFXgwPaC+tF6UgCFAFUOUdfACaPslDyoGKkQc5fYQoI4NdXQ9qN+X23Xz9vVy9vrpvwCGweO0w=='></script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="//stats.wp.com/w.js?56" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'60970621','blog_tz':'-4','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'60970621','v':'wpcom','tz':'-4','user_id':'0','subd':'uproxx'}]);
+function st_vt() {var x=document.createElement("img");x.src="https://pixel.wp.com/g.gif?blog=60970621&v=wpcomvt&tz=-4&user_id=0&subd=uproxx&rand="+Math.random();}
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1BNmNJfGhxNCVxUDExYmtib2E/SzdEJm0lUEtbdFU0fFk4cHZvcUFrZT90Tn4yQm1+R3NyNTcvLiZqPSsmRG1jT2Zid1AuTnhRV1hESH4sZFhdMCUvRTclSnxsP3JKczU9WUdJfHB0ZV9dRHk4fCxnNVQ5anBObnJ1UlBWS2U9az0lJV8lWmYvW1U/UltzYlpzdFt0cTYsRENTZEt+ak1JZCxPRWstL2dyU1BmbXVqLy5HSUFhJWExZj9fWkNMdmNLbyxqLEdsTT1+RVU/'}]);
+_stq.push([ 'clickTrackerInit', '60970621', '0' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>		<script type="text/javascript">
+			var adonis = adonis || {};
+			adonis.transport = 'https://www.adiode.com/http';
+		</script>
+		<script type="text/javascript">
+			/* loader-7.4.1 */!function e(t,n,r){function o(a,c){if(!n[a]){if(!t[a]){var u="function"==typeof require&&require;if(!c&&u)return u(a,!0);if(i)return i(a,!0);var s=new Error("Cannot find module '"+a+"'");throw s.code="MODULE_NOT_FOUND",s}var l=n[a]={exports:{}};t[a][0].call(l.exports,function(e){var n=t[a][1][e];return o(n||e)},l,l.exports,e,t,n,r)}return n[a].exports}for(var i="function"==typeof require&&require,a=0;a<r.length;a++)o(r[a]);return o}({1:[function(e,t,n){"use strict";function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}function o(e){return e&&e.__esModule?e:{default:e}}function i(){var e="http-adonis-client-loader/run";return p.default.reportEvent("bootstrap.http.pageview"),g.default.isSupportedBrowser()?(_.logger.info("["+e+"]: Browser is compatible"),p.default.reportEvent("bootstrap.http.supported"),a().then(function(t){return _.logger.info("["+e+"]: Running and caching adonisClient source"),p.default.reportEvent("bootstrap.http.runclientscript"),p.default.saveTiming(),d.default.defineReadOnlyProperty("adonisConfig",s.default),(0,S.securelyRunAdonisClient)(t)}).catch(function(t){return t instanceof O.XhrBlockError?(_.logger.info("["+e+"]: Failed to fetch adonis-client using Suez"),_.logger.info("["+e+"]: All loaders failed to fetch adonis-client, checking control server"),b.check()):(_.logger.warn("["+e+"]: Unexpected error when trying to fetch adonis-client over Suez: <"+t+">"),p.default.reportError(t),null)}).catch(function(t){return t instanceof O.XhrBlockError?(p.default.reportEvent("bootstrap.http.status_blocked"),_.logger.info("["+e+"]: Control server check failed, probably an adblocker"),{status:!0}):(_.logger.warn("["+e+"]: Unexpected error from control server check: <"+t+">"),p.default.reportError(t),null)}).then(function(t){(0,m.default)(window.navigator.userAgent)&&t&&"status"in t&&t.status?(p.default.reportEvent("bootstrap.http.trigged"),_.logger.info("["+e+"]: Control server reported status is healthy or was blocked, triggering oppenheimer"),(0,c.replaceContent)(window.document),(0,E.default)(window,"adonis-deterrent")):t&&"status"in t&&!1===t.status&&(p.default.reportEvent("bootstrap.http.not_trigged"),_.logger.warn("["+e+"]: Control server reported status is unhealthy, not triggering oppenheimer"))})):(_.logger.info("["+e+"]: Incompatible browser, not continuing"),Promise.resolve(null))}function a(){var e="http-adonis-client-loader/loadAdonisClient";return _.logger.debug("["+e+"]: Trying to load adonis-client with XHR loader (from CDN)"),R.load().catch(function(t){return t instanceof O.XhrBlockError?_.logger.info("["+e+"]: Failed to fetch adonis-client over XHR, trying to load from cache"):(_.logger.warn("["+e+"]: Unexpected error when trying fetch adonis-client over XHR, trying to load from cache: <"+t+">"),p.default.reportError(t)),L.load()}).catch(function(t){return t instanceof O.CacheLoadError?_.logger.info("["+e+"]: Failed to fetch adonis-client from cache, trying to load from Suez"):(_.logger.warn("["+e+"]: Unexpected error when trying fetch adonis-client from cache, trying to load from Suez: <"+t+">"),p.default.reportError(t)),P.load()})}Object.defineProperty(n,"__esModule",{value:!0}),n.run=i;var c=e(24),u=e(4),s=o(u),l=e(19),d=o(l),f=e(17),p=o(f),h=e(2),g=o(h),v=e(6),b=r(v),_=e(11),w=e(18),m=o(w),y=e(13),E=o(y),O=e(7),S=e(16),T=e(10),R=r(T),A=e(9),P=r(A),C=e(8),L=r(C)},{10:10,11:11,13:13,16:16,17:17,18:18,19:19,2:2,24:24,4:4,6:6,7:7,8:8,9:9}],2:[function(e,t,n){"use strict";function r(){return o(window)&&a(window)&&i(window)&&c(window)}function o(e){try{return e.localStorage.setItem("__xyz__","__xyz__"),e.localStorage.removeItem("__xyz__"),!0}catch(e){return!1}}function i(e){try{return!!new e.Blob}catch(e){return!1}}function a(e){return"Promise"in e&&"resolve"in e.Promise&&"reject"in e.Promise&&"all"in e.Promise&&"race"in e.Promise}function c(e){return"function"==typeof e.Object.assign}t.exports={isSupportedBrowser:r,isLocalStorageSupported:o,isBlobSupported:i,isObjectAssignSupported:c,isPromiseSupported:a}},{}],3:[function(e,t,n){"use strict";function r(e,t,n){var r=Date.now()+1e3*n;i.logger.info("['cache/cacheAdonisClient]: new expiry "+r+" = "+new Date(r)),localStorage.adonisCacheSrc=e,localStorage.adonisCacheExpiryMillis=r,localStorage.adonisClientVersion=t}function o(){localStorage.removeItem("adonisCacheSrc"),localStorage.removeItem("adonisCacheExpiryMillis"),localStorage.removeItem("adonisClientVersion")}Object.defineProperty(n,"__esModule",{value:!0}),n.cacheAdonisClient=r,n.clearCachedAdonisClient=o;var i=e(11)},{11:11}],4:[function(e,t,n){"use strict";var r=e(5);window.adonisHash=window.adonisHash||window.location.hash||"";var o=window.adonisHash.indexOf("adonis-logging")>=0;r.LOG_LEVEL=o?"debug":r.LOG_LEVEL;var i=window.adonis||{};i.wsHost&&r.WS&&(r.WS.host=i.wsHost),i.transport&&(r.SUEZ_HTTP_ENDPOINT=i.transport),t.exports=r},{5:5}],5:[function(e,t,n){"use strict";t.exports={REPORTING_URL:"https://lb.statsevent.com/stats",REPORTING_RATE:.01,LOG_LEVEL:"error",REPORT_ERRORS:!0,MANIFEST_URL:"https://sri.jsintegrity.com/manifest.json",MANIFEST_EXPIRATION_TIME:86400,AD_MARKER:"adonis-marker",ADONIS_CLIENT_FETCH_URL:"https://adserver.xpanama.net/client-7-latest.js",SERVICE_STATUS_URL:function(e){return"https://client.reactrjs.com/"+e+"-status.json"},SUEZ_HTTP_RETRY:3,SUEZ_HTTP_DELAY:100}},{}],6:[function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function o(){var e="control-server/check";f.logger.info("["+e+"]: Checking service status");var t=i(window);return(0,u.request)(t).then(function(t){return f.logger.debug("["+e+"]: Status check fetched with status-code <"+t.status+">"),JSON.parse(t.responseText)}).catch(function(t){f.logger.info("["+e+"]: Failed to check control server status <"+t+">");var n=void 0!==t.req?t.req.status:null;throw 0===n?new s.XhrBlockError:new Error("Unexpected status code while performing control server check, status-code = <"+n+">")})}function i(e){return d.default.SERVICE_STATUS_URL(c.default.get(e.location.host))}Object.defineProperty(n,"__esModule",{value:!0}),n.check=o,n.getServiceStatusUrl=i;var a=e(27),c=r(a),u=e(20),s=e(7),l=e(4),d=r(l),f=e(11)},{11:11,20:20,27:27,4:4,7:7}],7:[function(e,t,n){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(n,"__esModule",{value:!0}),n.XhrRequestError=n.SRIError=n.CacheLoadError=n.XhrBlockError=void 0;var a=e(23),c=function(e){return e&&e.__esModule?e:{default:e}}(a);n.XhrBlockError=function(e){function t(){return r(this,t),o(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return i(t,e),t}(c.default),n.CacheLoadError=function(e){function t(){return r(this,t),o(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return i(t,e),t}(c.default),n.SRIError=function(e){function t(){return r(this,t),o(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return i(t,e),t}(c.default),n.XhrRequestError=function(e){function t(e,n){r(this,t);var i=o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,n));return i.req=e,i}return i(t,e),t}(c.default)},{23:23}],8:[function(e,t,n){"use strict";function r(){var e="loaders/cache/load";i.logger.debug("["+e+"]: Starting cache loader");var t=parseInt(localStorage.adonisCacheExpiryMillis,10)||0,n=localStorage.adonisClientVersion,r=localStorage.adonisCacheSrc,a=(new Date).getTime()>=t;return r?n?a?(i.logger.debug("["+e+"]: Cached version of adonis-client is expired"),Promise.reject(new o.CacheLoadError)):(i.logger.debug("["+e+"]: Found a valid cached version of adonis-client"),Promise.resolve({source:r,version:n})):(i.logger.debug("["+e+"]: No version number found in localStorage cache"),Promise.reject(new o.CacheLoadError)):(i.logger.debug("["+e+"]: No cached version of adonis-client found in the localStorage"),Promise.reject(new o.CacheLoadError))}Object.defineProperty(n,"__esModule",{value:!0}),n.load=r;var o=e(7),i=e(11)},{11:11,7:7}],9:[function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function o(){var e="loaders/suez-http";d.logger.debug("["+e+"]: Starting Suez HTTP loader");var t=JSON.stringify({host:"assets",path:"client",params:{},headers:{adonis_client_api:"7.0.0"}}),n={"Adonis-Version":"7.0.0","Cache-Adonis":"true"};return void 0===c.default.SUEZ_HTTP_ENDPOINT?Promise.reject(new Error("No adonis transport found")):(0,l.request)(c.default.SUEZ_HTTP_ENDPOINT,"POST",t,n).then(function(t){d.logger.debug("["+e+"]: Successfully fetched adonis-client over XHR");var n=t.responseText,r=t.getResponseHeader("adonis-client-version"),o=t.getResponseHeader("cache-control"),i=null!==o?parseInt(o.split("=")[1],10):null;return n&&r&&i&&(0,h.cacheAdonisClient)(n,r,i),{source:n,version:r}}).catch(function(t){throw d.logger.debug("["+e+"]: Failed to fetch adonis-client from Suez over XHR <"+t+">"),0===t.req.status?new f.XhrBlockError:new Error("Unexpected error fetching adonis-client, status-code = <"+t.req.status+">")})}function i(){var e=c.default.SUEZ_HTTP_RETRY||1,t=c.default.SUEZ_HTTP_DELAY||0,n=Array.apply(0,Array(e)).map(function(e){return o});return s.default.reportEvent("bootstrap.http.suez_opening"),(0,p.chain)(n,t).then(function(e){return s.default.reportEvent("bootstrap.http.suez_opened"),e}).catch(function(e){throw e instanceof f.XhrBlockError&&s.default.reportEvent("bootstrap.http.suez_blocked"),e})}Object.defineProperty(n,"__esModule",{value:!0}),n.loadOnce=o,n.load=i;var a=e(4),c=r(a),u=e(17),s=r(u),l=e(20),d=e(11),f=e(7),p=e(14),h=e(3)},{11:11,14:14,17:17,20:20,3:3,4:4,7:7}],10:[function(e,t,n){"use strict";function r(){var e="loaders/cache/xhr";return c.logger.debug("["+e+"]: Starting XHR loader"),(0,a.request)(i.default.ADONIS_CLIENT_FETCH_URL).then(function(t){c.logger.debug("["+e+"]: Successfully fetched adonis-client over XHR");var n=t.getResponseHeader("x-amz-meta-adonis-client-version");return{source:t.responseText,version:n}}).catch(function(t){throw c.logger.debug("["+e+"]: Failed to fetch adonis-client over XHR <"+t+">"),0===t.req.status?new u.XhrBlockError:new Error("Unexpected error performing status check request, status-code = <"+t.req.status+">")})}Object.defineProperty(n,"__esModule",{value:!0}),n.load=r;var o=e(4),i=function(e){return e&&e.__esModule?e:{default:e}}(o),a=e(20),c=e(11),u=e(7)},{11:11,20:20,4:4,7:7}],11:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.logger=void 0;var r=e(4),o=function(e){return e&&e.__esModule?e:{default:e}}(r),i=e(29);n.logger=(0,i.create)({level:o.default.LOG_LEVEL})},{29:29,4:4}],12:[function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function o(){return c.logger.debug("Loading manifest"),(0,l.request)(a.default.MANIFEST_URL).then(function(e){try{return JSON.parse(e.responseText)}catch(e){throw c.logger.debug("Error parsing the manifest",e),s.default.reportEvent("bootstrap.manifest_content_error"),e}}).catch(function(e){throw c.logger.debug("Error loading the manifest",e),s.default.reportEvent("bootstrap.manifest_fetch_error"),e})}Object.defineProperty(n,"__esModule",{value:!0}),n.load=o;var i=e(4),a=r(i),c=e(11),u=e(17),s=r(u),l=e(20)},{11:11,17:17,20:20,4:4}],13:[function(e,t,n){"use strict";function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"NEW_SCRIPT_EVENT",n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},r=new o(t,{detail:n});e.dispatchEvent(r)}var o=e(22);t.exports=r},{22:22}],14:[function(e,t,n){"use strict";function r(e,t,n){if(Array.isArray(e)&&0===e.length)return Promise.reject(n);t=t||0;var i=e[0];return e=e.slice(1),i().catch(function(n){return o(t).then(function(o){return r(e,t,n)})})}function o(e){return new Promise(function(t,n){setTimeout(function(e){return t()},e)})}Object.defineProperty(n,"__esModule",{value:!0}),n.chain=r},{}],15:[function(e,t,n){"use strict";function r(e,t){a.logger.debug("inserting blob");var n=document.createElement("script");return n.src=e,t&&(n.integrity=t),new Promise(function(e,t){n.onload=function(){e(null)},n.onerror=function(){t(new i.SRIError)},document.head.appendChild(n)})}function o(e){var t=document.createElement("script");t.innerHTML=e,document.head.appendChild(t)}Object.defineProperty(n,"__esModule",{value:!0}),n.insertBlobScript=r,n.insertInlineScript=o;var i=e(7),a=e(11)},{11:11,7:7}],16:[function(e,t,n){"use strict";function r(e){return(0,a.load)().then(function(t){var n=e.version,r=new Blob([e.source],{type:"text/javascript"}),i=URL.createObjectURL(r),a=t.hasOwnProperty(n)?t[n]:null;return null===a?((0,o.clearCachedAdonisClient)(),Promise.resolve(null)):(0,u.request)(i).then(function(){return(0,c.insertBlobScript)(i,a).catch(function(){(0,o.clearCachedAdonisClient)()})})}).catch(function(){return i.logger.info("[http-adonis-client-loader/run]: Manifest or blob fetch failed, inserting inline"),(0,c.insertInlineScript)(e.source)})}Object.defineProperty(n,"__esModule",{value:!0}),n.securelyRunAdonisClient=r;var o=e(3),i=e(11),a=e(12),c=e(15),u=e(20)},{11:11,12:12,15:15,20:20,3:3}],17:[function(e,t,n){"use strict";function r(e){var t=new XMLHttpRequest,n=[s.REPORTING_URL,e].join("/");t.open("GET",n,!0),t.send()}function o(e){s.REPORT_ERRORS&&r("adonis_error?e="+e.toString()+"&website="+window.location.hostname)}function i(){return null!=window.ADONIS_BOOTSTRAP_STATS?!0===window.ADONIS_BOOTSTRAP_STATS:Math.random()<s.REPORTING_RATE}function a(e,t){if(c(e),i()){var n={website:window.location.hostname,key:e};null!=t&&(n.quantity=t),r(["adonis_event/?event=",JSON.stringify(n)].join(""))}}function c(e){var t={key:e,time_ms:Math.round(window.performance.now()),website:window.location.hostname};d.push(t)}function u(){l.defineReadOnlyProperty("adonisBootstrapTiming",d)}var s=e(4),l=e(19),d=[];t.exports={reportError:o,reportEvent:a,saveTiming:u,shouldReport:i}},{19:19,4:4}],18:[function(e,t,n){"use strict";function r(e){var t=/android|iphone/gi,n=/Chrome\/(\S)+ Safari\/(\S)+$/gi,r=/\) Gecko\/(\S)+ Firefox\/(\S)+$/gi,o=/like Gecko.?\) Version\/(\S)+ Safari\/(\S)+$/gi;return-1===e.search(t)&&(e.search(n)>-1||e.search(r)>-1||e.search(o)>-1)}Object.defineProperty(n,"__esModule",{value:!0}),n.default=r},{}],19:[function(e,t,n){"use strict";function r(e,t){try{Object.defineProperty(window,e,{value:t,writable:!1})}catch(e){o.warn("Cannot define read-only property of window object: "+e)}}var o=e(11).logger,i=function(e){"loading"!==document.readyState?e():document.addEventListener("DOMContentLoaded",e)};t.exports={defineReadOnlyProperty:r,ready:i}},{11:11}],20:[function(e,t,n){"use strict";function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"GET",n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:null,r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{};return new window.Promise(function(i,a){var c=new window.XMLHttpRequest;c.open(t,e,!0);for(var u in r){var s=r[u];c.setRequestHeader(u,s)}c.onload=function(){c.status>=400?a(new o.XhrRequestError(c,"Unexpected status code")):i(c)},c.onerror=function(){a(new o.XhrRequestError(c,"Error establishing connection"))},c.send(n)})}Object.defineProperty(n,"__esModule",{value:!0}),n.request=r;var o=e(7)},{7:7}],21:[function(e,t,n){"use strict";e(25);var r=e(11),o=e(1);r.logger.info("[httpLoader]: Starting bootstrap"),(0,o.run)()},{1:1,11:11,25:25}],22:[function(e,t,n){(function(e){var n=e.CustomEvent;t.exports=function(){try{var e=new n("cat",{detail:{foo:"bar"}});return"cat"===e.type&&"bar"===e.detail.foo}catch(e){}return!1}()?n:"undefined"!=typeof document&&"function"==typeof document.createEvent?function(e,t){var n=document.createEvent("CustomEvent");return t?n.initCustomEvent(e,t.bubbles,t.cancelable,t.detail):n.initCustomEvent(e,!1,!1,void 0),n}:function(e,t){var n=document.createEventObject();return n.type=e,t?(n.bubbles=Boolean(t.bubbles),n.cancelable=Boolean(t.cancelable),n.detail=t.detail):(n.bubbles=!1,n.cancelable=!1,n.detail=void 0),n}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],23:[function(e,t,n){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(n,"__esModule",{value:!0});var a=function(e){function t(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";r(this,t);var n=o(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return Object.defineProperty(n,"message",{configurable:!0,enumerable:!1,value:e,writable:!0}),Object.defineProperty(n,"name",{configurable:!0,enumerable:!1,value:n.constructor.name,writable:!0}),Error.hasOwnProperty("captureStackTrace")?(Error.captureStackTrace(n,n.constructor),o(n)):(Object.defineProperty(n,"stack",{configurable:!0,enumerable:!1,value:new Error(e).stack,writable:!0}),n)}return i(t,e),t}(function(e){function t(){e.apply(this,arguments)}return t.prototype=Object.create(e.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e,t}(Error));n.default=a,t.exports=n.default},{}],24:[function(e,t,n){!function(e,r){"object"==typeof n&&void 0!==t?r(n):"function"==typeof define&&define.amd?define(["exports"],r):r(e.oppenheimer={})}(this,function(e){"use strict";function t(e){return r.replace("{{TITLE}}",e.title)}function n(e){e.documentElement.innerHTML=t(e)}var r='<head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>{{TITLE}}</title><style>body,html{background:#efefef;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;height:100%}#main-content{height:100%}#main-content>div{max-width:800px;min-width:200px;margin:0 auto;position:relative;top:50%;transform:translateY(-50%)}</style></head><body><div id=main-content><div><h1>Something interfered with this website loading</h1><p>This could be a temporary problem with your network, or due to your adblocker</p><p>Try:</p><ul><li>Check your internet connection and reload the page</li><li>If you are using an adblocker disable it by clicking on the adblock icon in your browser toolbar</li><li>If the problem persists, consider leaving a message on the <a href=https://forums.lanik.us/ target=_BLANK>adblock user forums</a></li></ul></div></div></body>';e.displayMessage=t,e.replaceContent=n,Object.defineProperty(e,"__esModule",{value:!0})})},{}],25:[function(e,t,n){!function(e){"performance"in e||(e.performance={});var t=e.performance;e.performance.now=t.now||t.mozNow||t.msNow||t.oNow||t.webkitNow||Date.now||function(){return(new Date).getTime()}}(self)},{}],26:[function(e,t,n){t.exports=["com","net","fr","co.uk","de","tv","today","org","info","ie","ba","gg","co.nz"]},{}],27:[function(e,t,n){"use strict";var r=e(28),o={};o.rules=e(26).map(function(e){return{rule:e,suffix:e.replace(/^(\*\.|\!)/,""),wildcard:"*"===e.charAt(0),exception:"!"===e.charAt(0)}}),o.endsWith=function(e,t){return-1!==e.indexOf(t,e.length-t.length)},o.findRule=function(e){var t=r.toASCII(e);return o.rules.reduce(function(e,n){var i=r.toASCII(n.suffix);return o.endsWith(t,"."+i)||t===i?n:e},null)},n.errorCodes={DOMAIN_TOO_SHORT:"Domain name too short.",DOMAIN_TOO_LONG:"Domain name too long. It should be no more than 255 chars.",LABEL_STARTS_WITH_DASH:"Domain name label can not start with a dash.",LABEL_ENDS_WITH_DASH:"Domain name label can not end with a dash.",LABEL_TOO_LONG:"Domain name label should be at most 63 chars long.",LABEL_TOO_SHORT:"Domain name label should be at least 1 character long.",LABEL_INVALID_CHARS:"Domain name label can only contain alphanumeric characters or dashes."},o.validate=function(e){var t=r.toASCII(e);if(t.length<1)return"DOMAIN_TOO_SHORT";if(t.length>255)return"DOMAIN_TOO_LONG";for(var n,o=t.split("."),i=0;i<o.length;++i){if(n=o[i],!n.length)return"LABEL_TOO_SHORT";if(n.length>63)return"LABEL_TOO_LONG";if("-"===n.charAt(0))return"LABEL_STARTS_WITH_DASH";if("-"===n.charAt(n.length-1))return"LABEL_ENDS_WITH_DASH";if(!/^[a-z0-9\-]+$/.test(n))return"LABEL_INVALID_CHARS"}},n.parse=function(e){if("string"!=typeof e)throw new TypeError("Domain name must be a string.");var t=e.slice(0).toLowerCase();"."===t.charAt(t.length-1)&&(t=t.slice(0,t.length-1));var i=o.validate(t);if(i)return{input:e,error:{message:n.errorCodes[i],code:i}};var a={input:e,tld:null,sld:null,domain:null,subdomain:null,listed:!1},c=t.split(".");if("local"===c[c.length-1])return a;var u=function(){return/xn--/.test(t)?(a.domain&&(a.domain=r.toASCII(a.domain)),a.subdomain&&(a.subdomain=r.toASCII(a.subdomain)),a):a},s=o.findRule(t);if(!s)return c.length<2?a:(a.tld=c.pop(),a.sld=c.pop(),a.domain=[a.sld,a.tld].join("."),c.length&&(a.subdomain=c.pop()),u());a.listed=!0;var l=s.suffix.split("."),d=c.slice(0,c.length-l.length);return s.exception&&d.push(l.shift()),d.length?(s.wildcard&&l.unshift(d.pop()),d.length?(a.tld=l.join("."),a.sld=d.pop(),a.domain=[a.sld,a.tld].join("."),d.length&&(a.subdomain=d.join(".")),u()):u()):u()},n.get=function(e){return e?n.parse(e).domain||null:null},n.isValid=function(e){var t=n.parse(e);return Boolean(t.domain&&t.listed)}},{26:26,28:28}],28:[function(e,t,n){(function(e){!function(r){function o(e){throw new RangeError(x[e])}function i(e,t){for(var n=e.length,r=[];n--;)r[n]=t(e[n]);return r}function a(e,t){var n=e.split("@"),r="";return n.length>1&&(r=n[0]+"@",e=n[1]),e=e.replace(I,"."),r+i(e.split("."),t).join(".")}function c(e){for(var t,n,r=[],o=0,i=e.length;o<i;)t=e.charCodeAt(o++),t>=55296&&t<=56319&&o<i?(n=e.charCodeAt(o++),56320==(64512&n)?r.push(((1023&t)<<10)+(1023&n)+65536):(r.push(t),o--)):r.push(t);return r}function u(e){return i(e,function(e){var t="";return e>65535&&(e-=65536,t+=H(e>>>10&1023|55296),e=56320|1023&e),t+=H(e)}).join("")}function s(e){return e-48<10?e-22:e-65<26?e-65:e-97<26?e-97:E}function l(e,t){return e+22+75*(e<26)-((0!=t)<<5)}function d(e,t,n){var r=0;for(e=n?M(e/R):e>>1,e+=M(e/t);e>N*S>>1;r+=E)e=M(e/N);return M(r+(N+1)*e/(e+T))}function f(e){var t,n,r,i,a,c,l,f,p,h,g=[],v=e.length,b=0,_=P,w=A;for(n=e.lastIndexOf(C),n<0&&(n=0),r=0;r<n;++r)e.charCodeAt(r)>=128&&o("not-basic"),g.push(e.charCodeAt(r));for(i=n>0?n+1:0;i<v;){for(a=b,c=1,l=E;i>=v&&o("invalid-input"),f=s(e.charCodeAt(i++)),(f>=E||f>M((y-b)/c))&&o("overflow"),b+=f*c,p=l<=w?O:l>=w+S?S:l-w,!(f<p);l+=E)h=E-p,c>M(y/h)&&o("overflow"),c*=h;t=g.length+1,w=d(b-a,t,0==a),M(b/t)>y-_&&o("overflow"),_+=M(b/t),b%=t,g.splice(b++,0,_)}return u(g)}function p(e){var t,n,r,i,a,u,s,f,p,h,g,v,b,_,w,m=[];for(e=c(e),v=e.length,t=P,n=0,a=A,u=0;u<v;++u)(g=e[u])<128&&m.push(H(g));for(r=i=m.length,i&&m.push(C);r<v;){for(s=y,u=0;u<v;++u)(g=e[u])>=t&&g<s&&(s=g);for(b=r+1,s-t>M((y-n)/b)&&o("overflow"),n+=(s-t)*b,t=s,u=0;u<v;++u)if(g=e[u],g<t&&++n>y&&o("overflow"),g==t){for(f=n,p=E;h=p<=a?O:p>=a+S?S:p-a,!(f<h);p+=E)w=f-h,_=E-h,m.push(H(l(h+w%_,0))),f=M(w/_);m.push(H(l(f,0))),a=d(n,b,r==i),n=0,++r}++n,++t}return m.join("")}function h(e){return a(e,function(e){return L.test(e)?f(e.slice(4).toLowerCase()):e})}function g(e){return a(e,function(e){return j.test(e)?"xn--"+p(e):e})}var v="object"==typeof n&&n&&!n.nodeType&&n,b="object"==typeof t&&t&&!t.nodeType&&t,_="object"==typeof e&&e;_.global!==_&&_.window!==_&&_.self!==_||(r=_);var w,m,y=2147483647,E=36,O=1,S=26,T=38,R=700,A=72,P=128,C="-",L=/^xn--/,j=/[^\x20-\x7E]/,I=/[\x2E\u3002\uFF0E\uFF61]/g,x={overflow:"Overflow: input needs wider integers to process","not-basic":"Illegal input >= 0x80 (not a basic code point)","invalid-input":"Invalid input"},N=E-O,M=Math.floor,H=String.fromCharCode;if(w={version:"1.4.1",ucs2:{decode:c,encode:u},decode:f,encode:p,toASCII:g,toUnicode:h},v&&b)if(t.exports==v)b.exports=w;else for(m in w)w.hasOwnProperty(m)&&(v[m]=w[m]);else r.punycode=w}(this)}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],29:[function(e,t,n){!function(e,r){"object"==typeof n&&void 0!==t?r(n):"function"==typeof define&&define.amd?define(["exports"],r):r(e.ulog=e.ulog||{})}(this,function(e){"use strict";function t(e){var t=Object.create(console);["assert","trace","debug","log","info","warn","error"].forEach(function(n){e[n]=t[n]})}function n(e,n){var r=i[n];void 0!==r&&(t(e),r>0&&(e.assert=function(){}),r>5&&(e.trace=function(){}),r>10&&(e.debug=function(){}),r>20&&(e.log=function(){}),r>30&&(e.info=function(){}),r>40&&(e.warn=function(){}),r>50&&(e.error=function(){}))}function r(e,t){t=t||{},n(e,t.level||"debug")}function o(e){var t=Object.create(console);return r(t,e),t}var i={all:0,trace:5,debug:10,log:20,info:30,warn:40,error:50,none:1e3},a=o();e.LEVELS=i,e.setLevel=n,e.configure=r,e.create=o,e.logger=a,Object.defineProperty(e,"__esModule",{value:!0})})},{}]},{},[21]);
+		</script>
+	</body>
+</html>
+<!--
+	generated 226 seconds ago
+	generated in 0.391 seconds
+	served from batcache in 0.002 seconds
+	expires in 74 seconds
+-->

@@ -1,0 +1,86 @@
+#####     This file will tell search engines what they should index.        #####
+############# Settings for all crawlers/spiders.
+User-agent:*
+Disallow: /ipac20/admin/
+Disallow: /ipac20/admintool.jsp
+Disallow: /ipac20/bug.html
+Disallow: /ipac20/help.html
+Disallow: /ipac20/validate.jsp
+#Don't index help files
+Disallow: /hipres/
+
+#Don't index ANYTHING!
+Disallow: /
+
+############# Dissallow all crawling from a specific user-agent
+##Uncomment the specific user-agent/disallow but NOT the sites name,
+##example: (do not uncomment "#Google's crawler") but you can uncomment
+##the next two lines to tell google not to index your site.
+
+#Google's crawler
+#User-agent: Googlebot
+#Disallow: /
+
+#Altavista's crawler
+#User-agent: Scooter
+#Disallow: /
+
+#Lycos' crawler
+#User-agent: Lycos_Spider_(T-Rex)
+#Disallow: /
+
+#AlltheWeb's crawler
+#User-agent: FAST-WebCrawler/
+#Disallow: /
+
+#INKTOMI's crawler
+#User-agent: Slurp
+#Disallow: /
+
+#Yahoo's crawler
+#User-agent: Yahoo Slurp
+#Disallow: /
+
+#MSN's crawler
+#User-agent: Msnbot
+#Disallow: /
+
+############# A list of some of the more useless useragents that use up bandwidth
+User-agent: Black Hole
+Disallow: /
+
+User-agent: Titan
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: NetMechanic
+Disallow: /
+
+User-agent: CherryPicker
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+User-agent: WebBandit
+Disallow: /
+
+User-agent: EmailWolf
+Disallow: /
+
+User-agent: ExtractorPro
+Disallow: /
+
+User-agent: CopyRightCheck
+Disallow: /
+
+User-agent: Crescent
+Disallow: /
+
+User-agent: NICErsPRO
+Disallow: /

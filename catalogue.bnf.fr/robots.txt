@@ -1,0 +1,488 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+	<head>
+		
+
+
+
+
+	<script type="text/javascript" src="/struts/js/base/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/struts/js/base/jquery.ui.core.min.js?s2j=3.6.1"></script>
+  <script type="text/javascript" src="/struts/js/plugins/jquery.subscribe.min.js?s2j=3.6.1"></script>
+
+  <script type="text/javascript" src="/struts/js/struts2/jquery.struts2.min.js?s2j=3.6.1"></script>
+
+<script type="text/javascript">
+$(function() {
+	jQuery.struts2_jquery.version="3.6.1";
+  	jQuery.scriptPath = "/struts/";
+	jQuery.ajaxSettings.traditional = true;
+
+	jQuery.ajaxSetup ({
+		cache: false
+	});
+	
+	jQuery.struts2_jquery.require("js/struts2/jquery.ui.struts2.min.js?s2j=3.6.1");
+	
+});
+</script>
+
+        <link id="jquery_theme_link" rel="stylesheet" href="/struts/themes/smoothness/jquery-ui.css?s2j=3.6.1" type="text/css"/>
+
+		
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/fonts/pictos.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/fonts/fonts.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/jquery.qtip.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/catagen.css" media="all" />
+<link rel="stylesheet" href="/styles/select2/select2.css"  />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="/styles/catagen-ie.css" media="all" />
+    <![endif]-->
+<script type="text/javascript" src="/js/select2/select2.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		 $('.multiple-select select').select2();
+	});
+</script>
+
+<link rel="icon" type="image/png" href="/images/icones/icone_CG.png" />
+
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="/images/icones/favicon.ico" /><![endif]-->
+
+<meta property="og:title" content="BnF Catalogue g&eacute;n&eacute;ral" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://catalogue.bnf.fr/images/bnf-catalogue-vignette-facebook.png" />
+<meta property="og:url" content="http://catalogue.bnf.fr" />
+<meta property="og:description" content="Plus de 13 millions de notices bibliographiques (imprim&eacute;s, documents sonores, ressources &eacute;lectroniques, manuscrits, objets...) et pr&egrave;s de 5 millions de notices d'autorit&eacute; (personnes, collectivit&eacute;s, &oelig;uvres, noms communs, noms g&eacute;ographiques, marques ... )" />
+
+
+
+<title>
+	
+</title>
+
+
+		 		 
+		
+	</head>
+	<body  onload="chargerImage()">
+		<div class="container">
+			<!-- Entete -->
+			<a href="#main" class="evitement">accueil.aller.contenu</a>
+			<div id="header">
+				
+
+
+
+
+
+
+
+
+<header role="banner">
+	<input type="hidden" id="modeAdcat"  value="false"/>
+	<input type="hidden" id="enqueteUrlActive"  value="false"/>
+	<input type="hidden" id="enqueteUrlAccueil"  value="http://ns201.askia.com/WebProd/cgi-bin/askiaext.dll?Action=StartSurvey&amp;SurveyName=3277_BnF&amp;Source=1"/>
+	<input type="hidden" id="enqueteUrlRecherche"  value="http://ns201.askia.com/WebProd/cgi-bin/askiaext.dll?Action=StartSurvey&amp;SurveyName=3277_BnF&amp;Source=2"/>
+	<input type="hidden" id="enqueteUrlResultat"  value="http://ns201.askia.com/WebProd/cgi-bin/askiaext.dll?Action=StartSurvey&amp;SurveyName=3277_BnF&amp;Source=3"/>
+	<input type="hidden" id="enqueteUrlNotice"  value="false"/>
+	
+	<!-- Entete -->
+	<div class="row">
+	
+
+		<!-- Logos -->
+		<div class="col-md-6">
+			<table class="headerclass" role="presentation" > 
+				<tr>
+					<td class="colorgrey">					
+				<a href="http://www.bnf.fr" target="_blank" class="lien-logo" data-toggle="tooltip" data-placement="bottom" data-title-perso="Acc&egrave;s au site de la Biblioth&egrave;que nationale de France" rel="tooltip" onclick="clickXiti('N', 'page.headerAccueil.clic.xiti.BnFLogo');" >
+					<img src="/images/Logo_BNF_Web.png" alt="BnF&nbsp;(nouvelle fen&ecirc;tre)" class="logobnf"/>
+				</a>					
+					</td>
+					<td>
+					<h1>
+						<a class = "retour-acceuil" href="/" data-toggle="tooltip" data-placement="bottom" data-title-perso="Retour &agrave; la page d'accueil du Catalogue g&eacute;n&eacute;ral" rel="tooltip" onclick="clickXiti('N', 'page.header.clic.xiti.CCALogo');" >
+							<img src="/images/Logo_Catalogue-general_Web.png" alt="Catalogue G&eacute;n&eacute;ral" class="logoTet" />
+						</a>
+					</h1>
+					</td>
+					<td >
+						<a style="visibility:hidden;" href="https://espacepersonnel.bnf.fr/views/vel/mon_panier.jsf" class="pictos"><i class="icon-panier" title="Mes demandes de reproduction" data-icon="&#xe60a;"></i></a>
+					</td>
+					
+				</tr>
+			</table>
+		</div>
+		
+		<!-- Menu transverse -->
+		<div class="col-md-6-bis text-right">
+			<div class="menu-transverse" >
+			<ul>			
+				
+					
+
+	
+<div class="espace-perso">
+	<button  class="espace-perso-int2"> 
+		<span class="pictos">
+			<i aria-hidden="true" class="icon-espace" title="auth.espace.perso.titre" data-icon="&#xe60e;"></i>
+		</span>
+		<span class="text">auth.espace.perso.titre</span>
+	</button>
+	<div class="espace-perso-layer">
+		<p>
+		 auth.espace.perso.con.txt.part1
+		</p>
+		<ul>
+			<li>		
+				auth.espace.perso.con.txt.part2
+			</li>
+			<li>
+				
+					auth.espace.perso.con.txt.part5
+				
+			</li>
+			<li>
+				auth.espace.perso.con.txt.part3
+			</li>
+			
+ 				
+				<li>
+					auth.espace.perso.con.txt.part4
+				</li>
+<!-- 				-->
+			
+		</ul>
+		<p> </p> 
+		<form method="POST" name="auth" action="/Connecter?/error404.do"target="_top">
+			<button role="link"title="auth.espace.perso.ident.vous"
+				onClick="clickXiti('A', 'page.authentification.clic.xiti.connectionEspacePerso');this.form.submit();">
+				auth.espace.perso.bouton.se.connecter
+			</button>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+function myReferer(typeBouton){
+	var locationRef= location;
+	var hostname = locationRef.protocol + "//" + locationRef.host;
+	var uri = locationRef.href.replace(hostname, "");
+	var result = document.getElementById(typeBouton).href = document.getElementById(typeBouton).href + encodeURIComponent(uri);
+	
+}
+</script>
+				
+				<li>			
+					<a href="http://catalogue.bnf.fr/aide/" class="lienAide" style="line-height:38px;" onclick="clickXiti('N', 'page.header.clic.xiti.aideGeneral');" >
+<!-- 						<i aria-hidden="true" class="icon-aidec" title="Aide &agrave; la consultation du catalogue" data-icon="&#xe60c;"></i>
+ -->
+ 						<span aria-hidden="true" >Aide</span>
+					<span class="hors-viewport">Aide &agrave; la consultation du catalogue</span>
+					</a>
+				</li>
+				<li>				
+					<a href="/question.do" class="lienUneQuestion" style="line-height:38px;">
+						Une question ?
+					</a>
+				</li>
+				<!--lien historique-->
+				<li>
+					<a href="/historiqueRecherche.do" class="lienHistorique" style="line-height:38px;">
+						Historique
+					</a>
+				</li>
+				<!--				
+				<a style="visibility:hidden;" href="http://catalogue.bnf.fr/aide/" class="lienAide">
+ 						Aide
+					<span class="hors-viewport">Aide &agrave; la consultation du catalogue</span>
+				</a> -->	
+				<!-- <a style="visibility:hidden;" href="https://espacepersonnel.bnf.fr/views/vel/mon_panier.jsf" class="pictos"><i class="icon-panier" title="Panier" data-icon="&#xe60a;"></i></a> -->
+				<li>
+					<a href="https://espacepersonnel.bnf.fr/views/vel/mon_panier.jsf" class="pictos" onclick="clickXiti('N', 'page.header.clic.xiti.panierMarchand');" ><i class="icon-panier" title="Mes demandes de reproduction" data-icon="&#xe60a;" aria-hidden="true"></i><span class="hors-viewport">Mon panier</span></a>
+				</li>
+			</ul>
+				<a role="button" href="#" class="pictos" style="display:hidden;visibility:hidden;"></a>
+						
+				<!-- <a href="accueil.aide.biblio.lien1" target="_blank" class="pictos" onclick="clickXiti('N', 'page.header.clic.xiti.poserUneQuestion');">
+					<i aria-hidden="true" class="icon-aideb" title="Poser une question &agrave; un biblioth&eacute;caire (service SINDBAD)" data-icon="&#xe60b;"></i>
+					<span class="hors-viewport">Poser une question &agrave; un biblioth&eacute;caire (service SINDBAD)(nouvelle fen&ecirc;tre)</span>
+				</a> -->				
+				
+				<!-- Menu langues -->
+								
+			</div>
+		</div>
+		
+	</div>		
+</header>
+
+<img id="statsXiti" width=1 height=1 src="" alt=""/>
+<script type="text/javascript">
+xitiBase = "ERRORCG::404";
+
+</script>
+
+<div class="row">
+	<div id="menu">
+		<div class="recherche">
+			<form id="rechercher" name="rechercher" action="/rechercher.do" method="get" role="search">
+				<input type="text" name="motRecherche" size="100" maxlength="200" value="" id="rechercher_motRecherche" aria-label="Recherche"/>
+				<a href="#" role="button" class="pictos picto-help" data-toggle="tooltip" data-placement="top" data-title-perso="Pour rechercher une expression exacte, saisissez les termes recherch&eacute;s entre guillemets. Exemple : &quot;le rouge et le noir&quot;" rel="tooltip" style="background: #fff none repeat scroll 0 0; margin-left:-2px;">
+					<i class="icon-help" style="margin-left:3px;" title="" data-icon="&#xe602;"></i>
+				</a>
+				<div class="skin-select">
+					<select name="critereRecherche" id="rechercher_critereRecherche" aria-label="Dans">
+    <option value="0">Tout</option>
+    <option value="1">Gallica</option>
+    <option value="2">Haut-de-jardin</option>
+
+
+</select>
+
+
+					
+					<!-- select name="search-sel" id="search-sel">
+						<option value="0">Tous</option>
+					</select -->
+					<span class="selecttext"></span><span class="select-arrow"></span>
+				</div>
+				
+				<input type="hidden" name="depart" value="0" id="rechercher_depart"/>	
+				<input type="hidden" name="facetteModifiee" value="ok" id="rechercher_facetteModifiee"/>
+				<button type="submit" id="rechercher_0" value="Submit" class="pictos">
+<i class="icon-search" aria-hidden="true" title="Lancer la recherche" data-icon="&#xe609;"></i>
+					<span class="hors-viewport">Lancer la recherche</span>
+</button>
+
+			</form>
+
+
+
+		</div>
+		
+		<span class="tetiereSpanBarre"  >&nbsp&nbsp</span>
+		
+		
+		<a class="lien-avancee" href="/recherche-avancee.do?pageRech=rav" onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheAvancee');" >
+		page.recherche.avancee.titre</a>
+		
+		<div class="menu">
+		   <div class="skin-select-menu skin-select">
+			<span class="selecttext" role="button" tabindex="0" id="rechGidees"><span>menu.recherches.gidees.txt</span> <span>menu.autres.recherches.txt</span></span>
+			<nav role="navigation">
+				<ul id="rechGidListe">
+					<li class="hide-large">menu.recherches.gidees.txt</li>
+					<li>
+						<a href="/recherche-auteurs.do?pageRech=rau" title="accueil.lien.auteur.title" onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheAuteurAZ');" >page.recherche.auteurs.titre</a>
+					</li>
+					<li>
+						<a href="/recherche-sujets.do?pageRech=rsu" title="Feuilleter la liste des sujets et les notices bibliographiques qui leur sont li&eacute;s." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheSujetAZ');" >accueil.lien.recherche.sujets.titre</a>
+					</li>
+					<li>
+						<a href="/recherche-periodiques.do?pageRech=rpe&filtre=1" title="Feuilleter la liste des titres de p&eacute;riodiques ou combiner diff&eacute;rents crit&egrave;res de recherche." onclick="clickXiti('N', 'page.tetiere.clic.xiti.recherchePeriodique');" >accueil.lien.recherche.periodiques.titre</a>
+					</li>
+					<li class="itemCote" >
+						<a href="/recherche-cote.do?pageRech=rco" title="Rechercher un document directement par sa cote pour pouvoir le consulter." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheCote');" >accueil.lien.recherche.cote.titre</a>
+					</li>
+					<li>
+						<a href="/recherche-autorite.do?pageRech=rat" title="Rechercher des notices de personnes, collectivit&eacute;s, &oelig;uvres, noms communs, noms g&eacute;ographiques, marques." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheDAutorite');" >page.recherche.autorites.tetiere</a>
+						<a href="#" role="button" class="pictos picto-help boldno" data-toggle="tooltip" data-placement="top" data-title-perso="Rechercher des notices de personnes, collectivit&eacute;s, &oelig;uvres, noms communs, noms g&eacute;ographiques, marques." rel="tooltip"><i class="icon-help help-autorite" title="" data-icon="&#xe602;"></i></a>
+					</li>
+				</ul>
+			</nav>
+			</div>
+		</div> 
+		<div class="univers">
+			
+			<a href="#" title="page.recherche.univ.tetiere">
+				page.recherche.univ.tetiere</a>
+			</li>
+			<div class="univers-layer">
+				<ul>
+					<li class="hide-large">page.recherche.dans.univers.tetiere</li>
+					<li><a href="/recherche-uni-jeun.do?pageRech=ruj" title="Rechercher dans les collections destin&eacute;es &agrave; la jeunesse (livres, p&eacute;riodiques, documents audiovisuels, etc.)." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheUniversJeunesse');" >page.recherche.univ.jeun.tetiere</a></li>
+					<li><a href="/recherche-uni-images-cartes.do?pageRech=imc" title="Rechercher dans les collections destin&eacute;es aux images et cartes (livres, p&eacute;riodiques, documents audiovisuels, etc.)." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheUniversIMC');" >page.recherche.univ.IMC.tetiere</a></li>
+					<li><a href="/recherche-uni-musique.do?pageRech=mus" title="Rechercher dans les collections destin&eacute;es &agrave; la musique (livres, p&eacute;riodiques, documents audiovisuels, etc.)." onclick="clickXiti('N', 'page.tetiere.clic.xiti.rechercheUniversMusique');" >page.recherche.univ.musique.tetiere</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<img id="statsXiti" width=1 height=1 src="" alt=""/>
+
+			</div>
+			<!-- Tiles to load the content of the layout -->
+			
+
+ <head>
+	
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/fonts/pictos.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/fonts/fonts.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/jquery.qtip.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/styles/catagen.css" media="all" />
+<link rel="stylesheet" href="/styles/select2/select2.css"  />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="/styles/catagen-ie.css" media="all" />
+    <![endif]-->
+<script type="text/javascript" src="/js/select2/select2.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		 $('.multiple-select select').select2();
+	});
+</script>
+
+<link rel="icon" type="image/png" href="/images/icones/icone_CG.png" />
+
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="/images/icones/favicon.ico" /><![endif]-->
+
+<meta property="og:title" content="BnF Catalogue g&eacute;n&eacute;ral" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://catalogue.bnf.fr/images/bnf-catalogue-vignette-facebook.png" />
+<meta property="og:url" content="http://catalogue.bnf.fr" />
+<meta property="og:description" content="Plus de 13 millions de notices bibliographiques (imprim&eacute;s, documents sonores, ressources &eacute;lectroniques, manuscrits, objets...) et pr&egrave;s de 5 millions de notices d'autorit&eacute; (personnes, collectivit&eacute;s, &oelig;uvres, noms communs, noms g&eacute;ographiques, marques ... )" />
+
+
+
+<title>
+	
+</title>
+
+
+		 		 
+ 
+</head> 
+<!-- Aide à la consultation -->
+<div class="corps-erreur">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="bloc">
+			
+				<h2>page.erreur404.titre</h2>
+				   <div class="erreur-texte">
+				   		 <ul>
+				          page.erreur404.libelle
+					   		<br/>
+					   		<a class="lienQuestion" 
+					  	     href="index.do">page.erreur.conseil3</a>
+					   	</ul>
+					   	
+			       </div>
+			
+			<br/>
+			
+		</div>
+	</div>
+</div>
+			
+			<div id="footer">
+				
+
+
+<div class="hautpage">
+	<a href="#header" class="pictos">
+		<i class="icon-haut" title="Haut de page" data-icon="&#xe61b;" aria-hidden="true"></i>
+		<span class="hors-viewport">recherche.bouton.haut.page</span>
+	</a>
+</div>
+<footer role="contentinfo">
+	<div class="col-md-6 col-md-offset-1">
+		<ul>
+		
+			<li><a href="/conditions.do" onclick="clickXiti('N', 'conditionCGRORO');" >page.conditions.util.titre</a> <span aria-hidden="true"> |</span></li>  
+			<li><a href="/a-propos.do" onclick="clickXiti('N', 'aProposRORO');" >page.apropos.titre</a> <span aria-hidden="true"> |</span></li>
+		    <li><a href='http://www.bnf.fr/fr/outils/a.ecrire.html' onclick="clickXiti('N', 'ecrireALaBnFRORO');" target="_blank" title="footer.ecrire.bnf.titre page.nouvellefenetre"/>footer.ecrire.bnf.titre</a> <span aria-hidden="true"> |</span></li>
+				    
+			<li>V 5.1.2</li>
+		</ul>
+	</div>
+</footer>
+			</div>
+		</div>
+		
+
+<!-- script type="text/javascript" src="js/jquery-1.9.1.js"></script>  -->
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/scripts.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/jquery.jBreadCrumb.1.1.js"></script>
+<script type="text/javascript" src="/js/jquery.qtip.min.js"></script>
+<!--[if IE 8]>
+	<script type="text/javascript" src="/js/mediaquerie_ie8.js"></script>
+<![endif]-->
+
+		
+
+
+
+
+	<div id="logoXiTi">
+		<script type="text/javascript">
+		<!--
+			xtnv = document; //parent.document or top.document or document         
+			xtsd = "http://logp";
+			xtsite = "18798";
+			xtn2 = "13"; // level 2 site ID
+			xtpage = "ERRORCG::404::_POSTE_EXTERNE"; //page name (with the use of :: to create chapters)
+			xtdi = ""; //implication degree
+			xt_multc = ""; //all the xi indicators (like "&x1=...&x2=....&x3=...")
+			xt_an = ""; //user ID
+			xt_ac = ""; //category ID
+			//do not modify below
+			if (window.xtparam != null) {
+				window.xtparam += "&ac=" + xt_ac + "&an=" + xt_an + xt_multc;
+			} else {
+				window.xtparam = "&ac=" + xt_ac + "&an=" + xt_an + xt_multc;
+			};
+		//-->
+		</script>
+		
+		
+		<script type="text/javascript">
+		
+		<!--
+		
+		(function(){
+		
+		  var at=document.createElement('script');
+		
+		  at.type='text/javascript';
+		
+		  at.async=true;
+		
+		  at.src='http://www.bnf.fr/xtcore.js';   (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]||document.getElementsByTagName('script')[0].parentNode).insertBefore(at,null);   
+		
+		})();
+		
+		//-->
+		
+		</script>
+		<noscript>
+			<img width="1" height="1" alt="XiTi" id="nomP" src="http://logp.xiti.com/hit.xiti?s=18798&s2=13&p=ERRORCG::404::_POSTE_EXTERNE">
+			<img id="statsXiti" width=1 height=1 src="" alt=" "/>
+		</noscript>
+	</div>
+
+
+
+	</body>
+</html>
