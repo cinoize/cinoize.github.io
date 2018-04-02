@@ -29,3 +29,5 @@ echo `date`
 
 mv douci.ml ../douciml2
 #mv fromthemachine.org ../oldit2
+#fix question mark shit
+find ./ -type f -name '*\?*' |while read f; do mv "$f" "${f%\?*}"; done
