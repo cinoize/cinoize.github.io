@@ -24,10 +24,10 @@ sed -i -e "s/src=\"\.\/s7\.addthis/src=\"http\:\/\/s7\.addthis/g" *.html
 sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
 echo `date`
-git add .
 echo `date`
 
 mv douci.ml ../douciml2
+git add .
 #mv fromthemachine.org ../oldit2
 #fix question mark shit
 find ./ -type f -name '*\?*' |while read f; do mv "$f" "${f%\?*}"; done
