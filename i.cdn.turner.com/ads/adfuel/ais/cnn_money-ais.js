@@ -1,6 +1,6 @@
 //CNN Money AdFuel Modules
 //
-//Deployed: 2018-04-20 13:32:08
+//Deployed: 2018-04-25 11:57:34
 
 ////////////////////////////////////////////
 //A9 1.3
@@ -1966,7 +1966,12 @@ window.turner_getGuid = function() {
         '^(.*\\.)?arabic\\.cnn\\.com': '186370-164240128263733',
         '^(.*\\.)?pga\\.com': '186948-65293251488212',
         '^(.*\\.)?rydercup\\.com': '186948-65293251488212',
-        '^(.*\\.)?pga-events\\.com': '186948-65293251488212'
+        '^(.*\\.)?pga-events\\.com': '186948-65293251488212',
+        '^(.*\\.)?teamcoco\\.com': '186948-58699267721861',
+        '^(.*\\.)?eleague\\.com': '186948-12519779424234',
+        '^(.*\\.)?nba.com': '186948-120271757110262',
+        '^(.*\\.)?ncaa.com': '186948-8121571303204',
+        '^(.*\\.)?adultswim.com': '186948-113674687777483',
     }
 
     var log =  (window.console && window.console.log) ? function (/* arguments */) {
@@ -2192,6 +2197,7 @@ window.turner_getGuid = function() {
         log('Building slots for IAS...');
         var adSlots = [];
         for (var x = 1; x < asset.length; x++) {
+            if (asset[x].sizes.length === 0){ asset[x].sizes.push(["1","1"]); }
             log('Pushing Slot: ', {
                 adSlotId: asset[x].rktr_slot_id,
                 size: asset[x].sizes,
@@ -2664,6 +2670,10 @@ window.turner_getGuid = function() {
             log('Segment Data: ', data.data);
             segmentData = data.data;
             window.proximicData = data.data;
+        } else if (data.errors) {
+            log('Proximic returned with errors: ', data.errors);
+            window.proximicData = data.errors;
+            segmentData = data.errors;
         }
     };
 
