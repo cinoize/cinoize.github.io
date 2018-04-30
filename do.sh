@@ -25,6 +25,7 @@ sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
 echo `date`
 mv *.log ../douciml2
+mv *.tar ../douciml2
 mv douci.ml ../douciml2
 git add .
 echo date
