@@ -1,6 +1,6 @@
 
 echo `date`
-wget -r -p -k -l 1 -H --retry 0 --wait 0 --timeout 34 --tries 1  http://douci.ml/fix.html >>wget.log 2>>wget2.log
+wget -r -p -k -l 1 -H --retry 0 --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
 echo `date`
 #cp -R fromthemachine.org/* .
 cp -R douci.ml/* .
@@ -24,11 +24,13 @@ sed -i -e "s/src=\"\.\/s7\.addthis/src=\"http\:\/\/s7\.addthis/g" *.html
 sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
 echo `date`
+mkdir ../doucml2
 mv *.log ../douciml2
 mv *.tar ../douciml2
-mv douci.ml ../douciml2
-git add .
+rm -rf douci.ml 
+
 echo date
 #mv fromthemachine.org ../oldit2
 #fix question mark shit
 find ./ -type f -name '*\?*' |while read f; do mv "$f" "${f%\?*}"; done
+git add .
