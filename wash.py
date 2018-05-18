@@ -118,8 +118,7 @@ if not nolinks:
 #secretda55935876fc9647ee4f0835c6eb183d27719aad
 from PIL import Image
 for img in imgs: 
-##CHANGED and "imgur"
- if imgdo==1 and "imgurbadit" not in img.get('src'):
+ if imgdo==1 and "doltimgur" not in img.get('src'):
   #x = image.retrieve(img.get('src'),'tempimg')
   #print x
   rid=''.join(random.choice('0123456789ABCDEF') for i in range(30000))
