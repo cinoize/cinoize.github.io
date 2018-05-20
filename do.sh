@@ -1,10 +1,10 @@
 
 echo `date`
-wget -r -p -k -l 1 -H  --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
+#wget -r -p -k -l 1 -H  --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
 echo `date`
 #cp -R fromthemachine.org/* .
-cp -R douci.ml/* .
-cp -R douci.ml/*.html .
+cp -R 127.0.0.1/* .
+#cp -R 127.0.0.1/*.html .
 #cp -R fromthemachine.org/*.html .
 
 #cp -R fromthemachine.org/* .
@@ -27,7 +27,7 @@ echo `date`
 mkdir ../doucml2
 mv *.log ../douciml2
 mv *.tar ../douciml2
-rm -rf douci.ml 
+
 
 echo date
 #mv fromthemachine.org ../oldit2
