@@ -23,6 +23,8 @@ sed -i -e "s/src=\"\.\/addsearch.com/src=\"https:\/\/addsearch\.com/g" *.html
 sed -i -e "s/src=\"\.\/s7\.addthis/src=\"http\:\/\/s7\.addthis/g" *.html
 sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
+sed -i -e 's/http:\/\/127.0.0.1/\./g' *.html
+sed -i -e 's/127.0.0.1/\./g' *.html
 echo `date`
 mkdir ../doucml2
 mv *.log ../douciml2
