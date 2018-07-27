@@ -1403,7 +1403,7 @@ var CNNM_MS_CONNECT = {
 
 	load_gigya_script : function (callback) {
 		var appid = CNN.msib.localCfg.gigya.appId;
-        var gigyaURL = 'http://cdn.gigya.com/js/gigya.js?apikey='+appid;
+        var gigyaURL = 'https://cdn.gigya.com/js/gigya.js?apikey='+appid;
 
         /* Load the Gigya API. */
         jQuery.ajax({
