@@ -812,7 +812,7 @@ function chooseMagOFIE()
 		else
 			ofieurl = 'mo_336x216_moartpg_0908.js';
 
-	document.write('<script type=\"text/javascript\" src=\'http://i.cdn.turner.com/money/.element/ssi/sections/mag/'+ ofieurl + '\'><\/script>');
+	document.write('<script type=\"text/javascript\" src=\'https://i.cdn.turner.com/money/.element/ssi/sections/mag/'+ ofieurl + '\'><\/script>');
 }
 function writeFortCMLinkBanner(subsUrl)
 	{document.write('<div id="subsLink1"><a href="http://subs.timeinc.net/CampaignHandler/'+subsUrl+'" target="_blank">Subscribe to Fortune Magazine</a></div><div id="subsLink2"><a href="http://subs.timeinc.net/CampaignHandler/fogift?source_id=8&iid=FOB9FH7" target="_blank">Give the Gift of Fortune</a></div>');}
@@ -831,9 +831,9 @@ function chooseFortEKeyBanner() {
 
 function writeFortCoverLink()
 	{if ((location.pathname == '/magazines/fortune/')||(location.pathname == '/magazines/fortune/index.html')) {
-		document.write('<a href="https://subs.timeinc.net/CampaignHandler/FOnb?source_id=27"> <img src="http://i.cdn.turner.com/money/.element/img/2.0/fortune/fortune_cover_gradient.gif" alt="Subscribe" width="80" height="72" border="0" class="bannerCover"></a>');
+		document.write('<a href="https://subs.timeinc.net/CampaignHandler/FOnb?source_id=27"> <img src="https://i.cdn.turner.com/money/.element/img/2.0/fortune/fortune_cover_gradient.gif" alt="Subscribe" width="80" height="72" border="0" class="bannerCover"></a>');
 	} else {
-		document.write('<a href="https://subs.timeinc.net/CampaignHandler/FOnb?source_id=30"> <img src="http://i.cdn.turner.com/money/.element/img/2.0/fortune/fortune_cover_gradient.gif" alt="Subscribe" width="80" height="72" border="0" class="bannerCover"></a>');
+		document.write('<a href="https://subs.timeinc.net/CampaignHandler/FOnb?source_id=30"> <img src="https://i.cdn.turner.com/money/.element/img/2.0/fortune/fortune_cover_gradient.gif" alt="Subscribe" width="80" height="72" border="0" class="bannerCover"></a>');
 	} 
 	}
 	

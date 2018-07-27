@@ -145,7 +145,7 @@ window.TSMark('step_load');
 })();
 </script>
 
-	<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/webpack.manifest.37d5558aa5af92c09df3.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+	<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/webpack.manifest.6c0cc942d9dd9e9b9ab0.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 			
 	
@@ -225,7 +225,6 @@ window.TSMark('step_load');
 	<script type="text/javascript">
 
 
-
 var TS_last_log_date = null;
 var TSMakeLogDate = function() {
 	var date = new Date();
@@ -262,38 +261,6 @@ var TSMakeLogDate = function() {
 	return str+' ';
 }
 
-var parseDeepLinkRequest = function(code) {
-	var m = code.match(/"id":"([CDG][A-Z0-9]{8})"/);
-	var id = m ? m[1] : null;
-
-	m = code.match(/"team":"(T[A-Z0-9]{8})"/);
-	var team = m ? m[1] : null;
-
-	m = code.match(/"message":"([0-9]+\.[0-9]+)"/);
-	var message = m ? m[1] : null;
-
-	return { id: id, team: team, message: message };
-}
-
-if ('rendererEvalAsync' in window) {
-	var origRendererEvalAsync = window.rendererEvalAsync;
-	window.rendererEvalAsync = function(blob) {
-		try {
-			var data = JSON.parse(decodeURIComponent(atob(blob)));
-			if (data.code.match(/handleDeepLink/)) {
-				var request = parseDeepLinkRequest(data.code);
-				if (!request.id || !request.team || !request.message) return;
-
-				request.cmd = 'channel';
-				TSSSB.handleDeepLinkWithArgs(JSON.stringify(request));
-				return;
-			} else {
-				origRendererEvalAsync(blob);
-			}
-		} catch (e) {
-		}
-	}
-}
 </script>
 
 
@@ -307,59 +274,6 @@ if ('rendererEvalAsync' in window) {
 	};
 
 </script>
-<script>TSSSB.env = (function() {
-
-
-	var v = {
-		win_ssb_version: null,
-		win_ssb_version_minor: null,
-		mac_ssb_version: null,
-		mac_ssb_version_minor: null,
-		mac_ssb_build: null,
-		lin_ssb_version: null,
-		lin_ssb_version_minor: null,
-		desktop_app_version: null,
-	};
-
-	var is_win = (navigator.appVersion.indexOf('Windows') !== -1);
-	var is_lin = (navigator.appVersion.indexOf('Linux') !== -1);
-	var is_mac = !!(navigator.userAgent.match(/(OS X)/g));
-
-	if (navigator.userAgent.match(/(Slack_SSB)/g) || navigator.userAgent.match(/(Slack_WINSSB)/g)) {
-		
-		var parts = navigator.userAgent.split('/');
-		var version_str = parts[parts.length - 1];
-		var version_float = parseFloat(version_str);
-		var version_parts = version_str.split('.');
-		var version_minor = (version_parts.length == 3) ? parseInt(version_parts[2], 10) : 0;
-
-		if (navigator.userAgent.match(/(AtomShell)/g)) {
-			
-			if (is_lin) {
-				v.lin_ssb_version = version_float;
-				v.lin_ssb_version_minor = version_minor;
-			} else if (is_win) {
-				v.win_ssb_version = version_float;
-				v.win_ssb_version_minor = version_minor;
-			} else if (is_mac) {
-				v.mac_ssb_version = version_float;
-				v.mac_ssb_version_minor = version_minor;
-			}
-
-			if (version_parts.length >= 3) {
-				v.desktop_app_version = {
-					major: parseInt(version_parts[0], 10),
-					minor: parseInt(version_parts[1], 10),
-					patch: parseInt(version_parts[2], 10),
-				};
-			}
-		}
-	}
-
-	return v;
-})();
-</script>
-
 
 	<script type="text/javascript">
 		
@@ -376,7 +290,7 @@ if ('rendererEvalAsync' in window) {
 
 	
 		
-	
+									
 	
 		
 					
@@ -384,9 +298,8 @@ if ('rendererEvalAsync' in window) {
 						
 	
 	
-
 	
-			
+						
 	
 	
 	
@@ -394,10 +307,10 @@ if ('rendererEvalAsync' in window) {
 	
 	
 		<!-- output_css "sk_adapter" -->
-    <link href="https://a.slack-edge.com/ba263/style/rollup-slack_kit_legacy_adapters.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/8ee833/style/rollup-slack_kit_legacy_adapters.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
 
 			<!-- output_css "core" -->
-    <link href="https://a.slack-edge.com/5482d/style/rollup-plastic.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/2c2d5/style/rollup-plastic.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
 
 		<!-- output_css "before_file_pages" -->
 
@@ -405,11 +318,11 @@ if ('rendererEvalAsync' in window) {
 
 	
 			<!-- output_css "modern" -->
-    <link href="https://a.slack-edge.com/bv1-4/modern.vendor.d4ea8a6.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
-    <link href="https://a.slack-edge.com/bv1-4/application.1d86391.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://eyerc.slack.com/assets/modern.vendor.bundle.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/bv1-4/application.41fa21b.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
 
 	<!-- output_css "slack_kit_helpers" -->
-    <link href="https://a.slack-edge.com/58ed0/style/rollup-slack_kit_helpers.css" rel="stylesheet" type="text/css" id="slack_kit_helpers_stylesheet"  crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/611f6/style/rollup-slack_kit_helpers.css" rel="stylesheet" type="text/css" id="slack_kit_helpers_stylesheet"  crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
 
 	<!-- output_css "regular" -->
     <link href="https://a.slack-edge.com/4bc64/style/invite.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
@@ -453,8 +366,6 @@ if ('rendererEvalAsync' in window) {
 							</form>
 		</div>
 
-					<div id="tos_root"></div>
-		
 		<div id="invite_graphics_pane" class="fs_split_pane fs_split_pane_right">
 			<div id="invite_graphics_wrapper" class="fs_split_flex_wrapper">
 				<div class="fs_split_header"></div>
@@ -501,12 +412,11 @@ if ('rendererEvalAsync' in window) {
 	var cdn_url = "https:\/\/a.slack-edge.com";
 	var vvv_abs_url = "https:\/\/slack.com\/";
 	var inc_js_setup_data = {
-			emoji_sheets: {
+		emoji_sheets: {
 			apple: 'https://a.slack-edge.com/c00d19/img/emoji_2017_12_06/sheet_apple_64_indexed_256.png',
 			google: 'https://a.slack-edge.com/c00d19/img/emoji_2017_12_06/sheet_google_64_indexed_256.png',
 		},
-		emoji5: true,
-		};
+	};
 </script>
 	<script type="text/javascript">
 <!--
@@ -516,11 +426,11 @@ if ('rendererEvalAsync' in window) {
 		app: "web",
 		user_id: '',
 		team_id: 'T00',
-		visitor_uid: "4uggjjtxfwyscwsk8oocs4s88",
+		visitor_uid: "bjhrioi9oi88o880kcc4sg0ww",
 		no_login: true,
-		version_ts: "1526706089",
-		version_uid: "0c1aaea53cfb196d84f257690927cbaa1ba3da77",
-		cache_version: "v16-giraffe",
+		version_ts: "1532721831",
+		version_uid: "21d7531eb47d6f18a48479aae685101cd464433b",
+		cache_version: "v17-ostrich",
 		cache_ts_version: "v2-bunny",
 		redir_domain: "slack-redir.net",
 		signin_url: 'https://slack.com/signin',
@@ -540,7 +450,7 @@ if ('rendererEvalAsync' in window) {
 		lz_string: "https:\/\/a.slack-edge.com\/bv1-4\/lz-string-1.4.4.worker.8de1b00d670ff3dc706a0.js",
 		codemirror: "https:\/\/a.slack-edge.com\/bv1-4\/codemirror.min.44a2b0ae2d7a5cac8a95.min.js",
 	codemirror_addon_simple: "https:\/\/a.slack-edge.com\/bv1-4\/codemirror_simple.9c76f7896754967b9eda.min.js",
-	codemirror_load: "https:\/\/a.slack-edge.com\/bv1-4\/codemirror_load.e677c2ce20cd175b6780.min.js",
+	codemirror_load: "https:\/\/a.slack-edge.com\/bv1-4\/codemirror_load.082b98ffddbb35f246e2.min.js",
 
 	// Silly long list of every possible file that Codemirror might load
 	codemirror_files: {
@@ -664,36 +574,35 @@ if ('rendererEvalAsync' in window) {
 		a11y_sounds: [],
 				default_tz: "America\/Los_Angeles",
 		
+		feature_teambot: false,
+		feature_teambot_active: false,
+		feature_teambot_view_only_page: false,
+		feature_new_slackbot_icons: false,
 		feature_tinyspeck: false,
 		feature_create_team_google_auth: false,
 		feature_enterprise_custom_tos: true,
 		feature_webapp_always_collect_initial_time_period_stats: false,
 		feature_search_skip_context: false,
-		feature_buildy_css: false,
 		feature_flannel_use_canary_sometimes: false,
 		feature_deprecate_window_cert: true,
 		feature_deprecate_window_cert_block: true,
-		feature_deprecate_files: false,
+		feature_ssb_q218_deprecation: false,
 		feature_deprecate_get_member_by_name: false,
-		feature_muted_mpim_badging: false,
+		feature_muted_mpim_badging: true,
 		feature_modern_process_imsg: true,
+		feature_modern_files_info: true,
+		feature_message_labels_copy: false,
+		feature_slurp_bots: false,
+		feature_extra_bot_logs: false,
 		feature_react_threads: false,
-		feature_modern_message_changed: false,
-		feature_modern_message_deleted: false,
-		feature_no_message_subtype_rtm: false,
-		feature_file_threads: false,
-		feature_file_threads_dark_launch: false,
-		feature_file_threads_meta_data: false,
+		feature_file_threads: true,
+		feature_file_threads_dark_launch: true,
 		feature_file_threads_cache_update: false,
 		feature_file_threads_local_shares_only: false,
-		feature_file_threads_plus_menu: false,
-		feature_file_threads_drag_drop: false,
-		feature_more_pins_info: true,
-		feature_threads_perf: false,
+		feature_broadcast_indicator: true,
 		feature_subteam_members_diff: true,
 		feature_a11y_keyboard_shortcuts: false,
 		feature_email_ingestion: false,
-		feature_api_site_tools: false,
 		feature_sidebar_context_menu: false,
 		feature_attachments_inline: false,
 		feature_fix_files: true,
@@ -701,74 +610,72 @@ if ('rendererEvalAsync' in window) {
 		feature_paging_api: false,
 		feature_custom_status_expiry: false,
 		feature_m11n_custom_status_input: false,
-		feature_m11n_channel_close_rtm_handlers: false,
 		feature_a11y_custom_status: false,
-		feature_m11n_reactions: false,
+		feature_better_snooze: false,
 		feature_sonic_dnd: true,
-		feature_sonic_rtm_message_replied: false,
-		feature_sonic_rtm_marked_events: false,
-		feature_sonic_rtm_presence: false,
+		feature_sonic_presence_manager: false,
 		feature_sonic_user_groups: false,
+		feature_sonic_user_groups_in_sonic: false,
+		feature_lazy_user_groups: false,
+		feature_pub_to_prv_esc_client: false,
+		feature_use_convert_to_private_api: false,
+		feature_inform_changes_to_shared_channels_are_workspace_specific: false,
+		feature_date_range_exports: true,
 		feature_enterprise_app_teams: true,
 		feature_enterprise_frecency: true,
-		feature_ent_app_management_dashboard: true,
 		feature_ent_app_management_restriction: false,
 		feature_entitlements: true,
 		feature_grid_archive_link_fixes: true,
-		feature_migration_status_page: false,
+		feature_migration_status_page: true,
+		feature_sonic_member_directory: false,
 		feature_safeguard_org_retention: true,
 		feature_dashboard_sortable_lists: false,
 		feature_refactor_admin_stats: false,
-		feature_request_signing: false,
-		feature_invite_only_workspaces: true,
+		feature_request_signing: true,
+		feature_distribute_clone_apps: true,
 		feature_leave_workspace_improvements: true,
-		feature_enteprise_user_teams_update: false,
-		feature_enterprise_org_wide_channels_section: true,
-		feature_show_billing_active_for_grid: true,
+		feature_enteprise_user_teams_update: true,
 		feature_find_your_workspace: true,
-		feature_compliance_export_helper_copy: false,
-		feature_form_text_character_count_copy: false,
 		feature_sk_lato_cleanup: false,
 		feature_saml_authn_key_expiry_date: true,
 		feature_wta_perm_api_split: false,
 		feature_wta_client_support: true,
-		feature_xoxa_channel_authorization: true,
 		feature_wta_optional_ephemeral_message: true,
+		feature_wta_conversations_api_channel_created_msg: false,
 		feature_file_links_betterer: false,
-		feature_enterprise_dm_deeplink: false,
+		feature_enterprise_dm_deeplink: true,
+		feature_enterprise_dm_deeplink_copy_update: false,
 		feature_session_duration_saved_message: false,
 		feature_guest_api_changes: false,
-		feature_gdpr_exports: false,
+		feature_gdpr_exports: true,
 		feature_sso_jit_disabling: true,
-		feature_guest_private_channels: true,
+		feature_allow_bulk_delete_join_leave_messages: false,
 		feature_connecting_shared_channels_enterprise: false,
 		feature_shared_channels_enterprise: false,
 		feature_snapshots_the_revenge: false,
 		feature_mpim_channels: false,
 		feature_esc_connected_workspaces_search: false,
-		feature_deprecate_gateways: true,
-		feature_deprecate_gateways_all: true,
 		feature_conversations_list: true,
-		feature_gdpr_user_join_tos: false,
+		feature_gdpr_user_join_tos: true,
+		feature_user_invite_tos_april_2018: true,
 		feature_modernize_invites: false,
-		feature_modernize_admin: false,
-		feature_modernize_admin_permissions: true,
-		feature_sonic_whats_new: false,
+		feature_modernize_admin: true,
+		feature_modernize_admin_strings: false,
+		feature_admin_in_client: false,
 		feature_winssb_beta_channel: false,
 		feature_slack_astronaut_i18n_jpn: true,
 		feature_i18n_customer_stories: false,
 		feature_cust_acq_i18n_tweaks: false,
+		feature_gdpr_content_updates: false,
 		feature_gdpr_website_update: true,
 		feature_gdpr_website_fixes: false,
-		feature_gdpr_forget_user: false,
 		feature_sales_lp: true,
 		feature_presence_sub: true,
 		feature_whitelist_zendesk_chat_widget: false,
 		feature_live_support_free_plan: false,
 		feature_slackbot_goes_to_college: false,
 		feature_newxp_enqueue_message: true,
-		feature_teambot: false,
-		feature_star_shortcut: false,
+		feature_threads_copy_change: false,
 		feature_force_ls_compression: false,
 		feature_name_tagging_client: true,
 		feature_name_tagging_client_autocomplete: false,
@@ -776,59 +683,59 @@ if ('rendererEvalAsync' in window) {
 		feature_use_imgproxy_resizing: true,
 		feature_share_mention_comment_cleanup: false,
 		feature_external_files: false,
+		feature_desktop_sandbox_signin: true,
 		feature_electron_memory_logging: false,
-		feature_decomp_misc_reads: true,
-		feature_app_promo_program: false,
+		feature_native_app_start_non_mac: false,
+		feature_app_promo_program: true,
+		feature_app_promo_program_expiry_message: true,
+		feature_localization_phase_two: false,
+		feature_locale_es_LA: false,
+		feature_locale_en_GB: false,
+		feature_locale_pt_BR: false,
+		feature_zero_width_space_word_joiner: true,
 		feature_modernize_slash_cmds: false,
-		feature_i18n_escape: false,
-		feature_i18n_runtime_translations: false,
+		feature_i18n_runtime_translations: true,
+		feature_better_join_leave_strings: false,
 		feature_channel_exports: false,
 		feature_corp_eng_news: false,
-		feature_take_profile_photo: false,
 		feature_docs: false,
 		feature_deprecate_screenhero: true,
 		feature_calls_esc_ui: true,
 		feature_calls_unsupported_client_strings: false,
-		feature_toggle_id_translation: true,
-		feature_upgrade_jquery: false,
+		feature_spock_calls: false,
+		feature_remote_files_api: false,
 		feature_default_shared_channels: true,
 		feature_email_notifications_improvements: true,
 		feature_react_lfs: false,
 		feature_log_quickswitcher_queries: true,
-		feature_enable_mdm: true,
-		feature_message_menus: true,
-		feature_new_message_click_logging: true,
-		feature_announce_only_channels: false,
+		feature_mc_mentions_tab_prefs_and_channels: true,
 		feature_app_permissions_backend_enterprise: true,
 		feature_token_ip_whitelist: true,
-		feature_hide_join_leave: false,
 		feature_rollback_to_mapping: false,
-		feature_emoji5: true,
 		feature_sidebar_theme_undo: false,
-		feature_emoji5_dark_launch: true,
+		feature_dont_set_channel_membership_twice: false,
 		feature_allow_intra_word_formatting: true,
 		feature_allow_cjk_autocomplete: true,
-		feature_allow_split_word: false,
 		feature_i18n_channels_validate_emoji: true,
 		feature_fw_eng_normalization: true,
 		feature_slim_scrollbar: false,
 		feature_search_query_refinements: true,
 		feature_search_spell_corrections: false,
-		feature_react_search: false,
-		feature_search_query_filter: false,
+		feature_react_search: true,
 		feature_prefs_modernization: false,
+		feature_modern_fuzzy_matcher: false,
 		feature_sidebar_filters: false,
 		feature_sli_channel_archive_suggestions: true,
+		feature_sli_channel_search: false,
+		feature_sli_user_search: false,
 		feature_react_messages: true,
-		feature_m11n_clean_msg: false,
-		feature_m11n_texty_paste: false,
+		feature_fetch_missing_channels_in_unread_counts: false,
+		feature_thread_activity_dm_name_i18n: false,
 		feature_m11n_autocomplete_channels: false,
+		feature_trim_paragraphs: false,
+		feature_member_supermodel: true,
 		feature_m11n_autocomplete_members: false,
-		feature_m11n_highlight_words: true,
 		feature_hide_unfurl_urls: false,
-		feature_redux_modals: true,
-		feature_growls_m11n: false,
-		feature_m11n_metrics_responsiveness: true,
 		feature_react_member_profile_card: false,
 		feature_service_import_lfs: false,
 		feature_mpdm_default_fe: false,
@@ -836,120 +743,110 @@ if ('rendererEvalAsync' in window) {
 		feature_oauth_react_wta: true,
 		feature_react_team_picker: true,
 		feature_app_index: false,
+		feature_modernize_get_msg_actions: false,
 		feature_app_profile_app_site_link: false,
 		feature_custom_app_installs: true,
 		feature_gdrive_do_not_install_by_default: true,
 		feature_delete_moved_channels: true,
 		feature_single_workspace_redirect: true,
 		feature_zero_workspace_onboarding: true,
-		feature_user_tos: false,
+		feature_user_tos: true,
 		feature_oom_mv_channels_list: false,
 		feature_solr_discoverability: true,
 		feature_sso_formatting_error: true,
 		feature_single_user_workspace_pagination: true,
-		feature_default_workspaces_to_closed: true,
-		feature_ud_messages_reminders: true,
-		feature_ms_msg_handlers_profiling: true,
 		feature_cross_workspace_quick_switcher_prototype: true,
 		feature_org_quick_switcher: false,
-		feature_user_prefs_merge_using_custom_callbacks: true,
 		feature_ms_latest: true,
 		feature_no_preload_video: true,
 		feature_guests_use_entitlements: true,
+		feature_dlp_ud_users: false,
 		feature_emoji_picker_frecently_used: false,
 		feature_app_space: true,
+		feature_app_space_links: false,
 		feature_app_canvases: false,
-		feature_canvases: false,
 		feature_attachments_v2: false,
-		feature_date_picker: false,
-		feature_stop_loud_channel_mentions: false,
-		feature_message_input_byte_limit: false,
+		feature_block_kit_expandable_block: false,
+		feature_date_picker: true,
 		feature_beacon_js_errors: false,
-		feature_http_sendmsg: false,
+		feature_http_sendmsg: true,
 		feature_app_dialogs_notify_on_cancel: true,
-		feature_app_dialogs_textarea_count: true,
 		feature_dialogs_v2_mobile: true,
 		feature_user_app_disable_speed_bump: false,
 		feature_nudge_team_creators: false,
 		feature_onedrive_picker: false,
 		feature_lesson_onboarding: true,
 		feature_disable_join_notifications: false,
+		feature_importer_warnings: false,
 		feature_api_admin_page_not_ent: true,
-		feature_non_blocking_user_boot: true,
-		feature_no_files_info: true,
+		feature_legacy_cfm: false,
 		feature_less_pins: false,
-		feature_runaway_qs: true,
-		feature_typeless_upsert_channel: true,
+		feature_less_preprocess_fetching: true,
 		feature_delete_team_and_apps: true,
 		feature_email_forwarding: true,
 		feature_pjpeg: false,
 		feature_pdf_thumb: true,
 		feature_apps_manage_permissions_scope_changes: true,
 		feature_app_dir_only_default_true: false,
-		feature_reminder_cross_workspace: false,
+		feature_reminder_cross_workspace: true,
 		feature_speedy_boot_handlebars: false,
-		feature_better_web_app_model: false,
-		feature_app_profile_card_trigger_shared_channels: false,
+		feature_apps_store_m11n: false,
+		feature_block_kit_pillow_file: false,
 		feature_channel_invite_modal_cannot_join: false,
 		feature_expiring_credits: true,
 		feature_email_prefs: true,
-		feature_pricing_calculator: false,
 		feature_checkout_flow_translations: false,
-		feature_modernize_banners: false,
-		feature_modernize_banners_v2: false,
+		feature_modernize_banners: true,
+		feature_modernize_banners_v2: true,
 		feature_modernize_banners_v3: false,
-		feature_sonic: false,
+		feature_sonic_i18n: false,
 		feature_flannel_channels_v0: true,
 		feature_flannel_always_use_canary: false,
-		feature_lazy_channels: false,
-		feature_lazy_teams: false,
-		feature_flannel_as_shared_channels_events_to_org: false,
+		feature_lazy_channels: true,
+		feature_lazy_teams: true,
+		feature_flannel_as_shared_channels_events_to_org: true,
 		feature_global_nav: false,
 		feature_message_spacing: false,
 		feature_shortcuts_flexpane: true,
 		feature_app_directory_home_page_redesign: true,
-		feature_botid_xoxa: true,
 		feature_hidden_wksp_unfurls: true,
 		feature_guest_wksp_unfurls: false,
 		feature_workspace_scim_management: false,
 		feature_email_previewer: false,
 		feature_redux_dev_tools: false,
 		feature_unified_member: false,
-		feature_angie_translations: false,
+		feature_select_use_unified: false,
 		feature_turn_mpdm_notifs_on: true,
 		feature_browser_dragndrop: false,
 		feature_granular_shared_channel_perms: false,
-		feature_org_detailed_thread_mentions: true,
-		feature_force_production_channel: false,
+		feature_lazy_channels_11: true,
+		feature_macos_disable_hw: true,
+		feature_desktop_notifications_2018: false,
 		feature_quill_upgrade: true,
-		feature_offline_hint: false,
-		feature_aria_msg_summary: true,
-		feature_aria_msg_summary_attachments: false,
-		feature_emoji_substr_search_tweaks: true,
-		feature_texty_formatting_commands: false,
-		feature_texty_change_queue: false,
-		feature_send_button_for_everyone: false,
+		feature_texty_change_queue: true,
+		feature_texty_formatting_commands: true,
+		feature_send_button_for_everyone: true,
 		feature_ally_sounds: false,
 		feature_bots_not_members: false,
-		feature_wta_user_data_fe: false,
+		feature_wta_user_data_fe: true,
+		feature_wta_app_detail_oauth_updates: false,
 		feature_wta_org_level_apps: false,
 		feature_shortcuts_prompt: true,
 		feature_accessible_dialogs: true,
-		feature_app_actions: false,
-		feature_app_actions_fe: false,
+		feature_app_actions: true,
+		feature_app_actions_mobile_preview: false,
 		feature_app_actions_global: false,
+		feature_app_actions_fe_refactor: false,
 		feature_shared_channel_free_trial_flow: true,
 		feature_i18n_compliance_links: false,
 		feature_calls_clipboard_broadcasting_optin: true,
 		feature_autocomplete_files: true,
 		feature_screen_share_needs_aero: false,
-		feature_ent_org_apps_new_csv_export: true,
+		feature_ent_unified_stars: false,
 		feature_calls_disable_iss_admin: true,
-		feature_sidebar_realtime_priority: false,
 		feature_in_prod_trials: true,
 		feature_gdpr_account_create: false,
 		feature_billing_ce_request_last4: true,
-		feature_sli_explore: false,
 		feature_sli_trending_dashboard: false,
 		feature_i18n_custom_status: true,
 		feature_i18n_select_empty_state_string: false,
@@ -960,13 +857,29 @@ if ('rendererEvalAsync' in window) {
 		feature_trap_kb_within_fs_modals: true,
 		feature_dialog_speedbump: true,
 		feature_react_customize_emoji: false,
-		feature_dialog_opened_rtm_m11n: false,
 		feature_modern_image_viewer: true,
 		feature_emoji_by_id: true,
+		feature_oauth_internal_integration_banner: true,
 		feature_labels_for_core_objects: false,
 		feature_jump_to_unread_shortcut: true,
-		feature_wta_notifications: false,
+		feature_wta_notifications: true,
+		feature_refresh_tokens: false,
 		feature_video_file_codec_support: false,
+		feature_mc_migration_banner: true,
+		feature_channel_converted_to_shared_rtm_handler: false,
+		feature_history_changed_modern_rtm_handlers: false,
+		feature_attachment_text_more: false,
+		feature_turn_off_sso_with_email_option: true,
+		feature_aria_application_mode: false,
+		feature_block_kit_block_action_on_channel_preview: false,
+		feature_compliance_to_select_rebrand_mc: true,
+		feature_modern_help_modal: false,
+		feature_modern_starred_items: false,
+		feature_admin_grid_status: false,
+		feature_consistent_ephemeral_messages: false,
+		feature_i18n_invite_too_many_channels: false,
+		feature_modern_profile_flexpane: false,
+		feature_hipchat_imports: false,
 
 	client_logs: {"0":{"numbers":[0],"user_facing":false},"2":{"numbers":[2],"user_facing":false},"4":{"numbers":[4],"user_facing":false},"5":{"numbers":[5],"user_facing":false},"23":{"numbers":[23],"user_facing":false},"sounds":{"name":"sounds","numbers":[37]},"37":{"name":"sounds","numbers":[37],"user_facing":true},"47":{"numbers":[47],"user_facing":false},"48":{"numbers":[48],"user_facing":false},"Message History":{"name":"Message History","numbers":[58]},"58":{"name":"Message History","numbers":[58],"user_facing":true},"67":{"numbers":[67],"user_facing":false},"72":{"numbers":[72],"user_facing":false},"73":{"numbers":[73],"user_facing":false},"82":{"numbers":[82],"user_facing":false},"88":{"numbers":[88],"user_facing":false},"91":{"numbers":[91],"user_facing":false},"93":{"numbers":[93],"user_facing":false},"96":{"numbers":[96],"user_facing":false},"99":{"numbers":[99],"user_facing":false},"Channel Marking (MS)":{"name":"Channel Marking (MS)","numbers":[141]},"141":{"name":"Channel Marking (MS)","numbers":[141],"user_facing":true},"Channel Marking (Client)":{"name":"Channel Marking (Client)","numbers":[142]},"142":{"name":"Channel Marking (Client)","numbers":[142],"user_facing":true},"Close Old IMs (Client)":{"name":"Close Old IMs (Client)","numbers":[221]},"221":{"name":"Close Old IMs (Client)","numbers":[221],"user_facing":true},"365":{"numbers":[365],"user_facing":false},"389":{"numbers":[389],"user_facing":false},"438":{"numbers":[438],"user_facing":false},"444":{"numbers":[444],"user_facing":false},"481":{"numbers":[481],"user_facing":false},"488":{"numbers":[488],"user_facing":false},"529":{"numbers":[529],"user_facing":false},"552":{"numbers":[552],"user_facing":false},"dashboard":{"name":"dashboard","numbers":[666]},"666":{"name":"dashboard","numbers":[666],"user_facing":false},"667":{"numbers":[667],"user_facing":false},"773":{"numbers":[773],"user_facing":false},"777":{"numbers":[777],"user_facing":false},"794":{"numbers":[794],"user_facing":false},"Client Responsiveness":{"name":"Client Responsiveness","user_facing":false,"numbers":[808]},"808":{"name":"Client Responsiveness","user_facing":false,"numbers":[808]},"Message Pane Scrolling":{"name":"Message Pane Scrolling","numbers":[888]},"888":{"name":"Message Pane Scrolling","numbers":[888],"user_facing":true},"Unread banner and divider":{"name":"Unread banner and divider","numbers":[999]},"999":{"name":"Unread banner and divider","numbers":[999],"user_facing":true},"1000":{"numbers":[1000],"user_facing":false},"Duplicate badges (desktop app icons)":{"name":"Duplicate badges (desktop app icons)","numbers":[1701]},"1701":{"name":"Duplicate badges (desktop app icons)","numbers":[1701],"user_facing":true},"Members":{"name":"Members","numbers":[1975]},"1975":{"name":"Members","numbers":[1975],"user_facing":true},"lazy loading":{"name":"lazy loading","numbers":[1989]},"1989":{"name":"lazy loading","numbers":[1989],"user_facing":true},"thin_channel_membership":{"name":"thin_channel_membership","numbers":[1990]},"1990":{"name":"thin_channel_membership","numbers":[1990],"user_facing":true},"stats":{"name":"stats","numbers":[1991]},"1991":{"name":"stats","numbers":[1991],"user_facing":true},"ms":{"name":"ms","numbers":[1996]},"1996":{"name":"ms","numbers":[1996],"user_facing":true},"shared_channels_connection":{"name":"shared_channels_connection","numbers":[1999]},"1999":{"name":"shared_channels_connection","numbers":[1999],"user_facing":false},"dnd":{"name":"dnd","numbers":[2002]},"2002":{"name":"dnd","numbers":[2002],"user_facing":true},"2003":{"numbers":[2003],"user_facing":false},"Threads":{"name":"Threads","numbers":[2004]},"2004":{"name":"Threads","numbers":[2004],"user_facing":true},"2005":{"numbers":[2005],"user_facing":false},"Reactions":{"name":"Reactions","numbers":[2006]},"2006":{"name":"Reactions","numbers":[2006],"user_facing":true},"TSSSB.focusTabAndSwitchToChannel":{"name":"TSSSB.focusTabAndSwitchToChannel","numbers":[2007]},"2007":{"name":"TSSSB.focusTabAndSwitchToChannel","numbers":[2007],"user_facing":false},"Presence Detection":{"name":"Presence Detection","numbers":[2017]},"2017":{"name":"Presence Detection","numbers":[2017],"user_facing":true},"mc_sibs":{"name":"mc_sibs","numbers":[9999]},"9999":{"name":"mc_sibs","numbers":[9999],"user_facing":false},"Member searching":{"name":"Member searching","numbers":[90211]},"90211":{"name":"Member searching","numbers":[90211],"user_facing":true},"98765":{"numbers":[98765],"user_facing":false},"8675309":{"numbers":[8675309],"user_facing":false}},
 
@@ -991,7 +904,8 @@ if ('rendererEvalAsync' in window) {
 	
 	
 	
-								boot_data.experiment_assignments = {"social_nudge_v0":{"experiment_id":"57452636336","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"migrate_stats_to_cds":{"experiment_id":"70039090853","type":"team","group":"stats_cds","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"migrate_stats_enable_dark_reads":{"experiment_id":"70047028338","type":"team","group":"stats_mysql_and_cds_dark_reads","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"domain_signup_links_for_mobile":{"experiment_id":"70804845972","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"update_invite_coachmarks_cta":{"experiment_id":"84280109270","type":"team","group":"invite_cm_got_ita","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"google_contacts_invite_existing":{"experiment_id":"93086200404","type":"team","group":"google_contacts","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"google_contacts_invite_new":{"experiment_id":"93096027173","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"app_suggestions_round_2":{"experiment_id":"131240436582","type":"team","group":"no_suggestions","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_autocomplete_android":{"experiment_id":"133221212662","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"modal_3_fields":{"experiment_id":"140209149492","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"modal_3_fields_existing_teams":{"experiment_id":"142775007765","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"guest_profiles_and_expiration":{"experiment_id":"145034475616","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"exp_thread_at_mention":{"experiment_id":"145686678499","type":"team","group":"autofill","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"exp_threads_everything_pref":{"experiment_id":"152393699186","type":"team","group":"show_banner","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"lib_mentions_match":{"experiment_id":"153633324374","type":"team","group":"trie","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"app_dir_channel_sidebar_cta":{"experiment_id":"159072431845","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"rebuild_mention_map_double_write":{"experiment_id":"164525064375","type":"team","group":"yes","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"tell_joiners_about_joiners":{"experiment_id":"164588156482","type":"team","group":"send_joiners_pushes","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_joiners_about_joiners":{"experiment_id":"169717077127","type":"team","group":"send_joiners_emails","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"rebuild_mention_map_with_job":{"experiment_id":"174477577986","type":"team","group":"job","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"guest_expiration_announcement":{"experiment_id":"175209361220","type":"team","group":"slackbot","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"edit_team_status_presets":{"experiment_id":"176895283504","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"calls_interactive_ss":{"experiment_id":"194479526932","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"pricing_page_v2_2_signedin":{"experiment_id":"199590432480","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"slackbot_help_v2_buttons":{"experiment_id":"200318583393","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"instant_invite_link_ios":{"experiment_id":"201626291921","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"feat_onepage_signup_v2":{"experiment_id":"205971003682","type":"team","group":"single_page","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"feat_limit_meters":{"experiment_id":"212162225108","type":"team","group":"show_limit_meters","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"self_serve_invoicing_checkout":{"experiment_id":"222019723543","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"newxp_onboarding_2_0":{"experiment_id":"235196062839","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"feat_msg_lim_search":{"experiment_id":"246809624001","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_app_onboard_all":{"experiment_id":"252073272226","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_app_onboard_admins":{"experiment_id":"252209807013","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"shared_channels_trial_flow":{"experiment_id":"257137512243","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"newxp_tips_loading_messages":{"experiment_id":"264238720563","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"small_feat_list":{"experiment_id":"264419561860","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_slack_certification":{"experiment_id":"265884802150","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"no_content_avails":{"experiment_id":"272365364819","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_post_upgrade_onboard":{"experiment_id":"273987023266","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"less_android_badges":{"experiment_id":"274765772358","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"replace_billing_link":{"experiment_id":"276628623189","type":"team","group":"has_plans_link","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"apns2":{"experiment_id":"279378859908","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"free_trial_in_prod":{"experiment_id":"281625415173","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"apns2_part_2":{"experiment_id":"283505922689","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"apns_collapse":{"experiment_id":"286616632582","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"install_apps_link":{"experiment_id":"293721709264","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"test_free_trial_in_prod":{"experiment_id":"300479776051","type":"team","group":"banner","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"self_serve_sfdc_leads":{"experiment_id":"300549613556","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_sfmc_team_joiner_welcome":{"experiment_id":"305390696324","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"drift_on_plans_page":{"experiment_id":"312235426720","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"calls_callstats":{"experiment_id":"313435842625","type":"team","group":"disabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"approaching_file_limit_banner":{"experiment_id":"331827143204","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"test_azsorkin_2":{"experiment_id":"341989125330","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"calls_p2p_one_on_one_team":{"experiment_id":"342929142581","type":"team","group":"enabled","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"prompt_to_expand_3":{"experiment_id":"348407196066","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"sfmc_trial_onboarding":{"experiment_id":"349854899936","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"email_reached_msg_lim":{"experiment_id":"350501017682","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"checkout_detailed_confirm":{"experiment_id":"356768173168","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"enable_solrjproxy":{"experiment_id":"357738984711","type":"team","group":"solrjproxy","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"approaching_file_limit_banner_v2":{"experiment_id":"359153329456","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106}};
+	
+								boot_data.experiment_assignments = {"social_nudge_v0":{"experiment_id":"57452636336","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"migrate_stats_to_cds":{"experiment_id":"70039090853","type":"team","group":"stats_cds","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"migrate_stats_enable_dark_reads":{"experiment_id":"70047028338","type":"team","group":"stats_mysql_and_cds_dark_reads","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"domain_signup_links_for_mobile":{"experiment_id":"70804845972","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"update_invite_coachmarks_cta":{"experiment_id":"84280109270","type":"team","group":"invite_cm_got_ita","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"google_contacts_invite_existing":{"experiment_id":"93086200404","type":"team","group":"google_contacts","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"google_contacts_invite_new":{"experiment_id":"93096027173","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"app_suggestions_round_2":{"experiment_id":"131240436582","type":"team","group":"no_suggestions","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_autocomplete_android":{"experiment_id":"133221212662","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"modal_3_fields":{"experiment_id":"140209149492","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"modal_3_fields_existing_teams":{"experiment_id":"142775007765","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"guest_profiles_and_expiration":{"experiment_id":"145034475616","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"exp_thread_at_mention":{"experiment_id":"145686678499","type":"team","group":"autofill","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"exp_threads_everything_pref":{"experiment_id":"152393699186","type":"team","group":"show_banner","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"lib_mentions_match":{"experiment_id":"153633324374","type":"team","group":"trie","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"app_dir_channel_sidebar_cta":{"experiment_id":"159072431845","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"rebuild_mention_map_double_write":{"experiment_id":"164525064375","type":"team","group":"yes","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"tell_joiners_about_joiners":{"experiment_id":"164588156482","type":"team","group":"send_joiners_pushes","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_joiners_about_joiners":{"experiment_id":"169717077127","type":"team","group":"send_joiners_emails","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"rebuild_mention_map_with_job":{"experiment_id":"174477577986","type":"team","group":"job","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"guest_expiration_announcement":{"experiment_id":"175209361220","type":"team","group":"slackbot","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"edit_team_status_presets":{"experiment_id":"176895283504","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"calls_interactive_ss":{"experiment_id":"194479526932","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"pricing_page_v2_2_signedin":{"experiment_id":"199590432480","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"slackbot_help_v2_buttons":{"experiment_id":"200318583393","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"instant_invite_link_ios":{"experiment_id":"201626291921","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"feat_onepage_signup_v2":{"experiment_id":"205971003682","type":"team","group":"single_page","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"feat_limit_meters":{"experiment_id":"212162225108","type":"team","group":"show_limit_meters","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"self_serve_invoicing_checkout":{"experiment_id":"222019723543","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"newxp_onboarding_2_0":{"experiment_id":"235196062839","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"feat_msg_lim_search":{"experiment_id":"246809624001","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_app_onboard_all":{"experiment_id":"252073272226","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_app_onboard_admins":{"experiment_id":"252209807013","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"shared_channels_trial_flow":{"experiment_id":"257137512243","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"newxp_tips_loading_messages":{"experiment_id":"264238720563","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"small_feat_list":{"experiment_id":"264419561860","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_slack_certification":{"experiment_id":"265884802150","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"no_content_avails":{"experiment_id":"272365364819","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_post_upgrade_onboard":{"experiment_id":"273987023266","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"less_android_badges":{"experiment_id":"274765772358","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"replace_billing_link":{"experiment_id":"276628623189","type":"team","group":"has_plans_link","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"apns2":{"experiment_id":"279378859908","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"free_trial_in_prod":{"experiment_id":"281625415173","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"apns2_part_2":{"experiment_id":"283505922689","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"apns_collapse":{"experiment_id":"286616632582","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"install_apps_link":{"experiment_id":"293721709264","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"test_free_trial_in_prod":{"experiment_id":"300479776051","type":"team","group":"banner","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"self_serve_sfdc_leads":{"experiment_id":"300549613556","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"email_sfmc_team_joiner_welcome":{"experiment_id":"305390696324","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"drift_on_plans_page":{"experiment_id":"312235426720","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"calls_callstats":{"experiment_id":"313435842625","type":"team","group":"disabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"approaching_file_limit_banner":{"experiment_id":"331827143204","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"test_azsorkin_2":{"experiment_id":"341989125330","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"calls_p2p_one_on_one_team":{"experiment_id":"342929142581","type":"team","group":"enabled","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"sfmc_trial_onboarding":{"experiment_id":"349854899936","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"email_reached_msg_lim":{"experiment_id":"350501017682","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"checkout_detailed_confirm":{"experiment_id":"356768173168","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"enable_solrjproxy":{"experiment_id":"357738984711","type":"team","group":"solrjproxy","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"approaching_file_limit_banner_v2":{"experiment_id":"359153329456","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"new_dunning_notifs":{"experiment_id":"365025249184","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"logged_in_standard_page_2":{"experiment_id":"367507733044","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"search_files_solrcloud_writes":{"experiment_id":"370455612578","type":"team","group":"solrcloud_writes1","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"sfmc_actions_announcement":{"experiment_id":"373115816290","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"search_cjk_3gram_index":{"experiment_id":"374842853543","type":"team","group":"cjk3","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"calls_no_boomers":{"experiment_id":"375834290021","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"logged_in_standard_page_2_2":{"experiment_id":"383075441360","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"sfmc_onboarding_webinar":{"experiment_id":"384659518992","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"sfmc_connectingtools_webinar":{"experiment_id":"391331103233","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"search_test_exp_2":{"experiment_id":"394969365857","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"search_improvements":{"experiment_id":"396534667719","type":"team","group":"search_improvements","trigger":"finished","log_exposures":false,"exposure_id":216551411106},"relaunch_solrjproxy":{"experiment_id":"397145178224","type":"team","group":"solrjproxy","trigger":"launch_team","log_exposures":false,"exposure_id":216551411106},"sfmc_paidslack_webinar":{"experiment_id":"398407564070","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"stripe_l3_data":{"experiment_id":"402252049446","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106},"stripe_l3_data_v2":{"experiment_id":"404550106855","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":216551411106}};
 			
 	// inline_emoji
 	boot_data.pref_emoji_mode = "";
@@ -1000,8 +914,7 @@ if ('rendererEvalAsync' in window) {
 
 //-->
 </script>
-		
-	
+
 
 
 
@@ -1009,27 +922,26 @@ if ('rendererEvalAsync' in window) {
 
 		
 	<!-- output_js "libs" -->
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/emoji_5.f765b7e9a668291cfd7b.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/jquery-2.1.4.317ebbfe39cd51305f20.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_required_libs.6eb766b49180cac5e1a4.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_required_libs.eb77e435d1ecfa8fa776.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 	<!-- output_js "application" -->
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/modern.vendor.49add0bd8ef35e9c43a7.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/application.ce2d72fd3a8e3d0aff65.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/modern.vendor.b8e81f64aeeeecbeb384.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/application.5a3884131494a1691004.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 	<!-- output_js "page" -->
 
-			<!-- output_js "core" -->
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_required_ts.ce652b1a32bafbbde46e.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.web.e1b6fad54b14769ca887.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+					<!-- output_js "core" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_required_ts.9a3304ee266d420f3dfb.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.web.90a3674f39470d443610.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 <script type="text/javascript" src="https://a.slack-edge.com/bv1-4/signals.224faae8b29600405855.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 	<!-- output_js "core_web" -->
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_web.c6ecac7c38e271e83800.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-core_web.b0a520c1bd3aa44e07e6.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 	<!-- output_js "secondary" -->
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-secondary_a_required.a20d36d85375b0ec0521.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-secondary_b_required.445c594c16ee395e9081.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.web.emoji.269141db2fed71cfc2b6.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-secondary_a_required.4e0b4d2c920874d818c7.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/rollup-secondary_b_required.9fe4af3b98e621a38bbf.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 					
 	
@@ -1037,8 +949,8 @@ if ('rendererEvalAsync' in window) {
 
 	<!-- output_js "regular" -->
 <script type="text/javascript" src="https://a.slack-edge.com/bv1-4/lib_timezones.1a2e97c46d9b0110842d.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.web.invite.dc70d79f44769dbf812a.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
-<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.utility.password.2ecd638781b47b5edbec.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.web.invite.418db1d1ff687ccfd6cb.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-4/TS.utility.password.e9fd1893b1a7c62ed65d.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
 
 
 			<script type="text/javascript">
@@ -1059,7 +971,7 @@ if ('rendererEvalAsync' in window) {
 		TS.web.invite.enterprise_name = "";
 		TS.web.invite.tos_view_link = "";
 
-					TS.web.invite.crumb_key = "s-1526800745-7cef0aa2d8094d8fe194132b4e4f35208fb2454f65e444cb1876f405a2dd559c-\u2603";
+					TS.web.invite.crumb_key = "s-1532722499-b1f71f1cab0236e5d3b7ee998c002560b180c441f0208c0f6cf3a30183a23497-\u2603";
 		
 		
 		
@@ -1067,8 +979,11 @@ if ('rendererEvalAsync' in window) {
 
 							TS.web.invite.shared_invite_email = true;
 		
+		TS.web.invite.is_europe = false ? true : false;
+
 	</script>
-	<script>
+	
+<script>
 
 
 ;(function() {
@@ -1111,15 +1026,13 @@ window.zxcvbn_load_hook = function() {
 
 		var word_map = [
 			
-			['#444', TS.interop.i18n.t('Very weak', 'signup')()],
 			
-			['#c81818', TS.interop.i18n.t('Weak', 'signup')()],
 			
-			['#e28f00', TS.interop.i18n.t('So-so', 'signup')()],
-			
-			['#8aa050', TS.interop.i18n.t('Good', 'signup')()],
-			
-			['#27b30f', TS.interop.i18n.t('Great!', 'signup')()],
+			['#444', $('#zxcvbn_string_very_weak').html() || 'Very weak'],
+			['#c81818', $('#zxcvbn_string_weak').html() || 'Weak'],
+			['#e28f00', $('#zxcvbn_string_so_so').html() || 'So-so'],
+			['#8aa050', $('#zxcvbn_string_good').html() || 'Good'],
+			['#27b30f', $('#zxcvbn_string_great').html() || 'Great'],
 		];
 
 		var pass = $(this).val();
@@ -1243,6 +1156,14 @@ window.zxcvbn_load_hook = function() {
 })();
 </script>
  
+
+<div style="display:none;">
+		<span id="zxcvbn_string_very_weak">Very weak</span>
+	<span id="zxcvbn_string_weak">Weak</span>
+	<span id="zxcvbn_string_so_so">So-so</span>
+	<span id="zxcvbn_string_good">Good</span>
+	<span id="zxcvbn_string_great">Great</span>
+</div>
 <script>
 $(window).load(load_zxcvbn_script);
 window.zxcvbn_url = "https:\/\/a.slack-edge.com\/bv1-4\/zxcvbn.16210a77bea5e8e81b33.min.js";
@@ -1250,7 +1171,7 @@ window.zxcvbn_url = "https:\/\/a.slack-edge.com\/bv1-4\/zxcvbn.16210a77bea5e8e81
 
 <style>.color_9f69e7:not(.nuc) {color:#9F69E7;}.color_4bbe2e:not(.nuc) {color:#4BBE2E;}.color_e7392d:not(.nuc) {color:#E7392D;}.color_3c989f:not(.nuc) {color:#3C989F;}.color_674b1b:not(.nuc) {color:#674B1B;}.color_e96699:not(.nuc) {color:#E96699;}.color_e0a729:not(.nuc) {color:#E0A729;}.color_684b6c:not(.nuc) {color:#684B6C;}.color_5b89d5:not(.nuc) {color:#5B89D5;}.color_2b6836:not(.nuc) {color:#2B6836;}.color_99a949:not(.nuc) {color:#99A949;}.color_df3dc0:not(.nuc) {color:#DF3DC0;}.color_4cc091:not(.nuc) {color:#4CC091;}.color_9b3b45:not(.nuc) {color:#9B3B45;}.color_d58247:not(.nuc) {color:#D58247;}.color_bb86b7:not(.nuc) {color:#BB86B7;}.color_5a4592:not(.nuc) {color:#5A4592;}.color_db3150:not(.nuc) {color:#DB3150;}.color_235e5b:not(.nuc) {color:#235E5B;}.color_9e3997:not(.nuc) {color:#9E3997;}.color_53b759:not(.nuc) {color:#53B759;}.color_c386df:not(.nuc) {color:#C386DF;}.color_385a86:not(.nuc) {color:#385A86;}.color_a63024:not(.nuc) {color:#A63024;}.color_5870dd:not(.nuc) {color:#5870DD;}.color_ea2977:not(.nuc) {color:#EA2977;}.color_50a0cf:not(.nuc) {color:#50A0CF;}.color_d55aef:not(.nuc) {color:#D55AEF;}.color_d1707d:not(.nuc) {color:#D1707D;}.color_43761b:not(.nuc) {color:#43761B;}.color_e06b56:not(.nuc) {color:#E06B56;}.color_8f4a2b:not(.nuc) {color:#8F4A2B;}.color_902d59:not(.nuc) {color:#902D59;}.color_de5f24:not(.nuc) {color:#DE5F24;}.color_a2a5dc:not(.nuc) {color:#A2A5DC;}.color_827327:not(.nuc) {color:#827327;}.color_3c8c69:not(.nuc) {color:#3C8C69;}.color_8d4b84:not(.nuc) {color:#8D4B84;}.color_84b22f:not(.nuc) {color:#84B22F;}.color_4ec0d6:not(.nuc) {color:#4EC0D6;}.color_e23f99:not(.nuc) {color:#E23F99;}.color_e475df:not(.nuc) {color:#E475DF;}.color_619a4f:not(.nuc) {color:#619A4F;}.color_a72f79:not(.nuc) {color:#A72F79;}.color_7d414c:not(.nuc) {color:#7D414C;}.color_aba727:not(.nuc) {color:#ABA727;}.color_965d1b:not(.nuc) {color:#965D1B;}.color_4d5e26:not(.nuc) {color:#4D5E26;}.color_dd8527:not(.nuc) {color:#DD8527;}.color_bd9336:not(.nuc) {color:#BD9336;}.color_e85d72:not(.nuc) {color:#E85D72;}.color_dc7dbb:not(.nuc) {color:#DC7DBB;}.color_bc3663:not(.nuc) {color:#BC3663;}.color_9d8eee:not(.nuc) {color:#9D8EEE;}.color_8469bc:not(.nuc) {color:#8469BC;}.color_73769d:not(.nuc) {color:#73769D;}.color_b14cbc:not(.nuc) {color:#B14CBC;}</style>
 
-<!-- slack-www-hhvm-0a43d2f5bdeffc01f / 2018-05-20 00:19:05 / v0c1aaea53cfb196d84f257690927cbaa1ba3da77 / B:H -->
+<!-- slack-www-hhvm-051727f8127645404 / 2018-07-27 13:14:59 / v21d7531eb47d6f18a48479aae685101cd464433b / B:H -->
 
 
 </body>

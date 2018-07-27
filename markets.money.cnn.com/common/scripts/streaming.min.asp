@@ -979,8 +979,8 @@ wsod_js.streaming = {
 		SITE_ID:				2536
 		,CONNECTION_TIMEOUT:	180
 		,STREAMING_ENABLED: 	true
-		,URL_PREFIX:			"http://markets.money.cnn.com/"
-		,STREAM_URL:			"http://streamer.money.cnn.com" //prod
+		,URL_PREFIX:			"//markets.money.cnn.com/"
+		,STREAM_URL:			"//streamer.money.cnn.com" //prod
 		,TIMEZONE_OFFSET:		0 // leave this at 0
 		,TIMEZONE:				-5 // Input for streamserver that makes output return in ET
 		,FEEDS:{
@@ -1001,9 +1001,9 @@ wsod_js.streaming = {
 		,STREAM_TYPES:			["last",		"change",		"changePct"]  //volume
 		,STREAM_FORMATS:		["ToHundredth",	"PriceColor",	"PercentColor"] //FullVolume
 		,STREAM_INTERVAL:		2000
-		,UP_ARROW:				"http://i.cdn.turner.com/money/.element/img/3.0/data/arrowUp.gif"
-		,DOWN_ARROW:			"http://i.cdn.turner.com/money/.element/img/3.0/data/arrowDown.gif"
-		,NOCHANGE_ARROW:		"http://i.cdn.turner.com/money/.element/img/3.0/data/noChangeArrow.gif"
+		,UP_ARROW:				"//i.cdn.turner.com/money/.element/img/3.0/data/arrowUp.gif"
+		,DOWN_ARROW:			"//i.cdn.turner.com/money/.element/img/3.0/data/arrowDown.gif"
+		,NOCHANGE_ARROW:		"//i.cdn.turner.com/money/.element/img/3.0/data/noChangeArrow.gif"
 		,USE_BG_COLORS:			false
 		,TBILLS:{
 			588119:true,
@@ -1241,7 +1241,7 @@ wsod_js.streaming = {
 		var dbg = jQuery("#streamerDebug").find("tr:first");
 		if (dbg.length){
 			var isDow = (this.config.DOW_ISSUE == message.symbol) ? " DOW" : "";
-			dbg.before('<tr class="streamerDebugRow"><td>' +args.feed+ '</td><td><a target="_blank" href="http://mde.wallst.com/?XrefSymbolSearch=' +message.symbol + '">' +message.symbol + '</a>'+ isDow+ '</td><td>' +message.last+ '</td><td>' +message.changePct+ '</td></tr>');
+			dbg.before('<tr class="streamerDebugRow"><td>' +args.feed+ '</td><td><a target="_blank" href="//mde.wallst.com/?XrefSymbolSearch=' +message.symbol + '">' +message.symbol + '</a>'+ isDow+ '</td><td>' +message.last+ '</td><td>' +message.changePct+ '</td></tr>');
 		}
 	},
 

@@ -32,9 +32,9 @@ var common = new (function() {
 	 */
 	this.cnnGetDomain = function(){
 		if ("QAI" == this._getEnv()){
-			return 	"http://money.qai.cnn.com/";
+			return 	"//money.qai.cnn.com/";
 		} else {
-			return "http://money.cnn.com/";	
+			return "//money.cnn.com/";	
 		}
 	};
 	
@@ -53,11 +53,11 @@ var common = new (function() {
 	};
 	this.wsodGetDomain = function(){
 		if ("DEV" == this._getEnv()){
-			return "http://dev3.dev.local:8080/";
+			return "//dev3.dev.local:8080/";
 		} else if ("QAI" == this._getEnv()){
-			return 	"http://markets.money.qai.cnn.com/";
+			return 	"//markets.money.qai.cnn.com/";
 		} else {
-			return "http://markets.money.cnn.com/";	
+			return "//markets.money.cnn.com/";	
 		}
 	};
 	
@@ -239,7 +239,7 @@ var common = new (function() {
 			common.hideHelp();
 		}
 		
-		var bubbleCloseTitle = '<div><a href="javascript:void(0);" onclick="common.hideHelp();" class="wsod_helpBubbleClose"><img src="http://i.cdn.turner.com/money/.element/img/3.0/data/icon_removeX.png" alt="close" /></a></div>';
+		var bubbleCloseTitle = '<div><a href="javascript:void(0);" onclick="common.hideHelp();" class="wsod_helpBubbleClose"><img src="//i.cdn.turner.com/money/.element/img/3.0/data/icon_removeX.png" alt="close" /></a></div>';
 		var $bubble = jQuery("<div />").attr("id", "wsod_helpBubble");
 	    var $bubbleArr = jQuery("<div />").addClass("wsod_helpBubbleArrow").html("&nbsp;");
 	    var $bubbleBody = jQuery("<div />").addClass("wsod_helpBubbleBody");
