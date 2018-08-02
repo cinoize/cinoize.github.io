@@ -1,4 +1,4 @@
-rm -rf 127.0.0.1
+#rm -rf 127.0.0.1
 echo `date`
 wget -r -p -k -l 1 -H  --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
 echo `date`
