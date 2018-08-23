@@ -1,6 +1,6 @@
 //CNN Money AdFuel Modules
 //
-//Deployed: 2018-08-06 10:19:59
+//Deployed: 2018-08-22 16:20:02
 
 ////////////////////////////////////////////
 //AA IndexExchange Wrapper 1.1
@@ -187,1032 +187,1013 @@
 })();
 
 ////////////////////////////////////////////
-//AB Criteo 1.2
+//AB Criteo 750ms 1.2
 ////////////////////////////////////////////
 
 /*!
   - Revert of filter for super-ad-zone and super_ad_zone ad unit segments
   - Fix for SiteIDs on CNNMoney
   - Moved/Renamed PostQueue Function to PreQueue Event
+  - 750ms Vendor Timeout
+  - 800ms AdFuel Timeout
 */
 
 (function createAdFuelCriteoModule() {
+  window.Criteo = window.Criteo || {};
+  window.Criteo.events = window.Criteo.events || [];
 
-    window.Criteo = window.Criteo || {};
-    window.Criteo.events = window.Criteo.events || [];
+  var MODULE_NAME = 'Criteo';
+  var MODULE_VERSION = 'v1.2.14';
 
-    var MODULE_NAME = 'Criteo';
-    var MODULE_VERSION = 'v1.2.13';
-
-    var metricApi;
-    var objectProto = Object.prototype;
-    var toString = objectProto.toString;
-    var scriptLoaded = false;
-    /**
-     * isMobile.js v0.4.1
-     *
-     * A simple library to detect Apple phones and tablets,
-     * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
-     * and any kind of seven inch device, via user agent sniffing.
-     *
+  var metricApi;
+  var objectProto = Object.prototype;
+  var toString = objectProto.toString;
+  var scriptLoaded = false;
+  /**
      * @author: Kai Mallea (kmallea@gmail.com)
-     *
      * @license: http://creativecommons.org/publicdomain/zero/1.0/
      */
-    var apple_phone = /iPhone/i,
-        apple_ipod = /iPod/i,
-        apple_tablet = /iPad/i,
-        android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
-        android_tablet = /Android/i,
-        amazon_phone = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,
-        amazon_tablet = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,
-        windows_phone = /Windows Phone/i,
-        windows_tablet = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
-        other_blackberry = /BlackBerry/i,
-        other_blackberry_10 = /BB10/i,
-        other_opera = /Opera Mini/i,
-        other_chrome = /(CriOS|Chrome)(?=.*\bMobile\b)/i,
-        other_firefox = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
-        seven_inch = new RegExp(
-            '(?:' + // Non-capturing group
-            'Nexus 7' + // Nexus 7
-            '|' + // OR
-            'BNTV250' + // B&N Nook Tablet 7 inch
-            '|' + // OR
-            'Kindle Fire' + // Kindle Fire
-            '|' + // OR
-            'Silk' + // Kindle Fire, Silk Accelerated
-            '|' + // OR
-            'GT-P1000' + // Galaxy Tab 7 inch
-            ')', // End non-capturing group
-            'i'); // Case-insensitive matching
+  var applePhone = /iPhone/i;
+  var appleIpod = /iPod/i;
+  var appleTablet = /iPad/i;
+  var androidPhone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i; // Match 'Android' AND 'Mobile'
+  var androidTablet = /Android/i;
+  var amazonPhone = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i;
+  var amazonTablet = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i;
+  var windowsPhone = /Windows Phone/i;
+  var windowsTablet = /(?=.*\bWindows\b)(?=.*\bARM\b)/i; // Match 'Windows' AND 'ARM'
+  var otherBlackberry = /BlackBerry/i;
+  var otherBlackberry10 = /BB10/i;
+  var otherOpera = /Opera Mini/i;
+  var otherChrome = /(CriOS|Chrome)(?=.*\bMobile\b)/i;
+  var otherFirefox = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i; // Match 'Firefox' AND 'Mobile'
+  var sevenInch = new RegExp(
+    '(?:' + // Non-capturing group
+                  'Nexus 7' + // Nexus 7
+                  '|' + // OR
+                  'BNTV250' + // B&N Nook Tablet 7 inch
+                  '|' + // OR
+                  'Kindle Fire' + // Kindle Fire
+                  '|' + // OR
+                  'Silk' + // Kindle Fire, Silk Accelerated
+                  '|' + // OR
+                  'GT-P1000' + // Galaxy Tab 7 inch
+                  ')', // End non-capturing group
+    'i'); // Case-insensitive matching
 
-    var match = function (regex, userAgent) {
-        return regex.test(userAgent);
+  var match = function match(regex, userAgent) {
+    return regex.test(userAgent);
+  };
+
+  var IsMobileClass = function IsMobileClass(userAgent) {
+    var ua = userAgent || navigator.userAgent;
+
+    // Facebook mobile app's integrated browser adds a bunch of strings that
+    // match everything. Strip it out if it exists.
+    var tmp = ua.split('[FBAN');
+    if (typeof tmp[1] !== 'undefined') {
+      ua = tmp[0];
+    }
+
+    // Twitter mobile app's integrated browser on iPad adds a "Twitter for
+    // iPhone" string. Same probable happens on other tablet platforms.
+    // This will confuse detection so strip it out if it exists.
+    tmp = ua.split('Twitter');
+    if (typeof tmp[1] !== 'undefined') {
+      ua = tmp[0];
+    }
+
+    this.apple = {
+      phone: match(applePhone, ua),
+      ipod: match(appleIpod, ua),
+      tablet: !match(applePhone, ua) && match(appleTablet, ua),
+      device: match(applePhone, ua) || match(appleIpod, ua) || match(appleTablet, ua)
     };
-
-    var IsMobileClass = function (userAgent) {
-        var ua = userAgent || navigator.userAgent;
-
-        // Facebook mobile app's integrated browser adds a bunch of strings that
-        // match everything. Strip it out if it exists.
-        var tmp = ua.split('[FBAN');
-        if (typeof tmp[1] !== 'undefined') {
-            ua = tmp[0];
-        }
-
-        // Twitter mobile app's integrated browser on iPad adds a "Twitter for
-        // iPhone" string. Same probable happens on other tablet platforms.
-        // This will confuse detection so strip it out if it exists.
-        tmp = ua.split('Twitter');
-        if (typeof tmp[1] !== 'undefined') {
-            ua = tmp[0];
-        }
-
-        this.apple = {
-            phone: match(apple_phone, ua),
-            ipod: match(apple_ipod, ua),
-            tablet: !match(apple_phone, ua) && match(apple_tablet, ua),
-            device: match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)
-        };
-        this.amazon = {
-            phone: match(amazon_phone, ua),
-            tablet: !match(amazon_phone, ua) && match(amazon_tablet, ua),
-            device: match(amazon_phone, ua) || match(amazon_tablet, ua)
-        };
-        this.android = {
-            phone: match(amazon_phone, ua) || match(android_phone, ua),
-            tablet: !match(amazon_phone, ua) && !match(android_phone, ua) && (match(amazon_tablet, ua) || match(android_tablet, ua)),
-            device: match(amazon_phone, ua) || match(amazon_tablet, ua) || match(android_phone, ua) || match(android_tablet, ua)
-        };
-        this.windows = {
-            phone: match(windows_phone, ua),
-            tablet: match(windows_tablet, ua),
-            device: match(windows_phone, ua) || match(windows_tablet, ua)
-        };
-        this.other = {
-            blackberry: match(other_blackberry, ua),
-            blackberry10: match(other_blackberry_10, ua),
-            opera: match(other_opera, ua),
-            firefox: match(other_firefox, ua),
-            chrome: match(other_chrome, ua),
-            device: match(other_blackberry, ua) || match(other_blackberry_10, ua) || match(other_opera, ua) || match(other_firefox, ua) || match(other_chrome, ua)
-        };
-        this.seven_inch = match(seven_inch, ua);
-        this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
-
-        // excludes 'other' devices and ipods, targeting touchscreen phones
-        this.phone = this.apple.phone || this.android.phone || this.windows.phone;
-
-        // excludes 7 inch devices, classifying as phone or tablet is left to the user
-        this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
-
-        if (typeof window === 'undefined') {
-            return this;
-        }
+    this.amazon = {
+      phone: match(amazonPhone, ua),
+      tablet: !match(amazonPhone, ua) && match(amazonTablet, ua),
+      device: match(amazonPhone, ua) || match(amazonTablet, ua)
     };
-
-    var instantiate = function () {
-        var IM = new IsMobileClass();
-        IM.Class = IsMobileClass;
-        return IM;
+    this.android = {
+      phone: match(amazonPhone, ua) || match(androidPhone, ua),
+      tablet: !match(amazonPhone, ua) && !match(androidPhone, ua) && (match(amazonTablet, ua) || match(androidTablet, ua)),
+      device: match(amazonPhone, ua) || match(amazonTablet, ua) || match(androidPhone, ua) || match(androidTablet, ua)
     };
+    this.windows = {
+      phone: match(windowsPhone, ua),
+      tablet: match(windowsTablet, ua),
+      device: match(windowsPhone, ua) || match(windowsTablet, ua)
+    };
+    this.other = {
+      blackberry: match(otherBlackberry, ua),
+      blackberry10: match(otherBlackberry10, ua),
+      opera: match(otherOpera, ua),
+      firefox: match(otherFirefox, ua),
+      chrome: match(otherChrome, ua),
+      device: match(otherBlackberry, ua) || match(otherBlackberry10, ua) || match(otherOpera, ua) || match(otherFirefox, ua) || match(otherChrome, ua)
+    };
+    this.seven_inch = match(sevenInch, ua);
+    this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
 
-    var isMobile = instantiate();
+    // excludes 'other' devices and ipods, targeting touchscreen phones
+    this.phone = this.apple.phone || this.android.phone || this.windows.phone;
 
-    function isFunction(object) {
-        return toString.call(object) === '[object Function]';
+    // excludes 7 inch devices, classifying as phone or tablet is left to the user
+    this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
+
+    if (typeof window === 'undefined') {
+      return this;
     }
+  };
 
-    function isObject(object) {
-        var type = typeof object;
-        return type === 'function' || type === 'object' && !!object;
+  var instantiate = function instantiate() {
+    var IM = new IsMobileClass();
+    IM.Class = IsMobileClass;
+    return IM;
+  };
+
+  var isMobile = instantiate();
+
+  function isFunction(object) {
+    return toString.call(object) === '[object Function]';
+  }
+
+  function isObject(object) {
+    var type = typeof object;
+    return type === 'function' || type === 'object' && !!object;
+  }
+
+  function getURLParam(name) {
+    var nameParam = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+    var regexS = '[\\?&]' + nameParam + '=([^&#]*)';
+    var regex = new RegExp(regexS);
+    if (document.location.search) {
+      var results = regex.exec(document.location.search);
+      if (results) {
+        return results[1];
+      }
+      return '';
     }
+    return '';
+  }
 
-    function getURLParam(name) {
-        name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-        var regexS = '[\\?&]' + name + '=([^&#]*)';
-        var regex = new RegExp(regexS);
-        if (document.location.search) {
-            var results = regex.exec(document.location.search);
-            if (results) {
-                return results[1];
-            } else {
-                return '';
+  var log = function _logFunc() {}; // noop
+  var error = function _errorFunc() {}; // noop
+
+  var MaxPlacements = 8;
+
+  var MULTISIZE_FIRST   = 'F';
+  var MULTISIZE_LARGEST = 'L';
+  var MULTISIZE_ALL     = 'A';
+
+  var MultisizeMethod = MULTISIZE_LARGEST;
+
+  MultisizeMethod = MultisizeMethod.toUpperCase();
+  if (MultisizeMethod !== MULTISIZE_FIRST && MultisizeMethod !== MULTISIZE_LARGEST && MultisizeMethod !== MULTISIZE_ALL) {
+    MultisizeMethod = MULTISIZE_LARGEST;
+  }
+
+  var zonesInSlot = {};
+  var slotMaxArea = {};
+
+  var RequestedCriteoAdUnits = { placements: [] };
+  var CriteoZones = {
+    'CNN': {
+      '160x600': 1047134,
+      '300x250': 1047135,
+      '300x600': 1047136,
+      '728x90': 1047137,
+      'HP_970x90': 1128528,
+      'HP_970x250': 1128527,
+      'ROS_970x90': 1047140,
+      'ROS_970x250': 1047139,
+      '320x50': 1047138
+    },
+    'NBA': {
+      '320x50': 1083217,
+      '728x90': 1083216,
+      '970x90': 1083218,
+      '300x250': 1083215
+    },
+    'NCAA': {
+      '160x600': 1083227,
+      '320x50': 1083230,
+      '300x250': 1083228,
+      '728x90': 1083229,
+      '970x90': 1083231
+    },
+    'PGA': {
+      '728x90': 1083239,
+      '300x250': 1083237,
+      '970x90': 1083242,
+      '300x600': 1083238,
+      '970x250': 1083241,
+      '320x50': 1083240
+    },
+    'ELEAGUE': {
+      '320x50': 1083245,
+      '300x250': 1083243,
+      '728x90': 1083244
+    },
+    'CNNMoney': {
+      '728x90': 1083234,
+      '970x90': 1083236,
+      '970x250': 1083235,
+      '300x250': 1083232,
+      '300x600': 1083233
+    },
+    'AS': {
+      '320x50': 1083225,
+      '728x90': 1083224,
+      '300x250': 1083223,
+      '970x90': 1083226
+    },
+    'TBS/shows/conan': {
+      '300x250': 1083219,
+      '728x90': 1083220,
+      '970x90': 1083222,
+      '970x250': 1083221
+    },
+    'MOBILE': {
+      'CNN': {
+        '300x250': 1090825,
+        '320x50': 1090883
+      },
+      'NBA': {
+        '300x250': 1090830,
+        '320x50': 1090884
+      },
+      'NCAA': {
+        '300x250': 1090831,
+        '320x50': 1090885
+      },
+      'PGA': {
+        '300x250': 1090832,
+        '320x50': 1090886
+      },
+      'ELEAGUE': {
+        '300x250': 1090833,
+        '320x50': 1090887
+      },
+      'CNNMoney': {
+        '300x250': 1090834,
+        '320x50': 1090834
+      },
+      'AS': {
+        '300x250': 1090835,
+        '320x50': 1090888
+      },
+      'TBS/shows/conan': {
+        '300x250': 1090836
+      }
+    }
+  };
+
+  if (isObject(window.console) && isFunction(window.console.log) && getURLParam('debug') === 'true') {
+    log = function logFunc(/* arguments */) {
+      var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
+      args.push.apply(args, arguments);
+      window.console.log.apply(window.console, args);
+    };
+    error = function errorFunc() {
+      var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
+      args.push.apply(args, arguments);
+      window.console.error.apply(window.console, args);
+    };
+  }
+
+  function includeCriteoLibrary() {
+    if (!scriptLoaded) {
+      log('Including Criteo Library...');
+      scriptLoaded = true;
+
+      var a = document;
+      var b = a.createElement('script');
+      var c = a.getElementsByTagName('script')[0];
+      b.type = 'text/javascript';
+      b.async = true;
+      b.src = '//static.criteo.net/js/ld/publishertag.js';
+      c.parentNode.insertBefore(b, c);
+    }
+  }
+
+  function getViewport() {
+    var viewportWidth;
+    var viewportHeight;
+    if (typeof window.innerWidth !== 'undefined') {
+      viewportWidth = window.innerWidth;
+      viewportHeight = window.innerHeight;
+    } else if (typeof document.documentElement !== 'undefined' && typeof document.documentElement.clientWidth !== 'undefined' && document.documentElement.clientWidth !== 0) {
+      viewportWidth = document.documentElement.clientWidth;
+      viewportHeight = document.documentElement.clientHeight;
+    } else {
+      viewportWidth = document.getElementsByTagName('body')[0].clientWidth;
+      viewportHeight = document.getElementsByTagName('body')[0].clientHeight;
+    }
+    return [viewportWidth, viewportHeight];
+  }
+
+  function preQueueCallback(asset, callback) {
+    var CriteoAdUnits = { 'placements': [] };
+    for (var slotIndex = 0; slotIndex < asset.length; slotIndex++) {
+      var slot = asset[slotIndex];
+      if (slot.rktr_slot_id !== 'page') {
+        var responsiveSizes = [];
+        var browser = getViewport();
+        var viewportChecked = false;
+        var isValid = true;
+        for (var viewportId = 0; viewportId < slot.responsive.length; viewportId++) {
+          var viewport = slot.responsive[viewportId];
+          if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
+            viewportChecked = true;
+            responsiveSizes = viewport[1];
+            if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
+              isValid = false;
             }
-        } else {
-            return '';
+          }
         }
-    }
-
-    var log = function () {}; //noop
-    var error = function () {}; //noop
-
-    var MaxPlacements = 8;
-
-    var MULTISIZE_FIRST   = 'F';
-    var MULTISIZE_LARGEST = 'L';
-    var MULTISIZE_ALL     = 'A';
-
-    var MultisizeMethod = MULTISIZE_LARGEST;
-
-    MultisizeMethod = MultisizeMethod.toUpperCase();
-    if (MultisizeMethod !== MULTISIZE_FIRST && MultisizeMethod !== MULTISIZE_LARGEST && MultisizeMethod !== MULTISIZE_ALL) {
-        MultisizeMethod = MULTISIZE_LARGEST;
-    }
-
-    var zones_in_slot = {};
-    var slot_max_area = {};
-
-    var RequestedCriteoAdUnits = { placements: [] };
-    var CriteoZones = {
-        'CNN': {
-            '160x600': 1047134,
-            '300x250': 1047135,
-            '300x600': 1047136,
-            '728x90': 1047137,
-            'HP_970x90': 1128528,
-            'HP_970x250': 1128527,
-            'ROS_970x90': 1047140,
-            'ROS_970x250': 1047139,
-            '320x50': 1047138
-        },
-        'NBA': {
-            '320x50': 1083217,
-            '728x90': 1083216,
-            '970x90': 1083218,
-            '300x250': 1083215
-        },
-        'NCAA': {
-            '160x600': 1083227,
-            '320x50': 1083230,
-            '300x250': 1083228,
-            '728x90': 1083229,
-            '970x90': 1083231
-        },
-        'PGA': {
-            '728x90': 1083239,
-            '300x250': 1083237,
-            '970x90': 1083242,
-            '300x600': 1083238,
-            '970x250': 1083241,
-            '320x50': 1083240
-        },
-        'ELEAGUE': {
-            '320x50': 1083245,
-            '300x250': 1083243,
-            '728x90': 1083244
-        },
-        'CNNMoney': {
-            '728x90': 1083234,
-            '970x90': 1083236,
-            '970x250': 1083235,
-            '300x250': 1083232,
-            '300x600': 1083233
-        },
-        'AS': {
-            '320x50': 1083225,
-            '728x90': 1083224,
-            '300x250': 1083223,
-            '970x90': 1083226
-        },
-        'TBS/shows/conan': {
-            '300x250': 1083219,
-            '728x90': 1083220,
-            '970x90': 1083222,
-            '970x250': 1083221
-        },
-        'MOBILE': {
-            'CNN': {
-                '300x250': 1090825,
-                '320x50': 1090883
-            },
-            'NBA': {
-                '300x250': 1090830,
-                '320x50': 1090884
-            },
-            'NCAA': {
-                '300x250': 1090831,
-                '320x50': 1090885
-            },
-            'PGA': {
-                '300x250': 1090832,
-                '320x50': 1090886
-            },
-            'ELEAGUE': {
-                '300x250': 1090833,
-                '320x50': 1090887
-            },
-            'CNNMoney': {
-                '300x250': 1090834,
-                '320x50': 1090834
-            },
-            'AS': {
-                '300x250': 1090835,
-                '320x50': 1090888
-            },
-            'TBS/shows/conan': {
-                '300x250': 1090836
-            }
+        if (isValid && responsiveSizes.length > 0) {
+          log('Setting Sizes To Responsive Sizes: ', responsiveSizes);
+          slot.sizes = responsiveSizes;
+        } else if (!isValid) {
+          slot.sizes = [];
         }
-    }
-
-    if (isObject(window.console) && isFunction(window.console.log) && getURLParam('debug') === 'true') {
-        log = function (/* arguments */) {
-            var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
-            args.push.apply(args, arguments);
-            window.console.log.apply(window.console, args);
-        };
-        error = function () {
-            var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
-            args.push.apply(args, arguments);
-            window.console.error.apply(window.console, args);
-        };
-    }
-
-    function includeCriteoLibrary() {
-        if (!scriptLoaded) {
-            log('Including Criteo Library...');
-            scriptLoaded = true;
-
-            var a = document,
-                b = a.createElement('script'),
-                c = a.getElementsByTagName('script')[0]
-            b.type = 'text/javascript';
-            b.async = true;
-            b.src = '//static.criteo.net/js/ld/publishertag.js';
-            c.parentNode.insertBefore(b, c);
-        }
-    }
-
-    function getViewport() {
-        var viewportWidth;
-        var viewportHeight;
-        if (typeof window.innerWidth !== 'undefined') {
-            viewportWidth = window.innerWidth,
-            viewportHeight = window.innerHeight;
-        } else if (typeof document.documentElement !== 'undefined' && typeof document.documentElement.clientWidth !== 'undefined' && document.documentElement.clientWidth !== 0) {
-            viewportWidth = document.documentElement.clientWidth,
-            viewportHeight = document.documentElement.clientHeight;
-        } else {
-            viewportWidth = document.getElementsByTagName('body')[0].clientWidth,
-            viewportHeight = document.getElementsByTagName('body')[0].clientHeight;
-        }
-        return [viewportWidth, viewportHeight];
-    }
-
-    function preQueueCallback(asset, callback) {
-        var CriteoAdUnits = { 'placements': [] };
-        for (var slotIndex = 0; slotIndex < asset.length; slotIndex++) {
-            var slot = asset[slotIndex];
-            if (slot.rktr_slot_id !== 'page') {
-                var responsiveSizes = [];
-                var browser = getViewport();
-                var viewportChecked = false;
-                var isValid = true;
-                for (var viewportId = 0; viewportId < slot.responsive.length; viewportId++) {
-                    var viewport = slot.responsive[viewportId];
-                    if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
-                        viewportChecked = true;
-                        responsiveSizes = viewport[1];
-                        if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
-                            isValid = false;
-                        }
-                    }
+        var slotSizes = slot.sizes;
+        var slotid = slot.rktr_slot_id;
+        var adUnit = slot.rktr_ad_id;
+        zonesInSlot[slotid] = [];
+        slotMaxArea[slotid] = 0;
+        var siteAdUnit = adUnit.split('/')[0];
+        if (isValid) {
+          if (CriteoZones.hasOwnProperty(siteAdUnit)) {
+            for (var index = 0; index < slotSizes.length; index++) {
+              var sizeArray = slotSizes[index];
+              var width = sizeArray[0] || null;
+              var height = sizeArray[1] || null;
+              var area = width !== null ? width * height : 0;
+              var sizeName = width !== null ? width + 'x' + height : sizeArray.join('x');
+              var zoneid;
+              if (CriteoZones[siteAdUnit][sizeName]) {
+                zoneid = CriteoZones[siteAdUnit][sizeName];
+              } else {
+                zoneid = CriteoZones[siteAdUnit]['ROS_' + sizeName] ? CriteoZones[siteAdUnit]['ROS_' + sizeName] : null;
+              }
+              if (siteAdUnit === 'CNN' && adUnit.indexOf('homepage') > 0) zoneid = CriteoZones[siteAdUnit]['HP_' + sizeName] || zoneid;
+              if (['300x250', '320x50'].indexOf(sizeName) >= 0 && isMobile.any) {
+                log('Using Mobile zoneId for size: ', sizeName);
+                zoneid = CriteoZones.MOBILE[siteAdUnit][sizeName] || null;
+              }
+              if (zoneid !== null) {
+                slotMaxArea[slotid] = area > slotMaxArea[slotid] ? area : slotMaxArea[slotid];
+                var data = {'slotid': slotid, 'zoneid': zoneid, 'width': width, 'height': height, 'area': area};
+                if (zonesInSlot[slotid].indexOf(data) === -1) {
+                  log('Pushing data...', data);
+                  zonesInSlot[slotid].push(data);
+                } else {
+                  log('Skipping... Already exists...', data);
                 }
-                if (isValid && responsiveSizes.length > 0) {
-                    log('Setting Sizes To Responsive Sizes: ', responsiveSizes);
-                    slot.sizes = responsiveSizes;
-                } else if (!isValid) {
-                    slot.sizes = [];
-                }
-                var slot_sizes = slot.sizes;
-                var slotid = slot.rktr_slot_id;
-                var adUnit = slot.rktr_ad_id;
-                zones_in_slot[slotid] = [];
-                slot_max_area[slotid] = 0;
-                var siteAdUnit = adUnit.split('/')[0];
-                if (isValid) {
-                    if (CriteoZones.hasOwnProperty(siteAdUnit)) {
-                        for (var index = 0; index < slot_sizes.length; index++) {
-                            var sizeArray = slot_sizes[index];
-                            var width = sizeArray[0] || null;
-                            var height = sizeArray[1] || null;
-                            var area = width !== null ? width * height : 0;
-                            var size_name = width !== null ? width + 'x' + height : sizeArray.join('x');
-                            var zoneid = CriteoZones[siteAdUnit][size_name] ? CriteoZones[siteAdUnit][size_name] : (CriteoZones[siteAdUnit]['ROS_' + size_name] ? CriteoZones[siteAdUnit]['ROS_' + size_name] : null);
-                            if (siteAdUnit === 'CNN' && adUnit.indexOf('homepage') > 0) zoneid = CriteoZones[siteAdUnit]['HP_' + size_name] || zoneid;
-                            if (['300x250', '320x50'].indexOf(size_name) >= 0 && isMobile.any) {
-                                log('Using Mobile zoneId for size: ', size_name);
-                                zoneid = CriteoZones['MOBILE'][siteAdUnit][size_name] || null;
-                            }
-                            if (zoneid !== null) {
-                                slot_max_area[slotid] = area > slot_max_area[slotid] ? area : slot_max_area[slotid];
-                                var data = {'slotid' : slotid, 'zoneid' : zoneid, 'width' : width, 'height' : height, 'area' : area};
-                                if (zones_in_slot[slotid].indexOf(data) === -1) {
-                                    log('Pushing data...', data);
-                                    zones_in_slot[slotid].push(data);
-                                } else {
-                                    log('Skipping... Already exists...', data);
-                                }
-                            }
-                        }
-                    }
-                }
-
+              }
             }
+          }
         }
-        var count = 0;
-        for (slotid in zones_in_slot) {
-            if (zones_in_slot.hasOwnProperty(slotid)) {
-                var zones = zones_in_slot[slotid];
-                for (var i = 0; i < zones.length; i++) {
-                    var zone = zones[i];
-                    if (count >= MaxPlacements) break;
-                    if (MultisizeMethod === MULTISIZE_LARGEST && zone.area !== slot_max_area[zone.slotid]) continue;
-                    var placement = {'slotid' : slotid, 'zoneid' : zone.zoneid }
-                    var exists = false;
-                    for (var placementIndex = 0; placementIndex < CriteoAdUnits.placements.length; placementIndex++) {
-                        if (CriteoAdUnits.placements[placementIndex].slotid === placement.slotid && CriteoAdUnits.placements[placementIndex].zoneid === placement.zoneid)
-                            exists = true;
-                    }
-                    for (var requestedPlacementIndex = 0; requestedPlacementIndex < RequestedCriteoAdUnits.placements.length; requestedPlacementIndex++) {
-                        if (RequestedCriteoAdUnits.placements[requestedPlacementIndex].slotid === placement.slotid && RequestedCriteoAdUnits.placements[requestedPlacementIndex].zoneid === placement.zoneid)
-                            exists = true;
-                    }
-                    if (!exists) {
-                        log('Placement does not yet exist.  Adding to collection.', placement);
-                        CriteoAdUnits.placements.push(placement);
-                    }
-                    count++;
-                    if (MultisizeMethod === MULTISIZE_FIRST) break;
-                }
-            }
+      }
+    }
+    var count = 0;
+    for (slotid in zonesInSlot) {
+      if (zonesInSlot.hasOwnProperty(slotid)) {
+        var zones = zonesInSlot[slotid];
+        for (var i = 0; i < zones.length; i++) {
+          var zone = zones[i];
+          if (count >= MaxPlacements) break;
+          if (MultisizeMethod === MULTISIZE_LARGEST && zone.area !== slotMaxArea[zone.slotid]) continue;
+          var placement = {'slotid': slotid, 'zoneid': zone.zoneid };
+          var exists = false;
+          for (var placementIndex = 0; placementIndex < CriteoAdUnits.placements.length; placementIndex++) {
+            if (CriteoAdUnits.placements[placementIndex].slotid === placement.slotid && CriteoAdUnits.placements[placementIndex].zoneid === placement.zoneid) {exists = true;}
+          }
+          for (var requestedPlacementIndex = 0; requestedPlacementIndex < RequestedCriteoAdUnits.placements.length; requestedPlacementIndex++) {
+            if (RequestedCriteoAdUnits.placements[requestedPlacementIndex].slotid === placement.slotid && RequestedCriteoAdUnits.placements[requestedPlacementIndex].zoneid === placement.zoneid) {exists = true;}
+          }
+          if (!exists) {
+            log('Placement does not yet exist.  Adding to collection.', placement);
+            CriteoAdUnits.placements.push(placement);
+          }
+          count++;
+          if (MultisizeMethod === MULTISIZE_FIRST) break;
         }
-
-        function eventFunction() {
-            log('Setting LineItem Ranges...');
-            window.Criteo.SetLineItemRanges('0..5:0.01;5..30:0.05;30..100:1.00');
-            log('Previously Requested: ', RequestedCriteoAdUnits)
-            log('Requesting Bids...', CriteoAdUnits);
-            metricApi.addMetric({type: 'vendor', id: 'Criteo', data:  zones_in_slot});
-            RequestedCriteoAdUnits.placements = RequestedCriteoAdUnits.placements.concat(CriteoAdUnits.placements);
-            window.Criteo.RequestBids(CriteoAdUnits, callback, 1100);
-        }
-        if (CriteoAdUnits.placements.length > 0) window.googletag.cmd.push(function () {window.Criteo.events.push(eventFunction);});
-        else callback();
+      }
     }
 
-    function preDispatchCallback(asset, callback) {
-        log('Setting DFP KeyValue Targeting...');
-        try { window.googletag.cmd.push(function () { window.Criteo.SetDFPKeyValueTargeting(); }) } catch(e) { error(e) }
-        callback();
+    function eventFunction() {
+      log('Setting LineItem Ranges...');
+      // eslint-disable-next-line
+      window.Criteo.SetLineItemRanges('0..5:0.01;5..30:0.05;30..100:1.00');
+      log('Previously Requested: ', RequestedCriteoAdUnits);
+      log('Requesting Bids...', CriteoAdUnits);
+      metricApi.addMetric({type: 'vendor', id: 'Criteo', data: zonesInSlot});
+      RequestedCriteoAdUnits.placements = RequestedCriteoAdUnits.placements.concat(CriteoAdUnits.placements);
+      // eslint-disable-next-line
+      window.Criteo.RequestBids(CriteoAdUnits, callback, 750);
     }
+    if (CriteoAdUnits.placements.length > 0) window.googletag.cmd.push(function pushEventFunc() {window.Criteo.events.push(eventFunction);});
+    else callback();
+  }
 
-    function preRefreshCallback(asset, callback) {
-        var internalCallback = preDispatchCallback.bind(null, asset, callback);
-        function eventFunc() {
-            log('Setting LineItem Ranges...');
-            window.Criteo.SetLineItemRanges('0..3:0.01;3..8:0.05;8..20:0.50;20..30:1.00');
-            log('Requesting Bids...', RequestedCriteoAdUnits);
-            metricApi.addMetric({type: 'vendor', id: 'Criteo', data: zones_in_slot });
-            window.Criteo.RequestBids(RequestedCriteoAdUnits, internalCallback, 1200);
-        }
-        window.Criteo.events.push(eventFunc);
+  function preDispatchCallback(asset, callback) {
+    log('Setting DFP KeyValue Targeting...');
+    // eslint-disable-next-line
+    try { window.googletag.cmd.push(function pushPreDispatchFunc() { window.Criteo.SetDFPKeyValueTargeting(); }); } catch (e) { error(e); }
+    callback();
+  }
+
+  function preRefreshCallback(asset, callback) {
+    var internalCallback = preDispatchCallback.bind(null, asset, callback);
+    function eventFunc() {
+      log('Setting LineItem Ranges...');
+      // eslint-disable-next-line
+      window.Criteo.SetLineItemRanges('0..3:0.01;3..8:0.05;8..20:0.50;20..30:1.00');
+      log('Requesting Bids...', RequestedCriteoAdUnits);
+      metricApi.addMetric({type: 'vendor', id: 'Criteo', data: zonesInSlot });
+      // eslint-disable-next-line
+      window.Criteo.RequestBids(RequestedCriteoAdUnits, internalCallback, 750);
     }
+    window.Criteo.events.push(eventFunc);
+  }
 
-    function registerModuleWithAdFuel() {
-        log('Registering Module...');
-        metricApi = window.AdFuel.registerModule('criteo', {
-            //when dispatching or refreshing slots, set criteo targeting
-            preQueueCallback: preQueueCallback,
-            preDispatchCallback: preDispatchCallback,
-            preRefreshCallback: preRefreshCallback
-        }) || { addMetric: function () {} };
+  function registerModuleWithAdFuel() {
+    log('Registering Module...');
+    window.AdFuel.setOptions({
+      queueCallbackTimeoutInMilliseconds: 800,
+      dispatchCallbackTimeoutInMilliseconds: 800,
+      refreshCallbackTimeoutInMilliseconds: 800
+    });
+    metricApi = window.AdFuel.registerModule('criteo', {
+      preQueueCallback: preQueueCallback,
+      preDispatchCallback: preDispatchCallback,
+      preRefreshCallback: preRefreshCallback
+    }) || { addMetric: function addMetric() {} };
+  }
+
+  function init() {
+    log('Initializing Module...');
+    includeCriteoLibrary();
+    if (window.AdFuel && window.AdFuel.cmd) {
+      window.AdFuel.cmd.push(registerModuleWithAdFuel);
+    } else if (window.AdFuel) {
+      // AdFuel loaded first
+      registerModuleWithAdFuel();
+    } else {
+      // wait for AdFuel to load
+      if (document.addEventListener) {
+        document.addEventListener('AdFuelCreated', registerModuleWithAdFuel, true);
+      }
+      if (document.attachEvent) {
+        document.attachEvent('onAdFuelCreated', registerModuleWithAdFuel);
+      }
     }
+  }
 
-    function init() {
-        log('Initializing Module...');
-        includeCriteoLibrary();
-        if (window.AdFuel && window.AdFuel.cmd) {
-            window.AdFuel.cmd.push(registerModuleWithAdFuel);
-        } else if (window.AdFuel) {
-            //AdFuel loaded first
-            registerModuleWithAdFuel();
-        } else {
-            //wait for AdFuel to load
-            if (document.addEventListener) {
-                document.addEventListener('AdFuelCreated', registerModuleWithAdFuel, true);
-            } else if (document.attachEvent) {
-                document.attachEvent('onAdFuelCreated', registerModuleWithAdFuel);
-            }
-        }
-    }
-
-    init();
-
+  init();
 })();
 
 
 
 
 ////////////////////////////////////////////
-//AC A9 1.3
+//AC A9 750ms 1.3
 ////////////////////////////////////////////
 
-/* Amazon A9 AdFuel Module - Version 1.3.17
+/* Amazon A9 AdFuel Module - Version 1.3.16
     - Switched wrappedFunction and timeoutFunction definition order
     - Added additional time logging
-    - Separate targeting and refreshed targeting promises
-    - Fix for logger.timeEnd errors
+    - 750ms Vendor Timeout
+    - 800ms AdFuel Timeout
  */
 
 (function createA9AdFuelModule() {
-
-    'use strict';
-    // Promise Polyfill
-    //eslint-disable-next-line
+  'use strict';
+  // Promise Polyfill
+  // eslint-disable-next-line
     !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n():"function"==typeof define&&define.amd?define(n):n()}(0,function(){"use strict";function e(){}function n(e){if(!(this instanceof n))throw new TypeError("Promises must be constructed via new");if("function"!=typeof e)throw new TypeError("not a function");this._state=0,this._handled=!1,this._value=undefined,this._deferreds=[],f(e,this)}function t(e,t){for(;3===e._state;)e=e._value;0!==e._state?(e._handled=!0,n._immediateFn(function(){var n=1===e._state?t.onFulfilled:t.onRejected;if(null!==n){var i;try{i=n(e._value)}catch(f){return void r(t.promise,f)}o(t.promise,i)}else(1===e._state?o:r)(t.promise,e._value)})):e._deferreds.push(t)}function o(e,t){try{if(t===e)throw new TypeError("A promise cannot be resolved with itself.");if(t&&("object"==typeof t||"function"==typeof t)){var o=t.then;if(t instanceof n)return e._state=3,e._value=t,void i(e);if("function"==typeof o)return void f(function(e,n){return function(){e.apply(n,arguments)}}(o,t),e)}e._state=1,e._value=t,i(e)}catch(u){r(e,u)}}function r(e,n){e._state=2,e._value=n,i(e)}function i(e){2===e._state&&0===e._deferreds.length&&n._immediateFn(function(){e._handled||n._unhandledRejectionFn(e._value)});for(var o=0,r=e._deferreds.length;r>o;o++)t(e,e._deferreds[o]);e._deferreds=null}function f(e,n){var t=!1;try{e(function(e){t||(t=!0,o(n,e))},function(e){t||(t=!0,r(n,e))})}catch(i){if(t)return;t=!0,r(n,i)}}var u=setTimeout;n.prototype["catch"]=function(e){return this.then(null,e)},n.prototype.then=function(n,o){var r=new this.constructor(e);return t(this,new function(e,n,t){this.onFulfilled="function"==typeof e?e:null,this.onRejected="function"==typeof n?n:null,this.promise=t}(n,o,r)),r},n.prototype["finally"]=function(e){var n=this.constructor;return this.then(function(t){return n.resolve(e()).then(function(){return t})},function(t){return n.resolve(e()).then(function(){return n.reject(t)})})},n.all=function(e){return new n(function(n,t){function o(e,f){try{if(f&&("object"==typeof f||"function"==typeof f)){var u=f.then;if("function"==typeof u)return void u.call(f,function(n){o(e,n)},t)}r[e]=f,0==--i&&n(r)}catch(c){t(c)}}if(!e||"undefined"==typeof e.length)throw new TypeError("Promise.all accepts an array");var r=Array.prototype.slice.call(e);if(0===r.length)return n([]);for(var i=r.length,f=0;r.length>f;f++)o(f,r[f])})},n.resolve=function(e){return e&&"object"==typeof e&&e.constructor===n?e:new n(function(n){n(e)})},n.reject=function(e){return new n(function(n,t){t(e)})},n.race=function(e){return new n(function(n,t){for(var o=0,r=e.length;r>o;o++)e[o].then(n,t)})},n._immediateFn="function"==typeof setImmediate&&function(e){setImmediate(e)}||function(e){u(e,0)},n._unhandledRejectionFn=function(e){void 0!==console&&console&&console.warn("Possible Unhandled Promise Rejection:",e)};var c=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if(void 0!==c)return c;throw Error("unable to locate global object")}();c.Promise||(c.Promise=n)});
-    // Object.assign Polyfill
-    //eslint-disable-next-line
+  // Object.assign Polyfill
+  // eslint-disable-next-line
     "function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(e,t){"use strict";if(null==e)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(e),r=1;r<arguments.length;r++){var o=arguments[r];if(null!=o)for(var c in o)Object.prototype.hasOwnProperty.call(o,c)&&(n[c]=o[c])}return n},writable:!0,configurable:!0});
 
-    var objectProto = Object.prototype;
-    var toString = objectProto.toString;
-    var noop = function () {};
+  var objectProto = Object.prototype;
+  var toString = objectProto.toString;
+  var noop = function noop() {};
 
-    var MODULE_NAME = 'Amazon A9';
-    var MODULE_VERSION = 'v1.3.17';
+  var MODULE_NAME = 'Amazon A9';
+  var MODULE_VERSION = 'v1.3.16';
 
-    var metricApi = {
-        metrics: {},
-        addMetric: noop,
-        getMetricById: noop,
-        getMetricsByType: noop,
-        getMetricTypes: noop
+  var metricApi = {
+    metrics: {},
+    addMetric: noop,
+    getMetricById: noop,
+    getMetricsByType: noop,
+    getMetricTypes: noop
+  };
+
+  var blocked = false;
+
+  function isFunction(object) {
+    return toString.call(object) === '[object Function]';
+  }
+
+  function isObject(object) {
+    var type = typeof object;
+    return type === 'function' || type === 'object' && !!object;
+  }
+
+  function getURLParam(name) {
+    var nameParam = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+    var regexS = '[\\?&]' + nameParam + '=([^&#]*)';
+    var regex = new RegExp(regexS);
+    if (document.location.search) {
+      var results = regex.exec(document.location.search);
+      if (results) {
+        return results[1];
+      }
+      return '';
+    }
+    return '';
+  }
+
+  function readCookie(name) {
+    var lsSupport = false;
+    var data = null;
+    // Check for native support
+    if (localStorage) {
+      lsSupport = true;
+    }
+
+    // No value supplied, return value
+    if (typeof value === 'undefined') {
+      // Get value
+      if (lsSupport) { // Native support
+        data = localStorage.getItem(name);
+      }
+      if (!lsSupport || data === null) { // Use cookie
+        data = readTheCookie(name);
+      }
+
+      // Try to parse JSON...
+      try {
+        data = JSON.parse(data);
+      } catch (e) {
+        // Do Nothing
+      }
+    }
+    return data;
+
+    function readTheCookie(key) {
+      if (!document.cookie) {
+        // there is no cookie, so go no further
+        return null;
+      }  // there is a cookie
+      var ca = document.cookie.split(';');
+      var nameEQ = key + '=';
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') {
+          // delete spaces
+          c = c.substring(1, c.length);
+        }
+        if (c.indexOf(nameEQ) === 0) {
+          return c.substring(nameEQ.length, c.length);
+        }
+      }
+      return null;
+    }
+  }
+
+  function getViewport() {
+    var viewportWidth;
+    var viewportHeight;
+    if (typeof window.innerWidth !== 'undefined') {
+      viewportWidth = window.innerWidth;
+      viewportHeight = window.innerHeight;
+    } else if (typeof document.documentElement !== 'undefined' && typeof document.documentElement.clientWidth !== 'undefined' && document.documentElement.clientWidth !== 0) {
+      viewportWidth = document.documentElement.clientWidth;
+      viewportHeight = document.documentElement.clientHeight;
+    } else {
+      viewportWidth = document.getElementsByTagName('body')[0].clientWidth;
+      viewportHeight = document.getElementsByTagName('body')[0].clientHeight;
+    }
+    return [viewportWidth, viewportHeight];
+  }
+
+  var log = noop;
+  var logTime = noop;
+  var logTimeEnd = noop;
+
+  if (isObject(window.console) && isFunction(window.console.log) && getURLParam('debug') === 'true') {
+    log = function _log(/* arguments */) {
+      var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
+      args.push.apply(args, arguments);
+      window.console.log.apply(window.console, args);
     };
+    logTime = function _logTime(/* arguments */) {
+      var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ' TIMER] '];
+      args.push.apply(args, arguments);
+      var timeKey = args.join('');
+      window.console.time(timeKey);
+    };
+    logTimeEnd = function _logTimeEnd(/* arguments */) {
+      var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ' TIMER] '];
+      args.push.apply(args, arguments);
+      var timeKey = args.join('');
+      window.console.timeEnd(timeKey);
+    };
+  }
 
-    var blocked = false;
+  var logger = { log: log, logTime: logTime, logTimeEnd: logTimeEnd };
 
-    function isFunction(object) {
-        return toString.call(object) === '[object Function]';
+  var countryCode = (readCookie('CG') ? readCookie('CG').substr(0, 2) : '') || readCookie('countryCode');
+  var selectedEdition = readCookie('SelectedEdition') ? readCookie('SelectedEdition') : 'www';
+  var parser = document.createElement('a');
+  parser.href = document.location.href;
+
+  var hostname = parser.hostname;
+  var pathname = parser.pathname;
+
+  var a9bids;                         // display a9 bid cache
+  var bidSlots = [];                  // slots sent to a9 for auction
+  var defaultTimeout = 500;           // 500ms default timeout (for video)
+  var defaultRefreshTimeout = 1000;   // 1000ms default refresh timeout (for video)
+  var timerEnded = false;
+
+  function getTargetingData(timeout) {
+    logger.logTime('getTargetingData');
+    var timeoutVal = timeout || defaultTimeout;
+    var timeoutOverride = getURLParam('mdt');
+    if (timeoutOverride) {
+      timeoutVal = timeoutOverride;
+      logger.log('Overriding Max Duration Time: ', timeoutVal);
     }
-
-    function isObject(object) {
-        var type = typeof object;
-        return type === 'function' || type === 'object' && !!object;
-    }
-
-    function getURLParam(name) {
-        name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-        var regexS = '[\\?&]' + name + '=([^&#]*)';
-        var regex = new RegExp(regexS);
-        if (document.location.search) {
-            var results = regex.exec(document.location.search);
-            if (results) {
-                return results[1];
-            } else {
-                return '';
-            }
-        } else {
-            return '';
-        }
-    }
-
-    function readCookie(name) {
-
-        var lsSupport = false;
-        var data = null;
-        // Check for native support
-        if (localStorage) {
-            lsSupport = true;
-        }
-
-        // No value supplied, return value
-        if (typeof value === 'undefined') {
-            // Get value
-            if (lsSupport) { // Native support
-                data = localStorage.getItem(name);
-            }
-            if (!lsSupport || data === null) { // Use cookie
-                data = readTheCookie(name);
-            }
-
-            // Try to parse JSON...
-            try {
-                data = JSON.parse(data);
-            } catch(e) {
-            }
-
-            return data;
-
-        }
-
-        function readTheCookie(key) {
-            if (!document.cookie) {
-                // there is no cookie, so go no further
-                return null;
-            } else { // there is a cookie
-                var ca = document.cookie.split(';');
-                var nameEQ = key + '=';
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) === ' ') {
-                        //delete spaces
-                        c = c.substring(1, c.length);
-                    }
-                    if (c.indexOf(nameEQ) === 0) {
-                        return c.substring(nameEQ.length, c.length);
-                    }
-                }
-                return null;
-            }
-        }
-
-    }
-
-    function getViewport() {
-        var viewportWidth;
-        var viewportHeight;
-        if (typeof window.innerWidth !== 'undefined') {
-            viewportWidth = window.innerWidth,
-            viewportHeight = window.innerHeight;
-        } else if (typeof document.documentElement !== 'undefined' && typeof document.documentElement.clientWidth !== 'undefined' && document.documentElement.clientWidth !== 0) {
-            viewportWidth = document.documentElement.clientWidth,
-            viewportHeight = document.documentElement.clientHeight;
-        } else {
-            viewportWidth = document.getElementsByTagName('body')[0].clientWidth,
-            viewportHeight = document.getElementsByTagName('body')[0].clientHeight;
-        }
-        return [viewportWidth, viewportHeight];
-    }
-
-    var log = noop;
-    var logTime = noop;
-    var logTimeEnd = noop;
-
-    if (isObject(window.console) && isFunction(window.console.log) && getURLParam('debug') === 'true') {
-        log = function (/* arguments */) {
-            var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ']'];
-            args.push.apply(args, arguments);
-            window.console.log.apply(window.console, args);
-        };
-        logTime = function (/* arguments */) {
-            var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ' TIMER] '];
-            args.push.apply(args, arguments);
-            var timeKey = args.join('');
-            window.console.time(timeKey);
-        };
-        logTimeEnd = function (/* arguments */) {
-            var args = ['[AdFuelModule - ' + MODULE_NAME + ' ' + MODULE_VERSION + ' TIMER] '];
-            args.push.apply(args, arguments);
-            var timeKey = args.join('');
-            window.console.timeEnd(timeKey);
-        };
-    }
-
-    var logger = { log: log, logTime: logTime, logTimeEnd: logTimeEnd };
-
-    var countryCode = (readCookie('CG') ? readCookie('CG').substr(0, 2) : '') || readCookie('countryCode');
-    var selectedEdition = readCookie('SelectedEdition') ? readCookie('SelectedEdition') : 'www';
-    var parser = document.createElement('a');
-    parser.href = document.location.href;
-
-    var hostname = parser.hostname;
-    var pathname = parser.pathname;
-
-    var a9bids;                         // display a9 bid cache
-    var bidSlots = [];                  // slots sent to a9 for auction
-    var defaultTimeout = 500;           // 500ms default timeout
-    var defaultRefreshTimeout = 1000;   // 1000ms default refresh timeout
-    var timerEnded = false;
-
-    function getTargetingData(timeout) {
-        logger.logTime('getTargetingData');
-        timeout = timeout || defaultTimeout;
-        var timeoutOverride = getURLParam('mdt');
-        if (timeoutOverride) {
-            timeout = timeoutOverride;
-            logger.log('Overriding Max Duration Time: ', timeout);
-        }
-        var wrappedFunction = function wrappedFunction(resolve) {
-            logger.log('Getting A9 Video targeting...');
-            var innerFunction = function(bids) {
-                clearTimeout(window.targetingTimeoutId);
-                var targetBid = {};
-                bids.forEach(function(bid){
-                    if (bid.slotID.indexOf('aps-') >= 0) {
-                        targetBid = bid;
-                    }
-                })
-                var result = {
-                    'amznbid': targetBid.amznbid || '',
-                    'amzniid': targetBid.amzniid || '',
-                };
-                logger.log('Returning A9 Targeting: ', result);
-                if (!timerEnded){
-                    logger.logTimeEnd('getTargetingData');
-                    timerEnded = true;
-                }
-                return result;
-            }
-            window.A9VideoAPI._targetingPromise.then(function(bids) { resolve(innerFunction(bids)) });
-        };
-        var timeoutFunction = function timeoutFunction(resolve, reject) {
-            window.targetingTimeoutId = setTimeout(function() {
-                logger.log('getTargetingData timed out after ' + timeout + 'ms.');
-                clearTimeout(window.targetingTimeoutId);
-                if (!timerEnded){
-                    logger.logTimeEnd('getTargetingData');
-                    timerEnded = true;
-                }
-                reject('getTargetingData timed out after ' + timeout + 'ms.');
-            }, timeout);
-        };
-        var wrappedCallback = new Promise(wrappedFunction);
-        var timeoutCallback = new Promise(timeoutFunction);
-
-        // Returns a race between the timeout and the passed in promise
-        return Promise.race([wrappedCallback, timeoutCallback]);
-    }
-
-    function getRefreshedTargetingData(slotName, timeout) {
-        logger.logTime('getRefreshedTargetingData');
-        timeout = timeout || defaultRefreshTimeout;
-        slotName = slotName || 'aps-midroll';
-        var timeoutOverride = getURLParam('mdt');
-        var slotNameOverride = getURLParam('slotname');
-        if (timeoutOverride) {
-            timeout = timeoutOverride;
-            logger.log('Overriding Max Duration Time: ', timeout);
-        }
-        if (slotNameOverride) {
-            slotName = slotNameOverride;
-            logger.log('Overriding Slot Name: ', slotName);
-        }
-        var wrappedFunction = function wrappedFunction(resolve) {
-            window.A9VideoAPI._refreshedTargetingPromise = new Promise(function(resolve) {
-                window.apstag.fetchBids({
-                    slots: [{
-                        slotID: slotName,
-                        mediaType: 'video',
-                    }],
-                }, resolve);
-            });
-            var innerFunction = function innerFunction(bids) {
-                clearTimeout(window.targetingTimeoutId);
-                var targetBid = {};
-                bids.forEach(function(bid) {
-                    if (bid.slotID === slotName) {
-                        targetBid = bid;
-                    }
-                })
-                var result = {
-                    'amznbid': targetBid.amznbid || '',
-                    'amzniid': targetBid.amzniid || '',
-                };
-                log('Returning A9 Targeting: ', result);
-                if (!timerEnded){
-                    logger.logTimeEnd('getRefreshedTargetingData');
-                    timerEnded = true;
-                }
-                resolve(result);
-            }
-            logger.log('Refreshing A9 Video targeting...');
-            window.A9VideoAPI._refreshedTargetingPromise.then(innerFunction);
-        };
-        var timeoutFunction = function timeoutFunction(resolve, reject) {
-            window.targetingTimeoutId = setTimeout(function() {
-                logger.log('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
-                clearTimeout(window.targetingTimeoutId);
-                if (!timerEnded){
-                    logger.logTimeEnd('getRefreshedTargetingData');
-                    timerEnded = true;
-                }
-                reject('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
-            }, timeout);
-        };
-        var wrappedCallback = new Promise(wrappedFunction);
-        var timeoutCallback = new Promise(timeoutFunction);
-
-        // Returns a race between the timeout and the passed in promise
-        return Promise.race([wrappedCallback, timeoutCallback]);
-    }
-
-    function keyGPTSlots(slots) {
-        return slots.reduce(function (o, slot) {
-            var slotId = slot.getSlotElementId();
-            o[slotId] = slot;
-            return o;
-        }, {});
-    }
-
-    function handleA9Bids(bids, gptSlots, done) {
-        log('Handling A9 Bids:', bids, gptSlots);
-        logTime('Handling A9 Bids');
-        window.googletag.cmd.push(function () {
-            function getURLParam(name) {
-                name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-                var regexS = '[\\?&]' + name + '=([^&#]*)';
-                var regex = new RegExp(regexS);
-                if (document.location.search) {
-                    var results = regex.exec(document.location.search);
-                    if (results) {
-                        return results[1];
-                    } else {
-                        return '';
-                    }
-                } else {
-                    return '';
-                }
-            }
-            var slots = keyGPTSlots(gptSlots);
-            bids.forEach(function (bid) {
-                var gptSlot = slots[bid.slotID] || null;
-                if (gptSlot !== null) {
-                    var targets = {};
-                    window.apstag.targetingKeys('display').forEach(function (key) {
-                        if (getURLParam('debug') === 'true') {
-                            console.log('[AdFuelModule - Amazon A9] Setting A9 Targeting: ', {key: key, value: bid[key]});
-                        }
-                        targets[key] = bid[key];
-                        gptSlot.setTargeting(key, bid[key]);
-                    });
-                    metricApi.addMetric({
-                        type: 'vendor',
-                        id: 'Amazon A9',
-                        data: {targeting: targets}
-                    });
-                }
-            })
-            window.googletag.pubads().addEventListener('slotRenderEnded', function (e) {
-                var gptSlots = keyGPTSlots(window.googletag.pubads().getSlots());
-                var gptSlot = gptSlots[e.slot.getSlotElementId()];
-                window.apstag.targetingKeys('display').forEach(function (key) {
-                    gptSlot.setTargeting(key, '');
-                });
-            });
+    var wrappedFunction = function wrappedFunction(resolve) {
+      logger.log('Getting A9 Video targeting...');
+      var innerFunction = function _innerFunc(bids) {
+        clearTimeout(window.targetingTimeoutId);
+        var targetBid = {};
+        bids.forEach(function _forEachBid(bid) {
+          if (bid.slotID.indexOf('aps-') >= 0) {
+            targetBid = bid;
+          }
         });
-        logTimeEnd('Handling A9 Bids');
-        done();
-    }
-
-    function preQueueCallback(asset, done) {
-        logTime('A9 Slot Building');
-        // Only sizes in this array will be sent in the request to Amazon.
-        var validSizes = [ '160x600', '300x250', '300x600', '320x50', '728x90', '970x90', '970x250' ];
-        // Any slot id with any of the following slot types will be excluded from the request to A9.
-        var invalidMappings = [ '_ns_', '_nfs_' ];
-        // Any slot with any of the following ad unit segments in the slot ad unit will be excluded from the request to A9.
-        var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
-        var browser = getViewport();
-        log('Browser Dimensions: ', browser);
-        for (var x = 1; x < asset.length; x++) {
-            var slotId = asset[x].originalElementId || asset[x].rktr_slot_id;
-            var pieces = slotId.split('_');
-            pieces.splice(0, 1);
-            slotId = pieces.join('_')
-            log('Checking slot and sizes for validity: ', slotId);
-            var responsiveSizes = [];
-            var isValid = true;
-            var viewportChecked = false;
-            for (var viewportId = 0; viewportId < asset[x].responsive.length; viewportId++) {
-                var viewport = asset[x].responsive[viewportId];
-                if (!viewportChecked) log('Checking For Responsive Viewport: ', viewport[0].join('x'));
-                if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
-                    log('Match found.');
-                    viewportChecked = true;
-                    responsiveSizes = viewport[1];
-                    if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
-                        log('Slot is responsive and being suppressed.  Filtering slot.');
-                        isValid = false;
-                    }
-                }
-            }
-            if (responsiveSizes.length > 0 && isValid) {
-                log('Slot is responsive and not being suppressed.  Using responsive sizes: ', responsiveSizes);
-                asset[x].sizes = responsiveSizes;
-            }
-            if (isValid) {
-                for (var y = 0; y < asset[x].sizes.length; y++) {
-                    var size = asset[x].sizes[y].join('x')
-                    if (validSizes.indexOf(size) < 0) {
-                        log('Filtering out Invalid Size: ', size);
-                        asset[x].sizes.splice(y, 1)
-                        y = y - 1;
-                    }
-                }
-                if (asset[x].sizes.length === 0) {
-                    log('No Valid Sizes: ', asset[x].sizes);
-                    isValid = false;
-                }
-                for (var invalidMapping in invalidMappings) {
-                    if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
-                        log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
-                        isValid = false;
-                    }
-                }
-                for (var invalidAdUnitSegment in invalidAdUnitSegments) {
-                    if (asset[x].rktr_ad_id.indexOf(invalidAdUnitSegments[invalidAdUnitSegment]) >= 0) {
-                        log('Filtering out invalid ad unit segment: ', invalidAdUnitSegments[invalidAdUnitSegment], asset[x]);
-                        isValid = false;
-                    }
-                }
-                if (isValid) {
-                    log('Valid Slot: ', asset[x]);
-                    var obj = {slotID: asset[x].rktr_slot_id, sizes: asset[x].sizes};
-                    bidSlots.push(obj);
-                }
-            }
+        var result = {
+          'amznbid': targetBid.amznbid || '',
+          'amzniid': targetBid.amzniid || ''
+        };
+        logger.log('Returning A9 Targeting: ', result);
+        if (!timerEnded) {
+          logger.logTimeEnd('getTargetingData');
+          timerEnded = true;
         }
-        logTimeEnd('A9 Slot Building');
-        function processBids(bids) {
-            a9bids = bids;
-            bidSlots = [];
-            done();
+        return result;
+      };
+      window.A9VideoAPI._targetingPromise.then(function _targetingPromiseFunc(bids) { resolve(innerFunction(bids)); });
+    };
+    var timeoutFunction = function timeoutFunction(resolve, reject) {
+      window.targetingTimeoutId = setTimeout(function timeoutFunc() {
+        logger.log('getTargetingData timed out after ' + timeout + 'ms.');
+        clearTimeout(window.targetingTimeoutId);
+        if (!timerEnded) {
+          logger.logTimeEnd('getTargetingData');
+          timerEnded = true;
         }
-        if (bidSlots.length > 0) {
-            window.apstag.fetchBids({
-                slots: bidSlots
-            }, processBids);
-        }else{
-            log('No valid slots.');
-        }
-    }
+        reject('getTargetingData timed out after ' + timeout + 'ms.');
+      }, timeoutVal);
+    };
+    var wrappedCallback = new Promise(wrappedFunction);
+    var timeoutCallback = new Promise(timeoutFunction);
 
-    function preDispatchCallback(asset, done) {
-        window.googletag.cmd.push(function () {
-            var gptSlots = window.googletag.pubads().getSlots();
-            if (a9bids) handleA9Bids(a9bids, gptSlots, done);
-            if (!a9bids) {
-                log('No Bids.');
-                done();
-            }
-        });
-    }
+    // Returns a race between the timeout and the passed in promise
+    return Promise.race([wrappedCallback, timeoutCallback]);
+  }
 
-    function preRefreshCallback(asset, done) {
-        a9bids = null;
-        logTime('Refreshing A9 Bids');
+  function getRefreshedTargetingData(slotName, timeout) {
+    logger.logTime('getRefreshedTargetingData');
+    var timeoutVal = timeout || defaultRefreshTimeout;
+    var slotNameVal = slotName || 'aps-midroll';
+    var timeoutOverride = getURLParam('mdt');
+    var slotNameOverride = getURLParam('slotname');
+    if (timeoutOverride) {
+      timeoutVal = timeoutOverride;
+      logger.log('Overriding Max Duration Time: ', timeoutVal);
+    }
+    if (slotNameOverride) {
+      slotNameVal = slotNameOverride;
+      logger.log('Overriding Slot Name: ', slotNameVal);
+    }
+    var wrappedFunction = function wrappedFunction(wrappedResolve) {
+      window.A9VideoAPI._targetingPromise = new Promise(function _targetingPromiseFunc(resolve) {
         window.apstag.fetchBids({
-            slots: bidSlots
-        }, function (bids) {
-            a9bids = bids;
-            logTimeEnd('Refreshing A9 Bids');
-            var gptSlots = window.googletag.pubads().getSlots();
-            handleA9Bids(a9bids, gptSlots, done)
+          slots: [{
+            slotID: slotName,
+            mediaType: 'video'
+          }],
+          timeout: timeoutVal
+        }, resolve);
+      });
+      var innerFunction = function innerFunction(bids) {
+        clearTimeout(window.targetingTimeoutId);
+        var targetBid = {};
+        bids.forEach(function _forEachBid(bid) {
+          if (bid.slotID === slotName) {
+            targetBid = bid;
+          }
         });
-    }
+        var result = {
+          'amznbid': targetBid.amznbid || '',
+          'amzniid': targetBid.amzniid || ''
+        };
+        logger.log('Returning A9 Targeting: ', result);
+        if (!timerEnded) {
+          logger.logTimeEnd('getRefreshedTargetingData');
+          timerEnded = true;
+        }
+        wrappedResolve(result);
+      };
+      logger.log('Refreshing A9 Video targeting...');
+      window.A9VideoAPI._targetingPromise.then(innerFunction);
+    };
+    var timeoutFunction = function timeoutFunction(resolve, reject) {
+      window.targetingTimeoutId = setTimeout(function _timeoutFunc() {
+        logger.log('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
+        clearTimeout(window.targetingTimeoutId);
+        if (!timerEnded) {
+          logger.logTimeEnd('getRefreshedTargetingData');
+          timerEnded = true;
+        }
+        reject('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
+      }, timeoutVal);
+    };
+    var wrappedCallback = new Promise(wrappedFunction);
+    var timeoutCallback = new Promise(timeoutFunction);
 
-    function registerModuleWithAdFuel() {
-        if (!blocked) {
-            log('Registering ' + MODULE_NAME + ' module with AdFuel');
-            window.AdFuel.setOptions({
-                queueCallbackTimeoutInMilliseconds: 1000,
-                dispatchCallbackTimeoutInMilliseconds: 1000,
-                refreshCallbackTimeoutInMilliseconds: 2000
-            });
-            metricApi = window.AdFuel.registerModule(MODULE_NAME, {
-                preQueueCallback: preQueueCallback,
-                preDispatchCallback: preDispatchCallback,
-                preRefreshCallback: preRefreshCallback
-            }) || metricApi;
-        }
-    }
+    // Returns a race between the timeout and the passed in promise
+    return Promise.race([wrappedCallback, timeoutCallback]);
+  }
 
-    function configureA9Library() {
-        var pubId = '3159';
-        window.A9VideoAPI = {
-            getTargetingData: getTargetingData,
-            getRefreshedTargetingData: getRefreshedTargetingData
+  function keyGPTSlots(slots) {
+    return slots.reduce(function _reduceFunc(o, slot) {
+      var slotId = slot.getSlotElementId();
+      o[slotId] = slot;
+      return o;
+    }, {});
+  }
+
+  function handleA9Bids(bids, gptSlots, done) {
+    log('Handling A9 Bids:', bids, gptSlots);
+    logTime('Handling A9 Bids');
+    window.googletag.cmd.push(function _handleA9Bids() {
+      var slots = keyGPTSlots(gptSlots);
+      bids.forEach(function _forEachBid(bid) {
+        var gptSlot = slots[bid.slotID] || null;
+        if (gptSlot !== null) {
+          var targets = {};
+          window.apstag.targetingKeys('display').forEach(function _forEachTargetingKey(key) {
+            targets[key] = bid[key];
+            gptSlot.setTargeting(key, bid[key]);
+          });
+          metricApi.addMetric({
+            type: 'vendor',
+            id: 'Amazon A9',
+            data: {targeting: targets}
+          });
         }
-        log('Defaulting to Domestic PubId.');
-        log('Country Code: ', countryCode);
-        log('Hostname: ', hostname);
-        log('Pathname: ', pathname);
-        log('Selected Edition: ', selectedEdition);
-        if (hostname.search(/^(.*)?(edition|arabic)\./) >= 0) {
-            log('Full international site. Using International PubId.');
-            pubId = '3288';
-        }else if (hostname.search(/^(.*)?money/) >= 0 && pathname === '/' && selectedEdition === 'edition') {
-            log('International CNN Money Homepage. Using International PubId.');
-            pubId = '3288';
-        }else if (countryCode === '' || countryCode === null) {
-            if (hostname.search(/^(.*)?(cnnespanol|cnne\-test)\./) >= 0) {
-                log('No country code. Using International PubId.');
-                pubId = '3288';
-            }
-        }else if (countryCode !== 'US' && countryCode !== 'CA') {
-            if (hostname.search(/^(.*)?(money|cnnespanol|cnne\-test|www\.cnn)\./) >= 0) {
-                log('International country code. Using International PubId.');
-                pubId = '3288';
-            }
-        }
-        !function (a9, a, p, s, t, A, g) {
-            if(a[a9])return;function q(c, r) {a[a9]._Q.push([c, r])}a[a9] = {init:function () {q('i', arguments)}, fetchBids:function () {q('f', arguments)}, _Q:[]};A = p.createElement(s);A.async = !0;A.src = t;g = p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A, g)
-        }('apstag', window, document, 'script', '//c.amazon-adsystem.com/aax2/apstag.js');
-        log('Final Pub ID: ', pubId);
-        var bidTimeout = 1000;
-        var timeoutOverride = getURLParam('mdt');
-        if (timeoutOverride) {
-            bidTimeout = timeoutOverride;
-            logger.log('Overriding Max Duration Time: ', bidTimeout);
-        }
-        var slotName = 'aps-preroll';
-        var slotNameOverride = getURLParam('slotname');
-        if (slotNameOverride) {
-            slotName = slotNameOverride;
-            logger.log('Overriding Slot Name: ', slotName);
-        }
-        window.apstag.init({
-            pubID: pubId,
-            adServer: 'googletag',
-            videoAdServer: 'freeWheel',
-            bidTimeout: bidTimeout,
+      });
+      window.googletag.pubads().addEventListener('slotRenderEnded', function _slotRenderEndedFunc(e) {
+        var renderedGPTSlots = keyGPTSlots(window.googletag.pubads().getSlots());
+        var gptSlot = renderedGPTSlots[e.slot.getSlotElementId()];
+        window.apstag.targetingKeys('display').forEach(function _forEachTargetingKey(key) {
+          gptSlot.setTargeting(key, '');
         });
-        window.A9VideoAPI._targetingPromise = new Promise(function(resolve){
-            window.apstag.fetchBids({
-                slots: [
-                    {
-                        slotID: slotName,
-                        mediaType: 'video',
-                    },
-                ],
-            }, resolve);
-        });
-    }
+      });
+    });
+    logTimeEnd('Handling A9 Bids');
+    done();
+  }
 
-    function init() {
-        configureA9Library();
-        if (window.AdFuel && window.AdFuel.cmd) {
-            //AdFuel loaded first
-            window.AdFuel.cmd.push(registerModuleWithAdFuel);
-        }else if (window.AdFuel) {
-            registerModuleWithAdFuel();
-        } else {
-            //wait for AdFuel to load
-            if (document.addEventListener) {
-                document.addEventListener('AdFuelCreated', registerModuleWithAdFuel, true);
-            } else if (document.attachEvent) {
-                document.attachEvent('onAdFuelCreated', registerModuleWithAdFuel);
-            }
+  function preQueueCallback(asset, done) {
+    logTime('A9 Slot Building');
+    // Only sizes in this array will be sent in the request to Amazon.
+    var validSizes = [ '160x600', '300x250', '300x600', '320x50', '728x90', '970x90', '970x250' ];
+    // Any slot id with any of the following slot types will be excluded from the request to A9.
+    var invalidMappings = [ '_ns_', '_nfs_' ];
+    // Any slot with any of the following ad unit segments in the slot ad unit will be excluded from the request to A9.
+    var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
+    var browser = getViewport();
+    log('Browser Dimensions: ', browser);
+    for (var x = 1; x < asset.length; x++) {
+      var slotId = asset[x].originalElementId || asset[x].rktr_slot_id;
+      var pieces = slotId.split('_');
+      pieces.splice(0, 1);
+      slotId = pieces.join('_');
+      log('Checking slot and sizes for validity: ', slotId);
+      var responsiveSizes = [];
+      var isValid = true;
+      var viewportChecked = false;
+      for (var viewportId = 0; viewportId < asset[x].responsive.length; viewportId++) {
+        var viewport = asset[x].responsive[viewportId];
+        if (!viewportChecked) log('Checking For Responsive Viewport: ', viewport[0].join('x'));
+        if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
+          log('Match found.');
+          viewportChecked = true;
+          responsiveSizes = viewport[1];
+          if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
+            log('Slot is responsive and being suppressed.  Filtering slot.');
+            isValid = false;
+          }
         }
+      }
+      if (responsiveSizes.length > 0 && isValid) {
+        log('Slot is responsive and not being suppressed.  Using responsive sizes: ', responsiveSizes);
+        asset[x].sizes = responsiveSizes;
+      }
+      if (isValid) {
+        for (var y = 0; y < asset[x].sizes.length; y++) {
+          var size = asset[x].sizes[y].join('x');
+          if (validSizes.indexOf(size) < 0) {
+            log('Filtering out Invalid Size: ', size);
+            asset[x].sizes.splice(y, 1);
+            y = y - 1;
+          }
+        }
+        if (asset[x].sizes.length === 0) {
+          log('No Valid Sizes: ', asset[x].sizes);
+          isValid = false;
+        }
+        for (var invalidMapping in invalidMappings) {
+          if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
+            log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
+            isValid = false;
+          }
+        }
+        for (var invalidAdUnitSegment in invalidAdUnitSegments) {
+          if (asset[x].rktr_ad_id.indexOf(invalidAdUnitSegments[invalidAdUnitSegment]) >= 0) {
+            log('Filtering out invalid ad unit segment: ', invalidAdUnitSegments[invalidAdUnitSegment], asset[x]);
+            isValid = false;
+          }
+        }
+        if (isValid) {
+          log('Valid Slot: ', asset[x]);
+          var obj = {slotID: asset[x].rktr_slot_id, sizes: asset[x].sizes};
+          bidSlots.push(obj);
+        }
+      }
     }
+    logTimeEnd('A9 Slot Building');
+    function processBids(bids) {
+      a9bids = bids;
+      bidSlots = [];
+      done();
+    }
+    if (bidSlots.length > 0) {
+      window.apstag.fetchBids({
+        slots: bidSlots,
+        timeout: 750
+      }, processBids);
+    } else {
+      log('No valid slots.');
+    }
+  }
 
-    log('Initializing ' + MODULE_NAME + ' Module...');
-    init();
+  function preDispatchCallback(asset, done) {
+    window.googletag.cmd.push(function _preDispatchCallbackFunc() {
+      var gptSlots = window.googletag.pubads().getSlots();
+      if (a9bids) handleA9Bids(a9bids, gptSlots, done);
+      if (!a9bids) {
+        log('No Bids.');
+        done();
+      }
+    });
+  }
 
+  function preRefreshCallback(asset, done) {
+    a9bids = null;
+    logTime('Refreshing A9 Bids');
+    window.apstag.fetchBids({
+      slots: bidSlots,
+      timeout: 750
+    }, function _fetchBidsCallbackFunc(bids) {
+      a9bids = bids;
+      logTimeEnd('Refreshing A9 Bids');
+      var gptSlots = window.googletag.pubads().getSlots();
+      handleA9Bids(a9bids, gptSlots, done);
+    });
+  }
+
+  function registerModuleWithAdFuel() {
+    if (!blocked) {
+      log('Registering ' + MODULE_NAME + ' module with AdFuel');
+      window.AdFuel.setOptions({
+        queueCallbackTimeoutInMilliseconds: 800,
+        dispatchCallbackTimeoutInMilliseconds: 800,
+        refreshCallbackTimeoutInMilliseconds: 800
+      });
+      metricApi = window.AdFuel.registerModule(MODULE_NAME, {
+        preQueueCallback: preQueueCallback,
+        preDispatchCallback: preDispatchCallback,
+        preRefreshCallback: preRefreshCallback
+      }) || metricApi;
+    }
+  }
+
+  function configureA9Library() {
+    var pubId = '3159';
+    window.A9VideoAPI = {
+      getTargetingData: getTargetingData,
+      getRefreshedTargetingData: getRefreshedTargetingData
+    };
+    log('Defaulting to Domestic PubId.');
+    log('Country Code: ', countryCode);
+    log('Hostname: ', hostname);
+    log('Pathname: ', pathname);
+    log('Selected Edition: ', selectedEdition);
+    if (hostname.search(/^(.*)?(edition|arabic)\./) >= 0) {
+      log('Full international site. Using International PubId.');
+      pubId = '3288';
+    } else if (hostname.search(/^(.*)?money/) >= 0 && pathname === '/' && selectedEdition === 'edition') {
+      log('International CNN Money Homepage. Using International PubId.');
+      pubId = '3288';
+    } else if (countryCode === '' || countryCode === null) {
+      if (hostname.search(/^(.*)?(cnnespanol|cnne\-test)\./) >= 0) {
+        log('No country code. Using International PubId.');
+        pubId = '3288';
+      }
+    } else if (countryCode !== 'US' && countryCode !== 'CA') {
+      if (hostname.search(/^(.*)?(money|cnnespanol|cnne\-test|www\.cnn)\./) >= 0) {
+        log('International country code. Using International PubId.');
+        pubId = '3288';
+      }
+    }
+    // eslint-disable-next-line
+    !(function (a9, a, p, s, t, A, g) {if (a[a9]) return; function q(c, r) {a[a9]._Q.push([c, r]);}a[a9] = {init: function () {q('i', arguments);}, fetchBids: function () {q('f', arguments);}, _Q: []}; A = p.createElement(s); A.async = !0; A.src = t; g = p.getElementsByTagName(s)[0]; g.parentNode.insertBefore(A, g);}('apstag', window, document, 'script', '//c.amazon-adsystem.com/aax2/apstag.js'));
+    log('Final Pub ID: ', pubId);
+    var bidTimeout = 500;
+    var timeoutOverride = getURLParam('mdt');
+    if (timeoutOverride) {
+      bidTimeout = timeoutOverride;
+      logger.log('Overriding Max Duration Time: ', bidTimeout);
+    }
+    var slotName = 'aps-preroll';
+    var slotNameOverride = getURLParam('slotname');
+    if (slotNameOverride) {
+      slotName = slotNameOverride;
+      logger.log('Overriding Slot Name: ', slotName);
+    }
+    window.apstag.init({
+      pubID: pubId,
+      adServer: 'googletag',
+      videoAdServer: 'freeWheel',
+      bidTimeout: 750
+    });
+    window.A9VideoAPI._targetingPromise = new Promise(function _targetingPromiseFunc(resolve) {
+      window.apstag.fetchBids({
+        slots: [
+          {
+            slotID: slotName,
+            mediaType: 'video'
+          }
+        ],
+        timeout: bidTimeout
+      }, resolve);
+    });
+  }
+
+  function init() {
+    configureA9Library();
+    if (window.AdFuel && window.AdFuel.cmd) {
+      // AdFuel loaded first
+      window.AdFuel.cmd.push(registerModuleWithAdFuel);
+    } else if (window.AdFuel) {
+      registerModuleWithAdFuel();
+    } else {
+      // wait for AdFuel to load
+      if (document.addEventListener) {
+        document.addEventListener('AdFuelCreated', registerModuleWithAdFuel, true);
+      }
+      if (document.attachEvent) {
+        document.attachEvent('onAdFuelCreated', registerModuleWithAdFuel);
+      }
+    }
+  }
+
+  log('Initializing ' + MODULE_NAME + ' Module...');
+  init();
 })();
 
 
 ////////////////////////////////////////////
-//AD Prebid for Money 1.0
+//AD Prebid for Money 1.1
 ////////////////////////////////////////////
 
 (function createPrebidAdFuelModule() {
   'use strict';
   var MODULE_NAME = 'Prebid';
-  var MODULE_VERSION = 'v1.0.7';
+  var MODULE_VERSION = 'v1.0.8';
   /*
   - Vendor Timeout to 750ms
   - AdFuel Timeout to 800ms
@@ -1480,20 +1461,23 @@
 
   var PREBID_TIMEOUT = 750;
 
-  var DOMESTIC_BIDDERS = ['rubicon'];
-  var INTL_BIDDERS = ['appnexus'];
+  var DOMESTIC_BIDDERS = ['rubicon', 'appnexus'];
+  var INTL_BIDDERS = ['appnexus', 'pangaea'];
 
   var DOMESTIC_ACCOUNT_IDS = {
-    rubicon: '11078'
+    rubicon: '11078',
+    appnexus: '7745'
   };
 
   var INTL_ACCOUNT_IDS = {
     rubicon: '11016',
-    appnexus: '8353'
+    appnexus: '8353',
+    pangaea: '8613'
   };
 
   var RUBICON_ACCOUNT_ID = DOMESTIC_ACCOUNT_IDS.rubicon;
-  var APPNEXUS_ACCOUNT_ID = INTL_ACCOUNT_IDS.appnexus;
+  var APPNEXUS_ACCOUNT_ID = isIntl ? INTL_ACCOUNT_IDS.appnexus : DOMESTIC_ACCOUNT_IDS.appnexus;
+  var PANGAEA_ACCOUNT_ID = INTL_ACCOUNT_IDS.pangaea;
 
   var RUBICON_DESKTOP_SITE_ID = 26788;
 
@@ -1572,6 +1556,17 @@
             // keywords: { genre: ['rock', 'pop'] },   // Optional - Get From External Source
             invCode: invCode,                          // Top 3 Ad Unit levels
             member: APPNEXUS_ACCOUNT_ID               // Supplied from AppNexus
+            // reserve: 0.90                           // Optional (Sets floor price)
+          }
+        },
+        pangaea: {
+          bidder: 'appnexus',
+          params: {
+            // placementId: asset.rktr_ad_id,          // Optional
+            // allowSmallerSizes: false,               // Optional
+            // keywords: { genre: ['rock', 'pop'] },   // Optional - Get From External Source
+            invCode: invCode,                          // Top 3 Ad Unit levels
+            member: PANGAEA_ACCOUNT_ID                 // Supplied from AppNexus
             // reserve: 0.90                           // Optional (Sets floor price)
           }
         }
@@ -1678,6 +1673,9 @@
               case 'appnexus':
                 intlBidMock.params.invCode = invCode + '_' + posValue;
                 break;
+              case 'pangaea':
+                intlBidMock.params.invCode = invCode + '_' + posValue;
+                break;
               default:
                 break;
               }
@@ -1693,6 +1691,9 @@
               var domBidMock = bidMocks[domBidder];
               log('starting bidMock: ', JSON.parse(JSON.stringify(domBidMock)));
               switch (domBidder) {
+              case 'appnexus':
+                domBidMock.params.invCode = invCode + '_' + posValue;
+                break;
               case 'rubicon':
                 domBidMock.params.siteId = isMobile.any ? RUBICON_MOBILE_SITE_ID : RUBICON_DESKTOP_SITE_ID;
                 if (isMobile.any) {
