@@ -4,6 +4,8 @@ wget -r -p -k -l 1 -H  --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.htm
 echo `date`
 #cp -R fromthemachine.org/* .
 cp -R 127.0.0.1/* .
+rm -rf 127.0.0.1
+
 #cp -R 127.0.0.1/*.html .
 #cp -R fromthemachine.org/*.html .
 
@@ -30,6 +32,8 @@ mkdir ../doucml2
 mv *.log ../douciml2
 mv *.tar ../douciml2
 
+rm *.log
+rm *.tar
 
 echo date
 #mv fromthemachine.org ../oldit2
