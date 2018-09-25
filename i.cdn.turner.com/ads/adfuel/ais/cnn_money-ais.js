@@ -1,17 +1,15 @@
 //CNN Money AdFuel Modules
-//
-//Deployed: 2018-08-22 16:20:02
+//Deployed: 2018-09-11 09:55:39
 
 ////////////////////////////////////////////
 //AA IndexExchange Wrapper 1.1
 ////////////////////////////////////////////
 
 (function createAdFuelIndexExchangeWrapperModule() {
-    // Added CNN Domestic and Money Domestic to scriptMap
-    // IE11 Fix
+    // Added CNN Espanol filter when domestic user is detected
     'use strict';
     var MODULE_NAME = 'Index Exchange Wrapper';
-    var MODULE_VERSION = 'v1.1.4';
+    var MODULE_VERSION = 'v1.1.5';
 
     var scriptLoaded = false;
     var countryCode = (readCookie('CG') ? readCookie('CG').substr(0, 2) : '') || (readCookie('countryCode') ? readCookie('countryCode').substr(0, 2) : '');
@@ -28,7 +26,10 @@
             intl: '186370-144448918822171',
             dom: '186948-10319041752160'
         },
-        '^(.*\\.)?(cnne-test|cnnespanol)\\.cnn\\.com': '186370-263196174718504',
+        '^(.*\\.)?(cnne-test|cnnespanol)\\.cnn\\.com': {
+            intl: '186370-263196174718504',
+            dom: ''
+        },
         '^(.*\\.)?arabic\\.cnn\\.com': '186370-164240128263733',
         '^(.*\\.)?pga\\.com': '186948-65293251488212',
         '^(.*\\.)?rydercup\\.com': '186948-65293251488212',
@@ -101,7 +102,7 @@
 
     function includeWrapper(scriptUrl) {
         if (!scriptLoaded) {
-            // log('Script URL: ', scriptUrl);
+            log('Script URL: ', scriptUrl);
             // log('Initializing Module...');
             scriptLoaded = true;
             var a = document,
@@ -148,6 +149,7 @@
             var selectedEdition = readCookie('selectedEdition');
             var cnnRegex = new RegExp('/^(.*)?(edition|www|www\-m|us|us\-m|edition\-m)\.cnn\.com$/');
             var moneyRegex = new RegExp('/^(.*)?money\.cnn\.com$/');
+            var espanolRegex = new RegExp('/^(.*)?(cnnespanol||cnne\-test)\.cnn\.com$/');
             if (window.location.hostname.search(test) === 0) {
                 if (typeof scriptMap[regex] === 'string') {
                     scriptUrl = '//js-sec.indexww.com/ht/p/' + scriptMap[regex] + '.js';
@@ -156,6 +158,14 @@
                         countryCode !== 'US' &&
                         countryCode !== 'CA' &&
                         countryCode !== '') {
+                        scriptUrl = '//js-sec.indexww.com/ht/p/' + scriptMap[regex].intl + '.js';
+                    } else if (window.location.hostname.search(espanolRegex) &&
+                        countryCode !== 'US' &&
+                        countryCode !== 'CA') {
+                        if (countryCode === '' || countryCode === null){
+                            log('Espanol detected but no country code detected.');
+                            log('Defaulting to INTL');
+                        }
                         scriptUrl = '//js-sec.indexww.com/ht/p/' + scriptMap[regex].intl + '.js';
                     } else if (window.location.hostname.search(moneyRegex) &&
                         selectedEdition === 'edition') {
@@ -1187,17 +1197,13 @@
 
 
 ////////////////////////////////////////////
-//AD Prebid for Money 1.1
+//AD Prebid for Money 1.0
 ////////////////////////////////////////////
 
 (function createPrebidAdFuelModule() {
   'use strict';
   var MODULE_NAME = 'Prebid';
-  var MODULE_VERSION = 'v1.0.8';
-  /*
-  - Vendor Timeout to 750ms
-  - AdFuel Timeout to 800ms
-  */
+  var MODULE_VERSION = 'v1.0.17';
 
   window.googletag = window.googletag || {};
   window.googletag.cmd = window.googletag.cmd || [];
@@ -1462,7 +1468,7 @@
   var PREBID_TIMEOUT = 750;
 
   var DOMESTIC_BIDDERS = ['rubicon', 'appnexus'];
-  var INTL_BIDDERS = ['appnexus', 'pangaea'];
+  var INTL_BIDDERS = ['appnexus', 'pangaea', 'rubicon'];
 
   var DOMESTIC_ACCOUNT_IDS = {
     rubicon: '11078',
@@ -1475,13 +1481,15 @@
     pangaea: '8613'
   };
 
-  var RUBICON_ACCOUNT_ID = DOMESTIC_ACCOUNT_IDS.rubicon;
+  var RUBICON_ACCOUNT_ID = isIntl ? INTL_ACCOUNT_IDS.rubicon : DOMESTIC_ACCOUNT_IDS.rubicon;
   var APPNEXUS_ACCOUNT_ID = isIntl ? INTL_ACCOUNT_IDS.appnexus : DOMESTIC_ACCOUNT_IDS.appnexus;
   var PANGAEA_ACCOUNT_ID = INTL_ACCOUNT_IDS.pangaea;
 
-  var RUBICON_DESKTOP_SITE_ID = 26788;
+  var RUBICON_DOM_DESKTOP_SITE_ID = 26788;
+  var RUBICON_INTL_DESKTOP_SITE_ID = 78598;
 
-  var RUBICON_MOBILE_SITE_ID = 60764;
+  var RUBICON_DOM_MOBILE_SITE_ID = 60764;
+  var RUBICON_INTL_MOBILE_SITE_ID = 78600;
 
   var RUBICON_SIZE_MAPPING = {
     '728x90': 2,
@@ -1493,27 +1501,43 @@
     '970x250': 57
   };
 
-  var RUBICON_DOMESTIC_DESKTOP_HP_ZONE_MAPPING = {
+  var RUBICON_DOM_DESKTOP_HP_ZONE_MAPPING = {
     'atf': 108112,
     'btf': 149880
   };
 
-  var RUBICON_DOMESTIC_DESKTOP_ROS_ZONE_MAPPING = {
+  var RUBICON_DOM_DESKTOP_ROS_ZONE_MAPPING = {
     'atf': 149876,
     'btf': 149878
   };
 
-  var RUBICON_DOMESTIC_MOBILE_ZONE_MAPPING = {
+  var RUBICON_DOM_MOBILE_ZONE_MAPPING = {
     'atf': 289858,
     'btf': 289858
+  };
+
+  var RUBICON_INTL_DESKTOP_HP_ZONE_MAPPING = {
+    'atf': 369880,
+    'btf': 455720
+  };
+
+  var RUBICON_INTL_DESKTOP_ROS_ZONE_MAPPING = {
+    'atf': 455740,
+    'btf': 455710
+  };
+
+  var RUBICON_INTL_MOBILE_ZONE_MAPPING = {
+    'atf': 369882,
+    'btf': 369882
   };
 
   function preQueueCallback(asset, done) {
     logTime('Prebid AdUnit Building');
     // Only sizes in this array will be sent in the request to Amazon.
     var validSizes = [ '160x600', '300x250', '300x600', '320x50', '728x90', '970x90', '970x250' ];
-    // Any slot id with any of the following slot types will be excluded from the request to A9.
-    var invalidMappings = [ '_ns_', '_nfs_' ];
+    // Only slot id with any of the following slot types will be included in the request to A9.
+    // var invalidMappings = [ '_ns_', '_nfs_' ];
+    var validMappings = [ '_bnr_', '_rect_', '_sky_' ];
     // Any slot with any of the following ad unit segments in the slot ad unit will be excluded from the request to A9.
     var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
     var browser = getViewport();
@@ -1560,7 +1584,7 @@
           }
         },
         pangaea: {
-          bidder: 'appnexus',
+          bidder: 'pangaea',
           params: {
             // placementId: asset.rktr_ad_id,          // Optional
             // allowSmallerSizes: false,               // Optional
@@ -1606,9 +1630,20 @@
           log('No Valid Sizes: ', asset[x].sizes);
           isValid = false;
         }
-        for (var invalidMapping in invalidMappings) {
-          if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
-            log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
+        // for (var invalidMapping in invalidMappings) {
+        //   if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
+        //     log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
+        //     isValid = false;
+        //   }
+        // }
+        log('Filtering for valid slot type: ', asset[x]);
+        for (var validMapping in validMappings) {
+          if (asset[x].rktr_slot_id.indexOf(validMappings[validMapping]) >= 0) {
+            log('Valid slot type: ', validMappings[validMapping], asset[x]);
+            isValid = true;
+            break;
+          }
+          else {
             isValid = false;
           }
         }
@@ -1676,6 +1711,16 @@
               case 'pangaea':
                 intlBidMock.params.invCode = invCode + '_' + posValue;
                 break;
+              case 'rubicon':
+              intlBidMock.params.siteId = isMobile.any ? RUBICON_INTL_MOBILE_SITE_ID : RUBICON_INTL_DESKTOP_SITE_ID;
+                if (isMobile.any) {
+                  intlBidMock.params.zoneId = RUBICON_INTL_MOBILE_ZONE_MAPPING[position];
+                } else {
+                  intlBidMock.params.zoneId = isHomepage ? RUBICON_INTL_DESKTOP_HP_ZONE_MAPPING[position] : RUBICON_INTL_DESKTOP_ROS_ZONE_MAPPING[position];
+                }
+                intlBidMock.params.position = position;
+                // intlBidMock.params.sizes = sizeMapArray;
+                break;
               default:
                 break;
               }
@@ -1695,11 +1740,11 @@
                 domBidMock.params.invCode = invCode + '_' + posValue;
                 break;
               case 'rubicon':
-                domBidMock.params.siteId = isMobile.any ? RUBICON_MOBILE_SITE_ID : RUBICON_DESKTOP_SITE_ID;
+                domBidMock.params.siteId = isMobile.any ? RUBICON_DOM_MOBILE_SITE_ID : RUBICON_DOM_DESKTOP_SITE_ID;
                 if (isMobile.any) {
-                  domBidMock.params.zoneId = RUBICON_DOMESTIC_MOBILE_ZONE_MAPPING[position];
+                  domBidMock.params.zoneId = RUBICON_DOM_MOBILE_ZONE_MAPPING[position];
                 } else {
-                  domBidMock.params.zoneId = isHomepage ? RUBICON_DOMESTIC_DESKTOP_HP_ZONE_MAPPING[position] : RUBICON_DOMESTIC_DESKTOP_ROS_ZONE_MAPPING[position];
+                  domBidMock.params.zoneId = isHomepage ? RUBICON_DOM_DESKTOP_HP_ZONE_MAPPING[position] : RUBICON_DOM_DESKTOP_ROS_ZONE_MAPPING[position];
                 }
                 domBidMock.params.position = position;
                 // domBidMock.params.sizes = sizeMapArray;
@@ -1722,6 +1767,8 @@
     function pbQueueFunction() {
       log('Adding Ad Units...');
       window.pbjs.addAdUnits(adUnits);
+      log('Aliasing Bidder for Pangaea...');
+      window.pbjs.aliasBidder('appnexus', 'pangaea');
       log('Requesting Bids...');
       logTime('Requesting Bids...');
       function bidsBackHandlerFunc(bids) {
@@ -1803,23 +1850,13 @@
       }]
     };
     var sendAllBids = true;
+    
     if (isIntl) {
       sendAllBids = false;
     }
 
     var innerFunc = function innerFunc() {
       window.pbjs.setConfig({
-        // -- Re-enable these lines for Prebid-Server --
-        /*
-                s2sConfig: {
-                    accountId: 'f7c6e556-48f6-4b8c-9fb6-921c12c9362f',
-                    bidders: ['rubicon'],
-                    defaultVendor: 'appnexus',
-                    enabled: true,
-                    timeout: PREBID_TIMEOUT,
-                    adapter: 'prebidServer'
-                },
-                */
         consentManagement: {
           cmpApi: 'iab',
           timeout: 100,
@@ -1829,35 +1866,50 @@
         enableSendAllBids: sendAllBids,
         bidderTimeout: PREBID_TIMEOUT
       });
-      window.pbjs.bidderSettings = {
-        rubicon: {
-          alwaysUseBid: true,
-          adserverTargeting: [{
-            key: 'hb_db_rubicon',
-            val: function valFunc(bidResponse) {
-              var keyvalue;
-              if (bidResponse.adserverTargeting && bidResponse.adserverTargeting.rpfl_11078) {
-                keyvalue = bidResponse.adserverTargeting.rpfl_11078;
-              } else if (bidResponse.rubiconTargeting && bidResponse.rubiconTargeting.rpfl_11078) {
-                keyvalue = bidResponse.rubiconTargeting.rpfl_11078;
-              } else {
-                return keyvalue;
+      log('Prebid Config: ', {
+        consentManagement: {
+          cmpApi: 'iab',
+          timeout: 100,
+          allowAuctionWithoutConsent: false
+        },
+        priceGranularity: priceBuckets,
+        enableSendAllBids: sendAllBids,
+        bidderTimeout: PREBID_TIMEOUT
+      });
+      if (!isIntl) {
+        window.pbjs.bidderSettings = {
+          rubicon: {
+            alwaysUseBid: true,
+            adserverTargeting: [{
+              key: 'hb_db_rubicon',
+              val: function valFunc(bidResponse) {
+                var keyvalue;
+                if (bidResponse.adserverTargeting && bidResponse.adserverTargeting.rpfl_11078) {
+                  keyvalue = bidResponse.adserverTargeting.rpfl_11078;
+                } else if (bidResponse.rubiconTargeting && bidResponse.rubiconTargeting.rpfl_11078) {
+                  keyvalue = bidResponse.rubiconTargeting.rpfl_11078;
+                } else {
+                  return keyvalue;
+                }
+                var dealTier = keyvalue.substring(keyvalue.indexOf('_') + 1);
+                return dealTier;
               }
-              var dealTier = keyvalue.substring(keyvalue.indexOf('_') + 1);
-              return dealTier;
-            }
-          }]
-        }
-      };
+            }]
+          }
+        };
+      }
       setGeoTargeting();
     };
     window.pbjs.que.push(innerFunc);
-    var a = document;
-    var b = a.createElement('script');
-    var c = a.getElementsByTagName('script')[0];
-    b.type = 'text/javascript';
-    b.src = '//i.cdn.turner.com/ads/adfuel/modules/prebid-1.15.0.js';
-    c.parentNode.insertBefore(b, c);
+    if (!document.getElementById('PrebidScript')){
+      var a = document;
+      var b = a.createElement('script');
+      var c = a.getElementsByTagName('script')[0];
+      b.type = 'text/javascript';
+      b.id = "PrebidScript";
+      b.src = '//i.cdn.turner.com/ads/adfuel/modules/prebid-1.23.0.js';
+      c.parentNode.insertBefore(b, c);
+    }
     var timeoutOverride = getURLParam('mdt');
     if (timeoutOverride) {
       PREBID_TIMEOUT = timeoutOverride;
@@ -1884,498 +1936,6 @@
   }
 
   log('Initializing ' + MODULE_NAME + ' Module...');
-  init();
-})();
-
-
-////////////////////////////////////////////
-//AE Fastlane 2.8
-////////////////////////////////////////////
-
-/*! Fastlane AdFuel Module - Version 2.8
-    - Disabling of Fastlane on Domestic Sites
-!*/
-(function createFastlaneModule() {
-  window.rubicontag = window.rubicontag || {};
-  window.rubicontag.cmd = window.rubicontag.cmd || [];
-  var objectProto = Object.prototype;
-  var toString = objectProto.toString;
-  var noop = function _noop() {
-    return false;
-  };
-  var metricApi = {
-    metrics: {},
-    addMetric: noop,
-    getMetricById: noop,
-    getMetricsByType: noop,
-    getMetricTypes: noop
-  };
-
-  var preQueueTimeouts = [];
-
-  function isFunction(object) {
-    return toString.call(object) === '[object Function]';
-  }
-
-  function isObject(object) {
-    var type = typeof object;
-    return type === 'function' || type === 'object' && !!object;
-  }
-
-  function getURLParam(name) {
-    var nameParam = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-    var regexS = '[\\?&]' + nameParam + '=([^&#]*)';
-    var regex = new RegExp(regexS);
-    if (document.location.search) {
-      var results = regex.exec(document.location.search);
-      if (results) {
-        return results[1];
-      }
-      return '';
-    }
-    return '';
-  }
-
-  function getViewport() {
-    var viewPortWidth;
-    var viewPortHeight;
-    if (typeof window.innerWidth !== 'undefined') {
-      viewPortWidth = window.innerWidth;
-      viewPortHeight = window.innerHeight;
-    } else if (typeof document.documentElement !== 'undefined' && typeof document.documentElement.clientWidth !== 'undefined' && document.documentElement.clientWidth !== 0) {
-      viewPortWidth = document.documentElement.clientWidth;
-      viewPortHeight = document.documentElement.clientHeight;
-    } else {
-      viewPortWidth = document.getElementsByTagName('body')[0].clientWidth;
-      viewPortHeight = document.getElementsByTagName('body')[0].clientHeight;
-    }
-    return [viewPortWidth, viewPortHeight];
-  }
-
-  function readCookie(name) {
-    var lsSupport = false;
-    var data = '';
-
-    // Check for native support
-    if (localStorage) {
-      lsSupport = true;
-    }
-
-    // No value supplied, return value
-    if (typeof value === 'undefined') {
-      // Get value
-      if (lsSupport) { // Native support
-        data = localStorage.getItem(name);
-      } else { // Use cookie
-        data = readTheCookie(name);
-      }
-
-      // Try to parse JSON...
-      try {
-        data = JSON.parse(data);
-      } catch (e) {
-        // Do Nothing
-      }
-    }
-    return data;
-
-    function readTheCookie(key) {
-      if (!document.cookie) {
-        // there is no cookie, so go no further
-        return '';
-      }  // there is a cookie
-      var ca = document.cookie.split(';');
-      var nameEQ = key + '=';
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') {
-          // delete spaces
-          c = c.substring(1, c.length);
-        }
-        if (c.indexOf(nameEQ) === 0) {
-          return c.substring(nameEQ.length, c.length);
-        }
-      }
-      return '';
-    }
-  }
-
-  var isIntl = false;
-  var countryCode = (readCookie('CG') ? readCookie('CG').substr(0, 2) : '') || readCookie('countryCode');
-  var selectedEdition = readCookie('SelectedEdition') ? readCookie('SelectedEdition') : 'www';
-  var parser = document.createElement('a');
-  parser.href = document.location.href;
-
-  var hostname = parser.hostname;
-  var pathname = parser.pathname;
-
-
-  if (hostname.search(/^(.*)?(edition|arabic)\./) >= 0) {
-    log('Full international site.');
-    isIntl = true;
-  } else if (hostname.search(/^(.*)?money/) >= 0 && pathname === '/' && selectedEdition === 'edition') {
-    log('International CNN Money Homepage. Using International PubId.');
-    isIntl = true;
-  } else if (countryCode === '' || countryCode === null) {
-    if (hostname.search(/^(.*)?(cnnespanol|cnne\-test)\./) >= 0) {
-      log('No country code. Using International PubId.');
-      isIntl = true;
-    }
-  } else if (countryCode !== 'US' && countryCode !== 'CA') {
-    if (hostname.search(/^(.*)?(money|cnnespanol|cnne\-test|www\.cnn)\./) >= 0) {
-      log('International country code. Using International PubId.');
-      isIntl = true;
-    }
-  }
-  var log = function _noop() {};
-  var disabled = !isIntl;
-
-  if (isObject(window.console) && isFunction(window.console.log) && getURLParam('debug') === 'true') {
-    log = function _logFunc(/* arguments */) {
-      var args = ['[AdFuelModule - Fastlane/Rubicon]'];
-      args.push.apply(args, arguments);
-      window.console.log.apply(window.console, args);
-    };
-  }
-
-  function addFastlaneScript() {
-    log('Adding Fastlane library to head of page.');
-    var accountId = isIntl ? 11016 : 11078;
-    var espanol = hostname.search(/^cnnespanol\./) >= 0 || hostname.search(/^cnne-test\./) >= 0;
-    log('Rubicon Account ID: ' + accountId);
-    if (!(accountId === 11078 && espanol)) {
-      var rct = document.createElement('script');
-      rct.type = 'text/javascript';
-      rct.async = true;
-      rct.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//ads.rubiconproject.com/header/' + accountId + '.js';
-      var node = document.getElementsByTagName('script')[0];
-      node.parentNode.appendChild(rct);
-    } else {
-      log('Espanol Domestic user detected. CountryCode: ' + countryCode + '.  Fastlane Disabled.');
-      disabled = true;
-    }
-  }
-
-  window.rubiconSlotDictionary = {};
-  window.refreshableRubiconSlots = {};
-
-  var vendorData = { targeting: {}, bidData: {} };
-
-  function clearSlotsAndTimeout(timeout) {
-    clearTimeout(timeout);
-    preQueueTimeouts.length = 0;
-  }
-
-  function buildSlotsForFastlane(registry, callback) {
-    if (!disabled) {
-      log('Building slots for Fastlane', JSON.stringify(registry));
-      var topBannerAdUnit = '';
-      var preQueueTimeout = setTimeout(function _preQueueTimeoutFunc() {
-        // Track the timeout.
-        log('PreQueue Timeout Occurred.');
-        window.AdFuel.addPageLevelTarget('fln_pqto', '1');
-      }, 1000);
-      window.rubicontag.cmd.push(function _pushBuildSlotsForFastlane() {
-        var rubiconSlots = [];
-
-        for (var i = 1; i < registry.length; i++) {
-          log('Checking Slot: ', registry[i].rktr_slot_id);
-          var rocketeerSlot = registry[i];
-          var rubiconSlot;
-          if (topBannerAdUnit === '' || rocketeerSlot.rktr_slot_id.indexOf('bnr_atf_01') > 0) {
-            log('Setting KW Ad Unit: ', rocketeerSlot.rktr_ad_id);
-            topBannerAdUnit = rocketeerSlot.rktr_ad_id;
-          }
-          // Any slot that is not _atf_ or _btf_ will be excluded from the request to Fastlane.
-          var validMappings = {
-            '_atf_': 'atf',
-            '_btf_': 'btf',
-            '_mod_': 'atf'
-          };
-          // Only sizes in this array will be sent in the request to Fastlane.
-          var validSizes = [ '160x600', '300x250', '300x600', '320x50', '728x90', '970x90', '970x250' ];
-          // Any slot id with any of the following slot types will be excluded from the request to Fastlane.
-          var invalidMappings = [ '_ns_', '_nfs_' ];
-          // Any slot with any of the following ad unit segments in the slot ad unit will be excluded from the request to Fastlane.
-          var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
-          // Any slot with an ad unit that matches any of the following ad units will be excluded from the request to Fastlane.
-          var invalidAdUnits = [ 'CNN/health', 'CNN/health/healthgrades', 'CNN/health/leaf', 'CNN/health/list', 'CNN/health/photos', 'CNN/health/specials', 'CNN/health/video', 'CNN/student-news' ];
-
-          // require valid mapping match
-          for (var validMapping in validMappings) {
-            if (validMappings.hasOwnProperty(validMapping)) {
-              if (rocketeerSlot.rktr_slot_id && rocketeerSlot.rktr_slot_id.indexOf(validMapping) >= 0) {
-                var isValid = true;
-                var viewportChecked = false;
-                // exclude invalid mapping matches
-                for (var invalidMapping in invalidMappings) {
-                  if (rocketeerSlot.rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
-                    log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], rocketeerSlot);
-                    isValid = false;
-                  }
-                }
-                for (var invalidAdUnitSegment in invalidAdUnitSegments) {
-                  if (rocketeerSlot.rktr_ad_id.indexOf(invalidAdUnitSegments[invalidAdUnitSegment]) >= 0) {
-                    log('Filtering out invalid ad unit segment: ', invalidAdUnitSegments[invalidAdUnitSegment], rocketeerSlot);
-                    isValid = false;
-                  }
-                }
-                for (var invalidAdUnit in invalidAdUnits) {
-                  if (rocketeerSlot.rktr_ad_id === invalidAdUnits[invalidAdUnit]) {
-                    log('Filtering out invalid ad unit: ', invalidAdUnits[invalidAdUnit], rocketeerSlot);
-                    isValid = false;
-                  }
-                }
-                var responsiveSizes = [];
-                for (var viewportId = 0; viewportId < rocketeerSlot.responsive.length; viewportId++) {
-                  var browser = getViewport();
-                  var viewport = rocketeerSlot.responsive[viewportId];
-                  if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
-                    viewportChecked = true;
-                    responsiveSizes = viewport[1];
-                    if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
-                      isValid = false;
-                    }
-                  }
-                }
-                if (isValid && responsiveSizes.length > 0) {
-                  log('Setting Sizes To Responsive Sizes: ', responsiveSizes);
-                  rocketeerSlot.sizes = responsiveSizes;
-                }
-                if (isValid) {
-                  for (var rocketeerSize = 0; rocketeerSize < rocketeerSlot.sizes.length; rocketeerSize++) {
-                    var matchingSize = rocketeerSlot.sizes[rocketeerSize];
-                    if (matchingSize !== 'suppress') {
-                      matchingSize = matchingSize.join('x');
-                    }
-                    if (validSizes.indexOf(matchingSize) < 0) {
-                      log('Filtering out invalid size: ', matchingSize, rocketeerSlot);
-                      rocketeerSlot.sizes.splice(rocketeerSize, 1);
-                    }
-                  }
-                }
-                if (rocketeerSlot.sizes.length === 0) {
-                  isValid = false;
-                  log('Filtering out slot with no valid sizes.', rocketeerSlot.rktr_slot_id, rocketeerSlot.rktr_ad_id);
-                }
-                if (isValid) {
-                  log('Slot is a valid item for Rubicon Fastlane.');
-                  var foldPosition = validMappings[validMapping];
-                  var alreadyRendered = document.getElementById(rocketeerSlot.rktr_slot_id) ? document.getElementById(rocketeerSlot.rktr_slot_id).className.indexOf('adfuel-rendered') >= 0 : false;
-                  log('Checking for cached Fastlane response for: ', rocketeerSlot.rktr_slot_id);
-                  if (typeof window.rubiconSlotDictionary[rocketeerSlot.rktr_slot_id] === 'undefined' && !alreadyRendered) {
-                    log('Cached response not found. Defining Slot: ', '/8664377/' + rocketeerSlot.rktr_ad_id, rocketeerSlot.sizes, rocketeerSlot.rktr_slot_id);
-                    rubiconSlot = window.rubicontag.defineSlot('/8664377/' + rocketeerSlot.rktr_ad_id, rocketeerSlot.sizes, rocketeerSlot.rktr_slot_id);
-                    log('Setting Position: ', foldPosition);
-                    rubiconSlot.setPosition(foldPosition);
-                    var slotTargets = rocketeerSlot.targeting;
-                    for (var tIndex = 0; tIndex < slotTargets.length; tIndex++) {
-                      var target = slotTargets[tIndex];
-                      if (target[0] === 'pos') {
-                        if (Array.isArray(target[1])) {
-                          log('Setting POS Keyword For ' + rocketeerSlot.rktr_slot_id, target[1][0]);
-                          rubiconSlot.setFPI('pos', target[1][0]);
-                        } else {
-                          log('Setting POS Keyword For ' + rocketeerSlot.rktr_slot_id, target[1]);
-                          rubiconSlot.setFPI('pos', target[1]);
-                        }
-                      }
-                    }
-                    log('Setting Keyword For ' + rocketeerSlot.rktr_slot_id, rocketeerSlot.rktr_ad_id);
-                    rubiconSlot.addKW(rocketeerSlot.rktr_ad_id);
-                    rubiconSlots.push(rubiconSlot);
-                    window.rubiconSlotDictionary[rocketeerSlot.rktr_slot_id] = rubiconSlot;
-                  } else if (typeof window.rubiconSlotDictionary[rocketeerSlot.rktr_slot_id] === 'undefined' && alreadyRendered) {
-                    log('Element has already been rendered with an ad.  Skipping Fastlane auction for: ', rocketeerSlot.rktr_slot_id);
-                  } else {
-                    log('Using cached Fastlane response for: ', rocketeerSlot.rktr_slot_id);
-                  }
-                }
-              }
-            }
-          }
-        }
-        var adUnitPieces = topBannerAdUnit.split('/');
-        var adUnitPieceNames = ['site', 'section', 'subsection'];
-        for (var y = 0; y < adUnitPieces.length && y < 3; y++) {
-          log('Setting FPI', adUnitPieceNames[y], adUnitPieces[y]);
-          window.rubicontag.setFPI(adUnitPieceNames[y], adUnitPieces[y]);
-        }
-        if (window.CNN && window.CNN.getCapTopics) {
-          window.rubicontag.setFPI('cap_topics', Object.getOwnPropertyNames(window.CNN.getCapTopics()));
-        }
-        window.rubicontag.setFPI('ssl', document.location.protocol === 'https:' ? 1 : 0);
-        window.rubicontag.run(function _runRubicon() {
-          clearSlotsAndTimeout(preQueueTimeout);
-          callback();
-        }, {slots: rubiconSlots});
-      });
-    } else {
-      log('Not building slots. Fastlane disabled.');
-      callback();
-    }
-  }
-
-  function setTargetingForFastlane(slots) {
-    log('setting fastlane targeting');
-    window.googletag.cmd.push(function _pushSetTargetingForFastlane() {
-      var gptSlots = window.AdFuel.pageSlots;
-      log({slots: slots, gptSlots: gptSlots});
-      var addedTargeting = {};
-      for (var x = 0; x < slots.length; x++) {
-        var slot = slots[x];
-        log('Slot ID: ', slot.rktr_slot_id);
-        if (gptSlots[slot.rktr_slot_id]) {
-          var gptSlot = gptSlots[slot.rktr_slot_id];
-          log('calling window.rubicontag.setTargetingForGPTSlot...');
-          window.rubicontag.setTargetingForGPTSlot(gptSlot);
-          window.refreshableRubiconSlots[slot.rktr_slot_id] = window.rubiconSlotDictionary[slot.rktr_slot_id];
-          delete window.rubiconSlotDictionary[slot.rktr_slot_id];
-          var targeting = gptSlot.getTargetingKeys();
-          var data = {};
-          var timeoutTargetSet = false;
-          for (var y = 0; y < targeting.length; y++) {
-            if (targeting[y].indexOf('rpfl_') >= 0) {
-              log('removing fln_to=1 and setting fln_to=0 for ' + gptSlot.getSlotElementId());
-              if (!timeoutTargetSet) {
-                window.AdFuel.addSlotLevelTarget(gptSlot.getSlotElementId(), 'fln_to', '0');
-                timeoutTargetSet = true;
-              }
-              log('Setting Fastlane Targeting...', {
-                slot: gptSlot.getSlotElementId(),
-                target: {key: targeting[y], value: gptSlot.getTargeting(targeting[y])}
-              });
-              data[targeting[y]] = gptSlot.getTargeting(targeting[y]);
-            }
-          }
-          addedTargeting[slot.rktr_slot_id] = data;
-        }
-      }
-      metricApi.addMetric({
-        type: 'modules',
-        id: 'Fastlane',
-        data: {
-          targeting: addedTargeting
-        }
-      });
-      vendorData.targeting = addedTargeting;
-    });
-  }
-
-
-  function processRenderedCreative(args) {
-    vendorData.bidData[args.elementId] = args;
-    log('Fastlane Creative Rendered: ', args);
-    metricApi.addMetric({
-      type: 'vendor',
-      id: 'Rubicon Fastlane',
-      data: vendorData
-    });
-  }
-
-  function preDispatch(slots, callback) {
-    window.rubicontag.cmd.push(function _pushSetTargetingForFastlane() {
-      window.rubicontag.addEventListener('HL_CREATIVE_RENDERED', processRenderedCreative);
-      if (!disabled) {
-        var preDispatchTimeout = setTimeout(function _preDispatchTimeoutFunc() {
-          callback();
-        }, 1000);
-        log('preDispatch');
-        setTargetingForFastlane(slots);
-        clearTimeout(preDispatchTimeout);
-      }
-      callback();
-    });
-  }
-
-  function preRefresh(slotIds, callback) {
-    if (!disabled) {
-      log('preRefresh');
-      var rubiconSlots = [];
-      var pseudoRocketeerSlots = [];
-      var gptSlots = window.AdFuel.pageSlots;
-      var slotCollection = slotIds;
-      if (!slotIds) {
-        slotCollection = Object.getOwnPropertyNames(gptSlots);
-      }
-      for (var x = 0; x < slotCollection.length; x++) {
-        var slotId = slotCollection[x];
-        log('Slot ID: ', slotId);
-        if (gptSlots[slotId]) {
-          var gptSlot = gptSlots[slotId];
-          // clear fastlane slot level targeting
-          var slotTargets = gptSlot.getTargetingKeys();
-          for (var targetId in slotTargets) {
-            if (slotTargets.hasOwnProperty(targetId)) {
-              var key = slotTargets[targetId];
-              if (key.indexOf('rpfl') >= 0) {
-                window.AdFuel.removeSlotLevelTarget(slotId, key);
-              }
-            }
-          }
-          metricApi.addMetric({
-            type: 'modules',
-            id: 'Fastlane',
-            data: {
-              targeting: {}
-            }
-          });
-
-          if (window.rubiconSlotDictionary[slotId]) {rubiconSlots.push(window.rubiconSlotDictionary[slotId]);}
-          pseudoRocketeerSlots.push({
-            rktr_slot_id: slotId
-          });
-        }
-      }
-
-      log('refreshing slots', {
-        slotsToRefresh: rubiconSlots
-      });
-      window.rubicontag.run(function _runSetTargetingForFastlane() {
-        setTargetingForFastlane(pseudoRocketeerSlots);
-        callback();
-      }, {
-        slots: rubiconSlots
-      });
-    } else {
-      callback();
-    }
-  }
-
-  function registerModuleWithAdFuel() {
-    if (!disabled) {
-      window.AdFuel.setOptions({
-        queueCallbackTimeoutInMilliseconds: 1200,
-        dispatchCallbackTimeoutInMilliseconds: 1200,
-        refreshCallbackTimeoutInMilliseconds: 1200
-      });
-      metricApi = window.AdFuel.registerModule('Fastlane', {
-        preQueueCallback: buildSlotsForFastlane,
-        preDispatchCallback: preDispatch,
-        preRefreshCallback: preRefresh
-      });
-    } else {
-      log('Fastlane disabled. Not registering module.');
-    }
-  }
-
-  function init() {
-    addFastlaneScript();
-
-    if (window.AdFuel) {
-      // AdFuel loaded first
-      registerModuleWithAdFuel();
-    } else {
-      // wait for AdFuel to load
-      if (document.addEventListener) {
-        document.addEventListener('AdFuelCreated', registerModuleWithAdFuel, true);
-      }
-      if (document.attachEvent) {
-        document.attachEvent('onAdFuelCreated', registerModuleWithAdFuel);
-      }
-    }
-  }
-
   init();
 })();
 
