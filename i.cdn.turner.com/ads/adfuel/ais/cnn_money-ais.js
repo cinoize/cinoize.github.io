@@ -1,5 +1,5 @@
 //CNN Money AdFuel Modules
-//Deployed: 2018-10-03 11:20:09
+//Deployed: 2018-10-04 08:36:19
 
 ////////////////////////////////////////////
 //AA IndexExchange Wrapper 1.1
@@ -202,6 +202,7 @@
 
 /*!
   - Fix for multiple requests
+  - Addition of CNNB Ad unit to mapping
 */
 
 (function createAdFuelCriteoModule() {
@@ -210,7 +211,7 @@
     window.Criteo.events = window.Criteo.events || [];
 
     var MODULE_NAME = 'Criteo';
-    var MODULE_VERSION = 'v1.3.0';
+    var MODULE_VERSION = 'v1.3.2';
 
     var metricApi;
     var objectProto = Object.prototype;
@@ -421,6 +422,13 @@
             '300x250': 1083232,
             '300x600': 1083233
         },
+        'CNNBusiness': {
+            '728x90': 1302537,
+            '970x90': 1302538,
+            '970x250': 1302534,
+            '300x250': 1302539,
+            '300x600': 1302535
+        },
         'AS': {
             '320x50': 1083225,
             '728x90': 1083224,
@@ -457,6 +465,9 @@
             'CNNMoney': {
                 '300x250': 1090834,
                 '320x50': 1090834
+            },
+            'CNNBusiness': {
+                '300x250': 1302536
             },
             'AS': {
                 '300x250': 1090835,
@@ -588,13 +599,17 @@
                             exists = true;
                     }
                     for (var requestedPlacementIndex = 0; requestedPlacementIndex < RequestedCriteoAdUnits.placements.length; requestedPlacementIndex++) {
-                        if (RequestedCriteoAdUnits.placements[requestedPlacementIndex].slotid === placement.slotid && RequestedCriteoAdUnits.placements[requestedPlacementIndex].zoneid === placement.zoneid)
+                        if (RequestedCriteoAdUnits.placements[requestedPlacementIndex].slotid === placement.slotid && RequestedCriteoAdUnits.placements[requestedPlacementIndex].zoneid === placement.zoneid) {
                             exists = true;
+                        }
                     }
+                    log('Requested Ad Units: ', JSON.parse(JSON.stringify(RequestedCriteoAdUnits)));
                     if (!exists) {
                         log('Placement does not yet exist.  Adding to collection.', placement);
                         CriteoAdUnits.placements.push(placement);
+                        RequestedCriteoAdUnits.placements.push(placement);
                     }
+                    log('Criteo Ad Units: ', JSON.parse(JSON.stringify(CriteoAdUnits)));
                     count++;
                     if (MultisizeMethod === MULTISIZE_FIRST) break;
                 }
@@ -606,21 +621,7 @@
             window.Criteo.SetLineItemRanges('0..5:0.01;5..30:0.05;30..100:1.00');
             log('Previously Requested: ', RequestedCriteoAdUnits)
             metricApi.addMetric({type: 'vendor', id: 'Criteo', data:  zones_in_slot});
-            CriteoAdUnits.placements.forEach(function(placement, index){
-                var matched = false;
-                RequestedCriteoAdUnits.placements.forEach(function(requested){
-                    if (requested.slotid === placement.slotid){
-                        matched = true;
-                    }
-                });
-                if (matched){
-                    CriteoAdUnits.placements.splice(index, 1);
-                }
-            });
-            log('Requesting Bids...', CriteoAdUnits);
-            RequestedCriteoAdUnits.placements = RequestedCriteoAdUnits.placements.concat(
-                CriteoAdUnits.placements
-            );
+            log('Requesting Ad Units...', CriteoAdUnits);
             window.Criteo.RequestBids(CriteoAdUnits, function(bids){ callback(null, bids) },
                 isMobile.any ? MOBILE_TIMEOUT : DESKTOP_TIMEOUT
             );
