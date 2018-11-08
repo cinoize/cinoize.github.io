@@ -982,7 +982,7 @@ wsod_js.streaming = {
 		,URL_PREFIX:			"//markets.money.cnn.com/"
 		,STREAM_URL:			"//streamer.money.cnn.com" //prod
 		,TIMEZONE_OFFSET:		0 // leave this at 0
-		,TIMEZONE:				"-4" // Input for streamserver that makes output return in ET(-5) a,d ET with Day light saving(-4)
+		,TIMEZONE:				"-5" // Input for streamserver that makes output return in ET(-5) a,d ET with Day light saving(-4)
 		,FEEDS:{
 			"sungard":true,
 			"batsus":true
