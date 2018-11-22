@@ -1,5 +1,5 @@
 //CNN Money AdFuel Modules
-//Deployed: 2018-10-04 08:36:19
+//Deployed: 2018-11-17 10:35:17
 
 ////////////////////////////////////////////
 //AA IndexExchange Wrapper 1.1
@@ -687,8 +687,11 @@
 //AC A9 800ms 1.4
 ////////////////////////////////////////////
 
-/* Amazon A9 AdFuel Module - Version 1.4
-    - Fix for multiple requests
+/* Amazon A9 AdFuel Module - Version 1.4.3
+    - 1.4.0: Fix - Multiple requests
+    - 1.4.1: Enhancement - Mobile slotName toggle
+    - 1.4.2: Fix - Mobile slotName toggle on refreshed targeting
+    - 1.4.3: Enhancement - Unified Video API
  */
 
 
@@ -707,7 +710,7 @@
     var noop = function () {};
 
     var MODULE_NAME = 'Amazon A9';
-    var MODULE_VERSION = 'v1.4.0';
+    var MODULE_VERSION = 'v1.4.2';
 
     var metricApi = {
         metrics: {},
@@ -718,6 +721,118 @@
     };
 
     var blocked = false;
+
+    /**
+     * isMobile.js v0.4.1
+     *
+     * A simple library to detect Apple phones and tablets,
+     * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
+     * and any kind of seven inch device, via user agent sniffing.
+     *
+     * @author: Kai Mallea (kmallea@gmail.com)
+     *
+     * @license: http://creativecommons.org/publicdomain/zero/1.0/
+     */
+    var apple_phone = /iPhone/i,
+        apple_ipod = /iPod/i,
+        apple_tablet = /iPad/i,
+        android_phone = /(?=.*\bAndroid\b)(?=.*\bMobile\b)/i, // Match 'Android' AND 'Mobile'
+        android_tablet = /Android/i,
+        amazon_phone = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,
+        amazon_tablet = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,
+        windows_phone = /Windows Phone/i,
+        windows_tablet = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
+        other_blackberry = /BlackBerry/i,
+        other_blackberry_10 = /BB10/i,
+        other_opera = /Opera Mini/i,
+        other_chrome = /(CriOS|Chrome)(?=.*\bMobile\b)/i,
+        other_firefox = /(?=.*\bFirefox\b)(?=.*\bMobile\b)/i, // Match 'Firefox' AND 'Mobile'
+        seven_inch = new RegExp(
+            '(?:' + // Non-capturing group
+            'Nexus 7' + // Nexus 7
+            '|' + // OR
+            'BNTV250' + // B&N Nook Tablet 7 inch
+            '|' + // OR
+            'Kindle Fire' + // Kindle Fire
+            '|' + // OR
+            'Silk' + // Kindle Fire, Silk Accelerated
+            '|' + // OR
+            'GT-P1000' + // Galaxy Tab 7 inch
+            ')', // End non-capturing group
+            'i'); // Case-insensitive matching
+
+    var match = function (regex, userAgent) {
+        return regex.test(userAgent);
+    };
+
+    var IsMobileClass = function (userAgent) {
+        var ua = userAgent || navigator.userAgent;
+
+        // Facebook mobile app's integrated browser adds a bunch of strings that
+        // match everything. Strip it out if it exists.
+        var tmp = ua.split('[FBAN');
+        if (typeof tmp[1] !== 'undefined') {
+            ua = tmp[0];
+        }
+
+        // Twitter mobile app's integrated browser on iPad adds a "Twitter for
+        // iPhone" string. Same probable happens on other tablet platforms.
+        // This will confuse detection so strip it out if it exists.
+        tmp = ua.split('Twitter');
+        if (typeof tmp[1] !== 'undefined') {
+            ua = tmp[0];
+        }
+
+        this.apple = {
+            phone: match(apple_phone, ua),
+            ipod: match(apple_ipod, ua),
+            tablet: !match(apple_phone, ua) && match(apple_tablet, ua),
+            device: match(apple_phone, ua) || match(apple_ipod, ua) || match(apple_tablet, ua)
+        };
+        this.amazon = {
+            phone: match(amazon_phone, ua),
+            tablet: !match(amazon_phone, ua) && match(amazon_tablet, ua),
+            device: match(amazon_phone, ua) || match(amazon_tablet, ua)
+        };
+        this.android = {
+            phone: match(amazon_phone, ua) || match(android_phone, ua),
+            tablet: !match(amazon_phone, ua) && !match(android_phone, ua) && (match(amazon_tablet, ua) || match(android_tablet, ua)),
+            device: match(amazon_phone, ua) || match(amazon_tablet, ua) || match(android_phone, ua) || match(android_tablet, ua)
+        };
+        this.windows = {
+            phone: match(windows_phone, ua),
+            tablet: match(windows_tablet, ua),
+            device: match(windows_phone, ua) || match(windows_tablet, ua)
+        };
+        this.other = {
+            blackberry: match(other_blackberry, ua),
+            blackberry10: match(other_blackberry_10, ua),
+            opera: match(other_opera, ua),
+            firefox: match(other_firefox, ua),
+            chrome: match(other_chrome, ua),
+            device: match(other_blackberry, ua) || match(other_blackberry_10, ua) || match(other_opera, ua) || match(other_firefox, ua) || match(other_chrome, ua)
+        };
+        this.seven_inch = match(seven_inch, ua);
+        this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
+
+        // excludes 'other' devices and ipods, targeting touchscreen phones
+        this.phone = this.apple.phone || this.android.phone || this.windows.phone;
+
+        // excludes 7 inch devices, classifying as phone or tablet is left to the user
+        this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
+
+        if (typeof window === 'undefined') {
+            return this;
+        }
+    };
+
+    var instantiate = function () {
+        var IM = new IsMobileClass();
+        IM.Class = IsMobileClass;
+        return IM;
+    };
+
+    var isMobile = instantiate();
 
     function isFunction(object) {
         return toString.call(object) === '[object Function]';
@@ -846,15 +961,19 @@
     var hostname = parser.hostname;
     var pathname = parser.pathname;
 
-    var a9bids;                         // display a9 bid cache
-    var bidSlots = [];                  // slots sent to a9 for auction
-    var defaultTimeout = 500;           // 500ms default timeout (for video)
-    var defaultRefreshTimeout = 1000;   // 1000ms default refresh timeout (for video)
+    var a9bids;
+    var bidSlots = [];
+    var defaultDisplayTimeout = 750;
+    var defaultDisplayRefreshTimeout = 750;
+    var defaultMobileDisplayTimeout = 750;
+    var defaultMobileDisplayRefreshTimeout = 750;
+    var defaultVideoTimeout = 500;
+    var defaultVideoRefreshTimeout = 1000;
     var timerEnded = false;
 
     function getTargetingData(timeout) {
         logger.logTime('getTargetingData');
-        timeout = timeout || defaultTimeout;
+        timeout = timeout || defaultVideoTimeout;
         var timeoutOverride = getURLParam('mdt');
         if (timeoutOverride) {
             timeout = timeoutOverride;
@@ -901,10 +1020,251 @@
         return Promise.race([wrappedCallback, timeoutCallback]);
     }
 
+    function getPreRollTargetingData(timeout) {
+        logger.logTime('getPreRollTargetingData');
+        timeout = timeout || defaultVideoTimeout;
+        var timeoutOverride = getURLParam('mdt');
+        if (timeoutOverride) {
+            timeout = timeoutOverride;
+            logger.log('Overriding Max Duration Time: ', timeout);
+        }
+        var wrappedFunction = function wrappedFunction(resolve) {
+            logger.log('Getting A9 Video PreRoll targeting...');
+            var innerFunction = function(bids) {
+                clearTimeout(window.preRollTargetingTimeoutId);
+                var targetBid = {};
+                bids.forEach(function(bid){
+                    if (bid.slotID.indexOf('aps-') >= 0) {
+                        targetBid = bid;
+                    }
+                })
+                var result = {
+                    'amznbid': targetBid.amznbid || '',
+                    'amzniid': targetBid.amzniid || '',
+                };
+                logger.log('Returning A9 PreRoll Targeting: ', result);
+                if (!timerEnded){
+                    logger.logTimeEnd('getPreRollTargetingData');
+                    timerEnded = true;
+                }
+                return result;
+            }
+            window.A9VideoAPI._preRollTargetingPromise.then(function(bids) { resolve(innerFunction(bids)) });
+        };
+        var timeoutFunction = function timeoutFunction(resolve, reject) {
+            window.preRollTargetingTimeoutId = setTimeout(function() {
+                logger.log('getPreRollTargetingData timed out after ' + timeout + 'ms.');
+                clearTimeout(window.preRollTargetingTimeoutId);
+                if (!timerEnded){
+                    logger.logTimeEnd('getPreRollTargetingData');
+                    timerEnded = true;
+                }
+                reject('getPreRollTargetingData timed out after ' + timeout + 'ms.');
+            }, timeout);
+        };
+        var wrappedCallback = new Promise(wrappedFunction);
+        var timeoutCallback = new Promise(timeoutFunction);
+
+        // Returns a race between the timeout and the passed in promise
+        return Promise.race([wrappedCallback, timeoutCallback]);
+    }
+
+    function getMidRollTargetingData(timeout) {
+        logger.logTime('getMidRollTargetingData');
+        timeout = timeout || defaultVideoRefreshTimeout;
+        var slotName = isMobile.phone ? 'aps-midroll-mobile' : 'aps-midroll';
+        var timeoutOverride = getURLParam('mdt');
+        var slotNameOverride = getURLParam('slotname');
+        if (timeoutOverride) {
+            timeout = timeoutOverride;
+            logger.log('Overriding Max Duration Time: ', timeout);
+        }
+        if (slotNameOverride) {
+            slotName = slotNameOverride;
+            logger.log('Overriding Slot Name: ', slotName);
+        }
+        var wrappedFunction = function wrappedFunction(resolve) {
+            window.A9VideoAPI._midRollTargetingPromise = new Promise(function(resolve) {
+                window.apstag.fetchBids({
+                    slots: [{
+                        slotID: slotName,
+                        mediaType: 'video',
+                    }],
+                    timeout: timeout
+                }, resolve);
+            });
+            var innerFunction = function innerFunction(bids) {
+                clearTimeout(window.midRollTargetingTimeoutId);
+                var targetBid = {};
+                bids.forEach(function(bid) {
+                    if (bid.slotID === slotName) {
+                        targetBid = bid;
+                    }
+                })
+                var result = {
+                    'amznbid': targetBid.amznbid || '',
+                    'amzniid': targetBid.amzniid || '',
+                };
+                logger.log('Returning A9 MidRoll Targeting: ', result);
+                if (!timerEnded){
+                    logger.logTimeEnd('getMidRollTargetingData');
+                    timerEnded = true;
+                }
+                resolve(result);
+            }
+            logger.log('Getting A9 Video MidRoll targeting...');
+            window.A9VideoAPI._midRollTargetingPromise.then(innerFunction);
+        };
+        var timeoutFunction = function timeoutFunction(resolve, reject) {
+            window.midRollTargetingTimeoutId = setTimeout(function() {
+                logger.log('getMidRollTargetingData timed out after ' + timeout + 'ms.');
+                clearTimeout(window.midRollTargetingTimeoutId);
+                if (!timerEnded){
+                    logger.logTimeEnd('getMidRollTargetingData');
+                    timerEnded = true;
+                }
+                reject('getMidRollTargetingData timed out after ' + timeout + 'ms.');
+            }, timeout);
+        };
+        var wrappedCallback = new Promise(wrappedFunction);
+        var timeoutCallback = new Promise(timeoutFunction);
+
+        // Returns a race between the timeout and the passed in promise
+        return Promise.race([wrappedCallback, timeoutCallback]);
+    }
+
     function getRefreshedTargetingData(slotName, timeout) {
         logger.logTime('getRefreshedTargetingData');
-        timeout = timeout || defaultRefreshTimeout;
-        slotName = slotName || 'aps-midroll';
+        timeout = timeout || defaultVideoRefreshTimeout;
+        slotName = slotName + (isMobile.phone && slotName.indexOf('-mobile') < 1 ? '-mobile' : '') || isMobile.phone ? 'aps-midroll-mobile' : 'aps-midroll';
+        var timeoutOverride = getURLParam('mdt');
+        var slotNameOverride = getURLParam('slotname');
+        if (timeoutOverride) {
+            timeout = timeoutOverride;
+            logger.log('Overriding Max Duration Time: ', timeout);
+        }
+        if (slotNameOverride) {
+            slotName = slotNameOverride;
+            logger.log('Overriding Slot Name: ', slotName);
+        }
+        var wrappedFunction = function wrappedFunction(resolve) {
+            window.A9VideoAPI._refreshedTargetingPromise = new Promise(function(resolve) {
+                window.apstag.fetchBids({
+                    slots: [{
+                        slotID: slotName,
+                        mediaType: 'video',
+                    }],
+                    timeout: timeout
+                }, resolve);
+            });
+            var innerFunction = function innerFunction(bids) {
+                clearTimeout(window.refreshedTargetingTimeoutId);
+                var targetBid = {};
+                bids.forEach(function(bid) {
+                    if (bid.slotID === slotName) {
+                        targetBid = bid;
+                    }
+                })
+                var result = {
+                    'amznbid': targetBid.amznbid || '',
+                    'amzniid': targetBid.amzniid || '',
+                };
+                logger.log('Returning Refreshed A9 Targeting: ', result);
+                if (!timerEnded){
+                    logger.logTimeEnd('getRefreshedTargetingData');
+                    timerEnded = true;
+                }
+                resolve(result);
+            }
+            logger.log('Refreshing A9 Video targeting...');
+            window.A9VideoAPI._refreshedTargetingPromise.then(innerFunction);
+        };
+        var timeoutFunction = function timeoutFunction(resolve, reject) {
+            window.refreshedTargetingTimeoutId = setTimeout(function() {
+                logger.log('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
+                clearTimeout(window.targetingTimeoutId);
+                if (!timerEnded){
+                    logger.logTimeEnd('getRefreshedTargetingData');
+                    timerEnded = true;
+                }
+                reject('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
+            }, timeout);
+        };
+        var wrappedCallback = new Promise(wrappedFunction);
+        var timeoutCallback = new Promise(timeoutFunction);
+
+        // Returns a race between the timeout and the passed in promise
+        return Promise.race([wrappedCallback, timeoutCallback]);
+    }
+
+    function getRefreshedPreRollTargetingData(timeout) {
+        logger.logTime('getRefreshedPreRollTargetingData');
+        timeout = timeout || defaultVideoRefreshTimeout;
+        var slotName = isMobile.phone ? 'aps-preroll-mobile' : 'aps-preroll';
+        var timeoutOverride = getURLParam('mdt');
+        var slotNameOverride = getURLParam('slotname');
+        if (timeoutOverride) {
+            timeout = timeoutOverride;
+            logger.log('Overriding Max Duration Time: ', timeout);
+        }
+        if (slotNameOverride) {
+            slotName = slotNameOverride;
+            logger.log('Overriding Slot Name: ', slotName);
+        }
+        var wrappedFunction = function wrappedFunction(resolve) {
+            window.A9VideoAPI._refreshedPreRollTargetingPromise = new Promise(function(resolve) {
+                window.apstag.fetchBids({
+                    slots: [{
+                        slotID: slotName,
+                        mediaType: 'video',
+                    }],
+                    timeout: timeout
+                }, resolve);
+            });
+            var innerFunction = function innerFunction(bids) {
+                clearTimeout(window.refreshedPreRollTargetingTimeoutId);
+                var targetBid = {};
+                bids.forEach(function(bid) {
+                    if (bid.slotID === slotName) {
+                        targetBid = bid;
+                    }
+                })
+                var result = {
+                    'amznbid': targetBid.amznbid || '',
+                    'amzniid': targetBid.amzniid || '',
+                };
+                logger.log('Returning Refreshed A9 PreRoll Targeting: ', result);
+                if (!timerEnded){
+                    logger.logTimeEnd('getRefreshedPreRollTargetingData');
+                    timerEnded = true;
+                }
+                resolve(result);
+            }
+            logger.log('Refreshing A9 Video PreRoll targeting...');
+            window.A9VideoAPI._refreshedPreRollTargetingPromise.then(innerFunction);
+        };
+        var timeoutFunction = function timeoutFunction(resolve, reject) {
+            window.refreshedPreRollTargetingTimeoutId = setTimeout(function() {
+                logger.log('getRefreshedPreRollTargetingData timed out after ' + timeout + 'ms.');
+                clearTimeout(window.refreshedPreRollTargetingTimeoutId);
+                if (!timerEnded){
+                    logger.logTimeEnd('getRefreshedPreRollTargetingData');
+                    timerEnded = true;
+                }
+                reject('getRefreshedPreRollTargetingData timed out after ' + timeout + 'ms.');
+            }, timeout);
+        };
+        var wrappedCallback = new Promise(wrappedFunction);
+        var timeoutCallback = new Promise(timeoutFunction);
+
+        // Returns a race between the timeout and the passed in promise
+        return Promise.race([wrappedCallback, timeoutCallback]);
+    }
+
+    function getRefreshedMidRollTargetingData(timeout) {
+        logger.logTime('getRefreshedMidRollTargetingData');
+        timeout = timeout || defaultVideoRefreshTimeout;
+        var slotName = isMobile.phone ? 'aps-midroll-mobile' : 'aps-midroll';
         var timeoutOverride = getURLParam('mdt');
         var slotNameOverride = getURLParam('slotname');
         if (timeoutOverride) {
@@ -922,10 +1282,11 @@
                         slotID: slotName,
                         mediaType: 'video',
                     }],
+                    timeout: timeout
                 }, resolve);
             });
             var innerFunction = function innerFunction(bids) {
-                clearTimeout(window.targetingTimeoutId);
+                clearTimeout(window.refreshedMidRollTargetingTimeoutId);
                 var targetBid = {};
                 bids.forEach(function(bid) {
                     if (bid.slotID === slotName) {
@@ -936,25 +1297,25 @@
                     'amznbid': targetBid.amznbid || '',
                     'amzniid': targetBid.amzniid || '',
                 };
-                logger.log('Returning A9 Targeting: ', result);
+                logger.log('Returning Refreshed A9 MidRoll Targeting: ', result);
                 if (!timerEnded){
-                    logger.logTimeEnd('getRefreshedTargetingData');
+                    logger.logTimeEnd('getRefreshedMidRollTargetingData');
                     timerEnded = true;
                 }
                 resolve(result);
             }
-            logger.log('Refreshing A9 Video targeting...');
+            logger.log('Refreshing A9 Video MidRoll targeting...');
             window.A9VideoAPI._targetingPromise.then(innerFunction);
         };
         var timeoutFunction = function timeoutFunction(resolve, reject) {
-            window.targetingTimeoutId = setTimeout(function() {
-                logger.log('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
-                clearTimeout(window.targetingTimeoutId);
+            window.refreshedMidRollTargetingTimeoutId = setTimeout(function() {
+                logger.log('getRefreshedMidRollTargetingData timed out after ' + timeout + 'ms.');
+                clearTimeout(window.refreshedMidRollTargetingTimeoutId);
                 if (!timerEnded){
-                    logger.logTimeEnd('getRefreshedTargetingData');
+                    logger.logTimeEnd('getRefreshedMidRollTargetingData');
                     timerEnded = true;
                 }
-                reject('getRefreshedTargetingData timed out after ' + timeout + 'ms.');
+                reject('getRefreshedMidRollTargetingData timed out after ' + timeout + 'ms.');
             }, timeout);
         };
         var wrappedCallback = new Promise(wrappedFunction);
@@ -1032,61 +1393,63 @@
         var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
         var browser = getViewport();
         log('Browser Dimensions: ', browser);
-        for (var x = 1; x < asset.length; x++) {
-            var slotId = asset[x].originalElementId || asset[x].rktr_slot_id;
-            var pieces = slotId.split('_');
-            pieces.splice(0, 1);
-            slotId = pieces.join('_')
-            log('Checking slot and sizes for validity: ', slotId);
-            var responsiveSizes = [];
-            var isValid = true;
-            var viewportChecked = false;
-            for (var viewportId = 0; viewportId < asset[x].responsive.length; viewportId++) {
-                var viewport = asset[x].responsive[viewportId];
-                if (!viewportChecked) log('Checking For Responsive Viewport: ', viewport[0].join('x'));
-                if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
-                    log('Match found.');
-                    viewportChecked = true;
-                    responsiveSizes = viewport[1];
-                    if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
-                        log('Slot is responsive and being suppressed.  Filtering slot.');
-                        isValid = false;
+        for (var x = 0; x < asset.length; x++) {
+            if (asset[x].rktr_slot_id !== 'page') {
+                var slotId = asset[x].originalElementId || asset[x].rktr_slot_id;
+                var pieces = slotId.split('_');
+                pieces.splice(0, 1);
+                slotId = pieces.join('_')
+                log('Checking slot and sizes for validity: ', slotId);
+                var responsiveSizes = [];
+                var isValid = true;
+                var viewportChecked = false;
+                for (var viewportId = 0; viewportId < asset[x].responsive.length; viewportId++) {
+                    var viewport = asset[x].responsive[viewportId];
+                    if (!viewportChecked) log('Checking For Responsive Viewport: ', viewport[0].join('x'));
+                    if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
+                        log('Match found.');
+                        viewportChecked = true;
+                        responsiveSizes = viewport[1];
+                        if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
+                            log('Slot is responsive and being suppressed.  Filtering slot.');
+                            isValid = false;
+                        }
                     }
                 }
-            }
-            if (responsiveSizes.length > 0 && isValid) {
-                log('Slot is responsive and not being suppressed.  Using responsive sizes: ', responsiveSizes);
-                asset[x].sizes = responsiveSizes;
-            }
-            if (isValid) {
-                for (var y = 0; y < asset[x].sizes.length; y++) {
-                    var size = asset[x].sizes[y].join('x')
-                    if (validSizes.indexOf(size) < 0) {
-                        log('Filtering out Invalid Size: ', size);
-                        asset[x].sizes.splice(y, 1)
-                        y = y - 1;
-                    }
-                }
-                if (asset[x].sizes.length === 0) {
-                    log('No Valid Sizes: ', asset[x].sizes);
-                    isValid = false;
-                }
-                for (var invalidMapping in invalidMappings) {
-                    if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
-                        log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
-                        isValid = false;
-                    }
-                }
-                for (var invalidAdUnitSegment in invalidAdUnitSegments) {
-                    if (asset[x].rktr_ad_id.indexOf(invalidAdUnitSegments[invalidAdUnitSegment]) >= 0) {
-                        log('Filtering out invalid ad unit segment: ', invalidAdUnitSegments[invalidAdUnitSegment], asset[x]);
-                        isValid = false;
-                    }
+                if (responsiveSizes.length > 0 && isValid) {
+                    log('Slot is responsive and not being suppressed.  Using responsive sizes: ', responsiveSizes);
+                    asset[x].sizes = responsiveSizes;
                 }
                 if (isValid) {
-                    log('Valid Slot: ', asset[x]);
-                    var obj = {slotID: asset[x].rktr_slot_id, sizes: asset[x].sizes};
-                    bidSlots.push(obj);
+                    for (var y = 0; y < asset[x].sizes.length; y++) {
+                        var size = asset[x].sizes[y].join('x')
+                        if (validSizes.indexOf(size) < 0) {
+                            log('Filtering out Invalid Size: ', size);
+                            asset[x].sizes.splice(y, 1)
+                            y = y - 1;
+                        }
+                    }
+                    if (asset[x].sizes.length === 0) {
+                        log('No Valid Sizes: ', asset[x].sizes);
+                        isValid = false;
+                    }
+                    for (var invalidMapping in invalidMappings) {
+                        if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
+                            log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
+                            isValid = false;
+                        }
+                    }
+                    for (var invalidAdUnitSegment in invalidAdUnitSegments) {
+                        if (asset[x].rktr_ad_id.indexOf(invalidAdUnitSegments[invalidAdUnitSegment]) >= 0) {
+                            log('Filtering out invalid ad unit segment: ', invalidAdUnitSegments[invalidAdUnitSegment], asset[x]);
+                            isValid = false;
+                        }
+                    }
+                    if (isValid) {
+                        log('Valid Slot: ', asset[x]);
+                        var obj = {slotID: asset[x].rktr_slot_id, sizes: asset[x].sizes};
+                        bidSlots.push(obj);
+                    }
                 }
             }
         }
@@ -1099,7 +1462,8 @@
         if (bidSlots.length > 0) {
             var a9Slots = JSON.parse(JSON.stringify(bidSlots));
             window.apstag.fetchBids({
-                slots: a9Slots
+                slots: a9Slots,
+                timeout: isMobile.any ? defaultMobileDisplayTimeout : defaultDisplayTimeout
             }, processBids);
             bidSlots.length = 0;
         }else{
@@ -1122,7 +1486,8 @@
         a9bids = null;
         logTime('Refreshing A9 Bids');
         window.apstag.fetchBids({
-            slots: bidSlots
+            slots: bidSlots,
+            timeout: isMobile.any ? defaultMobileDisplayRefreshTimeout : defaultDisplayRefreshTimeout
         }, function (bids) {
             a9bids = bids;
             logTimeEnd('Refreshing A9 Bids');
@@ -1135,9 +1500,9 @@
         if (!blocked) {
             log('Registering ' + MODULE_NAME + ' module with AdFuel');
             window.AdFuel.setOptions({
-                queueCallbackTimeoutInMilliseconds: 1000,
-                dispatchCallbackTimeoutInMilliseconds: 1000,
-                refreshCallbackTimeoutInMilliseconds: 2000
+                queueCallbackTimeoutInMilliseconds: 800,
+                dispatchCallbackTimeoutInMilliseconds: 800,
+                refreshCallbackTimeoutInMilliseconds: 800
             });
             metricApi = window.AdFuel.registerModule(MODULE_NAME, {
                 preQueueCallback: preQueueCallback,
@@ -1149,10 +1514,15 @@
 
     function configureA9Library() {
         var pubId = '3159';
-        window.A9VideoAPI = {
+        window.AdFuelVideoAPI = window.AdFuelVideoAPI || {};
+        window.AdFuelVideoAPI.A9 = window.A9VideoAPI = {
             getTargetingData: getTargetingData,
-            getRefreshedTargetingData: getRefreshedTargetingData
-        }
+            getPreRollTargetingData: getPreRollTargetingData,
+            getMidRollTargetingData: getMidRollTargetingData,
+            getRefreshedTargetingData: getRefreshedTargetingData,
+            getRefreshedPreRollTargetingData: getRefreshedPreRollTargetingData,
+            getRefreshedMidRollTargetingData: getRefreshedMidRollTargetingData
+        };
         log('Defaulting to Domestic PubId.');
         log('Country Code: ', countryCode);
         log('Hostname: ', hostname);
@@ -1185,7 +1555,7 @@
             bidTimeout = timeoutOverride;
             logger.log('Overriding Max Duration Time: ', bidTimeout);
         }
-        var slotName = 'aps-preroll';
+        var slotName = isMobile.phone ? 'aps-preroll-mobile' : 'aps-preroll';
         var slotNameOverride = getURLParam('slotname');
         if (slotNameOverride) {
             slotName = slotNameOverride;
@@ -1197,7 +1567,7 @@
             videoAdServer: 'freeWheel',
             bidTimeout: bidTimeout,
         });
-        window.A9VideoAPI._targetingPromise = new Promise(function(resolve){
+        window.A9VideoAPI._preRollTargetingPromise = window.A9VideoAPI._targetingPromise = new Promise(function(resolve){
             window.apstag.fetchBids({
                 slots: [
                     {
@@ -1233,7 +1603,7 @@
 
 
 ////////////////////////////////////////////
-//AD Prebid for Money 1.0
+//AD Prebid for Money 1.1
 ////////////////////////////////////////////
 
 (function createPrebidAdFuelModule() {
@@ -1885,12 +2255,6 @@
         'increment': 1.00
       }]
     };
-    var sendAllBids = true;
-    
-    if (isIntl) {
-      sendAllBids = false;
-    }
-
     var innerFunc = function innerFunc() {
       window.pbjs.setConfig({
         consentManagement: {
@@ -1899,7 +2263,7 @@
           allowAuctionWithoutConsent: false
         },
         priceGranularity: priceBuckets,
-        enableSendAllBids: sendAllBids,
+        enableSendAllBids: true,
         bidderTimeout: PREBID_TIMEOUT
       });
       log('Prebid Config: ', {
