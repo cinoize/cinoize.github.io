@@ -320,8 +320,7 @@ if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
 	{
 	    _sf_async_config.path = cnnTrackPath;
 	}
-	
-	
+	window._sf_async_config.autoDetect = false;	
 	/** CONFIGURATION END **/
 	
 	(function(){
