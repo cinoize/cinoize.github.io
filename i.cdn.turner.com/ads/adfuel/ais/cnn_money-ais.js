@@ -1,5 +1,5 @@
 //CNN Money AdFuel Modules
-//Deployed: 2018-11-17 10:35:17
+//Deployed: 2018-12-10 10:29:41
 
 ////////////////////////////////////////////
 //AA IndexExchange Wrapper 1.1
@@ -1875,6 +1875,7 @@
 
   var DOMESTIC_BIDDERS = ['rubicon', 'appnexus'];
   var INTL_BIDDERS = ['appnexus', 'pangaea', 'rubicon'];
+  var NATIVE_BIDDERS = ['appnexus', 'pangaea'];
 
   var DOMESTIC_ACCOUNT_IDS = {
     rubicon: '11078',
@@ -1937,30 +1938,77 @@
     'btf': 369882
   };
 
-  function preQueueCallback(asset, done) {
+  var requestedAdUnits = {};
+
+  function buildAdUnits (asset){
     logTime('Prebid AdUnit Building');
     // Only sizes in this array will be sent in the request to Amazon.
     var validSizes = [ '160x600', '300x250', '300x600', '320x50', '728x90', '970x90', '970x250' ];
-    // Only slot id with any of the following slot types will be included in the request to A9.
-    // var invalidMappings = [ '_ns_', '_nfs_' ];
-    var validMappings = [ '_bnr_', '_rect_', '_sky_' ];
+    // Any slot id with any of the following slot types will be excluded from the request to A9.
+    var invalidMappings = [ '_ns_', '_nfs_' ];
     // Any slot with any of the following ad unit segments in the slot ad unit will be excluded from the request to A9.
     var invalidAdUnitSegments = [ 'super-ad-zone', 'super_ad_zone' ];
     var browser = getViewport();
     log('Browser Dimensions: ', browser);
-    var adUnits = [];
     log('Asset: ', asset);
+    var nativeAdUnits = [];
+    var bannerAdUnits = [];
     for (var x = 1; x < asset.length; x++) {
       var invCodeArray = asset[x].rktr_ad_id.split('/');
-      var invCode = invCodeArray[0].toLowerCase() + (invCodeArray[1] ? '_' + invCodeArray[1].toLowerCase() : '');
+      var pos = asset[x].targeting.filter(function filterFunction(target) {
+        log('target: ', target);
+        return true;
+      })[0][1][0];
+      log('Pos: ', pos);
+      var invCode = invCodeArray[0].toLowerCase() + '_' + (invCodeArray[1] ? invCodeArray[1].toLowerCase() : '');
+      log('InvCode: ', invCode);
       var adUnitMock = {
-        code: '',               // Div Id
+        code: '',
         mediaTypes: {
-          banner: {           // Always banner
-            sizes: []      // Array of sizes
+        },
+        bids: []
+      };
+      var nativeAdUnitMock = {
+        code: '',
+        mediaTypes: {
+          native: {
+            title: {
+              required: true,
+              len: 80
+            },
+            body: {
+              required: true
+            },
+            image: {
+              required: true
+            },
+            sponsoredBy: {
+              required: true
+            },
+            clickUrl: {
+              required: true
+            },
+            icon: {
+              required: true
+            },
+            cta: {
+              required: false
+            }
+          },
+          banner: {
+            sizes: []
           }
         },
-        bids: []                // Array of bid mocks
+        bids: []
+      };
+      var bannerAdUnitMock = {
+        code: '',
+        mediaTypes: {
+          banner: {
+            sizes: []
+          }
+        },
+        bids: []
       };
       var bidMocks = {
         rubicon: {
@@ -1981,21 +2029,14 @@
         appnexus: {
           bidder: 'appnexus',
           params: {
-            // placementId: asset.rktr_ad_id,          // Optional
-            // allowSmallerSizes: false,               // Optional
-            // keywords: { genre: ['rock', 'pop'] },   // Optional - Get From External Source
-            invCode: invCode,                          // Top 3 Ad Unit levels
-            member: APPNEXUS_ACCOUNT_ID               // Supplied from AppNexus
-            // reserve: 0.90                           // Optional (Sets floor price)
+            invCode: invCode,                          // Top 3 Ad Unit levels + pos value
+            member: APPNEXUS_ACCOUNT_ID                // Supplied from AppNexus
           }
         },
         pangaea: {
           bidder: 'pangaea',
           params: {
-            // placementId: asset.rktr_ad_id,          // Optional
-            // allowSmallerSizes: false,               // Optional
-            // keywords: { genre: ['rock', 'pop'] },   // Optional - Get From External Source
-            invCode: invCode,                          // Top 3 Ad Unit levels
+            invCode: invCode,                          // Top 3 Ad Unit levels + pos value
             member: PANGAEA_ACCOUNT_ID                 // Supplied from AppNexus
             // reserve: 0.90                           // Optional (Sets floor price)
           }
@@ -2005,11 +2046,12 @@
       var responsiveSizes = [];
       var isValid = true;
       var viewportChecked = false;
+      var nativeBids = [];
+      var bannerBids = [];
       for (var viewportId = 0; viewportId < asset[x].responsive.length; viewportId++) {
         var viewport = asset[x].responsive[viewportId];
         if (!viewportChecked) log('Checking For Responsive Viewport: ', viewport[0].join('x'));
         if (!viewportChecked && viewport[0][0] < browser[0] && viewport[0][1] < browser[1]) {
-          log('Match found.');
           viewportChecked = true;
           responsiveSizes = viewport[1];
           if (viewport[1][0] === 'suppress' || responsiveSizes === 'suppress') {
@@ -2022,7 +2064,6 @@
         log('Slot is responsive and not being suppressed.  Using responsive sizes: ', responsiveSizes);
         asset[x].sizes = responsiveSizes;
       }
-      log('Is Valid: ', isValid);
       if (isValid) {
         for (var y = 0; y < asset[x].sizes.length; y++) {
           var size = asset[x].sizes[y].join('x');
@@ -2036,20 +2077,9 @@
           log('No Valid Sizes: ', asset[x].sizes);
           isValid = false;
         }
-        // for (var invalidMapping in invalidMappings) {
-        //   if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
-        //     log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
-        //     isValid = false;
-        //   }
-        // }
-        log('Filtering for valid slot type: ', asset[x]);
-        for (var validMapping in validMappings) {
-          if (asset[x].rktr_slot_id.indexOf(validMappings[validMapping]) >= 0) {
-            log('Valid slot type: ', validMappings[validMapping], asset[x]);
-            isValid = true;
-            break;
-          }
-          else {
+        for (var invalidMapping in invalidMappings) {
+          if (asset[x].rktr_slot_id.indexOf(invalidMappings[invalidMapping]) >= 0) {
+            log('Filtering out invalid slot type: ', invalidMappings[invalidMapping], asset[x]);
             isValid = false;
           }
         }
@@ -2059,11 +2089,8 @@
             isValid = false;
           }
         }
-        log('Is Still Valid: ', isValid);
         if (isValid) {
-          log('Yep... It\'s really still valid.');
           var sizeMapArray = [];
-          log('Sizes: ', asset[x].sizes, asset[x].sizes.length);
 
           for (var sIndex = 0; sIndex < asset[x].sizes.length; sIndex++) {
             sizeMapArray.push(RUBICON_SIZE_MAPPING[asset[x].sizes[sIndex].join('x')]);
@@ -2073,108 +2100,111 @@
           var position = 'atf';
 
           var slotTargets = asset[x].targeting || [];
-          log('slotTargets: ', slotTargets);
 
           for (var tIndex = 0; tIndex < slotTargets.length; tIndex++) {
             var target = slotTargets[tIndex];
-            log('target: ', target);
             if (target[0] === 'pos') {
-              log('yep... it\'s pos.');
               if (Array.isArray(target[1])) {
-                log('yep... it\'s an array.');
                 log('Setting POS for ' + asset[x].rktr_slot_id, target[1][0]);
                 posValue = target[1][0];
                 position = target[1][0].split('_')[1];
               } else {
-                log('nope... not an array.');
                 log('Setting POS for ' + asset[x].rktr_slot_id, target[1]);
                 posValue = target[1];
                 position = target[1].split('_')[1];
               }
             }
           }
-          log('pos: ', posValue);
-          log('position: ', position);
 
           var isHomepage = asset[x].rktr_ad_id.indexOf('/homepage') >= 0;
           log('Is Homepage: ', isHomepage);
-
-          adUnitMock.code = asset[x].originalElementId || asset[x].rktr_slot_id;
-          adUnitMock.mediaTypes.banner.sizes = asset[x].sizes;
-
-          log('Starting AdUnitMock: ', JSON.parse(JSON.stringify(adUnitMock)));
-          log('isIntl: ', isIntl);
-          if (isIntl) {
-            for (var ibIndex = 0; ibIndex < INTL_BIDDERS.length; ibIndex++) {
-              log('ibIndex: ', ibIndex);
-              var intlBidder = INTL_BIDDERS[ibIndex];
-              log('bidder: ', intlBidder);
-              var intlBidMock = bidMocks[intlBidder];
-              switch (intlBidder) {
-              case 'appnexus':
-                intlBidMock.params.invCode = invCode + '_' + posValue;
-                break;
-              case 'pangaea':
-                intlBidMock.params.invCode = invCode + '_' + posValue;
-                break;
-              case 'rubicon':
-              intlBidMock.params.siteId = isMobile.any ? RUBICON_INTL_MOBILE_SITE_ID : RUBICON_INTL_DESKTOP_SITE_ID;
-                if (isMobile.any) {
-                  intlBidMock.params.zoneId = RUBICON_INTL_MOBILE_ZONE_MAPPING[position];
-                } else {
-                  intlBidMock.params.zoneId = isHomepage ? RUBICON_INTL_DESKTOP_HP_ZONE_MAPPING[position] : RUBICON_INTL_DESKTOP_ROS_ZONE_MAPPING[position];
-                }
-                intlBidMock.params.position = position;
-                // intlBidMock.params.sizes = sizeMapArray;
-                break;
-              default:
-                break;
-              }
-              log('Intl Bid Mock: ', intlBidMock);
-              adUnitMock.bids.push(intlBidMock);
+          for (var ibIndex = 0; ibIndex < INTL_BIDDERS.length; ibIndex++) {
+            var intlBidder = INTL_BIDDERS[ibIndex];
+            var nativeIntlBidMock = Object.assign({}, bidMocks[intlBidder]);
+            var bannerIntlBidMock = Object.assign({}, bidMocks[intlBidder]);
+            nativeAdUnitMock.code = asset[x].originalElementId || asset[x].rktr_slot_id;
+            bannerAdUnitMock.code = asset[x].originalElementId || asset[x].rktr_slot_id;
+            log('Bidder: ', intlBidder);
+            if (NATIVE_BIDDERS.indexOf(intlBidder) >= 0){
+              nativeAdUnitMock.mediaTypes.banner.sizes = asset[x].sizes;
             }
-          } else {
-            log('domestic bidders: ', DOMESTIC_BIDDERS, DOMESTIC_BIDDERS.length);
-            for (var dbIndex = 0; dbIndex < DOMESTIC_BIDDERS.length; dbIndex++) {
-              log('dbIndex: ', dbIndex);
-              var domBidder = DOMESTIC_BIDDERS[dbIndex];
-              log('bidder: ', domBidder);
-              var domBidMock = bidMocks[domBidder];
-              log('starting bidMock: ', JSON.parse(JSON.stringify(domBidMock)));
-              switch (domBidder) {
-              case 'appnexus':
-                domBidMock.params.invCode = invCode + '_' + posValue;
-                break;
-              case 'rubicon':
-                domBidMock.params.siteId = isMobile.any ? RUBICON_DOM_MOBILE_SITE_ID : RUBICON_DOM_DESKTOP_SITE_ID;
-                if (isMobile.any) {
-                  domBidMock.params.zoneId = RUBICON_DOM_MOBILE_ZONE_MAPPING[position];
-                } else {
-                  domBidMock.params.zoneId = isHomepage ? RUBICON_DOM_DESKTOP_HP_ZONE_MAPPING[position] : RUBICON_DOM_DESKTOP_ROS_ZONE_MAPPING[position];
-                }
-                domBidMock.params.position = position;
-                // domBidMock.params.sizes = sizeMapArray;
-                break;
-              default:
-                break;
+            bannerAdUnitMock.mediaTypes.banner.sizes = asset[x].sizes;
+            switch (intlBidder) {
+            case 'appnexus':
+              nativeIntlBidMock.params.invCode = invCode + '_' + posValue;
+              nativeBids.push(nativeIntlBidMock);
+              break;
+            case 'pangaea':
+              nativeIntlBidMock.params.invCode = invCode + '_' + posValue;
+              nativeBids.push(nativeIntlBidMock);
+              break;
+            case 'rubicon':
+              bannerIntlBidMock.params.siteId = isMobile.any ? RUBICON_MOBILE_SITE_ID : RUBICON_DESKTOP_SITE_ID;
+              if (isMobile.any) {
+                bannerIntlBidMock.params.zoneId = RUBICON_INTL_MOBILE_ZONE_MAPPING[position];
+              } else {
+                bannerIntlBidMock.params.zoneId = isHomepage ? (
+                  RUBICON_INTL_DESKTOP_HP_ZONE_MAPPING[position] || RUBICON_INTL_DESKTOP_ROS_ZONE_MAPPING[position]
+                ) : RUBICON_INTL_DESKTOP_ROS_ZONE_MAPPING[position];
               }
-              log('ending bidMock: ', JSON.parse(JSON.stringify(domBidMock)));
-              adUnitMock.bids.push(domBidMock);
+              bannerIntlBidMock.params.position = position;
+              bannerIntlBidMock.params.sizes = sizeMapArray;
+              bannerBids.push(bannerIntlBidMock);
+              break;
+            default:
+              break;
             }
+            // adUnitMock.bids.push(intlBidMock);
           }
-          log('Ending AdUnitMock: ', JSON.parse(JSON.stringify(adUnitMock)));
-          adUnits.push(adUnitMock);
+          nativeAdUnitMock.bids = nativeBids;
+          bannerAdUnitMock.bids = bannerBids;
+          if (nativeAdUnitMock.bids.length > 0) {
+            log('Ending Native AdUnitMock: ', JSON.parse(JSON.stringify(nativeAdUnitMock)));
+            nativeAdUnits.push(nativeAdUnitMock);
+          }
+          if (bannerAdUnitMock.bids.length > 0) {
+            log('Ending Banner AdUnitMock: ', JSON.parse(JSON.stringify(bannerAdUnitMock)));
+            bannerAdUnits.push(bannerAdUnitMock);
+          }
         }
       }
     }
     logTimeEnd('Prebid AdUnit Building');
-    log('Final Ad Units: ', adUnits);
+    requestedAdUnits = {native: nativeAdUnits, banner: bannerAdUnits};
+    return {native: nativeAdUnits, banner: bannerAdUnits};
+  }
+
+  function getAdUnitsForRefresh(asset){
+    log('Requested Ad Units: ', requestedAdUnits);
+    var filteredAdUnits = requestedAdUnits;
+    if (asset && asset.length > 0){
+      filteredAdUnits = {
+        native: [],
+        banner: []
+      };
+      Object.keys(requestedAdUnits).forEach(function(key){
+        requestedAdUnits[key].forEach(function(adUnit){
+          if (asset.indexOf(adUnit.code) >= 0) {
+            filteredAdUnits[key].push(adUnit);
+          }
+          window.pbjs.removeAdUnit(adUnit.code);
+        });
+      });
+    }
+    return filteredAdUnits;
+  }
+
+  function preQueueCallback(asset, done) {
+    var adUnits = buildAdUnits(asset);
+    log('built ad units: ', adUnits);
     var callbackExecuted = false;
     function pbQueueFunction() {
-      log('Adding Ad Units...');
-      window.pbjs.addAdUnits(adUnits);
-      log('Aliasing Bidder for Pangaea...');
-      window.pbjs.aliasBidder('appnexus', 'pangaea');
+      log('Adding Native Ad Units...', adUnits.native || []);
+      window.pbjs.addAdUnits(adUnits.native || []);
+      log('Adding Banner Ad Units...', adUnits.banner || []);
+      window.pbjs.addAdUnits(adUnits.banner || []);
+      log('Adding Alias for Pangaea...');
+      window.pbjs.aliasBidder('appnexus', 'pangaea')
       log('Requesting Bids...');
       logTime('Requesting Bids...');
       function bidsBackHandlerFunc(bids) {
@@ -2198,20 +2228,66 @@
         }
       }, PREBID_TIMEOUT);
     }
-    if (adUnits.length > 0) {
+
+    log('AdUnits for Request: ', adUnits);
+    var test1 = adUnits.native.length > 0;
+    var test2 = adUnits.banner.length > 0;
+    var test3 = test1 || test2;
+    log('Tests: ', {1: test1, 2: test2, 3: test3});
+    if ((adUnits.native && adUnits.native.length > 0) || (adUnits.banner && adUnits.banner.length > 0)) {
       window.pbjs.que.push(pbQueueFunction);
     }
   }
 
   function preDispatchCallback(asset, done) {
+    log('Setting Targeting...');
     function innerFunc() {
       if (asset[0].rktr_slot_id.indexOf('_mod_') <= 0) {
-        log('Page Slots: ', Object.keys(window.AdFuel.pageSlots));
         window.pbjs.setTargetingForGPTAsync();
       }
       done();
     }
     window.googletag.cmd.push(innerFunc);
+  }
+
+  function preRefreshCallback(asset, done) {
+    var adUnits = getAdUnitsForRefresh(asset);
+    var callbackExecuted = false;
+    function pbQueueFunction() {
+      log('Adding Native Ad Units...', adUnits.nativeAdUnits);
+      window.pbjs.addAdUnits(adUnits.nativeAdUnits);
+      log('Adding Banner Ad Units...', adUnits.bannerAdUnits);
+      window.pbjs.addAdUnits(adUnits.bannerAdUnits);
+      log('Adding Alias for Pangaea...');
+      window.pbjs.aliasBidder('appnexus', 'pangaea')
+      log('Requesting Bids...');
+      logTime('Requesting Bids...');
+      function bidsBackHandlerFunc(bids) {
+        log('Bids: ', bids);
+        logTimeEnd('Requesting Bids...');
+        window.pbjs.setTargetingForGPTAsync();
+        clearTimeout(window.fallbackTimeout);
+        if (!callbackExecuted) {
+          callbackExecuted = true;
+          done();
+        }
+      }
+      window.pbjs.requestBids({
+        bidsBackHandler: bidsBackHandlerFunc
+      });
+      window.fallbackTimeout = setTimeout(function timeoutFunc() {
+        clearTimeout(window.fallbackTimeout);
+        if (!callbackExecuted) {
+          log('Timed out...');
+          callbackExecuted = true;
+          done();
+        }
+      }, PREBID_TIMEOUT);
+    }
+    log('AdUnits for Refresh: ', adUnits);
+    if ((adUnits.nativeAdUnits && adUnits.nativeAdUnits.length > 0) || (adUnits.bannerAdUnits && adUnits.bannerAdUnits.length > 0)) {
+      window.pbjs.que.push(pbQueueFunction);
+    }
   }
 
   function setGeoTargeting() {
@@ -2230,7 +2306,8 @@
     });
     metricApi = window.AdFuel.registerModule(MODULE_NAME, {
       preQueueCallback: preQueueCallback,
-      preDispatchCallback: preDispatchCallback
+      preDispatchCallback: preDispatchCallback,
+      preRefreshCallback: preRefreshCallback
     }) || metricApi;
   }
 
