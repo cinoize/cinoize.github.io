@@ -63,99 +63,156 @@
   <link href="http://sendvid.com/assets/player-9a0d756fd3b92059cc7e3204731b7796.css" media="screen" rel="stylesheet" />
 
 <meta content="authenticity_token" name="csrf-param" />
-<meta content="gE7VAV5kt5UbV0HYvtUEnLzRp7VhCmlYX4Pc7dczS1s=" name="csrf-token" />
+<meta content="hvdc6dGeUj0k+RsqiNrigqcSc0rP5utSxm3yD+Ke22c=" name="csrf-token" />
 
 
 </head>
 <body class="embeded">
 
+<script type="text/javascript" src="http://sendvid.com/site_ads.js"></script>
 <video id="video-js-video" class="video-js vjs-default-skin"
-  controls preload="none" width="auto" height="auto"
-  poster="https://thumbs3.sendvid.com/0f/f6/v7w7lt2j.jpg" style="width:100%; height:100%; left:0px; top:0px;" playsinline>
+       controls preload="none" width="auto" height="auto"
+       poster="https://thumbs3.sendvid.com/0f/f6/v7w7lt2j.jpg" style="width:100%; height:100%; left:0px; top:0px;" playsinline>
 
   <!-- data-setup='{"example_option":true}' -->
- <source src="https://videos3.sendvid.com/0f/f6/v7w7lt2j.mp4?validfrom=1548110710&validto=1548117910&rate=200k&burst=1000k&hash=8cRwMGKMTK6YRztX663M9Z9xWJQ%3D" type='video/mp4' id="video_source"/>
- <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  <source src="https://videos3.sendvid.com/0f/f6/v7w7lt2j.mp4?validfrom=1550325126&validto=1550332326&rate=200k&burst=1000k&hash=cbtwgEa7dUWKYHNyjVUzDCO1LdY%3D" type='video/mp4' id="video_source"/>
+  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 </video>
-
 
 <script type="text/javascript" src="http://cdn.embed.ly/player-0.0.10.min.js"></script>
 <script type="text/javascript">
 
-function getTime(){
-  return new Date().getTime();
-}
+    function getTime() {
+        return new Date().getTime();
+    }
 
-var poll_failed = 0;
-var poll_url  = "/api/v1/videos/v7w7lt2j/status.json";
-var poll_start_time = getTime();
-var poll_start_queue = null;
-var video_source = "https://videos3.sendvid.com/0f/f6/v7w7lt2j.mp4?validfrom=1548110710&validto=1548117910&rate=200k&burst=1000k&hash=8cRwMGKMTK6YRztX663M9Z9xWJQ%3D";
-var video_poster = "https://thumbs3.sendvid.com/0f/f6/v7w7lt2j.jpg";
-var video_container_padding = "56.25%";
-var video_poster_ready = false;
+    var poll_failed = 0;
+    var poll_url = "/api/v1/videos/v7w7lt2j/status.json";
+    var poll_start_time = getTime();
+    var poll_start_queue = null;
+    var video_source = "https://videos3.sendvid.com/0f/f6/v7w7lt2j.mp4?validfrom=1550325126&validto=1550332326&rate=200k&burst=1000k&hash=cbtwgEa7dUWKYHNyjVUzDCO1LdY%3D";
+    var video_poster = "https://thumbs3.sendvid.com/0f/f6/v7w7lt2j.jpg";
+    var video_container_padding = "56.25%";
+    var video_poster_ready = false;
 
 
-function initPlayer(){
+    function initPlayer() {
 
-  var videojsoptions = {
-    "nativeControlsForTouch": false,
-    "preload": "none",
-    "plugins":{
-      "share":{
-        "embedUrl": "//sendvid.com/embed/v7w7lt2j",
-        "shareUrl":  "http://sendvid.com/v7w7lt2j",
-        "shareOverlayTitle": "sendvid",
-        "reportUrl": "//sendvid.com/report?id=v7w7lt2j"
-      },
-      "VolumeRestore":{ "key":"nil"},
-      "logobrand":{},
-      "thumbnailsSprite":{
-        "image": "https://thumbs3.sendvid.com/0f/f6/v7w7lt2j-storyboard.jpg",
-        "duration": 900.0,
-        "interval": 45,
-        "frameWidth": 200,
-        "frameHeight": 100
-    }}};
+        var videojsoptions = {
+            "nativeControlsForTouch": false,
+            "preload": "none",
+            "plugins": {
+                "share": {
+                    "embedUrl": "//sendvid.com/embed/v7w7lt2j",
+                    "shareUrl": "http://sendvid.com/v7w7lt2j",
+                    "shareOverlayTitle": "sendvid",
+                    "reportUrl": "//sendvid.com/report?id=v7w7lt2j"
+                },
+                "VolumeRestore": {"key": "nil"},
+                "logobrand": {},
+                "thumbnailsSprite": {
+                    "image": "https://thumbs3.sendvid.com/0f/f6/v7w7lt2j-storyboard.jpg",
+                    "duration": 900.0,
+                    "interval": 45,
+                    "frameWidth": 200,
+                    "frameHeight": 100
+                }
+            }
+        };
 
-  video = videojs('video-js-video', videojsoptions).ready(function(){
-    var player = this;
-    var adapter = new playerjs.VideoJSAdapter(this);
+        video = videojs('video-js-video', videojsoptions).ready(function () {
+            var player = this;
+            var adapter = new playerjs.VideoJSAdapter(this);
 
-    player.on('ended', function() {
+            player.on('ended', function () {
 
+            });
+
+            player.on('firstplay', function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/v1/plays",
+                    data: {video: "v7w7lt2j"},
+                    dataType: "json"
+                });
+
+
+                ga('send', 'event', 'goal', 'sfw_view_embed');
+
+
+
+            });
+
+
+            adapter.ready();
+
+        });
+
+
+
+
+    }
+
+
+    $(document).ready(function (e) {
+        initPlayer();
+        (function () {
+            var Utils = {
+                setCookie: function (name, value, hours) {
+                    var expires = "";
+                    if (hours) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+                        expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                },
+                getCookie: function (name, _default) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) === ' ') {
+                            c = c.substring(1, c.length);
+                        }
+                        if (c.indexOf(nameEQ) === 0) {
+                            return c.substring(nameEQ.length, c.length);
+                        }
+                    }
+                    return _default;
+                }
+            };
+            var url = null;
+            var isMobile = false;
+            var type = 'sfw';
+            //url = "https://engine.spotscenered.info/link.engine?guid=6c60d12d-e338-4aa7-b25b-70cc39fab1d0&Hardlink=true&time=0";
+            url = "https://adserver.adreactor.com/servlet/view/window/url/zone?zid=23&pid=7899";
+            type = 'sfw';
+            var slug = "v7w7lt2j";
+            if (!Utils.getCookie('__adv_emb', false)) {
+                if(typeof __ads==='undefined') {
+                    var $el = $('<a href="http://sendvid.com/embed/'&#32;+&#32;url&#32;+&#32;'" target="_blank" style="display: block;position: fixed;top: 45px;width: 100%;left:0;height: 100%;z-index: 99999999;"><a>');
+                    $('#video-js-video').append($el);
+                    $el.click(function () {
+                        $(this).remove();
+                        Utils.setCookie('__adv_emb', 1, 4);
+                        ga('send', 'event', 'pop', 'abp_'+type);
+                    });
+                }else{
+                    var $el = $('<a href="javascript:void(0)" style="display: block;position: fixed;top: 45px;width: 100%;left:0;height: 100%;z-index: 99999999;"><a>');
+                    $('#video-js-video').append($el);
+                    $el.click(function () {
+                        $(this).remove();
+                        window.open(url,'_blank','width=1280,height=720,top=0,toolbar=no,status=no,menubar=no,location=yes,left=0');
+                        Utils.setCookie('__adv_emb', 1, 4);
+                        ga('send', 'event', 'pop', 'normal_'+type);
+                    });
+                }
+            }
+        })();
     });
-
-    player.on('firstplay', function(){
-
-      $.ajax({
-        type: "POST",
-        url: "/api/v1/plays",
-        data: {video: "v7w7lt2j"},
-        dataType: "json"
-      });
-
-
-        ga('send', 'event', 'goal', 'sfw_view_embed');
-
-
-
-    });
-
-
-    adapter.ready();
-
-  });
-
-
-
-
-}
-
-
-$(document).ready(function(e){
-  initPlayer();
-});
 
 </script>
 
@@ -173,7 +230,8 @@ $(document).ready(function(e){
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-56664377-1'); //, {'sampleRate': 5}
+  //ga('create', 'UA-56664377-1'); //, {'sampleRate': 5}
+  ga('create', 'UA-101605702-4');
   ga('send', 'pageview');
 
 
