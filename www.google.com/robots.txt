@@ -107,8 +107,10 @@ Disallow: /mapabcpoi?
 Disallow: /maphp?
 Disallow: /mapprint?
 Disallow: /maps/api/js/
+Disallow: /maps/api/place/js/
 Disallow: /maps/api/staticmap?
-Disallow: /maps/api/streetview
+Disallow: /maps/api/streetview?
+Disallow: /maps/api/streetview/
 Disallow: /maps/_/sw/manifest.json
 Disallow: /mld?
 Disallow: /staticmap?
@@ -233,6 +235,7 @@ Disallow: /trustedstores/verify
 Disallow: /adwords/proposal
 Disallow: /shopping/product/
 Disallow: /shopping/seller
+Disallow: /shopping/ratings/account/metrics
 Disallow: /shopping/reviewer
 Disallow: /about/careers/applications/
 Disallow: /landing/signout.html
@@ -268,6 +271,15 @@ Allow: /finance
 Allow: /js/
 Disallow: /finance?*q=*
 
+# AdsBot
+User-agent: AdsBot-Google
+Allow: /maps/api/js?
+Disallow: /maps/api/js/
+Disallow: /maps/api/place/js/
+Disallow: /maps/api/staticmap?
+Disallow: /maps/api/streetview?
+Disallow: /maps/api/streetview/
+
 # Certain social media sites are whitelisted to allow crawlers to access page markup when links to google.com/imgres* are shared. To learn more, please contact images-robots-whitelist@google.com.
 User-agent: Twitterbot
 Allow: /imgres
@@ -275,5 +287,4 @@ Allow: /imgres
 User-agent: facebookexternalhit
 Allow: /imgres
 
-Sitemap: http://www.gstatic.com/s2/sitemaps/profiles-sitemap.xml
 Sitemap: https://www.google.com/sitemap.xml

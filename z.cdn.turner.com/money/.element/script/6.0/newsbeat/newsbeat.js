@@ -8,7 +8,7 @@
 	var cnnSection = '';
 	var cbSection = ''; /* What cnnSection was used for except cnnSection is used by other JS files so i can't manipulate too much */
 	var cbDomain = 'cnn.com';
-	
+
 
 	/*
 	 * Function copied from jsmd version.
@@ -204,18 +204,18 @@
 
 	/* check for international cookie
 	 * Intl Edition = 'edition' || 'mexico' */
-	if ((typeof getCookie == 'function' &&  getCookie('SelectedEdition') !== 'www') || (typeof cnnm_getCookie == 'function' && cnnm_getCookie('SelectedEdition') !== 'www')) 
+	if ((typeof getCookie == 'function' &&  getCookie('SelectedEdition') !== 'www') || (typeof cnnm_getCookie == 'function' && cnnm_getCookie('SelectedEdition') !== 'www'))
 	{
 		isInternational = true;
 	}
-	
-	//grab the content's url. 
+
+	//grab the content's url.
 	var cnnLinkTags = document.getElementsByTagName("head")[0].getElementsByTagName("link");
-	for (var linkTagCount = 0; linkTagCount < cnnLinkTags.length; linkTagCount++) 
+	for (var linkTagCount = 0; linkTagCount < cnnLinkTags.length; linkTagCount++)
 	{
-		try 
+		try
 		{
-			if (cnnLinkTags[linkTagCount].getAttribute("rel") == "canonical") 
+			if (cnnLinkTags[linkTagCount].getAttribute("rel") == "canonical")
 			{
 				isCanonicalPresent = true;
 				cnnTrackPath = cnnLinkTags[linkTagCount].getAttribute("href");
@@ -224,15 +224,15 @@
 		}
 		catch(e){}
 	}
-	
-	
+
+
 	//if no canonical is available, the use the url in the browser
-	if ( !isCanonicalPresent ) 
+	if ( !isCanonicalPresent )
 	{
 		cnnTrackPath = window.location.href;
 	}
-	
-	
+
+
 //handle galleries
 if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
     isGallery = usePath = true;
@@ -247,15 +247,15 @@ if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
     cnnTrackPath = cnnTrackPath.replace("http://money.cnn.com", "");
     cnnTrackPath = cnnTrackPath.match(galleryUrlMatch)[0];
 }
-	
-	
+
+
 	var cnnMeta = cb_getCBSection();
 	cnnSection = cnnMeta[1];
-	
+
 	//handle sourced fortune content
-	if (typeof cnnSource != 'undefined') 
+	if (typeof cnnSource != 'undefined')
 	{
-		if (cnnSource=="FORT") 
+		if (cnnSource=="FORT")
 		{
 			isFortune = true;
 		}
@@ -265,24 +265,24 @@ if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
 	    }
 	}
 
-	
+
 	//internation homepage support
-	if((cnnTrackPath == 'http://money.cnn.com/') && isInternational) 
+	if((cnnTrackPath == 'http://money.cnn.com/') && isInternational)
 	{
 		cnnTrackPath = '/intledition';
 		cnnSection = 'International Homepage';
 	    usePath = true;
 	}
-	
-	
+
+
 	var cnnByline = '';
 	var cnnAuthor;
 	if (typeof cnnAuthor != 'undefined') {cnnByline=cnnAuthor;}
-	
-	
+
+
 	/* Final set for definition of cbSection to cnnSection value before we use in config */
 	cbSection = cnnSection;
-	
+
 	/* Strip out the domain for non-homepage pages */
 	if(cnnTrackPath != "http://money.cnn.com/")
 	{
@@ -301,28 +301,28 @@ if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
 	if(window.location.hostname.match(/.*((ref)|(dev)|(stage)|(staging)|(train)|(preview)|(sections.money.cnn.com)|(private)|(localhost)).*/g)) {
 		cbDomain = 'ref.cnn.com'
 	} else if (isInternational) {
-		cbDomain = 'edition.cnn.com';	
+		cbDomain = 'edition.cnn.com';
 	}
 
 
-	/** CONFIGURATION START **/	
+	/** CONFIGURATION START **/
 	var _sf_async_config = {
 		uid : 37612,
 		domain : cbDomain,
-		useCanonical : isCanonicalPresent, 
+		useCanonical : isCanonicalPresent,
 		title : cnnTitle,
 		sections : cbSection,
 		authors : cnnByline
 	};
-	
+
 	//if no canonical present, then pass the path
-	if (!isCanonicalPresent || usePath) 
+	if (!isCanonicalPresent || usePath)
 	{
 	    _sf_async_config.path = cnnTrackPath;
 	}
-	window._sf_async_config.autoDetect = false;	
+	window._sf_async_config.autoDetect = false;
 	/** CONFIGURATION END **/
-	
+
 	(function(){
 		function loadChartbeat() {
 			window._sf_endpt=(new Date()).getTime();
@@ -336,3 +336,8 @@ if (cnnTrackPath.match("galleries") || cnnTrackPath.match("gallery")) {
 		window.onload = (typeof window.onload != 'function') ?
 		loadChartbeat : function() { oldonload(); loadChartbeat(); };
 	})();
+
+	if (window.CNN.UserConsent.isEnabled() === true) {
+		window.onload();
+	}
+	
