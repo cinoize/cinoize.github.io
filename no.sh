@@ -1,6 +1,6 @@
 #rm -rf 127.0.0.1
 echo `date`
-wget -r -p -k -l 1 -H  --wait 0 --timeout 34 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
+wget  --no-check-certificate -r -p -k -l 1 -H  --wait 0 --timeout 10 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
 echo `date`
 #cp -R fromthemachine.org/* .
 cp -R 127.0.0.1/* .
@@ -25,6 +25,8 @@ sed -i -e "s/src=\"\.\/addsearch.com/src=\"https:\/\/addsearch\.com/g" *.html
 sed -i -e "s/src=\"\.\/s7\.addthis/src=\"http\:\/\/s7\.addthis/g" *.html
 sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
+sed -i -e 's/http:\/\/i.imgur.com/\/i.imgur.com/g' *.html
+sed -i -e 's/https:\/\/i.imgur.com/\/i.imgur.com/g' *.html
 sed -i -e 's/http:\/\/127.0.0.1/\./g' *.html
 sed -i -e 's/127.0.0.1/\./g' *.html
 echo `date`
