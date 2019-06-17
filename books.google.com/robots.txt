@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /search
 Allow: /search/about
+Allow: /search/static
 Allow: /search/howsearchworks
 Disallow: /sdch
 Disallow: /groups
@@ -106,12 +107,16 @@ Disallow: /mapabcpoi?
 Disallow: /maphp?
 Disallow: /mapprint?
 Disallow: /maps/api/js/
+Disallow: /maps/api/place/js/
 Disallow: /maps/api/staticmap?
-Disallow: /maps/api/streetview
+Disallow: /maps/api/streetview?
+Disallow: /maps/api/streetview/
+Disallow: /maps/_/sw/manifest.json
 Disallow: /mld?
 Disallow: /staticmap?
 Disallow: /maps/preview
 Disallow: /maps/place
+Disallow: /maps/timeline/
 Disallow: /help/maps/streetview/partners/welcome/
 Disallow: /help/maps/indoormaps/partners/
 Disallow: /lochp?
@@ -123,8 +128,6 @@ Disallow: /advanced_blog_search
 Disallow: /uds/
 Disallow: /chart?
 Disallow: /transit?
-Disallow: /extern_js/
-Disallow: /xjs/
 Disallow: /calendar/feeds/
 Disallow: /calendar/ical/
 Disallow: /cl2/feeds/
@@ -216,9 +219,9 @@ Disallow: /ads/plan/api/
 Disallow: /ads/hotels/partners
 Disallow: /phone/compare/?
 Disallow: /travel/clk
+Disallow: /travel/hotelier/terms/
 Disallow: /hotelfinder/rpc
 Disallow: /hotels/rpc
-Disallow: /flights/rpc
 Disallow: /commercesearch/services/
 Disallow: /evaluation/
 Disallow: /chrome/browser/mobile/tour
@@ -233,6 +236,7 @@ Disallow: /trustedstores/verify
 Disallow: /adwords/proposal
 Disallow: /shopping/product/
 Disallow: /shopping/seller
+Disallow: /shopping/ratings/account/metrics
 Disallow: /shopping/reviewer
 Disallow: /about/careers/applications/
 Disallow: /landing/signout.html
@@ -260,12 +264,22 @@ Disallow: /maps/reserve/partner-dashboard
 Disallow: /about/views/
 Disallow: /intl/*/about/views/
 Disallow: /local/dining/
+Disallow: /local/place/products/
 Disallow: /local/place/reviews/
 Disallow: /local/place/rap/
 Disallow: /local/tab/
-Disallow: /travel/hotels/
 Allow: /finance
+Allow: /js/
 Disallow: /finance?*q=*
+
+# AdsBot
+User-agent: AdsBot-Google
+Allow: /maps/api/js?
+Disallow: /maps/api/js/
+Disallow: /maps/api/place/js/
+Disallow: /maps/api/staticmap?
+Disallow: /maps/api/streetview?
+Disallow: /maps/api/streetview/
 
 # Certain social media sites are whitelisted to allow crawlers to access page markup when links to google.com/imgres* are shared. To learn more, please contact images-robots-whitelist@google.com.
 User-agent: Twitterbot
@@ -274,5 +288,4 @@ Allow: /imgres
 User-agent: facebookexternalhit
 Allow: /imgres
 
-Sitemap: http://www.gstatic.com/s2/sitemaps/profiles-sitemap.xml
 Sitemap: https://www.google.com/sitemap.xml
