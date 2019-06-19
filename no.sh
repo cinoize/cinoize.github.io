@@ -1,6 +1,7 @@
 #rm -rf 127.0.0.1
 echo `date`
-wget  -e robots=off --no-check-certificate -r -p -k -l 1 -H  --wait 0 --timeout 10 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
+wget  -e robots=off --no-check-certificate -r -p -k -l 1 -H  --wait 0 --timeout 10 --tries 1  http://127.0.0.1/NEMEC.html >>wget.log 2>>wget2.log
+#wget  -e robots=off --no-check-certificate -r -p -k -l 1 -H  --wait 0 --timeout 10 --tries 1  http://127.0.0.1/fix.html >>wget.log 2>>wget2.log
 echo `date`
 #cp -R fromthemachine.org/* .
 cp -R 127.0.0.1/* .
