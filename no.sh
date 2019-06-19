@@ -33,7 +33,7 @@ echo `date`
 mkdir ../doucml2
 mv *.log ../douciml2
 mv *.tar ../douciml2
-
+mv videos3* ../douciml2
 rm *.log
 rm *.tar
 
