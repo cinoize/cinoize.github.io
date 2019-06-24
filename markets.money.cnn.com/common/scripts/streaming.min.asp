@@ -651,9 +651,9 @@ var HTTPStream = (function() {
 			 }
 		 }
 	 } else {
-		 try {
-			 window.console.warn("Couldn't find HTTPStream map entry for %o (%o)", type, msg)
-		 } catch (err) {}
+		 //try {
+		 //    window.console.warn("Couldn't find HTTPStream map entry for %o (%o)", type, msg)
+		 //} catch (err) {} //Commented for CNN-651 : Removing "0" stremer warning messages in console
 	 }
 	 return out
  };
