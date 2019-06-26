@@ -31,7 +31,8 @@ sed -i -e 's/https:\/\/i.imgur.com/\/i.imgur.com/g' *.html
 sed -i -e 's/http:\/\/127.0.0.1/\./g' *.html
 sed -i -e 's/127.0.0.1/\./g' *.html
 echo `date`
-mkdir ../doucml2
+rm -rf ../douciml2
+mkdir ../douciml2
 mv *.log ../douciml2
 mv *.tar ../douciml2
 mv videos3* ../douciml2
