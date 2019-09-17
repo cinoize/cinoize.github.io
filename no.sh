@@ -18,6 +18,8 @@ sed -i -e 's/suez.fromthemachine.org/fromthemachine.org/g' *.html
 #sed -i -e 's/fromthemachine.org/en.reallyhim.com/g' *.html
 sed -i -e 's/www.en.reallyhim.com/www.lamc.la/g' *.html
 sed -i -e 's/src=\".\/en.reallyhim.com/src=\"\./g' *.html
+sed -i -e 's/src=\".\/www.lamc.la/src=\"\./g' *.html
+sed -i -e 's/src=\".\/lamc.la/src=\"\./g' *.html
 sed -i -e 's/douci.ml/en.reallyhim.com/g' *.html
 sed -i -e 's/href=\"\.\./href=\"\./g' *.html
 sed -i -e 's/href=\"\.\/fonts.google/href=\"http:\/\/fonts.google/g' *.html
