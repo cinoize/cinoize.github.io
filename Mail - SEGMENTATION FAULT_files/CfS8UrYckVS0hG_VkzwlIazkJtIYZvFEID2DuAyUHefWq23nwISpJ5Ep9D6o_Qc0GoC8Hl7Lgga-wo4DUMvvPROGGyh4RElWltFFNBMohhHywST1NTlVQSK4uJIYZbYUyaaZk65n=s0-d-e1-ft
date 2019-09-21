@@ -3,7 +3,7 @@
 <head>
   <title>Free URL Multiple Location Redirector</title>
   <meta name="description" content="A url rotator. Rotates though the provided URLs.">
-  <script type="text/javascript" src="https://niallbunting.com/scripts/google.js">//Google Analytics</script>
+  <script type="text/javascript" src="../../niallbunting.com/scripts/google.js">//Google Analytics</script>
 </head>
 <body>
 <div id="content">
