@@ -6,7 +6,7 @@
 The document name you requested (<code>/reqs/www.symbols.com/gi.php</code>) could not be found on this server.
 However, we found documents with names similar to the one you requested.<p>Available documents:
 <ul>
-<li><a href="http://127.0.0.1/reqs/www.symbols.com/gi.php%3ftype=1&amp;id=84&amp;i=1%3ftype=1&amp;id=84&amp;i=1">/reqs/www.symbols.com/gi.php?type=1&amp;id=84&amp;i=1?type=1&amp;id=84&amp;i=1</a> (common basename)
+<li><a href="/reqs/www.symbols.com/gi.php%3ftype=1&id=84&i=1%3ftype=1&id=84&i=1">/reqs/www.symbols.com/gi.php?type=1&amp;id=84&amp;i=1?type=1&amp;id=84&amp;i=1</a> (common basename)
 </ul>
 Please consider informing the owner of the referring page <tt>http://127.0.0.1/2017-07-14-what-character.html</tt> about the broken link.
 <hr>
