@@ -1,0 +1,32 @@
+<html>
+<head>
+
+<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+
+</head>
+<body>
+<script>
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+firebase.initializeApp({
+  apiKey: 'AIzaSyCk5BPhINp-S5FObspsgMwzfJV7sbKWOmQ',
+  authDomain: 'cunter.firebaseio.com',
+  projectId: 'cunter'
+});
+
+var db = firebase.firestore();
+
+const increment = firebase.firestore.FieldValue.increment(1);
+
+// Document reference
+const storyRef = db.collection('stories').doc('hello-world');
+
+// Update read count
+storyRef.update({ reads: increment });
+document.getElementById("demo").innerHTML = StoryRef.reads;
+</script>
+<span id=demo></span>
+</body>
+</html>
