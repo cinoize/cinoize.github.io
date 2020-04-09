@@ -1,0 +1,2 @@
+'><img alt="" id="BLOGGER_PHOTO_ID_6471911046119576082" src="./reqs/3.bp.blogspot.com/-QsrtqXtv6JM/WdDYzoniUhI/AAAAAAAAIN8/d89iBJyvlYQWdgPi8X_PuxI91PbPiUxfwCK4BGAYYCw/s400/image-713226.png" style="max-width: 100%;" width="400" height="96" border="0" /></a><br />
+'><img alt="" id="BLOGGER_PHOTO_ID_6445640471877608898" src="./reqs/2.bp.blogspot.com/-d2uTMxPPbrI/WXOD29QlZcI/AAAAAAAAAbA/58hofdz0758bq5Yz0KuI3WTpo6-_sbQtACK4BGAYYCw/s640/image-718632.png" style="max-width: 100%;" width="398" height="75" border="0" /></a></i><br />
