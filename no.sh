@@ -45,4 +45,6 @@ echo date
 #mv fromthemachine.org ../oldit2
 #fix question mark shit
 find ./ -type f -name '*\?*' |while read f; do mv "$f" "${f%\?*}"; done
-git add .
+
+cp DEVLANEU.html index.html
+\git add .
