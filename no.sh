@@ -30,6 +30,13 @@ sed -i -e "s/http:\/\/omealf.september2016.com/./g" *.html
 sed -i -e 's/\t//g' *.html
 sed -i -e 's/http:\/\/i.imgur.com/\/i.imgur.com/g' *.html
 sed -i -e 's/https:\/\/i.imgur.com/\/i.imgur.com/g' *.html
+sed -i -e 's/https/http/g' *.html
+sed -i -e 's/http:\/\/fromthemachine.org/\./g' *.html
+sed -i -e 's/http:\/\/www.fromthemachine.org/\./g' *.html
+sed -i -e 's/http:\/\/suez.fromthemachine.org/\./g' *.html
+sed -i -e 's/http:\/\/lamc.la/\./g' *.html
+sed -i -e 's/http:\/\/www.lamc.la/\./g' *.html
+sed -i -e 's/http:\/\/en.reallyhim.com/\./g' *.html
 sed -i -e 's/http:\/\/127.0.0.1/\./g' *.html
 sed -i -e 's/127.0.0.1/\./g' *.html
 echo `date`
