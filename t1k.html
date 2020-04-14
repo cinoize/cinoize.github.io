@@ -647,7 +647,7 @@ break;
 <div id="layer_message" class="gd_div" style="z-index:10001;display:none;"></div>
 <div id="gd_window" class="gd_div" style="z-index:10000001;display:none;"></div>
 <div id="gd_btn_login" class="gd_div" style="z-index:10000000;display:none;">
-<table width=500 style="width: 500px;">
+<table style="width: 700px;">
 <tr><td align=center><button onclick="gd_login_manual()" style="font-size:20px"><img src="http://iblogbox.github.io/js/gdrive/product20.png" align="absmiddle"> Login & Authorize</button> <button onclick="gd_login_close()" style="font-size:20px">Close</button>
 <tr><td>To use this app, Please login to the Google Drive and authorize this app or website.
 <br>(Note: If your browser block or disable the third-party cookies, this login does not work correctly.)
@@ -939,7 +939,7 @@ if(gadb){alert('Please disable the adblock for free use.');return;}if(gd_isdownl
 alert("It's downloading. Please try again in a few minutes. or Cancel the current download.");
 return;
 }
-_getid("downlink").innerHTML="<table width=500 style="width: 500px;"><tr><td><div id='gd_progress'>Ready...</div></table>";
+_getid("downlink").innerHTML="<table style="width: 700px;"><tr><td><div id='gd_progress'>Ready...</div></table>";
 gapi.client.load('drive', 'v2', function() {
 var request = gapi.client.drive.files.get({
 'fileId': fileId
@@ -981,7 +981,7 @@ s1+='</label><br><br>';
 list.push(a);
 }
 var gwin=_getid("gd_window");
-gwin.innerHTML='<table width=500 style="width: 500px;"><tr><td>'+s1+'<tr><td align=center><button id="gd_ok" style="font-size:17px">OK</button> <button id="gd_cancel" style="font-size:17px">Cancel</button></table>';
+gwin.innerHTML='<table style="width: 700px;"><tr><td>'+s1+'<tr><td align=center><button id="gd_ok" style="font-size:17px">OK</button> <button id="gd_cancel" style="font-size:17px">Cancel</button></table>';
 gwin.style.display='';
 gd_btn_login2(false,function(){
 _getid('gd_ok').focus();
@@ -1047,7 +1047,7 @@ return;
 }
 if(downloadurl){
 function setdown(url){
-_getid("downlink").innerHTML='<table width=500 style="width: 500px;"><tr><td><a id="adownlink" style="font-size:15px">Download the file</a></table>';
+_getid("downlink").innerHTML='<table style="width: 700px;"><tr><td><a id="adownlink" style="font-size:15px">Download the file</a></table>';
 var a=_getid("adownlink");
 if(a){
 a.href=url;
@@ -1066,7 +1066,7 @@ a.title=(s || "")+getsize(resp.fileSize);
 }
 }
 gd_isdownloading=true;
-_getid("downlink").innerHTML="<table width=500 style="width: 500px;"><tr><td><img src='images/wait.gif' align='absmiddle'><td><div id='gd_progress'>Downloading...</div><tr><td colspan=2>&nbsp; <a href='#' id='gd_cancel' style='font-size:15px;display:none'>Cancel</a></table>";
+_getid("downlink").innerHTML="<table style="width: 700px;"><tr><td><img src='images/wait.gif' align='absmiddle'><td><div id='gd_progress'>Downloading...</div><tr><td colspan=2>&nbsp; <a href='#' id='gd_cancel' style='font-size:15px;display:none'>Cancel</a></table>";
 
 try{
 var xhr = new XMLHttpRequest();
@@ -1275,7 +1275,7 @@ try{
 var a=JSON.parse(gd_state);
 gd_userId=a.userId;
 if(a.ids || a.exportIds){
-_getid("downlink").innerHTML="<table width=500 style="width: 500px;"><tr><td><div id='gd_progress'>Ready...</div></table>";
+_getid("downlink").innerHTML="<table style="width: 700px;"><tr><td><div id='gd_progress'>Ready...</div></table>";
 gd_loadscript();
 }
 }catch(err){}
