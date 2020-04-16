@@ -39,7 +39,7 @@ sed -i -e 's/http:\/\/www.lamc.la/\./g' *.html
 sed -i -e 's/http:\/\/en.reallyhim.com/\./g' *.html
 sed -i -e 's/http:\/\/127.0.0.1/\./g' *.html
 sed -i -e 's/127.0.0.1/\./g' *.html
-sed -i -e 's/<table>/<table style="width: 700px;">/g'
+sed -i -e 's/<table>/<table style="width: 700px;">/g' *.html
 echo `date`
 rm -rf ../douciml2
 mkdir ../douciml2
