@@ -214,7 +214,7 @@ var g_count=0;
 
 function proc_print(){
 function clean(str){
-if(!str)str=''; str=str.replace(/>/gi, "&gt;").replace(/</gi, "&lt;");
+if(!str)str=''; str=str.replace(/>/gi, ">").replace(/</gi, "<");
 return str;
 }
 if(!g_content){
@@ -561,8 +561,8 @@ mailparser.write(bstring, 'binary');
 mailparser.end();
 }
 function html_entity_decode(str){
-  str = str.replace(/&gt;/gi, ">");
-  str = str.replace(/&lt;/gi, "<");
+  str = str.replace(/>/gi, ">");
+  str = str.replace(/</gi, "<");
   str = str.replace(/&quot;/gi, "\"");
   str = str.replace(/&#039;/gi, "'");
   str = str.replace(/&amp;/gi, "&");  
