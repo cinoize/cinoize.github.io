@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-ja_JP" lang="ja-JP" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>Amazon S3（拡張性と耐久性を兼ね揃えたクラウドストレージ）｜AWS</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="description" content="Amazon Simple Storage Service（Amazon S3） は、ウェブサイトやモバイルアプリケーション、社内アプリケーション、ビッグデータ、IoT センサーやデバイスからのデータなど、どこからの、どのような量のデータでも保存と取得が可能な耐久性の高いクラウドストレージです。" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/jp/s3/" /> 
+  <link rel="alternate" href="//aws.amazon.com/ar/s3/" hreflang="ar-sa" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/s3/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/s3/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/s3/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/s3/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="Amazon S3（拡張性と耐久性を兼ね揃えたクラウドストレージ）｜AWS" /> 
+  <meta property="twitter:description" content="Amazon Simple Storage Service（Amazon S3） は、ウェブサイトやモバイルアプリケーション、社内アプリケーション、ビッグデータ、IoT センサーやデバイスからのデータなど、どこからの、どのような量のデータでも保存と取得が可能な耐久性の高いクラウドストレージです。" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="Amazon S3（拡張性と耐久性を兼ね揃えたクラウドストレージ）｜AWS" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/jp/s3/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'ja-JP',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'jp'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/ja_JP/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/jp/?nc2=h_lg"><span>アマゾン ウェブ サービスのホームページに戻るには、ここをクリック</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/jp/contact-us/?nc2=h_header">日本担当チームへ問い合わせる ≫</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> サポート&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="jp">日本語&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">アカウント&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>AWS アカウントを作成する</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/jp/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">製品</a></li> 
+        <li><a href="/jp/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">ソリューション</a></li> 
+        <li><a href="/jp/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">料金</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">ドキュメント</a></li> 
+        <li><a href="/jp/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">学習</a></li> 
+        <li><a href="/jp/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">パートナー</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/jp/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">カスタマー支援</a></li> 
+        <li><a href="/jp/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">イベント</a></li> 
+        <li><a href="/jp/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">さらに詳しく見る </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="検索" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS マネジメントコンソール</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">アカウント設定</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">請求情報とコスト管理</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">セキュリティ認証情報</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">サポートセンター</a> </li> 
+      <li> <a href="/jp/premiumsupport/knowledge-center/?nc2=h_m_ma">ナレッジセンター</a> </li> 
+      <li> <a href="/jp/premiumsupport/?nc2=h_m_bc">AWS サポートの概要</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">料金</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">ドキュメント</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>製品</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>関連ページ</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>チュートリアル</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>ブログ</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">次に対するその他の検索結果を表示 "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/ja_JP/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/jp/?nc2=h_lg"><span>アマゾン ウェブ サービスのホームページに戻るには、ここをクリック</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="検索" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/jp/products/?nc2=h_mo">製品</a> </li> 
+      <li> <a href="/jp/solutions/?nc2=h_mo">ソリューション</a> </li> 
+      <li> <a href="/jp/pricing/?nc2=h_mo">料金</a> </li> 
+      <li> <a href="/jp/what-is-aws/?nc2=h_mo">AWS 入門</a> </li> 
+      <li> <a href="/jp/getting-started/?nc2=h_mo">開始方法</a> </li> 
+      <li> <a href="/jp/documentation/?nc2=h_mo">ドキュメント</a> </li> 
+      <li> <a href="/jp/training/?nc2=h_mo">トレーニングと認定</a> </li> 
+      <li> <a href="/jp/developer/?nc2=h_mo">開発者センター</a> </li> 
+      <li> <a href="/jp/solutions/case-studies/?nc2=h_mo">お客様の導入事例</a> </li> 
+      <li> <a href="/jp/partners/?nc2=h_mo">パートナー</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">サポート</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">コンソールにログイン</a> </li> 
+      <li> <a href="/jp/console/mobile/">モバイルアプリケーションをダウンロード</a> </li> 
+      <li> <a href="/jp/contact-us/?nc2=h_mo">無料相談窓口はこちら ≫</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/jp/s3/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/jp/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/jp/s3/?nc=sn&amp;loc=1"> 概要</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/jp/s3/features/?nc=sn&amp;loc=2"> 特徴</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/jp/s3/storage-classes/?nc=sn&amp;loc=3"> ストレージクラス</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/jp/s3/pricing/?nc=sn&amp;loc=4"> 料金</a> 
+       <a class="lb-txt-none lb-txt" href="/jp/s3/getting-started/?nc=sn&amp;loc=5"> 開始方法</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> リソース&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/jp/s3/faqs/?nc=sn&amp;loc=7"> よくある質問</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt" href="/jp/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> リソース</a> 
+    <a class="lb-txt" href="/jp/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> 動画</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_s3_simplified" data-lb-comp-ignore="true"> 
+     <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; background-image:url('//d1.awsstatic.com/product-marketing/S3/image-header_s3-2.6bf0d512939e43aba4fbd4185874e05ff0d236d2.png');" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="hero" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Amazon_S3" class="lb-txt-bold lb-txt-white lb-none-v-margin lb-h1-large lb-title"> Amazon S3</h1> 
+        <h3 id="Object_storage_built_to_store_and_retrieve_any_amount_of_data_from_anywhere" class="lb-txt-light lb-txt-white lb-small-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:30px;"> どこからでもお好みの量のデータの保存と取得が簡単に行えるオブジェクトストレージ</h3> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+           <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta1" data-da-so-url="/s3"> 
+            <a class="lb-btn-a-primary" href="https://s3.console.aws.amazon.com/s3/home" role="button"> <span> 今すぐ Amazon S3 を始める</span> </a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta2" data-da-so-url="/s3"> 
+           <a class="lb-btn-a" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html" role="button"> <span> 詳細をリクエスト</span> </a> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="data-attr-wrapper lb-mid-pad lb-small-v-margin lb-grid" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="tile2" data-da-so-version="intro" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+         <p>Amazon Simple Storage Service (Amazon S3) は、業界をリードするスケーラビリティ、データ可用性、セキュリティ、およびパフォーマンスを提供するオブジェクトストレージサービスです。つまり、あらゆる規模や業界のお客様が、ウェブサイト、モバイルアプリケーション、バックアップおよび復元、アーカイブ、エンタープライズアプリケーション、IoT デバイス、ビッグデータ分析など、広範にわたるユースケースのデータを容量に関係なく、保存して保護することができます。Amazon S3 では使いやすい管理機能を使用するため、データを整理して、細かく調整されたアクセス制御を設定することで、特定のビジネスや組織、コンプライアンスの要件を満たすことができます。Amazon S3 は 99.999999999% (9 x 11) の耐久性を実現するように設計されており、世界中の企業向けに何百万ものアプリケーションのデータを保存しています。<br /> </p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="XuFLrIGalqc" data-source="youtube" data-video-title="Amazon S3 の紹介 (日本語字幕 4:31)"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Amazon S3 の紹介 (日本語字幕 4:31) 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=XuFLrIGalqc" /> 
+         </figure> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> 利点</h1> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Industry-leading_performance.2C_scalability.2C_availability.2C_and_durability" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 業界をリードするパフォーマンス、スケーラビリティ、可用性、および耐久性</h3> 
+          <div class="lb-rtxt"> 
+           <p>ストレージリソースをスケールアップ/ダウンして、変動する需要に対応します。先行投資やリソースの調達サイクルは不要です。Amazon S3 は、複数のシステムにまたがる S3 オブジェクトをすべて自動的に作成して保存しており、99.999999999% (9 x 11) のデータ耐久性を実現するように設計されています。つまり、必要に応じてデータを利用することができるため、障害やエラー、脅威から保護することができます。<br /> <a href="/s3/faqs/#Durability_.26_Data_Protection" target="_blank">S3 データの耐久性 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Wide_range_of_cost-effective_storage_classes" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> コスト効率の高いストレージクラス</h3> 
+          <div class="lb-rtxt"> 
+           <p>パフォーマンスを下げずにコストを節約するには、対応するレートでさまざまなデータアクセスレベルをサポートする <b>S3 ストレージクラス</b>にデータを保存します。<b>S3 ストレージクラス分析</b>を使用して、アクセスパターンに基づき、低コストのストレージクラスに移動する必要のあるデータを検出し、<b>S3 ライフサイクルポリシー</b>を設定して転送を実行できます。<b>S3 Intelligent-Tiering</b> では、アクセスパターンが変化するデータか、パターンが不明なデータを格納することもできます。これにより、オブジェクトはアクセスパターンの変化に応じて階層化されるため、コストは自動的に抑えられます。<br /> <a href="/s3/storage-classes/">S3 ストレージクラスの詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Unmatched_security.2C_compliance.2C_and_audit_capabilities" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 比類ないセキュリティ、コンプライアンス、監査機能</h3> 
+          <div class="lb-rtxt"> 
+           <p>データを Amazon S3 に保存し、暗号化機能とアクセス管理ツールを使用して不正なアクセスからデータを保護します。S3 は <b><a href="/s3/features/block-public-access/" target="_blank">S3 Block Public Access</a></b> を使用して、バケットレベルまたはアカウントレベルで、すべてのオブジェクトへのパブリックアクセスをブロックできる唯一のオブジェクトストレージサービスです。S3 は PCI-DSS、HIPAA/HITECH、FedRAMP、EU データ保護指令、および FISMA などのコンプライアンスプログラムを維持し、規制要件を満たしています。AWS では、S3 リソースへのアクセスリクエストをモニタリングするための監査機能も多数サポートしています。<br /> <a href="/s3/features/#Access_management_and_security">S3 のセキュリティ</a>および<a href="/compliance/">コンプライアンス</a>の詳細はこちら &raquo;</p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Easily_manage_data_and_access_controls" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> データ管理とアクセス管理が簡単</h3> 
+          <div class="lb-rtxt"> 
+           <p>S3 の堅牢な機能で、アクセス、コスト、レプリケーション、データ保護を管理できます。S3 Access Points では、共有データセットを使用するアプリケーションに個別のアクセス許可を付与できるため、データアクセスの管理が容易になります。S3 レプリケーション機能を利用すると、リージョン内やリージョン間のデータレプリケーションを管理できます。S3 バッチオペレーションでは、数十億にのぼるオブジェクトにわたる大規模な変更の管理が支援されます。S3 は AWS Lambda と連携しているため、追加のインフラストラクチャを管理することなく、アクティビティのログ記録、アラートの定義、ワークフローの自動化を行うことができます。<br /> <a href="/s3/features/#Storage_management_and_monitoring">S3 ストレージの管理機能の詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Query-in-place_services_for_analytics_" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 分析にすぐに活用できるクエリ </h3> 
+          <div class="lb-rtxt"> 
+           <p>すぐに活用できるクエリ (query-in-place) サービスを使用して、S3 オブジェクト (および AWS の他のデータセット) 全体で大きなデータ分析を実行します。<b>Amazon Athena</b> を使用して標準の SQL 式で S3 データを照会し、<b>Amazon Redshift Spectrum</b> を使用して AWS データウェアハウスおよび S3 リソースに格納されているデータを分析します。また、<b>S3 Select</b> を使用して、オブジェクト全体ではなくオブジェクトデータのサブセットを取得し、クエリのパフォーマンスを最大 400% 向上させることもできます。<br /> <a href="/s3/features/#Query_in_place">すぐに活用できるクエリについて詳細を見る &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Most_supported_cloud_storage_service" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 幅広くサポートされているクラウドストレージサービス</h3> 
+          <div class="lb-rtxt"> 
+           <p>Amazon S3 のデータを保存し、保護するには、<b>AWS Partner Network (APN)</b> のパートナー (テクノロジーとコンサルティングのクラウドサービスプロバイダーの最大のコミュニティ) と提携します。APN は、Amazon S3 にデータを転送する移行パートナーと、プライマリストレージ、バックアップ、復元、アーカイブ、災害復旧用に S3 統合ソリューションを提供するストレージパートナーを認識します。また、<b>AWS Marketplace</b> から AWS 統合ソリューションを直接購入することもできます。ここでは、ストレージに関する 250 以上のサービスが表示されています。<a href="/backup-recovery/partner-solutions/"><br /> APN</a> および <a href="https://aws.amazon.com/marketplace">AWS Marketplace の詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="mid_page"></div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="jp_banner_product-mid_page" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="How_it_works_.E2.80.94_S3_Access_Points" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> S3 Access Points の仕組み</h2> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Diagram_S3_Access_Points" title="Diagram_S3_Access_Points" src="//d1.awsstatic.com/re19/Westeros/Diagram_S3_Access_Points.fa88c474dc1073aede962aaf3a6af2d6b02be933.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-24"> 
+          <div class="lb-rtxt"> 
+           <p><b><a name="preview"></a>&nbsp;</b>Amazon S3 Access Points により、S3 上の共有データセットを使用するアプリケーションの大規模なデータアクセスを簡単に管理できるようになります。S3 Access Points は、バケットあたり数百にのぼるアクセスポイントを簡単に作成できるため、共有データセットへのアクセスをプロビジョンする新たな手段となります。Access Points では、一意のホスト名とアクセスポリシーによって、アクセスポイント経由のあらゆるリクエストに対して固有のアクセス許可とネットワーク制御が適用されます。これにより、バケットへのカスタマイズされたパスを利用できます。</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Use_cases" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> ユースケース</h2> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Backup_and_restore" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> バックアップと復元</h3> 
+          <div class="lb-rtxt"> 
+           <p>Amazon S3 などの AWS のサービス (例: <b>S3 Glacier</b>、<b>Amazon EFS</b>、<b>Amazon EBS</b>) を使用して、スケーラブルで、耐久性、安全性に優れたバックアップと復元のソリューションを構築して、既存のオンプレミス機能を強化するか、リプレースすることができます。AWS と APN のパートナーは、目標復旧時間 (RTO)、目標復旧時点 (RPO)、およびコンプライアンス要件を満たすのに役立ちます。AWS では、AWS クラウドにある既存のデータをバックアップするか、<b>AWS Storage Gateway</b> (ハイブリッドなストレージサービス) を使用して、オンプレミスデータのバックアップを AWS に送信することができます。<br /> <a href="/backup-restore/">バックアップと復元の詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Disaster_recovery_.28DR.29" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 災害対策 (DR)</h3> 
+          <div class="lb-rtxt"> 
+           <p>AWS クラウド、またはオンプレミス環境で実行されている重要なデータ、アプリケーション、および IT システムを保護します。予備の物理データセンターにコストをかける必要はありません。Amazon S3 ストレージや <b>S3 クロスリージョンレプリケーション</b> に加え、AWS のコンピューティング、ネットワーキング、データベースサービスでは、DR アーキテクチャを作成して、自然災害やシステム障害、人為的ミスによって発生する機能停止から簡単にすばやく復旧することができます。<a href="/disaster-recovery/"><br /> DR の詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Archive" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> アーカイブ</h3> 
+          <div class="lb-rtxt"> 
+           <p>物理インフラストラクチャを廃止し、<b>S3 Glacier</b> と <b>S3 Glacier Deep Archive</b> でデータをアーカイブします。これらの S3 ストレージクラスでは、オブジェクトを長期間、低コストで保持することができます。ライフサイクル全体にわたってオブジェクトをアーカイブする S3 ライフサイクルポリシーを作成するか、オブジェクトをアーカイブのストレージクラスに直接アップロードします。<b>S3 オブジェクトのロック</b>では、オブジェクトに保持日を適用してオブジェクトを削除から保護し、コンプライアンス要件を満たすことができます。テープライブラリとは異なり、S3 Glacier では、迅速取り出しの場合は 1 分、標準取り出しの場合は 3〜5 時間でアーカイブオブジェクトを復元できます。S3 Glacier からの一括データ復元と S3 Glacier Deep Archive を使用した復元はすべて 12 時間以内に完了します。<a href="/glacier/"><br /> アーカイブの詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Data_lakes_and_big_data_analytics" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> データレイクとビッグデータの分析</h3> 
+          <div class="lb-rtxt"> 
+           <p><a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3 でデータレイク</a>を作成して、すぐに活用できるクエリ、分析、機械学習ツールを使用して貴重なインサイトを取得し、イノベーションを推進しましょう。データレイクが拡大してきたら、S3 Access Points を使用して、個々のアプリケーションまたはアプリケーションセットに個別のアクセス許可を設定すると、簡単にデータへのアクセスを設定できます。また、<b>AWS Lake Formation</b> を使用してデータレイクをすばやく作成し、セキュリティ、ガバナンス、監査のポリシーを一元的に定義および適用することもできます。このサービスでは、データベースと S3 リソースのデータを収集後、Amazon S3 の新しいデータレイクに移行して、機械学習アルゴリズムを使用し、そのデータを整理および分類します。AWS リソースはすべて、拡張するデータストアに対応するようにスケールアップできます。先行投資は不要です。<br /> <a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3 でのデータレイク</a>の作成、および <a href="/lake-formation/">AWS Lake Formation</a> の詳細についてはこちらをご覧ください &raquo;</p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Hybrid_cloud_storage" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> ハイブリッドクラウドストレージ</h3> 
+          <div class="lb-rtxt"> 
+           <p>データセンターのフットプリントを削減し、AWS の革新的な機械学習と分析機能だけでなく、AWS のスケーリング、信頼性、耐久性を活用するために、オンプレミスアプリケーションと <b>AWS Storage Gateway</b> を使用する Amazon S3 をシームレスに接続します。また、<b>AWS DataSync</b> を使用することで、オンプレミスストレージと Amazon S3 の間のデータ転送を自動化することもできます。これにより、オープンソースツールの速度よりも最大 10 倍高速にデータを転送できます。ハイブリッドクラウドストレージ環境を有効にするもう 1 つの方法は、APN のゲートウェイプロバイダーと連携することです。<b>AWS Transfer for SFTP</b> (サードパーティーとの安全なファイル交換を可能にする完全マネージド型サービス) を使用して Amazon S3 間でファイルを直接転送することもできます。<br /> <a href="/storagegateway/">ハイブリッドストレージ</a>、<a href="/datasync/">AWS DataSync</a>、<a href="/sftp/">AWS Transfer for SFTP</a> の詳細はこちら &raquo;&nbsp;<br /> </p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Cloud-native_application_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> クラウドネイティブなアプリケーションデータ</h3> 
+          <div class="lb-rtxt"> 
+           <p>費用効率に優れたモバイルおよびインターネットベースのアプリケーションを迅速に構築するには、AWS サービスと Amazon S3 を使用して本稼働用データを保存します。Amazon S3 を使用すると、好きなだけデータをアップロードし、どこからでもアクセスできるため、アプリケーションをすばやくデプロイし、多くのエンドユーザーを獲得できます。Amazon S3 にデータを保存すると、機械学習や分析の最新の AWS 開発者ツールやサービスにアクセスして、クラウドネイティブアプリケーションを革新化および最適化できるようになります。<br /> <a href="/products/developer-tools/">クラウドネイティブアプリケーションの詳細はこちら &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_tiles_full_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="jp_pdp_customers_s3" data-lb-comp-ignore="true"> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Case_studies" class="lb-txt-bold lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> 導入事例</h2> 
+        <div class="lb-xb-grid-wrap" style="margin-top:1px;"> 
+         <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+          <div class="lb-xbcol"> 
+           <figure class="lb-img"> 
+            <div> 
+             <a href="/solutions/case-studies/netflix/"><img alt="Netflix" title="Netflix" src="//d1.awsstatic.com/Industries/Telecom/600x400_Netflix-Logo.3bfbc7a6fa28b81d2e46ca48d3ff71b781abc0ce.png" /></a> 
+            </div> 
+           </figure> 
+           <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+             Netflix では、Amazon S3 から世界中のお客様に数十億時間ものコンテンツを配信しています。Amazon S3 はビッグデータ分析ソリューションのデータレイクとしても活用されています。 
+           </div> 
+          </div> 
+          <div class="lb-xbcol"> 
+           <figure class="lb-img"> 
+            <div> 
+             <a href="/solutions/case-studies/finra/"><img alt="FINRA" title="FINRA" src="//d1.awsstatic.com/product-marketing/AI/customers/Approved_Logos_600x4001/600x400_FINRA.3cba6a9ca0d18b7a45c036dd7c9e2f34d309b8c3.png" /></a> 
+            </div> 
+           </figure> 
+           <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+             FINRA は、毎日 750 億件を超える市場イベントのデータの取り込みと保管に Amazon S3、200 を超えるルールにおけるデータのフォーマットと検証に AWS Lambda 関数を使用しています。 
+           </div> 
+          </div> 
+          <div class="lb-xbcol"> 
+           <figure class="lb-img"> 
+            <div> 
+             <a href="/solutions/case-studies/airbnb/"><img alt="AirBnB" title="AirBnB" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600x400_Airbnb_Logo.f891e0066454456292ad7009aad136ea679f2cfd.png" /></a> 
+            </div> 
+           </figure> 
+           <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+             Airbnb では、10 ペタバイトを超えるユーザーからの写真を含め、バックアップデータと静的ファイルを Amazon S3 に格納しています。クラウド生まれのソリューションとして、同社では Amazon S3 に保存されたデータの新たな分析手法の創出を続けています。 
+           </div> 
+          </div> 
+          <div class="lb-xbcol"> 
+           <figure class="lb-img"> 
+            <div> 
+             <a href="/solutions/case-studies/ge-healthcare/"><img alt="GE Healthcare" title="GE Healthcare" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600X400_GE-Healthcare_Logo.7dd29d40cf5fe1cc9f3a0cc0aedbcb54528a4fe2.png" /></a> 
+            </div> 
+           </figure> 
+           <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+             GE は、Amazon S3 を使用して、GE Health Cloud サービスの重要な医療用画像データをペタバイト以上保管し、保護します。このサービスは、数十万台の画像機器や他の医療機器に接続されています。 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Related_content" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> 関連コンテンツ</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>最新情報</b><br /> <i>S3 にセイムリージョンレプリケーションが導入されました。同一の、または異なる AWS リージョン間でレプリケーションを行うことができるようになりました。</i><br /> 2019 年 9 月 18 日</p> 
+           <p><a href="/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/" target="_blank">詳細 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS ニュースブログ</b> 
+           </div> 
+           <div> 
+            <i>Amazon S3 が商用 AWS リージョンおよび AWS GovCloud でのオブジェクト管理のための S3 バッチオペレーションの一般公開を発表</i> 
+           </div> 
+           <div>
+             Jeff Barr | 2019 年 4 月 30 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-amazon-s3-batch-operations/" target="_blank">詳細 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>最新情報</b> 
+            <br /> 
+            <i>すべての商用 AWS リージョンおよび AWS GovCloud (米国) での Amazon S3 Glacier Deep Archive ストレージクラスの一般提供開始を AWS が発表</i> 
+           </div> 
+           <div>
+             2019 年 3 月 27 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="/about-aws/whats-new/2019/03/S3-glacier-deep-archive/" target="_blank">詳細 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <h2 id="__" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> </h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS ニュースブログ<br /> </b> 
+            <i>新規 – インテリジェントな階層化による Amazon S3 の自動コスト最適化</i> 
+            <br /> Jeff Barr | 2018 年 11 月 26 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-automatic-cost-optimization-for-amazon-s3-via-intelligent-tiering/" target="_blank">詳細 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>AWS アーキテクチャブログ</b><br /> <i>アーカイブワークロードを対象とした S3 &amp; S3 Glacier サービスローンチのお知らせ</i><br /> Matt Sidley | 2018 年 11 月 26 日<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads" target="_blank">詳細 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>ニュースブログ</b><br /> <i>Amazon S3 ブロックパブリックアクセス – アカウントとバケットに対するもうひとつの保護レイヤー</i><br /> 2018 年 11 月 16 日<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" target="_blank">詳細 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> 始める準備はできましたか?</h2> 
+      <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          製品の特徴を見る 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">データ管理、セキュリティ、アクセス管理、分析などの機能の詳細を参照してください。<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/s3/features/"> 詳細&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          無料のアカウントにサインアップ 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">AWS 無料利用枠を使用して、早速 Amazon S3 をお試しください。&nbsp;</p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> サインアップ&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          AWS コンソールで構築を開始する 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Amazon S3 は AWS コンソールから無料で構築することができます。<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> 開始方法&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-pad lb-grid" style="background-color:#232F3E;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="jp_content_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-16"> 
+          <div class="lb-txt-bold lb-txt-white lb-txt-32 lb-tiny-v-margin lb-rtxt" style="margin-bottom:0px;"> 
+           <p>Amazon S3 の詳細</p> 
+          </div> 
+          <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-18 lb-txt-lead lb-txt" style="color:#00A1C9;" href="/s3/features/?nc=nsb&amp;pg=ln" target="_blank"> 特徴のページにアクセスする</a> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-border-left lb-border-p lb-mid-pad lb-box" style="border-width:2px; border-color:#FFFFFF;"> 
+           <div class="lb-txt-bold lb-txt-white lb-txt-18 lb-txt">
+             構築を始めましょう。 
+           </div> 
+           <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-16 lb-txt" style="color:#00A1C9; margin-bottom:25px;" href="https://s3.console.aws.amazon.com/s3/home" target="_blank"> Amazon S3 の使用を開始する</a> 
+           <div class="lb-txt-bold lb-txt-none lb-txt-white lb-txt-18 lb-txt">
+             ご不明な点がおありですか? 
+           </div> 
+           <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-16 lb-txt" style="color:#00A1C9;" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html"> お問い合わせ</a> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> コンソールにサインイン</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS について学ぶ</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/jp/what-is-aws/?nc1=f_cc" target="_blank">AWS とは</a></li> 
+       <li><a href="/jp/what-is-cloud-computing/?nc1=f_cc" target="_blank">クラウドコンピューティングとは</a></li> 
+       <li><a href="/jp/devops/what-is-devops/?nc1=f_cc" target="_blank">DevOps とは</a></li> 
+       <li><a href="/jp/containers/?nc1=f_cc" target="_blank">コンテナとは</a></li> 
+       <li><a href="/jp/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">データレイクとは</a></li> 
+       <li><a href="/jp/security/?nc1=f_cc" target="_blank">AWS クラウドセキュリティ</a></li> 
+       <li><a href="/jp/new/?nc1=f_cc" target="_blank">最新情報</a></li> 
+       <li><a href="/jp/blogs/?nc1=f_cc" target="_blank">ブログ (英語)</a></li> 
+       <li><a href="/jp/blogs/news/?nc1=f_cc" target="_blank">ブログ (日本語)</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS のリソース</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/jp/getting-started/?nc1=f_cc" target="_blank">開始方法</a></li> 
+       <li><a href="/jp/training/?nc1=f_cc" target="_blank">トレーニングと認定</a></li> 
+       <li><a href="/jp/solutions/?nc1=f_cc" target="_blank">AWS ソリューションポートフォリオ</a></li> 
+       <li><a href="/jp/architecture/?nc1=f_cc" target="_blank">アーキテクチャセンター</a></li> 
+       <li><a href="/jp/faqs/?nc1=f_dr" target="_blank">製品と技術上のよくある質問</a></li> 
+       <li><a href="/jp/resources/analyst-reports/?nc1=f_cc" target="_blank">アナリストレポート</a></li> 
+       <li><a href="/jp/partners/?nc1=f_dr" target="_blank">AWS パートナーネットワーク</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS を利用する開発者</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/jp/developer/?nc1=f_dr" target="_blank">開発者センター</a></li> 
+       <li><a href="/jp/developer/tools/?nc1=f_dr" target="_blank">SDK とツール</a></li> 
+       <li><a href="/jp/developer/language/net/?nc1=f_dr" target="_blank">AWS での .NET</a></li> 
+       <li><a href="/jp/developer/language/python/?nc1=f_dr" target="_blank">AWS での Python</a></li> 
+       <li><a href="/jp/developer/language/java/?nc1=f_dr" target="_blank">AWS での Java</a></li> 
+       <li><a href="/jp/developer/language/php/?nc1=f_cc" target="_blank">AWS での PHP</a></li> 
+       <li><a href="/jp/developer/language/javascript/?nc1=f_dr" target="_blank">AWS での JavaScript</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> ヘルプ</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/jp/contact-us/?nc1=f_m" target="_blank">お問い合わせ</a></li> 
+       <li><a href="/jp/careers/?nc1=f_hi" target="_blank">AWS の採用情報</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">サポートチケットを申請する</a></li> 
+       <li><a href="/jp/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">ナレッジセンター</a></li> 
+       <li><a href="/jp/premiumsupport/?nc1=f_dr" target="_blank">AWS サポートの概要</a></li> 
+       <li><a href="/jp/legal/?nc1=f_cc" target="_blank">法務関連</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="jp" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> AWS アカウントを今すぐ無料で作成! &raquo;</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="jp" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud_jp" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="jp" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/アマゾン-ウェブ-サービス-600986860012140" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="jp" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="jp" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="jp" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage&amp;languages=japanese" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon は機会均等法を順守しています。 
+        <i>少数民族の出身者、女性、障害者、兵役経験者、性同一性障害者、同性愛者も平等に採用しています。</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">言語</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">プライバシー</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">サイト規約</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. or its affiliates.All rights reserved.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    <strong>古い</strong>ブラウザが使用されています。正常に表示するには、Internet Explorer 11 にアップグレードするか、別の最新のブラウザを使用してください。<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = '<strong>古い</strong>ブラウザが使用されています。正常に表示するには、Internet Explorer 11 にアップグレードするか、別の最新のブラウザを使用してください。';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T19:40:40.253-0700 -->  
+ </body>
+</html>

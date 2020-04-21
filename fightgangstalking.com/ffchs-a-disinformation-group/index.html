@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html id="ie8" lang="en">
+<![endif]-->
+<!--[if !(IE 8)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<title>Disinformation Groups &#8212;    FFCHS,  OSI, etc. | Fight &quot;Gang Stalking&quot;</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://fightgangstalking.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://s2.wp.com/wp-content/themes/pub/dusk-to-dawn/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9maWdodGdhbmdzdGFsa2luZy5jb20%3D"
+		+ "&wpcomid=51777463"
+		+ "&time=1587427692";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//fightgangstalking.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Feed" href="https://fightgangstalking.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Comments Feed" href="https://fightgangstalking.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Disinformation Groups &#8212;    FFCHS, OSI,&nbsp;etc. Comments Feed" href="https://fightgangstalking.com/ffchs-a-disinformation-group/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJylU1tuwjAQvFCdJYUW+lH1LHa8TQ1+yWsT5fZdYlAjKFAVRbKyj5mxJhMYouiCz+gzuCKiLb3xBEPsghPkjMXxrGo6oieYwU6Yz2KtIJNRoDbZ+P7IBuvl24KfFTCLCx60oXx8vyCb3cGaHRJsMUfZ7cRUXdXuC5cKU8+ThLBuNk0LqhirQdkwwVWSaQTKo8U/0EyombocQ8miT0b/lyLJgyd0B37fRKblZqBMVaHauTc4PECKe95nXPFZh8HPmX8dPSB18iMbh9Z4rCrn3asCXTj62jbPi6YVUzYrRx001eDp4z9wzeqwZd65GefdW/k9JJH7Lsp82HCsJNGi47VbsPqzKRUTEgk+nSlO5C8GXua/tiEWBboQ2xeEloP/CdmHe29fNq+r5027XGy/Af8YdB0=?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='ubuntu-css'  href='https://fonts.googleapis.com/css?family=Ubuntu%3A300%2C400%2C700&#038;ver=5.4' media='all' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s1.wp.com/_static/??-eJzTLy/QTc7PK0nNK9HPLdUtyClNz8wr1k9PzdfNyU9OLMnMz0Ph6KblJGYW6SUXF+voY9dalJqUk58OZKbrA1UhcUGa7HNtDU1MLU1MLMwNTbIAmkQtqg==?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-3-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s0.wp.com/_static/??-eJx9jtsOgjAMhl/IWRBUvDA+S5ljVMtG1hLj2zsTiRgS04u2yfcf4DEaG4O6oDBMZuTJUxBAqxRDi+l7ba3IBhb4zHYTsxFSZ9yVlIL/uMCxOhV5avAcW8yMPtkJiKKShZYx3Femiw5jFDUdIyWQHlM2nvc/lURLOYujj7/PSqS9G3Kdfu73Bi7Dudw3h3rXlFVxewFn6WiM?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5McXJ+XklqXglIbW5+UmZOqm5pcWpRYjpQDGhQWj5QnX2uraGpqYWxqZmZqXEWALkfL7E='></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://fightgangstalking.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://fightgangstalking.com/ffchs-a-disinformation-group/" />
+<link rel='shortlink' href='https://wp.me/P3vfGn-2W' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Ffightgangstalking.com%2Fffchs-a-disinformation-group%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Ffightgangstalking.com%2Fffchs-a-disinformation-group%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Disinformation Groups &#8212;    FFCHS,  OSI, etc." />
+<meta property="og:url" content="https://fightgangstalking.com/ffchs-a-disinformation-group/" />
+<meta property="og:description" content="Freedom From Covert Harassment &amp; Surveillance (FFCHS) Organized Stalking Informers (OSI) FFCHS Phone Number: (800) 571-5618 Original Address:  3925 Paxton Ave., Cincinnati, OH 45209 Subsequent …" />
+<meta property="article:published_time" content="2013-05-10T10:49:12+00:00" />
+<meta property="article:modified_time" content="2016-09-11T05:27:01+00:00" />
+<meta property="og:site_name" content="Fight &quot;Gang Stalking&quot;" />
+<meta property="og:image" content="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=300" />
+<meta property="og:image:width" content="100" />
+<meta property="og:image:height" content="76" />
+<meta property="og:image:alt" content="Anti Nazi image" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@wordpressdotcom" />
+<meta name="twitter:text:title" content="Disinformation Groups &#8212;    FFCHS, OSI,&nbsp;etc." />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://fightgangstalking.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://fightgangstalking.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://fightgangstalking.com/osd.xml" title="Fight &#34;Gang Stalking&#34;" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+	<style>
+		a,
+		.entry-title a:hover,
+		.widget_flickr #flickr_badge_uber_wrapper a:hover,
+		.widget_flickr #flickr_badge_uber_wrapper a:link,
+		.widget_flickr #flickr_badge_uber_wrapper a:active,
+		.widget_flickr #flickr_badge_uber_wrapper a:visited,
+		#infinite-footer .blog-info a,
+		#infinite-footer .blog-credits a,
+		#infinite-footer .blog-info a:hover,
+		#infinite-footer .blog-info a:focus,
+		#infinite-footer .blog-credits a:hover,
+		#infinite-footer .blog-credits a:focus,
+		#infinite-handle span,
+		#infinite-handle span:before,
+		#infinite-handle span:hover,
+		#infinite-handle span:focus,
+		#infinite-handle span:hover:before,
+		#infinite-handle span:focus:before {
+			color: #1a44ff;
+		}
+		.entry-header,
+		.right-sidebar .entry-header {
+			border-color: #1a44ff;
+		}
+	</style>
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Fight &quot;Gang Stalking&quot;" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Expose illegal stalking by corrupt law enforcement personnel" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://fightgangstalking.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="Freedom From Covert Harassment &amp; Surveillance (FFCHS) Organized Stalking Informers (OSI) FFCHS Phone Number: (800) 571-5618 Original Address:  3925 Paxton Ave., Cincinnati, OH 45209 Subsequent Address:  P.O. Box 251, Upland, CA 91785-0251 Current Address (as of November 2015): 19744 Beach Blvd Unit #372, Huntington Beach, CA 92648 Website:  http://www.freedomfchs.com OSI Website:  http://osinformers.lefora.com/ YouTube Channel:  http://www.youtube.com/osinformers&hellip;" />
+	<style type="text/css">
+			#site-title a {
+			color: #a8002c;
+		}
+		</style>
+	</head>
+
+<body class="page-template-default page page-id-182 customizer-styles-applied single-author left-sidebar sidebar-content highlander-enabled highlander-light">
+<div id="super-super-wrapper">
+	<div id="super-wrapper">
+		<div id="wrapper">
+					<div id="page" class="hfeed">
+				<header id="branding" role="banner">
+					<hgroup>
+						<h1 id="site-title"><a href="https://fightgangstalking.com/" title="Fight &quot;Gang Stalking&quot;" rel="home">Fight &quot;Gang Stalking&quot;</a></h1>
+						<h2 id="site-description">Expose illegal stalking by corrupt law enforcement personnel</h2>
+					</hgroup>
+				</header><!-- #branding -->
+
+				<div id="main" class="clear-fix">
+										<div id="header-image">
+						<a href="https://fightgangstalking.com/">
+							<img src="https://fightgangstalking.files.wordpress.com/2013/05/black-banner-background-2.jpg" width="870" height="220" alt="" />
+						</a>
+					</div>
+					
+<div id="primary">
+	<div id="content" role="main">
+
+		
+			<article id="post-182" class="post-182 page type-page status-publish hentry">
+	<header class="entry-header">
+		<h1 class="entry-title">Disinformation Groups &#8212;    FFCHS, OSI,&nbsp;etc.</h1>
+	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content">
+		<p><span style="color:#000000;"><b>Freedom From Covert Harassment &amp; Surveillance (FFCHS)</b></span></p>
+<p><span style="color:#000000;"><b>Organized Stalking Informers (OSI)</b></span></p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg"><img class="aligncenter size-large wp-image-231" src="https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=474&#038;h=305" alt="wolf in sheeps clothing" width="474" height="305" srcset="https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=474&amp;h=305 474w, https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=945&amp;h=610 945w, https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=150&amp;h=97 150w, https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=300&amp;h=194 300w, https://fightgangstalking.files.wordpress.com/2013/05/wolf-in-sheeps-clothing.jpg?w=768&amp;h=496 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<h1><span style="color:#000000;">FFCHS<br />
+</span></h1>
+<p><u>Phone Number</u>: (800) 571-5618</p>
+<p><u>Original Address</u>:  3925 Paxton Ave., Cincinnati, OH 45209</p>
+<p><u>Subsequent Address</u>:  P.O. Box 251, Upland, CA 91785-0251</p>
+<p><u>Current Address</u> (as of November 2015):</p>
+<p>19744 Beach Blvd Unit #372, Huntington Beach, CA 92648</p>
+<p><u>Website</u>:  <a href="http://www.freedomfchs.com">http://www.freedomfchs.com</a></p>
+<h1><span style="color:#000000;">OSI</span></h1>
+<p><span style="color:#000000;"><u>Website</u>:  </span><a href="http://osinformers.lefora.com/">http://osinformers.lefora.com/</a></p>
+<p><span style="text-decoration:underline;">YouTube Channel</span>:  <a href="http://www.youtube.com/osinformers" target="_blank">http://www.youtube.com/osinformers<br />
+</a></p>
+<p style="text-align:center;">_____________________</p>
+<h2><strong><span style="color:#000000;"><em>Wolves in Sheep&#8217;s Clothing</em></span></strong></h2>
+<p>Evaluating what you see on the Internet can be tricky, and nowhere more so than in the murky realm of gang stalking, which is all about deception and secrecy.</p>
+<p>Prime examples of this are FFCHS and OSI. Ostensibly, these two groups are support groups for gang stalking victims; actually, they are disinformation front groups organized by perpetrators of stalking crimes – most likely, corrupt cops – and former cops – associated with the LEIU (Association of Law Enforcement Intelligence Units), or the FBI (Federal Bureau of Investigations), or both. These groups were created so that victims will turn to them – rather than forming their own legitimate advocacy groups to lobby Congress and the news media to investigate illegal counterintelligence operations (“gang stalking”).</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/ffchs-logo.gif"><img class="aligncenter size-full wp-image-3043" src="https://fightgangstalking.files.wordpress.com/2013/05/ffchs-logo.gif?w=474" alt="FFCHS Logo"   /></a></p>
+<p style="text-align:center;">.</p>
+<p style="text-align:center;"><a href="https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg"><img class="aligncenter wp-image-2934" src="https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg?w=266&#038;h=265" alt="OSI Logo" width="266" height="265" srcset="https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg?w=266&amp;h=265 266w, https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg?w=530&amp;h=530 530w, https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg?w=150&amp;h=150 150w, https://fightgangstalking.files.wordpress.com/2013/05/osi-logo.jpg?w=300&amp;h=300 300w" sizes="(max-width: 266px) 100vw, 266px" /></a></p>
+<p style="text-align:left;"><span style="line-height:1.5em;">Apparently, in what passes for humor among law enforcement and counterintelligence personnel, the group was named with the initials “OSI” – which is a former unit in the criminal division of the U.S. Department of Justice (the Office of Special Investigations). OSI is also one of the U.S. government’s 16 intelligence agencies: the Air Force Office of Special Investigations.</span></p>
+<p>The rest of this webpage is devoted to FFCHS, but OSI is virtually identical in its methods. A quick online search shows that countless similar websites have also been created by the same people. Those websites spring up like mushrooms, and are now sometimes changed in response to information exposed about them on this website (Fight Gang Stalking).</p>
+<p>FFCHS is a suspiciously-rare example of what is purported to be a national support group in what is otherwise a phenomenon involving isolated individuals with few assets or connections.</p>
+<p><span style="color:#000000;"><strong>Conference Calls</strong></span></p>
+<p>FFCHS and OSI make use of telephone conference calls hosted by undercover perpetrators. Active conference call groups about gang stalking – for example, at the website <i>Talkshoe</i> – consist mainly of these two groups. <a href="http://www.talkshoe.com/talkshoe/web/Search.jsp?search=stalking&amp;pageNumber=0&amp;pageSize=25">Here is an example.</a></p>
+<p><span style="color:#000000;"><strong>Signs</strong></span></p>
+<p>Even a casual observer will notice signs – in this case, literally signs – that FFCHS is not what it claims to be. They posted a billboard about themselves (at least once anyway, and at least long enough to take a photo of it). The group’s January 2011 press release announcing the billboard(s) makes no reference to who might be doing the stalking. Nor does it advocate contacting Congress to investigate and stop gang stalking. Instead, the press release contains such helpful information as this:</p>
+<p><em>&#8220;The billboards can be seen right off the highway and at eye-level. They look great!&#8221; says Wanda Dablin, Los Angeles FFCHS Chapter president.</em></p>
+<p>This is the photo – which can be found easily online by a search engine image search:</p>
+<p style="text-align:center;">Click on image to enlarge.</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg"><img class="aligncenter size-large wp-image-187" src="https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg?w=474&#038;h=355" alt="GS Billboard in Pacific Palisades Jan. 2011" width="474" height="355" srcset="https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg?w=474&amp;h=355 474w, https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg?w=150&amp;h=113 150w, https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg?w=300&amp;h=225 300w, https://fightgangstalking.files.wordpress.com/2013/05/gs-billboard-in-pacific-palisades-jan-2011.jpg 720w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<p>__________________________________________________________<br />
+<b></b></p>
+<p><span style="color:#000000;"><b>Here are a dozen reasons why it&#8217;s obvious that FFCHS is a disinformation front group organized by gang stalking perpetrators, rather than a legitimate victims support group:</b></span></p>
+<p><strong>1.</strong> While most victims of gang stalking generally try to remain anonymous, and generally lack the financial assets to fight back against their stalkers, FFCHS seems uniquely blessed with the money to pay for billboards, a toll-free phone number, and an office – and they are not shy about posting the names and email addresses of their board members. By itself, that could be dismissed, but somehow this group which uniquely has the organizational sophistication and assets to create the only large national network of gang stalking victims offers no explanation of who is perpetrating all the gang stalking, and &#8211; even more remarkably &#8211; they don&#8217;t even seem curious about it. Equally puzzling is that FFCHS does not seem to have any clear goals (as I detail below).</p>
+<p><strong>2.</strong> There is no reference to the term “gang stalking” in the group’s name, web domain name, billboard, or home page, or “about us” page of their website.  “Gang stalking” is the most commonly used term for the crime of organized stalking, so if nothing else, you’d think they would want to generate as much web traffic as possible to their site by including the phrase prominently. The obvious explanation is that they don&#8217;t want that phrase to become more common, because it could increase awareness of the crime among the general public.</p>
+<p><b>3. </b>Among the most obvious indications that FFCHS is on the side of the stalkers rather than the targets of the stalking is that it doesn’t aggressively encourage investigation and exposure of the U.S. government’s role in gang stalking. Based on the published news reports and other evidence cited in this website, the scope of the stalking is too large for it to exist undetected by local and federal police agencies and intelligence agencies, yet despite this, government entities – such as the U.S. Department of Justice – are conspicuously silent on the issue. The folks at FFCHS don&#8217;t seem to be curious about that for some reason.</p>
+<p>Note that – as of this writing anyway – the “What You Can Do” page on the FFCHS website does <em>not</em> start by recommending that you contact your Congressional representatives to request an investigation such as the one performed in the 1970s by the U.S. Senate’s Church Committee. Nor do they suggest that you gather, read, and share the published news reports about gang stalking – or historical information about Red Squads, COINTELPRO, and MK Ultra.</p>
+<p><strong>4.</strong> Instead of recommending that stalking victims contact their local police dept. or the Dept. of Justice or Congress or the media or a private investigator or a lawyer or even their own family, the folks at FFCHS suggest that victims confide in FFCHS.  They don&#8217;t bother explaining why law enforcement officials will not be helpful. This group which supposedly represents the interests of gang stalking victims also does not mention that online discussions about gang stalking are filled with warnings that perpetrators often pose as victims to infiltrate gang stalking website forums and support groups.</p>
+<p><strong>5.</strong> FFCHS asks stalking victims to provide information about themselves by completing a survey. This is their explanation: “The information may be used as statistical information for public officials, news media, and the general public.” Even if you have no reservations about sharing such information, you should consider how weak such a survey&#8217;s results would be as statistical evidence to anyone seriously investigating the phenomenon of gang stalking. The notion that such data would be scientifically persuasive would be laughable to a criminologist.</p>
+<p><strong>6.</strong> One of the largest sections of their “What You Can Do” page is a lengthy warning of the (alleged) danger that victims could be involuntarily committed to a psychiatric facility for reporting what is happening to them. While it is certainly true that friends and relatives of gang stalking victims might think their accounts of stalking sound paranoid (since the psyops tactics of gang stalkers are calculated to generate that kind of response when described to non-victims), the <i>extremely </i>remote possibility of involuntary commitment should be a low priority for gang stalking victims, compared with all the other serious real problems they face. Typically, one would have to be acting in a very bizarre or threatening manner to elicit that kind of action by authorities. Merely reporting that you believe you are being stalked would not do it.</p>
+<p>Presumably, FFCHS devotes a big section of its website to this issue for two purposes: (1) if they can make you worry about possibly being committed to a psych ward (or even put on a list of people who possibly have psychological problems), it might dissuade you from making a police report of the stalking (a report whose existence could be inconvenient to law enforcement authorities who are complicit in gang stalking – especially if there are a lot of such reports), and (2) for non-victims of gang stalking who happen to be reading the FFCHS website, the discussion of psychiatric diagnosis raises the issue that self-proclaimed group stalking victims might indeed be delusional. This is an example of disinformation.</p>
+<p><strong>7.</strong> FFCHS – and their affiliated support groups such as multistalk@yahoogroups.com (linked on the FFCHS “What You Can Do” page) &#8211; are accused by many gang stalking victims of being run by perpetrators, based on victims’ experiences with the conference calls and online forum discussions. The accounts seem persuasive, and the alleged tactics are consistent with other obvious instances of disinformation.</p>
+<p>A common tactic is to have discussions infiltrated by a few individuals who are making crazy-sounding comments, so the entire community of gang stalking victims is discredited in the eyes of any outside observers.</p>
+<p>Relative to its important implications for American democracy, this issue of online disinformation gets relatively little attention in the press. Partly this is because of a lack of “smoking gun” official documents from whistle-blowers to prove the government engages in the tactic. A few things have emerged over the years though, such as <a href="http://www.liveleak.com/view?i=6f2_1355313666">this article</a> about how a former CIA clandestine service trainee and DIA analyst revealed that the FBI and CIA use trolls to monitor social media and interact with users to discredit information disseminated on the web. <a href="https://firstlook.org/theintercept/2014/02/24/jtrig-manipulation/">Articles by Glenn Greenwald</a> published by <em>NBC News</em> and <em>The Intercept</em> in February 2014 revealed leaked documents from NSA whistle-blower Edward Snowden which showed some of the online disinformation tactics being used by the intelligence agency GCHQ (the U.K.’s equivalent of the NSA).</p>
+<p>Allegations that FFCHS is not what it purports to be have become so common that their website now contains a page which tries to deflect the suspicions. That section is called “Disclaimer: Infiltrator Activity.” Tellingly, the page does not address any of the dozen specific points about FFCHS which I am describing here; there is only a vague reference to the fact that others “are seeking to discredit” FFCHS, and that they want stalking victims to “unite” instead.</p>
+<p><strong>8.</strong> If not for all the other reasons for skepticism, some of the content of the FFCHS website could possibly be dismissed as just stupidity. For example, if a legitimate (and non-stupid) anti-gang stalking advocacy group wanted to be taken seriously (and have reports of gang stalking taken seriously) by people who might be able to help – such as members of Congress and the mainstream media, they would not have devoted a section of the “What You Can Do” page to advising victims to literally eat dirt – or “diatomaceous earth” (a soft rock sediment) to detoxify their bodies. The section is obviously included to discredit the gang stalking victims community – while purporting to provide nutritional advice.</p>
+<p>Be sure to get the “food grade” dirt. Sometimes the FBI shares valuable data with the American public. For the record: the FBI does not <i>always </i>lie.</p>
+<p>This print-screen image capture of the relevant portion of the FFCHS website was posted online as of 18 January 2014.</p>
+<p align="center"><b>FFCHS Nutritional Advice: Eat Dirt</b><b> </b></p>
+<p align="center"><b><i>Click image to enlarge</i></b></p>
+<p align="center"><a href="https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg"><img class="aligncenter size-large wp-image-2938" src="https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg?w=474&#038;h=751" alt="FFCHS Advice" width="474" height="751" srcset="https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg?w=474&amp;h=751 474w, https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg?w=95&amp;h=150 95w, https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg?w=189&amp;h=300 189w, https://fightgangstalking.files.wordpress.com/2013/05/ffchs-advice.jpg 660w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg"><img class="aligncenter size-large wp-image-3942" src="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&#038;h=10" alt="Blue Line" width="474" height="10" srcset="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&amp;h=10 474w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=150&amp;h=3 150w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=300&amp;h=6 300w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg 698w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<p><strong><em>Update – May 2014&#8230;.</em></strong></p>
+<p>The FFCHS website was recently revised (possibly due in part to the exposure of its true nature on <em>Fight Gang Stalking</em>).</p>
+<p>At a glance, it appears that they have removed the valuable nutrition advice cited above; however, the essential nature of the website is the same. The group is still mysteriously uninterested in learning the identity of the perpetrators of organized stalking, and the website still features virtually none of the published news reports about organized stalking.</p>
+<p>Incidentally, no one from FFCHS has ever contacted me about the <em>Fight Gang Stalking</em> website.</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg"><img class="aligncenter size-large wp-image-3942" src="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&#038;h=10" alt="Blue Line" width="474" height="10" srcset="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&amp;h=10 474w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=150&amp;h=3 150w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=300&amp;h=6 300w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg 698w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<p>Below is a copy of a petition which FFCHS included in its May 4, 2013 newsletter – purportedly drafted by someone who “was a guest at our Saturday night podcast.” Apparently, FFCHS had no reservations about promoting this document, which appears to have been written by someone who is barely literate (e.g., complaining about “ease-dropping,” and instead of “Thank you for your support” it says “thank your support,” etc.).</p>
+<p><em><strong>                                  Typical FFCHS Garbage:<br />
+</strong></em><span style="font-size:13px;">__________________________________________________</span></p>
+<p><b>TO STOP GOVERNMENTAL ABUSE OF POWER! </b></p>
+<p>As a country we respect and support our Federal Government and (thus) want to maintain the freedom and liberty that this country was built on! Thus, protecting our constitutional rights as citizens of this great country!</p>
+<p>However, some of our country&#8217;s most trusted federal governmental protective agencies/ executives/ employees are violating the rights of law-abiding, upstanding, innocent, hardworking United States American citizens in ways that you would not imagine and are down-right criminal.</p>
+<p><b>Some of These Violations Include:</b></p>
+<p><i>Unlawful Privacy Invasion &amp; Surveillance<br />
+Character Defamation<br />
+Gang Stalking &amp; Harassment<br />
+Illegal Telephone/ Email Hacking<br />
+Illegal Telephone/ Email Blocking- Tampering- and Interference<br />
+U.S. Citizens Home Surveillance &amp; Ease-dropping<br />
+U.S. Citizens Private Bank Account Spying-Tampering-and-Interference<br />
+Professional Sabotaging<br />
+Business Sabotaging<br />
+Laser Beam Radiation<br />
+Electronic Device Surveillance &amp; Monitoring<br />
+And More.</i></p>
+<p><b>Let&#8217;s Come Together, As A Country To Stop This Blatant Governmental Abuse of Power and Back-Door-Under-The-Table Criminal Activity!</b></p>
+<p><b>WE ARE THE TAX PAYERS! WE VOTE THESE PEOPLE INTO OFFICE TO DO THE RIGHT THING ON BEHALF OF U.S. AMERICAN CITIZENS AND WE MUST HOLD THEM ACCOUNTABLE!</b></p>
+<p><b>OUR GOAL IS:</b></p>
+<p>(1) ONE MILLION SIGNATURES<br />
+(1) ONE MILLION LETTERS<br />
+(1) ONE MILLION TELEPHONE CALLS</p>
+<p><b>SIGN THE PETITION NOW! </b></p>
+<p><b>By Accessing The Website Link Below OR You May Copy &amp; Paste The Web Link Below &amp; Place The Web Link In Your Web Browser:</b></p>
+<p><b>In Advance, Thank Your Support &amp; Participation!<br />
+</b>__________________________________________________</p>
+<p><strong>9.</strong> The “About Us” section of the FFCHS website describes the organization&#8217;s three goals as supporting, networking, and caring for victims of organized harassment. Again, there is no mention of (a) who FFCHS thinks is doing the harassment (shouldn’t they at least be curious?), or (b) how FFCHS plans to try to stop it. The document about the group’s goals for 2012 described similarly vague goals (“continue to network,” “establish and strengthen local chapters,” “promoting unity,” etc.) – nothing about trying to figure out who the hell is doing all the stalking, or (credibly) asking Congress to investigate it.</p>
+<p><strong>10.</strong> The “Documents” section of the FFCHS website contains such critical documents as the “Space Preservation Act” of 2001 (a bill designed to &#8220;preserve the cooperative, peaceful uses of space for the benefit of all humankind&#8221;). On the other hand, the documents section does not include, for example, the affidavit by the late Ted Gunderson, former head of the Los Angeles FBI office, in which Mr. Gunderson alleged that gang stalking is a widespread government-supported conspiracy in the manner of the FBI’s infamous Cointelpro operation. FFCHS has interesting priorities.</p>
+<p><strong>11.</strong> The recommended websites page of the FFCHS website (“The Sites”) contains – as of this writing anyway – mostly websites which are badly-edited or contain a lot of extraneous garbage. Their list contains none of the half-dozen credible legitimate websites which I have listed in the “Recommended Websites” page of this site.</p>
+<p><strong>12.</strong> Most of the specific information about alleged organized harassment tactics described in the FFCHS website concerns the controversial subject of electronic weapons. One section of their site is devoted to “shielding tips” to protect victims against such attacks. That presumably was as close as they could get – without completely giving away the game – to providing instructions for making hats out of tin-foil.</p>
+<p>Just to be clear: intelligence agencies and the military have certainly developed all sorts of secret high-tech weaponry, and there is a well-documented, non-disputed history of horrendous things done by the CIA and other U.S. government agencies to Americans (Project MK Ultra is a perfect example). It&#8217;s also clear to any gang stalking victim that the perpetrators have no moral reservations about inflicting psychological torture (even knowing that it could drive victims to commit suicide or mass shootings), so it&#8217;s not difficult to imagine that the full range of tactics could include the use of electronic weapons of various sorts.  However, even if some “directed energy weapons” are in fact being used on some stalking victims, the focus on that by groups such as FFCHS only undermines the efforts to expose gang stalking because it will be viewed skeptically by the public.</p>
+<p>Unlike directed energy weapons, classic psychological operations (“psyops”) techniques are commonly reported by gang stalking victims. These tactics &#8211; whose use by the FBI&#8217;s Cointelpro operatives and East Germany’s Stasi, and others is undisputed &#8211; include using community spies, slandering targeted individuals, harassment by noise, covert audio and video surveillance, “gas-lighting,” etc. However, except for a very brief section on their home page, FFCHS devotes little attention to those tactics.</p>
+<p>You don&#8217;t have to be a professional intelligence analyst to connect the dots regarding FFCHS.</p>
+<p>__________________________________________________________</p>
+<p>If you can help expose illegal spying and harassment of Americans by intelligence agencies, law enforcement agencies, and private security contractors, please do so. America needs more patriots like Daniel Ellsberg, Edward Snowden, Jeremy Hammond, Barrett Brown, Russell Tice, William Binney, Ray McGovern, Thomas Drake, Frank Serpico, Thomas Tamm, Hugh Thompson, Jr., William C. Davidon, John Raines, Bonnie Raines, Keith Forsyth, Judi Feingold, and Bob Williamson.</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg"><img class="aligncenter wp-image-5456" src="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=100&#038;h=76" alt="Anti Nazi image" width="100" height="76" srcset="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=100&amp;h=76 100w, https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=200&amp;h=150 200w, https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=150&amp;h=113 150w" sizes="(max-width: 100px) 100vw, 100px" /></a></p>
+<p>__________________________________________________________<a href="https://fightgangstalking.files.wordpress.com/2013/05/glider.png"><br />
+</a></p>
+<p style="text-align:center;"><span style="color:#000000;"><strong>FightGangStalking.com</strong></span></p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-182" class="share-twitter sd-button share-icon" href="https://fightgangstalking.com/ffchs-a-disinformation-group/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-182" class="share-facebook sd-button share-icon" href="https://fightgangstalking.com/ffchs-a-disinformation-group/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div></div>					</div><!-- .entry-content -->
+</article><!-- #post-## -->
+			
+<div id="comments">
+
+	
+	
+	
+</div><!-- #comments -->
+		
+	</div><!-- #content -->
+</div><!-- #primary -->
+
+<div id="secondary" class="widget-area" role="complementary">
+	
+			<nav id="access" role="navigation">
+			<div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-7132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-7132"><a href="https://fightgangstalking.com/">COINTELPRO News (2016 – 2018)</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="https://fightgangstalking.com/cointelpro-news-2015/">COINTELPRO News (2015)</a></li>
+<li id="menu-item-6163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6163"><a href="https://fightgangstalking.com/cointelpro-news-2014/">COINTELPRO News (2014)</a></li>
+<li id="menu-item-5535" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5535"><a href="https://fightgangstalking.com/cointelpro-news-2013/">COINTELPRO News  (2013)</a></li>
+<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="https://fightgangstalking.com/what-is-gang-stalking/">** What is &#8220;Gang Stalking?&#8221; **</a></li>
+<li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591"><a href="https://fightgangstalking.com/gang-stalking-americas-police-state-government/">The American Police State</a></li>
+<li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-182 current_page_item menu-item-184"><a href="https://fightgangstalking.com/ffchs-a-disinformation-group/" aria-current="page">Disinformation Groups &#8212;&#8212; FFCHS, OSI, etc.</a></li>
+<li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="https://fightgangstalking.com/gang-stalking-videos/">Videos</a></li>
+<li id="menu-item-418" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-418"><a href="https://fightgangstalking.com/gang-stalking-documents/">Documents</a></li>
+<li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49"><a href="https://fightgangstalking.com/recommended-websites/">Recommended Websites</a></li>
+<li id="menu-item-350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-350"><a href="https://fightgangstalking.com/recommended-books/">Recommended Books</a></li>
+<li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="https://fightgangstalking.com/tactics-for-fighting-back/">** Tactics for Fighting Back **</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://fightgangstalking.com/contact-me/">Contact Information</a></li>
+</ul></div>		</nav>
+	
+	<aside id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="https://fightgangstalking.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></aside></div><!-- #secondary .widget-area -->
+				</div><!-- #main -->
+			</div><!-- #page -->
+			<footer id="colophon" role="contentinfo">
+				<div id="site-generator">
+										<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+					
+									</div>
+			</footer><!-- #colophon -->
+		</div><!-- #wrapper -->
+	</div><!-- #super-wrapper -->
+</div><!-- #super-super-wrapper -->
+<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=202017y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/fightgangstalking.com\/ffchs-a-disinformation-group\/":182};
+	</script>
+				<link rel='stylesheet' id='all-css-0-2' href='https://s2.wp.com/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css?m=1583834955h&cssminify=yes' type='text/css' media='all' />
+<script>
+var actionbardata = {"siteID":"51777463","siteName":"Fight \"Gang Stalking\"","siteURL":"https:\/\/fightgangstalking.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/dusk-to-dawn","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffightgangstalking.com%2Fffchs-a-disinformation-group%2F&signup_flow=account&domain=fightgangstalking.com","themeURL":"","xhrURL":"https:\/\/fightgangstalking.com\/wp-admin\/admin-ajax.php","nonce":"7bf2826c5f","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"63d7f1899b\" \/>","referer":"https:\/\/fightgangstalking.com\/ffchs-a-disinformation-group\/","canFollow":"","feedID":"11985471","statusMessage":"","customizeLink":"https:\/\/fightgangstalking.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Ffightgangstalking.wordpress.com%2Fffchs-a-disinformation-group%2F","postID":"182","shortlink":"https:\/\/wp.me\/P3vfGn-2W","canEditPost":"","editLink":"https:\/\/wordpress.com\/page\/fightgangstalking.com\/182","statsLink":"https:\/\/wordpress.com\/stats\/post\/182\/fightgangstalking.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Dusk To Dawn","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 1,142 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffightgangstalking.com%2Fffchs-a-disinformation-group%2F&signup_flow=account&domain=fightgangstalking.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJydUe1OwzAMfCGybGzA+IF4lizxNreJE+KkZTw9LusmUU3lQ/nhk893si+6T8pGKkBFN6wddGghvS8avtPfqRS5BGA2B7iwSNZXB/ylRC66A3IxD1SK/rRH7xcBaWqWfD0gsd5X7xVjAQUOC9JBnRn9tH5eyttoG0OIdPY+4xuLNW8V8mksC6QOof9xrIGSjG1VBsYPmI6Hqi5LemzlQBFVOBpyHvL/z9n5KE3JkZVA246h3dj3954gmRfRVSou9jQaT7oz9xknP6R2JutguEAWpGIHOePwsdfeHx1KlnB5TmQLRhpEVzQzPWSm9t5g1nw0WXK4VBG9hpfVw/Zxc79drZfNJ6hzC6M='></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?m=1585663916h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?m=1585663916h&#038;ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-url.min.7490158b.js?m=1586214842h&#038;ver=3.6.4"></scr' + 'ipt>' );
+( window.DOMRect ) || document.write( '<script src="https://s1.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-dom-rect.7e21c103.js?m=1586214842h&#038;ver=3.42.0"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="//stats.wp.com/w.js?61" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'51777463','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'51777463','v':'wpcom','tz':'-7','user_id':'0','post':'182','subd':'fightgangstalking'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dWOHN6emhLeDJ8S09KY2FOK25BfFZLYlslNCtuP19fb0tHaDkzcThPRSZdVmEsbldTUDF6VW5qYTdCVj1UMmlqcGVqV355ejFSTmM2TGU1LT00U1JJVmpfMFc5UG0wVUQwL1lLNC5EZ1dxR0JOeklIbGZsNUhNU1tiMnp+VnZ8d1NGcE9oZ2gvLy9XSFB8OFV+OXZzN3hpMkliVmJjQ3c2T1B4Ym45d0JfSSsl'}]);
+_stq.push([ 'clickTrackerInit', '51777463', '182' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script></body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- force IE browsers in compatibility mode to use their most aggressive rendering engine -->
+
+    <meta charset="utf-8">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"bc12d0ca7c","applicationID":"1887052,5587075","transactionName":"IlgMRUFXWFhWEE5CQwBDF0IcS0BVRxcSHl4PUwdJ","queueTime":0,"applicationTime":175,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bc12d0ca7c",applicationID:"1887052"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+    <title>Chorus Status</title>
+    <meta name="description" content="Welcome to Chorus&#39;s home for real-time and historical data on system performance.">
+
+    <!-- Mobile viewport optimization h5bp.com/ad -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Time this page was rendered - http://purl.org/dc/terms/issued -->
+    <meta name="issued" content="1587441361">
+
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Le fonts -->
+<style>
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-f0b2f7c12b6b87c65c02d3c1738047ea67a7607fd767056d8a2964cc6a2393f7.eot?host=status.voxmedia.com');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-f0b2f7c12b6b87c65c02d3c1738047ea67a7607fd767056d8a2964cc6a2393f7.eot?host=status.voxmedia.com#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-e642ffe82005c6208632538a557e7f5dccb835c0303b06f17f55ccf567907241.woff?host=status.voxmedia.com') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-0f094da9b301d03292f97db5544142a16f9f2ddf50af91d44753d9310c194c5f.ttf?host=status.voxmedia.com') format('truetype');
+    font-weight:300;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-366d17769d864aa72f27defaddf591e460a1de4984bb24dacea57a9fc1d14878.eot?host=status.voxmedia.com');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-366d17769d864aa72f27defaddf591e460a1de4984bb24dacea57a9fc1d14878.eot?host=status.voxmedia.com#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-2ee4c449a9ed716f1d88207bd1094e21b69e2818b5cd36b28ad809dc1924ec54.woff?host=status.voxmedia.com') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-a40a469edbd27b65b845b8000d47445a17def8ba677f4eb836ad1808f7495173.ttf?host=status.voxmedia.com') format('truetype');
+    font-weight:400;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0bf83a850b45e4ccda15bd04691e3c47ae84fec3588363b53618bd275a98cbb7.eot?host=status.voxmedia.com');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0bf83a850b45e4ccda15bd04691e3c47ae84fec3588363b53618bd275a98cbb7.eot?host=status.voxmedia.com#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0c394ec7a111aa7928ea470ec0a67c44ebdaa0f93d1c3341abb69656cc26cbdd.woff?host=status.voxmedia.com') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-9e43859f8015a4d47d9eaf7bafe8d1e26e3298795ce1f4cdb0be0479b8a4605e.ttf?host=status.voxmedia.com') format('truetype');
+    font-weight:400;
+    font-style:italic;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-09566917307251d22021a3f91fc646f3e45f8d095209bcd2cded8a1979f06e54.eot?host=status.voxmedia.com');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-09566917307251d22021a3f91fc646f3e45f8d095209bcd2cded8a1979f06e54.eot?host=status.voxmedia.com#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-86724fb2152613d735ba47c3f47a9ad2424b898bea4bece213dacee40344f966.woff?host=status.voxmedia.com') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-cf3e4eb7fbdf6fb83e526cc2a0141e55b01097e6e1abfd4cbdc3eda75d183f74.ttf?host=status.voxmedia.com') format('truetype');
+    font-weight:500;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-622ea489d20e12e691663f83217105e957e2d3d09703707d40155a29c06cc9d9.eot?host=status.voxmedia.com');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-622ea489d20e12e691663f83217105e957e2d3d09703707d40155a29c06cc9d9.eot?host=status.voxmedia.com#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-c8dc577ff7f76d2fc199843e38c04bb2e9fd15889421358d966a9f846c2ed1cd.woff?host=status.voxmedia.com') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-27177fe9242acbe089276ee587feef781446667ffe9b6fdc5b7fe21ad73e12f3.ttf?host=status.voxmedia.com') format('truetype');
+    font-weight:700;
+    font-style:normal;
+  }
+</style>
+
+
+      <link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-57x57-precomposed-5c491f48c00b91d5cf8b0839521a13b98ba3cd2167c5e0e53040ccf401227556.png" sizes="57x57">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-72x72-precomposed-94327076268b47cc7da838952f5e89a5ed9dcdde2734db231491e328d23e9962.png" sizes="72x72">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-114x114-precomposed-1e9664e05d1a3dc5cd67ee3b3c17215526a04a3b0a2e018bd26c5fa73482392f.png" sizes="114x114">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-120x120-precomposed-5d71ac87ecfc852fef52505af1eade3674709a530e7ed2ddb3ff44ab62db52f7.png" sizes="120x120">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-144x144-precomposed-f140e6b87ce676b2388742ebce8292476ba938f73a49c4c15e86565a224bb93d.png" sizes="144x144">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-152x152-precomposed-38fe2c387837f45dfab255be5670c7b3aad29cf6dbc5b8e4cdce30f61259b9ce.png" sizes="152x152">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-167x167-precomposed-b776218c8fb96a430158776d0749c2f81143c94f40c4427e53e32e4c786c87c0.png" sizes="167x167">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-180x180-precomposed-8819023509ff72c1f8945709243c9bab8b40c9bac0eb7891ad75b36600c7c7f9.png" sizes="180x180">
+
+    <link rel="shortcut icon" href='https://dka575ofm4ao0.cloudfront.net/assets/logos/favicon-2b86ed00cfa6258307d4a3d0c482fd733c7973f82de213143b24fc062c540367.png'>
+
+    <link rel="alternate" type="application/atom+xml" href="https://status.voxmedia.com/history.atom" title="Chorus Status History - Atom Feed">
+    <link rel="alternate" type="application/rss+xml" href="https://status.voxmedia.com/history.rss" title="Chorus Status History - RSS Feed">
+
+      <!-- Canonical Link to ensure that only the custom domain is indexed when present -->
+      <link rel="canonical" href="https://status.voxmedia.com">
+
+    <meta name="_globalsign-domain-verification" content="y_VzfckMy4iePo5oDJNivyYIjh8LffYa4jzUndm_bZ"/>
+
+
+    <link rel="alternate" type="application/atom+xml" title="ATOM" href="https://status.voxmedia.com/history.atom" />
+
+    <!-- Le styles -->
+    <link rel="stylesheet" media="screen" href="https://dka575ofm4ao0.cloudfront.net/packs/0.4bc7eddf2bf9a5ec0099.css" />
+    <link rel="stylesheet" media="all" href="https://dka575ofm4ao0.cloudfront.net/assets/status/status_manifest-623f5cf5ab25cbd8fcc079855c8f4a36d4e876dcbded2780c917e08392139426.css" />
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script>
+      window.pageColorData = {"blue":"#5D1B9D","border":"#E0E0E0","body_background":"#FFFFFF","font":"#333333","graph":"#0DA540","green":"#0DA540","light_font":"#595959","link":"#5D1B9D","orange":"#5D1B9D","red":"#FC4D3D","yellow":"#FC4D3D"};
+    </script>
+    <style>
+  /* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */
+  body,
+  .layout-content.status.status-api .section .example-container .example-opener .color-secondary,
+  .grouped-items-selector,
+  .layout-content.status.status-full-history .history-nav a.current,
+  #uptime-tooltip .tooltip-box {
+    background-color:#FFFFFF;
+  }
+
+  #uptime-tooltip .pointer-container .pointer-smaller {
+    border-bottom-color:#FFFFFF;
+  }
+
+
+
+
+  /* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */
+  body.status,
+  .color-primary,
+  .color-primary:hover,
+  .layout-content.status-index .status-day .update-title.impact-none a,
+  .layout-content.status-index .status-day .update-title.impact-none a:hover,
+  .layout-content.status-index .timeframes-container .timeframe.active,
+  .layout-content.status-full-history .month .incident-container .impact-none,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-none a,
+  .incident-history .impact-none,
+  .layout-content.status .grouped-items-selector.inline .grouped-item.active,
+  .layout-content.status.status-full-history .history-nav a.current,
+  .layout-content.status.status-full-history .history-nav a:not(.current):hover,
+  #uptime-tooltip .tooltip-box .tooltip-content .related-events .related-event a.related-event-link {
+    color:#333333;
+  }
+
+  .layout-content.status.status-index .components-statuses .component-container .name {
+    color:#333333;
+    color:rgba(51,51,51,.8);
+  }
+
+
+
+
+  /* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */
+  small,
+  .layout-content.status .table-row .date,
+  .color-secondary,
+  .layout-content.status .grouped-items-selector.inline .grouped-item,
+  .layout-content.status.status-full-history .history-footer .pagination a.disabled,
+  .layout-content.status.status-full-history .history-nav a,
+  #uptime-tooltip .tooltip-box .tooltip-content .related-events #related-event-header {
+    color:#595959;
+  }
+
+
+
+
+  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */
+  body.status .layout-content.status .border-color,
+  hr,
+  .tooltip-base,
+  .markdown-display table,
+  #uptime-tooltip .tooltip-box {
+    border-color:#E0E0E0;
+  }
+
+  .markdown-display table td {
+    border-top-color:#E0E0E0;
+  }
+
+  .markdown-display table td + td, .markdown-display table th + th {
+    border-left-color:#E0E0E0;
+  }
+
+  #uptime-tooltip .pointer-container .pointer-larger {
+    border-bottom-color:#E0E0E0;
+  }
+
+  #uptime-tooltip .tooltip-box .outage-field {
+    /*
+      Generate the background-color for the outage-field from the css_body_background_color and css_border_color.
+
+      For the default background (#ffffff) and default css_border_color (#e0e0e0), use the luminosity of the default background with a magic number to arrive at
+      the original outage-field background color (#f4f5f7). I used the formula Target Color = Color * alpha + Background * (1 - alpha) to find the magic number of ~0.08.
+
+      For darker css_body_background_color, luminosity values are lower so alpha trends toward becoming transparent (thus outage-field background becomes same as css_body_background_color).
+    */
+    background-color: rgba(224,224,224,0.31);
+
+    /*
+      outage-field border-color alpha is inverse to the luminosity of css_body_background_color.
+      That is to say, with a default white background this border is transparent, but on a black background, it's opaque css_border_color.
+    */
+    border-color: rgba(224,224,224,0.0);
+  }
+
+
+
+
+  /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */
+  .layout-content.status.status-index .status-day .update-title.impact-critical a,
+  .layout-content.status.status-index .status-day .update-title.impact-critical a:hover,
+  .layout-content.status.status-index .page-status.status-critical,
+  .layout-content.status.status-index .unresolved-incident.impact-critical .incident-title,
+  .flat-button.background-red {
+    background-color:#FC4D3D;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-red:after,
+  .layout-content.status-full-history .month .incident-container .impact-critical,
+  .layout-content.status-incident .incident-name.impact-critical,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-critical a,
+  .status-red .icon-indicator,
+  .incident-history .impact-critical,
+  .components-container .component-inner-container.status-red .component-status,
+  .components-container .component-inner-container.status-red .icon-indicator {
+    color:#FC4D3D;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-critical .updates {
+    border-color:#FC4D3D;
+  }
+
+
+
+
+  /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */
+  .layout-content.status.status-index .status-day .update-title.impact-major a,
+  .layout-content.status.status-index .status-day .update-title.impact-major a:hover,
+  .layout-content.status.status-index .page-status.status-major,
+  .layout-content.status.status-index .unresolved-incident.impact-major .incident-title {
+    background-color:#5D1B9D;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-orange:after,
+  .layout-content.status-full-history .month .incident-container .impact-major,
+  .layout-content.status-incident .incident-name.impact-major,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-major a,
+  .status-orange .icon-indicator,
+  .incident-history .impact-major,
+  .components-container .component-inner-container.status-orange .component-status,
+  .components-container .component-inner-container.status-orange .icon-indicator {
+    color:#5D1B9D;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-major .updates {
+    border-color:#5D1B9D;
+  }
+
+
+
+
+  /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */
+  .layout-content.status.status-index .status-day .update-title.impact-minor a,
+  .layout-content.status.status-index .status-day .update-title.impact-minor a:hover,
+  .layout-content.status.status-index .page-status.status-minor,
+  .layout-content.status.status-index .unresolved-incident.impact-minor .incident-title,
+  .layout-content.status.status-index .scheduled-incidents-container .tab {
+    background-color:#FC4D3D;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-yellow:after,
+  .layout-content.status-full-history .month .incident-container .impact-minor,
+  .layout-content.status-incident .incident-name.impact-minor,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-minor a,
+  .status-yellow .icon-indicator,
+  .incident-history .impact-minor,
+  .components-container .component-inner-container.status-yellow .component-status,
+  .components-container .component-inner-container.status-yellow .icon-indicator,
+  .layout-content.status.manage-subscriptions .confirmation-infobox .fa {
+    color:#FC4D3D;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-minor .updates,
+  .layout-content.status.status-index .scheduled-incidents-container {
+    border-color:#FC4D3D;
+  }
+
+
+
+
+  /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */
+  .layout-content.status.status-index .status-day .update-title.impact-maintenance a,
+  .layout-content.status.status-index .status-day .update-title.impact-maintenance a:hover,
+  .layout-content.status.status-index .page-status.status-maintenance,
+  .layout-content.status.status-index .unresolved-incident.impact-maintenance .incident-title,
+  .layout-content.status.status-index .scheduled-incidents-container .tab {
+    background-color:#5D1B9D;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-blue:after,
+  .layout-content.status-full-history .month .incident-container .impact-maintenance,
+  .layout-content.status-incident .incident-name.impact-maintenance,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-maintenance a,
+  .status-blue .icon-indicator,
+  .incident-history .impact-maintenance,
+  .components-container .component-inner-container.status-blue .component-status,
+  .components-container .component-inner-container.status-blue .icon-indicator {
+    color:#5D1B9D;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-maintenance .updates,
+  .layout-content.status.status-index .scheduled-incidents-container {
+    border-color:#5D1B9D;
+  }
+
+
+
+
+  /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */
+  .layout-content.status.status-index .page-status.status-none {
+    background-color:#0DA540;
+  }
+  .layout-content.status-index .components-statuses .component-container.status-green:after,
+  .status-green .icon-indicator,
+  .components-container .component-inner-container.status-green .component-status,
+  .components-container .component-inner-container.status-green .icon-indicator {
+    color:#0DA540;
+  }
+
+
+
+
+  /* CSS LINK COLOR */  /* CSS LINK COLOR */  /* CSS LINK COLOR */  /* CSS LINK COLOR */  /* CSS LINK COLOR */  /* CSS LINK COLOR */
+  a,
+  a:hover,
+  .layout-content.status-index .page-footer span a:hover,
+  .layout-content.status-index .timeframes-container .timeframe:not(.active):hover,
+  .layout-content.status-incident .subheader a:hover {
+    color:#5D1B9D;
+  }
+
+  .flat-button,
+  .masthead .updates-dropdown-container .show-updates-dropdown,
+  .layout-content.status-full-history .show-filter.open  {
+    background-color:#5D1B9D;
+  }
+
+
+
+
+  /* CUSTOM COLOR OVERRIDES FOR UPTIME SHOWCASE */
+  .components-section .components-uptime-link {
+    color: #595959;
+  }
+
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .legend-item {
+    color: #595959;
+    opacity: 0.8;
+  }
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .legend-item.light {
+    color: #595959;
+    opacity: 0.5;
+  }
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .spacer {
+    background: #595959;
+    opacity: 0.3;
+  }
+</style>
+
+
+    <!-- custom css -->
+
+      <!-- polyfills -->
+      <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <!-- Le HTML5 shim -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- injection for static -->
+
+
+    
+  </head>
+
+
+  <body class="status index status-none">
+
+    
+
+
+  <div class="layout-content status status-index starter">
+      <div class="masthead-container basic">
+
+    <div class="masthead has-logo">
+        <div class="logo-container">
+          <a href="http://status.voxmedia.com"><img style="" src="//dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/991/Chorus_Logo_Horiz_Purple__281_29.png" /></a>
+        </div>
+
+        
+
+
+  <div class="updates-dropdown-container" data-js-hook="updates-dropdown-container">
+    <a href="#" data-js-hook="show-updates-dropdown" id="show-updates-dropdown" class="show-updates-dropdown">
+
+    </a>
+    <div class="updates-dropdown" data-js-hook="updates-dropdown" style="display:none">
+      <div class="updates-dropdown-nav nav-items-3">
+          <a href="#updates-dropdown-email" id="updates-dropdown-email-btn">
+            <span class="icon-container email">
+          </a>
+          <a href="#updates-dropdown-atom" id="updates-dropdown-atom-btn">
+            <span class="icon-container rss">
+          </a>
+        <a href="#" data-js-hook="updates-dropdown-close" id="updates-dropdown-close-btn">
+          x
+        </a>
+      </div>
+      <div class="updates-dropdown-sections-container">
+          <div class="updates-dropdown-section email" id="updates-dropdown-email" style="display:none">
+            <div class="directions">
+              Get email notifications whenever Chorus <strong>creates</strong>,  <strong>updates</strong> or <strong>resolves</strong> an incident.
+            </div>
+            <form id="subscribe-form-email" action="/subscriptions/new-email" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+                <!-- make sure not to put cookie values in here since this gets cached -->
+                <input name="email" id="email" type="text" placeholder="Email Address" class="full-width" data-js-hook="email-notification-field">
+                  <input type="hidden" name="captcha_error" id="captcha_error" value="false" />
+                  <input type="submit" value="Subscribe" class="flat-button full-width g-recaptcha" id="subscribe-btn-email" data-disabled-text="Subscribing..." data-sitekey=6LdTS8AUAAAAAOIbCKoCAP4LQku1olYGrywPTaZz data-callback="submitNewEmailSubscriber" data-error-callback="emailSubscriberCaptchaError" >
+                  <div class="terms_and_privacy_information bottom small"> This site is protected by reCAPTCHA and the Google <a target="_blank" rel="noopener" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" rel="noopener" href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
+</form>          </div>
+
+
+
+
+
+          <div class="updates-dropdown-section atom" id="updates-dropdown-atom">
+            Get the <a href="https://status.voxmedia.com/history.atom" target="_blank">Atom Feed</a> or <a href="https://status.voxmedia.com/history.rss" target="_blank">RSS Feed</a>.
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+      <div class="clearfix"></div>
+    </div>
+
+</div>
+ <!-- this is outside of the .container so that the cover photo can go full width on mobile -->
+
+
+    <div class="container">
+        <div class="page-status status-none">
+          <span class="status font-large">
+            All Systems Operational
+          </span>
+          <span class="last-updated-stamp  font-small"></span>
+        </div>
+
+
+        <div class="text-section">
+          <h4 class="font-largest">
+            <a id="about-this-site" href="#about-this-site" class="no-link">About This Site</a>
+          </h4>
+          <p class="color-secondary font-regular">
+            Get the latest updates about our platform status.
+          </p>
+        </div>
+
+        <div class="components-section font-regular">
+    <div class="components-container one-column">
+          <div class="component-container border-color">
+            
+<div data-component-id="jjrytvn5r76d"
+     class="component-inner-container status-green "
+     data-component-status="operational"
+     data-js-hook="">
+
+   <span class="name">
+      Chorus sites
+   </span>
+
+
+  <span
+    class="component-status "
+    title=""
+  >
+    Operational
+  </span>
+
+  <span class="tool icon-indicator fa fa-check" title="Operational"></span>
+
+</div>
+
+          </div>
+          <div class="component-container border-color">
+            
+<div data-component-id="n31s05f8btl6"
+     class="component-inner-container status-green "
+     data-component-status="operational"
+     data-js-hook="">
+
+   <span class="name">
+      Chorus story editor
+   </span>
+
+
+  <span
+    class="component-status "
+    title=""
+  >
+    Operational
+  </span>
+
+  <span class="tool icon-indicator fa fa-check" title="Operational"></span>
+
+</div>
+
+          </div>
+          <div class="component-container border-color">
+            
+<div data-component-id="z2sqj8tm267j"
+     class="component-inner-container status-green "
+     data-component-status="operational"
+     data-js-hook="">
+
+   <span class="name">
+      Chorus video
+   </span>
+
+
+  <span
+    class="component-status "
+    title=""
+  >
+    Operational
+  </span>
+
+  <span class="tool icon-indicator fa fa-check" title="Operational"></span>
+
+</div>
+
+          </div>
+          <div class="component-container border-color">
+            
+<div data-component-id="kl6dglmfbg47"
+     class="component-inner-container status-green "
+     data-component-status="operational"
+     data-js-hook="">
+
+   <span class="name">
+      Platform integrations
+   </span>
+
+    <span class="tooltip-base tool" title="Integrations with Apple News, Getty images, USA Today, YouTube, and other services">?</span>
+
+  <span
+    class="component-status "
+    title=""
+  >
+    Operational
+  </span>
+
+  <span class="tool icon-indicator fa fa-check" title="Operational"></span>
+
+</div>
+
+          </div>
+    </div>
+    <div class="component-statuses-legend font-small">
+  <div class="legend-item status-green">
+    <span class="icon-indicator fa fa-check"></span>
+    Operational
+  </div>
+  <div class="legend-item status-yellow">
+    <span class="icon-indicator fa fa-minus-square"></span>
+    Degraded Performance
+  </div>
+  <div class="legend-item status-orange">
+    <span class="icon-indicator fa fa-exclamation-triangle"></span>
+    Partial Outage
+  </div>
+  <div class="breaker"></div>
+  <div class="legend-item status-red">
+    <span class="icon-indicator fa fa-times"></span>
+    Major Outage
+  </div>
+  <div class="legend-item status-blue">
+    <span class="icon-indicator fa fa-wrench"></span>
+    Maintenance
+  </div>
+</div>
+
+  </div>
+
+
+
+
+
+
+      <div class="incidents-list format-expanded">
+        <a class="font-largest no-link" id="past-incidents" href="#past-incidents">Past Incidents</a>
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">20</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported today.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">19</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">18</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">17</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular ">
+    <div class="date border-color font-large">Apr <var data-var="date">16</var>, <var data-var="year">2020</var></div>
+          <div class="incident-container">
+  <div class="incident-title impact-minor font-large">
+    <a href="/incidents/6q5x4vgg2n4s">Degraded performance sending stories to Apple News</a>
+  </div>
+
+  <div class="updates-container">
+    <!-- postmortem -->
+
+    <!-- incident updates -->
+      <div class="update font-regular resolved">
+        <strong>Resolved</strong> -
+      	The issue preventing some stories from being sent to Apple News has been resolved. If you‘re continuing to see stories fail to publish as expected on Apple News, please get in touch. We appreciate your patience while we’ve been working on this issue.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>16</var>, <var data-var='time'>17:22</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular identified">
+        <strong>Identified</strong> -
+      	The issue has been identified and a fix is being implemented.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>15</var>, <var data-var='time'>16:24</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular investigating">
+        <strong>Investigating</strong> -
+      	We're currently investigating an issue with sending stories to Apple News from Chorus. We'll continue to share updates here as we have them.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>15</var>, <var data-var='time'>12:04</var> EDT
+        </small>
+      </div>
+  </div>
+
+</div>
+
+  </div>
+
+          
+  <div class="status-day font-regular">
+    <div class="date border-color font-large">Apr <var data-var="date">15</var>, <var data-var="year">2020</var></div>
+  </div>
+
+          
+  <div class="status-day font-regular ">
+    <div class="date border-color font-large">Apr <var data-var="date">14</var>, <var data-var="year">2020</var></div>
+          <div class="incident-container">
+  <div class="incident-title impact-maintenance font-large">
+    <a href="/incidents/279hp0lxx2lq">Platform maintenance</a>
+  </div>
+
+  <div class="updates-container">
+    <!-- postmortem -->
+
+    <!-- incident updates -->
+      <div class="update font-regular completed">
+        <strong>Completed</strong> -
+      	The scheduled maintenance has been completed.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>14</var>, <var data-var='time'>04:00</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular in progress">
+        <strong>In progress</strong> -
+      	Scheduled maintenance is currently in progress. We will provide updates as necessary.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>14</var>, <var data-var='time'>00:00</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular scheduled">
+        <strong>Scheduled</strong> -
+      	We’re making a series of upgrades from 12–4am ET on Tuesday, April 14.<br /><br />From 12:00–12:10am: we expect the story editor to be offline for up to 10 minutes. While Chorus is offline, drafts will not be accessible but scheduled stories will publish normally. People who are logged in may experience intermittent delays when accessing their account or loading comments.<br /><br />From 12:15–4am: We expect the platform and Chorus sites to be available, but there is a small chance of a service disruption.<br /><br />We’ll monitor these updates closely and send a reminder 1 hour before the maintenance begins.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'>10</var>, <var data-var='time'>12:57</var> EDT
+        </small>
+      </div>
+  </div>
+
+</div>
+
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">13</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">12</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">11</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date">10</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date"> 9</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date"> 8</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular no-incidents">
+    <div class="date border-color font-large">Apr <var data-var="date"> 7</var>, <var data-var="year">2020</var></div>
+        <p class="color-secondary">No incidents reported.</p>
+  </div>
+
+          
+  <div class="status-day font-regular ">
+    <div class="date border-color font-large">Apr <var data-var="date"> 6</var>, <var data-var="year">2020</var></div>
+          <div class="incident-container">
+  <div class="incident-title impact-maintenance font-large">
+    <a href="/incidents/ps9t1d5198xx">Platform maintenance</a>
+  </div>
+
+  <div class="updates-container">
+    <!-- postmortem -->
+
+    <!-- incident updates -->
+      <div class="update font-regular completed">
+        <strong>Completed</strong> -
+      	The scheduled maintenance has been completed.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'> 6</var>, <var data-var='time'>01:00</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular in progress">
+        <strong>In progress</strong> -
+      	Scheduled maintenance is currently in progress. We will provide updates as necessary.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'> 6</var>, <var data-var='time'>00:00</var> EDT
+        </small>
+      </div>
+      <div class="update font-regular scheduled">
+        <strong>Scheduled</strong> -
+      	We’ll be doing some maintenance from 12–1am ET on Monday, April 6. We expect the platform and Chorus sites to be available, but there is a small chance of a service disruption during the maintenance window.<br /><br />We’ll monitor these updates closely and send a reminder 1 hour before the maintenance begins.
+
+        <br>
+
+        <small>
+            Apr <var data-var='date'> 3</var>, <var data-var='time'>10:58</var> EDT
+        </small>
+      </div>
+  </div>
+
+</div>
+
+  </div>
+
+      </div>
+
+
+      <div class="page-footer border-color font-small">
+          <a href="/history" class="history-footer-link"><span style="font-family:arial">&larr;</span> Incident History</a>
+
+        <span class="color-secondary powered-by"><a class="color-secondary" target="_blank" rel="noopener noreferrer nofollow" href="https://www.statuspage.io/powered-by?utm_campaign=status.voxmedia.com&amp;utm_content=status-pages&amp;utm_medium=powered-by&amp;utm_source=inapp">Powered by Statuspage</a></span>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+
+
+
+
+
+
+    <script src="https://dka575ofm4ao0.cloudfront.net/assets/status_manifest-d8935d598f29f4c38a0ab30778ffea7b09b48b6309185f818aa26530c00096aa.js"></script>
+    <div id="cpt-notification-container"></div>
+    
+
+
+
+
+    <!-- analytics web client scripts -->
+    <script>
+      if (typeof window.awc === 'undefined' || window.awc === null) {
+        window.awc = new Promise(function(resolve, reject) {
+          window.awc_resolve = resolve;
+        });
+      }
+      if (typeof window.analyticsClient === 'undefined' || window.analyticsClient === null) {
+        window.analyticsClient = new Promise(function(resolve, reject) {
+          window.analyticsClient_resolve = resolve;
+        });
+      }
+      awc.then(function(awc) {
+        var analyticsClient = new awc.default({
+          env: awc.envType.PROD,
+          product: 'statuspage',
+          version: '9c99cf3d94bb5826b7581ba8733f086072f06c5d',
+          origin: awc.originType.WEB,
+        });
+
+        var tenantOrgId = 'w8qhcm5r9jsm:hmblng4814gw';
+        analyticsClient.setTenantInfo(awc.tenantType.ORG_ID, tenantOrgId);
+
+        window.analyticsClient_resolve(analyticsClient);
+      });
+    </script>
+
+      <script>
+    var eventPayload = {"name":"statusPageScreen","attributes":{"pageIsPrivate":false,"overAllocationsCohort":null,"pageId":"hmblng4814gw","pageType":"public","componentSubscriptionEnabled":true,"pricingPlan":"public-business","subscriptionType":"paid","orgId":"w8qhcm5r9jsm","isAaID":false}}
+    var expectedParams = new Set(); // initializing with iterable not supported in IE11
+    expectedParams.add('utm_source').add('utm_campaign').add('utm_medium');
+
+    location.search.substring(1).split('&').forEach(function(param) {
+      var arr = param.split('=');
+      if (arr.length < 2) return;
+
+      var k = arr[0], v = arr[1]
+      if (expectedParams.has(k)) eventPayload.attributes[k] = v;
+    });
+
+    analyticsClient.then(function(analyticsClient) {
+      analyticsClient.sendScreenEvent(eventPayload)
+    })
+
+      if (location.search.indexOf('subscription_confirmed=true') !== -1) {
+        analyticsClient.then(function(analyticsClient) { analyticsClient.sendScreenEvent({"name":"emailConfirmedBanner","attributes":{"pageIsPrivate":false,"overAllocationsCohort":null,"pageId":"hmblng4814gw","pageType":"public","componentSubscriptionEnabled":true,"pricingPlan":"public-business","subscriptionType":"paid","orgId":"w8qhcm5r9jsm","isAaID":false}}); });
+      }
+  </script>
+      <script type="text/javascript">
+        $(function() {
+          $('#subscribe-btn-email').click(function() {
+            analyticsClient.then(function(analyticsClient) { analyticsClient.sendUIEvent({"actionSubject":"button","actionSubjectId":"subscribeStep1","action":"clicked","containerType":null,"containerId":null,"objectType":null,"objectId":null,"source":"statusPageScreen","attributes":{"type":"email","componentSubscriptionEnabled":true,"pageIsPrivate":false,"overAllocationsCohort":null,"pageId":"hmblng4814gw","pageType":"public","pricingPlan":"public-business","subscriptionType":"paid","orgId":"w8qhcm5r9jsm","isAaID":false},"tags":[]}); });
+          });
+
+          $('#subscribe-btn-sms').click(function() {
+            analyticsClient.then(function(analyticsClient) { analyticsClient.sendUIEvent({"actionSubject":"button","actionSubjectId":"subscribeStep1","action":"clicked","containerType":null,"containerId":null,"objectType":null,"objectId":null,"source":"statusPageScreen","attributes":{"type":"sms","componentSubscriptionEnabled":true,"pageIsPrivate":false,"overAllocationsCohort":null,"pageId":"hmblng4814gw","pageType":"public","pricingPlan":"public-business","subscriptionType":"paid","orgId":"w8qhcm5r9jsm","isAaID":false},"tags":[]}); });
+          });
+        })
+      </script>
+
+
+    <!-- all of the content_for stuff -->
+      <script src="https://dka575ofm4ao0.cloudfront.net/assets/register_subscription_form-bd6e5b6a473100206b3a7b46580a2bc24972d3c03a6db69641448a1a37fc661c.js"></script>
+
+  <script type="text/javascript">
+      $(function() {
+          SP.currentPage.registerSubscriptionForm('email');
+
+
+      });
+
+
+
+
+
+  </script>
+  <script src="https://dka575ofm4ao0.cloudfront.net/assets/status_common-f8b35586d7e6820c2761e822c9860a9ad5f3706467a0f2ea792990ed76958f20.js"></script>
+    <script>
+      SP.pollForChanges('/api/v2/status.json');
+    </script>
+
+  <script>
+    $(function() {
+      $('.tool').tooltipster({
+        animationDuration: 100,
+        contentAsHTML: true,
+        delay: 100,
+        theme: 'tooltipster-borderless',
+        functionInit: function (instance, helper) {
+          var $origin = $(helper.origin),
+              dataOptions = $origin.attr('data-tooltip-config');
+          if (dataOptions){
+            dataOptions = JSON.parse(dataOptions);
+            $.each(dataOptions, function(name, option){
+                instance.option(name, option);
+            });
+          }
+        }
+      });
+      // clicks on first tab in subscribe popout since we won't know which is first
+      // upon construction in the ruby code
+      $('.updates-dropdown-nav > a').eq(0).click();
+
+      // twitter follow button needs some margin
+      $('.twitter-follow-button').css('margin-right', '6px');
+    });
+
+    $(function() {
+      // open/close component groups
+      HRB.utils.djshook('component-group-opener').on('click', function() {
+        $(this).find('.group-parent-indicator').toggleClass('fa-plus-square-o').toggleClass('fa-minus-square-o').end().parent().toggleClass('open');
+      });
+    });
+
+    $(function() {
+      $(document).on('ajax:complete', '.modal.in', function(e) {
+        // Close the active modal.
+        $('.modal.in').modal('hide');
+      });
+    });
+
+  </script>
+
+
+      <script>
+  /** INITIALIZATION **/
+  var recaptchaIds = {}
+
+  // Unfortunately there's no unique selectors on the parent divs that recaptcha adds. The first unique selector
+  // is the iframe rendered 2 levels deep. So this waits until the iframes are added to the page, then finds
+  // the parent div and sets the z index so that it'll render above our modals & dropdowns from the start.
+  function setZIndex(captchaCount, startTime) {
+    // bail after 10s just in case so we don't do this forever if something whaky happens
+    if (new Date() - startTime > 10000) {
+      return;
+    }
+
+    var iframes = document.querySelectorAll('iframe[title="recaptcha challenge"]');
+    if (iframes.length != captchaCount) {
+      setTimeout(function() {
+        setZIndex(captchaCount, startTime);
+      }, 500);
+    }
+
+    for (var i = 0; i < iframes.length; i++) {
+      // incident subscribe modal is 1050, so this has to be above that
+      iframes[i].parentElement.parentElement.style.zIndex = "1100";
+    }
+  }
+
+  function addIncidentCaptcha() {
+    var incidentCaptcha = document.createElement('div');
+    incidentCaptcha.setAttribute('id', 'subscribe-incident-recaptcha');
+    incidentCaptcha.setAttribute('class', 'g-recaptcha');
+    incidentCaptcha.setAttribute('data-sitekey', '6LcZ-b0UAAAAAENi956aWzynTT2ZJ80dGU3F80Op');
+    incidentCaptcha.setAttribute('data-callback', 'submitIncidentSubscriberSuccess');
+    incidentCaptcha.setAttribute('data-error-callback', 'submitIncidentSubscriberError');
+    incidentCaptcha.setAttribute('data-size', 'invisible');
+    document.body.appendChild(incidentCaptcha);
+    var incidentCode = document.createElement('input');
+    incidentCode.setAttribute('type', 'hidden');
+    incidentCode.setAttribute('id', 'submit_incident_code');
+    document.body.appendChild(incidentCode);
+  }
+
+  var onloadCallback = function() {
+    // if there is an incident, then add incident captcha element
+    if (document.getElementsByClassName('modal-open-incident-subscribe').length > 0) {
+      addIncidentCaptcha();
+    }
+
+    var captchas = document.getElementsByClassName("g-recaptcha");
+
+    for(var i = 0; i < captchas.length; i++) {
+      var elId = captchas[i].id;
+      recaptchaIds[elId] = grecaptcha.render(elId);
+    }
+
+    setZIndex(captchas.length, new Date());
+  }
+
+
+  /** SUBSCRIBE DROPDOWN */
+
+  // callbacks for captcha success
+  function submitNewSubscriber(type, error) {
+    if (error) document.querySelector('#subscribe-form-' + type + ' #captcha_error').value = 'true';
+
+    document.getElementById('subscribe-form-' + type).dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));
+    grecaptcha.reset(recaptchaIds['subscribe-btn-' + type]);
+  }
+  function submitNewEmailSubscriber(token) {
+    submitNewSubscriber('email');
+  }
+  function submitNewSmsSubscriber(token) {
+    submitNewSubscriber('sms');
+  }
+  function submitNewWebhookSubscriber(token) {
+    submitNewSubscriber('webhook');
+  }
+  function submitIncidentSubscriber(token, error) {
+    var incidentCode = document.getElementById('submit_incident_code').value;
+    var incidentForm = document.getElementById('subscribe-form-' + incidentCode);
+
+    incidentForm.querySelector('input[name="captcha_error"]').value = error;
+    incidentForm.querySelector('input[name="g-recaptcha-response"]').value = token;
+    incidentForm.dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));
+    grecaptcha.reset(recaptchaIds['subscribe-incident-recaptcha']);
+  }
+  function submitIncidentSubscriberSuccess(token) {
+    submitIncidentSubscriber(token, 'false');
+  }
+
+  // callbacks if we get captcha network errors
+  function emailSubscriberCaptchaError(token) {
+    submitNewSubscriber('email', true);
+  }
+  function smsSubscriberCaptchaError(token) {
+    submitNewSubscriber('sms', true);
+  }
+  function webhookSubscriberCaptchaError(token) {
+    submitNewSubscriber('webhook', true);
+  }
+  function submitIncidentSubscriberError(token) {
+    submitIncidentSubscriber(token, 'true');
+  }
+
+  // tracking clicks
+  ['email', 'sms', 'webhook'].forEach(function(type) {
+    var el = document.getElementById('subscribe-btn-' + type);
+    el && el.addEventListener("click", function() {
+      $.ajax({
+        type: "POST",
+        url: "/subscriptions/track_attempt",
+        data: {
+          type: type
+        }
+      })
+    })
+  })
+
+  // form submission success callbacks
+  $('#subscribe-form-email').on('ajax:success', function(e, data, status, xhr){
+    if (data.type === 'success') {
+      SP.currentPage.updatesDropdown.hide();
+      document.getElementById('email').value = '';
+    }
+  });
+  $('#subscribe-form-sms').on('ajax:success', function(e, data, status, xhr){
+    if (data.type === 'success') {
+      SP.currentPage.updatesDropdown.hide();
+      document.getElementById('phone-number').value = '';
+    }
+  });
+  $('#subscribe-form-webhook').on('ajax:success', function(e, data, status, xhr){
+    if (data.type === 'success') {
+      SP.currentPage.updatesDropdown.hide();
+      document.getElementById('endpoint-webhooks').value = '';
+      document.getElementById('email-webhooks').value = '';
+    }
+  });
+
+  var modals = document.getElementsByClassName('modal-open-incident-subscribe');
+  for(var i = 0; i < modals.length; i++) {
+    var modal = modals[i];
+    var incidentCode = modal.id.split('-')[2];
+    (function(incidentCode) { $('#subscribe-form-' + incidentCode).on('ajax:success', function(e, data, status, xhr){
+      if (data.type === 'success') {
+        // This replaces the inputs with empty strings if the request was successful
+        document.getElementById('email-' + incidentCode).value = '';
+        if (document.getElementById('phone-number-' + incidentCode)) {
+          document.getElementById('phone-number-' + incidentCode).value = '';
+        }
+      }
+    });})(incidentCode);
+  }
+
+
+  function submitCaptchaIncidentSubscribe(event) {
+    var incidentCode = event.target.id.split('-')[2];
+    event.preventDefault();
+
+    $.ajax({
+      type: "POST",
+      url: "/subscriptions/track_attempt",
+      data: {
+        type: 'incident'
+      }
+    })
+
+    document.getElementById('submit_incident_code').value = incidentCode;
+    grecaptcha.execute(recaptchaIds['subscribe-incident-recaptcha']);
+  }
+</script>
+
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+
+
+    
+  <script src="https://dka575ofm4ao0.cloudfront.net/packs/common-821847ff77edcd6f2721.chunk.js"></script>
+  <script src="https://dka575ofm4ao0.cloudfront.net/packs/globals-49fb6c6cbe1302a77124.chunk.js"></script>
+
+    <script src="https://dka575ofm4ao0.cloudfront.net/packs/runtime-2cbed5beb809c3c1d244.js"></script>
+    
+    
+
+
+    
+<!-- FOR FLASH NOTICES -->
+
+<!-- FOR ERROR -->
+
+
+    <script>
+  $(function() {
+    var $link = $('<span class="color-secondary powered-by"><a class="color-secondary" target="_blank" rel="noopener noreferrer nofollow" href="https://www.statuspage.io/powered-by?utm_campaign=status.voxmedia.com&amp;utm_content=status-pages&amp;utm_medium=powered-by&amp;utm_source=inapp">Powered by Statuspage</a></span>');
+
+  	var setPoweredByStyles = function() {
+  		if (!$('.powered-by').length) {
+  			$link.appendTo($('.page-footer'))
+  		}
+  		$('.powered-by').attr('style', 'display: inline !important; visibility:visible !important; opacity: 1 !important; position:static !important; text-indent:0px !important; transform:scale(1) !important');
+  	}
+
+  	setInterval(setPoweredByStyles, 1000);
+  });
+</script>
+
+
+
+
+
+  </body>
+</html>

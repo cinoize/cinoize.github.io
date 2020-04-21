@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en-US" class="">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"53cef82690",applicationID:"189190456"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217; &#8211; NBC New York</title>
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//native.sharethrough.com' />
+<link rel='dns-prefetch' href='//js-sec.indexww.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="NBC New York &raquo; Feed" href="https://www.nbcnewyork.com/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.nbcnewyork.com/_static/??-eJyVjUEOwjAMBD9EalIJekK8xYkDWLhuFKeq8nsiJBCXHrjOzmhhyy4uWpNWyLLeWQ2QnGBLxZyGCNF+Cd3y0MkB/uu+DWuUlZK9Z2KrEGSJTyccCpYGVpukYWbdKdAe3H9tX0HqkwtYPsp1vvjTdJ68P47jC/nWV1Y=' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='admin-bar-inline-css'>
+#wp-admin-bar-my-sites-search.hide-if-no-js {
+	display: none;
+}
+#wp-admin-bar-my-sites-search label[for="my-sites-search-text"] {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+#wp-admin-bar-my-sites-search {
+	height: 38px;
+}
+#wp-admin-bar-my-sites-search .ab-item {
+	height: 34px;
+}
+#wp-admin-bar-my-sites-search input {
+	padding: 0 2px;
+	width: 95%;
+	width: calc( 100% - 4px );
+}
+	
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='font-awesome-css'  href='https://use.fontawesome.com/releases/v5.9.0/css/all.css' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.nbcnewyork.com/_static/??-eJydzksOwjAMBNAL0fywm2SBOEviujQin4qm4vqUBQegmuWMnka+14Fa7Vy77AsX3mSNNGw99NSqpJy+TdxTniRtR9lqKKtwTDgash4R0I8KTARRUhXH5iL/NKmV0qrQ3qBmO88xOKWjMp6VoGWvz9PyI7cYslATH2fR+9GxnQjQojtthldPlFmAtlfwqMMMgRRFxYF/6L3cNLojxoD7AHXOehg=' type='text/css' media='all' />
+<script src='https://www.nbcnewyork.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script>
+jQuery(document).ready( function($) {
+	$('#wp-admin-bar-my-sites-search.hide-if-no-js').show();
+	$('#wp-admin-bar-my-sites-search input').keyup( function( ) {
+
+		var searchValRegex = new RegExp( $(this).val(), 'i');
+
+		$('#wp-admin-bar-my-sites-list > li.menupop').hide().filter(function() {
+
+			return searchValRegex.test( $(this).find('> a').text() );
+
+		}).show();
+
+	});
+});
+	
+</script>
+<script>
+var adLayersDFP = {"layerDebugLabel":"Current ad layer","consoleDebugLabel":"Switch to Google console","adUnitPrefix":"div-gpt-ad-"};
+</script>
+<script>
+var adLayersAdServer = {"jsAPIClass":"AdLayersDFPAPI"};
+</script>
+<script type='text/javascript' src='https://www.nbcnewyork.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZubmV6UWJKql5uZp5dVrKMPVJycn1eSmleiX5BTmp6ZV6yfmKKbk1iZWlSsm5eUDDIBIZCSVkC6LqAO+1xbQ1MLEzMTM0sLgywAQvQ6jQ=='></script>
+<script src='https://www.nbcnewyork.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.4.4'></script>
+<script>
+( 'fetch' in window ) || document.write( '<script src="https://www.nbcnewyork.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.nbcnewyork.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.nbcnewyork.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.nbcnewyork.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script>
+var nbc = {"brand":"nbc","callLetters":"WNBC","env":"production","fullDomain":"nbcnewyork.com","globalSiteKey":"ny","comscore_c4":"NBC NEW YORK","on_air_name":"4 New York","host":"nbcnewyork.com","market":"nbcnewyork","pdkAcct":"Yh1nAC","sensitive":"","siteKey":"ny","themeUrl":"https:\/\/www.nbcnewyork.com\/wp-content\/themes\/nbc-station","twitterVia":"nbcnewyork","zipCode":"11371","dataLayer":{"adobe":{"prop1":"news","eVar1":"news","prop2":"article - general","prop3":"local","eVar3":"local","prop4":"","eVar4":"","eVar8":"nbc","prop8":"nbc","prop9":"D=v9","eVar9":"NY","prop10":"D=v10","eVar10":"WNBC","prop20":"nbcuotsdivisiontotal","prop21":"10022337853","eVar21":"10022337853","prop22":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","eVar22":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","prop28":"NBC New York","eVar28":"NBC New York","prop29":"news, local, coronavirus, faa","prop32":"no keyword","prop57":"Home Top Stories, Local","eVar57":"Home Top Stories, Local","eVar68":"","eVar70":"Mar 21, 2020","prop74":"D=v74","eVar74":"page not sponsored","eVar76":"page not sponsored","eVar80":"article - general","eVar81":"10022337853","eVar90":"Coronavirus","list2":"news, local, coronavirus, faa","attrs":[],"contextData":{"pagename":"","events":"","rsid":"nbcuotsdivisiontotal","callsign":"WNBC","businessunit":"nbcnewyork","division":"nbc","sitekey":"ny","section":"news","subsection":"local","subsubsection":"","exitlink":"","url":"https:\/\/www.nbcnewyork.com\/news\/local\/all-flights-to-new-york-area-airports-halted\/2337853\/","contentid":2337853,"localid":"1:2:2337853","contenttitle":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","contenttype":"article","nationalized":true,"byline_authors":"","date":"March 21, 2020","sourceid":"","source":"NBC New York","pageName":"local:detail content page","collections":"Home Top Stories, Local"},"prop30":"New York","prop18":"Ben Berkowitz","pageName":"local:detail content page","pageType":"","prop23":"article ","eVar23":"article ","prop19":"true","prop25":"D=c18","eVar25":"D=c25"},"page_name":["local:detail","content","page"],"site_events":{},"division":"nbc","market":"WNBC","sitekey":"ny","type":"post","network_id":"1:2:2337853","id":2337853,"source":"NBC New York","title":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","summary":"<p>The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to &#8220;staffing issues&#8221; at the New York air route traffic control center. A trainee at the facility tested positive for COVID-19 on Saturday. &#8220;A Federal Aviation Administration (FAA) air traffic controller trainee at New York Air Route Traffic Control Center in Ronkonkoma, N.Y., tested positive for COVID-19&#8230;<\/p>\n","link":"https:\/\/www.nbcnewyork.com\/news\/local\/all-flights-to-new-york-area-airports-halted\/2337853\/","date":"March 21, 2020","subtitle":"","sponsor":"","sst_source_id":"","linkout":"","linkout_url":"","syndicated":false,"nationalized":true,"originating_market":"","content_tag":"coronavirus|faa","section":"news","subsection":"local","subsubsection":"","all_sections":"news|local","primary_tag":"Coronavirus","sponsored":false,"contentid":"10022337853","localid":"1:2:2337853","localid_combined":"10022337853","contenttitle":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","contenttype":"article ","syndicatedid":"1:2:2337853","byline_authors":"","sourceid":"","pageName":"local:detail content page","collections":"Home Top Stories, Local","uri":"\/news\/local\/all-flights-to-new-york-area-airports-halted\/2337853\/?amp","uri_length":6,"section_name":"news","detail_section_name":"local","detail_subsection_name":"","this_contenttype":"article ","template":"article - general","this_request_type":"singular"},"browserTitle":"%s - NBC New York","pageType":"article","locale":"en_US","video":{"playerType":"articleplayer","fwSSID":"ots_wnbc_news_local","fwSSID_liveNoPre":"ots_live_nopreroll","fwNetworkID":"382114","fwManager":{"network":"_live","siteKey":""},"config":{"volume":100,"htmlPreRoll":true,"htmlOmniture":false,"tremorFlashKey":"52289094b872c","tremorFlashSyndKey":"5239b2feaee2e","tremorHTMLKey":"5239c44e7e9e1","tremorHTMLSyndKey":"5239c4849009"},"htmlOmniture":false,"pdkPath":"\/assets\/pdk587","plugins":["akamaiHD","FreeWheel","comscore","captions","capcon","liveCaptions","streamsense","chartbeat"]},"adobe":{"rsid":"nbcuotsdivisiontotal","link_internal_filters":"javascript:,nbcnewyork.com,media.nbcnewyork.com,events.nbcnewyork.com,tsn.nbcnewyork.com,autos.nbcnewyorknbcchicago.com"},"weather":{"weather_url":"https:\/\/www.nbcnewyork.com\/weather\/","alerts_url":"https:\/\/www.nbcnewyork.com\/weather\/severe-weather-alerts\/","closings_url":"https:\/\/www.nbcnewyork.com\/weather\/school-closings\/"},"sharethrough_codes":["nP3EagztciAhUuFBbE24BQsi"],"param_zipcode":"","appleStoreUrl":"https:\/\/ad.apps.fm\/E0u4S3ipOmsJX1C8gzpiGrmEqdAzHrteUpaQzsBej-2eHG_EJsXnWfqux2Y0CMFllmts_yvkswejq-LuNSpS8w","androidStoreUrl":"https:\/\/ad.apps.fm\/yWtPmqjRwEzO7Tn7WO-CYF5KLoEjTszcQMJsV6-2VnHFDLXitVHB6BlL95nuoNYfD4DN9cA_K7isGKodpGGvS81Dc53-l-EFFkrbbqlNnbEvOHmYbNodyj2z9iIgM4N0U9URwPCGGgbckgWPPtOEDw"};
+</script>
+<script type='text/javascript' src='https://www.nbcnewyork.com/_static/??/wp-includes/js/dist/i18n.min.js,/wp-content/themes/nbc-station/client/build/js/analytics.3bb9db65c214c92d8c9f.bundle.min.js?m=1584470667j'></script>
+<link rel='https://api.w.org/' href='https://www.nbcnewyork.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.nbcnewyork.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.nbcnewyork.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/" />
+<link rel="alternate" type="application/json+oembed" href="https://www.nbcnewyork.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.nbcnewyork.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F&#038;format=xml" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+		<style type='text/css'>img#wpstats{display:none}</style><style type="text/css">
+	@media (max-width: 375px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcnewyork.com/2019/09/NYC_aerial-1-1.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 376px) and (max-width: 768px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcnewyork.com/2019/09/NYC_aerial-1-1.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 769px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcnewyork.com/2019/09/NYC_aerial-1-1.png?resize=1440%2C415'); }
+	}
+</style>
+		<!-- Begin comScore Tag -->
+		<script>
+		var _comscore = _comscore || [];
+		_comscore.push({ c1: "2", c2: "6035083" });
+		(function() {
+			var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+			s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+			el.parentNode.insertBefore(s, el);
+		})();
+		</script>
+		<noscript>
+		<img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035083&cv=2.0&cj=1" />
+		</noscript>
+		<!-- End comScore Tag -->
+				<script type="text/javascript">
+				window._taboola = window._taboola || [];
+						_taboola.push({'article':'2337853', tracking:'_osource=taboola-recirc'});
+						!function (e, f, u) {
+					e.async = 1;
+					e.src = u;
+					f.parentNode.insertBefore(e, f);
+				}(document.createElement('script'),
+				document.getElementsByTagName('script')[0],
+				'//cdn.taboola.com/libtrc/nbcots-network/loader.js');
+		</script><script>
+			window._newsroom = window._newsroom || [];
+					!function (e, f, u) {
+				e.async = 1;
+				e.src = u;
+				f.parentNode.insertBefore(e, f);
+			}(document.createElement('script'),
+			document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/nbcots-wnbc/newsroom.js');
+		</script>
+		<meta property="og:site_name" content="NBC New York" /><meta name="google-site-verification" content="J_TExBQP8zWCS59RsGcM6VSRGvK0WA0HSmT5E7ZDWSs" /><meta property="fb:app_id" content="57055548682" /><meta name="twitter:site" content="@nbcnewyork" /><meta property="og:type" content="article" /><meta property="article:opinion" content="false" /><meta property="article:content_tier" content="free" /><meta name="twitter:creator" content="@nbcnewyork" /><meta name="article:publisher" content="http://www.facebook.com/NBCNewYork" /><meta name="description" content="The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to “staffing issues” at the New York air route traffic control..." /><meta property="og:description" content="The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to “staffing issues” at the New York air route traffic control center. A trainee at the facility tested positive for COVID-19 on Saturday. “A Federal Aviation Administration (FAA) air traffic controller trainee at New York Air Route Traffic Control Center in Ronkonkoma, N.Y., tested positive for COVID-19…" /><meta name="twitter:description" content="The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to “staffing issues” at the New York air route traffic control center. A trainee at the facility tested positive for COVID-19 on Saturday. “A Federal Aviation Administration (FAA) air traffic controller trainee at New York Air Route Traffic Control Center in Ronkonkoma, N.Y., tested positive for COVID-19…" /><meta property="og:title" content="FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;" /><meta name="twitter:title" content="FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;" /><meta property="og:url" content="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/" /><meta name="twitter:url" content="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/" /><meta name="keywords" content="airports, New York, air route traffic control center, AIRPORTS, KJFK, KISP, KCDW, KMDT, KMMU, KTEB, KLGA, KEWR, FAA, COVID, NBC News, KFRG, KPHL, flights, closure, ISSUES, case, DEPARTURES, ZNY, advisory, KHPN, Coronavirus, FAA" /><meta name="sailthru.title" content="FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;" /><meta name="sailthru.description" content="The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to “staffing issues” at the New York air route traffic control..." /><meta name="sailthru.tags" content="airports, New York, air route traffic control center, AIRPORTS, KJFK, KISP, KCDW, KMDT, KMMU, KTEB, KLGA, KEWR, FAA, COVID, NBC News, KFRG, KPHL, flights, closure, ISSUES, case, DEPARTURES, ZNY, advisory, KHPN, Coronavirus, FAA" /><meta name="sailthru.tags" content="airports, New York, air route traffic control center, AIRPORTS, KJFK, KISP, KCDW, KMDT, KMMU, KTEB, KLGA, KEWR, FAA, COVID, NBC News, KFRG, KPHL, flights, closure, ISSUES, case, DEPARTURES, ZNY, advisory, KHPN, Coronavirus, FAA" /><meta name="sailthru.type" content="article" /><meta name="sailthru.date" content="2020-03-21T14:19:02+00:00" /><meta property="og:image" content="https://media.nbcnewyork.com/2019/09/newark-airport-generic-aerials-file-FEB-2017-00011624_WNBC_0000000205-1.jpg?resize=850%2C478" /><meta name="twitter:image" content="https://media.nbcnewyork.com/2019/09/newark-airport-generic-aerials-file-FEB-2017-00011624_WNBC_0000000205-1.jpg?resize=850%2C478" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.nbcnewyork.com\/news\/local\/all-flights-to-new-york-area-airports-halted\/2337853\/","headline":"FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;","datePublished":"2020-03-21T14:19:02","dateModified":"2020-03-21T17:32:15","description":"The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to &#8220;staffing issues&#8221; at the New York air route traffic...","speakable":{"@type":"SpeakableSpecification","cssSelector":[".article-headline",".article-subtitle"]},"keywords":"airports, New York, air route traffic control center, AIRPORTS, KJFK, KISP, KCDW, KMDT, KMMU, KTEB, KLGA, KEWR, FAA, COVID, NBC News, KFRG, KPHL, flights, closure, ISSUES, case, DEPARTURES, ZNY, advisory, KHPN, Coronavirus, FAA","publisher":{"@type":"Organization","name":"NBC New York","logo":{"@type":"ImageObject","height":60,"url":"https:\/\/media.nbcnewyork.com\/wp-content\/uploads\/2019\/09\/light_amp_wnbc.png","width":160}},"image":{"@type":"ImageObject","height":478,"url":"https:\/\/media.nbcnewyork.com\/2019\/09\/newark-airport-generic-aerials-file-FEB-2017-00011624_WNBC_0000000205-1.jpg?resize=850%2C478","width":850},"author":{"@type":"Person","name":"NBC New York"}}</script>							<script type='text/javascript'>
+				var dfpAdUnits = {};
+				var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				(function() {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				})();
+				</script>
+												<script type="text/javascript">
+			var dfpBuiltMappings = {}, dfpAdUnits = {};
+
+			if (768 <= window.innerWidth) {									googletag.cmd.push(function() {
+					dfpBuiltMappings["bottombanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["bottombox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["logo"] = googletag.sizeMapping().addSize([768,1],[[88,31],[120,60]]).build();
+dfpBuiltMappings["interstitial"] = googletag.sizeMapping().addSize([768,1],[[1,1]]).build();
+dfpBuiltMappings["companiontopbox"] = googletag.sizeMapping().addSize([768,1],[[300,250]]).build();
+					});
+					var dfpAdDetails = {"topbox":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[300,250],[300,600]],"targeting":[]},"bottombox":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[300,250],[300,600]],"targeting":[]},"logo":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[88,31],[120,60]],"targeting":[]},"topbanner":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"interstitial":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[1,1]],"targeting":[]},"bottombanner":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"companiontopbox":{"path":"\/2620\/ots_web\/wnbc\/news\/local","sizes":[[300,250]],"targeting":[]}};
+					var dfpSizeMapping = {"bottombanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"bottombox":[[[768,1],[[300,250],[300,600]]]],"topbox":[[[768,1],[[300,250],[300,600]]]],"topbanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"logo":[[[768,1],[[88,31],[120,60]]]],"interstitial":[[[768,1],[[1,1]]]],"companiontopbox":[[[768,1],[[300,250]]]]};
+
+					 } else { 									googletag.cmd.push(function() {
+					dfpBuiltMappings["mobilemultibox"] = googletag.sizeMapping().addSize([1,1],[[300,250],[300,100],[320,50]]).build();
+dfpBuiltMappings["mobilebottombanner"] = googletag.sizeMapping().addSize([1,1],[[320,50],[300,100]]).build();
+dfpBuiltMappings["mobilebackstage"] = googletag.sizeMapping().addSize([1,1],[[1,1]]).build();
+dfpBuiltMappings["mobiletopbanner"] = googletag.sizeMapping().addSize([1,1],[[320,50],[300,100]]).build();
+					});
+					var dfpAdDetails = {"mobilemultibox":{"path":"\/2620\/ots_mobile\/wnbc_mobileweb\/news\/local","sizes":[[300,250],[300,100],[320,50]],"targeting":[]},"mobilebackstage":{"path":"\/2620\/ots_mobile\/wnbc_mobileweb\/news\/local","sizes":[[1,1]],"targeting":[]},"mobilebottombanner":{"path":"\/2620\/ots_mobile\/wnbc_mobileweb\/news\/local","sizes":[[320,50],[300,100]],"targeting":[]},"mobiletopbanner":{"path":"\/2620\/ots_mobile\/wnbc_mobileweb\/news\/local","sizes":[[320,50],[300,100]],"targeting":[]}};
+					var dfpSizeMapping = {"mobilemultibox":[[[1,1],[[300,250],[300,100],[320,50]]]],"mobilebottombanner":[[[1,1],[[320,50],[300,100]]]],"mobilebackstage":[[[1,1],[[1,1]]]],"mobiletopbanner":[[[1,1],[[320,50],[300,100]]]]};
+
+													}					googletag.cmd.push(function() {
+					googletag.pubads().enableAsyncRendering();
+googletag.pubads().collapseEmptyDivs();
+					googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						if (false === event.isEmpty) {
+							var slotElementId = event.slot.getSlotElementId();
+							if (0 <= slotElementId.indexOf('topbanner')) {
+								document.body.classList.add("topbanner");
+							}
+						}
+					});
+						googletag.pubads().setTargeting("zipcode", localStorage.getItem("zipCode") || nbc.zipCode );
+
+	var isMobile = window.matchMedia('screen and (max-width: 767px)').matches;
+	googletag.pubads().setTargeting("gpt1", isMobile ? "ots_mobile" : "ots_web");
+	googletag.pubads().setTargeting("platform", isMobile ? "mobile" : "desktop");
+			googletag.pubads().setTargeting("source", "digg.com");
+				googletag.pubads().setTargeting("pageid", "10022337853");
+				googletag.pubads().setTargeting("pageid2", "10022337853");
+				googletag.pubads().setTargeting("sect", "news");
+				googletag.pubads().setTargeting("sub", "local");
+				googletag.pubads().setTargeting("call", "WNBC");
+				googletag.pubads().setTargeting("region", "newyork");
+				googletag.pubads().setTargeting("stationtype", "nbc");
+				googletag.pubads().setTargeting("tags", "news,local,coronavirus,faa");
+				googletag.pubads().setTargeting("gpt2", "WNBC");
+				googletag.pubads().setTargeting("station", "ots");
+				googletag.pubads().setTargeting("sponsor", "");
+				googletag.pubads().setTargeting("excl_cat", "news,local");
+		
+					if ( typeof AdLayersAPI === 'undefined' || ! AdLayersAPI.isDebug() ) {
+						googletag.enableServices();
+					}
+				});
+								var dfpAdLayer = {"post_id":1907064,"title":"Article Ad Layer"};
+
+			</script>
+			<link rel="amphtml" href="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/?utm_source=digg&#038;amp"><link rel="icon" href="https://media.nbcnewyork.com/2019/09/cropped-NBC_New-York-1.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://media.nbcnewyork.com/2019/09/cropped-NBC_New-York-1.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://media.nbcnewyork.com/2019/09/cropped-NBC_New-York-1.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://media.nbcnewyork.com/2019/09/cropped-NBC_New-York-1.png?fit=270%2C270" />
+</head>
+
+<body class="post-template-default single single-post postid-2337853 single-format-standard station-nbc wnbc has-featured-image breaking visible-alert-bar short-hero">
+	<div id="fb-root"></div>
+		<script
+			async
+			defer
+			crossorigin="anonymous"
+			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=57055548682&autoLogAppEvents=1"></script>
+	<div class="leaderboard_ad">
+	<div id="div-gpt-ad-topbanner_" class=" gpt-topbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbanner_', format: 'topbanner', targeting: {"slot":"topbanner","pos":"topbanner"} });
+			</script><div id="div-gpt-ad-mobiletopbanner_" class=" gpt-mobiletopbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobiletopbanner_', format: 'mobiletopbanner', targeting: {"slot":"mobiletopbanner","pos":"mobiletopbanner"} });
+			</script></div>
+<div id="page" class="site" data-component="wrapper">
+	
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="alert-bar full-width breaking">
+	<div class="alert-bar__content">
+		<h4 class="alert-bar__heading">
+			Breaking		</h4>
+		<span class="alert-bar__title">
+			<a href="https://www.nbcnewyork.com/news/local/no-room-for-error-ny-over-peak-but-cuomo-urges-caution-or-we-face-hell-all-over-again/2381181/">
+				<span
+					class="alert-bar__inner"
+					data-react-component="NBCTruncate"
+					data-maxlines="1"
+					data-maxlinesmobile="2"
+					data-readmore=""
+					data-text="No Room for Error: NY Over Peak But Cuomo Urges Caution or We Face &#8216;Hell All Over Again&#8217;"
+					data-ellipsis="true">
+					No Room for Error: NY Over Peak But Cuomo Urges Caution or We Face &#8216;Hell All Over Again&#8217;				</span>
+			</a>
+	</div>
+</div>
+	<div class="site-header__primary">
+		<div class="site-header__wrap">
+							<div class="site-header__logo">
+					<a href="https://www.nbcnewyork.com/">
+						<img
+							src="https://media.nbcnewyork.com/2019/09/New_York_On_Dark@3x-5.png?fit=528%2C120"
+							alt="NBC New York"
+						/>
+					</a>
+				</div>
+						<div class="site-header__nav-search">
+				<div class="site-header__nav-main">
+					<button class="site-header__nav-main-toggle">
+						<span class="site-header__nav-main-toggle-text">Main Navigation</span>
+					</button>
+				</div>
+				<div class="site-header__search" data-component="headerSearch">
+					<button class="site-header__search-toggle">
+						<span class="site-header__search-toggle-text">Search</span>
+					</button>
+					<div class="site-header__search-form">
+						
+<form class="search-form" role="search" method="get" action="https://www.nbcnewyork.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+					</div>
+				</div>
+			</div>
+			<div class="site-header__animated-section">
+				<nav class="site-header__nav-sections">
+					<div class="menu-primary-container"><nav id="primary-menu" class="menu"><a class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent" href="/news/local/">Local</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/weather/">Weather</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/investigations/">Investigations</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.nbcnewyork.com/better-get-baquero/">Baquero</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/videos/">Video</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.nbcnewyork.com/live/">TV Listings</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/traffic/">Traffic</a></li>
+</nav></div>				</nav>
+				<div class="site-header__weather-tv">
+					<div
+						class="site-header__local-weather"
+						data-react-component="NBCWeather"
+						data-view="conditions"
+					>
+					</div>
+										<a class="site-header__live-tv" href="https://www.nbcnewyork.com/live">Live TV</a>
+									</div>
+				<button class="site-header__mobile-share-toggle">
+					<span class="text-share">Share</span>
+					<span class="text-close">Close</span>
+				</button>
+			</div>
+		</div> <!-- site-header__wrap -->
+	</div> <!-- site-header__primary -->
+	<div class="site-header__secondary">
+		<div class="site-header__wrap">
+							<div class="site-header__trending">
+					<span class="site-header__trending-label">Trending</span>
+											<nav class="site-header__trending-nav">
+												<a href="https://www.nbcnewyork.com/news/local/how-to-get-help-as-cities-states-shut-down-to-curb-coronavirus/2328560/" class="site-header__trending-nav-item">Get Help</a>
+					<a href="https://www.nbcnewyork.com/news/local/how-many-in-tri-state-have-tested-positive-for-coronavirus-here-are-latest-cases-by-the-numbers/2317721/" class="site-header__trending-nav-item">Tri-State Case Count</a>
+					<a href="https://www.nbcnewyork.com/tag/stimulus-checks/" class="site-header__trending-nav-item">Stimulus Checks</a>
+					<a href="https://www.nbcnewyork.com/news/coronavirus/some-of-nys-favorite-summer-events-postponed-canceled-amid-covid-19-crisis/2379263/" class="site-header__trending-nav-item">NYC Pride</a>
+					<a href="https://www.nbcnewyork.com/tag/covid-19/" class="site-header__trending-nav-item">COVID-19</a>
+					<a href="https://www.nbcnewyork.com/tag/nick-cordero/" class="site-header__trending-nav-item">Nick Cordero</a>
+					<a href="https://www.nbcnewyork.com/tag/shake-shack/" class="site-header__trending-nav-item">Shake Shack</a>
+					<a href="https://www.nbcnewyork.com/tag/facebook/" class="site-header__trending-nav-item">Facebook</a>
+					<a href="https://www.nbcnewyork.com/tag/good-news/" class="site-header__trending-nav-item">Good News</a>
+					<a href="/news/politics/" class="site-header__trending-nav-item">Politics</a>
+		
+							</nav>
+										<div class="site-header__trending-toggle">
+						<button class="trending-toggle"><span class="screen-reader-text">Expand</span></button>
+					</div>
+				</div>
+
+				
+<div class="site-header__alerts">
+	<div
+		class="site-header__weather "
+		data-react-component="NBCWeather"
+		data-view="alerts"
+		data-alert-singular="Weather Alert"
+		data-alert-plural="Weather Alerts"
+		data-zip-code="11371">
+	</div>
+	</div> <!-- site-header__wrap -->
+					</div> <!-- site-header__secondary -->
+	</div>
+	</header>
+	<div id="content" class="site-content " data-component="formsContainer">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<article id="post-2337853" data-component="article">
+
+	<div
+			id="template-hero"
+		class="template-hero "
+		data-component="templateHero"
+	>
+			<div class="hero-background"></div>
+	
+	
+	
+					
+	
+	
+	
+	
+	
+	
+	</div>
+		<div class="section-content--header below-hero">
+		<div class="article-eyebrow__container">
+	<div class="article-eyebrow__wrap">
+									<a class="article-eyebrow" href="https://www.nbcnewyork.com/tag/coronavirus/">Coronavirus</a>						</div>
+</div>
+<div class="article-header--wrap ">
+	<h1 class="article-headline">
+		FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;	</h1>
+				
+<div class="article-meta" data-component="articleMeta">
+	<h4 class="article-byline">
+		
+							<span class="time-wrap">
+				<time class="entry-date published" datetime="2020-03-21T18:19:02-04:00">Published March 21, 2020</time>					<span class="meta-dot">&bull;</span>
+				<time class="entry-date updated" datetime="2020-03-21T17:32:15-04:00">Updated on <span class="date">March 21, 2020</span> at <span class="time">5:32 pm</span></time>			</span>
+			</h4>
+	<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F&#038;FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99?_osource=db_npd_nbc_wnbc_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99&#038;url=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F?_osource=db_npd_nbc_wnbc_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F?_osource=db_npd_nbc_wnbc_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+	</div>
+</div>
+	</div>
+	</div>
+	<div class="section-content--full below-hero">
+		<div class="section-content--primary">
+			<div class="article-content--wrap">
+				<figure class="article-featured-media">
+	<img
+		src="https://media.nbcnewyork.com/2019/09/newark-airport-generic-aerials-file-FEB-2017-00011624_WNBC_0000000205-1.jpg?resize=850%2C478"
+		alt="An aerial view showing terminals, buildings and planes of of Newark Liberty International Airport in Newark, New Jersey"
+	/>
+	</figure>
+				<div class="article-content rich-text">
+
+					
+<p>The FAA temporarily halted all flights to New York-area airports Saturday afternoon due to "staffing issues" at the New York air route traffic control center.</p>
+
+<p>A trainee at the facility tested positive for COVID-19 on Saturday. </p>
+
+<p>"A Federal Aviation Administration (FAA) air traffic controller trainee at New York Air Route Traffic Control Center in Ronkonkoma, N.Y., tested positive for COVID-19 today. The trainee has not been at the facility since March 17. We have contacted local health authorities and we are developing a plan to quickly sanitize/clean the affected areas," the FAA said in a statement. </p>
+
+<p>"DUE TO STAFFING ISSUES AT ZNY, PLEASE STOP ALL DEPARTURES TO<br> AIRPORTS WITHIN ZNY. THIS INCLUDES KJFK, KEWR, KLGA, KTEB, KHPN,<br> KPHL, KMMU, KCDW, KMDT, KABE, KISP, KFRG AND SEVERAL SMALLER<br> AIRPORTS," the FAA said in an advisory posted around 1:45 p.m.</p>
+
+<p>The directive also affects Philadelphia International Airport.</p>
+
+<p>Roughly 30 minutes later, the FAA issued a second statement saying the restrictions were mostly lifted, aside from some flights destined for JFK. </p>
+
+<p>Shortly after, the Port Director of John F. Kennedy Airport said the flights were suspended due to "an issue with an aviation system," but did not elaborate further. </p>
+
+<figure class="wp-block-embed-twitter wp-block-embed is-type-rich is-provider-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="500" data-dnt="true"><p lang="en" dir="ltr">There are erroneous reports circulating that the FAA discontinued flights to NY and NJ due to the <a href="https://twitter.com/hashtag/coronavirus?src=hash&amp;ref_src=twsrc%5Etfw">#coronavirus</a>. Flights were temporarily suspended because of an issue with an aviation system. It has since been resolved and everything is back to “normal” at <a href="https://twitter.com/hashtag/JFK?src=hash&amp;ref_src=twsrc%5Etfw">#JFK</a> and Newark.</p>&mdash; Port Director Frank Russo (@CBPPortDirJFK) <a href="https://twitter.com/CBPPortDirJFK/status/1241439482374733824?ref_src=twsrc%5Etfw">March 21, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+<p>An advisory to business aviators, a copy of which was obtained by News 4, said flights in the air were being diverted or sent back to their origin airports, and flights that had taxied were returning to their gates.</p>
+<div class="recirc-module">
+	<h3 class="recirc__heading"></h3>
+	<p class="recirc__subheading"></p>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbcnewyork.com/news/coronavirus/tri-state-enacts-new-measures-to-slow-covid-19-nj-awaits-major-announcement-from-murphy/2337410/">
+							<img class="post__image" src="https://media.nbcnewyork.com/2019/09/GettyImages-1207853421.jpg?resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbcnewyork.com/tag/coronavirus-outbreak/">Coronavirus Outbreak</a>
+																			<span class="post__date post__date--has-category">
+								Mar 21							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbcnewyork.com/news/coronavirus/tri-state-enacts-new-measures-to-slow-covid-19-nj-awaits-major-announcement-from-murphy/2337410/">
+								<span data-ellipsis="true" data-text="Majority of NY COVID-19 Cases in People Under 50; All Tri-State Non-Essential Businesses Told to Close" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									Majority of NY COVID-19 Cases in People Under 50; All Tri-State Non-Essential Businesses Told to Close								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbcnewyork.com/news/coronavirus/coronavirus-outbreak-latest-more-states-brace-for-lockdown-pence-staffer-tests-positive/2337474/">
+							<img class="post__image" src="https://media.nbcnewyork.com/2019/09/AP_20081677994205.jpg?crop=280px%2C0px%2C3473px%2C3474px&#038;resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbcnewyork.com/tag/coronavirus/">Coronavirus</a>
+																			<span class="post__date post__date--has-category">
+								Mar 21							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbcnewyork.com/news/coronavirus/coronavirus-outbreak-latest-more-states-brace-for-lockdown-pence-staffer-tests-positive/2337474/">
+								<span data-ellipsis="true" data-text="Coronavirus Outbreak Latest: Pence Tests Negative; More States Stay Home" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									Coronavirus Outbreak Latest: Pence Tests Negative; More States Stay Home								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+	</div>
+
+									</div>
+							<div class="article-copyright">Copyright NBC New York</div>
+	
+	<div class="article-footer">
+		<div class="article-tags">
+	<h4 class="article-tags__heading">This article tagged under:</h4>
+	<a class="article-tags__tag" href="https://www.nbcnewyork.com/tag/coronavirus/">Coronavirus</a><a class="article-tags__tag" href="https://www.nbcnewyork.com/tag/faa/">FAA</a></div>
+		<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F&#038;FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99?_osource=db_npd_nbc_wnbc_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99&#038;url=https%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F?_osource=db_npd_nbc_wnbc_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=FAA%20Temporarily%20Halts%20Flights%20to%20NY%2C%20Philly%20Airports%20Amid%20%E2%80%98Staffing%20Issues%E2%80%99%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbcnewyork.com%2Fnews%2Flocal%2Fall-flights-to-new-york-area-airports-halted%2F2337853%2F?_osource=db_npd_nbc_wnbc_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+			<a href="#" data-service="comments">
+			<i class="fas fa-comment-alt"></i>
+
+			<div class="share-buttons__comment-count">
+				<div class="fb-comments-count" data-href="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/">0</div>
+			</div>
+		</a>
+	</div>
+	</div>
+				<div id="div-gpt-ad-mobilemultibox_belowarticle" class="widget_ad_layers_ad_widget gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_belowarticle', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script>	<div id="taboola-below-article-thumbnails"></div>
+
+	<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+		if (document.cookie.indexOf("scroll0=") < 0) {
+			window._taboola = window._taboola || [];
+			_taboola.push({
+				mode: 'thumbnails-a',
+				container: 'taboola-below-article-thumbnails',
+				placement: 'Below Article Thumbnails',
+				target_type: 'text'
+			});
+		};
+	</script>
+	<div id="taboola-below-article-text-links"></div>
+		<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+			if (document.cookie.indexOf("scroll0=") < 0) {
+				window._taboola = window._taboola || [];
+				_taboola.push({
+					mode: 'hybrid-text-links-a',
+					container: 'taboola-below-article-text-links',
+					placement: 'Below Article Text Links',
+					target_type: 'text'
+				});
+			};
+		</script>
+				</div>
+		</div>
+		<div class="section-content--secondary">
+			<aside class="sidebar article-sidebar">
+						<section id="ad_layers_ad_widget-2" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-topbox_325" class=" gpt-topbox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbox_325', format: 'topbox', targeting: {"slot":"topbox","pos":"topbox"} });
+			</script></section><section id="nbc_most_popular-2" class="widget widget_nbc_most_popular"><div class="nbc-most-popular" data-react-component="MostPopular" data-title="Trending Stories" data-include-sponsored="true" data-beforetext="Presented By"></div></section><section id="nbc_weather_widget-3" class="widget widget_nbc_weather_widget">		<div class="nbc-weather-widget">
+			<div class="nbc_owned_television_stations_weather_iframe">
+	<h2>Weather Forecast</h2><div class="widget_location">New York, NY</div>
+	<a class="weather-module__conditions" href="https://www.nbcnewyork.com/weather/">
+		<div data-react-component="IframeConditions" data-location="11371"></div>
+	</a>
+		<div class="widget_sponsor">
+		<div id="div-gpt-ad-logo_weather_140" class="sponsored-ad-unit gpt-logo" data-beforetext="Presented By" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'logo_weather_140', format: 'logo', targeting: {"module":"weather","slot":"logo","pos":"logo"} });
+			</script>	</div>
+</div>
+		</div>
+		</section><section id="nbc_newsletter-2" class="widget widget_nbc_newsletter"><div class="newsletter-widget"
+				data-react-component="NewsletterWidget"
+				data-title="Subscribe to our Newsletters"
+				data-description="Sign up to receive breaking news alerts in your inbox."
+				data-newsletter-id="WNBC_BreakingNews"
+				data-privacy-link="http://www.nbcuniversal.com/privacy/"
+				data-newsletter-link=""
+				data-nonce="792a071809"
+				></div></section><section id="ad_layers_ad_widget-11" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilemultibox_456" class=" gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_456', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script></section><section id="nbc_civic_science-2" class="widget widget_nbc_civic_science"><div id="civsci-1801149203" class="module-civicScience"></div></section><section id="ad_layers_ad_widget-7" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-bottombox_307" class=" gpt-bottombox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'bottombox_307', format: 'bottombox', targeting: {"slot":"bottombox","pos":"bottombox"} });
+			</script></section><section id="ad_layers_ad_widget-17" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-interstitial_996" class=" gpt-interstitial" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'interstitial_996', format: 'interstitial', targeting: {"slot":"interstitial","pos":"interstitial"} });
+			</script></section><section id="ad_layers_ad_widget-18" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilebackstage_239" class=" gpt-mobilebackstage" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilebackstage_239', format: 'mobilebackstage', targeting: {"slot":"mobilebackstage","pos":"mobilebackstage"} });
+			</script></section>			</aside>
+		</div>
+	</div>
+</article>
+
+			</main>
+		</div>
+
+							
+	</div><!-- #content -->
+	
+<footer role="contentinfo" class="site-footer">
+	<div class="site-footer__wrapper">
+		<div class="site-footer__identity">
+							<a href="https://www.nbcnewyork.com/" class="site-footer__logo">
+					<img
+						src="https://media.nbcnewyork.com/2019/09/NY_On_Light@3x-3.png?fit=552%2C120"
+						alt="NBC New York"
+					/>
+				</a>
+			
+			<ul class="site-footer__social-list">
+				
+									<li class="site-footer__social-list-item facebook">
+						<a href="http://www.facebook.com/NBCNewYork" target="_blank">
+							<span class="screen-reader-text">Facebook</span>
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item twitter">
+						<a href="https://twitter.com/nbcnewyork" target="_blank">
+							<span class="screen-reader-text">Twitter</span>
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item instagram">
+						<a href="https://instagram.com/nbcnewyork" target="_blank">
+							<span class="screen-reader-text">Instagram</span>
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+							</ul>
+		</div>
+
+		<ul id="menu-footer" class="footer-menu site-footer__menu-primary"><li id="menu-item-2217121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2217121"><a href="/investigations/submit-tip/">Submit Tips</a></li>
+<li id="menu-item-2212782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2212782"><a href="https://www.nbcnewyork.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-2181328" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181328"><a href="https://www.nbcnewyork.com/contact-us/">Connect With Us</a></li>
+<li id="menu-item-2238862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2238862"><a href="https://www.nbcnewyork.com/on-air/community-top-stories/">Community</a></li>
+</ul><ul id="menu-secondary-footer" class="footer-menu-secondary site-footer__menu-secondary"><li id="menu-item-2181024" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181024"><a href="https://www.nbcnewyork.com/terms-of-service/">Terms of Service</a></li>
+<li id="menu-item-2181030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2181030"><a href="http://www.nbcuniversal.com/privacy/?brandA=Owned_Stations&#038;intake=NBC_New_York/">Privacy policy &#8211; New</a></li>
+<li id="menu-item-2206662" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2206662"><a href="http://www.nbcuniversal.com/privacy/notrtoo?brandA=Owned_Stations&#038;intake=NBC_New_York/">Do Not Sell My Personal Information</a></li>
+<li id="menu-item-2181026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181026"><a href="https://www.nbcnewyork.com/send-feedback/">Send Feedback</a></li>
+<li id="menu-item-2181025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181025"><a href="https://www.nbcnewyork.com/wnbc-employment-information/">WNBC Employment Information</a></li>
+<li id="menu-item-2181031" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2181031"><a href="https://publicfiles.fcc.gov/tv-profile/wnbc/">WNBC Public Inspection File</a></li>
+</ul>
+				<div class="site-footer__corporate">
+			
+			<span class="site-footer__corporate-copyright">
+				Copyright © 2020 NBC Universal Inc. All rights reserved			</span>
+		</div>
+	</div><!-- wrapper -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<script type='text/javascript'>
+	(function() {
+		function CreateEvent(type, data) {
+			var event;
+
+			if ('undefined' === typeof data) {
+				data = {};
+			}
+
+			try {
+				event = new CustomEvent(type, { detail: data });
+			} catch (err) {
+				event = document.createEvent('CustomEvent');
+				event.initCustomEvent(type, true, true, data);
+			}
+
+			return event;
+		}
+
+		var pdk6Url = "https://www.nbcnewyork.com/wp-content/themes/nbc-station/static/video/pdk6/player.6.1.3.js";		var pdkScript = pdk6Url;
+
+		if ('undefined' !== typeof window['win7ie']) {
+			pdkScript = window['win7ie'] ?
+			"https://www.nbcnewyork.com/wp-content/themes/nbc-station/static/video/pdk5/tpPdk.js"			: pdk6Url;
+		}
+
+		if (pdkScript) {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = pdkScript;
+			s.onload = function() {
+				window.dispatchEvent(
+					CreateEvent('nbc:pdkLoaded')
+				);
+			};
+			document.body.appendChild(s);
+		}
+	})();
+	</script>
+	<link rel="stylesheet" href="https://www.nbcnewyork.com/wp-content/themes/nbc-station/static/video/pdk6/player_smooth.css?v=102319" type="text/css" />		<script type="text/javascript">
+		(function() {
+						var _sf_async_config      = window._sf_async_config = (window._sf_async_config || {});
+			_sf_async_config.domain   = "nbcnewyork.com";
+			_sf_async_config.uid      = 15527;
+			_sf_async_config.sections = "local";
+			_sf_async_config.authors  = "";
+			_sf_async_config.title    = "FAA Temporarily Halts Flights to NY, Philly Airports Amid &#8216;Staffing Issues&#8217;";
+
+			function loadChartbeat() {
+				var e = document.createElement('script');
+				var n = document.getElementsByTagName('script')[0];
+				e.type = 'text/javascript';
+				e.async = true;
+				e.src = '//static.chartbeat.com/js/chartbeat.js';
+				n.parentNode.insertBefore(e, n);
+			}
+			loadChartbeat();
+		})();
+		</script>
+				<div class="facebook-comments">
+			<button class="facebook-comments__close"><i class="fas fa-chevron-left"></i> Back to Article</button>
+			<div class="fb-comments" data-href="https://www.nbcnewyork.com/news/local/all-flights-to-new-york-area-airports-halted/2337853/" data-width="100%"></div>
+		</div>
+		<div class="flyout-nav" data-component="flyoutNav">
+	<button class="flyout-nav__close"><i class="fas fa-times"></i> <span class="screen-reader-text">Close Menu</span></button>
+	<div class="flyout-nav__logo">
+		<a href="https://www.nbcnewyork.com/">
+					<img
+						src="https://media.nbcnewyork.com/2019/09/NY_On_Light@3x-3.png?fit=552%2C120"
+						alt="NBC New York"
+					/>
+		</a>
+	</div>
+	<div class="flyout-nav__search">
+<form class="search-form" role="search" method="get" action="https://www.nbcnewyork.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+</div>
+	<div class="flyout-nav__menu">
+		<div class="flyout-nav__menu--upper">
+							<a class="flyout-nav__menu-item parent-item" href="/news/coronavirus/">
+					Coronavirus Pandemic				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/local/">
+					Local				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/weather/">
+					Weather				</a>
+							<a class="flyout-nav__menu-item child-item" href="/weather/school-closings/">
+					School Closings				</a>
+							<a class="flyout-nav__menu-item child-item" href="/weather/severe-weather-alerts/">
+					Weather Alerts				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.nbcnewyork.com/live/">
+					TV Listings				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.nbcnewyork.com/on-air/community-top-stories/">
+					Community				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/investigations/">
+					Investigations				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/better-get-baquero/">
+					Better Get Baquero				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/videos/">
+					Video				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/entertainment/">
+					Entertainment				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/entertainment/the-scene/1st-look/">
+					1st Look				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/entertainment/the-scene/george-to-the-rescue/">
+					George to the Rescue				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/entertainment/the-scene/open-house/">
+					Open House				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/entertainment/talk-stoop/">
+					Talk Stoop				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/traffic/">
+					Traffic				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/national-international/">
+					U.S. &amp; World				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/lx/">
+					LX				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/sports/">
+					Sports				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/health/">
+					Health				</a>
+					</div>
+		<div class="flyout-nav__menu--lower">
+							<a class="flyout-nav__menu-item child-item" href="/consumer-form/">
+					Submit Tips to Better Get Baquero				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/ugc/">
+					Submit Photos and Video				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcnewyork.com/newsletters/">
+					Newsletters				</a>
+							<a class="flyout-nav__menu-item child-item" href="/products/">
+					Our Apps				</a>
+					</div>
+	</div>
+	<div class="flyout-nav__social">
+		<h4 class="flyout-nav__social-heading">Follow Us</h4>
+		<ul class="flyout-nav__social-list">
+			
+							<li class="site-footer__social-list-item facebook">
+					<a href="http://www.facebook.com/NBCNewYork" target="_blank">
+						<span class="screen-reader-text">Facebook</span>
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item twitter">
+					<a href="https://twitter.com/nbcnewyork" target="_blank">
+						<span class="screen-reader-text">Twitter</span>
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item instagram">
+					<a href="https://instagram.com/nbcnewyork" target="_blank">
+						<span class="screen-reader-text">Instagram</span>
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<a class="flyout-contact-button"
+			href="/contact-us"
+	>
+	Contact Us</a>
+<script type='text/javascript' src='https://www.nbcnewyork.com/_static/??-eJx9i0sOwjAMBS9E+4pQ+SwQR0EliajTxI6wLa5PFl2zmsXM4NuGIGyJDdWHVvxNrMjJ2hI2PIkDXk4loq1iwjvGSjxmPaDvPSkeU58UkdTgn/LXryKb7sWj3o/z9TLNp+l8yz/WNzM6'></script>
+<script>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script src='https://www.nbcnewyork.com/wp-includes/js/dist/api-fetch.min.js?ver=3.6.4'></script>
+<script>
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.nbcnewyork.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "792a071809" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://www.nbcnewyork.com/wp-admin/admin-ajax.php?action=rest-nonce";
+wp.apiFetch.use( wp.apiFetch.createPreloadingMiddleware( {"\/nbc\/v1\/weather-alerts":{"body":[{"city_name":"Newburgh","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Orange","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Carmel","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Putnam","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Jackson Heights","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Queens","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Staten Island","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Richmond","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"New City","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Rockland","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Riverhead","type":"Frost Advisory","start_time":"20:04:21:04:00:00","end_time":"20:04:21:12:00:00","headline":"Frost Advisory","bulletin":"CTZ011-012-NYZ079-081-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\n\/O.EXT.KOKX.FR.Y.0001.200421T0400Z-200421T1200Z\/\nSouthern Middlesex-Southern New London-Northeastern Suffolk-\nSoutheastern Suffolk-\n351 PM EDT Mon Apr 20 2020\n\n...FROST ADVISORY NOW IN EFFECT FROM MIDNIGHT TONIGHT TO 8 AM EDT\nTUESDAY...\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...For the Frost Advisory, temperatures in the mid 30s will\n  result in frost formation. For the Wind Advisory, west winds 15\n  to 25 mph with gusts up to 50 mph expected.\n\n* WHERE...In Connecticut, Southern Middlesex and Southern New \n  London Counties. In New York, Northeastern Suffolk and \n  Southeastern Suffolk Counties.\n\n* WHEN...For the Frost Advisory, from midnight tonight to 8 AM \n  EDT Tuesday. For the Wind Advisory, from 5 PM Tuesday to 2 AM \n  EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result. Frost could kill sensitive outdoor vegetation if left \n  uncovered.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\nTake steps now to protect tender plants from the cold.\n\n&&\n\n$$\n\n","county_name":"Suffolk","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Riverhead","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ011-012-NYZ079-081-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\n\/O.EXT.KOKX.FR.Y.0001.200421T0400Z-200421T1200Z\/\nSouthern Middlesex-Southern New London-Northeastern Suffolk-\nSoutheastern Suffolk-\n351 PM EDT Mon Apr 20 2020\n\n...FROST ADVISORY NOW IN EFFECT FROM MIDNIGHT TONIGHT TO 8 AM EDT\nTUESDAY...\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...For the Frost Advisory, temperatures in the mid 30s will\n  result in frost formation. For the Wind Advisory, west winds 15\n  to 25 mph with gusts up to 50 mph expected.\n\n* WHERE...In Connecticut, Southern Middlesex and Southern New \n  London Counties. In New York, Northeastern Suffolk and \n  Southeastern Suffolk Counties.\n\n* WHEN...For the Frost Advisory, from midnight tonight to 8 AM \n  EDT Tuesday. For the Wind Advisory, from 5 PM Tuesday to 2 AM \n  EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result. Frost could kill sensitive outdoor vegetation if left \n  uncovered.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\nTake steps now to protect tender plants from the cold.\n\n&&\n\n$$\n\n","county_name":"Suffolk","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"White Plains","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Westchester","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Hackensack","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Bergen","state_abbr":"NJ","state_name":"New Jersey","severity":3},{"city_name":"Bronx","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Bronx","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Greenwich","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Fairfield","state_abbr":"CT","state_name":"Connecticut","severity":3},{"city_name":"New Haven","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"New Haven","state_abbr":"CT","state_name":"Connecticut","severity":3},{"city_name":"Clifton","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Passaic","state_abbr":"NJ","state_name":"New Jersey","severity":3},{"city_name":"Newark","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Essex","state_abbr":"NJ","state_name":"New Jersey","severity":3},{"city_name":"Elizabeth","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Union","state_abbr":"NJ","state_name":"New Jersey","severity":3},{"city_name":"Jersey City","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Hudson","state_abbr":"NJ","state_name":"New Jersey","severity":3},{"city_name":"Brooklyn","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Kings","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"Mineola","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"Nassau","state_abbr":"NY","state_name":"New York","severity":3},{"city_name":"New York","type":"Wind Advisory","start_time":"20:04:21:21:00:00","end_time":"20:04:22:06:00:00","headline":"Wind Advisory","bulletin":"CTZ005-006-009-010-NJZ002-004-006-103>108-NYZ067>075-078-080-\n176>179-211015-\n\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/\nNorthern Fairfield-Northern New Haven-Southern Fairfield-\nSouthern New Haven-Western Passaic-Eastern Passaic-Hudson-\nWestern Bergen-Eastern Bergen-Western Essex-Eastern Essex-\nWestern Union-Eastern Union-Orange-Putnam-Rockland-\nNorthern Westchester-Southern Westchester-New York (Manhattan)-\nBronx-Richmond (Staten Island)-Kings (Brooklyn)-\nNorthwestern Suffolk-Southwestern Suffolk-Northern Queens-\nNorthern Nassau-Southern Queens-Southern Nassau-\n351 PM EDT Mon Apr 20 2020\n\n...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT\nWEDNESDAY...\n\n* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph \n  expected.\n\n* WHERE...Portions of northeast New Jersey, southern Connecticut \n  and southeast New York.\n\n* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.\n\n* IMPACTS...Gusty winds could blow around unsecured objects. \n  Tree limbs could be blown down and a few power outages may \n  result.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nUse extra caution when driving, especially if operating a high\nprofile vehicle. Secure outdoor objects.\n\n&&\n\n$$\n","county_name":"New York","state_abbr":"NY","state_name":"New York","severity":3}],"headers":[]},"\/nbc\/v1\/top-stories?include_sponsored=1&section=news":{"body":[{"title":"No Room for Error: NY Over Peak But Cuomo Urges Caution or We Face \u2018Hell All Over Again\u2019","link":"https:\/\/www.nbcnewyork.com\/news\/local\/no-room-for-error-ny-over-peak-but-cuomo-urges-caution-or-we-face-hell-all-over-again\/2381181\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1210439814.jpg?crop=0px%2C753px%2C7952px%2C4473px&resize=100%2C56","type":"article","presented_by":""},{"title":"Cuomo to Meet With President Trump Tuesday at White House","link":"https:\/\/www.nbcnewyork.com\/news\/local\/cuomo-to-meet-with-president-trump-tuesday-at-white-house\/2382477\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Cuomo-Trump-Split.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"US Coronavirus Updates: Trump Says He\u2019s Temporarily Suspending Immigration to US","link":"https:\/\/www.nbcnewyork.com\/news\/coronavirus\/us-coronavirus-updates-4-20-arrives-amid-stay-at-home-orders-protesters-rally-across-country\/2381194\/","eyebrow":"coronavirus pandemic","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus-pandemic\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Ambulances-Lined-in-Queens.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"3 Found Dead at New York City Hotel Used for Quarantine","link":"https:\/\/www.nbcnewyork.com\/news\/local\/3-found-dead-at-new-york-city-hotel-used-for-quarantine\/2380923\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Coronavirus-Update-At-Least-3-Dead-At-Hotel-Used-For-Quarantine--e1587335351339.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u2018It Was Terrible\u2019: Teen Shares Her COVID-19 Survival Story","link":"https:\/\/www.nbcnewyork.com\/news\/it-was-terrible-teen-shares-her-covid-19-survival-story\/2382493\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/1335462608-1080pnbcstations.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u2018Paula Was Like Light\u2019: Students Remember Counselor Who Died from COVID-19","link":"https:\/\/www.nbcnewyork.com\/on-air\/as-seen-on\/paula-was-like-light-students-remember-counselor-who-died-from-covid-19\/2382518\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/1335619503-1080pnbcstations.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"A Father\u2019s Homecoming: NJ Man Recovers From COVID-19 After One Month","link":"https:\/\/www.nbcnewyork.com\/on-air\/as-seen-on\/a-fathers-homecoming-nj-man-recovers-from-covid-19-after-one-month\/2381109\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/1321696553-1080pnbcstations.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"NY Begins Widespread Antibody Testing as COVID-19 Deaths Trend Down","link":"https:\/\/www.nbcnewyork.com\/news\/local\/coronavirus-model-suggests-tri-state-could-start-reopening-after-june-1\/2379877\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/AP_20109732267120-e1587333306590.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Reports Suggest Many Have Had Coronavirus With No Symptoms","link":"https:\/\/www.nbcnewyork.com\/news\/coronavirus\/reports-suggest-many-have-had-coronavirus-with-no-symptoms\/2381150\/","eyebrow":"symptoms","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/symptoms\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Virus-Outbreak-No-Symptoms.jpg?crop=43px%2C214px%2C5327px%2C2998px&resize=100%2C56","type":"article","presented_by":""},{"title":"Organizer of New Jersey Anti-Lockdown Rally Charged With Violating Lockdown","link":"https:\/\/www.nbcnewyork.com\/news\/local\/organizer-of-new-jersey-anti-lockdown-rally-charged-with-violating-lockdown\/2379736\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/NJ-Lockdown-Protest.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"How Many in Tri-State Tested Positive for Coronavirus? See Latest Cases by the Numbers","link":"https:\/\/www.nbcnewyork.com\/news\/local\/how-many-in-tri-state-have-tested-positive-for-coronavirus-here-are-latest-cases-by-the-numbers\/2317721\/","eyebrow":"COVID-19","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/covid-19\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1214302766.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Lives Lost: New Jersey Mom, Son Together in Life and Death","link":"https:\/\/www.nbcnewyork.com\/news\/local\/lives-lost-new-jersey-mom-son-together-in-life-and-death\/2381131\/","eyebrow":"New Jersey","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/new-jersey\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/AP_20105718764287.jpg?crop=548px%2C717px%2C2283px%2C1283px&resize=100%2C56","type":"article","presented_by":""},{"title":"Sierra Leone Ambassador With \u2018Boundless Energy\u2019 Dies of COVID-19 in New Jersey","link":"https:\/\/www.nbcnewyork.com\/news\/coronavirus\/sierra-leone-ambassador-with-boundless-energy-dies-of-covid-19-in-new-jersey\/2382302\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Ambassador-Foday-Mansaray.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Investigation Into Nightmare New Jersey Nursing Home With Makeshift Morgue","link":"https:\/\/www.nbcnewyork.com\/news\/local\/investigation-into-nightmare-new-jersey-nursing-home-with-makeshift-morgue\/2382728\/","eyebrow":"New Jersey","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/new-jersey\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/1338874704-1080pnbcstations.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Timeline: Tracking the Spread of COVID-19 in Tri-State","link":"https:\/\/www.nbcnewyork.com\/news\/local\/timeline-tracking-the-spread-of-covid-19-in-tri-state\/2313123\/","eyebrow":"COVID-19","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/covid-19\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/tri-state-virus-map.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Map: Watch the Coronavirus Cases Spread Across the World","link":"https:\/\/www.nbcnewyork.com\/news\/national-international\/map-watch-the-coronavirus-cases-spread-across-the-world\/2303276\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/coronavirus-map-animated-thumb.gif?resize=100%2C56","type":"article","presented_by":""},{"title":"Disney Expects to Save $500 Million From Employee Furloughs","link":"https:\/\/www.nbcnewyork.com\/news\/national-international\/disney-expects-to-save-500-million-from-employee-furloughs\/2382556\/","eyebrow":"disney","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/disney\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/TLMD-Disney.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u2018I\u2019m Worried\u2019: Cuomo Calls for Congress to Provide State Funding Amid COVID-19 Crisis","link":"https:\/\/www.nbcnewyork.com\/news\/coronavirus\/im-worried-cuomo-calls-for-congress-to-provide-state-funding-amid-covid-19-crisis\/2381952\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/TLMD-cuomo-31820.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Math Fun and More in  Westfield, New Jersey","link":"https:\/\/www.nbcnewyork.com\/entertainment\/the-scene\/new-york-live\/math-fun-and-more-in-westfield-new-jersey\/2376694\/","eyebrow":"New York Live","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/new-york-live\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Screen-Shot-2020-04-16-at-8.24.20-AM.png?resize=100%2C56","type":"article","presented_by":""},{"title":"New Yorkers Can Get Marriage Licenses Remotely, Hold Virtual Weddings","link":"https:\/\/www.nbcnewyork.com\/news\/local\/new-yorkers-can-get-marriage-licenses-remotely-hold-virtual-weddings\/2379907\/","eyebrow":"weddings","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/weddings\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1181856013.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Viral Clip of Mandy Patinkin and News 4\u2019s Dave Price Brings Small Joy Amid Pandemic","link":"https:\/\/www.nbcnewyork.com\/entertainment\/entertainment-news\/viral-clip-of-mandy-patinkin-and-news-4s-dave-price-brings-small-joy-amid-pandemic\/2381195\/","eyebrow":"GOOD NEWS","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/good-news\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/patinkin-price.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"7 Telemedicine Services Offering Free Health Care During the Coronavirus Pandemic","link":"https:\/\/www.nbcnewyork.com\/news\/coronavirus\/7-telemedicine-services-offering-free-health-care-during-the-coronavirus-pandemic\/2382134\/","eyebrow":"health care","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/health-care\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1210084426.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Trump Tells Cuomo to \u2018Stop Talking\u2019; Cuomo Says Trump Should \u2018Get Up and Go to Work\u2019","link":"https:\/\/www.nbcnewyork.com\/news\/local\/trump-blasts-cuomo-in-real-time-during-news-conference-less-talk-and-more-action\/2378718\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/Cuomo-Trump-Split.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Warner Bros. Delays Many Releases Including \u2018The Batman\u2019","link":"https:\/\/www.nbcnewyork.com\/entertainment\/entertainment-news\/warner-bros-delays-many-releases-including-the-batman\/2382296\/","eyebrow":"warner bros","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/warner-bros\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-827852766.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Liam Payne Officially Confirms That a One Direction Reunion Is Happening","link":"https:\/\/www.nbcnewyork.com\/entertainment\/entertainment-news\/liam-payne-officially-confirms-that-a-one-direction-reunion-is-happening\/2381237\/","eyebrow":"One Direction","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/one-direction\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/459478626.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"NYC Council Members Call on Gov. Cuomo to Close MTA Subways, Buses","link":"https:\/\/www.nbcnewyork.com\/news\/local\/nyc-council-members-call-on-gov-cuomo-to-close-mta-subways-buses\/2380735\/","eyebrow":"New York City","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/new-york-city\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/AP_20098513788845-1-e1587323958777.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Brad Pitt Provides Epic Weather Report for John Krasinski\u2019s \u2018Some Good News\u2019","link":"https:\/\/www.nbcnewyork.com\/entertainment\/entertainment-news\/brad-pitt-provides-epic-weather-report-for-john-krasinskis-some-good-news\/2382029\/","eyebrow":"Brad Pitt","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/brad-pitt\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/brad-pitt-solo-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Tom Hanks Shares How He and Rita Wilson Had Very Different Coronavirus Symptoms","link":"https:\/\/www.nbcnewyork.com\/entertainment\/entertainment-news\/tom-hanks-shares-how-he-and-rita-wilson-had-very-different-coronavirus-symptoms\/2381815\/","eyebrow":"Tom Hanks","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/tom-hanks\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1197773088.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"As NYC Nears 1,000 COVID-19 Deaths, How Does Pandemic Compare to Typical Flu Season?","link":"https:\/\/www.nbcnewyork.com\/news\/local\/as-nyc-nears-1000-covid-19-deaths-how-does-it-compare-to-typical-flu-seasons\/2352180\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.nbcnewyork.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcnewyork.com\/2019\/09\/GettyImages-1215795210.jpg?resize=100%2C56","type":"article","presented_by":""}],"headers":[]}} ) );
+</script>
+<script type='text/javascript' src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/common.26e7ae6f2045095b5264.chunk.min.js?m=1586977359g'></script>
+<script>
+nbc.preloadedResources = nbc.preloadedResources || {}; nbc.preloadedResources = Object.assign({}, nbc.preloadedResources, {"https:\/\/wsidata.weather.com\/200904-01\/369362872\/Weather\/Report\/11371?filter=1,4,9":"<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<Cities>\r\n  <City Id=\"USNY0504\" Name=\"Flushing\" StateAbbr=\"NY\" StateName=\"New York\" CountyFips=\"36081\" CountyName=\"Queens\" CountryName=\"United States\" CountryFips=\"US\" StnIcao=\"KLGA\" ClimateStn=\"305811\" Latitude=\"40.77\" Longitude=\"-73.82\" TimeZone=\"-5\" IsDaylightSavings=\"True\" ObservesDaylightSavings=\"True\" PreferredZipCode=\"11390\" PreferredAirport=\"LGA \" PreferredTide=\"2723\" PreferredBuoy=\"kptn6\" PreferredSkiResort=\"201004\" Dma=\"501\">\r\n    <CurrentObservation StnIcao=\"KLGA\" ReportTime=\"4\/21\/2020 3:51:00 AM\" TempF=\"50\" TempC=\"10\" DewPtF=\"27\" DewPtC=\"-3\" RelHumidity=\"41\" WndSpdMph=\"6\" WndDirDegr=\"180\" WndDirCardinal=\"S\" WndGustMph=\"\" Pressure=\"29.69\" Weather=\"\" Sky=\"Few Clouds\" IconCode=\"98\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"55\" TwentyFourHrMax=\"63\" SixHrMin=\"51\" TwentyFourHrMin=\"42\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KLGA 210351Z 18005KT 10SM FEW250 10\/M03 A2969 RMK AO2 SLP052     T01001028 \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n    <WeatherStations>\r\n      <Station Icao=\"KLGA\" DistanceMiles=\"4.19\" Name=\"NEW YORK\/LAGUARDIA\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.7795\" Longitude=\"-73.8803\" ElevationFeet=\"6\">\r\n        <Conditions StnIcao=\"KLGA\" ReportTime=\"4\/21\/2020 3:51:00 AM\" TempF=\"50\" TempC=\"10\" DewPtF=\"27\" DewPtC=\"-3\" RelHumidity=\"41\" WndSpdMph=\"6\" WndDirDegr=\"180\" WndDirCardinal=\"S\" WndGustMph=\"\" Pressure=\"29.69\" Weather=\"\" Sky=\"Few Clouds\" IconCode=\"98\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"55\" TwentyFourHrMax=\"63\" SixHrMin=\"51\" TwentyFourHrMin=\"42\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KLGA 210351Z 18005KT 10SM FEW250 10\/M03 A2969 RMK AO2 SLP052     T01001028 \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KNYC\" DistanceMiles=\"7.73\" Name=\"NEW YORK\/CENTRAL PARK\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.779\" Longitude=\"-73.96925\" ElevationFeet=\"33\">\r\n        <Conditions StnIcao=\"KNYC\" ReportTime=\"4\/21\/2020 3:51:00 AM\" TempF=\"50\" TempC=\"10\" DewPtF=\"27\" DewPtC=\"-3\" RelHumidity=\"41\" WndSpdMph=\"5\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"29.71\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"57\" TwentyFourHrMax=\"63\" SixHrMin=\"51\" TwentyFourHrMin=\"40\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KNYC 210351Z AUTO VRB04KT 10SM CLR 10\/M03 A2971 RMK AO2 SLP052 T01001028 \" DayNight=\"N\" TempTrend=\"STEADY\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KJFK\" DistanceMiles=\"9.24\" Name=\"NEW YORK\/JFK INTL\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.6392\" Longitude=\"-73.7639\" ElevationFeet=\"4\">\r\n        <Conditions StnIcao=\"KJFK\" ReportTime=\"4\/21\/2020 3:51:00 AM\" TempF=\"45\" TempC=\"7\" DewPtF=\"39\" DewPtC=\"4\" RelHumidity=\"80\" WndSpdMph=\"9\" WndDirDegr=\"170\" WndDirCardinal=\"S\" WndGustMph=\"\" Pressure=\"29.71\" Weather=\"\" Sky=\"Few Clouds\" IconCode=\"98\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"45\" HeatIdxC=\"7\" WndChillF=\"40\" WndChillC=\"5\" FeelsLikeF=\"40\" FeelsLikeC=\"5\" SnowDepth=\"\" SixHrMax=\"55\" TwentyFourHrMax=\"59\" SixHrMin=\"51\" TwentyFourHrMin=\"36\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KJFK 210351Z 17008KT 10SM FEW250 07\/04 A2971 RMK AO2 SLP059     T00720039 \" DayNight=\"N\" TempTrend=\"STEADY\" \/>\r\n      <\/Station>\r\n    <\/WeatherStations>\r\n    <DailyForecast>\r\n      <Day DayNum=\"1\" DayOfWk=\"Monday\" ValidDateUtc=\"4\/20\/2020 12:00:00 AM\" ValidDateLocal=\"4\/20\/2020 7:00:00 AM\" HiTempF=\"56\" LoTempF=\"44\" HiTempC=\"13\" LoTempC=\"7\" ShortPhrase=\"Mostly clear\" PhraseDay=\"\" PhraseNight=\"Generally clear skies. Low 44F. Winds SSW at 5 to 10 mph.\" IconCode=\"65\" SkyCode=\"33\" SkyText=\"Mostly Clear\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"61\" WndSpdMph=\"9\" WndSpdKm=\"14\" WndSpdKn=\"8\" WndDirDegr=\"201\" WndDirCardinal=\"SSW\" CloudCoverage=\"23\" UvIdx=\"0\" UvDescr=\"Low\" UvWarn=\"0\" Sunrise=\"06:08:08 am\" Sunset=\"07:40:55 pm\" Moonrise=\"05:27:20 am\" Moonset=\"05:24:59 pm\" MoonPhase=\"7\" MoonPhaseText=\"Waning Crescent\" SkyCodeDay=\"\" SkyCodeNight=\"33\" PrecipChanceDay=\"\" PrecipChanceNight=\"10\" IconCodeDay=\"86\" IconCodeNight=\"102\" SkyTextDay=\"\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"61\" WndSpdMphNight=\"9\" WndSpdKmNight=\"14\" WndSpdKnNight=\"8\" WndDirDegrNight=\"201\" WndDirCardinalNight=\"SSW\" PhraseDayC=\"A mix of clouds and sun. High 14C. Winds N at 10 to 15 km\/h.\" PhraseNightC=\"Mostly clear. Low 7C. Winds SSW at 10 to 15 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"2\" DayOfWk=\"Tuesday\" ValidDateUtc=\"4\/21\/2020 12:00:00 AM\" ValidDateLocal=\"4\/21\/2020 7:00:00 AM\" HiTempF=\"62\" LoTempF=\"36\" HiTempC=\"17\" LoTempC=\"2\" ShortPhrase=\"Showers and thunderstorms\" PhraseDay=\"Rain. Thunderstorms possible...mainly in the afternoon. A few storms may be severe. High 62F. Winds SW at 15 to 25 mph. Chance of rain 90%.\" PhraseNight=\"A few clouds from time to time. Gusty winds diminishing after midnight. Low 36F. Winds WNW at 20 to 30 mph.\" IconCode=\"84\" SkyCode=\"4\" SkyText=\"Thunderstorms\" PrecipChance=\"90\" SnowChance=\"0\" RelHumidity=\"63\" WndSpdMph=\"19\" WndSpdKm=\"31\" WndSpdKn=\"17\" WndDirDegr=\"218\" WndDirCardinal=\"SW\" CloudCoverage=\"69\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:06:42 am\" Sunset=\"07:41:58 pm\" Moonrise=\"05:50:32 am\" Moonset=\"06:22:41 pm\" MoonPhase=\"7\" MoonPhaseText=\"Waning Crescent\" SkyCodeDay=\"4\" SkyCodeNight=\"24\" PrecipChanceDay=\"90\" PrecipChanceNight=\"20\" IconCodeDay=\"84\" IconCodeNight=\"78\" SkyTextDay=\"Thunderstorms\" SkyTextNight=\"Partly Cloudy\/Wind\" RelHumidityNight=\"40\" WndSpdMphNight=\"20\" WndSpdKmNight=\"32\" WndSpdKnNight=\"17\" WndDirDegrNight=\"296\" WndDirCardinalNight=\"WNW\" PhraseDayC=\"Rain. Thunderstorms possible...mainly in the afternoon. A few storms may be severe. High 17C. Winds SW at 25 to 40 km\/h. Chance of rain 90%.\" PhraseNightC=\"A few clouds from time to time. Gusty winds diminishing after midnight. Low 2C. Winds WNW at 25 to 40 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"3\" DayOfWk=\"Wednesday\" ValidDateUtc=\"4\/22\/2020 12:00:00 AM\" ValidDateLocal=\"4\/22\/2020 7:00:00 AM\" HiTempF=\"53\" LoTempF=\"40\" HiTempC=\"12\" LoTempC=\"4\" ShortPhrase=\"Windy with a few clouds\" PhraseDay=\"Windy with a few clouds. Highs in the low 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"78\" SkyCode=\"24\" SkyText=\"Mostly Sunny\/Wind\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"31\" WndSpdMph=\"20\" WndSpdKm=\"32\" WndSpdKn=\"17\" WndDirDegr=\"292\" WndDirCardinal=\"WNW\" CloudCoverage=\"22\" UvIdx=\"7\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"06:05:17 am\" Sunset=\"07:43:01 pm\" Moonrise=\"06:13:42 am\" Moonset=\"07:21:50 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"24\" SkyCodeNight=\"33\" PrecipChanceDay=\"0\" PrecipChanceNight=\"20\" IconCodeDay=\"78\" IconCodeNight=\"102\" SkyTextDay=\"Mostly Sunny\/Wind\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"38\" WndSpdMphNight=\"16\" WndSpdKmNight=\"26\" WndSpdKnNight=\"14\" WndDirDegrNight=\"301\" WndDirCardinalNight=\"WNW\" PhraseDayC=\"Mostly sunny skies with gusty winds. High 12C. Winds WNW at 25 to 40 km\/h.  Higher wind gusts possible.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"4\" DayOfWk=\"Thursday\" ValidDateUtc=\"4\/23\/2020 12:00:00 AM\" ValidDateLocal=\"4\/23\/2020 7:00:00 AM\" HiTempF=\"51\" LoTempF=\"47\" HiTempC=\"11\" LoTempC=\"8\" ShortPhrase=\"Mostly cloudy\" PhraseDay=\"Cloudy. Highs in the low 50s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"67\" SkyCode=\"26\" SkyText=\"Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"51\" WndSpdMph=\"9\" WndSpdKm=\"14\" WndSpdKn=\"8\" WndDirDegr=\"21\" WndDirCardinal=\"NNE\" CloudCoverage=\"88\" UvIdx=\"4\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:03:53 am\" Sunset=\"07:44:03 pm\" Moonrise=\"06:38:27 am\" Moonset=\"08:21:03 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"26\" SkyCodeNight=\"12\" PrecipChanceDay=\"20\" PrecipChanceNight=\"90\" IconCodeDay=\"67\" IconCodeNight=\"107\" SkyTextDay=\"Cloudy\" SkyTextNight=\"Rain\" RelHumidityNight=\"72\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"70\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Overcast. High near 10C. Winds NNE at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"5\" DayOfWk=\"Friday\" ValidDateUtc=\"4\/24\/2020 12:00:00 AM\" ValidDateLocal=\"4\/24\/2020 7:00:00 AM\" HiTempF=\"55\" LoTempF=\"43\" HiTempC=\"13\" LoTempC=\"6\" ShortPhrase=\"Showers\" PhraseDay=\"Chance of showers. Highs in the mid 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"80\" SnowChance=\"0\" RelHumidity=\"58\" WndSpdMph=\"16\" WndSpdKm=\"26\" WndSpdKn=\"14\" WndDirDegr=\"18\" WndDirCardinal=\"NNE\" CloudCoverage=\"88\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:02:30 am\" Sunset=\"07:45:06 pm\" Moonrise=\"07:05:52 am\" Moonset=\"09:22:13 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"29\" PrecipChanceDay=\"80\" PrecipChanceNight=\"20\" IconCodeDay=\"87\" IconCodeNight=\"98\" SkyTextDay=\"Showers\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"56\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"1\" WndDirCardinalNight=\"N\" PhraseDayC=\"Overcast with rain showers at times. High 13C. Winds NNE at 15 to 30 km\/h. Chance of rain 80%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"6\" DayOfWk=\"Saturday\" ValidDateUtc=\"4\/25\/2020 12:00:00 AM\" ValidDateLocal=\"4\/25\/2020 7:00:00 AM\" HiTempF=\"59\" LoTempF=\"48\" HiTempC=\"15\" LoTempC=\"9\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Partly cloudy. Highs in the upper 50s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"47\" WndSpdMph=\"11\" WndSpdKm=\"18\" WndSpdKn=\"10\" WndDirDegr=\"56\" WndDirCardinal=\"NE\" CloudCoverage=\"57\" UvIdx=\"6\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"06:01:09 am\" Sunset=\"07:46:09 pm\" Moonrise=\"07:36:53 am\" Moonset=\"10:23:06 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"45\" PrecipChanceDay=\"10\" PrecipChanceNight=\"40\" IconCodeDay=\"66\" IconCodeNight=\"106\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Showers Late\" RelHumidityNight=\"59\" WndSpdMphNight=\"13\" WndSpdKmNight=\"21\" WndSpdKnNight=\"11\" WndDirDegrNight=\"107\" WndDirCardinalNight=\"ESE\" PhraseDayC=\"Partly to mostly cloudy. High around 15C. Winds NE at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"7\" DayOfWk=\"Sunday\" ValidDateUtc=\"4\/26\/2020 12:00:00 AM\" ValidDateLocal=\"4\/26\/2020 7:00:00 AM\" HiTempF=\"55\" LoTempF=\"48\" HiTempC=\"13\" LoTempC=\"9\" ShortPhrase=\"Showers\" PhraseDay=\"Showers possible. Highs in the mid 50s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"50\" SnowChance=\"0\" RelHumidity=\"65\" WndSpdMph=\"18\" WndSpdKm=\"29\" WndSpdKn=\"16\" WndDirDegr=\"77\" WndDirCardinal=\"ENE\" CloudCoverage=\"87\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:59:48 am\" Sunset=\"07:47:11 pm\" Moonrise=\"08:12:24 am\" Moonset=\"11:24:20 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"11\" PrecipChanceDay=\"50\" PrecipChanceNight=\"50\" IconCodeDay=\"87\" IconCodeNight=\"106\" SkyTextDay=\"Showers\" SkyTextNight=\"Showers\" RelHumidityNight=\"69\" WndSpdMphNight=\"13\" WndSpdKmNight=\"21\" WndSpdKnNight=\"11\" WndDirDegrNight=\"27\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Considerable cloudiness with occasional rain showers. High 13C. Winds ENE at 25 to 40 km\/h. Chance of rain 50%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"8\" DayOfWk=\"Monday\" ValidDateUtc=\"4\/27\/2020 12:00:00 AM\" ValidDateLocal=\"4\/27\/2020 7:00:00 AM\" HiTempF=\"57\" LoTempF=\"47\" HiTempC=\"14\" LoTempC=\"8\" ShortPhrase=\"Few showers\" PhraseDay=\"Occasional showers possible. Highs in the upper 50s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Few Showers\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"61\" WndSpdMph=\"15\" WndSpdKm=\"24\" WndSpdKn=\"13\" WndDirDegr=\"339\" WndDirCardinal=\"NNW\" CloudCoverage=\"80\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:58:28 am\" Sunset=\"07:48:13 pm\" Moonrise=\"08:55:02 am\" Moonset=\"12:01:00 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"29\" PrecipChanceDay=\"40\" PrecipChanceNight=\"20\" IconCodeDay=\"87\" IconCodeNight=\"98\" SkyTextDay=\"Few Showers\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"61\" WndSpdMphNight=\"14\" WndSpdKmNight=\"23\" WndSpdKnNight=\"12\" WndDirDegrNight=\"311\" WndDirCardinalNight=\"NW\" PhraseDayC=\"Cloudy with a few showers. High 14C. Winds NNW at 15 to 30 km\/h. Chance of rain 40%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"9\" DayOfWk=\"Tuesday\" ValidDateUtc=\"4\/28\/2020 12:00:00 AM\" ValidDateLocal=\"4\/28\/2020 7:00:00 AM\" HiTempF=\"57\" LoTempF=\"48\" HiTempC=\"14\" LoTempC=\"9\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Mix of sun and clouds. Highs in the upper 50s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"55\" WndSpdMph=\"14\" WndSpdKm=\"23\" WndSpdKn=\"12\" WndDirDegr=\"308\" WndDirCardinal=\"NW\" CloudCoverage=\"56\" UvIdx=\"7\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:57:10 am\" Sunset=\"07:49:15 pm\" Moonrise=\"09:45:20 am\" Moonset=\"12:22:19 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"20\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"61\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"307\" WndDirCardinalNight=\"NW\" PhraseDayC=\"Sunshine and clouds mixed. High 14C. Winds NW at 15 to 30 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"10\" DayOfWk=\"Wednesday\" ValidDateUtc=\"4\/29\/2020 12:00:00 AM\" ValidDateLocal=\"4\/29\/2020 7:00:00 AM\" HiTempF=\"60\" LoTempF=\"51\" HiTempC=\"16\" LoTempC=\"11\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Mix of sun and clouds. Highs in the low 60s and lows in the low 50s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"56\" WndSpdMph=\"11\" WndSpdKm=\"18\" WndSpdKn=\"10\" WndDirDegr=\"277\" WndDirCardinal=\"W\" CloudCoverage=\"48\" UvIdx=\"7\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:55:52 am\" Sunset=\"07:50:17 pm\" Moonrise=\"10:42:46 am\" Moonset=\"01:16:53 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"45\" PrecipChanceDay=\"20\" PrecipChanceNight=\"50\" IconCodeDay=\"66\" IconCodeNight=\"106\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Showers Late\" RelHumidityNight=\"62\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"136\" WndDirCardinalNight=\"SE\" PhraseDayC=\"Partly cloudy skies in the morning will give way to cloudy skies during the afternoon. High around 15C. Winds W at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n    <\/DailyForecast>\r\n    <WeatherAlerts>\r\n      <Alert CountyFips=\"36081\" StateAbbr=\"NY\" Type=\"Wind Advisory\" StartTime=\"20:04:21:21:00:00\" EndTime=\"20:04:22:06:00:00\" Headline=\"Wind Advisory\" Bulletin=\"CTZ005-006-009-010-NJZ002-004-006-103&gt;108-NYZ067&gt;075-078-080-&#xA;176&gt;179-211015-&#xA;\/O.NEW.KOKX.WI.Y.0008.200421T2100Z-200422T0600Z\/&#xA;Northern Fairfield-Northern New Haven-Southern Fairfield-&#xA;Southern New Haven-Western Passaic-Eastern Passaic-Hudson-&#xA;Western Bergen-Eastern Bergen-Western Essex-Eastern Essex-&#xA;Western Union-Eastern Union-Orange-Putnam-Rockland-&#xA;Northern Westchester-Southern Westchester-New York (Manhattan)-&#xA;Bronx-Richmond (Staten Island)-Kings (Brooklyn)-&#xA;Northwestern Suffolk-Southwestern Suffolk-Northern Queens-&#xA;Northern Nassau-Southern Queens-Southern Nassau-&#xA;351 PM EDT Mon Apr 20 2020&#xA;&#xA;...WIND ADVISORY IN EFFECT FROM 5 PM TUESDAY TO 2 AM EDT&#xA;WEDNESDAY...&#xA;&#xA;* WHAT...Northwest winds 20 to 30 mph with gusts up to 50 mph &#xA;  expected.&#xA;&#xA;* WHERE...Portions of northeast New Jersey, southern Connecticut &#xA;  and southeast New York.&#xA;&#xA;* WHEN...From 5 PM Tuesday to 2 AM EDT Wednesday.&#xA;&#xA;* IMPACTS...Gusty winds could blow around unsecured objects. &#xA;  Tree limbs could be blown down and a few power outages may &#xA;  result.&#xA;&#xA;PRECAUTIONARY\/PREPAREDNESS ACTIONS...&#xA;&#xA;Use extra caution when driving, especially if operating a high&#xA;profile vehicle. Secure outdoor objects.&#xA;&#xA;&amp;&amp;&#xA;&#xA;$$&#xA;\" Url=\"\" Category=\"\" Urgency=\"\" Severity=\"\" Certainty=\"\" GeographicName=\"Northern Queens\" StateName=\"New York\" CountyName=\"Queens\" Id=\"10456874800-36081\" Source=\"VTEC\" \/>\r\n    <\/WeatherAlerts>\r\n  <\/City>\r\n<\/Cities>"});
+</script>
+<script src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/nonamp.50da75a6cb682b6e93b9.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/weatherConditions.5a6267eee8727c2e0f5d.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/global.77c15e7618664035dfc2.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/article.d1f7ad391a7ef757cae4.bundle.min.js?ver=1.0.2'></script>
+<script src='https://ak.sail-horizon.com/spm/spm.v1.min.js?ver=1.0.0'></script>
+<script>
+if ("undefined" !== typeof Sailthru) { Sailthru.init({"customerId":"757cc89c051f4552fa5708e6f3b93a01"}); }
+</script>
+<script async src='https://www.nbcnewyork.com/wp-content/themes/nbc-station/client/build/js/videoPlayer.faa6254630c6f634397a.bundle.min.js?ver=1.0.2'></script>
+<script src='https://native.sharethrough.com/assets/sfp.js?ver=5.3.2'></script>
+<script defer src='https://js-sec.indexww.com/ht/p/186439-239008123149972.js?ver=1.0.2'></script>
+<script src='https://www.nbcnewyork.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
+<script>
+window.lodash = _.noConflict();
+</script>
+<script type='text/javascript' src='https://www.nbcnewyork.com/wp-includes/js/wp-embed.min.js?m=1576711022g'></script>
+<script src='https://www.civicscience.com/widget/jspoll/?elt=civsci-1801149203&#038;tgtid=e7b6f935-c835-8c04-d51a-2176625f02d1&#038;ver=1.0.0'></script>
+<script src='https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202017.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.4.2',blog:'165596089',post:'2337853',tz:'-4',srv:'www.nbcnewyork.com'} ]);
+	_stq.push([ 'clickTrackerInit', '165596089', '2337853' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53cef82690","applicationID":"189190456","transactionName":"YVBXYBEFVkZSU00NVlgadFcXDVdbHEdLBUlGUEc=","queueTime":0,"applicationTime":606,"atts":"TRdAFlkfRRkRURteQktI","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

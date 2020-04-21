@@ -1,0 +1,952 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta name="msvalidate.01" content="49A0B004B280D4F82E381B86B3F31FE7" />
+<meta name="pocket-site-verification" content="30866098e012aad755cd16cf387863" />
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"b13aa61332",applicationID:"124795618"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+
+<title>Cornhole (yes, cornhole) is going pro - Experience Magazine</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v13.4.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Born in Europe — or maybe China — this simple game took hold in the American Midwest. Now, it’s aiming for the Olympics."/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Cornhole (yes, cornhole) is going pro" />
+<meta property="og:description" content="The game that originated in Europe — or maybe China — has taken a hold on the American midwest. What does it take to be good? It helps to be a former baseball pitcher." />
+<meta property="og:url" content="https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/" />
+<meta property="og:site_name" content="Experience Magazine" />
+<meta property="article:publisher" content="https://www.facebook.com/ExperienceReads/" />
+<meta property="article:tag" content="American Cornhole League" />
+<meta property="article:tag" content="cornhole" />
+<meta property="article:tag" content="ESPN" />
+<meta property="article:tag" content="ESPN 8 The Ocho" />
+<meta property="article:tag" content="Ideas" />
+<meta property="article:tag" content="Moose Lodge" />
+<meta property="article:tag" content="North Carolina" />
+<meta property="article:section" content="Culture" />
+<meta property="article:published_time" content="2019-06-12T16:12:12+00:00" />
+<meta property="article:modified_time" content="2019-08-14T15:35:00+00:00" />
+<meta property="og:updated_time" content="2019-08-14T15:35:00+00:00" />
+<meta property="fb:app_id" content="2398680380418373" />
+<meta property="og:image" content="https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734.jpg" />
+<meta property="og:image:secure_url" content="https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="796" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="The game that originated in Europe — or maybe China — has taken a hold on the American midwest. What does it take to be good? It helps to be a former baseball pitcher." />
+<meta name="twitter:title" content="Cornhole (yes, cornhole) is going pro" />
+<meta name="twitter:site" content="@exp_mag" />
+<meta name="twitter:image" content="https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734.jpg" />
+<meta name="twitter:creator" content="@exp_mag" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://expmag.com/#organization","name":"Experience Magazine","url":"https://expmag.com/","sameAs":["https://www.facebook.com/ExperienceReads/","https://www.instagram.com/expmag/","https://www.youtube.com/channel/UC9ESoVrmbSee4aeYZq2VscA","https://twitter.com/exp_mag"],"logo":{"@type":"ImageObject","@id":"https://expmag.com/#logo","inLanguage":"en-US","url":"https://expmag.com/wp-content/uploads/2018/09/logo.png","width":972,"height":238,"caption":"Experience Magazine"},"image":{"@id":"https://expmag.com/#logo"}},{"@type":"WebSite","@id":"https://expmag.com/#website","url":"https://expmag.com/","name":"Experience Magazine","inLanguage":"en-US","description":"Stories from the intersection of technology and humanity","publisher":{"@id":"https://expmag.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://expmag.com/?s={search_term_string}","query-input":"required name=search_term_string"}]},{"@type":"ImageObject","@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#primaryimage","inLanguage":"en-US","url":"https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734.jpg","width":1200,"height":796},{"@type":"WebPage","@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#webpage","url":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/","name":"Cornhole (yes, cornhole) is going pro - Experience Magazine","isPartOf":{"@id":"https://expmag.com/#website"},"inLanguage":"en-US","primaryImageOfPage":{"@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#primaryimage"},"datePublished":"2019-06-12T16:12:12+00:00","dateModified":"2019-08-14T15:35:00+00:00","description":"Born in Europe \u2014 or maybe China \u2014 this simple game took hold in the American Midwest. Now, it\u2019s aiming for the Olympics.","potentialAction":[{"@type":"ReadAction","target":["https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/"]}]},{"@type":"Article","@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#article","isPartOf":{"@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#webpage"},"author":{"@id":"https://expmag.com/#/schema/person/e69cbc0f7b024b764a1916b9746db6de"},"headline":"Cornhole (yes, cornhole) is going pro","datePublished":"2019-06-12T16:12:12+00:00","dateModified":"2019-08-14T15:35:00+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#webpage"},"publisher":{"@id":"https://expmag.com/#organization"},"image":{"@id":"https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#primaryimage"},"keywords":"American Cornhole League,cornhole,ESPN,ESPN 8 The Ocho,Ideas,Moose Lodge,North Carolina","articleSection":"Culture","inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/#respond"]}]},{"@type":["Person"],"@id":"https://expmag.com/#/schema/person/e69cbc0f7b024b764a1916b9746db6de","name":"etrickey","image":{"@type":"ImageObject","@id":"https://expmag.com/#authorlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/ab19f1b3ea74952343ee344a89b896a1?s=96&d=mm&r=g","caption":"etrickey"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Experience Magazine &raquo; Feed" href="https://expmag.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Experience Magazine &raquo; Comments Feed" href="https://expmag.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Experience Magazine &raquo; Cornhole (yes, cornhole) is going pro Comments Feed" href="https://expmag.com/2019/06/cornhole-yes-cornhole-is-going-pro/feed/" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.10.4 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.10.4';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-126459234-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-126459234-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/expmag.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://expmag.com/wp-content/plugins/gutenberg/build/block-library/style.css?ver=1585680909' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='animate-css'  href='https://expmag.com/wp-content/plugins/wp-quiz-pro/assets/frontend/css/animate.css?ver=3.6.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-quiz-css'  href='https://expmag.com/wp-content/plugins/wp-quiz-pro/assets/frontend/css/wp-quiz.css?ver=2.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='nu-common-css-css'  href='https://expmag.com/wp-content/client/build/css/common.0332f0cc7a74856ee37848d82c2347c4.min.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='nu-article-css-css'  href='https://expmag.com/wp-content/client/build/css/article.867b4908db496e6cbcf4016cda68f19a.min.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://expmag.com/wp-content/plugins/jetpack/css/jetpack.css?ver=8.4.1' type='text/css' media='all' />
+<!--n2css--><script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/expmag.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expmag.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.4'></script>
+<script type='text/javascript' src='https://expmag.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://expmag.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://expmag.com/wp-content/client/build/js/common.1a548af2c5d1caf5a85d.bundle.min.js?ver=1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var nu = {"canonical":"https:\/\/expmag.com\/2019\/06\/cornhole-yes-cornhole-is-going-pro\/","components":[]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://expmag.com/wp-content/client/build/js/global.bdadd547eb78f406f8f6.bundle.min.js?ver=1.0'></script>
+<script type='text/javascript' src='https://expmag.com/wp-content/client/build/js/article.3abd5e125fca1b22bda8.bundle.min.js?ver=1.0'></script>
+<link rel='https://api.w.org/' href='https://expmag.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://expmag.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://expmag.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://wp.me/pad4nW-15p' />
+<link rel="alternate" type="application/json+oembed" href="https://expmag.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fexpmag.com%2F2019%2F06%2Fcornhole-yes-cornhole-is-going-pro%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://expmag.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fexpmag.com%2F2019%2F06%2Fcornhole-yes-cornhole-is-going-pro%2F&#038;format=xml" />
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '281483162488081');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=281483162488081&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"75adefd2022d29bed0484f9be","lid":"68a21846ac","uniqueMethods":true}) })</script>
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="pingback" href="https://expmag.com/xmlrpc.php"><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://expmag.com/wp-content/uploads/2018/08/cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://expmag.com/wp-content/uploads/2018/08/cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://expmag.com/wp-content/uploads/2018/08/cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://expmag.com/wp-content/uploads/2018/08/cropped-favicon-270x270.png" />
+			<style type="text/css" id="wp-custom-css">
+				body.archive .overline--min {
+  display: none;
+}
+body.archive .recirc--layout-grid {
+  margin-bottom: 2rem;
+}
+.hero--inset-reverse .hero__content, .hero--inset .hero__content {
+  background-color: rgba(253, 253, 252, .75);
+}
+figure.is-provider-twitter {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 35rem;
+}
+figure.wp-block-embed-instagram {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 35rem;
+}
+.resp-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+iframe.resp-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.cta {
+  display: none;
+}
+.media--full__caption {
+  max-width: 35rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Moderat, -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Lucida Grande, Helvetica Neue, Helvetica, Fira Sans, Roboto, Noto, Droid Sans, Cantarell, Oxygen, Ubuntu, Franklin Gothic Medium, Century Gothic, Liberation Sans, sans-serif;
+}
+.media.media--full__caption cite {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+.crosshed {
+  font-family: Moderat, -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Lucida Grande, Helvetica Neue, Helvetica, Fira Sans, Roboto, Noto, Droid Sans, Cantarell, Oxygen, Ubuntu, Franklin Gothic Medium, Century Gothic, Liberation Sans, sans-serif;
+  font-size: 1.5rem;
+}
+.hero--fullscreen .hero__media--loop {
+  padding-bottom: 33%;
+}
+.hero--spread-reverse .hero__media--loop {
+  padding-bottom: 50%;
+}
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.content__titleDescription {
+  margin-top: 9px;
+  font-weight: bold;
+}
+			</style>
+		</head>
+
+<body class="post-template-default single single-post postid-4179 single-format-standard wp-custom-logo">
+<div id="page" class="site">
+<a href="#content" class="skip-to-main">Skip to main content</a>
+
+
+<header class="site-header" data-component="siteHeader">
+	<a class="site-header__logo" href="/">
+		
+<svg aria-labelledby="logo-title" viewBox="0 0 486 93">
+	<title>Northeastern Experience Magazine Logo</title>
+	<defs>
+		<path id="a" d="M.757.787h324.56v53.202H.757z"/>
+	</defs>
+	<g fill="none" fill-rule="evenodd">
+		<g transform="translate(160 23)">
+			<mask id="b" fill="#fff">
+				<use xlink:href="#a"/>
+			</mask>
+			<path d="M40.13 49.55c3.733-2.958 6.086-6.947 7.057-11.965l-.224-.113c-1.457 2.472-3.472 4.4-6.049 5.787-2.577 1.386-5.62 2.079-9.13 2.079-5.488 0-9.409-1.714-11.76-5.141-2.353-3.427-3.53-8.436-3.53-15.028v-.337h30.973c.112-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.548-11.04-1.7-3.201-4.201-5.71-7.505-7.527C34.277 1.752 30.31.843 25.68.843c-5.153 0-9.605 1.143-13.358 3.427-3.752 2.285-6.618 5.44-8.597 9.467C1.745 17.763.757 22.36.757 27.529c0 5.13.952 9.69 2.856 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.252 3.399 13.554 3.399 5.937 0 10.772-1.48 14.506-4.438M18.343 5.647c1.232-2.753 3.435-4.13 6.608-4.13 2.839 0 4.78 1.068 5.826 3.203 1.045 2.135 1.568 5.524 1.568 10.168v8.157h-15.85v-5.067c0-5.468.616-9.578 1.848-12.331m52.788 5.702l-.336-9.326H50.913v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.7v-.113c-1.381-1.273-2.39-2.313-3.024-3.118-.635-.805-1.074-1.61-1.316-2.415-.244-.806-.365-1.826-.365-3.062V11.91a4.62 4.62 0 0 1 1.625-.9c.597-.186 1.325-.28 2.184-.28 1.53 0 3.37.365 5.516 1.095 2.148.73 5.48 2.145 9.998 4.242h.112V2.81c-.747-.6-1.634-1.077-2.66-1.433a9.757 9.757 0 0 0-3.22-.534c-2.39 0-4.761.843-7.114 2.528-2.352 1.686-4.5 4.345-6.441 7.978m44.47 37.05c-.56-1.105-.84-2.518-.84-4.241V2.023H94.543v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.364v-.113c-1.792-1.798-2.968-3.25-3.529-4.354m45.882 1.152c3.734-2.96 6.086-6.948 7.057-11.966l-.224-.113c-1.457 2.472-3.473 4.4-6.049 5.787-2.576 1.386-5.62 2.079-9.129 2.079-5.489 0-9.41-1.714-11.762-5.141-2.352-3.427-3.528-8.436-3.528-15.028v-.337h30.972c.112-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.549-11.04-1.698-3.201-4.2-5.71-7.505-7.527-3.303-1.816-7.271-2.725-11.901-2.725-5.153 0-9.606 1.143-13.358 3.427-3.753 2.285-6.618 5.44-8.597 9.467-1.979 4.026-2.969 8.623-2.969 13.792 0 5.13.953 9.69 2.857 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.251 3.399 13.554 3.399 5.937 0 10.772-1.48 14.506-4.438M139.695 5.647c1.233-2.753 3.436-4.13 6.61-4.13 2.838 0 4.78 1.068 5.824 3.203 1.046 2.135 1.569 5.524 1.569 10.168v8.157h-15.85v-5.067c0-5.468.615-9.578 1.847-12.331m85.132 42.752c-.559-1.105-.84-2.518-.84-4.241V16.405c0-4.944-1.325-8.773-3.976-11.49-2.65-2.714-6.46-4.072-11.426-4.072-3.51 0-6.525.768-9.045 2.304-2.52 1.535-4.508 3.558-5.965 6.067l-.28-7.191h-19.882v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.028v-.113c-1.643-1.798-2.726-3.25-3.248-4.354-.523-1.105-.785-2.518-.785-4.241V10c2.203-2.06 4.724-3.09 7.562-3.09 2.501 0 4.312.72 5.432 2.163 1.12 1.442 1.68 3.417 1.68 5.927v29.157c0 1.76-.251 3.183-.756 4.269-.504 1.087-1.577 2.528-3.22 4.326v.113h24.028v-.113c-1.793-1.798-2.97-3.25-3.53-4.354m48.795-36.544h.111l-.223-9.158c-2.614-.562-5.442-1.02-8.486-1.376-3.043-.356-5.666-.534-7.869-.534-5.6 0-10.342 1.124-14.225 3.37-3.884 2.248-6.805 5.385-8.766 9.41-1.96 4.027-2.94 8.68-2.94 13.962 0 5.093.877 9.634 2.632 13.623 1.755 3.989 4.378 7.126 7.87 9.41 3.49 2.285 7.738 3.427 12.741 3.427 3.66 0 6.917-.655 9.773-1.966 2.857-1.311 5.18-3.174 6.973-5.59 1.793-2.416 2.95-5.253 3.472-8.511l-.111-.17c-2.726 5.057-7.263 7.586-13.61 7.586-3.51 0-6.282-.815-8.317-2.444-2.035-1.63-3.472-4.083-4.313-7.36-.84-3.277-1.26-7.575-1.26-12.893 0-5.131.298-9.223.896-12.275.598-3.053 1.55-5.272 2.857-6.657 1.307-1.386 3.024-2.08 5.152-2.08 1.157 0 2.362.263 3.613.787 1.25.525 2.875 1.47 4.873 2.837 1.997 1.367 5.05 3.568 9.157 6.602m44.19 37.696c3.734-2.96 6.085-6.948 7.056-11.966l-.224-.113c-1.455 2.472-3.472 4.4-6.048 5.787-2.576 1.386-5.62 2.079-9.13 2.079-5.488 0-9.408-1.714-11.761-5.141-2.352-3.427-3.528-8.436-3.528-15.028v-.337h30.972c.111-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.55-11.04-1.698-3.201-4.2-5.71-7.504-7.527C311.959 1.752 307.99.843 303.36.843c-5.152 0-9.605 1.143-13.358 3.427-3.752 2.285-6.617 5.44-8.596 9.467-1.98 4.026-2.97 8.623-2.97 13.792 0 5.13.953 9.69 2.858 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.252 3.399 13.554 3.399 5.936 0 10.772-1.48 14.506-4.438M296.025 5.647c1.232-2.753 3.434-4.13 6.609-4.13 2.837 0 4.779 1.068 5.825 3.203 1.045 2.135 1.568 5.524 1.568 10.168v8.157h-15.85v-5.067c0-5.468.616-9.578 1.848-12.331" fill="#393834" mask="url(#b)"/>
+		</g>
+		<path d="M39.28 72.597c3.725-2.952 6.073-6.932 7.041-11.938l-.223-.113c-1.454 2.466-3.465 4.39-6.035 5.774-2.57 1.383-5.606 2.074-9.108 2.074-5.475 0-9.387-1.71-11.733-5.13-2.348-3.419-3.521-8.416-3.521-14.993v-.336h30.9c.111-.748.167-1.645.167-2.691 0-4.148-.847-7.82-2.542-11.014-1.695-3.195-4.191-5.698-7.488-7.511C33.441 24.907 29.484 24 24.865 24c-5.141 0-9.583 1.14-13.327 3.42-3.743 2.279-6.603 5.427-8.577 9.445C.987 40.882 0 45.468 0 50.625c0 5.12.95 9.67 2.85 13.648 1.9 3.98 4.712 7.1 8.437 9.361 3.724 2.26 8.232 3.391 13.522 3.391 5.923 0 10.747-1.475 14.472-4.428zM17.546 28.793c1.229-2.747 3.427-4.12 6.593-4.12 2.831 0 4.768 1.065 5.811 3.195 1.044 2.13 1.565 5.512 1.565 10.145v8.139H15.7v-5.056c0-5.455.614-9.556 1.844-12.303zm57.049 47.112h25.088v-.113c-1.825-2.017-3.342-3.858-4.554-5.52-1.21-1.664-2.579-3.728-4.106-6.194l-10.84-17.825 6.258-8.408c1.788-2.316 3.446-4.279 4.972-5.885 1.528-1.607 3.931-3.83 7.21-6.67v-.113H82.92v.112c1.862 1.682 3.147 3.055 3.856 4.12.707 1.065 1.06 2.196 1.06 3.392 0 .71-.432.986-.767 1.677-.335.692-.97 1.29-1.827 2.45l-5.811 7.847-6.848-10.742c-.56-.896-.95-1.681-1.174-2.353a6.385 6.385 0 0 1-.335-2.019c0-1.643.783-3.1 2.347-4.372v-.112H48.332v.112c1.826 2.055 3.343 3.915 4.555 5.577 1.21 1.664 2.56 3.71 4.05 6.138l10.17 16.704-7.096 9.473c-1.714 2.279-3.334 4.231-4.862 5.858-1.527 1.625-3.967 3.876-7.32 6.753v.113h15.702v-.113c-1.863-1.681-3.148-3.064-3.855-4.147-.708-1.084-.755-1.387-.755-2.546 0-.71.167-1.401.502-2.074.335-.672.932-1.606 1.788-2.803l6.762-8.911 7.46 11.737c.558.935.95 1.728 1.173 2.383.224.653.335 1.317.335 1.99 0 1.569-.783 3.026-2.347 4.371v.113zm71.214-48.794C142.884 25.038 139.522 24 135.723 24c-5.477 0-10.151 2.336-14.025 7.007l-.335-5.83h-19.837v.112c1.341 1.308 2.329 2.392 2.962 3.252.633.859 1.062 1.719 1.285 2.578.223.86.336 1.943.336 3.251v49.943c0 1.232-.113 2.25-.336 3.054-.223.804-.633 1.616-1.229 2.438-.597.822-1.528 1.85-2.794 3.083V93h24.362v-.112c-1.788-1.794-2.962-3.232-3.52-4.316-.559-1.083-.838-2.503-.838-4.26v-8.8c2.57.972 5.327 1.457 8.27 1.457 4.954 0 9.321-1.149 13.102-3.447 3.781-2.297 6.705-5.558 8.773-9.78 2.067-4.224 3.101-9.138 3.101-14.743 0-4.97-.8-9.342-2.403-13.116-1.601-3.773-3.865-6.698-6.79-8.772zm-12.209 46.056c-1.49 1.345-3.539 2.019-6.146 2.019-1.937 0-3.837-.356-5.7-1.066V32.513c1.938-1.87 4.265-2.803 6.985-2.803 2.347 0 4.19.775 5.532 2.326 1.34 1.551 2.291 3.962 2.85 7.231.558 3.27.838 6.874.838 12.367 0 6.464-.354 10.874-1.062 14.33-.708 3.458-1.807 5.858-3.297 7.203zM267 17c4.97 0 9-3.805 9-8.5S271.97 0 267 0s-9 3.805-9 8.5 4.03 8.5 9 8.5" fill="#DF5B42"/>
+	</g>
+</svg>
+	</a>
+	<nav class="site-header__menu">
+		<ul id="site-header__menu-list--top" class="site-header__menu-list"><li id="menu-item-4530" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent site-header__menu-item menu-item-4530"><a href="https://expmag.com/category/culture/" class="site-header__menu-link">Culture</a></li>
+<li id="menu-item-4531" class="menu-item menu-item-type-taxonomy menu-item-object-category site-header__menu-item menu-item-4531"><a href="https://expmag.com/category/exploration/" class="site-header__menu-link">Exploration</a></li>
+<li id="menu-item-4533" class="menu-item menu-item-type-taxonomy menu-item-object-category site-header__menu-item menu-item-4533"><a href="https://expmag.com/category/tech-life/" class="site-header__menu-link">Tech + Life</a></li>
+<li id="menu-item-4532" class="menu-item menu-item-type-taxonomy menu-item-object-category site-header__menu-item menu-item-4532"><a href="https://expmag.com/category/future-of/" class="site-header__menu-link">Future Of</a></li>
+<li id="menu-item-429" class="menu-item menu-item-type-custom menu-item-object-custom site-header__menu-item menu-item-429"><a href="/about" class="site-header__menu-link">About</a></li>
+</ul>	</nav>
+	<button class="site-menu__btn btn--secondary" data-menu-button type="button">
+		
+<svg aria-labelledby="menu-title" class="icon-open" height="12px" id="icon-menu" viewbox="242 209.4 16 12" width="16px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+	<title>Explore the contents</title>
+	<g class="icon-open__group">
+		<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" x1="247.167" x2="256.625" y1="210.625" y2="210.625"></line>
+		<circle cx="243.255" cy="210.655" r="1.255"></circle>
+	</g>
+	<g class="icon-open__group">
+		<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" x1="247.167" x2="256.625" y1="215.416" y2="215.416"></line>
+		<circle cx="243.255" cy="215.4" r="1.255"></circle>
+	</g>
+	<g class="icon-open__group">
+		<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" x1="247.167" x2="256.625" y1="220.208" y2="220.208"></line>
+		<circle cx="243.255" cy="220.145" r="1.255"></circle>
+	</g>
+</svg>
+		
+<svg aria-labelledby="close-title" class="icon-close" height="12px" id="icon-close" viewbox="242 209.4 16 12" width="16px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+	<title>Close menu</title>
+	<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" x1="245.333" x2="254.75" y1="220.108" y2="210.692"></line>
+	<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" x1="245.333" x2="254.75" y1="210.692" y2="220.108"></line>
+</svg>
+	</button>
+
+	</header>
+
+<main id="content">
+
+		<article class="article">
+	
+<header class="hero hero--fullscreen notch-enable">
+				<div class="hero__media">
+						<figure>
+				<img width="1200" height="796" src="https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734-20x13.jpg" class="lazyload" alt="" data-src="https://expmag.com/wp-content/uploads/2019/06/GettyImages-127769734-1200x796.jpg" />			</figure>
+		</div>
+		<div class="hero__content">
+		<div class="hero__inner">
+																<a href="https://expmag.com/category/culture/" class="btn--primary overline">Culture</a>							
+							<h1>Cornhole (yes, cornhole) is going pro</h1>
+			
+										<p class="hero__dek">Born in Europe — or maybe China — this simple game took hold in the American Midwest. Now, it’s aiming for the Olympics.</p>
+							<address>
+		<p>
+			By Glenn McDonald		</p>
+
+											</address>
+		</div>
+	</div>
+</header>
+
+	
+<section class="article-content">
+	<aside class="share-tools" data-component="articleShare">
+	<div class="share-tools__container">
+		<p class="share-tools__title">Share this experience</p>
+		<ul class="share-tools__list">
+			<li class="share-tools__item">
+				<a href="#" id="share-url">
+					Copy URL 
+<svg version="1.1" id="icon-link" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+y="0px" width="20px" height="20px" viewBox="0 0 53.8 53.8" style="enable-background:new 0 0 53.8 53.8"
+xml:space="preserve" aria-labelledby="link-title" role="img">
+<title id="link-title">Copy url</title>
+<path d="M23.6,43.4c-3.6,3.6-9.5,3.6-13.2,0s-3.6-9.5,0-13.2l7-6.9c2.3-2.3,6.2-2.3,8.5,0c1.5,1.5,3.9,1.5,5.4,0
+c1.5-1.5,1.5-3.9,0-5.4c-5.3-5.3-14-5.3-19.4,0l-7,6.9c-6.6,6.6-6.6,17.4,0,24c3.3,3.3,7.7,5,12,5s8.7-1.7,12-5
+c1.5-1.5,1.5-3.9,0-5.4C27.5,41.9,25.1,41.9,23.6,43.4z M48.9,5c-6.6-6.6-17.4-6.6-24,0c-1.5,1.5-1.5,3.9,0,5.4
+c1.5,1.5,3.9,1.5,5.4,0c3.6-3.6,9.5-3.6,13.2,0s3.6,9.5,0,13.2l-7,6.9c-2.3,2.4-6.2,2.4-8.5,0c-1.5-1.5-3.9-1.5-5.4,0
+c-1.5,1.5-1.5,3.9,0,5.4c2.7,2.7,6.2,4,9.7,4c3.5,0,7-1.3,9.7-4l6.9-6.9C55.5,22.4,55.5,11.6,48.9,5z"></path>
+</svg>
+				</a>
+			</li>
+			<li class="share-tools__item">
+				<a href="#" id="share-facebook">
+					Share 
+<svg aria-labelledby="facebook-title" height="15px" id="icon-facebook" role="img" viewbox="-0.7 -1.5 7 15" width="7px" xmlns="https://www.w3.org/2000/svg">
+	<title>Share this</title>
+	<g>
+		<path d="M3.966,3.414H6.3l-0.275,2.58H3.952V13.5H0.847V5.994H-0.7v-2.58h1.547V1.862c0-1.11,0.261-1.949,0.788-2.513 C2.155-1.215,3.016-1.5,4.213-1.5h2.07v2.578H4.995c-0.238,0-0.432,0.023-0.571,0.067c-0.144,0.042-0.246,0.114-0.311,0.21 c-0.066,0.098-0.11,0.204-0.129,0.311c-0.024,0.11-0.032,0.26-0.032,0.457v1.289L3.966,3.414L3.966,3.414z"></path>
+	</g>
+</svg>
+
+				</a>
+			</li>
+			<li class="share-tools__item">
+				<a href="#" id="share-twitter">
+					Tweet 
+<svg aria-labelledby="twitter-title" height="16.253px" id="icon-twitter" role="img" viewbox="2.305 1.874 20 16.253" width="20px" xmlns="https://www.w3.org/2000/svg">
+	<title>Tweet this</title>
+	<g>
+		<path d="M22.291,3.825c-0.572,0.841-1.258,1.556-2.05,2.126c0.017,0.129,0.017,0.302,0.017,0.525c0,1.111-0.156,2.206-0.475,3.301 c-0.319,1.093-0.809,2.14-1.46,3.161c-0.651,1.013-1.43,1.901-2.334,2.665c-0.92,0.763-2.014,1.366-3.285,1.842 c-1.273,0.477-2.635,0.701-4.096,0.682c-2.287,0-4.398-0.618-6.303-1.843c0.301,0.032,0.636,0.051,0.999,0.051 c1.904,0,3.602-0.588,5.096-1.763c-0.889-0.016-1.683-0.286-2.396-0.808c-0.7-0.538-1.174-1.207-1.444-2.03 c0.271,0.046,0.523,0.064,0.762,0.064c0.365,0,0.73-0.03,1.078-0.128c-0.934-0.189-1.729-0.668-2.364-1.414 C3.401,9.51,3.082,8.638,3.101,7.635V7.588C3.672,7.907,4.289,8.081,4.94,8.113C4.385,7.731,3.923,7.257,3.59,6.652 C3.26,6.065,3.101,5.415,3.101,4.7c0-0.745,0.19-1.43,0.571-2.081c1.029,1.269,2.269,2.285,3.729,3.033 c1.459,0.762,3.032,1.191,4.714,1.285c-0.064-0.318-0.095-0.634-0.095-0.936c0-1.143,0.396-2.111,1.206-2.921 c0.809-0.811,1.779-1.206,2.922-1.206c1.174,0,2.175,0.428,2.998,1.303c0.921-0.174,1.792-0.522,2.588-1 c-0.317,0.967-0.903,1.715-1.794,2.253c0.791-0.095,1.566-0.303,2.365-0.635L22.291,3.825z"></path>
+	</g>
+</svg>
+				</a>
+			</li>
+			<li class="share-tools__item">
+				<a href="#" id="share-email">
+					Email 
+<svg version="1.1" id="icon-email" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+y="0px" width="20px" height="15px" viewBox="0 0 20 15" style="enable-background:new 0 0 20 15" xml:space="preserve"
+aria-labelledby="email-title" role="img">
+<title id="email-title">Email this</title>
+<g>
+<g transform="translate(-388.000000, -512.000000)">
+<g transform="translate(388.000000, 512.000000)">
+<path d="M19.8,13.9c0.1-0.3,0.2-0.6,0.2-0.9V2c0-0.3-0.1-0.6-0.2-0.9l-5.6,5.3L19.8,13.9z"></path>
+<path d="M9,7.2c0.5,0.5,1.4,0.5,2,0l7.5-7.1C18.3,0,18.1,0,18,0H2C1.8,0,1.7,0,1.5,0.1L9,7.2z"></path>
+<path d="M13,7.6l-0.9,0.8c-0.6,0.6-1.4,0.8-2.1,0.8c-0.8,0-1.5-0.3-2.1-0.8L7,7.6L1.6,15c0.1,0,0.3,0,0.4,0h16
+c0.2,0,0.3,0,0.5-0.1L13,7.6z"></path>
+<path d="M0.2,1.2C0.1,1.4,0,1.7,0,2v11c0,0.4,0.1,0.7,0.3,1l5.5-7.5L0.2,1.2z"></path>
+</g>
+</g>
+</g>
+</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</aside>
+	
+<p>It’s a beautiful spring
+evening in Selma, North Carolina, a small town about 20 minutes southeast of
+Raleigh. Inside the local Moose Lodge — technically, the Loyal Order of Moose
+Lodge #1796 — a crowd of locals has gathered for a longstanding, informal,
+twice-weekly cornhole tournament. Five-dollar entry fee. Double elimination
+format. Beer is encouraged. </p>
+
+
+
+<p>My guide to this evening’s competition is 23-year-old Tyler Poythress, a FedEx employee from nearby Wilson, North Carolina. Poythress is a friendly and unfailingly polite young man with the lean build of a high school baseball pitcher, <a href="https://www.maxpreps.com/athlete/tyler-poythress/qwcrF_TlEeKZ5AAmVebBJg/default.htm" target="_blank" rel="noreferrer noopener" aria-label="which he was (opens in a new tab)">which he was</a>. He’s also one of the few people in the country who can call himself a professional cornhole player. </p>
+
+
+
+<p>“You gotta have the right
+bags — it’s just like bringing your own bowling ball or golf clubs,” he says of
+the sport, eyeing his first shot. </p>
+
+
+
+<p>You have almost certainly seen cornhole, an increasingly ubiquitous summer activity in which people toss bean bags into an angled platform with a hole drilled into the far end. Most of the guys at the Selma tournament — and it’s all guys — have been playing cornhole at the Moose for years, in a more or less casual way. The vibe is loose and, just down the hall, the Moose bar is open for after-tournament activities.</p>
+
+
+
+<p>But within the lodge and far
+beyond, this casual game is becoming more competitive, more organized, and more
+potentially lucrative. For about six years now, Poythress has been taking his
+game on the road, playing in regional and national tournaments. Just a few
+weeks back, he and his professional playing partner, Jay Corley, won $3,000 at
+a major cornhole tournament in St. Louis. </p>
+
+
+
+<p>And that’s just the start, for Poythress and other ambitious players. In the past 16 years, cornhole has spread quickly out of the American Midwest, catching on across the United States and beyond. It has spawned no fewer than three official organizations competing to serve the growing U.S.  market: The American Cornhole Association (ACA), the American Cornhole Organization (ACO) and the American Cornhole League (ACL).</p>
+
+
+
+<p>In 2016, the sport took a
+giant leap forward in terms of visibility when ESPN3 televised the ACL
+Championship of Bags in Cherokee, North Carolina. In July 2017, the ACL moved
+up to ESPN2, in a July 4 event. This August, the sport will return to ESPN2 for
+a daylong broadcast of the faux channel “<a href="https://www.adweek.com/tv-video/espns-the-ocho-is-back-this-time-with-cornhole-and-chess-boxing/">ESPN8 The Ocho</a>,”
+in a lineup that also includes dodgeball, ping pong, and <a href="http://mentalfloss.com/article/501360/chessboxing-movement">chessboxing</a>.</p>
+
+
+
+<p>The ACL is setting its sights
+outside of America, too, which introduces a whole new set of challenges.&nbsp; </p>
+
+
+
+<p>“We recently expanded into
+Germany and found out that the boards they’ve been using are a foot shorter
+than regulation boards in the U.S.,” says Trey Ryder, the organization’s media
+director. “We asked them, <em>how did you get the specs on these boards? </em>Well,
+it turns out a player had come to the U.S. and saw a tournament that was using
+plastic lawn game boards. He thought that was the official size, and he modeled
+his after those boards. </p>
+
+
+
+<p>“So now we’re trying to get
+Germany back to the correct equipment size,” Ryder says with a sigh. Such are
+the headaches of recreational cultural hegemony. </p>
+
+
+
+<p>“Our ultimate goal,” Ryder
+says, “is to make cornhole an Olympic sport.” </p>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>How does a game so casual become so official, so aspirational? With cornhole, the evolution has been gradual. No one knows for sure who invented the game or where it began, though in its essentials, cornhole is similar to older tossing games like horseshoes, washer toss, or the British lawn game <em>quoits</em>, which features pegs and metal rings. </p>
+
+
+
+<p>The bean bag element appears to have come into play in the 1800s, when quoits evolved into a more indoor-friendly parlor game in Europe. An American version of that game, called Faba Baga, used a vertical slanting board and multiple holes worth different points. But the modern incarnation of the game, as it’s played today, is an enduring <span data-anno-btn="true" class="article-content__anno-btn">mystery.</span><cite data-anno-copy="true" class="article-content__anno-copy">Amateur historian Peter Jensen Brown has put together a persuasive <a href="https://esnpc.blogspot.com/2016/08/parlor-quoits-bean-bags-and-faba-baga.html">history of the game</a> over at his delightful Early Sports blog.<cite></p>
+
+
+
+<p>“There are so many theories,
+so many rumors,” Ryder says. “Some people think it ultimately came from China
+in the 1700s. Some say it started in the Midwest, some say Kentucky, some say
+Cincinnati.” </p>
+
+
+
+<p>Whatever its origins, modern proponents of the game agree that cornhole has a fundamental marketing problem: its name. As an American idiom, “cornhole” has several unfortunate connotations — check the crowdsourced word warehouse Urban Dictionary for a half-dozen evocative, not-safe-for-work definitions. It’s ironic, Ryder says, because the actual etymology of the word is quite boring. </p>
+
+
+
+<p>“Back in the old days, the
+bag used to be filled with corn,” he says. “You can still go to tournaments
+that use corn, and people that make their own bags often use corn. The problem
+is that when corn gets wet, it puffs up, then breaks down. Now we use plastic
+resin.” <strong>&nbsp;</strong></p>
+
+
+
+<blockquote class="bq bq--feature" data-component="pullquote"><p></p><p> “I think they like cornhole because it&#8217;s something they can play and still have a drink in their hand.”   
+</p><p></p><span data-share-links="true"></span></blockquote>
+
+
+
+<p>Cornhole matches are
+generally played with two sets of bags, four bags to a frame. A bag that lands
+on the platform — and stays there until the end of the frame — is worth one point.
+A bag that goes through the hole is worth three points. Winners are determined
+using a system called cancellation scoring: If Team A scores nine points and
+Team B scores four, then Team A is awarded five points for that frame. The
+first team to 21 points wins.</p>
+
+
+
+<p>The simplicity is surely part
+of the game’s broad appeal, says Trent Henkaline, president of the American
+Cornhole Association. “Older people can play it, kids can play it, men or women,”
+he says. “I’ve played against 80-year-olds who’ve beat me, I’ve played against
+12-year-olds who’ve beat me.”</p>
+
+
+
+<p>Cost of entry is low, too.
+Casual players can buy a backyard kit for $30 right now at Target. Many
+dedicated players make their boards and their bags themselves. Charity
+tournaments are increasingly popular because they’re inexpensive, easy to
+organize, and open to everyone who can toss a 16-ounce bag. </p>
+
+
+
+<p>“My nephew and his wife had a
+monogrammed cornhole game at their wedding,” says Kathy Thomas, chief strategy
+officer with the retail chain Half Price Books. “I thought it was crazy, but
+people actually were playing. I think they like it because it is something they
+can play and still have a drink in their hand.” </p>
+
+
+
+<p>In massive stadium parking
+lots, kids’ birthday parties, and backyard barbecues, the rules can be loose.
+Kids might throw from the halfway point. Grownups might have to drink when they
+miss. But as the game moves toward officialdom, the standards are
+getting stricter. </p>
+
+
+
+<p>The emerging rules for
+competitive play, generally agreed upon by the three major governing bodies, require
+each board to be two by four feet with a six-inch circular hole nine inches
+from the top. Regulation play <strong>— </strong>so egregiously flouted in Germany <strong>—</strong>
+sets the boards precisely 33 feet apart. Players must toss from behind a foul
+line in the “pitcher’s box,” the rectangular area directly to the left or right
+of the platform. </p>
+
+
+
+<p>Ad hoc and casual contests
+merge those official rules with the chance to win nominal amounts of money.
+Poythress says a venue like the Moose Lodge can draw 17 or 18 teams, for an
+entry fee of $5 or $10 per player, with the first-place team winning half of
+the pot or more. If the tournament is held at a commercial establishment, the
+money goes up: a bar might match the pot. </p>
+
+
+
+<p>As the potential payoffs of
+cornhole increase, it’s natural that professionalism will follow, says Eric
+Kurlander, a sports historian at Stetson University. Indeed, he says, cornhole
+appears to be moving along the traditional trajectory of sports in America.</p>
+
+
+
+<p>“If you look at any of our
+professional sports, there’s always a tipping point,” Kurlander says. “What you’re
+seeing right now is this game that’s been around — at parties and state fairs
+or whatever — it’s becoming more of a spectator sport. There’s a little money
+involved and that provides incentive, so those with the skill set are getting
+better.” </p>
+
+
+
+<p>Early professional baseball
+started much the same way, he says, with players making money in tournaments. “It’s
+the same with basketball, with football. It’s not a salaried job yet, it’s not
+full-time money, but you can bet these guys are hoping that the sport will get
+big enough that they can become true professionals.” </p>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Given the potential stakes, the vibe at the Moose Lodge ranges from casual to rather serious. Poythress points around the room, which now has around 20 players standing in pairs at cornhole platforms set exactly 33 feet apart. “That guy there, he throws it lower and harder. This guy here, watch this guy. You see how fast that bag slides up there?” </p>
+
+
+
+<p>As the first round proceeds,
+it’s clear that all these guys are good at this game. Virtually every bag
+tossed hits the platform. Most stay there. An astonishing percentage go
+straight through the hole on the fly. If you’ve ever played the game, you know
+it’s not supposed to look this easy. </p>
+
+
+<div
+	class="newsletter newsletter--inline"
+	data-component="newsletter"
+	data-error-email="Invalid email address."
+	data-error-form="Error submitting newsletter form.">
+	<p class="newsletter__title">
+		Get experience in your inbox	</p>
+	<form method="post"
+		class="newsletter__form"
+		action="https://expmag.us18.list-manage.com/subscribe/post?u=75adefd2022d29bed0484f9be&amp;id=68a21846ac">
+		<label class="newsletter__label" for="newsletter-0-email-input">
+			Your email			<input class="newsletter__input" id="newsletter-0-email-input" name="EMAIL" required type="email" />
+		</label>
+		<button value="Subscribe" name="subscribe" class="btn--form" type="submit">
+			Sign up		</button>
+
+		<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+		<div style="position: absolute; left: -5000px;" aria-hidden="true">
+			<input type="text" name="b_75adefd2022d29bed0484f9be_68a21846ac" tabindex="-1" value="">
+		</div>
+	</form>
+
+	<div class="newsletter__message error-messages"></div>
+	<div class="newsletter__message success-message"></div>
+</div>
+
+
+
+<p>Then it’s Poythress’ turn, and — swear to god — he throws his first bag directly into the hole. That’s called an “airmail.” He does the same with his second shot. And his third. And his fourth. </p>
+
+
+
+<p>“That’s called a ‘four-bagger,’”
+I’m told by the guy sitting next to me, who seems strangely unfazed by this
+goddamn miracle that just occurred. “That last shot, some call it a ‘Drano.’” </p>
+
+
+
+<p>Cornhole’s accelerating
+popularity in recent years has generated a whole vocabulary of evocative
+terminology for specific shots or game-state scenarios. You’ve got your
+hangers, your hookers, your dirty rollups. Your skunks, your sliders, your
+woodies. </p>
+
+
+
+<p>Poythress hopes that
+mastering the subtleties of the sport will help him make the jump to full-time
+player sometime in the next two or three years. In fact, he and his playing
+partner just picked up corporate sponsorship, from an outfit called Tailgate
+Nation. </p>
+
+
+
+<p>Ryder says the ACL now
+organizes hundreds of tournaments around the country. The bulk of these events
+are small gatherings, like the Moose Lodge tourney. If players are registered
+with the ACL, they can earn points toward qualifying for the larger regional
+and national competitions. An in-house tech platform keeps track of rankings
+and statistics. In March, around 750 players traveled to compete in the
+national tournament in St. Louis. </p>
+
+
+
+<p>Ryder says the league has
+about 120 pro-level players. Is there enough money in the ecosystem yet for them
+to make a full-time living? </p>
+
+
+
+<p>“We’re not there yet, but we’re
+close,” Ryder says. “Our top-level players right now, across an entire season,
+are taking in about $20,000 a year.”</p>
+
+
+
+<p>Meanwhile, just a couple clicks down the cornhole ladder, old-timers like Dickie Adams — a regular at the Moose Lodge game — can pick up enough money to at least make the traveling worthwhile. </p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://expmag.com/wp-content/uploads/2019/06/AP_416568873995-1024x819.jpg" alt="" class="wp-image-4197"/><figcaption>Tristan Long, Jr., left, gets a lesson in cornhole from Michael Cary during a street festival in Charleston, W.Va. Photo by Christian Tyler Randolph/Charleston Gazette-Mail</figcaption></figure></div>
+
+
+
+<p>“I’ve played competitively
+six or seven years, 12 years if you count backyard barbecues,” Adams says. “I’ve
+played in Tuscaloosa, I’ve played in Cleveland, in California. This will be
+four years in a row in California. It depends on the tournament. If it’s a
+well-run tournament, you’ll go back to it.” </p>
+
+
+
+<p>Poythress returns to try to
+help the poor Yankee reporter understand the fundamentals of the game. He notes
+that a disproportionate number of young cornhole pros are former baseball
+pitchers. That’s no coincidence. </p>
+
+
+
+<p>“It’s muscle memory, it’s
+doing the same thing every time,” he says. “When you throw it you want it to
+spin, like a frisbee going through the air. You want to throw it flat and land
+flat and it’ll slide ride up the board. Now, see right here, this bag is
+actually a little bit faster&#8230;.” </p>
+
+
+
+<p>Poythress is an ideal
+ambassador for the sport. He’s patient. He’s friendly. And he understands that,
+like so many enduring games, cornhole is deceptively simple. It’s easy to learn
+but hard to master. If and when cornhole becomes America’s next big cultural
+sports export, Poythress hopes to be a paid pioneer. </p>
+
+
+
+<p>“I’d like to go pro as soon
+as I can,” he says. “This really is a great game.” </p>
+
+			<p class="pubdate">
+			Published on <time datetime="2019-06-12T12:12:12-04:00">June 12, 2019<time>		</p>
+
+												<div class="author-bio">
+					<p>Glenn McDonald is a writer based in Chapel Hill, North Carolina.</p>
+<p>Top photo by Jared Wickerham/Getty Images</p>
+				</div>
+					
+		<aside class="cta">
+	<p class="cta__title"></p>
+	<a class="btn--primary" href="">
+			</a>
+</aside>
+	</section>
+</article>
+
+	<section class="topic-container">
+	<section class="recirc recirc--layout-grid">
+		<div class="tz tz--mid recirc__big">
+	<div class="tz__content">
+												<a href="https://expmag.com/category/tech-life/" class="btn--primary overline">Tech + Life</a>					
+		<a class="tz__link" href="https://expmag.com/2019/08/speedgate-the-sport-invented-by-artificial-intelligence/">
+			<h3 class="tz__hed">Speedgate, the sport invented by artificial intelligence</h3>
+		</a>
+												<p class="tz__copy">A design team’s collaboration with an advanced neural network produces a surprise success story. </p>
+					
+						<address>
+		<p>
+			By Glenn McDonald		</p>
+
+			</address>
+			</div>
+			<a class="tz__link tz__media" href="https://expmag.com/2019/08/speedgate-the-sport-invented-by-artificial-intelligence/">
+			<figure class="tz__figure intrinsic-wrapper">
+				<picture class="tz__img intrinsic-content">
+					<img width="790" height="790" src="https://expmag.com/wp-content/uploads/2019/08/ARTWORK-13x13.jpg" class="lazyload" alt="" data-src="https://expmag.com/wp-content/uploads/2019/08/ARTWORK-790x790.jpg" />				</picture>
+			</figure>
+		</a>
+	</div>
+
+		<div class="tz tz--sm">
+	<div class="tz__content">
+		
+		<a class="tz__link" href="https://expmag.com/2019/06/the-science-of-attraction/">
+			<h4 class="tz__hed">The Science of Attraction</h4>
+		</a>
+		
+						<address>
+		<p>
+			By Alix Strauss		</p>
+
+			</address>
+			</div>
+			<a class="tz__link tz__media" href="https://expmag.com/2019/06/the-science-of-attraction/">
+			<figure class="tz__figure intrinsic-wrapper">
+				<picture class="tz__img intrinsic-content">
+					<img width="400" height="267" src="https://expmag.com/wp-content/uploads/2019/06/NU_LR_FINAL_TAKE2-13x13.jpg" class="lazyload" alt="" data-src="https://expmag.com/wp-content/uploads/2019/06/NU_LR_FINAL_TAKE2-400x267.jpg" />				</picture>
+			</figure>
+		</a>
+	</div>
+<div class="tz tz--sm">
+	<div class="tz__content">
+		
+		<a class="tz__link" href="https://expmag.com/2018/08/technology-and-the-future-workplace/">
+			<h4 class="tz__hed">The end of desks? A peek at the office of the future</h4>
+		</a>
+		
+						<address>
+		<p>
+			By Glenn McDonald		</p>
+
+			</address>
+			</div>
+			<a class="tz__link tz__media" href="https://expmag.com/2018/08/technology-and-the-future-workplace/">
+			<figure class="tz__figure intrinsic-wrapper">
+				<picture class="tz__img intrinsic-content">
+					<img width="400" height="267" src="https://expmag.com/wp-content/uploads/2018/08/hero-2-20x13.jpg" class="lazyload" alt="" data-src="https://expmag.com/wp-content/uploads/2018/08/hero-2-400x267.jpg" />				</picture>
+			</figure>
+		</a>
+	</div>
+	</section>
+</section>
+</main>
+
+<footer class="site-footer">
+	<div
+	class="newsletter newsletter--footer"
+	data-component="newsletter"
+	data-error-email="Invalid email address."
+	data-error-form="Error submitting newsletter form.">
+	<p class="newsletter__title">
+		Get experience in your inbox	</p>
+	<form method="post"
+		class="newsletter__form"
+		action="https://expmag.us18.list-manage.com/subscribe/post?u=75adefd2022d29bed0484f9be&amp;id=68a21846ac">
+		<label class="newsletter__label" for="newsletter-1-email-input">
+			Your email			<input class="newsletter__input" id="newsletter-1-email-input" name="EMAIL" required type="email" />
+		</label>
+		<button value="Subscribe" name="subscribe" class="btn--form" type="submit">
+			Sign up		</button>
+
+		<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+		<div style="position: absolute; left: -5000px;" aria-hidden="true">
+			<input type="text" name="b_75adefd2022d29bed0484f9be_68a21846ac" tabindex="-1" value="">
+		</div>
+	</form>
+
+	<div class="newsletter__message error-messages"></div>
+	<div class="newsletter__message success-message"></div>
+</div>
+	<div class="site-footer__inner">
+		<a class="site-header__logo" href="/">
+<svg aria-labelledby="logo-title" viewBox="0 0 486 93">
+	<title>Northeastern Experience Magazine Logo</title>
+	<defs>
+		<path id="a" d="M.757.787h324.56v53.202H.757z"/>
+	</defs>
+	<g fill="none" fill-rule="evenodd">
+		<g transform="translate(160 23)">
+			<mask id="b" fill="#fff">
+				<use xlink:href="#a"/>
+			</mask>
+			<path d="M40.13 49.55c3.733-2.958 6.086-6.947 7.057-11.965l-.224-.113c-1.457 2.472-3.472 4.4-6.049 5.787-2.577 1.386-5.62 2.079-9.13 2.079-5.488 0-9.409-1.714-11.76-5.141-2.353-3.427-3.53-8.436-3.53-15.028v-.337h30.973c.112-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.548-11.04-1.7-3.201-4.201-5.71-7.505-7.527C34.277 1.752 30.31.843 25.68.843c-5.153 0-9.605 1.143-13.358 3.427-3.752 2.285-6.618 5.44-8.597 9.467C1.745 17.763.757 22.36.757 27.529c0 5.13.952 9.69 2.856 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.252 3.399 13.554 3.399 5.937 0 10.772-1.48 14.506-4.438M18.343 5.647c1.232-2.753 3.435-4.13 6.608-4.13 2.839 0 4.78 1.068 5.826 3.203 1.045 2.135 1.568 5.524 1.568 10.168v8.157h-15.85v-5.067c0-5.468.616-9.578 1.848-12.331m52.788 5.702l-.336-9.326H50.913v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.7v-.113c-1.381-1.273-2.39-2.313-3.024-3.118-.635-.805-1.074-1.61-1.316-2.415-.244-.806-.365-1.826-.365-3.062V11.91a4.62 4.62 0 0 1 1.625-.9c.597-.186 1.325-.28 2.184-.28 1.53 0 3.37.365 5.516 1.095 2.148.73 5.48 2.145 9.998 4.242h.112V2.81c-.747-.6-1.634-1.077-2.66-1.433a9.757 9.757 0 0 0-3.22-.534c-2.39 0-4.761.843-7.114 2.528-2.352 1.686-4.5 4.345-6.441 7.978m44.47 37.05c-.56-1.105-.84-2.518-.84-4.241V2.023H94.543v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.364v-.113c-1.792-1.798-2.968-3.25-3.529-4.354m45.882 1.152c3.734-2.96 6.086-6.948 7.057-11.966l-.224-.113c-1.457 2.472-3.473 4.4-6.049 5.787-2.576 1.386-5.62 2.079-9.129 2.079-5.489 0-9.41-1.714-11.762-5.141-2.352-3.427-3.528-8.436-3.528-15.028v-.337h30.972c.112-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.549-11.04-1.698-3.201-4.2-5.71-7.505-7.527-3.303-1.816-7.271-2.725-11.901-2.725-5.153 0-9.606 1.143-13.358 3.427-3.753 2.285-6.618 5.44-8.597 9.467-1.979 4.026-2.969 8.623-2.969 13.792 0 5.13.953 9.69 2.857 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.251 3.399 13.554 3.399 5.937 0 10.772-1.48 14.506-4.438M139.695 5.647c1.233-2.753 3.436-4.13 6.61-4.13 2.838 0 4.78 1.068 5.824 3.203 1.046 2.135 1.569 5.524 1.569 10.168v8.157h-15.85v-5.067c0-5.468.615-9.578 1.847-12.331m85.132 42.752c-.559-1.105-.84-2.518-.84-4.241V16.405c0-4.944-1.325-8.773-3.976-11.49-2.65-2.714-6.46-4.072-11.426-4.072-3.51 0-6.525.768-9.045 2.304-2.52 1.535-4.508 3.558-5.965 6.067l-.28-7.191h-19.882v.112c1.344 1.349 2.324 2.444 2.94 3.287.616.843 1.046 1.695 1.288 2.556.243.862.364 1.948.364 3.259v32.92c0 1.724-.28 3.137-.84 4.242-.56 1.105-1.736 2.556-3.529 4.354v.113h24.028v-.113c-1.643-1.798-2.726-3.25-3.248-4.354-.523-1.105-.785-2.518-.785-4.241V10c2.203-2.06 4.724-3.09 7.562-3.09 2.501 0 4.312.72 5.432 2.163 1.12 1.442 1.68 3.417 1.68 5.927v29.157c0 1.76-.251 3.183-.756 4.269-.504 1.087-1.577 2.528-3.22 4.326v.113h24.028v-.113c-1.793-1.798-2.97-3.25-3.53-4.354m48.795-36.544h.111l-.223-9.158c-2.614-.562-5.442-1.02-8.486-1.376-3.043-.356-5.666-.534-7.869-.534-5.6 0-10.342 1.124-14.225 3.37-3.884 2.248-6.805 5.385-8.766 9.41-1.96 4.027-2.94 8.68-2.94 13.962 0 5.093.877 9.634 2.632 13.623 1.755 3.989 4.378 7.126 7.87 9.41 3.49 2.285 7.738 3.427 12.741 3.427 3.66 0 6.917-.655 9.773-1.966 2.857-1.311 5.18-3.174 6.973-5.59 1.793-2.416 2.95-5.253 3.472-8.511l-.111-.17c-2.726 5.057-7.263 7.586-13.61 7.586-3.51 0-6.282-.815-8.317-2.444-2.035-1.63-3.472-4.083-4.313-7.36-.84-3.277-1.26-7.575-1.26-12.893 0-5.131.298-9.223.896-12.275.598-3.053 1.55-5.272 2.857-6.657 1.307-1.386 3.024-2.08 5.152-2.08 1.157 0 2.362.263 3.613.787 1.25.525 2.875 1.47 4.873 2.837 1.997 1.367 5.05 3.568 9.157 6.602m44.19 37.696c3.734-2.96 6.085-6.948 7.056-11.966l-.224-.113c-1.455 2.472-3.472 4.4-6.048 5.787-2.576 1.386-5.62 2.079-9.13 2.079-5.488 0-9.408-1.714-11.761-5.141-2.352-3.427-3.528-8.436-3.528-15.028v-.337h30.972c.111-.75.168-1.648.168-2.697 0-4.157-.85-7.837-2.55-11.04-1.698-3.201-4.2-5.71-7.504-7.527C311.959 1.752 307.99.843 303.36.843c-5.152 0-9.605 1.143-13.358 3.427-3.752 2.285-6.617 5.44-8.596 9.467-1.98 4.026-2.97 8.623-2.97 13.792 0 5.13.953 9.69 2.858 13.679 1.904 3.989 4.723 7.116 8.457 9.382 3.734 2.266 8.252 3.399 13.554 3.399 5.936 0 10.772-1.48 14.506-4.438M296.025 5.647c1.232-2.753 3.434-4.13 6.609-4.13 2.837 0 4.779 1.068 5.825 3.203 1.045 2.135 1.568 5.524 1.568 10.168v8.157h-15.85v-5.067c0-5.468.616-9.578 1.848-12.331" fill="#393834" mask="url(#b)"/>
+		</g>
+		<path d="M39.28 72.597c3.725-2.952 6.073-6.932 7.041-11.938l-.223-.113c-1.454 2.466-3.465 4.39-6.035 5.774-2.57 1.383-5.606 2.074-9.108 2.074-5.475 0-9.387-1.71-11.733-5.13-2.348-3.419-3.521-8.416-3.521-14.993v-.336h30.9c.111-.748.167-1.645.167-2.691 0-4.148-.847-7.82-2.542-11.014-1.695-3.195-4.191-5.698-7.488-7.511C33.441 24.907 29.484 24 24.865 24c-5.141 0-9.583 1.14-13.327 3.42-3.743 2.279-6.603 5.427-8.577 9.445C.987 40.882 0 45.468 0 50.625c0 5.12.95 9.67 2.85 13.648 1.9 3.98 4.712 7.1 8.437 9.361 3.724 2.26 8.232 3.391 13.522 3.391 5.923 0 10.747-1.475 14.472-4.428zM17.546 28.793c1.229-2.747 3.427-4.12 6.593-4.12 2.831 0 4.768 1.065 5.811 3.195 1.044 2.13 1.565 5.512 1.565 10.145v8.139H15.7v-5.056c0-5.455.614-9.556 1.844-12.303zm57.049 47.112h25.088v-.113c-1.825-2.017-3.342-3.858-4.554-5.52-1.21-1.664-2.579-3.728-4.106-6.194l-10.84-17.825 6.258-8.408c1.788-2.316 3.446-4.279 4.972-5.885 1.528-1.607 3.931-3.83 7.21-6.67v-.113H82.92v.112c1.862 1.682 3.147 3.055 3.856 4.12.707 1.065 1.06 2.196 1.06 3.392 0 .71-.432.986-.767 1.677-.335.692-.97 1.29-1.827 2.45l-5.811 7.847-6.848-10.742c-.56-.896-.95-1.681-1.174-2.353a6.385 6.385 0 0 1-.335-2.019c0-1.643.783-3.1 2.347-4.372v-.112H48.332v.112c1.826 2.055 3.343 3.915 4.555 5.577 1.21 1.664 2.56 3.71 4.05 6.138l10.17 16.704-7.096 9.473c-1.714 2.279-3.334 4.231-4.862 5.858-1.527 1.625-3.967 3.876-7.32 6.753v.113h15.702v-.113c-1.863-1.681-3.148-3.064-3.855-4.147-.708-1.084-.755-1.387-.755-2.546 0-.71.167-1.401.502-2.074.335-.672.932-1.606 1.788-2.803l6.762-8.911 7.46 11.737c.558.935.95 1.728 1.173 2.383.224.653.335 1.317.335 1.99 0 1.569-.783 3.026-2.347 4.371v.113zm71.214-48.794C142.884 25.038 139.522 24 135.723 24c-5.477 0-10.151 2.336-14.025 7.007l-.335-5.83h-19.837v.112c1.341 1.308 2.329 2.392 2.962 3.252.633.859 1.062 1.719 1.285 2.578.223.86.336 1.943.336 3.251v49.943c0 1.232-.113 2.25-.336 3.054-.223.804-.633 1.616-1.229 2.438-.597.822-1.528 1.85-2.794 3.083V93h24.362v-.112c-1.788-1.794-2.962-3.232-3.52-4.316-.559-1.083-.838-2.503-.838-4.26v-8.8c2.57.972 5.327 1.457 8.27 1.457 4.954 0 9.321-1.149 13.102-3.447 3.781-2.297 6.705-5.558 8.773-9.78 2.067-4.224 3.101-9.138 3.101-14.743 0-4.97-.8-9.342-2.403-13.116-1.601-3.773-3.865-6.698-6.79-8.772zm-12.209 46.056c-1.49 1.345-3.539 2.019-6.146 2.019-1.937 0-3.837-.356-5.7-1.066V32.513c1.938-1.87 4.265-2.803 6.985-2.803 2.347 0 4.19.775 5.532 2.326 1.34 1.551 2.291 3.962 2.85 7.231.558 3.27.838 6.874.838 12.367 0 6.464-.354 10.874-1.062 14.33-.708 3.458-1.807 5.858-3.297 7.203zM267 17c4.97 0 9-3.805 9-8.5S271.97 0 267 0s-9 3.805-9 8.5 4.03 8.5 9 8.5" fill="#DF5B42"/>
+	</g>
+</svg>
+</a>
+		<ul class="site-footer__social">
+							<li>
+					<a href="https://www.instagram.com/expmag/" target="_blank">
+						
+<svg aria-labelledby="insta-title" height="20px" id="icon-insta" viewbox="-170.53 37.338 20 19.997" width="20px" xmlns="http://www.w3.org/2000/svg">
+	<title>Instagram</title>
+	<path d="M-170.53,55.307c0-5.312,0-10.625,0-15.938c0.013-0.043,0.029-0.086,0.039-0.13c0.208-0.97,0.793-1.581,1.75-1.84 c0.081-0.021,0.162-0.041,0.243-0.062c5.313,0,10.625,0,15.938,0c0.036,0.012,0.072,0.028,0.109,0.036 c0.981,0.2,1.598,0.787,1.86,1.751c0.022,0.081,0.042,0.162,0.062,0.244c0,5.312,0,10.625,0,15.938 c-0.014,0.049-0.032,0.098-0.042,0.148c-0.201,1.081-1.148,1.878-2.25,1.879c-5.139,0.002-10.278,0.002-15.417,0 c-1.054-0.001-1.961-0.721-2.219-1.746C-170.481,55.494-170.506,55.401-170.53,55.307z M-168.226,45.81c0,0.08,0,0.15,0,0.22 c0,2.708,0,5.416,0,8.123c0,0.572,0.308,0.881,0.879,0.881c4.543,0,9.087,0,13.63,0c0.574,0,0.882-0.308,0.882-0.878 c0-2.708,0-5.416,0-8.123c0-0.07,0-0.14,0-0.216c-0.587,0-1.153,0-1.737,0c0.294,1.228,0.254,2.42-0.167,3.592 c-0.42,1.172-1.133,2.131-2.131,2.872c-0.999,0.74-2.122,1.145-3.367,1.197c-1.716,0.071-3.229-0.457-4.473-1.637 c-1.741-1.652-2.284-3.688-1.791-6.031C-167.078,45.81-167.64,45.81-168.226,45.81z M-160.529,43.491 c-2.125-0.002-3.854,1.727-3.849,3.851c0.005,2.123,1.709,3.831,3.836,3.844c2.121,0.012,3.851-1.709,3.859-3.841 C-156.675,45.222-158.4,43.493-160.529,43.491z M-152.835,41.556c0-0.37,0.002-0.741,0-1.112c-0.004-0.469-0.329-0.798-0.8-0.801 c-0.748-0.005-1.497-0.005-2.245-0.001c-0.46,0.003-0.792,0.301-0.802,0.757c-0.016,0.78-0.015,1.562,0,2.342 c0.009,0.435,0.312,0.739,0.746,0.748c0.781,0.016,1.562,0.016,2.342,0c0.457-0.009,0.754-0.343,0.757-0.8 C-152.833,42.311-152.835,41.934-152.835,41.556z"></path>
+</svg>
+					</a>
+				</li>
+										<li>
+					<a href="https://twitter.com/exp_mag" target="_blank">
+						
+<svg aria-labelledby="twitter-title" height="16.253px" id="icon-twitter" role="img" viewbox="2.305 1.874 20 16.253" width="20px" xmlns="https://www.w3.org/2000/svg">
+	<title>Tweet this</title>
+	<g>
+		<path d="M22.291,3.825c-0.572,0.841-1.258,1.556-2.05,2.126c0.017,0.129,0.017,0.302,0.017,0.525c0,1.111-0.156,2.206-0.475,3.301 c-0.319,1.093-0.809,2.14-1.46,3.161c-0.651,1.013-1.43,1.901-2.334,2.665c-0.92,0.763-2.014,1.366-3.285,1.842 c-1.273,0.477-2.635,0.701-4.096,0.682c-2.287,0-4.398-0.618-6.303-1.843c0.301,0.032,0.636,0.051,0.999,0.051 c1.904,0,3.602-0.588,5.096-1.763c-0.889-0.016-1.683-0.286-2.396-0.808c-0.7-0.538-1.174-1.207-1.444-2.03 c0.271,0.046,0.523,0.064,0.762,0.064c0.365,0,0.73-0.03,1.078-0.128c-0.934-0.189-1.729-0.668-2.364-1.414 C3.401,9.51,3.082,8.638,3.101,7.635V7.588C3.672,7.907,4.289,8.081,4.94,8.113C4.385,7.731,3.923,7.257,3.59,6.652 C3.26,6.065,3.101,5.415,3.101,4.7c0-0.745,0.19-1.43,0.571-2.081c1.029,1.269,2.269,2.285,3.729,3.033 c1.459,0.762,3.032,1.191,4.714,1.285c-0.064-0.318-0.095-0.634-0.095-0.936c0-1.143,0.396-2.111,1.206-2.921 c0.809-0.811,1.779-1.206,2.922-1.206c1.174,0,2.175,0.428,2.998,1.303c0.921-0.174,1.792-0.522,2.588-1 c-0.317,0.967-0.903,1.715-1.794,2.253c0.791-0.095,1.566-0.303,2.365-0.635L22.291,3.825z"></path>
+	</g>
+</svg>
+					</a>
+				</li>
+										<li>
+					<a href="https://www.facebook.com/ExperienceReads/" target="_blank">
+						
+<svg aria-labelledby="facebook-title" height="15px" id="icon-facebook" role="img" viewbox="-0.7 -1.5 7 15" width="7px" xmlns="https://www.w3.org/2000/svg">
+	<title>Share this</title>
+	<g>
+		<path d="M3.966,3.414H6.3l-0.275,2.58H3.952V13.5H0.847V5.994H-0.7v-2.58h1.547V1.862c0-1.11,0.261-1.949,0.788-2.513 C2.155-1.215,3.016-1.5,4.213-1.5h2.07v2.578H4.995c-0.238,0-0.432,0.023-0.571,0.067c-0.144,0.042-0.246,0.114-0.311,0.21 c-0.066,0.098-0.11,0.204-0.129,0.311c-0.024,0.11-0.032,0.26-0.032,0.457v1.289L3.966,3.414L3.966,3.414z"></path>
+	</g>
+</svg>
+
+					</a>
+				</li>
+					</ul>
+	</div>
+	<div class="site-footer__inner">
+		<nav class="site-footer__nav">
+			<ul id="site-footer__nav-list--top" class="site-footer__nav-list"><li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent site-nav__menu-item menu-item-4530"><a href="https://expmag.com/category/culture/">Culture</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category site-nav__menu-item menu-item-4531"><a href="https://expmag.com/category/exploration/">Exploration</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category site-nav__menu-item menu-item-4533"><a href="https://expmag.com/category/tech-life/">Tech + Life</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category site-nav__menu-item menu-item-4532"><a href="https://expmag.com/category/future-of/">Future Of</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom site-nav__menu-item menu-item-429"><a href="/about">About</a></li>
+</ul>		</nav>
+	</div>
+	<div class="site-footer__bottom">
+		<nav class="site-footer__nav">
+			<div id="site-footer__nav-list--bottom" class="site-footer__nav-list"><ul>
+<li id="menu-item-426" class="site-nav__menu-item menu-item-426"><a></a></li>
+<li id="menu-item-2" class="site-nav__menu-item menu-item-2"><a></a></li>
+</ul></div>
+		</nav>
+		<small>
+			&copy; 2020 <a href="https://www.northeastern.edu/">Northeastern University</a>		</small>
+	</div>
+</footer>
+
+<script type='text/javascript' src='https://expmag.com/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202017.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.4.1',blog:'150878484',post:'4179',tz:'-4',srv:'expmag.com'} ]);
+	_stq.push([ 'clickTrackerInit', '150878484', '4179' ]);
+</script>
+</div><!-- #page -->
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b13aa61332","applicationID":"124795618","transactionName":"ZFBbYxAAXxUAU0QPVl0aeFQWCF4ITkdCB0lDUEs=","queueTime":0,"applicationTime":2249,"atts":"SBdYFVgaTBs=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

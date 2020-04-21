@@ -1,0 +1,2084 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgcGVldWDBABUVJaAAgFUFE=",licenseKey:"252db97b3e",applicationID:"153879265"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(22),a=t(21);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(19),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);n.aborted||(e.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):i(this,t),e.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime]))}}function o(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=c(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,n){t.params.status=n.status;var e=w(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(17),m=t(16),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){i(n,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=f(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),u.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=m(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<l;s++)n.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),u.on("xhr-load-added",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],n)}),u.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],n)}),u.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,n){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)}),u.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(t,n){var e=t.responseType;return"json"===e&&null!==n?n:"arraybuffer"===e||"blob"===e||"json"===e?o(t.response):"text"===e||"document"===e||""===e||void 0===e?o(t.responseText):void 0}var o=t(16);n.exports=r},{}],15:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],16:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],17:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],18:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,n){var e=t.getEntries();e.length>0&&c("lcp",[e[e.length-1]])}function i(t){if(t instanceof u&&!l){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:f.now()-e,l=!0,c("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var l=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],19:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],20:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],21:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],22:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],23:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(15),t(18),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+		The Menace of the Military Mind - Truthdig	</title>
+
+	<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"  data-cbid="2ebcade7-026e-4d92-b129-12bee6189097" type="text/javascript" defer></script><!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+	
+<!-- This site is optimized with the Yoast SEO plugin v13.3 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="I had my first experience with the U.S. military when I was a young reporter covering the civil war in El Salvador. We journalists were briefed at t"/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://www.truthdig.com/articles/the-menace-of-the-military-mind/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Menace of the Military Mind" />
+<meta property="og:description" content="I had my first experience with the U.S. military when I was a young reporter covering the civil war in El Salvador. We journalists were briefed at t" />
+<meta property="og:url" content="https://www.truthdig.com/articles/the-menace-of-the-military-mind/" />
+<meta property="og:site_name" content="Truthdig: Expert Reporting, Current News, Provocative Columnists" />
+<meta property="article:publisher" content="https://www.facebook.com/Truthdig" />
+<meta property="article:tag" content="chris hedges" />
+<meta property="article:tag" content="edward snowden" />
+<meta property="article:tag" content="el salvador" />
+<meta property="article:tag" content="homer" />
+<meta property="article:tag" content="james clapper" />
+<meta property="article:tag" content="military" />
+<meta property="article:tag" content="surveillance" />
+<meta property="article:tag" content="taliban" />
+<meta property="article:tag" content="td originals" />
+<meta property="article:tag" content="usa" />
+<meta property="article:tag" content="war" />
+<meta property="article:section" content="Chris Hedges" />
+<meta property="og:image" content="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg" />
+<meta property="og:image:secure_url" content="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg" />
+<meta property="og:image:width" content="798" />
+<meta property="og:image:height" content="416" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="I had my first experience with the U.S. military when I was a young reporter covering the civil war in El Salvador. We journalists were briefed at t" />
+<meta name="twitter:title" content="The Menace of the Military Mind" />
+<meta name="twitter:site" content="@Truthdig" />
+<meta name="twitter:image" content="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg" />
+<meta name="twitter:creator" content="@Truthdig" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.truthdig.com/#organization","name":"Truthdig","url":"https://www.truthdig.com/","sameAs":["https://www.facebook.com/Truthdig","https://www.instagram.com/truthdig/","https://www.linkedin.com/company/truthdig","https://www.youtube.com/user/truthdig","https://www.pinterest.com/truthdig/","https://twitter.com/Truthdig"],"logo":{"@type":"ImageObject","@id":"https://www.truthdig.com/#logo","inLanguage":"en-US","url":"https://www.truthdig.com/wp-content/uploads/2019/10/truthdig_logo.png","width":957,"height":257,"caption":"Truthdig"},"image":{"@id":"https://www.truthdig.com/#logo"}},{"@type":"WebSite","@id":"https://www.truthdig.com/#website","url":"https://www.truthdig.com/","name":"Truthdig: Expert Reporting, Current News, Provocative Columnists","inLanguage":"en-US","description":"drilling beneath the headlines","publisher":{"@id":"https://www.truthdig.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://www.truthdig.com/?s={search_term_string}","query-input":"required name=search_term_string"}]},{"@type":"ImageObject","@id":"https://www.truthdig.com/articles/the-menace-of-the-military-mind/#primaryimage","inLanguage":"en-US","url":"https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg","width":798,"height":416},{"@type":"WebPage","@id":"https://www.truthdig.com/articles/the-menace-of-the-military-mind/#webpage","url":"https://www.truthdig.com/articles/the-menace-of-the-military-mind/","name":"The Menace of the Military Mind","isPartOf":{"@id":"https://www.truthdig.com/#website"},"inLanguage":"en-US","primaryImageOfPage":{"@id":"https://www.truthdig.com/articles/the-menace-of-the-military-mind/#primaryimage"},"datePublished":"2014-02-03T18:04:28+00:00","dateModified":"2017-08-18T22:14:58+00:00","description":"\n\n\n\t\n\n\nI had my first experience with the U.S. military when I was a young reporter covering the civil war in El Salvador. We journalists were briefed at t","potentialAction":[{"@type":"ReadAction","target":["https://www.truthdig.com/articles/the-menace-of-the-military-mind/"]}]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//ads.vidoomy.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<!-- managing ads with Advanced Ads – https://wpadvancedads.com/ -->		<script>
+			//@formatter:off
+						advanced_ads_ready=function(){var fns=[],listener,doc=typeof document==="object"&&document,hack=doc&&doc.documentElement.doScroll,domContentLoaded="DOMContentLoaded",loaded=doc&&(hack?/^loaded|^c/:/^loaded|^i|^c/).test(doc.readyState);if(!loaded&&doc){listener=function(){doc.removeEventListener(domContentLoaded,listener);window.removeEventListener("load",listener);loaded=1;while(listener=fns.shift())listener()};doc.addEventListener(domContentLoaded,listener);window.addEventListener("load",listener)}return function(fn){loaded?setTimeout(fn,0):fns.push(fn)}}();
+						</script>
+		<link rel='stylesheet' id='main-css-css'  href='https://www.truthdig.com/wp-content/themes/am2/assets/build/main.min.css?ver=1.0.46' type='text/css' media='all' />
+<script type='text/javascript' defer src='//ads.vidoomy.com/truthdig_5074.js?ver=1'></script>
+<link rel='https://api.w.org/' href='https://www.truthdig.com/api/' />
+<link rel='shortlink' href='https://www.truthdig.com/?p=30980' />
+<link rel="alternate" type="application/json+oembed" href="https://www.truthdig.com/api/oembed/1.0/embed?url=https%3A%2F%2Fwww.truthdig.com%2Farticles%2Fthe-menace-of-the-military-mind%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.truthdig.com/api/oembed/1.0/embed?url=https%3A%2F%2Fwww.truthdig.com%2Farticles%2Fthe-menace-of-the-military-mind%2F&#038;format=xml" />
+		<script type="text/javascript">
+			// Set namespace
+			var am2 = {};
+			am2.main = {};
+			// Set global variables
+			am2.ajaxurl 			= "https://www.truthdig.com/wp-admin/admin-ajax.php";
+			am2.current_domain		= window.location.host;
+		</script>
+				 <script type="text/javascript">
+
+
+
+		</script>
+
+		<!-- Fine Uploader template
+	    ====================================================================== -->
+	    <script type="text/template" id="qq-simple-thumbnails-template">
+
+			<div class="qq-uploader-selector qq-uploader input-field file-field ">
+				
+			    
+
+			       	
+					      <div class="btn qq-upload-button-selector qq-upload-button">
+					        <span class="button small-button btn">File</span>
+					      </div>
+					      <div class="file-path-wrapper">
+					      	<ul class=" qq-upload-list-selector qq-upload-list">
+					      		<li>
+						        <!--<span class="qq-drop-processing-selector qq-drop-processing">
+									<span>Processing dropped files...</span>
+									<span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+								</span>-->
+						        <div class="qq-progress-bar-container-selector">
+						          <div class="qq-progress-bar-selector qq-progress-bar"></div>
+						        </div>
+						        <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+						        <!--<img class="qq-thumbnail-selector" qq-max-size="100" qq-server-scale> -->
+						        <!--<span class="qq-edit-filename-icon-selector qq-edit-filename-icon"></span>-->
+						        <span class="qq-upload-file-selector qq-upload-file"></span>
+						        <!--<input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">-->
+						        <span class="qq-upload-size-selector qq-upload-size"></span>
+						        <a class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</a>
+						        <a class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</a>
+						        <a class="qq-upload-delete-selector qq-upload-delete" href="#">Delete</a>
+						        <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+						        </li>
+						       </ul>
+					      </div>
+
+		  	</div>
+		</script>
+					<meta property="fb:pages" content="64639136366" />
+							<meta property="ia:markup_url" content="https://www.truthdig.com/articles/the-menace-of-the-military-mind/?ia_markup=1" />
+				<!-- Stream WordPress user activity plugin v3.4.3 -->
+	<script type="text/javascript">
+        var am2 = {};
+        am2.main = {};
+        am2.functionsQueue = [];
+        am2.infinite = {};
+        // Set global variables
+        am2.ajaxurl       = 'https://www.truthdig.com/wp-admin/admin-ajax.php';
+        am2.apiurl        = 'https://www.truthdig.com/api/rest/v1/';
+        am2.currentDomain    = window.location.host;
+        am2.templateDirectory  = 'https://www.truthdig.com/wp-content/themes/am2';
+    </script>
+    		<script type="application/ld+json">
+					{
+			"@context" : "http://schema.org",
+			"@type" : "NewsArticle",
+			"name" : "The Menace of the Military Mind",
+			"author" : {
+				"@type" : "Person",
+				"name" : "Chris Hedges"
+			},
+			"datePublished" : "2014-02-03",
+			"image" : "https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg",
+			"url" : "https://www.truthdig.com/articles/the-menace-of-the-military-mind/",
+			"publisher" : {
+				"@type" : "Organization",
+				"name" : "Truthdig: Expert Reporting, Current News, Provocative Columnists",
+				"logo" : {
+					"@type" : "ImageObject",
+					"url" : "https://www.truthdig.com/wp-content/uploads/2019/10/truthdig_logo.png"
+				}
+			},
+			"headline" : "The Menace of the Military Mind"
+		}
+			</script>
+		<script type="text/javascript">
+	(function() {
+		/** CONFIGURATION START **/
+		var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+		_sf_async_config.uid = 66057;
+		_sf_async_config.domain = 'truthdig.com';
+		_sf_async_config.flickerControl = false;
+		_sf_async_config.useCanonical = true;
+		_sf_async_config.useCanonicalDomain = true;
+		_sf_async_config.sections = 'Chris Hedges';
+		_sf_async_config.authors = 'Chris Hedges';
+		/** CONFIGURATION END **/
+		function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';;
+			n.parentNode.insertBefore(e, n);
+		}
+		loadChartbeat();
+	})();
+</script>
+<script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+<link rel="amphtml" href="https://www.truthdig.com/articles/the-menace-of-the-military-mind/?amp"><!-- Start GPT Async Tag -->
+<!--<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var gptadslots = [];
+  var googletag = googletag || {cmd:[]};
+</script>
+<script>
+  googletag.cmd.push(function() {
+    var leaderboard = googletag.sizeMapping()
+                            .addSize([1024, 0], [[728, 90]])
+                            .addSize([980, 0], [[728, 90]])
+                            .addSize([640, 0], [[320, 50]])
+                            .addSize([0, 0], [[320, 50]])
+                            .build();
+
+    var widesky = googletag.sizeMapping()
+                            .addSize([1024, 0], [[160, 600]])
+                            .addSize([980, 0], [[160, 600]])
+                            .addSize([0, 0], [[320, 50]])
+                            .build();
+
+    //Adslot 1 declaration
+    gptadslots.push(googletag.defineSlot('/25135005/truthdig_728x90', [[728,90]], 'div-gpt-ad-8569558-1')
+                             .defineSizeMapping(leaderboard)
+                             .addService(googletag.pubads()));
+    //Adslot 2 declaration
+    gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-2')
+                             .addService(googletag.pubads()));
+    //Adslot 3 declaration
+    gptadslots.push(googletag.defineSlot('/25135005/truthdig_160x600', [[160,600]], 'div-gpt-ad-8569558-3')
+                             .defineSizeMapping(widesky)
+                             .addService(googletag.pubads()));
+    //Adslot 4 declaration
+    gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-4')
+                             .addService(googletag.pubads()));
+     //Adslot 5 declaration     
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_btf_728x90', [[728, 90]], 'div-gpt-ad-1508206330782-0')
+     //                       .addService(googletag.pubads()));
+
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-5')
+     //                                   .addService(googletag.pubads()));
+
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-6')
+     //                                   .addService(googletag.pubads()));
+
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-7')
+     //                                   .addService(googletag.pubads()));
+
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-8')
+     //                                   .addService(googletag.pubads()));
+
+     // gptadslots.push(googletag.defineSlot('/25135005/truthdig_300x250', [[300,250]], 'div-gpt-ad-8569558-9')
+     //                                   .addService(googletag.pubads()));
+
+    googletag.enableServices();
+  });
+</script> -->
+<!-- End GPT Async Tag -->
+
+<script src="https://cdn.broadstreetads.com/init-2.min.js" async></script>
+<script>
+document.addEventListener('broadstreetLoaded', function () {
+  broadstreet.watch()
+})
+</script><link rel="icon" href="https://www.truthdig.com/wp-content/uploads/2018/01/cropped-truthdig_td_favicon512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.truthdig.com/wp-content/uploads/2018/01/cropped-truthdig_td_favicon512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.truthdig.com/wp-content/uploads/2018/01/cropped-truthdig_td_favicon512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.truthdig.com/wp-content/uploads/2018/01/cropped-truthdig_td_favicon512-270x270.png" />
+		<style type="text/css" id="wp-custom-css">
+			.comment-share__comments.button {
+	display: none;
+}		</style>
+				<!-- Anti-flicker snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-5X8SND6':true});</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-344431-1', 'truthdig.com');
+ ga('require', 'GTM-5X8SND6') 
+ ga('require', 'linkid', {
+ 'levels': 5
+});
+  ga('send', 'pageview');
+</script>	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a6421c">
+	<link rel="alternate" type="application/rss+xml" title="Truthdig Main Feed (RSS)" href="https://www.truthdig.com/rss-2">
+
+	<meta name="apple-mobile-web-app-title" content="Truthdig">
+	<meta name="application-name" content="Truthdig">
+	<meta name="msapplication-TileColor" content="#ffc40d">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="article-template-default single single-article postid-30980">
+
+
+	<!-- start:all menu -->
+	<div class="all-menu">
+
+		<div class="all-menu__top">
+			<a href="https://www.truthdig.com" class="all-menu__logo">
+									<img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/logo-sm.png" width="137" height="34" alt="Truthdig: Expert Reporting, Current News, Provocative Columnists" />
+							</a>
+			<!-- start:all menu button -->
+			<div class="all-menu-buttons all-menu-buttons--close">
+				<div id="js-all-menu-close" class="all-menu-icon" >
+					<span class="all-menu-icon__line all-menu-icon__line--top"></span>
+					<span class="all-menu-icon__line all-menu-icon__line--middle"></span>
+					<span class="all-menu-icon__line all-menu-icon__line--bottom"></span>
+				</div>
+			</div>
+			<!-- end:all menu button -->
+		</div>
+
+		<div class="all-menu__action">
+			<a href="https://www.truthdig.com/subscribe/" class="button button--medium">Subscribe</a>
+			<div class="all-menu__action-login">
+									<a href="#" data-modal-id="login-modal" class="js-am2-modal-open">Login</a>
+					<a href="#" data-modal-id="login-modal" data-target-tab="tab-modalLogin-1" class="js-am2-modal-open">Register</a>
+							</div>
+		</div>
+
+		<form role="search" method="get" id="searchform-header" class="searchform searchform--clean" action="https://www.truthdig.com/">
+			<input type="text" value="" placeholder="Search by topic, author or tag" name="s" id="s" />
+			<button type="submit" id="searchsubmit">
+				<svg>
+					<title>Search</title>
+					<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--search"></use>
+				</svg>
+			</button>
+		</form>
+
+		<!-- start:all nav -->
+		<nav id="all-nav" class="all-navigation"><ul id="menu-main-menu" class="menu menu--all-menu clearfix"><li id="menu-item-32" class="menu-item--news menu-item--double menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-32"><a href="https://www.truthdig.com/news/">News</a>
+<ul class="sub-menu">
+	<li id="menu-item-102721" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102721"><a href="https://www.truthdig.com/?bucket=activism">Activism</a></li>
+	<li id="menu-item-102264" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102264"><a href="https://www.truthdig.com/?bucket=belief-religion">Belief &#038; Religion</a></li>
+	<li id="menu-item-102265" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102265"><a href="https://www.truthdig.com/?bucket=economy-business">Economy &#038; Business</a></li>
+	<li id="menu-item-102266" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102266"><a href="https://www.truthdig.com/?bucket=education">Education</a></li>
+	<li id="menu-item-102281" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102281"><a href="https://www.truthdig.com/?bucket=environment">Environment</a></li>
+	<li id="menu-item-102267" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102267"><a href="https://www.truthdig.com/?bucket=health">Health</a></li>
+	<li id="menu-item-232315" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232315"><a href="https://www.truthdig.com/?bucket=history">History</a></li>
+	<li id="menu-item-102268" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102268"><a href="https://www.truthdig.com/?bucket=immigration">Immigration</a></li>
+	<li id="menu-item-102269" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102269"><a href="https://www.truthdig.com/?bucket=international">International</a></li>
+	<li id="menu-item-232316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232316"><a href="https://www.truthdig.com/?bucket=justice">Justice</a></li>
+	<li id="menu-item-232317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232317"><a href="https://www.truthdig.com/?bucket=labor">Labor</a></li>
+	<li id="menu-item-102270" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102270"><a href="https://www.truthdig.com/?bucket=lgbtq">LGBTQ+</a></li>
+	<li id="menu-item-102271" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102271"><a href="https://www.truthdig.com/?bucket=media">Media</a></li>
+	<li id="menu-item-102272" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102272"><a href="https://www.truthdig.com/?bucket=military">Military</a></li>
+	<li id="menu-item-102273" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102273"><a href="https://www.truthdig.com/?bucket=national-u-s-a">National (U.S.A.)</a></li>
+	<li id="menu-item-102274" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102274"><a href="https://www.truthdig.com/?bucket=politics">Politics</a></li>
+	<li id="menu-item-192594" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-192594"><a href="https://www.truthdig.com/?bucket=prison">Prison</a></li>
+	<li id="menu-item-102275" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102275"><a href="https://www.truthdig.com/?bucket=race">Race</a></li>
+	<li id="menu-item-102276" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102276"><a href="https://www.truthdig.com/?bucket=science-technology">Science &#038; Technology</a></li>
+	<li id="menu-item-102277" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102277"><a href="https://www.truthdig.com/?bucket=social-issues">Social Issues</a></li>
+	<li id="menu-item-102278" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102278"><a href="https://www.truthdig.com/?bucket=sports">Sports</a></li>
+	<li id="menu-item-102279" class="menu-item menu-item-type-taxonomy menu-item-object-bucket current-menu-item menu-item-102279"><a href="https://www.truthdig.com/?bucket=surveillance" aria-current="page">Surveillance</a></li>
+	<li id="menu-item-102280" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102280"><a href="https://www.truthdig.com/?bucket=women">Women</a></li>
+</ul>
+</li>
+<li id="menu-item-5464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5464"><a href="/opinion">Opinion</a>
+<ul class="sub-menu">
+	<li id="menu-item-102237" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-102237"><a href="https://www.truthdig.com/category/columns/">Columnists</a>
+	<ul class="sub-menu">
+		<li id="menu-item-103525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103525"><a href="https://www.truthdig.com/author/bill_blum/">Bill Blum</a></li>
+		<li id="menu-item-103526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103526"><a href="https://www.truthdig.com/author/bill_boyarsky/">Bill Boyarsky</a></li>
+		<li id="menu-item-103527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103527"><a href="https://www.truthdig.com/author/juan_cole/">Juan Cole</a></li>
+		<li id="menu-item-102300" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102300"><a href="https://www.truthdig.com/author/amy_goodman/">Amy Goodman</a></li>
+		<li id="menu-item-103528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103528"><a href="https://www.truthdig.com/author/chris_hedges/">Chris Hedges</a></li>
+		<li id="menu-item-103530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103530"><a href="https://www.truthdig.com/author/sonali_kolhatkar/">Sonali Kolhatkar</a></li>
+		<li id="menu-item-157029" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157029"><a href="https://www.truthdig.com/author/nomi_prins/">Nomi Prins</a></li>
+		<li id="menu-item-103531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103531"><a href="https://www.truthdig.com/author/robert_scheer/">Robert Scheer</a></li>
+		<li id="menu-item-157030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157030"><a href="https://www.truthdig.com/author/dsjursen/">Maj. Danny Sjursen</a></li>
+		<li id="menu-item-138189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138189"><a href="https://www.truthdig.com/author/paul_street/">Paul Street</a></li>
+		<li id="menu-item-102244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102244"><a href="https://www.truthdig.com/category/humor/">Humor/Satire</a></li>
+		<li id="menu-item-105600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105600"><a href="https://www.truthdig.com/opinion">More</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-5468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5468"><a href="/group/ear-to-the-ground/">Ear to the Ground</a></li>
+<li id="menu-item-103980" class="menu-item menu-item-type-taxonomy menu-item-object-group menu-item-has-children menu-item-103980"><a href="https://www.truthdig.com/group/arts-and-culture/">Arts &#038; Culture</a>
+<ul class="sub-menu">
+	<li id="menu-item-102259" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102259"><a href="https://www.truthdig.com/category/book-excerpt/">Book Excerpts</a></li>
+	<li id="menu-item-102260" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102260"><a href="https://www.truthdig.com/category/book-review/">Book Reviews</a></li>
+	<li id="menu-item-102261" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102261"><a href="https://www.truthdig.com/category/film-review/">Film Features &#038; Reviews</a></li>
+	<li id="menu-item-126194" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-126194"><a href="https://www.truthdig.com/category/in-the-news/">A&#038;C News</a></li>
+	<li id="menu-item-102511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102511"><a href="https://www.truthdig.com/category/visual-arts/">Visual Arts</a></li>
+	<li id="menu-item-102262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102262"><a href="https://www.truthdig.com/category/poetry/">Poetry</a></li>
+</ul>
+</li>
+<li id="menu-item-5469" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5469"><a href="/td-originals">TD Originals</a>
+<ul class="sub-menu">
+	<li id="menu-item-248300" class="menu-item menu-item-type-post_type_archive menu-item-object-article menu-item-248300"><a href="https://www.truthdig.com/articles/">Articles</a></li>
+	<li id="menu-item-129657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129657"><a href="https://www.truthdig.com/group/opinion/?bucket=td-originals">Opinion</a></li>
+	<li id="menu-item-129699" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129699"><a href="https://www.truthdig.com/group/ear-to-the-ground/?bucket=td-originals">Ear to the ground</a></li>
+	<li id="menu-item-129702" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129702"><a href="https://www.truthdig.com/group/arts-and-culture/?bucket=td-originals">Arts and Culture</a></li>
+	<li id="menu-item-103781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103781"><a href="https://www.truthdig.com/dig/">Digs</a></li>
+	<li id="menu-item-103776" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103776"><a href="/scrapbook">Scrapbook</a></li>
+	<li id="menu-item-154280" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154280"><a href="https://www.truthdig.com/nominate-a-truthdigger-of-the-week/">Truthdiggers</a></li>
+	<li id="menu-item-154282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154282"><a href="https://www.truthdig.com/global-voices/">Global Voices</a></li>
+	<li id="menu-item-191207" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-191207"><a href="https://www.truthdig.com/countering-violence-against-women">Countering Violence Against Women</a></li>
+	<li id="menu-item-103775" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-103775"><a href="/multimedia">Multimedia</a>
+	<ul class="sub-menu">
+		<li id="menu-item-187416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-187416"><a href="https://www.truthdig.com/photo-essays/">Photo Essays</a></li>
+		<li id="menu-item-103982" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-103982"><a href="https://www.truthdig.com/category/live-at-truthdig/">Videos</a></li>
+		<li id="menu-item-131310" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-131310"><a href="https://www.truthdig.com/category/scheer-intelligence/">Audio</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-5466" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5466"><a href="/multimedia">Multimedia</a>
+<ul class="sub-menu">
+	<li id="menu-item-99739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99739"><a href="/videos">Videos</a>
+	<ul class="sub-menu">
+		<li id="menu-item-107982" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107982"><a href="https://www.truthdig.com/category/live-at-truthdig/">Live at Truthdig</a></li>
+	</ul>
+</li>
+	<li id="menu-item-99738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99738"><a href="/cartoons">Cartoons</a>
+	<ul class="sub-menu">
+		<li id="menu-item-107698" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107698"><a href="https://www.truthdig.com/category/animations/">Animations</a></li>
+		<li id="menu-item-130608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-130608"><a href="https://www.truthdig.com/category/holiday-animation/">Holiday Animations</a></li>
+		<li id="menu-item-105748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105748"><a href="https://www.truthdig.com/author/mr_fish/">Mr. Fish</a></li>
+		<li id="menu-item-107983" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107983"><a href="https://www.truthdig.com/author/mark_fiore/">Mark Fiore</a></li>
+		<li id="menu-item-105749" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105749"><a href="https://www.truthdig.com/author/jeff_danziger/">Jeff Danziger</a></li>
+		<li id="menu-item-105745" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105745"><a href="https://www.truthdig.com/author/mike_luckovich/">Mike Luckovich</a></li>
+	</ul>
+</li>
+	<li id="menu-item-134353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134353"><a href="https://www.truthdig.com/td-audio/">Audio</a></li>
+	<li id="menu-item-116376" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116376"><a href="https://www.truthdig.com/photo-essays/">Photo Essays</a></li>
+</ul>
+</li>
+<li id="menu-item-5485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5485"><a href="http://freshstore.truthdig.com/">Shop</a>
+<ul class="sub-menu">
+	<li id="menu-item-247552" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247552"><a href="http://freshstore.truthdig.com/">Bookstore</a></li>
+	<li id="menu-item-247551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247551"><a href="https://www.cafepress.com/truthdig">Truthdig Store</a></li>
+</ul>
+</li>
+</ul></nav>		<!-- end:all nav -->
+	</div>
+	<!-- end:all menu -->
+
+
+	<!-- start:rasp nav -->
+	<div class="resp-menu">
+
+		<form role="search" method="get" id="searchform-header-mobile" class="searchform" action="https://www.truthdig.com/">
+
+			<input type="text" value="" placeholder="Search by topic, author or tag" name="s" id="s-mobile" />
+			<button type="submit" id="searchsubmit-mobile">
+				<svg>
+					<title>Search</title>
+					<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--search"></use>
+				</svg>
+			</button>
+
+		</form>
+
+		<nav id="resp-main-nav" class="menu menu--responsive-menu"><ul id="menu-main-menu" class="menu clearfix"><li id="menu-item-32" class="menu-item--news menu-item--double menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32"><a href="https://www.truthdig.com/news/">News</a>
+<ul class="sub-menu">
+	<li id="menu-item-102721" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102721"><a href="https://www.truthdig.com/?bucket=activism">Activism</a></li>
+	<li id="menu-item-102264" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102264"><a href="https://www.truthdig.com/?bucket=belief-religion">Belief &#038; Religion</a></li>
+	<li id="menu-item-102265" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102265"><a href="https://www.truthdig.com/?bucket=economy-business">Economy &#038; Business</a></li>
+	<li id="menu-item-102266" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102266"><a href="https://www.truthdig.com/?bucket=education">Education</a></li>
+	<li id="menu-item-102281" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102281"><a href="https://www.truthdig.com/?bucket=environment">Environment</a></li>
+	<li id="menu-item-102267" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102267"><a href="https://www.truthdig.com/?bucket=health">Health</a></li>
+	<li id="menu-item-232315" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232315"><a href="https://www.truthdig.com/?bucket=history">History</a></li>
+	<li id="menu-item-102268" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102268"><a href="https://www.truthdig.com/?bucket=immigration">Immigration</a></li>
+	<li id="menu-item-102269" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102269"><a href="https://www.truthdig.com/?bucket=international">International</a></li>
+	<li id="menu-item-232316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232316"><a href="https://www.truthdig.com/?bucket=justice">Justice</a></li>
+	<li id="menu-item-232317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232317"><a href="https://www.truthdig.com/?bucket=labor">Labor</a></li>
+	<li id="menu-item-102270" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102270"><a href="https://www.truthdig.com/?bucket=lgbtq">LGBTQ+</a></li>
+	<li id="menu-item-102271" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102271"><a href="https://www.truthdig.com/?bucket=media">Media</a></li>
+	<li id="menu-item-102272" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102272"><a href="https://www.truthdig.com/?bucket=military">Military</a></li>
+	<li id="menu-item-102273" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102273"><a href="https://www.truthdig.com/?bucket=national-u-s-a">National (U.S.A.)</a></li>
+	<li id="menu-item-102274" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102274"><a href="https://www.truthdig.com/?bucket=politics">Politics</a></li>
+	<li id="menu-item-192594" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-192594"><a href="https://www.truthdig.com/?bucket=prison">Prison</a></li>
+	<li id="menu-item-102275" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102275"><a href="https://www.truthdig.com/?bucket=race">Race</a></li>
+	<li id="menu-item-102276" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102276"><a href="https://www.truthdig.com/?bucket=science-technology">Science &#038; Technology</a></li>
+	<li id="menu-item-102277" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102277"><a href="https://www.truthdig.com/?bucket=social-issues">Social Issues</a></li>
+	<li id="menu-item-102278" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102278"><a href="https://www.truthdig.com/?bucket=sports">Sports</a></li>
+	<li id="menu-item-102279" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102279"><a href="https://www.truthdig.com/?bucket=surveillance">Surveillance</a></li>
+	<li id="menu-item-102280" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102280"><a href="https://www.truthdig.com/?bucket=women">Women</a></li>
+</ul>
+</li>
+<li id="menu-item-5464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5464"><a href="/opinion">Opinion</a>
+<ul class="sub-menu">
+	<li id="menu-item-102237" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-102237"><a href="https://www.truthdig.com/category/columns/">Columnists</a></li>
+</ul>
+</li>
+<li id="menu-item-5468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5468"><a href="/group/ear-to-the-ground/">Ear to the Ground</a></li>
+<li id="menu-item-103980" class="menu-item menu-item-type-taxonomy menu-item-object-group menu-item-has-children menu-item-103980"><a href="https://www.truthdig.com/group/arts-and-culture/">Arts &#038; Culture</a>
+<ul class="sub-menu">
+	<li id="menu-item-102259" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102259"><a href="https://www.truthdig.com/category/book-excerpt/">Book Excerpts</a></li>
+	<li id="menu-item-102260" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102260"><a href="https://www.truthdig.com/category/book-review/">Book Reviews</a></li>
+	<li id="menu-item-102261" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102261"><a href="https://www.truthdig.com/category/film-review/">Film Features &#038; Reviews</a></li>
+	<li id="menu-item-126194" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-126194"><a href="https://www.truthdig.com/category/in-the-news/">A&#038;C News</a></li>
+	<li id="menu-item-102511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102511"><a href="https://www.truthdig.com/category/visual-arts/">Visual Arts</a></li>
+	<li id="menu-item-102262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102262"><a href="https://www.truthdig.com/category/poetry/">Poetry</a></li>
+</ul>
+</li>
+<li id="menu-item-5469" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5469"><a href="/td-originals">TD Originals</a>
+<ul class="sub-menu">
+	<li id="menu-item-248300" class="menu-item menu-item-type-post_type_archive menu-item-object-article menu-item-248300"><a href="https://www.truthdig.com/articles/">Articles</a></li>
+	<li id="menu-item-129657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129657"><a href="https://www.truthdig.com/group/opinion/?bucket=td-originals">Opinion</a></li>
+	<li id="menu-item-129699" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129699"><a href="https://www.truthdig.com/group/ear-to-the-ground/?bucket=td-originals">Ear to the ground</a></li>
+	<li id="menu-item-129702" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129702"><a href="https://www.truthdig.com/group/arts-and-culture/?bucket=td-originals">Arts and Culture</a></li>
+	<li id="menu-item-103781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103781"><a href="https://www.truthdig.com/dig/">Digs</a></li>
+	<li id="menu-item-103776" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103776"><a href="/scrapbook">Scrapbook</a></li>
+	<li id="menu-item-154280" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154280"><a href="https://www.truthdig.com/nominate-a-truthdigger-of-the-week/">Truthdiggers</a></li>
+	<li id="menu-item-154282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154282"><a href="https://www.truthdig.com/global-voices/">Global Voices</a></li>
+	<li id="menu-item-191207" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-191207"><a href="https://www.truthdig.com/countering-violence-against-women">Countering Violence Against Women</a></li>
+	<li id="menu-item-103775" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-103775"><a href="/multimedia">Multimedia</a></li>
+</ul>
+</li>
+<li id="menu-item-5466" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5466"><a href="/multimedia">Multimedia</a>
+<ul class="sub-menu">
+	<li id="menu-item-99739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99739"><a href="/videos">Videos</a></li>
+	<li id="menu-item-99738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99738"><a href="/cartoons">Cartoons</a></li>
+	<li id="menu-item-134353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134353"><a href="https://www.truthdig.com/td-audio/">Audio</a></li>
+	<li id="menu-item-116376" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116376"><a href="https://www.truthdig.com/photo-essays/">Photo Essays</a></li>
+</ul>
+</li>
+<li id="menu-item-5485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5485"><a href="http://freshstore.truthdig.com/">Shop</a>
+<ul class="sub-menu">
+	<li id="menu-item-247552" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247552"><a href="http://freshstore.truthdig.com/">Bookstore</a></li>
+	<li id="menu-item-247551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247551"><a href="https://www.cafepress.com/truthdig">Truthdig Store</a></li>
+</ul>
+</li>
+</ul></nav>	</div>
+	<!-- end:rasp nav -->
+
+
+
+<!-- start:wrapper -->
+<div id="wrapper">
+
+	<!-- start:header -->
+	<header id="header" class="header header--site">
+						<div id="masthead-ad" class="masthead__ad">
+			<broadstreet-zone zone-id="66566"></broadstreet-zone>		</div>
+		
+<!--        <div id="header-ad" class="header__ad">-->
+<!---->
+<!--        </div>-->
+
+		<div id="header-top" class="header__top">
+			<div class="wrapper">
+				<div class="container">
+
+					<div class="header__left">
+						<div class="header__disclaimer">&nbsp;</div>
+							<div class="header__newsletter">
+								<div class="header__date">
+									<time datetime="2020-04-20">April 20, 2020</time>
+								</div>
+								<p>&nbsp;</p>
+							</div>
+
+						
+					</div>
+
+					<div class="header__tablet-left">
+						<div class="header__login">
+															<a href="https://www.truthdig.com/subscribe/" class="">Subscribe</a><a   href="#" data-modal-id="login-modal" class="js-am2-modal-open" >Login</a>
+													</div>
+					</div>
+
+										<h1 class="logo">
+						<a href="https://www.truthdig.com" class="logo__link">
+															<img src="https://www.truthdig.com/wp-content/uploads/2017/04/logo.png" width="311" height="84" alt="Truthdig: Expert Reporting, Current News, Provocative Columnists" />
+													</a>
+					</h1>
+					<div class="header__right">
+													<div class="header__disclaimer">
+								<a href="#" data-modal-id="disclaimer-modal" class="js-am2-modal-open">Disclaimer: Please read.</a>
+							</div>
+						
+						<div class="header__actions">
+																						<p class="header__actions-title">Follow us</p>
+								<ul class="social social--header clearfix"><li class="social__item social__item--facebook">
+	                    <a href="http://www.facebook.com/Truthdig" target="_blank" aria-label="facebook-social" title="Go to facebook">
+	                    	<span class="social__icon social__icon--facebook">
+	                    		<svg class="social--facebook">
+	                                <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--facebook"></use>
+	                            </svg>
+	                    	</span>
+	                    </a>
+	                </li><li class="social__item social__item--twitter">
+	                    <a href="https://twitter.com/Truthdig" target="_blank" aria-label="twitter-social" title="Go to twitter">
+	                    	<span class="social__icon social__icon--twitter">
+	                    		<svg class="social--twitter">
+	                                <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--twitter"></use>
+	                            </svg>
+	                    	</span>
+	                    </a>
+	                </li><li class="social__item social__item--instagram">
+	                    <a href="https://www.instagram.com/truthdig/" target="_blank" aria-label="instagram-social" title="Go to instagram">
+	                    	<span class="social__icon social__icon--instagram">
+	                    		<svg class="social--instagram">
+	                                <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--instagram"></use>
+	                            </svg>
+	                    	</span>
+	                    </a>
+	                </li></ul>							
+							<div class="header__login">
+
+																	<a   href="#" data-modal-id="login-modal" class="js-am2-modal-open">Login</a>
+									<a   href="#" data-modal-id="login-modal" data-target-tab="tab-modalLogin-1" class="js-am2-modal-open">Register</a>
+								
+							</div>
+						</div>
+					</div>
+
+					<!-- start:responsive buttons -->
+					<div class="resp-buttons right">
+						<div id="js-resp-menu-toggle" class="resp-menu-icon" on="tap:sidebar2.toggle" role="button" tabindex="0">
+							<span class="resp-menu-icon__line resp-menu-icon__line--top"></span>
+							<span class="resp-menu-icon__line resp-menu-icon__line--middle"></span>
+							<span class="resp-menu-icon__line resp-menu-icon__line--bottom"></span>
+						</div>
+					</div>
+					<!-- start:responsive buttons -->
+
+				</div>
+			</div>
+		</div>
+
+		<div id="header-bottom" class="header__bottom">
+			<div class="wrapper">
+				<div class="container">
+
+					<div class="logo-sm">
+						<a href="https://www.truthdig.com" class="logo-sm__link">
+															<img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/logo-sm.png" width="137" height="34" alt="Truthdig: Expert Reporting, Current News, Provocative Columnists" />
+													</a>
+					</div>
+
+					<!-- start:header__bottom-controls -->
+					<div class="header__bottom-controls">
+
+						<!-- start:all menu button -->
+						<div class="all-menu-buttons">
+							<div id="js-all-menu-toggle" class="all-menu-icon" on="tap:sidebar1.toggle" role="button" tabindex="0">
+								<span class="all-menu-icon__line all-menu-icon__line--top"></span>
+								<span class="all-menu-icon__line all-menu-icon__line--middle"></span>
+								<span class="all-menu-icon__line all-menu-icon__line--bottom"></span>
+							</div>
+						</div>
+						<!-- end:all menu button -->
+
+						<!-- start:main nav -->
+						<nav id="main-nav" class="main-navigation"><ul id="menu-main-menu" class="menu menu--main-menu clearfix"><li id="menu-item-32" class="menu-item--news menu-item--double menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32"><a href="https://www.truthdig.com/news/">News</a>
+<ul class="sub-menu">
+	<li id="menu-item-102721" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102721"><a href="https://www.truthdig.com/?bucket=activism">Activism</a></li>
+	<li id="menu-item-102264" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102264"><a href="https://www.truthdig.com/?bucket=belief-religion">Belief &#038; Religion</a></li>
+	<li id="menu-item-102265" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102265"><a href="https://www.truthdig.com/?bucket=economy-business">Economy &#038; Business</a></li>
+	<li id="menu-item-102266" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102266"><a href="https://www.truthdig.com/?bucket=education">Education</a></li>
+	<li id="menu-item-102281" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102281"><a href="https://www.truthdig.com/?bucket=environment">Environment</a></li>
+	<li id="menu-item-102267" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102267"><a href="https://www.truthdig.com/?bucket=health">Health</a></li>
+	<li id="menu-item-232315" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232315"><a href="https://www.truthdig.com/?bucket=history">History</a></li>
+	<li id="menu-item-102268" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102268"><a href="https://www.truthdig.com/?bucket=immigration">Immigration</a></li>
+	<li id="menu-item-102269" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102269"><a href="https://www.truthdig.com/?bucket=international">International</a></li>
+	<li id="menu-item-232316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232316"><a href="https://www.truthdig.com/?bucket=justice">Justice</a></li>
+	<li id="menu-item-232317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232317"><a href="https://www.truthdig.com/?bucket=labor">Labor</a></li>
+	<li id="menu-item-102270" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102270"><a href="https://www.truthdig.com/?bucket=lgbtq">LGBTQ+</a></li>
+	<li id="menu-item-102271" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102271"><a href="https://www.truthdig.com/?bucket=media">Media</a></li>
+	<li id="menu-item-102272" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102272"><a href="https://www.truthdig.com/?bucket=military">Military</a></li>
+	<li id="menu-item-102273" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102273"><a href="https://www.truthdig.com/?bucket=national-u-s-a">National (U.S.A.)</a></li>
+	<li id="menu-item-102274" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102274"><a href="https://www.truthdig.com/?bucket=politics">Politics</a></li>
+	<li id="menu-item-192594" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-192594"><a href="https://www.truthdig.com/?bucket=prison">Prison</a></li>
+	<li id="menu-item-102275" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102275"><a href="https://www.truthdig.com/?bucket=race">Race</a></li>
+	<li id="menu-item-102276" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102276"><a href="https://www.truthdig.com/?bucket=science-technology">Science &#038; Technology</a></li>
+	<li id="menu-item-102277" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102277"><a href="https://www.truthdig.com/?bucket=social-issues">Social Issues</a></li>
+	<li id="menu-item-102278" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102278"><a href="https://www.truthdig.com/?bucket=sports">Sports</a></li>
+	<li id="menu-item-102279" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102279"><a href="https://www.truthdig.com/?bucket=surveillance">Surveillance</a></li>
+	<li id="menu-item-102280" class="menu-item menu-item-type-taxonomy menu-item-object-bucket menu-item-102280"><a href="https://www.truthdig.com/?bucket=women">Women</a></li>
+</ul>
+</li>
+<li id="menu-item-5464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5464"><a href="/opinion">Opinion</a>
+<ul class="sub-menu">
+	<li id="menu-item-102237" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-102237"><a href="https://www.truthdig.com/category/columns/">Columnists</a>
+	<ul class="sub-menu">
+		<li id="menu-item-103525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103525"><a href="https://www.truthdig.com/author/bill_blum/">Bill Blum</a></li>
+		<li id="menu-item-103526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103526"><a href="https://www.truthdig.com/author/bill_boyarsky/">Bill Boyarsky</a></li>
+		<li id="menu-item-103527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103527"><a href="https://www.truthdig.com/author/juan_cole/">Juan Cole</a></li>
+		<li id="menu-item-102300" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102300"><a href="https://www.truthdig.com/author/amy_goodman/">Amy Goodman</a></li>
+		<li id="menu-item-103528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103528"><a href="https://www.truthdig.com/author/chris_hedges/">Chris Hedges</a></li>
+		<li id="menu-item-103530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103530"><a href="https://www.truthdig.com/author/sonali_kolhatkar/">Sonali Kolhatkar</a></li>
+		<li id="menu-item-157029" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157029"><a href="https://www.truthdig.com/author/nomi_prins/">Nomi Prins</a></li>
+		<li id="menu-item-103531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103531"><a href="https://www.truthdig.com/author/robert_scheer/">Robert Scheer</a></li>
+		<li id="menu-item-157030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157030"><a href="https://www.truthdig.com/author/dsjursen/">Maj. Danny Sjursen</a></li>
+		<li id="menu-item-138189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138189"><a href="https://www.truthdig.com/author/paul_street/">Paul Street</a></li>
+		<li id="menu-item-102244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102244"><a href="https://www.truthdig.com/category/humor/">Humor/Satire</a></li>
+		<li id="menu-item-105600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105600"><a href="https://www.truthdig.com/opinion">More</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-5468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5468"><a href="/group/ear-to-the-ground/">Ear to the Ground</a></li>
+<li id="menu-item-103980" class="menu-item menu-item-type-taxonomy menu-item-object-group current-menu-item menu-item-has-children menu-item-103980"><a href="https://www.truthdig.com/group/arts-and-culture/" aria-current="page">Arts &#038; Culture</a>
+<ul class="sub-menu">
+	<li id="menu-item-102259" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102259"><a href="https://www.truthdig.com/category/book-excerpt/">Book Excerpts</a></li>
+	<li id="menu-item-102260" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102260"><a href="https://www.truthdig.com/category/book-review/">Book Reviews</a></li>
+	<li id="menu-item-102261" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102261"><a href="https://www.truthdig.com/category/film-review/">Film Features &#038; Reviews</a></li>
+	<li id="menu-item-126194" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-126194"><a href="https://www.truthdig.com/category/in-the-news/">A&#038;C News</a></li>
+	<li id="menu-item-102511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102511"><a href="https://www.truthdig.com/category/visual-arts/">Visual Arts</a></li>
+	<li id="menu-item-102262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102262"><a href="https://www.truthdig.com/category/poetry/">Poetry</a></li>
+</ul>
+</li>
+<li id="menu-item-5469" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-5469"><a href="/td-originals">TD Originals</a>
+<ul class="sub-menu">
+	<li id="menu-item-248300" class="menu-item menu-item-type-post_type_archive menu-item-object-article menu-item-248300"><a href="https://www.truthdig.com/articles/">Articles</a></li>
+	<li id="menu-item-129657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129657"><a href="https://www.truthdig.com/group/opinion/?bucket=td-originals">Opinion</a></li>
+	<li id="menu-item-129699" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129699"><a href="https://www.truthdig.com/group/ear-to-the-ground/?bucket=td-originals">Ear to the ground</a></li>
+	<li id="menu-item-129702" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-129702"><a href="https://www.truthdig.com/group/arts-and-culture/?bucket=td-originals" aria-current="page">Arts and Culture</a></li>
+	<li id="menu-item-103781" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103781"><a href="https://www.truthdig.com/dig/">Digs</a></li>
+	<li id="menu-item-103776" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103776"><a href="/scrapbook">Scrapbook</a></li>
+	<li id="menu-item-154280" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154280"><a href="https://www.truthdig.com/nominate-a-truthdigger-of-the-week/">Truthdiggers</a></li>
+	<li id="menu-item-154282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154282"><a href="https://www.truthdig.com/global-voices/">Global Voices</a></li>
+	<li id="menu-item-191207" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-191207"><a href="https://www.truthdig.com/countering-violence-against-women">Countering Violence Against Women</a></li>
+	<li id="menu-item-103775" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-103775"><a href="/multimedia">Multimedia</a>
+	<ul class="sub-menu">
+		<li id="menu-item-187416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-187416"><a href="https://www.truthdig.com/photo-essays/">Photo Essays</a></li>
+		<li id="menu-item-103982" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-103982"><a href="https://www.truthdig.com/category/live-at-truthdig/">Videos</a></li>
+		<li id="menu-item-131310" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-131310"><a href="https://www.truthdig.com/category/scheer-intelligence/">Audio</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-5466" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5466"><a href="/multimedia">Multimedia</a>
+<ul class="sub-menu">
+	<li id="menu-item-99739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99739"><a href="/videos">Videos</a>
+	<ul class="sub-menu">
+		<li id="menu-item-107982" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107982"><a href="https://www.truthdig.com/category/live-at-truthdig/">Live at Truthdig</a></li>
+	</ul>
+</li>
+	<li id="menu-item-99738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-99738"><a href="/cartoons">Cartoons</a>
+	<ul class="sub-menu">
+		<li id="menu-item-107698" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107698"><a href="https://www.truthdig.com/category/animations/">Animations</a></li>
+		<li id="menu-item-130608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-130608"><a href="https://www.truthdig.com/category/holiday-animation/">Holiday Animations</a></li>
+		<li id="menu-item-105748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105748"><a href="https://www.truthdig.com/author/mr_fish/">Mr. Fish</a></li>
+		<li id="menu-item-107983" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-107983"><a href="https://www.truthdig.com/author/mark_fiore/">Mark Fiore</a></li>
+		<li id="menu-item-105749" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105749"><a href="https://www.truthdig.com/author/jeff_danziger/">Jeff Danziger</a></li>
+		<li id="menu-item-105745" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105745"><a href="https://www.truthdig.com/author/mike_luckovich/">Mike Luckovich</a></li>
+	</ul>
+</li>
+	<li id="menu-item-134353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134353"><a href="https://www.truthdig.com/td-audio/">Audio</a></li>
+	<li id="menu-item-116376" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116376"><a href="https://www.truthdig.com/photo-essays/">Photo Essays</a></li>
+</ul>
+</li>
+<li id="menu-item-5485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5485"><a href="http://freshstore.truthdig.com/">Shop</a>
+<ul class="sub-menu">
+	<li id="menu-item-247552" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247552"><a href="http://freshstore.truthdig.com/">Bookstore</a></li>
+	<li id="menu-item-247551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-247551"><a href="https://www.cafepress.com/truthdig">Truthdig Store</a></li>
+</ul>
+</li>
+</ul></nav>						<!-- end:main nav -->
+
+						<a href="#" class="menu-search js-am2-modal-open" data-modal-id="search-modal" onClick="$('#s2').focus();">
+									<span class="menu-search__icon">
+										<svg>
+											<title>Search</title>
+											<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--search"></use>
+										</svg>
+									</span>
+						</a>
+
+					</div>
+					<!-- end:header__bottom-controls -->
+
+				</div>
+			</div>
+		</div>
+
+		<div id="header-small-bottom" class="header__small-bottom">
+			<div class="wrapper">
+				<div class="container">
+
+					<h2 class="header__welcome">Welcome</h2>
+
+					<div class="header__login">
+													<a href="https://www.truthdig.com/subscribe/" class="">Subscribe</a><a   href="#" data-modal-id="login-modal" class="js-am2-modal-open">Login</a>
+											</div>
+
+				</div>
+			</div>
+		</div>
+
+	</header>
+	<!-- end:header -->
+
+	<!-- for slicing purposes -->
+	<div class="psd-debug"></div>
+
+
+    <!-- start:content -->
+    <div id="content">
+
+        <!-- start:main 	-->
+        <main id="main" class="main clearfix">
+
+            
+            
+                <div class="layout layout--single">
+                    <div class="wrapper">
+                        <div class="container">
+                            
+
+<!-- start:primary -->
+<div id="primary" class="content-area content-area--full-width-tablet-mid js-match-height22">
+	
+			<div id="dynamic-single-posts" class="dynamic-single-posts">
+	
+	    <article class="article-item" data-id="30980">
+
+    <div class="article-item__header">
+                        <div class="article-item__meta">
+            <time class="article-item__date" datetime="2014-02-03 13:04:28">Feb 03, 2014</time>
+
+                            <a title="Print this article" href="#"  data-id="30980" class="button__toggle-print-article">
+                                    <!-- Print -->
+                    <svg class="bookmark bookmark--full">
+                        <title>Print</title>
+                        <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--print"></use>
+                    </svg>
+                </a>
+                                                                <a href="#" data-id="30980" class="button__toggle-saved-article button__toggle-saved-article--guest js-am2-modal-open" data-modal-id="guest-bookmark">
+                    <!-- Bookmark -->
+                    <svg class="bookmark">
+                        <title>Bookmark</title>
+                        <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--bookmark"></use>
+                    </svg>
+                </a>
+                                        <a href="" class="article-item__category"></a>
+            
+              <span class="article-item__category"> | </span>  
+                            <a href="https://www.truthdig.com/td-originals" class="article-item__category">TD originals</a>
+                    </div>
+
+        <h1 class="article-item__title ">
+            The Menace of the Military Mind
+        </h1>
+
+        
+                    <div class="layout layout--comment-share layout--comment-share-in-article">
+    <div class="wrapper">
+        <div class="container comment-share ">
+
+            <div class="comment-share__social">
+                <ul class="social-share  clearfix"><li class="social-share__item"><a class="social-share__icon social-share__icon--facebook " rel="nofollow" href="http://www.facebook.com/"
+			onclick="popUp=window.open(
+				'http://www.facebook.com/sharer/sharer.php?u=https://www.truthdig.com/articles/the-menace-of-the-military-mind/&title=The Menace of the Military Mind',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Facebook</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--facebook"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--twitter" rel="nofollow"
+			href="http://twitter.com/"
+			onclick="popUp=window.open(
+				'http://twitter.com/intent/tweet?status=The Menace of the Military Mind+https://www.truthdig.com/articles/the-menace-of-the-military-mind/',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Twitter</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--twitter"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--reddit" rel="nofollow"
+			href="http://www.reddit.com/"
+			onclick="popUp=window.open(
+				'http://www.reddit.com/submit?url=https://www.truthdig.com/articles/the-menace-of-the-military-mind/&title=The Menace of the Military Mind',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Reddit</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--reddit"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--email"
+			href="mailto:?subject=The Menace of the Military Mind&body=I've just read 'The Menace of the Military Mind' at https://www.truthdig.com/articles/the-menace-of-the-military-mind/">
+			<svg>
+			<title>Email this link</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--email"></use>
+			</svg>
+		</a></li></ul>
+            </div>
+
+            <div class="comment-share__bookmark">
+                                                            </div>
+
+        </div>
+    </div>
+</div>
+        
+        <figure class="article-item__thumbnail article-item__caption-align">
+                            <img
+                src="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg"
+                data-srcset="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798.jpg 798w, https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798-300x156.jpg 300w, https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798-768x400.jpg 768w"
+                data-sizes="100vw"
+                alt=""
+                class="article-item__thumbnail-image resp lazyload">
+                                    <figcaption>
+Director of National Intelligence James Clapper, center, and other officials testify on Capitol Hill last Wednesday at a Senate Intelligence Committee hearing on national security threats. From left: National Counterterrorism Center Director Matthew Olsen, FBI Director James Comey, Clapper, CIA Director John Brennan and Defense Intelligence Agency Director Lt. Gen. Michael Flynn. (AP/Pablo Martinez Monsivais)
+	</figcaption>
+                                                                                                                                                        </figure>
+    </div>
+
+    <div class="article-item__content am2-content">
+
+        
+
+        <div class="article_main_image"></div>
+<p>I had my first experience with the U.S. military when I was a young reporter covering the civil war in El Salvador. We journalists were briefed at the American Embassy each week by a U.S. Army colonel who at the time headed the military group of U.S. advisers to the Salvadoran army. The reality of the war, which lasted from 1979 to 1992, bore little resemblance to the description regurgitated each week for consumption by the press. But what was most evident was not the blatant misinformation &#8212; this particular colonel had apparently learned to dissemble to the public during his multiple tours in Vietnam &#8212; but the hatred of the press by this man and most other senior officers in the U.S. military. When first told that he would have to meet the press once a week, the colonel reportedly protested against having to waste his time with those &#8220;limp-dicked communists.&#8221;</p>
+<p>For the next 20 years I would go on from war zone to war zone as a foreign correspondent immersed in military culture. Repetitive rote learning and an insistence on blind obedience &#8212; similar to the approach used to train a dog &#8212; work on the battlefield. The military exerts nearly total control over the lives of its members. Its long-established hierarchy ensures that those who embrace the approved modes of behavior rise and those who do not are belittled, insulted and hazed. Many of the marks of civilian life are stripped away. Personal modes of dress, hairstyle, speech and behavior are heavily regulated. Individuality is physically and then psychologically crushed. Aggressiveness is rewarded. Compassion is demeaned. Violence is the favorite form of communication. These qualities are an asset in war; they are a disaster in civil society. </p>
+<p>Homer in &#8220;The Iliad&#8221; showed his understanding of war. His heroes are not pleasant men. They are vain, imperial, filled with rage and violent. And Homer’s central character in &#8220;The Odyssey,&#8221; Odysseus, in his journey home from war must learn to shed his &#8220;hero’s heart,&#8221; to strip from himself the military attributes that served him in war but threaten to doom him off the battlefield. The qualities that serve us in war defeat us in peace.</p>
+<p>Most institutions have a propensity to promote mediocrities, those whose primary strengths are knowing where power lies, being subservient and obsequious to the centers of power and never letting morality get in the way of one’s career. The military is the worst in this respect. In the military, whether at the Parris Island boot camp or West Point, you are trained not to think but to obey. What amazes me about the military is how stupid and bovine its senior officers are. Those with brains and the willingness to use them seem to be pushed out long before they can rise to the senior-officer ranks. The many Army generals I met over the years not only lacked the most rudimentary creativity and independence of thought but nearly always saw the press, as well as an informed public, as impinging on their love of order, regimentation, unwavering obedience to authority and single-minded use of force to solve complex problems.</p>
+<div class="truth-article-page-small"><broadstreet-zone zone-id="58577"></broadstreet-zone></div>
+<p>So when I heard James R. Clapper Jr., a retired Air Force lieutenant general and currently the federal government&#8217;s director of national intelligence, <a href="http://www.huffingtonpost.com/2014/01/29/snowden-accomplices_n_4689123.html%20">denounce Edward Snowden</a> and his &#8220;accomplices&#8221; &#8212; meaning journalists such as Glenn Greenwald and Laura Poitras &#8212; before the Senate Intelligence Committee last week I was not surprised. Clapper charged, without offering any evidence, that the Snowden disclosures had caused &#8220;profound damage&#8221; and endangered American lives. And all who have aided Snowden are, it appears, guilty of treason in Clapper’s eyes. </p>
+<p>Clapper and many others who have come out of the military discern no difference between terrorists and reporters, and by reporters I am not referring to the boot-licking courtiers on television and in Washington who masquerade as reporters. Carry out an interview with a member of al-Qaida, as I have, and you become in the eyes of generals like Clapper a member of al-Qaida. Most generals I know recognize no need for an independent press. The munchkins who dutifully sit through their press briefings or follow them around in preapproved press pools and publish their lies are the generals&#8217; idea of journalism.<br />
+When I was in Central America the U.S. officers who were providing support to the military of El Salvador or Guatemala, along with help to the <a href="http://www.brown.edu/Research/Understanding_the_Iran_Contra_Affair/n-contras.php%20">Contra forces</a> then fighting the Sandinista government in Nicaragua, did not distinguish between us journalists and the rebel forces or the leftist Sandinista government. We were one and the same. The reporters and photographers, often after a day or two of hiking to reach small villages, would report on massacres by the Salvadoran army, the Guatemalan army or the Contras. When the stories appeared, the U.S. officers usually would go volcanic. But their rage would be directed not at those who pulled the triggers but at those who wrote about the mass killings or photographed the bodies. </p>
+<p>This is why, after Barack Obama signed into law Section 1021 of the National Defense Authorization Act, which permits the U.S. military to seize U.S. citizens who &#8220;substantially support&#8221; al-Qaida, the Taliban or &#8220;associated forces,&#8221; to strip them of due process and to hold them indefinitely in military detention centers, I sued the president. I and my fellow plaintiffs won in U.S. District Court. When Obama appealed the ruling it was overturned. We are now trying to go to the Supreme Court. Section 1021 is a chilling reminder of what people like Clapper could do to destroy constitutional rights. They see no useful role for a free press, one that questions and challenges power, and are deeply hostile to its existence. I expect Clapper, if he has a free hand, to lock us up, just as the Egyptian military has <a href="http://www.telegraph.co.uk/news/worldnews/africaandindianocean/egypt/10605016/Egypt-to-put-20-al-Jazeera-journalists-on-trial.html%20">arrested a number</a> of Al-Jazeera journalists, including some Westerners, on terrorism-related charges. The military mind is amazingly uniform.</p>
+<p>The U.S. military has won the ideological war. The nation sees human and social problems as military problems. To fight terrorists Americans have become terrorists. Peace is for the weak. War is for the strong. Hypermasculinity has triumphed over empathy. We Americans speak to the world exclusively in the language of force. And those who oversee our massive security and surveillance state seek to speak to us in the same demented language. All other viewpoints are to be shut out. &#8220;In the absence of contrasting views, the very highest form of propaganda warfare can be fought: the propaganda for a definition of reality within which only certain limited viewpoints are possible,&#8221; <a href="http://infed.org/mobi/c-wright-mills-power-craftsmanship-and-private-troubles-and-public-issues/%20">C. Wright Mills</a> wrote. &#8220;What is being promulgated and reinforced is the military metaphysics &#8212; the cast of mind that defines international reality as basically military.&#8221;</p>
+<p>This is why people like James Clapper and the bloated military and security and surveillance apparatus must not have unchecked power to conduct wholesale surveillance, to carry out <a href="http://www.opensocietyfoundations.org/voices/20-extraordinary-facts-about-cia-extraordinary-rendition-and-secret-detention%20">extraordinary renditions</a> and to imprison Americans indefinitely as terrorists. This is why the nation, as our political system remains mired in paralysis, must stop glorifying military values. In times of turmoil the military always seems to be a good alternative. It presents the facade of order. But order in the military, as the people of Egypt are now learning again, is akin to slavery. It is the order of a prison. And that is where Clapper and his fellow generals and intelligence chiefs would like to place any citizen who dares to question their unimpeded right to turn us all into mindless recruits. They have the power to make their demented dreams a reality. And it is our task to take this power from them. </p>
+<p><i>Editor&#8217;s note: In an earlier version of this column, the word &#8220;Parris&#8221; in &#8220;Parris Island boot camp&#8221; was spelled incorrectly.<br />
+</i></p>
+
+
+
+        
+
+
+
+    </div> <!-- end:article-item__content am2-content -->
+
+            <div class="people people--in-content  " id="17">
+            <figure class="people__image"  style="background-image: url('https://www.truthdig.com/wp-content/uploads/2017/08/hedgesnew_350.jpg');">
+                            <a href="https://www.truthdig.com/author/chris_hedges/" class="people__image-link"></a>
+                                </figure>
+    
+            <h5 class="people__name ">
+                            <a href="https://www.truthdig.com/author/chris_hedges/">Chris Hedges</a>                    </h5>
+    
+            <div class="people__job-title">
+            Columnist
+        </div>
+    
+    
+            <div class=" people__description">
+            Chris Hedges is a Truthdig columnist, a Pulitzer Prize-winning journalist, a New York Times best-selling author, a professor in the college degree program offered to New Jersey state prisoners by Rutgers…
+            
+        </div>
+                    <a href="https://www.truthdig.com/author/chris_hedges/" class=" people__read-more-link ">
+                <img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/arrow.svg" alt="Chris Hedges" class="people__read-more-svg">
+            </a>
+            
+    
+    </div>
+
+
+
+    
+    
+    
+                    <div class="tags-list clearfix">
+    <h5 class="tags-list__title">In this article:</h5>
+    <div class="tags-list__list">
+                    <a href="https://www.truthdig.com/tag/chris-hedges" rel="tag">chris hedges</a>
+                    <a href="https://www.truthdig.com/tag/edward-snowden" rel="tag">edward snowden</a>
+                    <a href="https://www.truthdig.com/tag/el-salvador" rel="tag">el salvador</a>
+                    <a href="https://www.truthdig.com/tag/homer" rel="tag">homer</a>
+                    <a href="https://www.truthdig.com/tag/james-clapper" rel="tag">james clapper</a>
+                    <a href="https://www.truthdig.com/tag/military" rel="tag">military</a>
+                    <a href="https://www.truthdig.com/tag/surveillance" rel="tag">surveillance</a>
+                    <a href="https://www.truthdig.com/tag/taliban" rel="tag">taliban</a>
+                    <a href="https://www.truthdig.com/tag/td-originals" rel="tag">td originals</a>
+                    <a href="https://www.truthdig.com/tag/usa" rel="tag">usa</a>
+                    <a href="https://www.truthdig.com/tag/war" rel="tag">war</a>
+            </div>
+</div>    
+
+            <div class="layout layout--comment-share layout--comment-share-in-article">
+    <div class="wrapper">
+        <div class="container comment-share ">
+
+            <div class="comment-share__social">
+                <ul class="social-share  clearfix"><li class="social-share__item"><a class="social-share__icon social-share__icon--facebook " rel="nofollow" href="http://www.facebook.com/"
+			onclick="popUp=window.open(
+				'http://www.facebook.com/sharer/sharer.php?u=https://www.truthdig.com/articles/the-menace-of-the-military-mind/&title=The Menace of the Military Mind',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Facebook</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--facebook"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--twitter" rel="nofollow"
+			href="http://twitter.com/"
+			onclick="popUp=window.open(
+				'http://twitter.com/intent/tweet?status=The Menace of the Military Mind+https://www.truthdig.com/articles/the-menace-of-the-military-mind/',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Twitter</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--twitter"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--reddit" rel="nofollow"
+			href="http://www.reddit.com/"
+			onclick="popUp=window.open(
+				'http://www.reddit.com/submit?url=https://www.truthdig.com/articles/the-menace-of-the-military-mind/&title=The Menace of the Military Mind',
+				'popupwindow',
+				'scrollbars=yes,width=800,height=400');
+			popUp.focus();
+			return false">
+			<svg>
+			<title>Share on Reddit</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--reddit"></use>
+			</svg>
+		</a></li><li class="social-share__item"><a class="social-share__icon social-share__icon--email"
+			href="mailto:?subject=The Menace of the Military Mind&body=I've just read 'The Menace of the Military Mind' at https://www.truthdig.com/articles/the-menace-of-the-military-mind/">
+			<svg>
+			<title>Email this link</title>
+				<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--email"></use>
+			</svg>
+		</a></li></ul>
+            </div>
+
+            <div class="comment-share__bookmark">
+                                                            </div>
+
+        </div>
+    </div>
+</div>
+        <div style="float:left; width: 100%;" class="disqus-thread" data-thread="30980" data-permalink="https://www.truthdig.com/articles/the-menace-of-the-military-mind/">
+    </div>
+
+
+    
+    
+
+</article>
+<div wibbitz="embed-main-player"></div>
+    
+			</div>
+		<div id="dynamic-single-posts-loading" class="dynamic-single-posts-loading" data-ids="30980,31008,30996,31019,31022">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+	
+</div>
+<!-- end:primary -->
+
+<!-- start:secondary -->
+<aside id="secondary" class="sidebar widget-area sidebar--full-width-tablet-mid sidebar--no-padding js-match-height" role="complementary">
+
+	<div id="am2-accordion-trending" class="am2-accordion am2-accordion--trending">
+            <div class="am2-accordion__panel  am2-accordion__panel--current ">
+            <h3 class="am2-accordion__panel-title">
+                                    <div class="am2-accordion__title-icon-box">
+                        <span class="am2-accordion__title-icon am2-accordion__title-icon--icon--eye">
+                            <svg>
+                                <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--eye"></use>
+                            </svg>
+                        </span>
+                    </div>
+                
+                Most Popular
+            </h3>
+            <div class="am2-accordion__panel-content" style=" display: block; ">
+                <div class="content-list content-list--accordion">
+
+    
+    <ul class="content-list__list">
+
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/if-trump-declares-martial-law-due-to-coronavirus-can-he-suspend-the-election/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2020/03/20200313emb750x450-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">If Trump Declares Martial Law Due to Coronavirus, Can He Suspend the Election?</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                 Martina Moneke / Truthdig</p>
+
+                    
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/the-one-choice-election/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2020/03/Fish-for-Hedges-March-9-Biden-2020-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">The One-Choice Election</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Chris Hedges</p>
+
+                    
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/an-open-letter-from-truthdigs-publisher-ceo-breaking-my-silence/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2020/03/ZK-response-image7-150x150.png" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">Open Letter from Truthdig’s Publisher & CEO: Breaking My Silence</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Zuade Kaufman</p>
+
+                    
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/joe-biden-unmasked/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2019/04/bidenbolen-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">Joe Biden Unmasked</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Tangerine Bolen</p>
+
+                    
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/the-coming-collapse/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2018/05/Fish-Trump-on-the-Half-Shell-Hedges-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">The Coming Collapse</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Chris Hedges</p>
+
+                    
+                    
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </div>
+            <div class="am2-accordion__panel ">
+            <h3 class="am2-accordion__panel-title">
+                                    <div class="am2-accordion__title-icon-box">
+                        <span class="am2-accordion__title-icon am2-accordion__title-icon--icon--share">
+                            <svg>
+                                <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--share"></use>
+                            </svg>
+                        </span>
+                    </div>
+                
+                Most Shared
+            </h3>
+            <div class="am2-accordion__panel-content" style="">
+                <div class="content-list content-list--accordion-simple">
+
+    
+    <ul class="content-list__list">
+
+        
+    </ul>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "am2-accordion-trending"
+        };
+        am2.main.accordion(args);
+      });
+
+</script>
+	<span id="sticky-sidebar-helper" class="sticky-sidebar-helper"></span>
+	<div id="sticky-sidebar" class="sticky-sidebar">
+
+		<div id="dig-this" class="dig-this" data-state="0">
+
+    <div id="dig-this-bar" class="dig-this__bar">
+
+        <div class="dig-this__title">
+            Dig this
+            <span class="dig-this__icon">
+                <svg>
+                    <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--digg-symbol"></use>
+                </svg>
+            </span>
+        </div>
+
+        <span class="dig-this__bar-link">Dig This Menu Toggle</span>
+
+    </div>
+
+    <div class="dig-this__content">
+        <div class="content-list content-list--numbered">
+
+            <div class="content-list__title">Dig this            <span class="content-list__icon">
+                <svg>
+                    <use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--digg-symbol"></use>
+                </svg>
+            </span>
+            </div>
+    
+    <ul class="content-list__list">
+
+                    <li class="content-list__item content-list__item--active">
+                <a href="https://www.truthdig.com/articles/the-menace-of-the-military-mind/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2017/06/clapperhedges_798-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">The Menace of the Military Mind</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Chris Hedges</p>
+
+                    
+                                        <span class="content-list__progressbar js-content-list-progress-bar" data-id="30980"></span>
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/truthdigger-of-the-week-vera-scroggins/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2017/06/Screen_Shot_2014-02-01_at_5.29_.36_PM_-150x150.png" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">Truthdigger of the Week: Vera Scroggins</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Alexander Reed Kelly</p>
+
+                    
+                                        <span class="content-list__progressbar js-content-list-progress-bar" data-id="31008"></span>
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/penguins-feel-climate-changes-impacts/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2017/06/5585859379_9389ddd2e1_z-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">Penguins Feel Climate Change’s Impacts</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                 Tim Radford, Climate News Network</p>
+
+                    
+                                        <span class="content-list__progressbar js-content-list-progress-bar" data-id="30996"></span>
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/christie-clapper-and-other-officials-who-should-be-in-jail-instead-of-snowden/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2017/06/snowdeneyes_360-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">Christie, Clapper and Other Officials Who Should Be in Jail Instead of Snowden</span>
+                    
+                                            <p class="content-list__author">
+                                                by
+                                                Juan Cole</p>
+
+                    
+                                        <span class="content-list__progressbar js-content-list-progress-bar" data-id="31019"></span>
+                    
+                </a>
+            </li>
+                    <li class="content-list__item ">
+                <a href="https://www.truthdig.com/articles/state-department-finally-releases-list-of-special-government-employees/" >
+
+                                            <figure class="content-list__image">
+                            <img class="lazyload" data-src="https://www.truthdig.com/wp-content/uploads/2017/06/hillaryhuma_360-150x150.jpg" width="150" height="150" alt="article image">
+                        </figure>
+                                                            <span class="content-list__item-title">State Department Finally Releases List of ‘Special Government Employees’</span>
+                    
+                    
+                                        <span class="content-list__progressbar js-content-list-progress-bar" data-id="31022"></span>
+                    
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+</div>
+<span id="dig-this-overlay" class="dig-this-overlay"></span>		<div wibbitz="embed-player-widget" class="embed-player-widget"></div>
+		
+	                <div class="sidebar__ad">
+            <div class="truth-single-article-sidebar" id="truth-1866008890"><broadstreet-zone zone-id="14907"></broadstreet-zone></div>        </div>
+        
+	</div>
+
+
+</aside>
+
+<!-- end:secondary -->
+
+
+<div class="more-in-category clearfix"><h5 class="more-in-category__title-upper">More in <span>Chris Hedges</span></h5><article class="more-in-category__col col-14">
+                                        <a href="https://www.truthdig.com/articles/the-one-choice-election/" class="more-in-category__thumbnail" title="The One-Choice Election">
+            <figure class="more-in-category__thumbnail-image">
+                <img src="https://www.truthdig.com/wp-content/uploads/2020/03/Fish-for-Hedges-March-9-Biden-2020-150x150.jpg" alt="The One-Choice Election">
+            </figure>
+        </a>
+            
+    <div class="more-in-category__content">
+
+        <h2 class="more-in-category__title">
+            <a href="https://www.truthdig.com/articles/the-one-choice-election/">The One-Choice Election</a>
+        </h2>
+
+                    <div class="more-in-category__meta">
+                                    by <a href="https://www.truthdig.com/author/chris_hedges/" class="more-in-category__author">Chris Hedges</a>
+                            </div>
+        
+    </div>
+
+</article>
+<article class="more-in-category__col col-14">
+                                        <a href="https://www.truthdig.com/articles/class-the-little-word-the-elites-want-you-to-forget/" class="more-in-category__thumbnail" title="Class: The Little Word the Elites Want You to Forget">
+            <figure class="more-in-category__thumbnail-image">
+                <img src="https://www.truthdig.com/wp-content/uploads/2020/03/Fish-Sanders-150x150.jpg" alt="Class: The Little Word the Elites Want You to Forget">
+            </figure>
+        </a>
+            
+    <div class="more-in-category__content">
+
+        <h2 class="more-in-category__title">
+            <a href="https://www.truthdig.com/articles/class-the-little-word-the-elites-want-you-to-forget/">Class: The Little Word the Elites Want You to Forget</a>
+        </h2>
+
+                    <div class="more-in-category__meta">
+                                    by <a href="https://www.truthdig.com/author/chris_hedges/" class="more-in-category__author">Chris Hedges</a>
+                            </div>
+        
+    </div>
+
+</article>
+<article class="more-in-category__col col-14">
+                                        <a href="https://www.truthdig.com/articles/the-zionist-colonization-of-palestine/" class="more-in-category__thumbnail" title="The Zionist Colonization of Palestine">
+            <figure class="more-in-category__thumbnail-image">
+                <img src="https://www.truthdig.com/wp-content/uploads/2020/02/Fish-Palestine-150x150.jpg" alt="The Zionist Colonization of Palestine">
+            </figure>
+        </a>
+            
+    <div class="more-in-category__content">
+
+        <h2 class="more-in-category__title">
+            <a href="https://www.truthdig.com/articles/the-zionist-colonization-of-palestine/">The Zionist Colonization of Palestine</a>
+        </h2>
+
+                    <div class="more-in-category__meta">
+                                    by <a href="https://www.truthdig.com/author/chris_hedges/" class="more-in-category__author">Chris Hedges</a>
+                            </div>
+        
+    </div>
+
+</article>
+<article class="more-in-category__col col-14">
+                                        <a href="https://www.truthdig.com/articles/the-new-rules-of-the-game/" class="more-in-category__thumbnail" title="The New Rules of the Game">
+            <figure class="more-in-category__thumbnail-image">
+                <img src="https://www.truthdig.com/wp-content/uploads/2020/02/Fish-Hedges-Tracking-the-Election-150x150.jpg" alt="The New Rules of the Game">
+            </figure>
+        </a>
+            
+    <div class="more-in-category__content">
+
+        <h2 class="more-in-category__title">
+            <a href="https://www.truthdig.com/articles/the-new-rules-of-the-game/">The New Rules of the Game</a>
+        </h2>
+
+                    <div class="more-in-category__meta">
+                                    by <a href="https://www.truthdig.com/author/chris_hedges/" class="more-in-category__author">Chris Hedges</a>
+                            </div>
+        
+    </div>
+
+</article>
+</div>
+
+<script>
+    function PrintElem(elem)  {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) {
+        var mywindow = window.open('', 'new div', 'height=500,width=700');
+        mywindow.document.write('<html><head><title>Print Article</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body ></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+    window.addEventListener('load',function() {
+
+        $('.button__toggle-print-article').on('click', function () {
+          var ID = $(this).data('id');
+//            var elemToPrint = $('article[data-id="'+ID+'"]').innerHTML;
+//            var stylesheet = $('link').first().attr('href');
+        });
+
+        $('body').on('click', '.button__toggle-print-article', function (e) {
+          e.preventDefault();
+          var div = $(this).closest('article.article-item').clone();
+          div.find('.layout--comment-share').remove();
+          div.find('.article-item__meta').remove();
+          div.find('.people__read-more-link').remove();
+          div.find('iframe').remove();
+          div.find('broadstreet-zone-container').remove();
+          div.find('.related-articles').remove();
+          div.find('.tags-list').remove();
+          var people_html = '';
+          div.find('.people').each(function () {
+            people_html += $(this).html();
+          });
+          div.find('.people').remove();
+          div.find('.article-item__title').after(people_html);
+          var data_id = $(this).data('id');
+          console.log(data_id);
+          var content_list_progress = $('.content-list__progressbar[data-id="' + data_id + '"]');
+          console.log(content_list_progress);
+          var window_href = content_list_progress.closest('a').attr('href');
+          div.append('<p>Article Link: ' + window_href + '</p>');
+          //div.detach('.layout--comment-share-in-article');
+          PrintElem(div);
+        });
+
+      });
+
+</script>
+                        </div>
+                    </div>
+                </div>
+
+            
+        </main>
+        <!-- end:main -->
+
+    </div>
+    <!-- end:content -->
+
+<div id="guest-bookmark" class="am2-modal" data-state="0">
+
+    <div class="am2-modal__overlay js-am2-modal-close"></div>
+
+    <div class="am2-modal__wrapper">
+
+        <div class="am2-modal__content">
+
+            <span class="am2-modal__close js-am2-modal-close"></span>
+
+
+                            <img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/logo-sm.png" class="am2-modal__logo" width="137" height="34" alt="image">
+            
+            
+            
+            <p>Now you can personalize your Truthdig experience. To bookmark your favorite articles, please <a href="#" data-modal-id="login-modal" class="js-am2-modal-open">create a user profile</a>.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "guest-bookmark"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "search-modal"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+
+			            <div id="footer-ad" class="footer__ad">
+				<broadstreet-zone zone-id="66568"></broadstreet-zone>            </div>
+                        <!-- start:footer -->
+			<footer id="footer" class="footer">
+
+				<div class="footer__nav">
+					<div class="wrapper">
+						<div class="container clearfix">
+
+							<!-- start:footer nav -->
+							<nav id="footer-nav" class="menu menu--footer-menu"><ul id="menu-footer-menu" class="menu clearfix"><li id="menu-item-721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-721"><a href="https://www.truthdig.com/about-us/">About Truthdig</a></li>
+<li id="menu-item-128301" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-128301"><a href="https://www.truthdig.com/events/">Events</a></li>
+<li id="menu-item-722" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-722"><a href="https://www.truthdig.com/advertise/">Advertise</a></li>
+<li id="menu-item-723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-723"><a href="https://www.truthdig.com/jobs/">Jobs</a></li>
+<li id="menu-item-724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-724"><a href="https://www.truthdig.com/contact/">Contact us</a></li>
+<li id="menu-item-725" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-725"><a href="https://www.truthdig.com/privacy-policy/">Privacy Policy &#038; User Agreement</a></li>
+</ul></nav>							<!-- end:footer nav -->
+
+						</div>
+					</div>
+				</div>
+
+									<div class="footer__copyright">
+						<div class="wrapper">
+							<div class="container clearfix">
+
+								<p>An Independent, Progressive Journal of News and Opinion. Publisher, Zuade Kaufman, and Editor in Chief, Robert Scheer.</p>
+<p>All content © 2020 Truthdig, LLC. All rights reserved.</p>
+
+							</div>
+						</div>
+					</div>
+				
+			</footer>
+			<!-- end:footer -->
+
+			<div id="login-modal" class="am2-modal" data-state="0">
+
+    <div class="am2-modal__overlay js-am2-modal-close"></div>
+
+    <div class="am2-modal__wrapper">
+
+        <div class="am2-modal__content">
+
+            <span class="am2-modal__close js-am2-modal-close"></span>
+
+
+                            <img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/logo-sm.png" class="am2-modal__logo" width="137" height="34" alt="image">
+            
+                            <div id="js-modal-message-register" class="am2-modal__message">
+                    Personalize your Truthdig experience. Choose authors to follow, bookmark your favorite articles and more.
+                </div>
+            
+                            <div  id="js-modal-message-login" class="am2-modal__message">
+                    Your Truthdig, your way. Access your favorite authors, articles and more.
+                </div>
+            
+            
+<div id="am2-tabs-modalLogin" class="am2-tabs">
+    	<!-- start:tab-titles -->
+	<ul class="am2-tabs__titles"><!--
+		--><li class="am2-tabs__title">
+			<a href="#tab-modalLogin-0" class="am2-tabs__link">Login</a>
+		</li><!--
+
+		--><li class="am2-tabs__title">
+			<a href="#tab-modalLogin-1" class="am2-tabs__link">Register</a>
+		</li><!--
+
+		--><li class="am2-tabs__title" style="display: none;">
+			<a href="#tab-modalLogin-2" class="am2-tabs__link">Pass</a>
+		</li><!--
+	--></ul>
+	<!-- end:tab-titles -->
+
+	<!-- start:tab-panels -->
+	<div class="am2-tabs__panels">
+
+		<div id="login-tab" class="am2-tabs__panel lwa lwa-divs-only">
+            <div class="login-social">
+				<!--
+				--><a href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=https%3A%2F%2Fwww.truthdig.com%2Fwp-admin%2Fadmin-ajax.php%3Faction%3Dtruthdig_glogin&client_id=1089531985036-6t4bg23g0p2qv0qci1etcnnup32cmm4q.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=online&approval_prompt=auto" aria-label="social-login" title="Login with social media account">
+					<span class="login-social__icon login-social__icon--googleplus">
+						<svg class="login-social--googleplus">
+							<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--googleplus"></use>
+						</svg>
+					</span>
+				</a><!--
+			--></div>
+			<div class="divider-or"><span>or</span></div>
+
+            <form name="loginform" id="loginform" class="form login-form clearfix lwa-form" action="https://www.truthdig.com/wp-login.php" method="post">
+
+				<div class="form__row">
+                    <input aria-label="user-login" type="text" placeholder="Username or Email" name="log" id="user_login" class="form__input" value="" size="20">
+				</div>
+
+				<div class="form__row">
+					<input aria-label="user-password" type="password" placeholder="Password" name="pwd" id="user_pass" class="form__input" value="" size="20">
+				</div>
+
+				<div class="form__row">
+					<input type="submit" name="wp-submit" id="wp-submit" class="button button--form" value="Login">
+					<input type="hidden" name="redirect_to" value="https://www.truthdig.com/articles/the-menace-of-the-military-mind">
+					<input type="hidden" name="login-with-ajax" value="login"/>
+				</div>
+
+				<div class="login-remember">
+					<input name="rememberme" type="checkbox" id="rememberme" value="forever"><label for="rememberme">Remember me</label>
+				</div>
+				<div class="login-lostpassword">
+					<a href="https://www.truthdig.com/wp-login.php?action=lostpassword" class="lostpassword-link">Forgot my password</a>
+				</div>
+
+			</form>
+		</div>
+
+		<div class="am2-tabs__panel">
+			<div class="login-social">
+				<!--
+				--><a href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=https%3A%2F%2Fwww.truthdig.com%2Fwp-admin%2Fadmin-ajax.php%3Faction%3Dtruthdig_glogin&client_id=1089531985036-6t4bg23g0p2qv0qci1etcnnup32cmm4q.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&access_type=online&approval_prompt=auto">
+					<span class="login-social__icon login-social__icon--googleplus">
+						<svg class="login-social--googleplus">
+							<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#social--googleplus"></use>
+						</svg>
+					</span>
+				</a><!--
+			--></div>
+			<div class="divider-or"><span>or</span></div>
+			<form name="registerform" id="registerform" class="form register-form registerform clearfix" action="https://www.truthdig.com/wp-login.php?action=register" method="post">
+
+				<div class="form__row">
+					<input type="email" placeholder="Email" name="user_email" id="register_email" class="form__input" value="" size="20" required>
+				</div>
+
+				<div class="form__row">
+					<input aria-label="user-login" type="text" placeholder="Username" name="user_login" id="register_username" class="form__input" value="" size="20" required>
+				</div>
+
+<!--				<div class="form__row">-->
+<!--					<input type="password" placeholder="Password" name="register_pass" id="register_pass" class="form__input" value="" size="20" required>-->
+<!--				</div>-->
+
+<!--				<div class="form__row">-->
+<!--					<input type="text" placeholder="zip code" name="register_zipcode" id="register_zipcode" class="form__input" value="" size="20" required>-->
+<!--				</div>-->
+
+				<div class="form__row">
+                    <p class="lwa-submit-button">
+                        A password will be e-mailed to you.                        <input type="submit" name="wp-submit" id="wp-register" class="button-primary" value="Register" tabindex="100" />
+                        <input type="hidden" name="login-with-ajax" value="register" />
+                    </p>
+				</div>
+
+			</form>
+		</div>
+
+		<!-- start:Forgot password -->
+				<!-- end:Forgot password -->
+
+	</div>
+	<!-- end:tab-panels -->
+
+</div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "login-modal"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+<script>
+  window.addEventListener('load',function() {
+        var args_tabs = {
+          "blockId": "modalLogin"
+        };
+        am2.main.tabs(args_tabs);
+
+        var args_modal = {
+          "blockId": "login-modal"
+        };
+        am2.main.am2Modal(args_modal);
+
+        am2.main.showMessageOnRegister(args_tabs);
+      });
+
+</script>
+<div id="search-modal" class="am2-modal am2-modal--search am2-modal--animation-at-once" data-state="0">
+
+    <div class="am2-modal__overlay js-am2-modal-close"></div>
+
+    <div class="am2-modal__wrapper">
+
+        <div class="am2-modal__content">
+
+            <span class="am2-modal__close js-am2-modal-close"></span>
+
+
+            
+            
+            
+            <form role="search" method="get" id="searchform-modal" class="searchform-modal" action="https://www.truthdig.com/">
+	<input aria-label="search-2" type="text" value="" placeholder="Search by topic, author or tag" name="s" id="s2" />
+	<button aria-label="submit-search" title="submit search" type="submit" id="searchsubmit2">
+		<svg>
+			<title>Search</title>
+			<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#icon--search"></use>
+		</svg>
+	</button>
+</form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "search-modal"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "search-modal"
+        };
+        am2.main.am2Modal(args);
+        am2.main.searchEvents(args);
+      });
+</script>
+<div id="disclaimer-modal" class="am2-modal" data-state="0">
+
+    <div class="am2-modal__overlay js-am2-modal-close"></div>
+
+    <div class="am2-modal__wrapper">
+
+        <div class="am2-modal__content">
+
+            <span class="am2-modal__close js-am2-modal-close"></span>
+
+
+                            <img src="https://www.truthdig.com/wp-content/themes/am2/assets/images/logo-sm.png" class="am2-modal__logo" width="137" height="34" alt="image">
+            
+            
+            
+            <p>Statements and opinions expressed in articles and comments are those of the authors, not Truthdig. Truthdig takes no responsibility for such statements or opinions.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "disclaimer-modal"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "search-modal"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>
+
+			<!-- start:back to top -->
+			<a href="#wrapper" class="back-to-top">
+				<svg class="back-to-top__icon">
+					<use xlink:href="https://www.truthdig.com/wp-content/themes/am2/assets/images/sprite.svg#arrow--up"></use>
+				</svg>
+			</a>
+			<!-- end:back to top -->
+            <div id="am2-modal__site-wide" class="am2-modal am2-modal__site-wide" data-state="0">
+
+    <div class="am2-modal__overlay js-am2-modal-close"></div>
+
+    <div class="am2-modal__wrapper">
+
+        <div class="am2-modal__content">
+
+            <span class="am2-modal__close js-am2-modal-close"></span>
+
+            <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
+<p>Truthdig is going on a hiatus. Our archives of 15 years of award-winning independent journalism are available for free.</p>
+<p>Be well, stay safe and look out for each other.</p>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+  window.addEventListener('load',function() {
+        var args = {
+          "blockId": "am2-modal__site-wide"
+        };
+        am2.main.am2Modal(args);
+      });
+
+</script>                    <style>
+                        <style>
+/* Modal Box Content CSS */
+.am2-modal.am2-modal__site-wide .am2-modal__content {
+  border: 10px solid #3a1712;
+  max-width: 725px;
+  padding: 30px 30px 40px;
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+  top: 65px;
+}
+
+.am2-modal__wrapper .am2-modal__content {
+  border: 10px solid #3a1712;
+}
+
+/* Button Close CSS */
+.am2-modal.am2-modal__site-wide .am2-modal__close {
+	background: #fff;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    top: -22px;
+    right: -22px;
+    box-shadow: 0 0 29px 3px rgba(0,0,0,.55);
+}
+.am2-modal.am2-modal__site-wide .am2-modal__close:after, .am2-modal.am2-modal__site-wide .am2-modal__close:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    top: 22px;
+    width: 45%;
+    border-top: 3px solid #363636;
+    transition: all .3s ease 0s;
+    left: 12px;
+}
+.am2-modal.am2-modal__side-wide .am2-modal__overlay {
+  	background: #ffffff;
+}
+/* Logo size */
+.am2-modal.am2-modal__site-wide .am2-modal__content .am2-modal__logo {
+	max-width: 317px;
+}
+/* modal text */
+.am2-modal.am2-modal__site-wide .am2-modal__content p.modal_title {
+    color: #fff;
+    font-size: 34px;
+    line-height: 40px;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    font-style: italic;
+}
+.am2-modal.am2-modal__site-wide .am2-modal__content p.modal_title span {
+	color: #A22626;
+}
+/* Modal Button */
+.am2-modal.am2-modal__site-wide .am2-modal__content a.btn__modal {
+    background: #f4f1f1;
+    display: block;
+    max-width: 385px;
+    line-height: 47px;
+    border-radius: 20px;
+    margin: 35px auto 20px auto;
+    text-align: center;
+    color: #a6421e;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.am2-modal.am2-modal__site-wide .am2-modal__content a.btn__modal:hover {
+  color: #F4F1F1;
+  background: #A22626;
+}
+/* Modal Regular Text */
+.am2-modal.am2-modal__site-wide .am2-modal__content p.modal_title.no_italic {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+/* Modal Regular Links */
+.am2-modal.am2-modal__site-wide .am2-modal__content a {
+    color: #a6421e;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 500px) {
+	.am2-modal.am2-modal__site-wide  p.modal_title {
+        font-size: 24px;
+        line-height: 30px;
+  	}
+  	.am2-modal.am2-modal__site-wide .am2-modal__content {
+  		max-width: 80% !important;
+  	}
+  	.am2-modal.am2-modal__site-wide p.modal_title {
+      font-size: 24px !important;
+      line-height: 30px !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+      left: 0px !important;
+      padding: 0 20px 30px 20px;
+  	}
+}
+</style>                    </style>
+                                    <a href="#" style="display: none;" class="js-am2-modal-open" data-modal-id="am2-modal__site-wide">Login modal</a>
+            
+                            <script>
+                    var cookie_hours = 24;
+                    var cookie_name = "td_hiatus_popup";
+                </script>
+                <script src="https://www.truthdig.com/wp-content/themes/am2/resources/js/modal-donate.js?v=1587419404"></script>
+            		</div>
+		<!-- end:wrapper -->
+
+		<script type="text/html" id="tmpl-wp-playlist-current-item">
+	<# if ( data.image ) { #>
+	<img src="{{ data.thumb.src }}" alt="" />
+	<# } #>
+	<div class="wp-playlist-caption">
+		<span class="wp-playlist-item-meta wp-playlist-item-title">
+		&#8220;{{ data.title }}&#8221;		</span>
+		<# if ( data.meta.album ) { #><span class="wp-playlist-item-meta wp-playlist-item-album">{{ data.meta.album }}</span><# } #>
+		<# if ( data.meta.artist ) { #><span class="wp-playlist-item-meta wp-playlist-item-artist">{{ data.meta.artist }}</span><# } #>
+	</div>
+</script>
+<script type="text/html" id="tmpl-wp-playlist-item">
+	<div class="wp-playlist-item">
+		<a class="wp-playlist-caption" href="{{ data.src }}">
+			{{ data.index ? ( data.index + '. ' ) : '' }}
+			<# if ( data.caption ) { #>
+				{{ data.caption }}
+			<# } else { #>
+				<span class="wp-playlist-item-title">
+				&#8220;{{{ data.title }}}&#8221;				</span>
+				<# if ( data.artists && data.meta.artist ) { #>
+				<span class="wp-playlist-item-artist"> &mdash; {{ data.meta.artist }}</span>
+				<# } #>
+			<# } #>
+		</a>
+		<# if ( data.meta.length_formatted ) { #>
+		<div class="wp-playlist-item-length">{{ data.meta.length_formatted }}</div>
+		<# } #>
+	</div>
+</script>
+		    <div id="preloader_overlay">
+	    <div id="preloader_wrap">
+	    <div id="preloader_1">
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	        <span></span>
+	    </div>
+	    </div>
+	    </div>
+	    	<script>
+      function TenUpGetCookie (cname) {
+        var name = cname + '='
+        var decodedCookie = decodeURIComponent(document.cookie)
+        var ca = decodedCookie.split(';')
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i]
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1)
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length)
+          }
+        }
+        return ''
+      }
+
+
+            window.addEventListener('load',function() {
+          var modal_message = document.getElementById('js-modal-message-login')
+          if ('' === TenUpGetCookie('resetMyPass')) {
+            modal_message.innerHTML = 'As a security measure, we ask that you <a href="https://www.truthdig.com/wp-login.php?action=lostpassword">reset your password</a> for the Truthdig site. <br> Thank you!'
+          }
+        })
+      
+	</script>
+	<script type='text/javascript' defer src='https://www.truthdig.com/wp-content/themes/am2/assets/build/deps.min.js?ver=1.0.46'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var truthdig = {"ajaxurl":"https:\/\/www.truthdig.com\/wp-admin\/admin-ajax.php","nonce":"dbf4b1fb36"};
+/* ]]> */
+</script>
+<script type='text/javascript' defer src='https://www.truthdig.com/wp-content/themes/am2/assets/build/main.min.js?ver=1.0.46'></script>
+<script type='text/javascript' defer src='https://www.truthdig.com/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+
+		<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-f16N3TodQCbGg"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-f16N3TodQCbGg.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- Pardot Tag -->
+<script type="text/javascript">
+piAId = '778373';
+piCId = '2015';
+piHostname = 'pi.pardot.com';
+
+(function() {
+function async_load(){
+var s = document.createElement('script'); s.type = 'text/javascript';
+s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+}
+if(window.attachEvent)
+
+{ window.attachEvent('onload', async_load); }
+else
+
+{ window.addEventListener('load', async_load, false); }
+})();
+</script>
+<!-- End Pardot tag -->
+
+<!--            <script id="dsq-count-scr" src="//truthdig.disqus.com/count.js" async></script>-->
+    <script type="text/javascript" src="//cdn4.wibbitz.com/truthdig/embed.js" async></script>
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"252db97b3e","applicationID":"153879265","transactionName":"YVMDNUUDC0ECUkYMX1gZIhREFgpfTGJbC1daU0FMFwMXRgpSXgA=","queueTime":0,"applicationTime":545,"atts":"TRQUQw0ZGB5BUBBfS0tL","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

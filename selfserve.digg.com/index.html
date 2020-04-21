@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BSA</title>
+
+	<!-- TODO: move this to webpack -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono%7CRoboto:300,400,500,700.900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="https://unpkg.com/normalize.css@7.0.0/normalize.css" rel="stylesheet"/>
+	<link href="https://unpkg.com/@blueprintjs/core@3.22.3/lib/css/blueprint.css" rel="stylesheet"/>
+	<link href="https://unpkg.com/@blueprintjs/icons@3.8.0/lib/css/blueprint-icons.css" rel="stylesheet" />
+	<link href="https://unpkg.com/@blueprintjs/datetime@3.15.1/lib/css/blueprint-datetime.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+</head>
+<body>
+
+<style>
+	.adbanner {
+	    background-color: transparent;
+	    height: 1px;
+	    width: 1px;
+	}
+	#blocking-message {
+		display: none;
+	}
+	.show-blocking #blocking-message {
+		display: block;
+		position: fixed;
+		z-index: 9999999999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+	}
+	.show-blocking #blocking-message .block {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.show-blocking #blocking-message .bp3-container.block .bp3-loading p:last-of-type {
+		padding: 0;
+	}
+	.show-blocking #blocking-message .bp3-loading {
+		text-align: center;
+		border-radius: 3px;
+		padding: 20px 35px;
+		background: #f8fafc;
+		border: 1px solid #eeeff0;
+		width: 50%;
+		font-size: 13px;
+		margin: 160px auto 0;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-family: "Roboto";
+		font-weight: 400;
+	}
+	.show-blocking #blocking-message .bp3-loading p {
+		padding: 5px 0;
+		margin: 0;
+		line-height: 160%;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	.show-blocking #blocking-message .bp3-loading p + p {
+		padding: 5px 0 0;
+	}
+	#blocking-message .bp3-container .bp3-loading .bp3-icon-large {
+	    clear: both;
+	    display: block;
+		font-size: 100px;
+		color: rgba(92, 112, 128, 0.2);
+	    padding: 0;
+	    margin: 0 auto 10px;
+	    text-align: center;
+	}
+</style>
+
+<div id="ads-check">
+	<div class="adbanner">
+	</div>
+</div>
+
+<div id="blocking-message">
+	<div class="bp3-container block">
+		<div class="bp3-loading">
+			<span class="bp3-icon-large bp3-icon-warning-sign"></span>
+			<p>Oops... something went wrong!</p>
+			<p>Do you have an <strong>ad blocker</strong> enabled? Please disable it and reload the page.</p>
+		</div>
+	</div>
+</div>
+
+
+<div id="app">
+	<style>
+		#app {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.bp3-loading {
+		    text-align: center;
+		    border-radius: 3px;
+		    padding: 20px 35px;
+		    background: #f8fafc;
+		    border: 1px solid #eeeff0;
+		    width: 50%;
+			font-size: 13px;
+		    margin: 160px auto 0;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-family: "Roboto";
+			font-weight: 400;
+		}
+		.bp3-loading .bp3-spinner {
+		    clear: both;
+		    display: flex;
+		    padding: 0;
+			width: 40px;
+		    margin: 0 auto 10px;
+		    text-align: center;
+		}
+		.bp3-loading p {
+			padding: 5px 0;
+			margin-top: 0;
+			margin-bottom: 0;
+			line-height: 160%;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		.bp3-loading p + p {
+			padding: 5px 0 0;
+		}
+		.bp3-spinner path {
+		    stroke-width: 5;
+		}
+		@media all and (max-width: 768px) {
+			.bp3-loading {
+			    width: 85%;
+			}
+		}
+	</style>
+
+	<div class="bp3-temp-welcome-page">
+		<div class="bp3-loading">
+			<div class="bp3-spinner">
+				<div class="bp3-spinner-animation">
+					<svg width="50" height="50" stroke-width="4.00" viewBox="3.00 3.00 94.00 94.00">
+						<path class="bp3-spinner-track" d="M 50,50 m 0,-45 a 45,45 0 1 1 0,90 a 45,45 0 1 1 0,-90"></path>
+						<path class="bp3-spinner-head" d="M 50,50 m 0,-45 a 45,45 0 1 1 0,90 a 45,45 0 1 1 0,-90" pathLength="280" stroke-dasharray="280 280" stroke-dashoffset="210"></path>
+					</svg>
+				</div>
+			</div>
+			<p>Hang tight! We’re loading the interface.</p>
+		</div>
+	</div>
+</div>
+
+<script src="/config.js"></script>
+<!-- TODO: move bundle.js to a CDN as part of the build process -->
+<script src="/js/bundle.js"></script>
+
+<script src="/trackers.js"></script>
+
+<script>
+	var adCheck = document.getElementById('ads-check');
+	if(adCheck.offsetHeight === 0){
+		document.body.classList.add('show-blocking');
+	}
+</script>
+
+
+</body>
+</html>

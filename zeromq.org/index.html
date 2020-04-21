@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="generator" content="Hugo 0.57.2" />
+<meta name="description" content="An open-source universal messaging library" />
+
+
+<meta property="og:title" content="ZeroMQ">
+<meta property="og:url" content="https://zeromq.org/">
+<meta property="og:locale" content="en_US">
+<meta property="og:description" content="An open-source universal messaging library">
+<meta name="og:type" content="website">
+<meta name="og:image" content="/images/logo.gif">
+<meta name="og:image:alt" content="ZeroMQ project logo">
+<meta name="og:image:type" content="image/gif">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@libzmq">
+<meta name="twitter:creator" content="@libzmq">
+
+<link rel="canonical" content="https://zeromq.org/">
+
+
+
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#9c3838">
+
+    <title>
+ZeroMQ
+</title>
+    
+<link rel="stylesheet" href="/css/style.7379bba59c06c5bacd062bc84fcd9585b0ec89d876566f814bd7d5e74c6c038b.css" integrity="sha256-c3m7pZwGxbrNBivIT82VhbDsidh2Vm&#43;BS9fV50xsA4s=">
+
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139969899-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </head>
+  <body class="page has-navbar-fixed-top">
+    <div class="main">
+      
+
+
+
+
+
+
+
+<nav class="navbar has-shadow is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand">
+      <a id="logo" class="navbar-item" href="https://zeromq.org">
+        <img src="/images/logo.gif" alt="Project navbar logo">
+      </a>
+
+      <a role="button" class="navbar-docsToc-button" onclick="page.toggleToc()">
+        <span></span> <span></span>
+        <span></span> <span></span>
+        <span></span> <span></span>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+         data-target="navMenu" onclick="page.toggleNavbarMenu()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        
+        <a class="navbar-item" href="/get-started">
+          Documentation
+        </a>
+        
+        <a class="navbar-item" href="/our-community">
+          Community
+        </a>
+        
+        <a class="navbar-item" href="http://zguide.zeromq.org/page:all">
+          The Guide
+        </a>
+        
+        <a class="navbar-item" href="http://wiki.zeromq.org">
+          Wiki
+        </a>
+        
+
+        <div class="navbar-item">
+          <div class="buttons">
+            
+            <a class="button is-black has-text-weight-bold" href="https://github.com/zeromq" target="_blank">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>
+                GitHub
+              </span>
+            </a>
+            
+            <a class="button is-gitter-purple has-text-weight-bold" href="https://gitter.im/zeromq" target="_blank">
+              <span class="icon">
+                <i class="fab fa-gitter"></i>
+              </span>
+              <span>
+                Gitter
+              </span>
+            </a>
+            
+            <a class="button is-twitter-blue has-text-weight-bold" href="https://twitter.com/libzmq" target="_blank">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+              <span>
+                Twitter
+              </span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<section class="hero has-text-centered is-medium is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <p class="title is-size-1 is-size-2-mobile  is-spaced">
+        ZeroMQ
+      </p>
+      
+      <p class="subtitle is-size-2 is-size-3-mobile has-text-weight-light">
+        An open-source universal messaging library
+      </p>
+
+      
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="container">
+      <a class="button get-started-button is-primary is-inverted is-large" href="/get-started">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h1 class="has-text-primary">Why ZeroMQ?</h1>
+      <p>
+        ZeroMQ (also known as ØMQ, 0MQ, or zmq) looks like an embeddable networking library but acts like a concurrency framework. It gives you sockets that carry atomic messages across various transports like in-process, inter-process, TCP, and
+        multicast. You can connect sockets N-to-N with patterns like fan-out, pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered products. Its asynchronous I/O model gives you scalable multicore
+        applications, built as asynchronous message-processing tasks. It has a score of language APIs and runs on most operating systems.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section has-background-light">
+  <div class="container">
+    <div class="columns is-multiline">
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-globe"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+                Universal
+              </h4>
+              
+
+              
+              <p>
+                Connect your code in any language, on any platform.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-brain"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+                Smart
+              </h4>
+              
+
+              
+              <p>
+                Smart patterns like pub-sub, push-pull, and client-server.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-tachometer-alt"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+                High-speed
+              </h4>
+              
+
+              
+              <p>
+                Asynchronous I/O engines, in a tiny library.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-road"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+                Multi-Transport
+              </h4>
+              
+
+              
+              <p>
+                Carries messages across inproc, IPC, TCP, UDP, TIPC, multicast and WebSocket
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-people-carry"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <a href=/community>
+                <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+
+                  Community
+                </h4>
+              </a>
+              
+
+              
+              <p>
+                Backed by a large and active open source community.
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="column is-one-third">
+        <div class="media feature has-background-white">
+          <figure class="media-left">
+            <span class="icon is-large has-text-primary">
+              <i class="fas fa-3x fa-book"></i>
+            </span>
+          </figure>
+
+          <div class="media-content">
+            <div class="content">
+
+              
+              <a href=http://zguide.zeromq.org/page:all>
+                <h4 class="title is-size-4 is-size-5-mobile has-text-weight-light has-text-primary">
+
+                  The Guide
+                </h4>
+              </a>
+              
+
+              
+              <p>
+                Explains how to use ØMQ with 60+ diagrams and 750 examples in 28 languages
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h1 class="has-text-primary">Used by</h1>
+
+      <div class="level">
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg" alt="Microsoft"></img>
+            </div>
+            <div>
+              Microsoft
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/samsung.svg" alt="Samsung"></img>
+            </div>
+            <div>
+              Samsung
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/at-and-t.svg" alt="AT&amp;T"></img>
+            </div>
+            <div>
+              AT&amp;T
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/spotify.svg" alt="Spotify"></img>
+            </div>
+            <div>
+              Spotify
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/digitalocean.svg" alt="Digital Ocean"></img>
+            </div>
+            <div>
+              Digital Ocean
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/auth0.svg" alt="Auth0"></img>
+            </div>
+            <div>
+              Auth0
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bitcoin.svg" alt="Bitcoin"></img>
+            </div>
+            <div>
+              Bitcoin
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jupyter.svg" alt="Jupyter"></img>
+            </div>
+            <div>
+              Jupyter
+            </div>
+          </div>
+        </div>
+        
+        <div class="level-item">
+          <div>
+            <div>
+              <img width="48" height="48" src="https://upload.wikimedia.org/wikipedia/en/0/0b/Mongrel_2_logo.png" alt="Mongrel2"></img>
+            </div>
+            <div>
+              Mongrel2
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-small has-background-primary">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="button is-primary is-inverted is-large" href="/get-started">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+      
+
+<footer class="footer has-text-centered">
+  <div class="container">
+    <p class="has-text-weight-light">
+      &copy; 2020 The ZeroMQ authors
+    </p>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.3.1.min.1dc33fb32cfedd9ef0049ed3cb8b007bad6f7e57eafc760e8ea0553fe823a6d6.js" integrity="sha256-HcM/syz&#43;3Z7wBJ7Ty4sAe61vflfq/HYOjqBVP&#43;gjptY="></script>
+<script src="/js/app.min.b9b719f2752968d15035172af65a2772b9b4ddc715664494be5b74a67d13af8a.js" integrity="sha256-ubcZ8nUpaNFQNRcq9loncrm03ccVZkSUvlt0pn0Tr4o="></script>
+
+
+
+
+  </body>
+</html>

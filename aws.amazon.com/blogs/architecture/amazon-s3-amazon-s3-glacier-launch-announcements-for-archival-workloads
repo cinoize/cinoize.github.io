@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js aws-lng-en_US" xmlns="http://www.w3.org/1999/xhtml" data-aws-assets="//a0.awsstatic.com" data-js-version="1.0.491" data-css-version="1.0.435" data-static-assets="//a0.awsstatic.com" prefix="og: http://ogp.me/ns#">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>AWS Storage Update: Amazon S3 &amp; Amazon S3 Glacier Launch Announcements for Archival Workloads | AWS Architecture Blog</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <link rel="dns-prefetch" href="//a0.awsstatic.com" /> 
+  <link rel="canonical" href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" /> 
+  <meta property="og:locale" content="en_US" /> 
+  <meta property="og:site_name" content="Amazon Web Services" /> 
+  <meta property="og:title" content="AWS Storage Update: Amazon S3 &amp; Amazon S3 Glacier Launch Announcements for Archival Workloads | Amazon Web Services" /> 
+  <meta property="og:type" content="article" /> 
+  <meta property="og:url" content="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" /> 
+  <meta property="og:description" content="By Matt Sidley, Senior Product Manager for S3 Customers have built archival workloads for several years using a combination of S3 storage classes, including S3 Standard, S3 Standard-Infrequent Access, and S3 Glacier. For example, many media companies are using the S3 Glacier storage class to store their core media archives. Most of this data is […]" /> 
+  <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_2-1.png" /> 
+  <meta property="og:image:width" content="627" /> 
+  <meta property="og:image:height" content="417" /> 
+  <meta property="og:updated_time" content="2019-04-16T11:01:30-08:00" /> 
+  <meta property="article:publisher" content="https://www.facebook.com/amazonwebservices" /> 
+  <meta property="article:section" content="Amazon S3 Glacier" /> 
+  <meta property="article:tag" content="Amazon S3 Glacier" /> 
+  <meta property="article:tag" content="Amazon Simple Storage Services (S3)" /> 
+  <meta property="article:tag" content="Architecture" /> 
+  <meta property="article:tag" content="Storage" /> 
+  <meta property="article:tag" content="archival workloads" /> 
+  <meta property="article:tag" content="Glacier" /> 
+  <meta property="article:tag" content="s3" /> 
+  <meta property="article:published_time" content="2018-11-26T21:06:45-08:00" /> 
+  <meta property="article:modified_time" content="2019-04-16T11:01:30-08:00" /> 
+  <meta name="twitter:card" content="summary_large_image" /> 
+  <meta name="twitter:site" content="@awscloud" /> 
+  <meta name="twitter:domain" content="https://aws.amazon.com/blogs/" /> 
+  <meta name="twitter:title" content="AWS Storage Update: Amazon S3 &amp; Amazon S3 Glacier Launch Announcements for Archival Workloads | Amazon Web Services" /> 
+  <meta name="twitter:description" content="By Matt Sidley, Senior Product Manager for S3 Customers have built archival workloads for several years using a combination of S3 storage classes, including S3 Standard, S3 Standard-Infrequent Access, and S3 Glacier. For example, many media companies are using the S3 Glacier storage class to store their core media archives. Most of this data is […]" /> 
+  <meta name="twitter:image" content="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_2-1.png" /> 
+  <link rel="icon" type="image/ico" href="//a0.awsstatic.com/main/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="//a0.awsstatic.com/main/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="//a0.awsstatic.com/main/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="//a0.awsstatic.com/main/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="//a0.awsstatic.com/main/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="//a0.awsstatic.com/main/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="home" type="application/rss+xml" title="RSS 2.0 Feed" href="https://aws.amazon.com/blogs/architecture/feed/" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="stylesheet" href="//a0.awsstatic.com/libra-css/css/1.0.320/style-awsm.css" /> 
+  <link rel="stylesheet" href="//a0.awsstatic.com/aws-blog/1.0.33/css/blog.css" /> 
+  <script>
+    var AWS = {
+      PageSettings: {
+        supportedLanguages: ["ar","de","en","es","fr","id","it","jp","ko","pt","ru","th","tr","vi","cn","tw"],
+        libraCSSPath: '//a0.awsstatic.com/libra-css/css/1.0.320'
+      }
+    };
+    var require = {
+      baseUrl: '//a0.awsstatic.com',
+      packages: [
+        { name: 'libra', location: 'libra/1.0.314' }
+      ],
+      paths: {
+        'aws-blog': '//a0.awsstatic.com/aws-blog/1.0.33/js',
+        'blog': '//a0.awsstatic.com/chrome/js/1.0.491/blog',
+        'directories': '//a0.awsstatic.com/libra/1.0.314/directories',
+        'jquery': 'jquery-amd',
+        'librastandardlib': '//a0.awsstatic.com/libra/1.0.314/librastandardlib',
+        "plugins": '//a0.awsstatic.com/chrome/js/1.0.491/plugins',
+        "scripts": '//a0.awsstatic.com/libra/1.0.314/v1-polyfills/scripts'
+      },
+      deps: [ 'scripts' ],
+      waitSeconds: 15
+    };
+  </script> 
+  <script src="//a0.awsstatic.com/aws-blog/1.0.33/js/blog-head.js"></script> 
+  <script src="//a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+    AWS.TargetMediator = {
+      supportedLanguages: AWS.PageSettings.supportedLanguages,
+      holdJqueryReady: true,
+      pageLanguage: 'en',
+      customParams: {"category0":"Amazon S3 Glacier","category1":"Amazon Simple Storage Services (S3)","category2":"Architecture","category3":"Storage","category4":"Uncategorized"}    };
+  </script> 
+  <script src="//a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+  <noscript> 
+   <style>.js-mbox { visibility: visible; }</style> 
+  </noscript> 
+ </head> 
+ <body class="awsm aws-blogs-page aws-blogs-page-type-single"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="https://aws.amazon.com/contact-us/?nc2=h_header">Contact Sales</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Support&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="en">English&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">My Account&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Create an AWS Account</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="https://reinvent.awsevents.com/?nc2=h_ql_re" data-panel="m-nav-panel-reinvent19">re:Invent</a></li> 
+        <li><a href="https://aws.amazon.com/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Products</a></li> 
+        <li><a href="https://aws.amazon.com/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Solutions</a></li> 
+        <li><a href="https://aws.amazon.com/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Pricing</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentation</a></li> 
+        <li><a href="https://aws.amazon.com/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">Learn</a></li> 
+        <li><a href="https://aws.amazon.com/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Partner Network</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="https://aws.amazon.com/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Customer Enablement</a></li> 
+        <li><a href="https://aws.amazon.com/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">Events</a></li> 
+        <li><a href="https://aws.amazon.com/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Explore More </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Account Settings</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Billing &amp; Cost Management</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Security Credentials</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Support Center</a> </li> 
+      <li> <a href="https://aws.amazon.com/premiumsupport/knowledge-center/?nc2=h_m_ma">Knowledge Center</a> </li> 
+      <li> <a href="https://aws.amazon.com/premiumsupport/?nc2=h_m_bc">AWS Support Overview</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Pricing</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentation</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Products</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Related Pages</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutorials</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">See more results for "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="https://aws.amazon.com/products/?nc2=h_mo">Products</a> </li> 
+      <li> <a href="https://aws.amazon.com/solutions/?nc2=h_mo">Solutions</a> </li> 
+      <li> <a href="https://aws.amazon.com/pricing/?nc2=h_mo">Pricing</a> </li> 
+      <li> <a href="https://aws.amazon.com/what-is-aws/?nc2=h_mo">Introduction to AWS</a> </li> 
+      <li> <a href="https://aws.amazon.com/getting-started/?nc2=h_mo">Getting Started</a> </li> 
+      <li> <a href="https://aws.amazon.com/documentation/?nc2=h_mo">Documentation</a> </li> 
+      <li> <a href="https://aws.amazon.com/training/?nc2=h_mo">Training and Certification</a> </li> 
+      <li> <a href="https://aws.amazon.com/developer/?nc2=h_mo">Developer Center</a> </li> 
+      <li> <a href="https://aws.amazon.com/solutions/case-studies/?nc2=h_mo">Customer Success</a> </li> 
+      <li> <a href="https://aws.amazon.com/partners/?nc2=h_mo">Partner Network</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Support</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Log into Console</a> </li> 
+      <li> <a href="https://aws.amazon.com/console/mobile/">Download the Mobile App</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+  </header> 
+  <div class="awsm"> 
+   <div class="lb-blog-nav" data-lb-comp="aws-blog:blog-nav"> 
+    <div class="lb-row lb-row-max-xlarge lb-snap"> 
+     <div class="lb-blog-nav-content"> 
+      <div class="lb-blog-nav-links"> 
+       <a class="lb-txt-none lb-txt" href="/blogs"> Blog Home</a> 
+       <a class="lb-txt-none lb-txt lb-has-trigger-indicator" href="/blogs" data-lb-popover-trigger="blog-category"> Category&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-none lb-txt lb-has-trigger-indicator" href="/blogs" data-lb-popover-trigger="blog-editions"> Edition&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-none lb-txt lb-has-trigger-indicator" href="/blogs" data-lb-popover-trigger="blog-follow"> Follow&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      </div> 
+      <div class="lb-blog-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <input type="hidden" name="facet_type" value="blogs" /> 
+        <input type="hidden" name="sortResults" value="modification_date desc" /> 
+        <div class="lb-search-input"> 
+         <input name="q" type="text" placeholder="Search Blogs" /> 
+         <div class="lb-blog-search-button"> 
+          <button class="icon-search" type="submit"></button> 
+         </div> 
+        </div> 
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-xlarge" data-lb-comp="popover" data-id="blog-category" data-action="hover" data-position="top"> 
+    <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-12"> 
+      <div class="lb-none-pad lb-none-v-margin lb-box"> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/architecture/"> Architecture</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/aws-cost-management/"> AWS Cost Management</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/apn/"> AWS Partner Network</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/podcasts/aws-podcast/?sc_ichannel=ha&amp;sc_icampaign=acq_awsblognav&amp;sc_icontent=categorynav"> AWS Podcast</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/awsmarketplace/"> AWS Marketplace</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/aws/"> AWS News</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/big-data/"> Big Data</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/business-productivity/"> Business Productivity</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/compute/"> Compute</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/contact-center/"> Contact Center</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/containers/"> Containers</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/database/"> Database</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/desktop-and-application-streaming/"> Desktop and Application Streaming</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/developer/"> Developer</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/devops/"> DevOps</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/enterprise-strategy/"> Enterprise Strategy</a> 
+      </div> 
+     </div> 
+     <div class="lb-col lb-tiny-24 lb-mid-12"> 
+      <div class="lb-none-pad lb-none-v-margin lb-box"> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/gametech/"> Game Tech</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/industries/"> Industries</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/infrastructure-and-automation/"> Infrastructure &amp; Automation</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/iot/"> Internet of Things</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/machine-learning/"> Machine Learning</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/mt/"> Management Tools</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/media/"> Media</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/messaging-and-targeting/"> Messaging &amp; Targeting</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/mobile/"> Mobile</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/networking-and-content-delivery/"> Networking &amp; Content Delivery</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/opensource/"> Open Source</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/publicsector/"> Public Sector</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/awsforsap/"> SAP</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/security/"> Security, Identity, &amp; Compliance</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/startups/"> Startups</a> 
+       <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/storage/"> Storage</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="blog-editions" data-action="hover" data-position="top"> 
+    <div class="lb-none-pad lb-box"> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/cn/blogs/china/"> 中国版</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/fr/blogs/france/"> &Eacute;dition fran&ccedil;aise</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/de/blogs/germany/"> Deutsche Edition</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/jp/blogs/news/"> 日本版</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/ko/blogs/korea/"> 한국 에디션</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/pt/blogs/aws-brasil/"> Edi&ccedil;&atilde;o em portugu&ecirc;s</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/es/blogs/aws-spanish/"> Edici&oacute;n en espa&ntilde;ol</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/blogs/"> English Edition</a> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="blog-follow" data-action="hover" data-position="top"> 
+    <div class="lb-none-pad lb-box"> 
+     <a class="lb-txt-none lb-txt" href="https://pages.awscloud.com/communication-preferences?sc_ichannel=ha&amp;sc_icampaign=multi_emailoptin&amp;sc_isegment=en&amp;sc_iplace=fl-nav&amp;sc_icontent=subscribe_for_updates&amp;trkCampaign=EmailOptin&amp;trk=blog"> Mailing List</a> 
+     <a class="lb-txt-none lb-txt" href="http://feeds.feedburner.com/AmazonWebServicesBlog"> RSS Feed</a> 
+     <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/podcasts/aws-podcast/?sc_ichannel=ha&amp;sc_icampaign=acq_awsblognav&amp;sc_icontent=follownav"> AWS Podcast</a> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="aws-page-content" class="aws-blog-has-related-posts lb-page-content lb-page-with-sticky-subnav blog-page" data-page-alert-target="true"> 
+   <div class="aws-blog-related-posts" data-lb-comp="aws-blog:related-items" data-directory-id="blog-posts" data-related-tags="[&quot;blog-posts#category-storage#amazon-glacier&quot;,&quot;blog-posts#category-storage#amazon-simple-storage-services-s3&quot;,&quot;blog-posts#category#architecture&quot;,&quot;blog-posts#category#storage&quot;,&quot;blog-posts#category#uncategorized&quot;]" data-current-item="blog-posts#36-907" data-order-by="SortOrderValue" data-number-of-items="8"> 
+    <div class="aws-directories-container"></div> 
+    <script type="text/x-handlebars-template">
+    <h4>Related Posts</h4>
+    <aside>
+      <nav>
+        <ul>
+          {{#each items}}
+            <li><a href="{{track_url additionalFields.link 'b_rp'}}">{{{additionalFields.title}}}</a></li>
+          {{/each}}
+        </ul>
+      </nav>
+    </aside>
+  </script> 
+   </div> 
+   <div class="aws-blog-content lb-row lb-row-max-large lb-snap lb-gutter-mid"> 
+    <main class="lb-col lb-tiny-24 lb-mid-16" role="main"> 
+     <h2 class="lb-h5 blog-title"><a href="https://aws.amazon.com/blogs/architecture/">AWS Architecture Blog</a></h2> 
+     <article class="blog-post" vocab="http://schema.org/" typeof="TechArticle"> 
+      <meta property="inLanguage" content="en-US" /> 
+      <meta property="image" content="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_2-1.png" /> 
+      <h1 class="lb-h2 blog-post-title" property="name headline">AWS Storage Update: Amazon S3 &amp; Amazon S3 Glacier Launch Announcements for Archival Workloads</h1> 
+      <footer class="blog-post-meta" data-lb-comp="aws-blog:share-dialog">
+        by 
+       <a href="https://aws.amazon.com/blogs/architecture/author/admin/" title="Posts by AWS Admin">AWS Admin</a> | on 
+       <time property="datePublished" datetime="2018-11-26T21:06:45+00:00">26 NOV 2018</time> | in 
+       <span class="blog-post-categories"><a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-glacier/" title="View all posts in Amazon S3 Glacier"><span property="articleSection">Amazon S3 Glacier</span></a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/amazon-simple-storage-services-s3/" title="View all posts in Amazon Simple Storage Services (S3)"><span property="articleSection">Amazon Simple Storage Services (S3)</span></a>, <a href="https://aws.amazon.com/blogs/architecture/category/architecture/" title="View all posts in Architecture"><span property="articleSection">Architecture</span></a>, <a href="https://aws.amazon.com/blogs/architecture/category/storage/" title="View all posts in Storage"><span property="articleSection">Storage</span></a></span> | 
+       <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" property="url">Permalink</a> | 
+       <a href="#" role="button" data-share-dialog-toggle=""><span class="span icon-share"></span>&nbsp;Share</a> 
+       <div class="blog-share-dialog" data-share-dialog="" style="display: none;"> 
+        <ul> 
+         <li> <a class="lb-txt" href="https://www.facebook.com/sharer/sharer.php?u=https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" target="_blank"><span class="icon-facebook-square" aria-label="Share on Facebook"></span></a> </li> 
+         <li> <a class="lb-txt" href="https://twitter.com/intent/tweet/?text=AWS%20Storage%20Update%3A%20Amazon%20S3%20%26amp%3B%20Amazon%20S3%20Glacier%20Launch%20Announcements%20for%20Archival%20Workloads&amp;via=awscloud&amp;url=https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" target="_blank"><span class="icon-twitter-square" aria-label="Share on Twitter"></span></a> </li> 
+         <li> <a class="lb-txt" href="https://www.linkedin.com/shareArticle?mini=true&amp;title=AWS%20Storage%20Update%3A%20Amazon%20S3%20%26amp%3B%20Amazon%20S3%20Glacier%20Launch%20Announcements%20for%20Archival%20Workloads&amp;source=Amazon%20Web%20Services&amp;summary=By%20Matt%20Sidley%2C%20Senior%20Product%20Manager%20for%20S3%20Customers%20have%20built%20archival%20workloads%20for%20several%20years%20using%20a%20combination%20of%20S3%20storage%20classes%2C%20including%20S3%20Standard%2C%20S3%20Standard-Infrequent%20Access%2C%20and%20S3%20Glacier.%20For%20example%2C%20many%20media%20companies%20are%20using%20the%20S3%20Glacier%20storage%20class%20to%20store%20their%20core%20media%20archives.%20Most%20of%20this%20data%20is%20%5B%26hellip%3B%5D&amp;url=https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" target="_blank"><span class="icon-linkedin-square" aria-label="Share on LinkedIn"></span></a> </li> 
+         <li> <a class="lb-txt" href="mailto:?subject=AWS%20Storage%20Update%3A%20Amazon%20S3%20%26amp%3B%20Amazon%20S3%20Glacier%20Launch%20Announcements%20for%20Archival%20Workloads&amp;body=AWS%20Storage%20Update%3A%20Amazon%20S3%20%26amp%3B%20Amazon%20S3%20Glacier%20Launch%20Announcements%20for%20Archival%20Workloads%0A%0Ahttps://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" target="_blank"><span class="icon-envelope-square" aria-label="Share on Email"></span></a> </li> 
+         <li class="blog-share-dialog-url"><input type="text" value="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads/" title="Link to AWS Storage Update: Amazon S3 &amp; Amazon S3 Glacier Launch Announcements for Archival Workloads" readonly="" data-share-dialog-url="" /></li> 
+        </ul> 
+       </div> 
+      </footer> 
+      <section class="blog-post-content" property="articleBody"> 
+       <p><em>By Matt Sidley, Senior Product Manager for S3</em></p> 
+       <p>Customers have built archival workloads for several years using a combination of S3 storage classes, including S3 Standard, S3 Standard-Infrequent Access, and S3 Glacier. For example, many media companies are using the S3 Glacier storage class to store their core media archives. Most of this data is rarely accessed, but when they need data back (for example, because of breaking news), they need it within minutes. These customers have found S3 Glacier to be a great fit because they can retrieve data in 1-5 minutes and save up to 82% on their storage costs. Other customers in the financial services industry use S3 Standard to store recently generated data, and lifecycle older data to S3 Glacier.</p> 
+       <p>We launched Glacier in 2012 as a secure, durable, and low-cost service to archive data. Customers can use Glacier either as an S3 storage class or through its direct API. Using the S3 Glacier storage class is popular because many applications are built to use the S3 API and with a simple lifecycle policy, older data can be easily shifted to S3 Glacier. S3 Glacier continues to be the lowest-cost storage from any major cloud provider that durably stores data across three Availability Zones or more and allows customers to retrieve their data in minutes.</p> 
+       <p>We’re constantly listening to customer feedback and looking for ways to make it easier to build applications in the cloud. Today we’re announcing six new features across Amazon S3 and S3 Glacier.</p> 
+       <h2>Amazon S3 Object Lock</h2> 
+       <p>S3 Object Lock is a new feature that prevents data from being deleted during a customer-defined retention period. You can use Object Lock with any S3 storage class, including S3 Glacier. There are many use cases for S3 Object Lock, including customers who want additional safeguards for data that must be retained, and for customers migrating from existing write-once-read-many (WORM) systems to AWS. You can also use S3 Lifecycle policies to transition data and S3 Object Lock will maintain WORM protection as your data is tiered.</p> 
+       <p>S3 Object Lock can be configured in one of two modes: Governance or Compliance. When deployed in Governance mode, only AWS accounts with specific IAM permissions are able to remove the lock. If you require stronger immutability to comply with regulations, you can use Compliance mode. In Compliance mode, the lock cannot be removed by any user, including the root account. Take a look here:</p> 
+       <p><img class="size-full wp-image-913 aligncenter" src="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_1-1.png" alt="" width="746" height="859" /></p> 
+       <p>S3 Object Lock is helpful in industries where long-term records retention is mandated by regulations or compliance rules. S3 Object Lock has been assessed for SEC Rule 17a-4(f), FINRA Rule 4511, and CFTC Regulation 1.31 by Cohasset Associates. Cohasset Associates is a management consulting firm specializing in records management and information governance. Read more and find a copy of the Cohasset Associates Assessment report in <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">our documentation here</a>.</p> 
+       <h2>New S3 Glacier Features</h2> 
+       <p>One of the things we hear from customers about using S3 Glacier is that they prefer to use the most common S3 APIs to operate directly on S3 Glacier objects. Today we’re announcing the availability of <strong>S3 PUT to Glacier</strong>, which enables you to use the standard S3 “PUT” API and select any storage class, including S3 Glacier, to store the data. Data can be stored directly in S3 Glacier, eliminating the need to upload to S3 Standard and immediately transition to S3 Glacier with a zero-day lifecycle policy. You can “PUT” to S3 Glacier like any other S3 storage class:</p> 
+       <p><img class="size-full wp-image-918 aligncenter" src="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_2-1.png" alt="" width="627" height="417" /></p> 
+       <p>Many customers also want to keep a low-cost durable copy of their data in a second region for disaster recovery. We’re also announcing the launch of <strong>S3 Cross-Region Replication to S3 Glacier</strong>. You can now directly replicate data into the S3 Glacier storage class in a different AWS region.</p> 
+       <h2>Restoring Data from S3 Glacier</h2> 
+       <p>S3 Glacier provides three restore speeds for you to access your data: expedited (to retrieve data in 1-5 minutes), standard (3-5 hours), or bulk (5-12 hours). With <strong>S3 Restore Speed Upgrade</strong>, you can now issue a second restore request at a faster restore speed and get your data back sooner. This is useful if you originally requested standard or bulk speed, but later determine that you need a faster restore speed.</p> 
+       <p>After a restore from S3 Glacier has been requested, you likely want to know when the restore completes. Now, with <strong>S3 Restore Notifications</strong>, you’ll receive a notification when the restoration has completed and the data is available. Many applications today are being built using AWS Lambda and event-driven actions, and you can now use the restore notification to automatically trigger the next step in your application as soon as S3 Glacier data is restored. For example, you can use notifications and Lambda functions to package and fulfill digital orders using archives restored from S3 Glacier.</p> 
+       <p>Here, I’ve set up notifications to fire when my restores complete so I can use Lambda to kick off a piece of analysis I need to run:</p> 
+       <p><img class="size-full wp-image-919 aligncenter" src="https://d2908q01vomqb2.cloudfront.net/fc074d501302eb2b93e2554793fcaf50b3bf7291/2018/11/26/S3_launch_1118_3.png" alt="" width="686" height="697" /></p> 
+       <p>You might need to restore many objects from S3 Glacier; for example, to pull all of your log files within a given time range. Using the new feature in Preview, you can provide a manifest of those log files to restore and, with one request, initiate a restore on millions or even trillions of objects just as easily as you can on just a few. S3 Batch Operations automatically manages retries, tracks progress, sends notifications, generates completion reports, and delivers events to AWS CloudTrail for all changes made and tasks executed.</p> 
+       <p>To get started with the new features on Amazon S3, visit <a href="https://aws.amazon.com/s3/">https://aws.amazon.com/s3/</a>. We’re excited about these improvements and think they’ll make it even easier to build archival applications using Amazon S3 and S3 Glacier. And we’re not yet done. Stay tuned, as we have even more coming!</p> 
+      </section> 
+      <footer> 
+       <div class="blog-tag-list">
+         TAGS: 
+        <span property="keywords"><a href="https://aws.amazon.com/blogs/architecture/tag/archival-workloads/" rel="tag">archival workloads</a>, <a href="https://aws.amazon.com/blogs/architecture/tag/glacier/" rel="tag">Glacier</a>, <a href="https://aws.amazon.com/blogs/architecture/tag/s3/" rel="tag">s3</a></span> 
+       </div> 
+       <div class="blog-author-box" property="author" typeof="Person"> 
+        <div class="blog-author-image"> 
+         <img alt="AWS Admin" src="https://d2908q01vomqb2.cloudfront.net/356a192b7913b04c54574d18c28d46e6395428ab/2017/09/12/aws-smile-logo.png" width="125" property="image" /> 
+        </div> 
+        <h3 class="lb-h4"> <a href="https://aws.amazon.com/blogs/architecture/author/admin/" title="Posts by AWS Admin" property="name">AWS Admin</a> </h3> 
+        <p property="description">Amazon Web Services</p> 
+       </div> 
+      </footer> 
+      <div class="js-mbox" data-mbox="en_blog_post_comments"></div> 
+     </article> 
+    </main> 
+    <div class="blog-sidebar lb-col lb-tiny-24 lb-mid-8"> 
+     <div class="awsm"> 
+      <div class="lb-box" style="padding-left:30px;"> 
+       <h3 id="Resources" class="lb-txt-none lb-h3 lb-title" style="margin-top:30px;"> Resources</h3> 
+       <div class="data-attr-wrapper lb-none-pad lb-none-v-margin lb-box" data-da-type="ha" data-da-channel="ha" data-da-language="en" data-da-placement="blog-sb-resources" data-da-campaign="acq_awsblogsb" data-da-content="architecture-resources" data-da-trk="blog_initial"> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/architecture/well-architected?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> AWS Well-Architected</a> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/whitepapers/kindle?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> AWS Architecture Monthly</a> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/whitepapers?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> AWS Whitepapers</a> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/training?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> AWS Training and Certification</a> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/this-is-my-architecture?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> This Is My Architecture</a> 
+        <a class="lb-txt-none lb-txt" href="https://aws.amazon.com/answers?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-resources"> AWS Answers</a> 
+       </div> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <hr class="lb-divider" /> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        </div> 
+       </div> 
+       <h3 id="Follow" class="lb-txt-none lb-h3 lb-title"> Follow</h3> 
+       <div class="data-attr-wrapper lb-none-pad lb-none-v-margin lb-box" data-da-type="ha" data-da-channel="ha" data-da-language="en" data-da-placement="blog-sb-social" data-da-campaign="acq_awsblogsb" data-da-content="architecture-social" data-da-trk="blog_initial"> 
+        <a class="lb-txt-none lb-txt" href="https://twitter.com/awscloud"> <i class="icon-twitter-square"></i>&nbsp;Twitter</a> 
+        <a class="lb-txt-none lb-txt" href="https://www.facebook.com/amazonwebservices"> <i class="icon-facebook-square"></i>&nbsp;Facebook</a> 
+        <a class="lb-txt-none lb-txt" href="https://www.linkedin.com/company/amazon-web-services/"> <i class="icon-linkedin-square"></i>&nbsp;LinkedIn</a> 
+        <a class="lb-txt-none lb-txt" href="https://www.twitch.tv/aws"> <i class="icon-twitch"></i>&nbsp;Twitch</a> 
+        <a class="lb-txt-none lb-txt" href="https://pages.awscloud.com/communication-preferences?sc_ichannel=ha&amp;sc_icampaign=acq_awsblogsb&amp;sc_icontent=architecture-social"> <i class="icon-envelope-square"></i>&nbsp;Email Updates</a> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="js-mbox" data-mbox="en_blog_post_sidebar"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="aws-blog-next-related-article-arrow"> 
+   <div class="aws-directories-container"></div> 
+   <script type="text/x-handlebars-template">
+    <div class="lb-article-arrow" data-next-related-item>
+      <a class="lb-widget-body" href="{{track_url items.0.additionalFields.link 'b_nrp'}}">
+        <div class="lb-content-area" >
+                    <span class="lb-article-title">{{{items.0.additionalFields.title}}}</span>
+        </div>
+        <i class="icon-chevron-right"></i>
+      </a>
+    </div>
+  </script> 
+  </div> 
+  <div class="awsm"> 
+   <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+    <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+    <div data-lb-comp="google-rlsa-pixel"></div> 
+    <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+     <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+      <div class="lb-xbcol"> 
+       <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+        <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Sign In to the Console</span> </a> 
+       </div> 
+       <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Learn About AWS</h3> 
+       <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+        <li><a href="https://aws.amazon.com/what-is-aws/?nc1=f_cc" target="_blank">What Is AWS?</a></li> 
+        <li><a href="https://aws.amazon.com/what-is-cloud-computing/?nc1=f_cc" target="_blank">What Is Cloud Computing?</a></li> 
+        <li><a href="https://aws.amazon.com/devops/what-is-devops/?nc1=f_cc" target="_blank">What Is DevOps?</a></li> 
+        <li><a href="https://aws.amazon.com/containers/?nc1=f_cc" target="_blank">What Is a Container?</a></li> 
+        <li><a href="https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">What Is a Data Lake?</a></li> 
+        <li><a href="https://aws.amazon.com/security/?nc1=f_cc" target="_blank">AWS Cloud Security</a></li> 
+        <li><a href="https://aws.amazon.com/new/?nc1=f_cc" target="_blank">What's New</a></li> 
+        <li><a href="https://aws.amazon.com/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+        <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Press Releases</a></li> 
+       </ul> 
+      </div> 
+      <div class="lb-xbcol"> 
+       <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Resources for AWS</h3> 
+       <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+        <li><a href="https://aws.amazon.com/getting-started/?nc1=f_cc" target="_blank">Getting Started</a></li> 
+        <li><a href="https://aws.amazon.com/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+        <li><a href="https://aws.amazon.com/solutions/?nc1=f_cc" target="_blank">AWS Solutions Portfolio</a></li> 
+        <li><a href="https://aws.amazon.com/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+        <li><a href="https://aws.amazon.com/faqs/?nc1=f_dr" target="_blank">Product and Technical FAQs</a></li> 
+        <li><a href="https://aws.amazon.com/resources/analyst-reports/?nc1=f_cc" target="_blank">Analyst Reports</a></li> 
+        <li><a href="https://aws.amazon.com/partners/?nc1=f_dr" target="_blank">AWS Partner Network</a></li> 
+       </ul> 
+      </div> 
+      <div class="lb-xbcol"> 
+       <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Developers on AWS</h3> 
+       <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+        <li><a href="https://aws.amazon.com/developer/?nc1=f_dr" target="_blank">Developer Center</a></li> 
+        <li><a href="https://aws.amazon.com/developer/tools/?nc1=f_dr" target="_blank">SDKs &amp; Tools</a></li> 
+        <li><a href="https://aws.amazon.com/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+        <li><a href="https://aws.amazon.com/developer/language/python/?nc1=f_dr" target="_blank">Python on AWS</a></li> 
+        <li><a href="https://aws.amazon.com/developer/language/java/?nc1=f_dr" target="_blank">Java on AWS</a></li> 
+        <li><a href="https://aws.amazon.com/developer/language/php/?nc1=f_cc" target="_blank">PHP on AWS</a></li> 
+        <li><a href="https://aws.amazon.com/developer/language/javascript/?nc1=f_dr" target="_blank">Javascript on AWS</a></li> 
+       </ul> 
+      </div> 
+      <div class="lb-xbcol"> 
+       <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Help</h3> 
+       <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+        <li><a href="https://aws.amazon.com/contact-us/?nc1=f_m" target="_blank">Contact Us</a></li> 
+        <li><a href="https://aws.amazon.com/careers/?nc1=f_hi" target="_blank">AWS Careers</a></li> 
+        <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">File a Support Ticket</a></li> 
+        <li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Knowledge Center</a></li> 
+        <li><a href="https://aws.amazon.com/premiumsupport/?nc1=f_dr" target="_blank">AWS Support Overview</a></li> 
+        <li><a href="https://aws.amazon.com/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+       </ul> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+       </div> 
+      </div> 
+      <div class="lb-xbcol"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+        <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+         <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Create an AWS Account</span> </a> 
+        </div> 
+       </div> 
+       <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+         <div class="lb-xbcol"> 
+          <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+           <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+           <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+           <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+           <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+           <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+        <div>
+          Amazon is an Equal Opportunity Employer: 
+         <i> Minority / Women / Disability / Veteran / Gender Identity / Sexual Orientation / Age.</i> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+     <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+      <div class="lb-xbcol"> 
+       <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+        <li class="lb-txt-bold">Language</li> 
+        <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+        <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+        <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+        <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+        <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+        <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+        <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+        <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+        <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+        <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+        <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+        <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+        <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+        <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+        <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+        <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+     <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+      <div class="lb-xbcol"> 
+       <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+        <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a></li> 
+        <li>|</li> 
+        <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a></li> 
+        <li>|</li> 
+        <li>&copy; 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </footer> 
+  </div> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="//a0.awsstatic.com/pre-offer/1/content/sitePriv/main.js" async=""></script> 
+  <script src="//a0.awsstatic.com/da/js/1.0.32/aws-da.js" async=""></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+  /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+  var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script language="JavaScript" type="text/javascript"><!--
+  if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+  //--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <script src="//a0.awsstatic.com/chrome/js/1.0.491/plugins/prism.js" data-default-language="markup"></script>  
+ </body>
+</html>

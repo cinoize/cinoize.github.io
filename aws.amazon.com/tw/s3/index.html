@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-zh_TW" lang="zh-TW" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>雲端物件儲存 | 隨時隨地存放和擷取資料 | Amazon Simple Storage Service (S3)</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/tw/s3/" /> 
+  <link rel="alternate" href="//aws.amazon.com/ar/s3/" hreflang="ar-sa" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/s3/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/s3/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/s3/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/s3/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="雲端物件儲存 | 隨時隨地存放和擷取資料 | Amazon Simple Storage Service (S3)" /> 
+  <meta property="twitter:description" content="" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="雲端物件儲存 | 隨時隨地存放和擷取資料 | Amazon Simple Storage Service (S3)" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/tw/s3/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'zh-TW',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'tw'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/zh_TW/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/tw/?nc2=h_lg"><span>按一下這裡可返回 Amazon Web Services 首頁</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/tw/contact-us/?nc2=h_header">聯絡銷售人員</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> 支援&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="tw">中文(繁體)&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">我的帳戶&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>建立 AWS 帳戶</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/tw/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">產品</a></li> 
+        <li><a href="/tw/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">解決方案</a></li> 
+        <li><a href="/tw/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">定價</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">文件</a></li> 
+        <li><a href="/tw/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">了解</a></li> 
+        <li><a href="/tw/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">合作夥伴網路</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/tw/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">客戶支援</a></li> 
+        <li><a href="/tw/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">探索更多 </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="搜尋" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS 管理主控台</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">帳戶設定</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">帳單與成本管理</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">安全登入資料</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">支援中心</a> </li> 
+      <li> <a href="/tw/premiumsupport/knowledge-center/?nc2=h_m_ma">知識中心</a> </li> 
+      <li> <a href="/tw/premiumsupport/?nc2=h_m_bc">AWS Support 概觀</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">定價</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">文件</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>產品</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>相關頁面</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>教學</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>部落格</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">查看更多結果，搜尋內容為： "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/zh_TW/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/tw/?nc2=h_lg"><span>按一下這裡可返回 Amazon Web Services 首頁</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="搜尋" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/tw/products/?nc2=h_mo">產品</a> </li> 
+      <li> <a href="/tw/solutions/?nc2=h_mo">解決方案</a> </li> 
+      <li> <a href="/tw/pricing/?nc2=h_mo">定價</a> </li> 
+      <li> <a href="/tw/what-is-aws/?nc2=h_mo">AWS 簡介</a> </li> 
+      <li> <a href="/tw/getting-started/?nc2=h_mo">入門</a> </li> 
+      <li> <a href="/tw/documentation/?nc2=h_mo">文件</a> </li> 
+      <li> <a href="/tw/training/?nc2=h_mo">培訓與認證</a> </li> 
+      <li> <a href="/tw/developer/?nc2=h_mo">開發人員中心</a> </li> 
+      <li> <a href="/tw/solutions/case-studies/?nc2=h_mo">客戶成功案例</a> </li> 
+      <li> <a href="/tw/partners/?nc2=h_mo">合作夥伴網路</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">支援</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">登入主控台</a> </li> 
+      <li> <a href="/tw/console/mobile/">下載行動應用程式</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/tw/s3/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/tw/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/tw/s3/?nc=sn&amp;loc=1"> 概觀</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tw/s3/features/?nc=sn&amp;loc=2"> 功能</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tw/s3/storage-classes/?nc=sn&amp;loc=3"> 儲存類別</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tw/s3/pricing/?nc=sn&amp;loc=4"> 定價</a> 
+       <a class="lb-txt-none lb-txt" href="/tw/s3/getting-started/?nc=sn&amp;loc=5"> 入門</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> 資源&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tw/s3/faqs/?nc=sn&amp;loc=7"> 常見問答集</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt" href="/tw/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> 資源</a> 
+    <a class="lb-txt" href="/tw/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> 影片</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_s3_simplified" data-lb-comp-ignore="true"> 
+     <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; background-image:url('//d1.awsstatic.com/product-marketing/S3/image-header_s3-2.6bf0d512939e43aba4fbd4185874e05ff0d236d2.png');" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="hero" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Amazon_S3" class="lb-txt-bold lb-txt-white lb-none-v-margin lb-h1-large lb-title"> Amazon S3</h1> 
+        <h3 id="Object_storage_built_to_store_and_retrieve_any_amount_of_data_from_anywhere" class="lb-txt-light lb-txt-white lb-small-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:30px;"> 專為從任何位置存放和擷取任何數量資料所建立的物件儲存</h3> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+           <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta1" data-da-so-url="/s3"> 
+            <a class="lb-btn-a-primary" href="https://s3.console.aws.amazon.com/s3/home" role="button"> <span> 開始使用 Amazon S3</span> </a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta2" data-da-so-url="/s3"> 
+           <a class="lb-btn-a" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html" role="button"> <span> 請求更多資訊</span> </a> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="data-attr-wrapper lb-mid-pad lb-small-v-margin lb-grid" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="tile2" data-da-so-version="intro" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+         <p>Amazon Simple Storage Service (Amazon S3) 物件儲存服務提供領先業界的可擴展性、資料可用性、安全性及效能。這表示所有規模和產業的客戶在種使用案例中，都可利用此服務來存放和保護任意數量的資料，例如網站、行動應用程式、備份和還原、存檔、企業應用程式、IoT 裝置及大數據分析。Amazon S3 提供易於使用的管理功能，讓您可以組織資料和設定微調的存取控制，以符合特定的商業、組織和合規要求。Amazon S3 的設計可達到 99.999999999% (11 個 9) 的耐久性，並可為全世界的公司存放數百萬個應用程式的資料。<br /> </p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="_I14_sXHO8U" data-source="youtube" data-video-title="Amazon S3 簡介"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Amazon S3 簡介 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=_I14_sXHO8U" /> 
+         </figure> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> 優勢</h1> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Industry-leading_performance.2C_scalability.2C_availability.2C_and_durability" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 領先業界的效能、擴展性、可用性及耐用性</h3> 
+          <div class="lb-rtxt"> 
+           <p>擴展和縮減儲存資源以符合變動的需求，不需要前期投資或資源採購週期。Amazon S3 的設計可達到 99.999999999% (11 個 9) 的資料耐久性，因為它可跨多個系統自動建立和存放所有 S3 物件的副本。這表示您的資料隨需可用，還能防止失敗、錯誤和威脅。<br /> <a href="/s3/faqs/#Durability_.26_Data_Protection" target="_blank">了解 S3 資料耐久性 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Wide_range_of_cost-effective_storage_classes" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 各種符合成本效益的儲存類別</h3> 
+          <div class="lb-rtxt"> 
+           <p>將資料存放在 <b>S3 儲存類別</b>，以對應的費率支援不同的資料存取層級，既節省成本又不犧牲效能。您可以使用 <b>S3 儲存類別分析</b>，根據存取模式探索應該移至更低成本儲存類別的資料，並設定 <b>S3 生命週期</b>政策以執行傳輸。您也可以將具有變動或不明存取模式的資料存放在 <b>S3 智慧型分層</b>，以根據變動存取模式將物件分層，並自動節省成本。<br /> <a href="/s3/storage-classes/">進一步了解 S3 儲存類別 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Unmatched_security.2C_compliance.2C_and_audit_capabilities" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 無與倫比的安全、合規和稽核功能</h3> 
+          <div class="lb-rtxt"> 
+           <p>將資料存放在 Amazon S3，以加密功能和存取管理工具避免未經授權的存取。S3 是唯一允許您針對儲存貯體中所有物件，或具有 <b><a href="/s3/features/block-public-access/" target="_blank">S3 區塊公開存取</a></b>的帳戶層級封鎖公開存取的物件儲存服務。S3 遵守合規計劃，例如 PCI-DSS、HIPAA/HITECH、FedRAMP、歐盟資料保護指令和 FISMA，協助您符合法規要求。AWS 還支援許多稽核功能，以監控對 S3 資源的存取請求。<br /> 進一步了解 <a href="/s3/features/#Access_management_and_security">S3 安全</a>和<a href="/compliance/">合規 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Easily_manage_data_and_access_controls" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 輕鬆管理資料和存取控制</h3> 
+          <div class="lb-rtxt"> 
+           <p>S3 提供管理存取、成本、複寫和資料保護的強大功能。S3 Access Points 讓您針對使用共享資料集的應用程式，以特定權限輕鬆管理資料存取。S3 複寫功能包含管理區域內或跨區域的資料複寫。S3 批次操作可協助管理跨數十億個物件的大規模變更。由於 S3 與 AWS Lambda 搭配使用，您可以記錄活動、定義提醒和將工作流程自動化，而不需要管理額外的基礎設施。<br /> <a href="/s3/features/#Storage_management_and_monitoring">進一步了解 S3 儲存管理功能 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Query-in-place_services_for_analytics_" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 用於分析就地查詢服務 </h3> 
+          <div class="lb-rtxt"> 
+           <p>利用就地查詢服務，對 S3 物件 (和 AWS 中的其他資料集) 執行大數據分析。使用 <b>Amazon Athena</b> 以標準 SQL 表達式查詢 S3 資料，以及使用 <b>Amazon Redshift Spectrum</b> 分析於 AWS 資料倉儲和 S3 資源存放的資料。您也可以使用 <b>S3 Select</b> 擷取物件資料的子集，而非整個物件，將查詢效能提高到最多 400%。<br /> <a href="/s3/features/#Query_in_place">進一步了解就地查詢 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Most_supported_cloud_storage_service" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 大多數支援的雲端儲存類別</h3> 
+          <div class="lb-rtxt"> 
+           <p>與來自 <b>AWS 合作夥伴網路 (APN)</b> (這是技術與諮詢雲端服務供應商的最大社群) 的夥伴合作，將資料存放在 Amazon S3 並加以保護。APN 可識別將資料傳輸到 Amazon S3 的遷移合作夥伴，以及為主要儲存、備份和還原、存檔和災難復原提供與 S3 整合解決方案的儲存合作夥伴。您也可以直接從 <b>AWS Marketplace</b> 購買 AWS 整合式解決方案，此市場列出超過 250 個儲存相關方案。<a href="/backup-recovery/partner-solutions/"><br /> 了解 APN</a> 和<a href="https://aws.amazon.com/marketplace"> AWS Marketplace &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="mid_page"></div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="How_it_works_.E2.80.94_S3_Access_Points" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> 運作方式 — S3 Access Points</h2> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Diagram_S3_Access_Points" title="Diagram_S3_Access_Points" src="//d1.awsstatic.com/re19/Westeros/Diagram_S3_Access_Points.fa88c474dc1073aede962aaf3a6af2d6b02be933.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-24"> 
+          <div class="lb-rtxt"> 
+           <p><b><a name="preview"></a>&nbsp;</b>Amazon S3 Access Points 可針對在 S3 上使用共享資料集的應用程式，大幅簡化資料存取的管理。有了 S3 Access Points，您便可輕鬆地替每個儲存貯體建立數百個 Access Point，實現了對共享資料集佈建存取的全新方式。Access Points 提供通往儲存貯體的自訂路徑，並有獨特的主機名稱，以及針對透過 Access Point 發出的任何請求強制執行特定權限和網路控制的存取政策。</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Use_cases" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> 使用案例</h2> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Backup_and_restore" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 備份與恢復</h3> 
+          <div class="lb-rtxt"> 
+           <p>使用 Amazon S3 和其他 AWS 服務，例如 <b>S3 Glacier</b>、<b>Amazon EFS</b> 和 <b>Amazon EBS</b>，建立可擴展、耐用且安全的備份和還原解決方案，以擴大或取代現有的現場部署功能。AWS 和 APN 合作夥伴可協助您符合復原時間目標 (RTO)、復原點目標 (RPO) 和合規需求。AWS 可讓您備份已在 AWS 雲端的資料，或使用混合儲存服務 <b>AWS Storage Gateway</b> 將現場部署資料的備份傳送到 AWS。<br /> <a href="/backup-restore/">進一步了解備份和還原 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Disaster_recovery_.28DR.29" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 災難復原 (DR)</h3> 
+          <div class="lb-rtxt"> 
+           <p>保護重要的資料應用程式，以及 AWS 雲端或現場部署環境中執行的 IT 系統，無需負擔第二實體站台的支出。Amazon S3 儲存、<b>S3 跨區域複寫</b>及其他 AWS 運算、聯網和資料庫服務可讓您建立 DR 架構，而能夠在自然災害、系統故障和人為錯誤所導致的停機情況下快速又輕鬆地復原。<a href="/disaster-recovery/"><br /> 進一步了解 DR &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Archive" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 存檔</h3> 
+          <div class="lb-rtxt"> 
+           <p>淘汰實體基礎設施，使用 <b>S3 Glacier</b> 和 <b>S3 Glacier Deep Archive</b> 存檔資料。這些 S3 儲存類別以最低費率長期保存物件。簡單地建立 S3 生命週期政策，將物件存檔其整個生命週期，或直接將物件上傳到存檔儲存類別。<b>S3 Object Lock</b> 可讓您將保留日期套用到物件以避免遭到刪除，並符合合規要求。與磁帶庫不同，S3 Glacier 可讓您在快速擷取時只需要一分鐘就還原存檔物件，而標準擷取時需要 3-5 小時。從 S3 Glacier 還原大量資料和從 S3 Glacier Deep Archive 執行的所有還原都在 12 小時內完成。<a href="/glacier/"><br /> 進一步了解存檔 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Data_lakes_and_big_data_analytics" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 資料湖和大數據分析</h3> 
+          <div class="lb-rtxt"> 
+           <p>建立 <a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3 資料湖</a>以加速創新，使用就地查詢、分析和機器學習工具以擷取寶貴的見解。隨著您的資料湖成長，可使用 S3 Access Points 來輕鬆設定資料存取，並替個別應用程式或多組應用程式設定特定權限。您也可以使用 <b>AWS Lake Formation</b> 快速建立資料湖，並集中定義和強制執行安全、控管和稽核政策。此服務會收集資料庫和 S3 資源各處的資料，將資料移到 Amazon S3 中的新資料湖，然後使用機器學習演算法來清除並分類資料。所有 AWS 資源都可擴展來順應擴大的資料存放區 – 不需要前期投資。<br /> 進一步了解 <a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3 資料湖</a>和 <a href="/lake-formation/">AWS Lake Formation &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Hybrid_cloud_storage" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 混合雲端儲存</h3> 
+          <div class="lb-rtxt"> 
+           <p>利用 <b>AWS Storage Gateway</b> 在現場部署應用程式和 Amazon S3 之間建立無縫連接，以減少資料中心佔用面積，並發揮 AWS 的可擴展性、可靠性和耐用性，以及 AWS 創新的機器學習和分析功能。您也可以使用 <b>AWS DataSync</b>，在現場部署儲存與 Amazon S3 之間自動傳輸資料，而其傳輸資料的速度最多可為開放原始碼工具的 10 倍。另一種方法是讓混合雲端儲存環境使用 APN 的閘道供應商。您也可以使用 <b>AWS Transfer for SFTP</b> (可與第三方安全交換檔案的全受管服務)，直接將檔案傳入和傳出 Amazon S3。<br /> 進一步了解<a href="/storagegateway/">混合儲存</a>、<a href="/datasync/">AWS DataSync</a> 和 <a href="/sftp/">AWS Transfer for SFTP &raquo;</a>&nbsp;<br /> </p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Cloud-native_application_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> 雲端原生應用程式資料</h3> 
+          <div class="lb-rtxt"> 
+           <p>使用 AWS 服務和 Amazon S3 存放生產資料，以建立快速、符合成本效益的行動和網際網路應用程式。Amazon S3 可讓您上傳任意數量的資料，並從任何位置存取，以更快速部署應用程式並接觸更多最終使用者。將資料存放在 Amazon S3 也意味著，您可以存取機器學習和分析的最新 AWS 開發人員工具和服務，以創新和最佳化雲端原生應用程式。<br /> <a href="/products/developer-tools/">進一步了解雲端原生應用程式 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_tiles_full_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Case_studies" class="lb-txt-bold lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> 案例研究</h2> 
+       <div class="lb-xb-grid-wrap" style="margin-top:1px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/netflix/"><img alt="Netflix" title="Netflix" src="//d1.awsstatic.com/Industries/Telecom/600x400_Netflix-Logo.3bfbc7a6fa28b81d2e46ca48d3ff71b781abc0ce.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Netflix 在全世界從 Amazon S3 傳遞數十億小時的內容。Amazon S3 也做為其大數據分析解決方案的資料湖。 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/finra/"><img alt="FINRA" title="FINRA" src="//d1.awsstatic.com/product-marketing/AI/customers/Approved_Logos_600x4001/600x400_FINRA.3cba6a9ca0d18b7a45c036dd7c9e2f34d309b8c3.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            FINRA 使用 Amazon S3 每天擷取和存放超過 750 億個市場事件，並使用 AWS Lambda 函數根據 200 個以上的規則來格式化和驗證資料。 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/airbnb/"><img alt="AirBnB" title="AirBnB" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600x400_Airbnb_Logo.f891e0066454456292ad7009aad136ea679f2cfd.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Airbnb 將備份資料和靜態檔案放在 Amazon S3 上，其中包括超過 10 PB 的使用者照片。做為誕生於雲端解決方案，他們持續創造新方法，來分析在 Amazon S3 存放的資料。 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/ge-healthcare/"><img alt="GE Healthcare" title="GE Healthcare" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600X400_GE-Healthcare_Logo.7dd29d40cf5fe1cc9f3a0cc0aedbcb54528a4fe2.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            GE 使用 Amazon S3 為其 GE Health Cloud 服務存放和保護 1 PB 的重要醫學造影資料，此服務連接數十萬台成影機器和其他醫療裝置。 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Related_content" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> 相關內容</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>最新消息</b><br /> <i>S3 推出相同區域複寫。現在提供複寫到相同或不同 AWS 區域。</i><br /> 2019 年 9 月 18 日</p> 
+           <p><a href="/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/" target="_blank">進一步了解 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS 新聞部落格</b> 
+           </div> 
+           <div> 
+            <i>Amazon S3 發佈 S3 批次操作正式發行，供商業 AWS 區域和 AWS GovCloud 的物件管理</i> 
+           </div> 
+           <div>
+             作者 Jeff Barr | 2019 年 4 月 30 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-amazon-s3-batch-operations/" target="_blank">進一步了解 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>最新消息</b> 
+            <br /> 
+            <i>AWS 宣布在所有商業 AWS 區域和 AWS GovCloud (US) 中正式推出 Amazon S3 Glacier Deep Archive 儲存類別</i> 
+           </div> 
+           <div>
+             2019 年 3 月 27 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="/about-aws/whats-new/2019/03/S3-glacier-deep-archive/" target="_blank">進一步了解 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <h2 id="__" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> </h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS 新聞部落格<br /> </b> 
+            <i>新增 - 透過智慧型分層自動最佳化 Amazon S3 的成本</i> 
+            <br /> 作者 Jeff Barr | 2018 年 11 月 26 日 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-automatic-cost-optimization-for-amazon-s3-via-intelligent-tiering/" target="_blank">進一步了解 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>AWS 架構部落格</b><br /> <i>S3 &amp; S3 Glacier 的存檔工作負載啟動公告</i><br /> 作者 Matt Sidley | 2018 年 11 月 26 日<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads" target="_blank">進一步了解 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>新聞部落格</b><br /> <i>Amazon S3 Block Public Access – 為您的帳戶和儲存貯體提供另一層保護</i><br /> 2018 年 11 月 16 日<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" target="_blank">進一步了解 &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> 準備好開始使用了嗎？</h2> 
+      <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          查閱產品功能 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">進一步了解資料管理、安全性、存取管理、分析等功能，<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/s3/features/"> 進一步了解&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          註冊免費帳戶 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">立即存取 AWS 免費方案並開始試驗 Amazon S3。&nbsp;</p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> 註冊&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          開始在主控台進行建置 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">開始在 AWS 主控台使用 Amazon S3 進行建置。<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> 開始使用&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> 登入主控台</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> 了解 AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tw/what-is-aws/?nc1=f_cc" target="_blank">什麼是 AWS？</a></li> 
+       <li><a href="/tw/what-is-cloud-computing/?nc1=f_cc" target="_blank">什麼是雲端運算？</a></li> 
+       <li><a href="/tw/devops/what-is-devops/?nc1=f_cc" target="_blank">什麼是 DevOps？</a></li> 
+       <li><a href="/tw/containers/?nc1=f_cc" target="_blank">什麼是容器？</a></li> 
+       <li><a href="/tw/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">什麼是資料湖？</a></li> 
+       <li><a href="/tw/security/?nc1=f_cc" target="_blank">AWS 雲端安全</a></li> 
+       <li><a href="/tw/new/?nc1=f_cc" target="_blank">最新消息</a></li> 
+       <li><a href="/tw/blogs/?nc1=f_cc" target="_blank">部落格</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">新聞稿</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS 資源</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tw/getting-started/?nc1=f_cc" target="_blank">入門</a></li> 
+       <li><a href="/tw/training/?nc1=f_cc" target="_blank">培訓與認證</a></li> 
+       <li><a href="/tw/solutions/?nc1=f_cc" target="_blank">AWS 解決方案組合</a></li> 
+       <li><a href="/tw/architecture/?nc1=f_cc" target="_blank">架構中心</a></li> 
+       <li><a href="/tw/faqs/?nc1=f_dr" target="_blank">產品和技術常見問答集</a></li> 
+       <li><a href="/tw/resources/analyst-reports/?nc1=f_cc" target="_blank">分析師報告</a></li> 
+       <li><a href="/tw/partners/?nc1=f_dr" target="_blank">AWS 合作夥伴網路</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS 開發人員</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tw/developer/?nc1=f_dr" target="_blank">開發人員中心</a></li> 
+       <li><a href="/tw/developer/tools/?nc1=f_dr" target="_blank">軟體開發套件與工具</a></li> 
+       <li><a href="/tw/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+       <li><a href="/tw/developer/language/python/?nc1=f_dr" target="_blank">在 AWS 上執行的 Python</a></li> 
+       <li><a href="/tw/developer/language/java/?nc1=f_dr" target="_blank">在 AWS 上執行的 Java</a></li> 
+       <li><a href="/tw/developer/language/php/?nc1=f_cc" target="_blank">在 AWS 上執行的 PHP</a></li> 
+       <li><a href="/tw/developer/language/javascript/?nc1=f_dr" target="_blank">在 AWS 上執行的 JavaScript</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> 說明</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tw/contact-us/?nc1=f_m" target="_blank">聯絡我們</a></li> 
+       <li><a href="/tw/careers/?nc1=f_hi" target="_blank">AWS 徵才</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">提交支援票證</a></li> 
+       <li><a href="/tw/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">知識中心</a></li> 
+       <li><a href="/tw/premiumsupport/?nc1=f_dr" target="_blank">AWS Support 概觀</a></li> 
+       <li><a href="/tw/legal/?nc1=f_cc" target="_blank">法律</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tw" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> 建立 AWS 帳戶</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="tw" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="tw" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="tw" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="tw" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="tw" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon 是支持平等就業機會的雇主： 
+        <i>少數民族/女性/殘障人士/退伍軍人/性別認同/性取向/年齡。</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">語言</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">隱私權</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">網站條款</a></li> 
+       <li>|</li> 
+       <li>&copy;2020, Amazon Web Services, Inc. 或其合作夥伴。保留所有權利。</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    您使用<strong>過時</strong>的瀏覽器。請升級到 Internet Explorer 11 或其他最新的瀏覽器以提升使用體驗。<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = '您使用<strong>過時</strong>的瀏覽器。請升級到 Internet Explorer 11 或其他最新的瀏覽器以提升使用體驗。';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:49:35.659-0700 -->  
+ </body>
+</html>

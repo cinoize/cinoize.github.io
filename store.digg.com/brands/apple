@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"02bf0a7962","applicationID":"131593373","transactionName":"dl4KRhNdXFwDQRhbQ1RfAEFOQVhfEQ==","queueTime":0,"applicationTime":1012,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"02bf0a7962",applicationID:"131593373"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',1000,
+{'GTM-P2BQKM':true});</script>
+<title>
+  Digg Store
+</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://store.digg.com/feed.rss" />
+<meta
+  name="description"
+  content="Digg Store is the leading destination for stylish accessories, gadgets, everyday carry essentials &amp; more. Discover one-of-a-kind products at amazing prices." >
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+<link rel="apple-touch-icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" media="all" href="https://shops2.stackassets.com/assets/classic-1a38bf9b94b9b8165858d2f834ebf883b5b517f7fe666110625e26914443a16e.css" />
+  <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" />
+
+
+
+<style>.publisher-digg .brand-primary,.publisher-digg .shopping-cart-icon.active,.publisher-digg .my-account-container .nav-tabs li a.active,.publisher-digg #sc-nyop-buttons .btn-default.active .fa-circle,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .upsell-cta--checked::before,.publisher-digg .footer .newsletter .btn-default,.publisher-digg .js-cart-item-remove:hover,.publisher-digg .mobile-search-icon.active .search-input-icon,.publisher-digg .search-input:focus+.search-input-icon{color:#00b0ff}@media (min-width: 992px){.publisher-digg .navbar-master .nav-item-container:hover .nav-item-link,.publisher-digg .navbar-master .nav-item-link:hover{border-color:#00b0ff;color:#00b0ff !important}}.publisher-digg #sc-nyop-leaderboard tr:first-child td:first-child strong,.publisher-digg .table>tbody>tr.active td,.publisher-digg .table>tbody>tr.active:hover td,.publisher-digg .sc-form-group .bar:before,.publisher-digg .sc-form-group .bar:after,.publisher-digg .checkout .edit-address-bar,.publisher-digg .footer-newsletter .btn-primary,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher .nav-item-link,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher.open .nav-item-link{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary:hover{background-color:#009ee6}.publisher-digg .table-hover>tbody>tr:hover,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{background-color:#dbf4ff}.publisher-digg .sc-product-thumbnails .product-thumbnail.active,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .btn-selectable.active,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{border-color:#00b0ff}.publisher-digg .hello-bar{background-color:#000000}.publisher-digg .hello-bar a{color:#FFFFFF}.publisher-digg .alert-notification{background-color:#000;border-color:#000;color:#fff}.publisher-digg .alert-notification hr{border-top-color:#000}.publisher-digg .alert-notification .alert-link{color:#e6e6e6}.publisher-digg .navbar-default,.publisher-digg .search-input,.publisher-digg .navbar-collapse{background-color:#FFFFFF}.publisher-digg .search-input-icon,.publisher-digg .shopping-cart-icon,.publisher-digg .navbar-default .navbar-nav>li>a,.publisher-digg .navbar-default .navbar-nav>li>a:hover,.publisher-digg .nav-item-link,.publisher-digg .dropdown-menu>li>a,.publisher-digg .dropdown-menu>li>a:hover,.publisher-digg .navbar-default .navbar-nav>.open>a{color:#000000}.publisher-digg .navbar-default .navbar-toggle .icon-bar{background-color:#000000}@media (max-width: 991px){.publisher-digg .menu-list>li>a,.publisher-digg .menu-list>li>.subnav-menu-label,.publisher-digg .menu-list .subnav-menu-items a,.publisher-digg .menu-list>li>a:hover{color:#000000;background:none}}.publisher-digg .navbar-toggle .icon-cart{font-size:1.7em}.publisher-digg .navbar-toggle .search-input-icon{font-size:1.4em}@media (max-width: 991px){.publisher-digg .navbar-default .nav-item,.publisher-digg .navbar-default .subnav-menu,.publisher-digg .navbar-default .subnav-menu-items{border:0;border-top:1px solid #aaa}.publisher-digg .navbar-default .nav-item.open{border-color:transparent}.publisher-digg .navbar-default .nav-item:first-child{border:0}}.publisher-digg .navbar-search .search-input,.publisher-digg .navbar-search-mobile .search-input{color:#000000;border:1px solid #aaa}.publisher-digg .shopping-cart-total .badge{background-color:#f41e37}.publisher-digg #sc-hero-unit{background-image:url("https://cdnp2.stackassets.com/56cb74df44425f60e74f5afbab2ed210f8399892/store/776310b17bae3182f521c99a897572bfe8a6ca5accdc3e0e74707c28e6b0/rustic-table-desk.jpg")}.publisher-digg #sc-hero-unit.giveaway-no-banner{background-image:none}.primary-color{color:#00b0ff !important}.active.primary-border-color-active{border-color:#00b0ff !important}.primary-border-color-active:hover{border-color:#66d0ff !important}.primary-border-top{border-top-color:#00b0ff !important}.active.primary-border-top-active{border-top-color:#00b0ff !important}.primary-border-left{border-left-color:#00b0ff !important}.active.primary-border-left-active{border-left-color:#00b0ff !important}.primary-border-bottom{border-bottom-color:#00b0ff !important}.active.primary-border-bottom-active{border-bottom-color:#00b0ff !important}.primary-border-right{border-right-color:#00b0ff !important}.active.primary-border-right-active{border-right-color:#00b0ff !important}.buy-now-column .loyalty-callout{color:#00b0ff}.loyalty-callout--bar{background-color:#00b0ff}@media (min-width: 993px){.loyalty-callout--bar{background-color:#fff;color:#00b0ff}}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+  window['optimizely'] = window['optimizely'] || [];
+  window['optimizely'].push(["customTag", "LoggedIn", false]);
+</script>
+<script src="//cdn.optimizely.com/js/74647825.js"></script>
+
+
+
+<script src="https://shops2.stackassets.com/assets/shared-178e39bdb70b420a918ed588bf4172e270dc8aa76ed55b131ce6a9a30a39bf18.js"></script>
+<!--[if lte IE 9]>
+  <script src="https://shops2.stackassets.com/assets/jquery.html5-placeholder-shim-fd57d1a7d62d64d8cfd7af63ec58c8db8248e7709cac024b6946c984d31e9b7d.js"></script>
+  <script>
+    $.placeholder.shim();
+  </script>
+<![endif]-->
+
+<script src="https://www.recaptcha.net/recaptcha/api.js?render=6LfHudMUAAAAAKBsc6ubBtwsz7xka6zB8S2UXrhk" async="async" defer="defer"></script>
+<script src="https://assets.jetlore.com/js/jlranker.js"></script>
+
+
+
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="I9Lg8Bi93SoYjQSZZu965nUtCELOasbTY8d8tl+0qerjU3Co5c97KZ0oGlIvgtk9xDm7shuj1h8DXS8IG9lDsQ==" />
+
+
+    <!-- Quantcast Tag, part 1 -->
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+      (function() {
+       var elem = document.createElement('script');
+       elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+       elem.async = true;
+       elem.type = "text/javascript";
+       var scpt = document.getElementsByTagName('script')[0];
+       scpt.parentNode.insertBefore(elem, scpt);
+      })();
+    </script>
+
+    <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '675226672634286');
+  fbq('track', "PageView");</script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=675226672634286&ev=PageView&noscript=1"
+  /></noscript>
+
+
+<script type="text/javascript">
+  window.fbq = window.fbq || (function(){});
+  window._fbq = window._fbq || [];
+</script>
+
+<script type="text/javascript">
+  window.dataLayer = [{
+    publisherId: '124',
+    vertical: 'lifestyle',
+    affiliateId: '',
+    appEnvironment: 'production',
+    showEmailCapture: 'true',
+  }];
+
+  window.SC.code.analytics = {
+    customDimension: function(index, name, value) {
+      gtmPayload = {};
+      gtmPayload['dimension' + index] = value;
+      dataLayer.push(gtmPayload);
+    },
+
+    analyticsEvent: function(category, action, opt_label, opt_value, opt_noninteractive) {
+      // ensure value is integer. We encountered weird analytics behavior if decimals are sent
+      integer_value = Math.round(opt_value) || undefined
+
+      dataLayer.push({
+        'event': 'analyticsEvent',
+        'eventCategory': category,
+        'eventAction': action,
+        'eventLabel': opt_label,
+        'eventValue': integer_value,
+        'eventNonInt': opt_noninteractive
+      });
+    },
+
+    analyticsSocial: function(socialNetwork, socialAction, opt_socialTarget, opt_page) {
+      dataLayer.push({
+        'event': 'social',
+        'socialNetwork': socialNetwork,
+        'socialAction': socialAction,
+        'socialTarget': opt_socialTarget,
+        'socialPagePath': opt_page
+      });
+    },
+
+    analyticsVPV: function(virtualPageName) {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': virtualPageName
+      });
+    },
+
+    analyticsClearVPV: function() {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': undefined
+      });
+    },
+
+    analyticsForm: function(f, el) {
+      var formName = f;
+      var elName = el.name || el.id || el.type;
+      var category = 'interaction';
+      var action = 'form: ' + formName;
+      var label = elName + ':' + el.type;
+
+      // Google Tag Manager
+      analyticsEvent(category, action, label);
+    }
+  };
+
+  $(document).ready(function() {
+    window.SC.dataLayer.enqueue('SCDataLayer', 'USER_VISITS', { previouslyPurchasedProducts: 'false' });
+
+
+  });
+</script>
+
+
+
+
+
+<script type="text/javascript">
+var _user_id = '';
+var _session_id = 'f5553767719d51832b94be97c8e1d422';
+
+var _sift = window._sift = window._sift || [];
+_sift.push(['_setAccount', 'ef01e3d959']);
+_sift.push(['_setUserId', _user_id]);
+_sift.push(['_setSessionId', _session_id]);
+_sift.push(['_trackPageview']);
+(function() {
+  function ls() {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.async = true;
+    e.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.siftscience.com/s.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(e, s);
+  }
+  if (window.attachEvent) {
+    window.attachEvent('onload', ls);
+  } else {
+    window.addEventListener('load', ls, false);
+  }
+})();
+</script>
+
+
+<input type="hidden" class="js-jetlore-constructor-tag" id="user_email" value="">
+
+  </head>
+  <body id="stacksocial-wrapper" class="publisher-digg" ng-app="stackApp" ng-class="[cartStateBodyClass]">
+    <a href="https://iar40lbead.execute-api.us-east-1.amazonaws.com/ProdStage" rel="nofollow" style="display: none" aria-hidden="true">nofollow</a>
+    <script type="text/javascript">
+  // dimension1 is reserved for legacy PartnerType and is unused
+  window.SC.code.analytics.customDimension(2, 'User Status', "logged_out");
+
+    window.SC.code.analytics.customDimension(3, "Publisher", "Digg");
+    window.SC.code.analytics.customDimension(4, "Publisher Persona", "Internet Culture");
+
+
+
+
+
+</script>
+
+    <!-- StackCommerce GTM Container -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2BQKM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P2BQKM');
+  </script>
+
+    
+
+    <input type="hidden" name="current_publisher" id="current_publisher" value="124" data-name="Digg" data-checkout-upsell-top-id="20559" data-checkout-upsell-bottom-id="9426" />
+
+    <input type="hidden" name="current_user_favorites" id="current_user_favorites" data-sale-ids="[]" data-sales-url="https://store.digg.com/v0/sales" />
+    <input type="hidden" name="api_url" id="api_url" value="https://store.digg.com/" />
+    <input type="hidden" name="current_cart" id="current_cart" data-current-cart="{&quot;items&quot;:[]}" />
+    <input type="hidden" name="publisher_upsell_sales" id="publisher_upsell_sales" data-sales="[{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true}]" data-max-quantity="4" />
+    <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1">
+  <defs>
+    <symbol id="icon-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M18,38.5L36.2,57c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l9.1-9.2c3-3.1,6.1-6.1,9.1-9.2c4.7-4.8,4.7-12.6,0-17.4c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6l-2,2l-2-2.1c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6C13.3,25.9,13.3,33.7,18,38.5z M20.7,23.5c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6l3.4,3.4c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l3.3-3.4c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6c3.4,3.5,3.4,9.1,0,12.6L37.5,53.2l-0.1-0.1l-16.7-17C17.3,32.6,17.3,27,20.7,23.5z" />
+    </symbol>
+
+    <symbol id="icon-circle-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z M25.05,29.025 C26.25,27.75 27.9,27 29.55,27 C31.2,27 32.85,27.675 34.05,29.025 L36.525,31.65 C36.75,31.875 37.125,32.025 37.5,32.025 C37.875,32.025 38.25,31.875 38.475,31.65 L40.95,29.025 C42.15,27.75 43.8,27 45.45,27 C47.1,27 48.75,27.675 49.95,29.025 C52.5,31.65 52.5,36 49.95,38.7 L37.5,51.825 L37.425,51.675 L25.05,38.7 C22.5,36 22.5,31.725 25.05,29.025 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-circle-heart-filled" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-cart" viewBox="0 0 75 75">
+      <path class="path1" d="M47.8,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3s-2.3-1-2.3-2.3C45.5,53.5,46.5,52.5,47.8,52.5z M30.4,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3c-1.3,0-2.3-1-2.3-2.3C28.1,53.5,29.1,52.5,30.4,52.5z M47.8,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C53.6,51.7,50.9,49.1,47.8,49.1z M30.4,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C36.2,51.7,33.6,49.1,30.4,49.1z M23.2,23.8h34.5L55,35.4l-26.3,2.1L23.2,23.8z M11.4,14.6c-1,0-1.7,0.8-1.7,1.7s0.8,1.7,1.7,1.7h5.8c2.9,7.1,5.7,14.2,8.5,21.2l-2.6,6.3c-0.2,0.5-0.2,1.2,0.2,1.6c0.3,0.5,0.9,0.8,1.4,0.8h28.9c0.9,0,1.8-0.8,1.8-1.7c0-0.9-0.8-1.7-1.8-1.7H27.3l1.5-3.6l27.8-2.2c0.7-0.1,1.4-0.6,1.6-1.3l3.5-15c0.2-1-0.7-2.1-1.7-2.1H21.8l-1.9-4.7c-0.3-0.6-0.9-1.1-1.6-1.1H11.4z" />
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 75 75">
+      <path class="path1" d="M34.1,17.5c-4.4,0-8.6,1.7-11.7,4.9c-3.1,3.1-4.9,7.3-4.9,11.7c0,4.4,1.7,8.6,4.9,11.7c3.1,3.1,7.3,4.9,11.7,4.9c3.7,0,7.2-1.2,10.1-3.5l0.2-0.2l10,10c0.7,0.7,1.9,0.7,2.6,0c0.7-0.7,0.7-1.9,0-2.6v0l-10-10l0.2-0.2c5.1-6.6,4.5-16-1.4-21.9C42.6,19.2,38.5,17.5,34.1,17.5 M43.2,43.2c-2.4,2.4-5.7,3.8-9.1,3.8h0c-3.4,0-6.7-1.3-9.1-3.8c-2.4-2.4-3.8-5.7-3.8-9.1c0-3.4,1.3-6.7,3.8-9.1c2.4-2.4,5.7-3.8,9.1-3.8c3.4,0,6.7,1.3,9.1,3.8c2.4,2.4,3.8,5.7,3.8,9.1S45.6,40.7,43.2,43.2" />
+    </symbol>
+
+    <symbol id="icon-ships-fast" viewBox="0 0 100 100">
+      <path class="st0" d="M30.1,39.2L30.1,39.2l-12.3,0c0,0,0,0,0,0c-0.3,0-0.7,0.1-0.9,0.4c-0.2,0.2-0.4,0.6-0.4,0.9
+        c0,0.3,0.1,0.7,0.4,0.9c0.2,0.2,0.6,0.4,0.9,0.4l12.3,0c0.4,0,0.7-0.1,0.9-0.4c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9
+        C30.8,39.3,30.5,39.2,30.1,39.2z"/>
+      <path class="st0" d="M31.1,35.2c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9c-0.3-0.2-0.6-0.4-0.9-0.4l0,0l0,0H8.3
+        c-0.4,0-0.7,0.1-0.9,0.4C7.1,33.6,7,33.9,7,34.3c0,0.3,0.1,0.7,0.4,0.9c0.3,0.2,0.6,0.4,0.9,0.4l0,0l0,0h21.8
+        C30.5,35.6,30.8,35.4,31.1,35.2z"/>
+      <path class="st0" d="M75.4,36.1l-0.1-0.5c-0.4-1.5-1.9-2.6-3.4-2.6H38.4c-2,0-3.6,1.6-3.6,3.6v21.7c0,2,1.6,3.6,3.6,3.6h4.4l0.1,0.5
+        c0.8,2.7,3.3,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h17.6l0.1,0.5c0.8,2.7,3.4,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h4.5
+        c1.5,0,2.8-1.3,2.8-2.8V48.9c0-1.5-1.3-2.8-2.8-2.8h-0.7L89,45.1c-0.7-1.4-1.5-3.1-2.5-4.7c-0.7-1.2-1.4-2.1-2.1-2.8
+        c-0.7-0.8-1.5-1.5-2.8-1.5H75.4z M53,60.6c0,2.2-1.7,3.9-3.9,3.9c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.7-3.9,3.9-3.9
+        C51.4,56.7,53,58.4,53,60.6L53,60.6z M72.8,59.3H55.5l-0.1-0.5c-0.8-2.8-3.3-4.7-6.2-4.7c-2.8,0-5.4,1.9-6.2,4.7l-0.1,0.5h-4.4
+        c-0.5,0-1-0.5-1-1V36.6c0-0.6,0.4-1,1-1l33.4,0c0.5,0,1,0.5,1,1V59.3z M79.4,64.4c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.8-3.9,3.9-3.9
+        c2.3,0.1,3.9,1.7,3.9,3.9C83.3,62.8,81.6,64.4,79.4,64.4z M90.4,48.7v10.6h-4.7l-0.1-0.5c-0.6-2.8-2.9-4.5-6.2-4.6
+        c-1,0-2.1,0.3-3,0.7l-1,0.5v-6.7H90.4z M82.6,39.3c0.5,0.5,1.1,1.4,1.7,2.4c0.6,1,1.2,2.1,1.9,3.5l0.5,1H75.4v-7.5h6.1l0.2,0
+        l0.2,0.1C82,38.9,82.3,39,82.6,39.3z"/>
+    </symbol>
+
+    <symbol id="icon-facebook" viewBox="0 0 100 100">
+      <path d="M94.48,0h-89A5.52,5.52,0,0,0,0,5.52v89A5.52,5.52,0,0,0,5.52,100h47.9V61.33h-13V46.19h13V35.06c0-12.91,7.89-20,19.41-20a104.57,104.57,0,0,1,11.64.6V29.2h-8c-6.25,0-7.46,3-7.46,7.35v9.64H84l-2,15.14H69V100H94.48A5.52,5.52,0,0,0,100,94.48v-89A5.52,5.52,0,0,0,94.48,0Z" />
+    </symbol>
+
+  </defs>
+</svg>
+
+
+    <div class="container-wrapper">
+      <div class="container-site">
+        <script>
+  window.current_publisher_code = "digg";
+</script>
+
+
+<div class="hello-bar js-hello-bar hidden-xs hidden-sm">
+  <div class="container">
+      <div class="pull-left">
+        <a class="back-link" href="http://digg.com/">
+          <i class='fa fa-sm fa-chevron-left back-to-publisher'></i> back to digg.com
+</a>      </div>
+
+
+      <div class="">
+        <a class="hello-bar-text js-hello-bar" data-sale-slug="babbel-lifetime-subscription-all-languages" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;}" data-sale="{&quot;id&quot;:24208,&quot;name&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;,&quot;title&quot;:&quot;Learn 14 Languages \u0026 Access More Than 10,000 Hours of High-Quality Language Education Online&quot;,&quot;price_in_cents&quot;:15900,&quot;categories&quot;:[{&quot;name&quot;:&quot;Language&quot;}]}" data-track-impression="{&quot;list&quot;:&quot;hello bar&quot;}" href="/sales/babbel-lifetime-subscription-all-languages">
+          Save 60% On A Lifetime Subscription To Babbel&#39;s Language Learning App
+          <i class="fa fa-chevron-right"></i>
+</a>      </div>
+
+    <a class="referal-link" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;refer link&quot;}" href="/user/credits">
+      Give $10,
+      Get $10
+</a>  </div>
+</div>
+
+<nav id="main-navbar"
+  class="navbar navbar-default navbar-fixed-top navbar-master-without-stackbar navbar-master js-navbar-master"
+  role="navigation"
+  data-navbar>
+
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle navbar-menu-button pull-left" type="button" aria-label="Toggle Navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+      </button>
+
+      <div class="navbar-toggle mobile-cart-icon mini-cart">
+        <mini-cart-button></mini-cart-button>
+      </div>
+
+      <div class="navbar-toggle mobile-search-icon js-toggleSearchNav">
+        <svg class="svg-icon search-input-icon">
+          <use xlink:href="#icon-search"></use>
+        </svg>
+      </div>
+
+      <div class="navbar-brand-container">
+        <a class="navbar-brand" href="/">
+            <img class="navbar-logo hidden-xs hidden-sm" alt="Digg" src="https://cdnp2.stackassets.com/6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b/store/c955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30/28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png" />
+
+    <img class="navbar-logo hidden-md hidden-lg" alt="Digg Mobile" src="https://cdnp1.stackassets.com/7233e69003b00a8364724db622d71fbae54b3efc/store/f2e980f91ac9866426d222b593e6332923e0dbac41c3f53b6fa4089945fe/8570c0924c5e16dc571c4330dcef195d95089b07_logo_main_mobile.png" />
+
+</a>      </div>
+    </div>
+
+    <div class="navbar-collapse">
+      <div class="navbar-center">
+        <div class="hidden-xs hidden-sm navbar-search">
+          <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+            <div class="search-container">
+              <input type="text" name="query" id="query" value="" placeholder="Search" class="search-input" aria-label="search" required="required" />
+              <i class="fa fa-search search-input-icon"></i>
+            </div>
+</form>        </div>
+
+        <ul class="nav navbar-nav navbar-right nav-account hidden-xs hidden-sm">
+          <li class="heart-icon-nav">
+            <a class="nav-account-link js-wishlist-nav" aria-label="My Wishlist" href="/user?show=home-tab">
+              <svg class="svg-icon">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+</a>          </li>
+          <li class="cart-icon-nav">
+            <mini-cart-button></mini-cart-button>
+          </li>
+            <li>
+    <a class="nav-account-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+        </ul>
+      </div>
+
+      
+<ul class="nav navbar-nav navbar-main js-navbar-main nav-4-items">
+  
+    
+
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Shop
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/newest-sales">
+                                      New Arrivals
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/best-sellers">
+                                      Best Sellers
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/ending-soon">
+                                      Ending Soon
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/pay-what-you-want">
+                                      Pay What You Want
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifetime-deals">
+                                      Lifetime Subscriptions
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/bundles">
+                                      Online Course Bundles
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/apps-software">
+                            Software
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-backup-storage">
+                                      Backup + Storage
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-entertainment">
+                                      Entertainment
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-productivity">
+                                      Productivity
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-security">
+                                      VPN + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software">
+                                      View All (150+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets">
+                            Gear + Gadgets
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-auto">
+                                      Auto
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-diy">
+                                      DIY
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-computer-tablets">
+                                      Electronics
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-gaming-toys">
+                                      Gaming + Toys
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-power">
+                                      Power + Charging
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-sound">
+                                      Speakers + Headphones
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets">
+                                      View All (450+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/online-courses">
+                            Online Courses
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-business">
+                                      Business
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-Design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-development">
+                                      Development
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-it-security">
+                                      IT + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-marketing">
+                                      Marketing
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses">
+                                      View All (800+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/lifestyle">
+                            Lifestyle
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/every-day-carry">
+                                      Everyday Carry
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-health-fitness">
+                                      Fitness + Health
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-home">
+                                      Home
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-kitchen">
+                                      Kitchen
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-travel">
+                                      Travel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle">
+                                      View All (300+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Best Sellers
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/best-sellers">
+                            Best Sellers Up to 85% off
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Brands
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/vendor-spotlight?sort=best_sellers">
+                                      Vendor Spotlight
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets-computer-tablets">
+                            Electronics
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/apple?sort=best_sellers">
+                                      Apple
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lenovo">
+                                      Lenovo
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lg">
+                                      LG
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/samsung">
+                                      Samsung
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/sennheiser">
+                                      Sennheiser
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Sofware
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/babbel-language-learning-lifetime-subscription">
+                                      Babbel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/nordvpn-3-yr-subscription-2">
+                                      NordVPN
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/rosetta-stone-lifetime-subscription-spanish">
+                                      Rosetta Stone
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/windscribe-vpn-pro-subscriptions-1yr">
+                                      Windscribe
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Top Instructors
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/chris-haroun">
+                                      Chris Haroun
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/rob-percival">
+                                      Rob Percival
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/the-canon-dslr-photography-a-z-course">
+                                      Phil Ebiner
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Free
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/giveaways">
+                            Giveaways
+</a>
+                      </li>
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/free">
+                            Freebies
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+  <li class="nav-username-placeholder hidden-sm hidden-xs">
+      Login
+  </li>
+
+  <li class="nav-item visible-xs visible-sm">
+  <a class="nav-item-link" href="/user?show=home-tab">Wishlist</a>
+</li>
+  <li class="nav-item visible-xs visible-sm">
+    <a class="nav-item-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+</ul>
+
+    </div>
+  </div>
+
+  <div id="search-dropdown-bar"
+    class="hidden-md hidden-lg navbar-search-mobile container js-search-dropdown-bar">
+    <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="text" name="query" id="mobile-search-box" value="" placeholder="Search" class="form-control search-input js-mobile-search-box" />
+</form>  </div>
+
+  
+</nav>
+
+<div id="main-navbar-phantom" class="js-main-navbar-phantom"></div>
+<div class="mobile-nav-overlay"></div>
+
+
+<mini-cart></mini-cart>
+
+        
+
+        <div class="site-contents ">
+          <div class="container js-intelligent-module-search intelligent-modules-container">
+  <div class="row search-header">
+    <div class="col-xs-12 col-sm-6">
+        <p>
+          22 results for <span class="font-weight-bold">"Apple"</span>
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+      
+<div class="categories-menu-container__dropdown categories-menu-container--sort-by categories-menu-container--no-spacing">
+  <label class="hidden-xs" for="sort-by-collections">Sort by</label>
+
+  <div class="categories-menu-container__refine-select styled-select">
+    <i class="fa fa-chevron-down"></i>
+    <select name="sort" id="sort-by-collections" data-select-sort="true"><option value="newest">Newest</option>
+<option selected="selected" value="best_sellers">Best selling</option>
+<option value="lowest_price">Price low to high</option>
+<option value="ending_soonest">Ending soon</option></select>
+  </div>
+</div>
+
+    </div>
+
+    <div class="col-xs-12">
+      <hr>
+    </div>
+  </div>
+
+  <div class="container brand-page__sales-list sales-list" data-columns="3" data-name="Apple" data-sales="{&quot;current_page&quot;:1,&quot;total_pages&quot;:null,&quot;per_page&quot;:200,&quot;total_entries&quot;:null,&quot;sales&quot;:[{&quot;id&quot;:20031,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple MacBook Air 11.6\&quot; 128GB Silver (Refurbished)&quot;,&quot;subtitle&quot;:&quot;This Razor-Thin Laptop Packs a Punch with 128GB of Flash Storage, Turbo Boost Tech \u0026 More&quot;,&quot;slug&quot;:&quot;macbook-air-early-2014-11-6-1-4ghz-i5-4gb-ram-128gb-drive-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/macbook-air-early-2014-11-6-1-4ghz-i5-4gb-ram-128gb-drive-refurbished&quot;,&quot;starts_at&quot;:&quot;2019-06-17T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:44999,&quot;retail_price_in_cents&quot;:99900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/0c9edd86d9a1940aaa421f67966089ed66b94513/store/c0aab4f4b41e06ea2b400da4b35a46c1779dc15e1ca20313906d912db8e0/sale_20031_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/2425bb4486a15b552afac751e839d20d27e1db18/store/opt/360/270/c0aab4f4b41e06ea2b400da4b35a46c1779dc15e1ca20313906d912db8e0/sale_20031_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/ea61a7b4bdfed365d120a98ec3b39c1fa1a5e5fb/store/opt/596/417/c0aab4f4b41e06ea2b400da4b35a46c1779dc15e1ca20313906d912db8e0/sale_20031_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/d921229cfe56fb7b29fac46d63cafaa91685f66e/store/opt/555/417/c0aab4f4b41e06ea2b400da4b35a46c1779dc15e1ca20313906d912db8e0/sale_20031_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/2425bb4486a15b552afac751e839d20d27e1db18/store/opt/360/270/c0aab4f4b41e06ea2b400da4b35a46c1779dc15e1ca20313906d912db8e0/sale_20031_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;MacBook Air 11.6\&quot; 128GB Drive (Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:18374,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPhone 7 4.7\&quot; 128GB GSM Unlocked Silver (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Upgrade to a Sleek Phone Powered with an A10 Fusion Chip \u0026 128GB of Storage&quot;,&quot;slug&quot;:&quot;refurbished-iphone-7-silver-gsm-unlocked-128gb-fair-condition&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-iphone-7-silver-gsm-unlocked-128gb-fair-condition&quot;,&quot;starts_at&quot;:&quot;2019-03-26T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-03-26T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:35000,&quot;retail_price_in_cents&quot;:74900,&quot;main_image&quot;:&quot;https://cdnp2.stackassets.com/466193ac6481e953f2fcb0e3c3dcf8d507090d21/store/6f6ba97ab0e48d4286598f926db718112c50d040600c16c52d7fdc1d3e3c/sale_18374_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp2.stackassets.com/a3961f97c6958c5c82475e7b701c5f3de349123b/store/opt/360/270/6f6ba97ab0e48d4286598f926db718112c50d040600c16c52d7fdc1d3e3c/sale_18374_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/a071b5e5cd81a8c3d1b4a83941d900f900fe6057/store/opt/596/417/6f6ba97ab0e48d4286598f926db718112c50d040600c16c52d7fdc1d3e3c/sale_18374_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/d88e2ae4e901ad13986b3d90ab13077210ac0f78/store/opt/555/417/6f6ba97ab0e48d4286598f926db718112c50d040600c16c52d7fdc1d3e3c/sale_18374_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp2.stackassets.com/a3961f97c6958c5c82475e7b701c5f3de349123b/store/opt/360/270/6f6ba97ab0e48d4286598f926db718112c50d040600c16c52d7fdc1d3e3c/sale_18374_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Refurbished iPhone 7 Silver GSM Unlocked 128GB - Fair Condition&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:25287,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad Mini 3 16GB - Gold (Wi-Fi + GSM/CDMA Unlocked)&quot;,&quot;subtitle&quot;:&quot;Enjoy Your Favorite Content on the Go with a 2048x1536 Resolution, A7 1.27GHz Processor \u0026 16GB of Storage on This Brand New iPad Mini 3&quot;,&quot;slug&quot;:&quot;ipad-mini-3-16gb-gold-carrier-unlocked&quot;,&quot;permalink&quot;:&quot;/sales/ipad-mini-3-16gb-gold-carrier-unlocked&quot;,&quot;starts_at&quot;:&quot;2020-01-25T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:24499,&quot;retail_price_in_cents&quot;:49999,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/a006d74a4214b0eb32c6ce78b158f01b3d871514/store/9dda482d6249c0add53c47b9b22ade2e3d22916d41ee83c217d468265c6f/sale_25287_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/55f23bc8c3966b602ccf38f97ba9ef5e4eae9fe8/store/opt/360/270/9dda482d6249c0add53c47b9b22ade2e3d22916d41ee83c217d468265c6f/sale_25287_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/18f91de45b6d2dd64463b32000c691e6705e9394/store/opt/596/417/9dda482d6249c0add53c47b9b22ade2e3d22916d41ee83c217d468265c6f/sale_25287_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/e966725acdfa2555bd5e7b8eaee8b9d3b6d5e8bd/store/opt/555/417/9dda482d6249c0add53c47b9b22ade2e3d22916d41ee83c217d468265c6f/sale_25287_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/55f23bc8c3966b602ccf38f97ba9ef5e4eae9fe8/store/opt/360/270/9dda482d6249c0add53c47b9b22ade2e3d22916d41ee83c217d468265c6f/sale_25287_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;iPad Mini 3 16GB Gold Carrier Unlocked&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:26344,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple Magic Mouse 2 Bluetooth Rechargeable - Silver (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Comfort \u0026 Functionality in One Device! This Wireless Rechargeable Mouse Features Optimized Foot Design for Easier Gesture \u0026 Track&quot;,&quot;slug&quot;:&quot;apple-magic-mouse-2-wireless-rechargable-silver-certified-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/apple-magic-mouse-2-wireless-rechargable-silver-certified-refurbished&quot;,&quot;starts_at&quot;:&quot;2020-03-05T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2120-03-05T23:59:59-08:00&quot;,&quot;price_in_cents&quot;:5499,&quot;retail_price_in_cents&quot;:7999,&quot;main_image&quot;:&quot;https://cdnp3.stackassets.com/4b21831b01bc8d6337f0c95d8f41bf80d62c1bda/store/37f281343224fbefd37087ece246ec1abbf4e11765dba7bb0ce552187a3c/sale_26344_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp3.stackassets.com/7385559029e1f43c45c5954bfed3b738d05615a7/store/opt/360/270/37f281343224fbefd37087ece246ec1abbf4e11765dba7bb0ce552187a3c/sale_26344_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp3.stackassets.com/db2c1a0202bd0913444cb042d415fe3f48832d3b/store/opt/596/417/37f281343224fbefd37087ece246ec1abbf4e11765dba7bb0ce552187a3c/sale_26344_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp3.stackassets.com/07f474f0e451fd9dafcbeaa75934d50e3a555a3c/store/opt/555/417/37f281343224fbefd37087ece246ec1abbf4e11765dba7bb0ce552187a3c/sale_26344_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp3.stackassets.com/7385559029e1f43c45c5954bfed3b738d05615a7/store/opt/360/270/37f281343224fbefd37087ece246ec1abbf4e11765dba7bb0ce552187a3c/sale_26344_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Connected Devices&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Connected Devices&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple Magic Mouse 2 (Wireless, Rechargable) - Silver (Certified Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:20580,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad Mini 1st Gen 7.9\&quot; 16GB Wi-Fi Black (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Work, Play \u0026 Browse Anywhere on a 7.9\&quot; Display with 10 Hours of Battery Life&quot;,&quot;slug&quot;:&quot;apple-ipad-mini-1st-gen-16gb-wifi-only-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/apple-ipad-mini-1st-gen-16gb-wifi-only-refurbished&quot;,&quot;starts_at&quot;:&quot;2019-08-01T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:11499,&quot;retail_price_in_cents&quot;:19900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/acb58ba31b23eed16ea959dceec1cb2846fa4c75/store/c63607c605a5594c44f7cbe2f1ea7e1aefcfc8cf3a0bf9a2b9a48dceba9a/sale_20580_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/751814dff6ff6863264f0ee73ae2ec814eff7c7c/store/opt/360/270/c63607c605a5594c44f7cbe2f1ea7e1aefcfc8cf3a0bf9a2b9a48dceba9a/sale_20580_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/62727149f313e75813725023dbfe830968260b9f/store/opt/596/417/c63607c605a5594c44f7cbe2f1ea7e1aefcfc8cf3a0bf9a2b9a48dceba9a/sale_20580_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/c7e7d587243806061082ad81062cb33de49a801a/store/opt/555/417/c63607c605a5594c44f7cbe2f1ea7e1aefcfc8cf3a0bf9a2b9a48dceba9a/sale_20580_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/751814dff6ff6863264f0ee73ae2ec814eff7c7c/store/opt/360/270/c63607c605a5594c44f7cbe2f1ea7e1aefcfc8cf3a0bf9a2b9a48dceba9a/sale_20580_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple iPad Mini 16GB WiFi Only&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:20383,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple 27&#39; iMac Computer with Apple Wired Keyboard \u0026 Wired Mouse (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Snag a Powerful Machine Featuring a 2.9GHz Intel Core i5 Quad-Core Processor Plus a Mouse \u0026 Keyboard for a Fraction of the Cost&quot;,&quot;slug&quot;:&quot;apple-27-imac-desktop-computer-with-apple-wired-keyboard-and-wired-mouse&quot;,&quot;permalink&quot;:&quot;/sales/apple-27-imac-desktop-computer-with-apple-wired-keyboard-and-wired-mouse&quot;,&quot;starts_at&quot;:&quot;2019-07-16T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-07-16T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:89900,&quot;retail_price_in_cents&quot;:99900,&quot;main_image&quot;:&quot;https://cdnp1.stackassets.com/a0baee43604c385b4c2469833e112f946e8de6ee/store/3c5e4e41bd9a504680d86dbd3adfc8d09f3bdd27280e91e6ec85d30a45ae/sale_20383_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp1.stackassets.com/c6560d52bb872343084dcdb88cbd6d397d6322b2/store/opt/360/270/3c5e4e41bd9a504680d86dbd3adfc8d09f3bdd27280e91e6ec85d30a45ae/sale_20383_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/d0e640a473686c6e57b5272e7b8e2adc71d4d9ed/store/opt/596/417/3c5e4e41bd9a504680d86dbd3adfc8d09f3bdd27280e91e6ec85d30a45ae/sale_20383_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/1436f0447f17d3056d124aab0280b9bebd7c185e/store/opt/555/417/3c5e4e41bd9a504680d86dbd3adfc8d09f3bdd27280e91e6ec85d30a45ae/sale_20383_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp1.stackassets.com/c6560d52bb872343084dcdb88cbd6d397d6322b2/store/opt/360/270/3c5e4e41bd9a504680d86dbd3adfc8d09f3bdd27280e91e6ec85d30a45ae/sale_20383_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Desktop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Desktop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple 27&#39; iMac Desktop Computer with Apple&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:26121,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Macbook Air MMGG2LL/A 1.6GHz 8GB RAM 256GB (Refurbished)&quot;,&quot;subtitle&quot;:&quot;This Ultra-Portable Refurbished Macbook Air Gives You A High-Performing Laptop without the High-End Price&quot;,&quot;slug&quot;:&quot;macbook-air-mmgg2ll-a-1-6ghz-8gb-ram-256gb-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/macbook-air-mmgg2ll-a-1-6ghz-8gb-ram-256gb-refurbished&quot;,&quot;starts_at&quot;:&quot;2020-02-08T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:59999,&quot;retail_price_in_cents&quot;:99900,&quot;main_image&quot;:&quot;https://cdnp2.stackassets.com/ca81a7017335363134f00482fe2d1c0150ebb27b/store/ba68a75b8115e54524078fce16e09aa65333252441b4e3c16132740e02d3/sale_26121_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp2.stackassets.com/fd38ce1a9851fd0af0b5e214e89dd2928b46e695/store/opt/360/270/ba68a75b8115e54524078fce16e09aa65333252441b4e3c16132740e02d3/sale_26121_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/451f3dbaffcddd5ce37db83d1a52f93c598b7ae8/store/opt/596/417/ba68a75b8115e54524078fce16e09aa65333252441b4e3c16132740e02d3/sale_26121_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/e38227649aac7097eedcdf7f4f560c5057e12cb1/store/opt/555/417/ba68a75b8115e54524078fce16e09aa65333252441b4e3c16132740e02d3/sale_26121_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp2.stackassets.com/fd38ce1a9851fd0af0b5e214e89dd2928b46e695/store/opt/360/270/ba68a75b8115e54524078fce16e09aa65333252441b4e3c16132740e02d3/sale_26121_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Macbook Air MMGG2LL/A 1.6GHz 8GB RAM 256GB (Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:26345,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple Magic Keyboard with Numeric Keypad - Silver (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;With Extended Layout \u0026 Scissor Mechanism, This Grade A Refurbished Keyboard Allows Wireless, Comfortable \u0026 Precise Typing&quot;,&quot;slug&quot;:&quot;apple-wireless-magic-keyboard-with-numeric-keypad-certified-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/apple-wireless-magic-keyboard-with-numeric-keypad-certified-refurbished&quot;,&quot;starts_at&quot;:&quot;2020-03-05T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2120-03-05T23:59:59-08:00&quot;,&quot;price_in_cents&quot;:9999,&quot;retail_price_in_cents&quot;:12999,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/eea1fc54ad60e9d1024afcf2dfbe249124048f2a/store/1d7e94d8d72f2460ea95ae283cdebd7459af28be3c7bc327c0cc73ae900c/sale_26345_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/46f52570208c73348f9b25542a33206b7a7ebe9e/store/opt/360/270/1d7e94d8d72f2460ea95ae283cdebd7459af28be3c7bc327c0cc73ae900c/sale_26345_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/5faca2e2be69c14a6555919b1a788a23ee457417/store/opt/596/417/1d7e94d8d72f2460ea95ae283cdebd7459af28be3c7bc327c0cc73ae900c/sale_26345_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/87024ef516e4f50f0f1dc6801eb7e9b778868477/store/opt/555/417/1d7e94d8d72f2460ea95ae283cdebd7459af28be3c7bc327c0cc73ae900c/sale_26345_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/46f52570208c73348f9b25542a33206b7a7ebe9e/store/opt/360/270/1d7e94d8d72f2460ea95ae283cdebd7459af28be3c7bc327c0cc73ae900c/sale_26345_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Connected Devices&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Connected Devices&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple Wireless Magic Keyboard with Numeric Keypad (Certified Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:20615,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple MacBook Air 11.6” Intel Core i5 128GB - Silver (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Browse \u0026 Work on Your Files Anywhere with This Grade B Refurbished Laptop That Packs 9 Hours of Battery Life &quot;,&quot;slug&quot;:&quot;macbook-air-11-6-1-3ghz-128gb-4gb-ram-mid-2013-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/macbook-air-11-6-1-3ghz-128gb-4gb-ram-mid-2013-refurbished&quot;,&quot;starts_at&quot;:&quot;2019-08-01T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:42999,&quot;retail_price_in_cents&quot;:99900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/d6ad493b29ad51c99d7a538282e1c2be1e4457b8/store/91a84d1982e4ecf3b687a845bbafe08028b56e2e341b84f9225dd1d66efb/sale_20615_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/a3bd9499933f0b36517fdc0d114225cfd8c1eed2/store/opt/360/270/91a84d1982e4ecf3b687a845bbafe08028b56e2e341b84f9225dd1d66efb/sale_20615_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/4f7d77ddd8072ce45e0c4f23ba0879b74ba606e7/store/opt/596/417/91a84d1982e4ecf3b687a845bbafe08028b56e2e341b84f9225dd1d66efb/sale_20615_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/3e5e2e9174bde304d546b0079004e0dc43559c7a/store/opt/555/417/91a84d1982e4ecf3b687a845bbafe08028b56e2e341b84f9225dd1d66efb/sale_20615_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/a3bd9499933f0b36517fdc0d114225cfd8c1eed2/store/opt/360/270/91a84d1982e4ecf3b687a845bbafe08028b56e2e341b84f9225dd1d66efb/sale_20615_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Macbook Air 11.6\&quot; 1.3GHz 128GB 4GB RAM&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:21062,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad Mini 2 7.9\&quot; 16GB - Space Grey (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Browse, Stream \u0026 Play on a Bigger 7.9\&quot; Display \u0026 Fast Wi-Fi Connectivity with This Grade A Refurbished iPad Mini 2&quot;,&quot;slug&quot;:&quot;refurbished-ipad-mini-2-16-gb-space-gray-good-condition&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-ipad-mini-2-16-gb-space-gray-good-condition&quot;,&quot;starts_at&quot;:&quot;2019-08-24T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-08-24T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:21500,&quot;retail_price_in_cents&quot;:57300,&quot;main_image&quot;:&quot;https://cdnp1.stackassets.com/0bfd952084aa0a6c521aad1de9b467ed93362746/store/8b3aab53531e71bd119e1dd0c8f0fd5190ffa8d007b43d5811681f48835d/sale_21062_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp1.stackassets.com/c97040981d862e88cfbab1c0f4d5264fb65c96b4/store/opt/360/270/8b3aab53531e71bd119e1dd0c8f0fd5190ffa8d007b43d5811681f48835d/sale_21062_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/79295ddd909b9e92f1c38a22e2b7ea9e47104537/store/opt/596/417/8b3aab53531e71bd119e1dd0c8f0fd5190ffa8d007b43d5811681f48835d/sale_21062_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/8dae25565cb6cd7abf6878f0070d3875b7bf5dc1/store/opt/555/417/8b3aab53531e71bd119e1dd0c8f0fd5190ffa8d007b43d5811681f48835d/sale_21062_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp1.stackassets.com/c97040981d862e88cfbab1c0f4d5264fb65c96b4/store/opt/360/270/8b3aab53531e71bd119e1dd0c8f0fd5190ffa8d007b43d5811681f48835d/sale_21062_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Refurbished iPad Mini 2 16 GB Space Gray - Good Condition&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:26169,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple Macbook Pro 13\&quot; Core i5 500GB HDD - Silver (Refurbished)&quot;,&quot;subtitle&quot;:&quot;Browse \u0026 Stream Seamlessly with the 13\&quot; LED Display \u0026 Fast 2.5GHz Intel Core i5 Processor of This Grade B Refurbished MacBook Pro&quot;,&quot;slug&quot;:&quot;macbook-pro-13-8gb-ram-500gb-hdd-md101ll-a-refurb&quot;,&quot;permalink&quot;:&quot;/sales/macbook-pro-13-8gb-ram-500gb-hdd-md101ll-a-refurb&quot;,&quot;starts_at&quot;:&quot;2020-02-09T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:44999,&quot;retail_price_in_cents&quot;:129999,&quot;main_image&quot;:&quot;https://cdnp1.stackassets.com/7073e0d28515d605f974b3693ca138ed95de0356/store/40a8638cba228ed2316806ff2fff61d47d25645ac29bf7f555ee638e9982/sale_26169_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp1.stackassets.com/7925108d0d6c2c49326a5bb048e89108bad6b599/store/opt/360/270/40a8638cba228ed2316806ff2fff61d47d25645ac29bf7f555ee638e9982/sale_26169_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/c288db87ef4ef75afdc4445b627af75535df3694/store/opt/596/417/40a8638cba228ed2316806ff2fff61d47d25645ac29bf7f555ee638e9982/sale_26169_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/5d63cb837ffb5eee02fbe6d31c863c27a9d80754/store/opt/555/417/40a8638cba228ed2316806ff2fff61d47d25645ac29bf7f555ee638e9982/sale_26169_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp1.stackassets.com/7925108d0d6c2c49326a5bb048e89108bad6b599/store/opt/360/270/40a8638cba228ed2316806ff2fff61d47d25645ac29bf7f555ee638e9982/sale_26169_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Macbook Pro 13\&quot; 8GB RAM 500GB HDD MD101LL/A (Refurb)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:22698,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;MacBook Pro 13.3\&quot; 2.4GHz Intel Core i5 256GB - Silver (Refurbished)&quot;,&quot;subtitle&quot;:&quot;Browse \u0026 Stream Seamlessly with the 13.3\&quot; LED Display \u0026 Fast 2.4GHz Intel Core i5 Processor of This Grade B Refurbished MacBook Pro&quot;,&quot;slug&quot;:&quot;macbook-pro-13-3-2-4ghz-4gb-ram-256gb&quot;,&quot;permalink&quot;:&quot;/sales/macbook-pro-13-3-2-4ghz-4gb-ram-256gb&quot;,&quot;starts_at&quot;:&quot;2019-10-26T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:36999,&quot;retail_price_in_cents&quot;:65000,&quot;main_image&quot;:&quot;https://cdnp2.stackassets.com/3b4a7d8ef6cc53068afaeea7d1a1dd94cb53314f/store/7e90d267929ab8b6375c5a99e7b86dfee17dbbe7f8670f747f221f3b7ae3/sale_22698_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp2.stackassets.com/43f332ec1a20e646fb009b9088d8735a5fa30149/store/opt/360/270/7e90d267929ab8b6375c5a99e7b86dfee17dbbe7f8670f747f221f3b7ae3/sale_22698_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/3f473370ea118b8bf622aca49f378663dce29c3f/store/opt/596/417/7e90d267929ab8b6375c5a99e7b86dfee17dbbe7f8670f747f221f3b7ae3/sale_22698_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/9b8d10bacaf0615aaa4351f26bb31a4e645d69a6/store/opt/555/417/7e90d267929ab8b6375c5a99e7b86dfee17dbbe7f8670f747f221f3b7ae3/sale_22698_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp2.stackassets.com/43f332ec1a20e646fb009b9088d8735a5fa30149/store/opt/360/270/7e90d267929ab8b6375c5a99e7b86dfee17dbbe7f8670f747f221f3b7ae3/sale_22698_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;MacBook Pro 13.3\&quot; 2.4GHZ 4GB RAM, 256GB&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:21354,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad 3 9.7\&quot; 16GB - White (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Browse, Stream \u0026 Play Anywhere with a Gorgeous 9.7\&quot; Retina Display \u0026 Dual-Core A5X Processor on This Grade A Refurbished iPad&quot;,&quot;slug&quot;:&quot;refurbished-ipad-3-16-gb-white-good-condition&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-ipad-3-16-gb-white-good-condition&quot;,&quot;starts_at&quot;:&quot;2019-09-04T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-09-04T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:13900,&quot;retail_price_in_cents&quot;:37800,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/52cd80905cfaab62aa453951a522a445cac44878/store/9b61e320bc2e439fa0766cb32652c367fc07737b9c5c80fab0d6ace45182/sale_21354_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/2ca188f449e169b86be2b6a83241b90c4f723e61/store/opt/360/270/9b61e320bc2e439fa0766cb32652c367fc07737b9c5c80fab0d6ace45182/sale_21354_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/f03234d60ed4a5e4d51283de7009bfc3cb9a26e2/store/opt/596/417/9b61e320bc2e439fa0766cb32652c367fc07737b9c5c80fab0d6ace45182/sale_21354_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/1c18fd056ac3a504e49a3f659c01323f7fe770b6/store/opt/555/417/9b61e320bc2e439fa0766cb32652c367fc07737b9c5c80fab0d6ace45182/sale_21354_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/2ca188f449e169b86be2b6a83241b90c4f723e61/store/opt/360/270/9b61e320bc2e439fa0766cb32652c367fc07737b9c5c80fab0d6ace45182/sale_21354_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Refurbished iPad 3 16 GB White - Good Condition&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:17916,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPhone X 5.8\&quot; 64GB (Refurbished)&quot;,&quot;subtitle&quot;:&quot;Upgrade to a 5.8\&quot; Super Retina HD Display \u0026 Face ID Technology&quot;,&quot;slug&quot;:&quot;apple-iphone-x-64gb&quot;,&quot;permalink&quot;:&quot;/sales/apple-iphone-x-64gb&quot;,&quot;starts_at&quot;:&quot;2019-02-23T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2024-02-23T23:59:59-08:00&quot;,&quot;price_in_cents&quot;:69995,&quot;retail_price_in_cents&quot;:79900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/544e7de019be5391fa047f9f77ecb9fc82133df7/store/cf100fa051dff41b0bff374d31f2a9f841a11ac1b904aacbdfe3e8d0e54d/product_26050_product_shots1_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/55adfd9db3fdf086824dedda353eac54a9a4ced2/store/opt/360/270/cf100fa051dff41b0bff374d31f2a9f841a11ac1b904aacbdfe3e8d0e54d/product_26050_product_shots1_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/d6f3bfd518eb3381dba1a85364cc7dc6a83c1544/store/opt/596/417/cf100fa051dff41b0bff374d31f2a9f841a11ac1b904aacbdfe3e8d0e54d/product_26050_product_shots1_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/2701c1cb180dbe0d86bf0159e5fe6359aaa9d33f/store/opt/555/417/cf100fa051dff41b0bff374d31f2a9f841a11ac1b904aacbdfe3e8d0e54d/product_26050_product_shots1_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/55adfd9db3fdf086824dedda353eac54a9a4ced2/store/opt/360/270/cf100fa051dff41b0bff374d31f2a9f841a11ac1b904aacbdfe3e8d0e54d/product_26050_product_shots1_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple iPhone X 64gb&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:23461,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple MacBook Air Intel Core i5 1.6GHz 64GB - Silver (Refurbished)&quot;,&quot;subtitle&quot;:&quot;Enjoy Fast Intel Core i5 Performance, 4GB RAM \u0026 Wi-Fi + Bluetooth 4.0 Connectivity on This Grade B Refurbished MacBook Air&quot;,&quot;slug&quot;:&quot;macbook-air-1-6ghz-4gb-ram-64gb-ssd-mc968ll-a-mid-2011-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/macbook-air-1-6ghz-4gb-ram-64gb-ssd-mc968ll-a-mid-2011-refurbished&quot;,&quot;starts_at&quot;:&quot;2019-11-13T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:38999,&quot;retail_price_in_cents&quot;:79900,&quot;main_image&quot;:&quot;https://cdnp2.stackassets.com/cf5070d58d4b0f0d570c9782fa4c539b9de16870/store/c8a02ca885e82bba6b31d96ecac72236aa77b33c7752d3628ef2ee505f85/sale_23461_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp2.stackassets.com/5aec6a2374e4bb1c17b5a0ef59446d007a361be4/store/opt/360/270/c8a02ca885e82bba6b31d96ecac72236aa77b33c7752d3628ef2ee505f85/sale_23461_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/c9017abc4eb0889f9b1a925c58013b0d492f2e53/store/opt/596/417/c8a02ca885e82bba6b31d96ecac72236aa77b33c7752d3628ef2ee505f85/sale_23461_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/71b88e6521e72b14e714a104c023f30db66ff2a8/store/opt/555/417/c8a02ca885e82bba6b31d96ecac72236aa77b33c7752d3628ef2ee505f85/sale_23461_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp2.stackassets.com/5aec6a2374e4bb1c17b5a0ef59446d007a361be4/store/opt/360/270/c8a02ca885e82bba6b31d96ecac72236aa77b33c7752d3628ef2ee505f85/sale_23461_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Laptop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;MacBook Air 1.6GHz 4GB RAM 64GB SSD MC968LL/A Mid-2011 (Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:23083,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple MacBook Pro 15\&quot; 2.2GHz Intel Core i7 with Retina Display 256GB - Silver (Certified Refurbished) &quot;,&quot;subtitle&quot;:&quot;Enjoy 9 Hours of Wi-Fi \u0026 Bluetooth Connectivity, High-Resolution Viewing, and Fast Flash Storage on This Grade A Refurbished MacBook Pro&quot;,&quot;slug&quot;:&quot;refurbished-15-4-inch-macbook-pro-2-2ghz-quad-core-intel-i7-with-retina-display-grade-a&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-15-4-inch-macbook-pro-2-2ghz-quad-core-intel-i7-with-retina-display-grade-a&quot;,&quot;starts_at&quot;:&quot;2019-10-26T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-10-26T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:99997,&quot;retail_price_in_cents&quot;:199900,&quot;main_image&quot;:&quot;https://cdnp1.stackassets.com/2a9975519c00e5f6ca4666c078d1d4da4314721c/store/b82de8f2c757f847df19f4004c7aea392f6bfbca00bc213b0582de259bb4/sale_23083_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp1.stackassets.com/0f090cad378a5d924778b56b3f8f4ef80a6e576d/store/opt/360/270/b82de8f2c757f847df19f4004c7aea392f6bfbca00bc213b0582de259bb4/sale_23083_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/84b083e6c7a9e9672d597844d7e29ae5825bf44f/store/opt/596/417/b82de8f2c757f847df19f4004c7aea392f6bfbca00bc213b0582de259bb4/sale_23083_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp1.stackassets.com/e0858f7df683abb80015f45652c0b11f4c991e36/store/opt/555/417/b82de8f2c757f847df19f4004c7aea392f6bfbca00bc213b0582de259bb4/sale_23083_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp1.stackassets.com/0f090cad378a5d924778b56b3f8f4ef80a6e576d/store/opt/360/270/b82de8f2c757f847df19f4004c7aea392f6bfbca00bc213b0582de259bb4/sale_23083_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Refurbished 15.4-inch MacBook Pro 2.2GHz Quad-core Intel i7 with Retina Display&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:16994,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad Mini 2 Retina 16GB with WiFi in Space Gray (Certified Refurbished) &quot;,&quot;subtitle&quot;:&quot;Excellent Condition: This Extremely Portable iPad Boasts a 7.9\&quot; Retina Display in Like-New Condition&quot;,&quot;slug&quot;:&quot;ipad-mini-2-retina-wifi-space-gray-16gb-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/ipad-mini-2-retina-wifi-space-gray-16gb-refurbished&quot;,&quot;starts_at&quot;:&quot;2018-11-22T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2118-11-22T23:59:59-08:00&quot;,&quot;price_in_cents&quot;:21500,&quot;retail_price_in_cents&quot;:39900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/f796ba0a912e5a3e024000e2ee65836f733e6ec9/store/9aa30e119a6b2c0d0603cc4000db2cb7013b3fefbd0874c487f8d1071a1b/1.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/fafa0749fea05f2646a524c1f09f1c8ea170ec3e/store/opt/360/270/9aa30e119a6b2c0d0603cc4000db2cb7013b3fefbd0874c487f8d1071a1b/1.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/f786f6c90868618a43949b18e16b7cdfba75d480/store/opt/596/417/9aa30e119a6b2c0d0603cc4000db2cb7013b3fefbd0874c487f8d1071a1b/1.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/e335c6b0af81dcdeb08f3d724a1a847f6d6d55aa/store/opt/555/417/9aa30e119a6b2c0d0603cc4000db2cb7013b3fefbd0874c487f8d1071a1b/1.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/fafa0749fea05f2646a524c1f09f1c8ea170ec3e/store/opt/360/270/9aa30e119a6b2c0d0603cc4000db2cb7013b3fefbd0874c487f8d1071a1b/1.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple iPad Mini 2 Retina 16GB with WiFi in Space Gray&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:23860,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad 4 9.7\&quot; 16GB - Black (Certified Refurbished) Bundle&quot;,&quot;subtitle&quot;:&quot;Stream, Game \u0026 Work On the Go with an Apple A6X Processor \u0026 a Gorgeous 9.7\&quot; Retina Display on This Grade B Refurbished Product&quot;,&quot;slug&quot;:&quot;ipad-4th-gen-16gb-refurb-bundle&quot;,&quot;permalink&quot;:&quot;/sales/ipad-4th-gen-16gb-refurb-bundle&quot;,&quot;starts_at&quot;:&quot;2019-11-27T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:13499,&quot;retail_price_in_cents&quot;:19999,&quot;main_image&quot;:&quot;https://cdnp2.stackassets.com/3812c2c1048aed66642a5a173488e06b0ca8d0ab/store/34849068f61f4da369bf05ac6f6e74878b559f40454dc6c6e937f9334def/sale_23860_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp2.stackassets.com/c0cf2b8db575ea9e180488d4b4567e5a2c2105fb/store/opt/360/270/34849068f61f4da369bf05ac6f6e74878b559f40454dc6c6e937f9334def/sale_23860_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/741918e676161c6981449696a97e3a23eeb636e8/store/opt/596/417/34849068f61f4da369bf05ac6f6e74878b559f40454dc6c6e937f9334def/sale_23860_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp2.stackassets.com/71bb2d6e514187584b8dee165175cb3afab94614/store/opt/555/417/34849068f61f4da369bf05ac6f6e74878b559f40454dc6c6e937f9334def/sale_23860_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp2.stackassets.com/c0cf2b8db575ea9e180488d4b4567e5a2c2105fb/store/opt/360/270/34849068f61f4da369bf05ac6f6e74878b559f40454dc6c6e937f9334def/sale_23860_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Tablet&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;iPad 4th Gen 16GB Refurb Bundle&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:23084,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPad mini 4 128GB - Space Grey (Certified Refurbished: Wi-Fi + Cellular)&quot;,&quot;subtitle&quot;:&quot;Enjoy Up to 9 Hours of Fast Web Surfing, Clear Video Streaming \u0026 Music Playing on This Grade A Refurbished iPad mini&quot;,&quot;slug&quot;:&quot;refurbished-apple-ipad-mini-4-wi-fi-cellular-128gb-space-gray-grade-a&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-apple-ipad-mini-4-wi-fi-cellular-128gb-space-gray-grade-a&quot;,&quot;starts_at&quot;:&quot;2019-10-26T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-10-26T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:32900,&quot;retail_price_in_cents&quot;:79900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/65f8010c061c302dbef7595085c9b171f62537bf/store/de3b72aa3253e68949c901e7c7bc4b6f92c120a5ef196be59c2413b38d87/sale_23084_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/c5e8ac9d8f8bb2705b19734b1400803b3acb9bfb/store/opt/360/270/de3b72aa3253e68949c901e7c7bc4b6f92c120a5ef196be59c2413b38d87/sale_23084_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/2221882403a43d348fc5bed488377b684af29015/store/opt/596/417/de3b72aa3253e68949c901e7c7bc4b6f92c120a5ef196be59c2413b38d87/sale_23084_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/273855e62caea42af403ba1ab4afd2966c70334e/store/opt/555/417/de3b72aa3253e68949c901e7c7bc4b6f92c120a5ef196be59c2413b38d87/sale_23084_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/c5e8ac9d8f8bb2705b19734b1400803b3acb9bfb/store/opt/360/270/de3b72aa3253e68949c901e7c7bc4b6f92c120a5ef196be59c2413b38d87/sale_23084_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple - iPad mini 4 Wi-Fi + Cellular 128GB - Space Gray&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:18334,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple iPhone 7 4.7\&quot; 128GB GSM Unlocked Black (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;Upgrade to a Sleek Phone Powered with an A10 Fusion Chip \u0026 128GB of Storage&quot;,&quot;slug&quot;:&quot;refurbished-iphone-7-black-gsm-unlocked-128gb-fair-condition&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-iphone-7-black-gsm-unlocked-128gb-fair-condition&quot;,&quot;starts_at&quot;:&quot;2019-03-23T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-03-23T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:35000,&quot;retail_price_in_cents&quot;:74900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/273465761e74996d4764b8778660210dc0c769e0/store/f7c387d110a951c5efaea7e73bdd06da2529842249e5d74ae13131793159/sale_18334_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/ee767716bf1efbf447f29ec5df00812bd9a62f67/store/opt/360/270/f7c387d110a951c5efaea7e73bdd06da2529842249e5d74ae13131793159/sale_18334_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/29ab74b30036052dd202f21c0adf3aeaf9da5d32/store/opt/596/417/f7c387d110a951c5efaea7e73bdd06da2529842249e5d74ae13131793159/sale_18334_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/9c452a74ef5237a05b7efc9dd68c3643c48c4edc/store/opt/555/417/f7c387d110a951c5efaea7e73bdd06da2529842249e5d74ae13131793159/sale_18334_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/ee767716bf1efbf447f29ec5df00812bd9a62f67/store/opt/360/270/f7c387d110a951c5efaea7e73bdd06da2529842249e5d74ae13131793159/sale_18334_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Mobile / Cell Phone&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Refurbished iPhone 7 Black GSM Unlocked 128GB - Fair Condition&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:24977,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple Mac mini Intel Core i5 2.3GHz 8GB RAM 500GB - White (Refurbished)&quot;,&quot;subtitle&quot;:&quot;Smoothly Browse the Web or Watch Your Favorite Shows on Your Choice of Display with a 2.3GHz Intel Core i5 Processor on This Refurbished Mac Mini&quot;,&quot;slug&quot;:&quot;apple-mac-mini-2-3ghz-8gb-ram-500gb-md815ll-a-refurbished&quot;,&quot;permalink&quot;:&quot;/sales/apple-mac-mini-2-3ghz-8gb-ram-500gb-md815ll-a-refurbished&quot;,&quot;starts_at&quot;:&quot;2020-01-01T00:00:01-08:00&quot;,&quot;available_until&quot;:&quot;2021-12-31T23:59:00-08:00&quot;,&quot;price_in_cents&quot;:25499,&quot;retail_price_in_cents&quot;:39900,&quot;main_image&quot;:&quot;https://cdnp0.stackassets.com/564d56ef61a9f30f3525e0a6ca8099fc3d36c6ce/store/cb49a06c52f0abda0c5a236957a50af30686558ea2c873292dec8a5e3709/sale_24977_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp0.stackassets.com/33951fa63e20d99e88d7b3ed2b8f339935089a19/store/opt/360/270/cb49a06c52f0abda0c5a236957a50af30686558ea2c873292dec8a5e3709/sale_24977_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/5a7d181b0b0cdf1c1ef65520c62dcd9be7770a46/store/opt/596/417/cb49a06c52f0abda0c5a236957a50af30686558ea2c873292dec8a5e3709/sale_24977_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp0.stackassets.com/30d5ac7cfe795f65452d3914bb7f2b7e820a81f3/store/opt/555/417/cb49a06c52f0abda0c5a236957a50af30686558ea2c873292dec8a5e3709/sale_24977_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp0.stackassets.com/33951fa63e20d99e88d7b3ed2b8f339935089a19/store/opt/360/270/cb49a06c52f0abda0c5a236957a50af30686558ea2c873292dec8a5e3709/sale_24977_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Desktop&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets / Desktop&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple Mac Mini 2.3GHz 8GB RAM 500GB MD815LL/A (Refurbished)&quot;,&quot;icon_url&quot;:null}]},{&quot;id&quot;:23085,&quot;type&quot;:&quot;Solo&quot;,&quot;title&quot;:&quot;Apple Mac Mini 1.4GHz Intel Core i5 Dual Core 500GB HDD - Silver (Certified Refurbished)&quot;,&quot;subtitle&quot;:&quot;This Grade A Refurbished Mac Mini Gives You Powerful Built-In Apps, Advanced Graphics \u0026 Fast Wi-Fi in a Compact Square Desktop&quot;,&quot;slug&quot;:&quot;refurbished-apple-mac-mini-1-4ghz-intel-core-i5-dual-core-mgem2ll-a-4gb-ram-500gb-hdd-certified-grade-a&quot;,&quot;permalink&quot;:&quot;/sales/refurbished-apple-mac-mini-1-4ghz-intel-core-i5-dual-core-mgem2ll-a-4gb-ram-500gb-hdd-certified-grade-a&quot;,&quot;starts_at&quot;:&quot;2019-10-26T00:00:01-07:00&quot;,&quot;available_until&quot;:&quot;2119-10-26T22:59:59-08:00&quot;,&quot;price_in_cents&quot;:39999,&quot;retail_price_in_cents&quot;:79900,&quot;main_image&quot;:&quot;https://cdnp3.stackassets.com/180a03e904b24c9f9a3b8263ed516c63af697fa1/store/c735f3b1bee5eba4614456e339ce783f162106715998c3aaf7ecb4007dc8/sale_23085_primary_image.jpg&quot;,&quot;main_image_alt&quot;:&quot;&quot;,&quot;affiliate_price_text&quot;:&quot;&quot;,&quot;img_360x270&quot;:&quot;https://cdnp3.stackassets.com/41694ba6e24ee663879d9b8976e2d89d85183b51/store/opt/360/270/c735f3b1bee5eba4614456e339ce783f162106715998c3aaf7ecb4007dc8/sale_23085_primary_image.jpg&quot;,&quot;picture_attributes&quot;:{&quot;sale_im_3_column_image&quot;:{&quot;source_tags&quot;:[{&quot;media&quot;:&quot;(max-width: 767px)&quot;,&quot;srcset&quot;:&quot;https://cdnp3.stackassets.com/47f35a53a8081c133f1a57183099306f68c2a216/store/opt/596/417/c735f3b1bee5eba4614456e339ce783f162106715998c3aaf7ecb4007dc8/sale_23085_primary_image.jpg&quot;},{&quot;media&quot;:&quot;(min-width: 768px) and (max-width: 991px)&quot;,&quot;srcset&quot;:&quot;https://cdnp3.stackassets.com/f853039a36ea25526f0c635c171eb6663bea9bd7/store/opt/555/417/c735f3b1bee5eba4614456e339ce783f162106715998c3aaf7ecb4007dc8/sale_23085_primary_image.jpg&quot;}],&quot;img_tag&quot;:{&quot;src&quot;:&quot;https://cdnp3.stackassets.com/41694ba6e24ee663879d9b8976e2d89d85183b51/store/opt/360/270/c735f3b1bee5eba4614456e339ce783f162106715998c3aaf7ecb4007dc8/sale_23085_primary_image.jpg&quot;}}},&quot;interval&quot;:true,&quot;number_of_lessons&quot;:null,&quot;formatted_sub_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;formatted_product_categories&quot;:[&quot;Gear + Gadgets / Computers + Tablets&quot;],&quot;categories&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;product_types&quot;:[{&quot;name&quot;:&quot;Gear + Gadgets&quot;,&quot;slug&quot;:&quot;gear-gadgets&quot;}],&quot;products&quot;:[{&quot;name&quot;:&quot;Apple Mac Mini, 1.4GHz Intel Core i5 Dual Core (MGEM2LL/A), 4GB RAM, 500GB HDD,&quot;,&quot;icon_url&quot;:null}]}]}"></div>
+
+  <div class="hidden-xs">
+  <a href data-toggle="#stacksocial-wrapper" id="back-to-top" class="anchor-link hidden-phone" aria-label="scroll to top">
+    <i aria-hidden="true" class="icon-pushup" title="Scroll to Top"></i>
+  </a>
+</div>
+
+</div>
+
+        </div>
+      </div>
+
+      <footer id="footer" class="footer">
+  <div class="container">
+
+    <div class="footer-menus-row row">
+      <div class="col-md-5">
+        <div class="footer-newsletter">
+    <h5 class="footer-title footer-newsletter-title">Sign up & get 10% Off</h5>
+
+  <form class="clearfix form-inline" id="newsletter-subscribe-form" data-use-recaptcha="true" role="form" action="/subscribe?footer_newsletter=1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="vAAShi7TMEGvAT96wQv3ViOLztEWq7FdYkt4HW8uU+18gYLe06GWQiqkIbGIZlSNkp99IcNioZEC0SujK0O5tg==" />
+    <div class="clearfix js-mailcheck-container">
+      <input type="hidden" name="source" id="footer-source" value="Footer" />
+      <label for="signup-newsletter" class="sr-only">Email address</label>
+      <input type="email" name="email" id="signup-newsletter" class="form-control js-email-field" placeholder="Email" />
+
+      <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response" />
+
+      <button type="submit" class="btn-primary">
+        Sign up
+      </button>
+    </div>
+
+      <span class="newsletter-legend">
+          *New customers only. Offer lasts 30 days. See Terms.
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+      </span>
+</form></div>
+
+<script type="text/javascript">
+  $('#newsletter-subscribe-form').on('submit', function(event) {
+    submitFormWithRecaptcha(event, "recaptcha_newsletter_subscription")
+  });
+</script>
+
+      </div>
+
+      <div class="col-md-7 footer-menus footer-menus-vendor">
+        <div class="row">
+          <div class="col-xs-4">
+  <h4 class="footer-title">My Account</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a href="/user?show=profile-tab">Profile</a>
+    </li>
+    <li>
+      <a href="/user?show=account-tab">Account</a>
+    </li>
+    <li>
+      <a href="/user/purchases">Purchases</a>
+    </li>
+    <li>
+      <a href="/user/credits">Credits</a>
+    </li>
+    <li>
+      <a href="/user?show=preferences-tab">Preferences</a>
+    </li>
+    <li>
+      <a href="/user?show=info-request">Do Not Sell My Personal Information</a>
+    </li>
+  </ul>
+</div>
+
+<div class="col-xs-4">
+  <h4 class="footer-title">Support</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/requests/new?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;source=lower+footer+contact+link">Contact</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;source=lower+footer+FAQs+link">FAQs</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641992-Shipping?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;source=lower+footer+shipping+link">Shipping</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641952-Refund-and-Return-Policy?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;source=lower+footer+returns+link">Returns</a>
+    </li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/accessibility">Accessibility</a></li>
+  </ul>
+</div>
+
+
+            <div class="col-xs-12 col-sm-4 footer-vendor-section">
+  <hr class="visible-xs">
+
+  <h4 class="footer-title">Are you a vendor?</h4>
+  <p class="footer-subtitle">Get exclusive coverage to the world's top publisher sites through the StackCommerce network.</p>
+
+  <a class="pub-footer-link primary-color" target="_blank" href="https://www.stackcommerce.com/vendors">Learn More</a>
+
+  <div class="powered-by">
+  <h6>Powered By</h6>
+
+  <a target="_blank" href="https://stackcommerce.com/">
+    <img alt="StackCommerce" src="https://shops2.stackassets.com/assets/core/logo-light-be04c77da6de1475cb2c1c82cf75120f338265aa36dfd6ed8a6404a720c28431.svg" />
+</a></div>
+
+
+  <div class="hidden-xs pub-copyright">
+    <p>Copyright &copy; 2020 StackCommerce. All Rights Reserved.</p>
+  </div>
+
+  <div class="bbb-badge-container">
+  <a class="sehzbus bbb-badge"
+    id="bbblink"
+    target="_blank" href="https://www.bbb.org/losangelessiliconvalley/business-reviews/online-retailer/stackcommerce-in-venice-ca-1013267#bbbseal"
+    title="StackCommerce, Online Retailer, Venice, CA">
+      <img
+        id="bbblinkimg"
+        src="https://seal-sanjose.bbb.org/logo/sehzbus/stackcommerce-1013267.png"
+        width="200"
+        height="38"
+        alt="StackCommerce, Online Retailer, Venice, CA">
+  </a>
+</div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+        <img alt="Digg logo" class="sc-footer-pub-logo hidden-xs" src="https://cdnp3.stackassets.com/3cd152b6e15fd8734497708cb799013cac905773/store/7c6bb1fa8e748ae29147a733147ae02bbb82ff2b08be0d229110d3b585bd/18485477206329f39051d32ebd95fa7629126b67_logo_footer.png" />
+
+
+  </div>
+</footer>
+
+<script>
+//<![CDATA[
+
+  var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+  document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-sanjose.bbb.org' + unescape('%2Flogo%2Fstackcommerce-1013267.js') + "' type='text/javascript'%3E%3C/script%3E"));
+
+//]]>
+</script>
+    </div>
+
+    <script src="//www.lightboxcdn.com/vendor/2b159396-5db4-4f36-950e-cd35347c27bb/lightbox_inline.js"></script>
+
+    
+    <script src="https://shops2.stackassets.com/assets/config-1f804646a773fcbfb637a5dced669235a1e51d565e9c8824dfb879ad60b483bb.js"></script>
+
+<script>
+  SC.config.setPublisher({"id":124,"name":"Digg","hostname":"store.digg.com","brand_primary_color":"#00B0FF","vertical":"lifestyle"});
+  SC.config.setUser(null);
+  SC.config.setOptions({
+    loyaltySpentAmount: 25,
+    loyaltyAmountInCredit: 1,
+    jetloreCartUpsellFilter: 'PROD_CART_UPSELL_FILTER'
+  });
+</script>
+
+    <script src="https://shops2.stackassets.com/assets/classic-67302364fece7ef493124de4680976ff9d17e5d71d047779a6831f7296275f48.js"></script>
+      <script type="text/javascript">
+    var _at = {}; window._at.track = window._at.track || function(){(window._at.track.q = window._at.track.q || []).push(arguments);};
+
+    _at.domain = 'store.digg.com/';
+    _at.idSite = '8310';
+    _at.webpushid = 'web.56.aimtell.com';
+    _at.owner = '2fcd12b568b6';
+    _at.attributes = {};
+
+    (function() { var u='//s3.amazonaws.com/cdn.aimtell.com/trackpush/'; var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'trackpush.min.js'; s.parentNode.insertBefore(g,s); })();
+  </script>
+
+    <script>
+  window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+    if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    t._e = []; t.ready = function(f) { t._e.push(f); };
+    return t;
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<script>
+</script>
+
+  <!-- Quantcast Tag, part 2 -->
+  <script type="text/javascript">
+    _qevents.push( { qacct:"p-443uI8zl5eTMM" } );
+  </script>
+  <noscript>
+    <div style="display:none;">
+      <img src="//pixel.quantserve.com/pixel/p-443uI8zl5eTMM.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+  </noscript>
+<!-- End Quantcast tag -->
+
+    
+    
+
+      
+      
+    <div bundle-club-modal visible="showModal"></div>
+    
+  </body>
+  
+  
+</html>

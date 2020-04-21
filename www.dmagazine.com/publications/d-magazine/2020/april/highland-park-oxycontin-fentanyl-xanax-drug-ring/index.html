@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"fdea4a9fd0",applicationID:"100413135"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>var DMAG = DMAG || {};</script>
+<title>The Highland Park Drug Ring - D Magazine</title>
+
+<meta name="description" content="How did a mother of 10 and a Plano cop wind up pushing pills in the Park Cities?" />
+<link rel="canonical" href="https://www.dmagazine.com/publications/d-magazine/2020/april/highland-park-oxycontin-fentanyl-xanax-drug-ring/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Highland Park Drug Ring - D Magazine" />
+<meta property="og:description" content="How did a mother of 10 and a Plano cop wind up pushing pills in the Park Cities?" />
+<meta property="og:url" content="https://www.dmagazine.com/publications/d-magazine/2020/april/highland-park-oxycontin-fentanyl-xanax-drug-ring/" />
+<meta property="og:site_name" content="D Magazine" />
+<meta property="article:publisher" content="https://www.facebook.com/DMagazineOnline/" />
+<meta property="article:tag" content="Highland Park" />
+<meta property="article:tag" content="Frank Dockery" />
+<meta property="article:tag" content="Gary Bussell" />
+<meta property="article:tag" content="Todd Shewmake" />
+<meta property="article:tag" content="William Grant Allbrook" />
+<meta property="article:tag" content="Gina Corwin" />
+<meta property="article:tag" content="fentanyl" />
+<meta property="article:tag" content="xanax" />
+<meta property="article:section" content="Crime" />
+<meta property="og:image" content="https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars.jpg" />
+<meta property="og:image:secure_url" content="https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars.jpg" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="1200" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="How did a mother of 10 and a Plano cop wind up pushing pills in the Park Cities?" />
+<meta name="twitter:title" content="The Highland Park Drug Ring - D Magazine" />
+<meta name="twitter:site" content="@DMagazine" />
+<meta name="twitter:image" content="https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars.jpg" />
+<meta name="twitter:creator" content="@DMagazine" />
+
+<link rel='dns-prefetch' href='//www.dmagazine.com' />
+<link rel='dns-prefetch' href='//cloud.typography.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="D Magazine &raquo; The Highland Park Drug Ring Comments Feed" href="https://www.dmagazine.com/publications/d-magazine/2020/april/highland-park-oxycontin-fentanyl-xanax-drug-ring/feed/" />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.dmagazine.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.dmagazine.com/wp-includes/css/dist/block-library/style.min.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-notice-front-css' href='https://www.dmagazine.com/wp-content/plugins/cookie-notice/css/front.min.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twenty20-style-css' href='https://www.dmagazine.com/wp-content/plugins/twenty20/assets/css/twenty20.css?ver=1.5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-parsely-style-css' href='https://www.dmagazine.com/wp-content/plugins/wp-parsely/wp-parsely.css?ver=1587405749' type='text/css' media='all' />
+<link rel='stylesheet' id='sage/css-css' href='https://www.dmagazine.com/wp-content/themes/dmagazine/dist/styles/main_f05706dc.css' type='text/css' media='all' />
+<link rel='stylesheet' id='fonts-css' href='https://cloud.typography.com/6172774/6791152/css/fonts.css' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var cnArgs = {"ajaxurl":"https:\/\/www.dmagazine.com\/wp-admin\/admin-ajax.php","hideEffect":"fade","onScroll":"no","onScrollOffset":"100","onClick":"no","cookieName":"cookie_notice_accepted","cookieValue":"true","cookieTime":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"","cache":"","refuse":"no","revoke_cookies":"0","revoke_cookies_opt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/cookie-notice/js/front.min.js?ver=1.2.50'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpp_params = {"sampling_active":"0","sampling_rate":"100","ajax_url":"https:\/\/www.dmagazine.com\/wp-json\/wordpress-popular-posts\/v1\/popular-posts\/","ID":"808190","token":"e3649e3b8c","debug":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/wordpress-popular-posts/public/js/wpp-4.2.0.min.js?ver=4.2.2'></script>
+<link rel='https://api.w.org/' href='https://www.dmagazine.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.dmagazine.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.dmagazine.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.1.1" />
+<link rel='shortlink' href='https://www.dmagazine.com/?p=808190' />
+<link rel="alternate" type="application/json+oembed" href="https://www.dmagazine.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.dmagazine.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F&#038;format=xml" />
+
+<meta name="wp-parsely_version" id="wp-parsely_version" content="1.14" />
+<script type="application/ld+json">
+		{"@context":"http:\/\/schema.org","@type":"WebPage","headline":"The Highland Park Drug Ring","url":"https:\/\/www.dmagazine.com\/publications\/d-magazine\/2020\/april\/highland-park-oxycontin-fentanyl-xanax-drug-ring\/"}
+		</script>
+
+
+<link rel="icon" href="https://assets.dmagstatic.com/wp-content/uploads/2015/09/d-logo-square-facebook-default-300x300.jpg" sizes="32x32" />
+<link rel="icon" href="https://assets.dmagstatic.com/wp-content/uploads/2015/09/d-logo-square-facebook-default-300x300.jpg" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://assets.dmagstatic.com/wp-content/uploads/2015/09/d-logo-square-facebook-default-300x300.jpg" />
+<meta name="msapplication-TileImage" content="https://assets.dmagstatic.com/wp-content/uploads/2015/09/d-logo-square-facebook-default-300x300.jpg" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-466309-20', 'auto');
+  ga('send', 'pageview');
+
+  ga('create', 'UA-466309-47', 'auto', 'D Magazine');       ga('D Magazine.send', 'pageview'); 
+</script>
+
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '359885427553227'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+
+fbq('track', 'FrontburnerPageView');
+
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=359885427553227&ev=PageView&noscript=1"
+/></noscript>
+
+
+<script> var $ = jQuery; </script>
+</head>
+<body data-rsssl=1 class=" layout--full-width page--story page--highland-park-oxycontin-fentanyl-xanax-drug-ring">
+<header class="nav js-nav nav--short">
+<div class="nav__inner">
+<div class="nav__branding">
+<a class="nav__logo" href="/">
+<img alt="D Magazine logo" class="nav__logo__image js-nav-image image" src="https://www.dmagazine.com/wp-content/themes/dmagazine/dist/images/dmag-logo_180x164.png" />
+</a>
+<div class="nav__tagline">
+Let’s Make Dallas Even Better
+</div>
+</div>
+<nav class="nav__menu nav__menu--primary js-nav-menu-primary">
+<ul class="nav__menu__items">
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/frontburner/">
+News
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/category/coronavirus/">
+Coronavirus
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/food-drink/">
+Food
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/arts-entertainment/">
+Arts
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/home-garden/">
+Home
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/style-beauty-wellness/">
+Living
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/section/business-economy/">
+Business
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dweddings.com/">
+Weddings
+</a>
+</li>
+<li class="nav__menu__item">
+<a class="nav__menu__link" href="https://www.dmagazine.com/publications/">
+Magazines
+</a>
+</li>
+</ul>
+</nav>
+<nav class="nav__menu nav__menu--secondary">
+<ul class="nav__menu__items">
+<li class="nav__menu__item nav__menu__item--dropdown">
+<a class="nav__menu__link " href="//directory.dmagazine.com">Directories</a>
+</li>
+<li class="nav__menu__item nav__menu__item--subscribe">
+<a class="nav__menu__link" href="/site/subscribe">
+Subscribe
+</a>
+</li>
+</ul>
+</nav>
+<button type="button" class="nav__button search__button js-searchButton">
+<svg class="icon icon--medium" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><circle class="icon__main icon--stroke" fill="none" stroke="#000000" stroke-miterlimit="10" cx="28.5" cy="25.5" r="17.5" /><path class="icon__main icon--stroke" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" d="M39,40l14,16" /></svg>
+</button>
+<form action="//www.dmagazine.com/search" class="search__form js-searchForm">
+<input class="search__input js-searchInput" type="text" name="q" placeholder="Search" />
+<input class="search__submit" type="submit" value="Search">
+</form>
+<button class="nav__menu-button nav__button is-hidden--large-only js-slide-trigger">
+<div class="js-slide-switch">
+<svg class="icon icon--medium icon--white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><line class="icon__main icon--stroke" stroke="#000000" stroke-miterlimit="10" x1="10" y1="18" x2="54" y2="18" /><line class="icon__main icon--stroke" stroke="#000000" stroke-miterlimit="10" x1="10" y1="32" x2="54" y2="32" /><line class="icon__main icon--stroke" stroke="#000000" stroke-miterlimit="10" x1="10" y1="46" x2="54" y2="46" /></svg>
+</div>
+<div class="is-hidden js-slide-switch">
+<svg class="icon icon--medium icon--white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><line fill="none" class="icon__main icon--stroke" stroke="#000000" stroke-miterlimit="10" x1="15" y1="14.5" x2="49" y2="48.5" /><line fill="none" class="icon__main icon--stroke" stroke="#000000" stroke-miterlimit="10" x1="15" y1="48.501" x2="49" y2="14.501" /></svg>
+</div>
+</button>
+</div>
+</header>
+<div class="nav__pushdown js-nav-pushdown"></div>
+<div class="site-wrapper">
+<div class="is-loading-overlay is-hidden">
+<img class=" is-loading-overlay__loader" src="https://www.dmagazine.com/wp-content/themes/dmagazine/dist/images//DMagazine_load.gif" alt="loading">
+</div>
+<div class="adunit adunit--horizontal adunit--top  adunit--horizontal-top" data-adunit="MissEllie_horizontal_top" data-mapping="mapping_horizontal_top">
+</div>
+<div class="story-wrapper js-stickyParent" role="document">
+<main class="main">
+<article class="story  ">
+<header class="story__header">
+<figure>
+<div class="story__image">
+<div class="image ar-content">
+<img class="image" srcset="									
+			https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars-330x220.jpg
+	 330w,
+												
+			https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars-677x451.jpg
+	 677w,
+												
+			https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars-1024x683.jpg
+	 1024w,
+												
+			https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars-1200x800.jpg
+	 1200w" sizes="(max-width: 1024px) 100vw,
+			1024px" src="									
+			https://assets.dmagstatic.com/wp-content/uploads/2020/03/xanax-bars-1024x683.jpg
+	 " />
+</div>
+</div>
+<figcaption class="story__image-caption--header story__image-caption">
+<span></span>
+<span class="image-caption__credit">Chris Plavidal</span>
+</figcaption>
+</figure>
+<div class="story__header__content">
+<h2 class="category"><a href="https://www.dmagazine.com/category/crime/?ref=kicker">Crime</a></h2>
+<h1 class="story__title">The Highland Park Drug Ring</h1>
+<p class="story__subhead">How did a mother of 10 and a Plano cop wind up pushing pills in the Park Cities?</p>
+<div class="story__info">
+<span class="story__info__item">By
+<a href="https://www.dmagazine.com/author/peter-simek/"> Peter Simek
+</a> </span>
+<span class="story__info__item">
+Published in
+<a href="https://www.dmagazine.com/publications/d-magazine/2020/april/">
+D Magazine
+April
+2020
+</a>
+</span>
+<span class="story__info__item">
+Photography by Chris Plavidal and David Halloran
+</span>
+</div>
+</div>
+</header> <div class="story__body">
+<div class="social-buttons social-buttons--style1">
+<div class="social-buttons-inner">
+<a class="social-button button--sms is-hidden--large_medium" target="_blank" href="sms:?&body=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F">
+<div class="social-button-inner">
+<span class="icon">SMS</span>
+</div>
+</a>
+<a class="social-button button--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F&title=The%20Highland%20Park%20Drug%20Ring" rel="external nofollow">
+<div class="social-button-inner">
+<svg class="icon " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--fill" d="M25,22h-8v10h8v28h12V32h9l1-10H37v-4c0-2,1-3,3-3h7V4h-8c-8.688,0-14,2-14,11V22z" /></svg>
+</div>
+</a>
+<a class="social-button button--twitter" target="_blank" href="https://twitter.com/intent/tweet?text=The%20Highland%20Park%20Drug%20Ring&url=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F" rel="external nofollow">
+<div class="social-button-inner">
+<svg class="icon " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--fill" d="M62,13c-2.207,0.99-4,2-7,2c2.546-1.532,4.084-3.11,5-6c-2.375,1.417-4,2-7,3c-2.242-2.403-5.462-5-9-5
+	c-7.949,0-13.791,7.261-12,15c-10.223-0.515-19.93-4.51-26-12c-3.228,5.563-1.476,12.314,4,16c-2.005-0.065-4.344-1.072-6-2
+	c-0.131,5.737,4.083,11.808,10,13c-1.733,0.472-3.066,0.369-5,0c1.568,4.914,5.608,7.895,11,8c-5.171,4.078-11.473,6.771-18,6
+	c5.452,3.506,12.048,6,19,6c22.853,0,35.784-19.592,35-37C58.405,18.253,60.352,15.482,62,13z" /></svg>
+</div>
+</a>
+<a class="social-button button--pinterest" target="_blank" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.dmagazine.com%2Fpublications%2Fd-magazine%2F2020%2Fapril%2Fhighland-park-oxycontin-fentanyl-xanax-drug-ring%2F&media=https%3A%2F%2Fassets.dmagstatic.com%2Fwp-content%2Fuploads%2F2020%2F03%2Fxanax-bars-1024x683.jpg&description=The%20Highland%20Park%20Drug%20Ring" rel="external nofollow">
+<div class="social-button-inner">
+<svg class="icon " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--fill" d="M32,4C16.538,4,4,16.534,4,32c0,11.863,7.585,21.921,18,26c-1-2-0.565-6.58,0-9c0.51-2.185,3.467-13.267,3.467-13.267
+	S24,34.48,24,32c0-3.892,2.189-7,5-7c2.386,0,4,1.85,4,4c0,2.4-2.21,5.671-3,9c-0.661,2.786,2.251,5,5,5c4.977,0,8-5.428,8-13
+	c0-6.704-4.124-11-11-11c-7.966,0-13,5.826-13,12c0,2.406,0.844,5.601,2,7c0.229,0.277,1.067,0.718,1,1l-1,2
+	c-0.123,0.513-0.467,1.248-1,1c-3.497-1.627-6-6.894-6-11c0-8.832,6.914-17,19-17c9.712,0,17,6.75,17,16c0,9.65-6.551,18-15,18
+	c-2.835,0-5.087-1.256-6-3l-2,7c-0.632,2.434-1.856,5.143-3,7c2.623,0.812,5.114,1,8,1c15.462,0,28-12.538,28-28
+	C60,16.534,47.462,4,32,4z" /></svg>
+</div>
+</a>
+<div class="social-button button--comments">
+<div class="social-button-inner">
+<a href="https://www.dmagazine.com/publications/d-magazine/2020/april/highland-park-oxycontin-fentanyl-xanax-drug-ring/#jump-comments">
+<svg class="icon " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--switch" d="M32,5C15.983,5,3,15.298,3,28c0,7.309,4.304,13.816,11.005,18.029L16,59l16-8c16.017,0,29-10.298,29-23S48.017,5,32,5z" /><circle class="icon__accent icon--switch" fill="#FFFFFF" cx="32" cy="28" r="4" /><circle class="icon__accent icon--switch" fill="#FFFFFF" cx="18" cy="28" r="4" /><circle class="icon__accent icon--switch" fill="#FFFFFF" cx="46" cy="28" r="4" /></svg>
+<span class="disqus-comment-count" data-disqus-url="https://www.dmagazine.com/publications/d-magazine/2020/april/highland-park-oxycontin-fentanyl-xanax-drug-ring/#disqus_thread"></span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="story__content-l story__content story__content--is-slideshow-closed">
+<p class="p1">When the squad cars pulled up to the Townes of Highland Park before daybreak, most residents were still asleep. A damp fog hung over the private drive that runs through the gated community of $800,000 townhomes off Lomo Alto Drive. A small army of law enforcement personnel took position: Dallas Police officers, FBI agents, and DEA investigators in black jackets with yellow letters across the back. A U.S. Marshals team wearing tactical vests and helmets fell into a phalanx and made its way toward unit 4205.</p>
+<p class="p1">Unit 4205 had been under surveillance for months. Its occupant was a 50-year-old man named Gary Collin Bussell, whom neighbors had begun to regard as a nuisance. He was aggressive at community meetings and threw loud parties in the common areas. They watched strange characters coming and going from his townhome at all hours, often carrying thick manila envelopes or brown paper bags. His guests monopolized the few visitor parking spots and had the access code for a back gate that led to the parking lot of an adjacent Whole Foods. A few months earlier, the DEA, FBI, and Dallas Police had executed a search warrant at Bussell’s townhome, hauling off two Glock handguns, a shotgun, and evidence that he used the residence to store tens of thousands of dollars in real and counterfeit cash and counterfeit prescription pills.</p>
+<p class="p1">Investigators had come to believe that Bussell was the linchpin of a drug trafficking operation. Now, on October 30, 2019, U.S. Marshals moved in to make the arrest. They pounded on the front door, and Bussell calmly answered it. He had slicked-back blond hair and a thin goatee, wearing jeans and a hoodie that covered his tattooed arms. He already had his sneakers on, as if he had been waiting for the officers to arrive. Bussell’s girlfriend, Lisa Young, a 32-year-old blonde, also seemed ready for her arrest. Bussell politely invited the armed officers into his home. His teenage daughter looked on as the U.S. Marshals arrested her father and Young. Then, as investigators combed the townhome, Bussell’s daughter headed to class at Highland Park High School. One officer told me, “It was like she couldn’t have cared less.”</p>
+<hr />
+<p class="p1"><span class="s1">Bussell’s arrest was just one in a string of related</span> busts that day. With him in custody, U.S. Marshals headed a couple of miles away to a house on Stanford Avenue, in University Park, where they nabbed Gina Corwin, a <span class="s2">51-year-old </span>mother of 10. She, too, didn’t seem surprised that cops were at her door. Corwin was involved with the Highland Park community, known for volunteering for organizations that help kids with special needs. One of her sons was a captain of the state championship-winning football team and went on to play at the University of Oklahoma. Officers arrested another atypical drug trafficking suspect, Frank Eric Dockery, a former Plano SWAT sniper and father of two whose wife is a kindergarten teacher. Eventually, 11 people were arrested and charged. The criminal conspiracy began to look like a drug ring of suburban moms and dads.</p>
+<p class="p2"><span class="s2">The charges filed in the United States District Court for the Eastern District of Texas allege that Bussell and his organization sold at least 6 kilograms of the synthetic opioid fentanyl and 5.7 kilograms of methamphetamine over an 18-month period. Officials also claim they have evidence that Bussell was selling marijuana by the pound, prescription opioids, and other substances. But the indictment focused on fentanyl because prosecutors claim that drug was responsible for at least two overdose deaths. <i>D Magazine</i>’s investigation also found that drugs linked to the Bussell organization played a role in the shooting death of a Highland Park teenager.</span></p>
+<figure id="attachment_808169" class="wp-caption alignnone size-"><img class="wp-image-808169 size-full" src="https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots.jpg" alt="people arrested from HP drug ring" width="1800" height="1200" srcset="https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots.jpg 1800w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-768x512.jpg 768w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-330x220.jpg 330w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-504x336.jpg 504w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-677x451.jpg 677w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-1024x683.jpg 1024w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/HP-drug-ring-headshots-1200x800.jpg 1200w" sizes="(max-width: 580px) 100vw, 1800px" /><figcaption style="max-width:1800px;" class="wp-caption-text"><span><b>The Ring: </b> <i> (clockwise from left): </i> Frank Eric Dockery, Gary Collin Bussell, William Grant Allbrook, Todd Shewmake, and Gina Corwin are five of 11 people who were arrested and charged with crimes related to a massive Highland Park drug trafficking operation.</span></figcaption></figure>
+<p class="p2">How did these seemingly straitlaced people get caught up in such a massive drug operation? Since the arrests last year, lawyers, <span class="s3">family, and friends of the 11 defendants, who prosecutors allege were part of what they have dubbed the Bussell Drug Trafficking Organization, have all kept quiet. The final pretrial conference is set for May, and sources close to the proceedings say most of the defendants are cooperating with investigators and working on plea deals. It is not clear if the trial will move forward or if the government’s evidence will be made public. The DEA and other agencies involved in the investigation won’t speak directly about the case because they are continuing to investigate additional drug suppliers and distributors connected to the Bussell ring. </span></p>
+<p class="p2">But transcripts of preliminary detention hearings, documents filed with the Eastern District of Texas, and conversations with dozens of associates and neighbors—almost all of whom asked to remain anonymous—reveal the extent of the network and the motives that drove these individuals toward crime. It all points to fentanyl, an opioid washing over North Texas.</p>
+<p class="p2">Fentanyl is 30 to 50 times more powerful than heroin and 50 to 100 times more powerful than morphine. It is prescribed for extreme pain, often after surgery or for cancer patients, but it hits the streets in the form of counterfeit oxycodone, hydrocodone, and other prescription drugs. Fentanyl is much more potent than these pills, and even small miscalculations in the quantities of fentanyl used to make the fake prescription opioids can prove deadly. According to the Centers for Disease Control and Prevention’s most recent data, fentanyl is responsible for a 47 percent increase in overdose deaths, from 19,413 in 2016 to 28,466 in 2017.</p>
+<p class="p2">Fentanyl is the drug that killed Prince, Tom Petty, and Los Angeles Angels pitcher Tyler Skaggs, who was found dead in a Southlake hotel room ahead of a game with the Texas Rangers in August 2019. The reason for its spread is simple: fentanyl is cheap, powerful, and, in certain parts of the country, easy to get. “A kilo of pure fentanyl is going to go a very long way compared to its equivalent kilo of meth or cocaine,” says Eduardo Chávez, special agent in charge of the DEA’s Dallas Division.</p>
+<p class="p2">But unlike meth or cocaine, fentanyl is sold in the form of knockoff prescriptions that carry few social taboos and have become increasingly mainstream. That has also led to another parallel evolution in the opioid epidemic: the normalization of drug dealers. Aaron Shamo might be the poster child. A 26-year-old Eagle Scout and college dropout from Utah, Shamo called himself a “white-collar drug dealer.” He bought pure powdered fentanyl from a lab in China, pressed the substance into pills in his basement, and found buyers for his product across the U.S. by advertising on the dark web. Shamo sold more than a half-million pills over one year, and when federal agents raided his apartment in 2016, they found $1.2 million in cash stuffed in a sock drawer and a safe. Shamo became a drug kingpin without ever leaving his house.</p>
+<p class="p2"><span class="s2">This may begin to explain how Gina Corwin, the mother of 10, got wrapped up in an organization that trafficked in tens of thousands of counterfeit pills containing fentanyl and methamphetamine. Corwin was born into privilege, the daughter of Jimmy Bishop, an entrepreneur who built one of the world’s largest independent distributors of remanufactured automotive components. He was a member of the Oak Cliff Country Club, and he spoiled the women in his life. Bishop built a house for his wife on Beverly Drive and gave Corwin a Porsche to drive to college at Texas Tech. When he died, in 2010, his estate was split between Corwin and her brother. </span></p>
+<hr />
+<p class="p1"><span class="s1">The Corwins live in a house in University Park, which, </span>since at least 1999, was owned by a trust in Gina’s name. She married her husband, Mike, in November 1995, and their eldest child was born eight months later. Nine more children followed. Today, the house on Stanford Avenue looks a little out of place on a block that is transitioning to stately contemporary homes. It has a well-worn look that one might expect from a large and rambunctious family. The lawn has been replaced with AstroTurf. There is a large trampoline in the front yard, and a swing hangs from a tree branch. The front porch is given over to wooden lockers overflowing with sports equipment. A succession of Highland Park football stars has run the yard, including Finn Corwin, the son who now plays for the University of Oklahoma.</p>
+<blockquote class="pull-quote alignleft"><span><p>Fentanyl is the drug that killed Prince, Tom Petty, and Los Angeles Angels pitcher Tyler Skaggs, who was found dead in a Southlake hotel room ahead of a game with the Texas Rangers in August 2019.</p>
+</span><span class="pull-quote__attribution"></span></blockquote>
+<p class="p2">Many of the Corwins’ neighbors said they don’t know the family well. They kept to themselves, one said. Sweet kids and a friendly father, another said, but a mother who was a little aloof. One complained that Gina never waved. From afar, neighbors observed the kind of managed chaos that one might expect of a family of 12. One neighbor who lives next door to the Corwins remembers multiple times when he saw Gina rush into her house with groceries, forgetting to close her car door and leaving bags of groceries on the street overnight.</p>
+<p class="p2">There are rumors and gossip, of course, the whispers that fly around a cloistered, affluent community. But during the weeks after the arrest, friends and neighbors rallied to support the Corwins, setting up a schedule to cook and deliver meals to the family. There is some suggestion that Gina saw trouble coming. Tax records show that in August 2019, as the investigation into the Bussell network intensified, the ownership of the house on Stanford was transferred out of the trust’s name and to a limited liability company with an address in Dripping Springs, Texas. In 2019, Gina’s name was also removed from properties she inherited with her brother, according to Dallas County tax records.</p>
+<p class="p2">After her arrest, Gina waived her right to a detention hearing, so, unlike the other defendants, evidence has not been made public about her role in the conspiracy. According to a law enforcement official close to the case, the charges are more substantial than just possession and definitely involve being part of the distribution network. The evidence against other defendants that has been made public, however, suggests a pattern. They were a motley crew, from divergent walks of life, but many were users who sold drugs to help fund their habit.</p>
+<p class="p2">Frank Dockery was a SWAT sniper with the Plano Police Department whom other members of the force called “Doc.” He was well liked, gregarious, and generous—a cop’s cop. If officers needed backup or help with an investigation, Doc would drop what he was doing and chip in. Doc married a kindergarten teacher, had two daughters, and lived a few miles from his parents. But after he was injured on the job, a doctor prescribed him painkillers, and he couldn’t quit them. Plano PD removed Doc from the SWAT team. He entered rehab. When he got out, his job was waiting for him, but so was his habit.</p>
+<p class="p2">Doc began looking for ways to find the pills he needed. By 2018, he had fallen in with Bussell and his crew. Text messages presented at his detention hearing suggest that Doc saw Bussell and his associates not as drug dealers, but as friends. Sometimes, Doc purchased pills with Ben Westin, a 28-year-old salesman for a high-end cosmetics packaging distributor and an avid skydiver.</p>
+<p class="p2">“I’m about to leave town with kids and don’t want to run out this weekend,” Doc texted Westin on one occasion.</p>
+<figure id="attachment_808168" class="wp-caption alignnone size-dmag-xlarge"><img class="wp-image-808168" src="https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-1024x683.jpg" alt="Gina Corwin University Park home" width="1024" height="683" srcset="https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-1024x683.jpg 1024w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-768x512.jpg 768w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-330x220.jpg 330w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-504x336.jpg 504w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-677x451.jpg 677w, https://assets.dmagstatic.com/wp-content/uploads/2020/03/gina-corwin-UP-home-1200x800.jpg 1200w" sizes="(max-width: 580px) 100vw, 1024px" /><figcaption style="max-width:1024px;" class="wp-caption-text"><span><b>The Corwin House: </b> Neighbors on Stanford say the large Corwin family kept to themselves at home, but the kids were sweet and active on many HP sports teams.</span></figcaption></figure>
+<p class="p2">Westin told him he could scrounge up 15 pills. Sometimes, Doc hooked Westin up.</p>
+<p class="p2">“Hey if you need one to hold you over, let me know,” Doc texted Westin.</p>
+<p class="p2">“I do, I’m dying,” Westin replied. The two then agreed to meet near an East Plano police substation to make the exchange.</p>
+<p class="p2">Text messages cited in court also suggest that Doc and his wife socialized with Bussell on occasion. Doc invited members of the crew to participate in a concealed carry licensing course he ran at the Trenton Church of Christ and a gun range in Greenville. He offered Bussell assistance in beating a urinalysis test. A picture forms in the government’s evidence of a man whose habit began to shape his social universe and who had lost sight of the legal implications of his actions in the process. The help Doc offered his “brother” Westin was, in the eyes of federal law, aiding and abetting with the intent to distribute narcotics. Doc’s weekend firearms classes, a typical way some SWAT officers pick up extra cash, contributed to him being charged with knowingly possessing a firearm in furtherance of a drug trafficking crime.</p>
+<hr />
+<p class="p1"><span class="s1">When he started to associate with Bussell, Doc was </span>on the periphery of a much larger drug distribution network. Bussell ran an efficient and lucrative business. He had multiple distribution points, including his townhome and a duplex on Gilbert Avenue, on the edge of Highland Park. Austin Seymour, a 24-year-old Ohio native, worked out of the duplex as a delivery boy for Bussell. Bussell’s girlfriend, Young, also ran errands for the organization, and he asked her to create inventories of their stock of real and fake prescription pills, marijuana, THC cartridges, and other drugs. They sometimes did business out of the Barley House, a bar a few blocks from SMU. There, Bussell would meet with Seymour and William Grant Allbrook, a 32-year-old co-founder of a real estate investment company who, according to the government’s evidence, provided Bussell’s network with large quantities of counterfeit prescription pills.</p>
+<p class="p2">Bussell and Seymour were regulars at the bar. Bussell drank Maker’s and Sprite, and bartenders knew him well enough to mix the drink when he pushed through the door. He took his daughter out to eat at the Barley House after school. Regulars recall Bussell having bags of THC-infused gummies on him. According to court documents, investigators observed Bussell meeting Todd Shewmake, one of the co-defendants, at the Barley House to sell him 100 bars of Xanax. Most patrons and staff turned a blind eye to the animated and eccentric Bussell, figuring it was best not to know too much about what he did for a living.</p>
+<p class="p2">For a long time, business was good. Over an 18-month period leading up to their arrests, Bussell’s organization moved at least 54,000 fake oxycodone pills and 18,000 fake Adderall pills. They had no problem finding customers. Bussell was selling weed and pills in the heart of a community that was hungry for both. He was connected to Dallas’ art, fashion, and restaurant worlds, and he had children in the Highland Park school system. Bussell offered a convenient hookup. One Highland Park mom I talked to bought some pot brownies before a weekend girls getaway and met Bussell in a parking lot a few blocks from her house. Another met Bussell with a friend at an apartment and was surprised when he invited her in to hang out for a while. An owner of a local restaurant traded meals for pills. Customers say Bussell could be jittery and hyper but also friendly and low-key. “He asked me if I ever wanted to, you know, give him a call,” said one general manager of a Dallas restaurant. “I knew he dabbled in some stuff and thought it was just the normal Dallas scene. I thought he had a normal job.”</p>
+<aside class="aside alignright"><h3 class="aside__title">Gone Too Soon</h3><div class="aside__text"><p><img class="alignnone size-dmag-small wp-image-808170 aligncenter" src="https://assets.dmagstatic.com/wp-content/uploads/2020/03/joey-pintucci-330x400.png" alt="Joey Pintucci" width="330" height="400" /></p>
+<p class="p1" style="text-align: left;">Joey Pintucci (<span class="s2"><i>right</i></span>) told his aunt and guardian Andrea Haag (<span class="s2"><i>left</i></span>) that he wanted to join the military after graduating from high school. He was shot and killed during a drug deal in January 2019.</p>
+</div></aside>
+<p class="p2">Bussell talked about his dealers as if they were his employees. Joey Pintucci, a teenager at Highland Park High School and friends with Bussell’s daughter, may have been one of them. Pintucci had a difficult childhood. His mother was an addict, and she died when he was 7 years old. His father was not in the picture, and his aunt, Andrea Haag, became his guardian. Pintucci was a smart kid, but his ADHD sometimes made school difficult for him. At first, Haag moved in with her parents so she could afford to send him to private school. Then she moved the family to Highland Park. “We were apartment dwellers at first,” Haag says. “We were on the outskirts, but we were accepted, initially.”</p>
+<p class="p2">Friends describe Pintucci as rebellious but popular. Haag says he had a big heart but also got into trouble. “He did things to make himself sound cool,” she says. Pintucci became friends with Bussell’s daughter in middle school, and they would sometimes hang out at her father’s house. Haag heard gossip about Bussell. “I was definitely warned years ago to keep my child away from him,” she says. “Other parents were like, ‘Hey, this is what’s going on with that family, and you want to keep away from them.’ ”</p>
+<p class="p2"><span class="s2">In high school, Pintucci played football, but when his grades began to slip, he was kicked off the team and found himself with too much time on his hands. “It was really frustrating,” Haag says. “He really needed those male role models. When he met the Bussell family, he was a very young teenager. A very young, impressionable teenager.”</span></p>
+<p class="p2">Haag doesn’t know if Bussell recruited Pintucci to deal drugs, but at some point her adopted son started to deal. In March 2018, Haag withdrew him from Highland Park and enrolled him in Evolution Academy in Richardson, which she hoped would be better suited to handle Pintucci’s learning differences.</p>
+<p class="p2">Court documents indicate that Bussell associated with people who investigators suspect sold marijuana, edibles, THC canisters for vape pens, cocaine, and mushrooms. But the charges he and the other defendants face focus on fentanyl—the counterfeit pills. According to Special Agent Chávez, manufacturers are becoming increasingly sophisticated in replicating the real thing. “It [used to be] almost comical,” Chávez says. “The color of green was off, and the OC-30 on it was just a little crooked on some pills, and you take it and kind of press it and it would crumble. They hadn’t figured out the binding just yet. Now you look at them and you put them side by side, and, unfortunately, it almost takes a chemical analysis to be able to tell the difference.”</p>
+<p class="p2">I spoke to one Highland Park woman who, with a friend, bought what they thought was Xanax from Bussell. When her friend popped a pill on a Saturday, she fell asleep and didn’t wake up for 24 hours. When she regained consciousness, she called Bussell and asked him what was in the pill he’d sold her. He apologized and said he’d forgotten to tell her that it contained fentanyl. Court documents indicate Bussell was confronted by multiple individuals who had suffered nonlethal overdoses from pills they’d bought from him. According to one person quoted by investigators, Bussell was dismissive about the risky pills. “You bought them, you own them,” he said.</p>
+<hr />
+<p class="p1"><span class="s1">Ryan Pearson was 29 and grew up</span> in El Segundo, California. His father died when he was young, and his family later relocated to North Texas. Pearson loved video games, animals, and his family. His Facebook page is filled with pictures of dogs and cats, a turtle and a frog, graffiti murals, and him holding his newborn niece. In 2015, he posted about his second anniversary of sobriety. But by 2018, he had relapsed. Around 3:30 pm December 27, Pearson texted his friend Scott Perras, who sent him Westin’s phone number. It is not clear from the government’s evidence how the rest of the evening unfolded, but what we do know is that after he was contacted by Pearson, Westin texted Doc, the Plano cop. They agreed to meet with Bussell. Afterward, Pearson met Westin, who sold him a pill that Pearson believed was oxycodone. That night, Pearson was playing video games in his apartment in Fairview when he took that pill. Sometime after midnight, Pearson’s girlfriend found him. She couldn’t wake him. She called 911 and the Fairview Police arrived at 12:42. Pearson had died of a fentanyl overdose.</p>
+<p class="p2">In the emotional fog of the moment, Pearson’s girlfriend began searching through his phone. She found a number she didn’t recognize, and when she called it, Westin answered. The two would exchange several calls and texts over the next few days. Westin struggled to figure out what to do. He called Doc. According to testimony by Dallas Police Detective David Roach, who was called in by Fairview Police to help with the investigation into Pearson’s death, Doc tried to assure Westin that his exposure was limited. Westin sent Pearson’s address, and Doc ran it through the Plano PD’s database. “Nothing came up,” he texted. They appeared to be in the clear.</p>
+<p class="p2">But a month later, Bussell’s daughter was involved in a drug deal that would generate headlines. In January, Pintucci arranged on Snapchat to sell THC canisters to a few of his classmates from Evolution. They planned to meet at the Shops at Park Lane, on Central Expressway, across from NorthPark. Pintucci parked his white 2002 Lincoln sedan in the empty parking garage in front of Dick’s Sporting Goods. Bussell’s daughter and another friend were in the back seat of the car. A little after 10 pm, three men approached the car in single file and pulled out handguns. They forced Pintucci to hand over the drugs. As they ran from the car laughing, one man fired into the car, hitting Pintucci. He was taken to a hospital, where he later died.</p>
+<p class="p2">The students at Highland Park High School were devastated by the news of Pintucci’s killing. Even though he no longer attended the school, a spot on the senior wall was transformed into a memorial, where they scribbled messages like “rest easy homie” and “the king.” The Dallas Police Department’s investigation into the murder focused on the three suspects, and 10 months later, Snapchat messages would lead to the arrest of 19-year-old Juan Cardenas, one of Pintucci’s classmates at Evolution, who has been charged with capital murder.</p>
+<blockquote class="pull-quote alignleft"><span><p>Investigators observed Bussell meeting Shewmake at the Barley House to sell him 100 bars of Xanax. Most patrons and staff turned a blind eye to the animated and eccentric Bussell.</p>
+</span><span class="pull-quote__attribution"></span></blockquote>
+<p class="p2">The DPD investigation did not focus on the source of the drugs that Pintucci was selling that January night. An investigator working the case told me that the THC canisters looked store-bought, like the kind that are legal in Colorado and other states, and they didn’t pursue their origin. The fact that Bussell’s daughter was in the back seat of the car that night, however, was raised by a prosecutor during Bussell’s detention hearing. Detective Roach testified that Bussell’s daughter got the drugs from her father, possibly without his knowledge. “And during the course of that narcotics transaction, another individual engaging in that transaction with her was ultimately shot and killed during that transaction,” Roach told the court.</p>
+<p class="p2">The investigation into Pearson’s overdose death began to peel back the layers of the Bussell network. Even though Doc assured Westin that he couldn’t find anything about Pearson in the Plano PD’s system, the death had triggered an investigation that quickly escalated into a multiagency effort. The Organized Crime Drug Enforcement Task Force was established in 1982 to disrupt operations with criminal activity stretching into multiple jurisdictions. It includes investigators with the DEA, FBI, IRS, U.S. Postal Service, and members of a number of local police departments.</p>
+<p class="p2">Through a search of Pearson’s phone, investigators knew Pearson had purchased the fake oxycodone pill from Westin. In March 2019, agents served a warrant on Westin’s apartment. They found two firearms; fake oxycodone and real alprazolam pills containing fentanyl; cocaine; marijuana; pure THC extraction; and a large quantity of mushrooms. After the search, the investigation appeared to go quiet. No charges were brought against Westin, and no additional searches were conducted. During this time, prosecutors say, Doc used his access at Plano PD to keep tabs on the ongoing investigation. Roach testified that Westin continued to sell and use counterfeit pills after Pearson’s death. “It appeared that when he got money to buy pills, he would do some and then sell some,” Roach said. “And then the cycle would repeat.”</p>
+<p class="p2">Throughout that summer, investigators traced the origins of Westin’s pills back to Bussell and into a larger, more complex network. They uncovered an operation with multiple wholesale sources and a loose network of user-dealers scattered throughout North Texas. One of the main sources of counterfeit pills was a Houston pill press that also figured into a separate ongoing DEA investigation. A 36-year-old Garland resident named Peter Yin was suspected of supplying pills to the network, as well as distributing pills to networks in Virginia and Ohio. Bussell and Allbrook were dealing with huge quantities of cash, sending tens of thousands of dollars through the U.S. Postal Service, some of it counterfeit, and operating money laundering operations that processed upwards of $100,000 per transaction.</p>
+<p class="p2">That same summer, the organization ran into some friction. About every two weeks, Bussell and Allbrook sent shipments of cash, $80,000 bundles wrapped in duct tape, to various suppliers. After one shipment, Allbrook alerted Bussell to the fact that they had sent some counterfeit bills. “It was just 200, thank goodness,” Allbrook told Bussell. “Just need to keep our eyes peeled. I don’t want to end up with a stack of those.”</p>
+<p class="p2">The managers were also having trouble with Seymour, the duplex delivery boy. “Austin’s stressing me out this week,” Bussell told Allbrook. “He may be unemployed by the time you get home. Sorry my partner, this is our business not his.”</p>
+<p class="p2">In August 2019, agents finally executed search warrants on Bussell’s Highland Park townhome and the duplex on Gilbert. After the raid, investigators testified that Bussell called a meeting at the Gilbert house, where he and members of his network discussed fleeing the country. Bussell offered to purchase a copy of a Social Security card and birth certificate and head to a non-extradition country. Investigators estimated that based on the quantity of pills and marijuana, the amount of cash they seized, and their knowledge of offshore accounts, they had more than enough resources to skip the country.</p>
+<p class="p2">But no one left. By this point, Doc had worked his way closer into the organization’s inner circle. After the raid on Bussell’s properties, he couldn’t understand why so much time had passed between the March search of Westin’s apartment and the August raids. But he wanted to assure his friend that, no matter what happened, he would be there for him. “Just going to say I ain’t going to distance myself, bro,” Doc wrote to Bussell. “You’re my friend. Laying here running shit through my head trying to figure out what I can come up with to help. Just wish I knew what they knew. Just weird how they took so long to come. Anyhow, try and relax and enjoy your trip no matter what.”</p>
+<p class="p2">On October 30, the hammer fell. The task force rounded up 10 individuals associated with the Bussell organization and charged them with multiple counts related to drug trafficking, weapons possession, and providing the drugs that led to Ryan Pearson’s death. Some of the charges carry minimum sentences of 20 years. About a month later, Peter Yin was also taken into custody. Bussell, Westin, Perras, and Yin were all charged with directly supplying the drugs that led to Pearson’s death. Doc faced charges for possessing and providing firearms in furtherance of a drug trafficking crime as well as interfering with the investigation of Westin’s alleged crimes. Gina Corwin was charged with two counts related to the knowing possession and distribution of substances that contained fentanyl and methamphetamine.</p>
+<hr />
+<p class="p1"><span class="s1">During the detention hearings, each </span>of the defendants’ lawyers presented evidence and witnesses in an attempt to show that their clients were not the notorious drug dealers that prosecutors made them out to be. The testimonies highlighted one of the stranger elements of the case, that the drug distribution network was made up of a ragtag crew of people who lived double lives.</p>
+<p class="p2">William Grant Allbrook’s sister died in a DWI crash when she was 24 years old. He ran an annual golf fundraiser for a charity he founded in her name to help underprivileged kids take dance lessons. After Peter Yin’s mother died, he took care of his elderly father and was described by friends and family as the glue that held his family together. Scott Perras’ stepdaughter told the judge in a letter that he picked her up from school every day and played video games with her. Frank Dockery’s wife, Jaime, said her husband was taking medication to help with his opioid addiction and that he loved his two little girls, missed them terribly, and wanted to be home with his family.</p>
+<p class="p2">Only one of the defendants—Perras—managed to secure pretrial release. The experience of Gina Corwin’s co-defendants may suggest why she waived her right to a detention hearing. It is difficult to secure pretrial release when facing federal felony drug charges, and by waiving her hearing, Gina saved her family the humiliation of dragging the allegations against her into the public record. Defendants sometimes waive detention hearings if they plan to make a plea deal. A quiet plea deal may keep some details of her alleged crimes from her neighbors. Which leaves the strangest question in the case unanswered. How did a University Park mother of 10 fall into such a mess?</p>
+<p class="p2">It is one of many questions that may never be answered if the case doesn’t go to trial. How was Bussell able to launder so much money, and how did his organization’s activities connect with other trafficking networks? According to court documents, Bussell conspired with an unnamed individual in Dallas to launder money through personal and family business accounts. Other witnesses testified to investigators that Bussell arranged with co-conspirators outside the United States to launder income from drug proceedings. Another accusation made by investigators suggests that a member of the Bussell organization received bulk shipments of counterfeit Adderall pills containing methamphetamine, and this individual sent those pills to someone for distribution on a college campus.</p>
+<p class="p2">There are many such connections between the Bussell organization and operations in Seattle, Houston, and elsewhere. Digging into each begins to feel less like investigating a criminal network and more like tracking the spread of a virus. For years, Bussell and his colleagues sold tens of thousands of potentially lethal pills, and there is no telling how many are still out there. Days before the second detention hearing, investigators said they learned of a second overdose death that could be tied to the Bussell network.</p>
+<p class="p2">At one of the detention hearings, Tina Pinotti, Ryan Pearson’s mother, sat in the courtroom. Although the family declined to talk about the case, Pinotti posted on Facebook her reaction to the arrests. “While this does not bring our beautiful boy back, Ryan and our family will receive some justice,” she wrote. “Many, many families are not as fortunate, and no one is ever held accountable for the death of their loved one. I find some peace in knowing that these people have been taken off of the streets.”</p>
+<p class="p2">But the pills are still out there. In medicine cabinets from the Park Cities to Seattle, fentanyl is hiding in what people think is Xanax or oxycodone. For those people, justice might be hard to find.</p>
+</div>
+</div>
+<div class="story__footer">
+<ul class="story__categories">
+<li class="story__category">
+<a class="story__category__link" href="https://www.dmagazine.com/category/crime/">
+Crime
+</a>
+</li>
+<li class="story__category">
+<a class="story__category__link" href="https://www.dmagazine.com/category/local-news/">
+Local News
+</a>
+</li>
+</ul>
+<div class="story__tags">
+<span class="story__tags-title">Tags:</span>
+<ul>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/highland-park/">
+Highland Park
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/frank-dockery/">
+Frank Dockery
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/gary-bussell/">
+Gary Bussell
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/todd-shewmake/">
+Todd Shewmake
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/william-grant-allbrook/">
+William Grant Allbrook
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/gina-corwin/">
+Gina Corwin
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/fentanyl/">
+fentanyl
+</a>
+</li>
+<li class="story__tag">
+<a class="story__tag__link" href="https://www.dmagazine.com/tag/xanax/">
+xanax
+</a>
+</li>
+</ul>
+</div>
+</div>
+</article>
+<svg class="icon story__scrollArrow icon--blue js-scrollArrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><circle class="icon__main icon--switch" cx="32" cy="32" r="29" /><polyline class="icon__accent icon--stroke" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="42,35 32,25 22,35 " /></svg>
+</main>
+</div>
+<div class="widget js-stickyStop w-combo widget--full-width">
+<div class="w-newsletter widget--basic">
+<div class="w-newsletter widget--basic" id="newsletter-signup">
+<div>
+<svg class="icon icon--medium icon--red-o" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><rect class="icon__accent icon--stroke" x="4" y="12" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="56" height="40" /><rect class="icon__main icon--switch" x="4" y="12" width="56" height="40" /><line class="icon__accent icon--stroke" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="60" y1="52" x2="38" y2="31" /><line class="icon__accent icon--stroke" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="4" y1="52" x2="26" y2="31" /><polyline class="icon__accent icon--stroke" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" points="60,12 32,36 4,12 " /></svg>
+<p class="w-newsletter__title">Newsletter</p>
+<h5 class="w-newsletter__text">
+Get a weekly recap in your inbox every Sunday of our best stories from the week plus a primer for the days ahead.
+</h5>
+<!--[if lte IE 8]>
+	<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+	<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+	  hbspt.forms.create({ 
+		css: '',
+		portalId: '477347',
+		formId: '5052f640-6af5-454e-b5cb-44e65cc788d2'
+	  });
+	</script>
+<p class="newsletter__footer">Browse all newsletters <a href="https://www.dmagazine.com/site/newsletters">here</a>.</p>
+<div class="social-links newsletter__social">
+<a class="social-link social-link--facebook" alt="facebook" href="https://www.facebook.com/DMagazineOnline/">
+<svg class="icon icon--small icon--white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--fill" d="M25,22h-8v10h8v28h12V32h9l1-10H37v-4c0-2,1-3,3-3h7V4h-8c-8.688,0-14,2-14,11V22z" /></svg>
+</a>
+<a class="social-link social-link--twitter" alt="twitter" href="https://twitter.com/DMagazine">
+<svg class="icon icon--small icon--white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><path class="icon__main icon--fill" d="M62,13c-2.207,0.99-4,2-7,2c2.546-1.532,4.084-3.11,5-6c-2.375,1.417-4,2-7,3c-2.242-2.403-5.462-5-9-5
+	c-7.949,0-13.791,7.261-12,15c-10.223-0.515-19.93-4.51-26-12c-3.228,5.563-1.476,12.314,4,16c-2.005-0.065-4.344-1.072-6-2
+	c-0.131,5.737,4.083,11.808,10,13c-1.733,0.472-3.066,0.369-5,0c1.568,4.914,5.608,7.895,11,8c-5.171,4.078-11.473,6.771-18,6
+	c5.452,3.506,12.048,6,19,6c22.853,0,35.784-19.592,35-37C58.405,18.253,60.352,15.482,62,13z" /></svg>
+</a>
+<a class="social-link social-link--instagram" alt="instagram" href="https://www.instagram.com/d_magazine/">
+<svg class="icon icon--small icon--white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><g><path class="icon__main icon--fill" d="M32,46c-7.72,0-14-6.28-14-14s6.28-14,14-14s14,6.28,14,14S39.72,46,32,46z M32,22c-5.514,0-10,4.486-10,10
+		c0,5.514,4.486,10,10,10c5.514,0,10-4.486,10-10C42,26.486,37.514,22,32,22z" /></g><g><path class="icon__main icon--fill" d="M43,59H21c-8.075,0-16-7.925-16-16V21c0-8.075,7.925-16,16-16h22c8.075,0,16,7.925,16,16v22C59,51.075,51.075,59,43,59z
+		 M21,9C15.056,9,9,15.056,9,21v22c0,5.944,6.056,12,12,12h22c5.944,0,12-6.056,12-12V21c0-5.944-6.056-12-12-12H21z" /></g><g><path class="icon__main icon--fill" d="M49,18c0,1.657-1.343,3-3,3l0,0c-1.657,0-3-1.343-3-3l0,0c0-1.657,1.343-3,3-3l0,0C47.657,15,49,16.343,49,18L49,18z" /></g></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="w-story-dir widget--basic w-combo__item">
+<div class="w-story-dir__container">
+<svg class="icon icon--medium icon--red-o" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><circle class="icon__main icon--stroke" fill="none" stroke="#000000" stroke-miterlimit="10" cx="28.5" cy="25.5" r="17.5" /><path class="icon__main icon--stroke" fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" d="M39,40l14,16" /></svg>
+<h2 class="w-newsletter__title">Find It</h2>
+<p class="kicker--secondary">Search our directories for...</p>
+<div class="w-story-dir__content">
+<a href="//directory.dmagazine.com/restaurants" target="_blank" class="w-story-dir__item">
+<img class="w-story-dir__image" alt="Restaurants" src="https://directory.dmagstatic.com/wp-content/uploads/2018/10/directory-link-restaurants.jpg" />
+<h3 class="w-story-dir__title">Restaurants</h3>
+</a>
+<a href="//directory.dmagazine.com/bars-and-clubs" target="_blank" class="w-story-dir__item">
+<img class="w-story-dir__image" alt="Bars" src="https://directory.dmagstatic.com/wp-content/uploads/2018/10/directory-link-bars.jpg" />
+<h3 class="w-story-dir__title">Bars</h3>
+</a>
+<a href="https://events.dmagazine.com/search" target="_blank" class="w-story-dir__item">
+<img class="w-story-dir__image" alt="Events" src="https://directory.dmagstatic.com/wp-content/uploads/2018/10/directory-link-events.jpg" />
+<h3 class="w-story-dir__title">Events</h3>
+</a>
+<a href="//directory.dmagazine.com/attractions" target="_blank" class="w-story-dir__item">
+<img class="w-story-dir__image" alt="Attractions" src="https://directory.dmagstatic.com/wp-content/uploads/2018/10/directory-link-attractions.jpg" />
+<h3 class="w-story-dir__title">Attractions</h3>
+</a>
+<a href="https://directory.dmagazine.com" target="_blank" class="w-story-dir__item">
+<img class="w-story-dir__image" alt="View All" src="https://directory.dmagstatic.com/wp-content/uploads/2018/10/directory-link-alldirectories.jpg" />
+<h3 class="w-story-dir__title">View All</h3>
+</a>
+</div>
+</div>
+</div>
+</div>
+<section class="w-stories widget scroller widget--full-width">
+<div class="container--full w-stories-inner--simple ">
+<h2 class="widget__header widget__title--simple ">
+Related Content
+</h2>
+<div class="w-stories__items scroller__items">
+<article class="w-stories__item scroller__item "><div class="block__image-wrapper w-stories__image-wrapper"><a class="ar-content" href="https://www.dmagazine.com/shopping-fashion/2013/10/shopgirl-katie-bivins/?ref=rtn"><img class="lazyload image" data-srcset="									
+			https://assets.dmagstatic.com/wp-content/uploads/2013/10/DSC_9304.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2013/10/DSC_9304.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2013/10/DSC_9304.jpg
+	 w" sizes="(max-width: px) ,
+		px" data-src="									
+			https://assets.dmagstatic.com/wp-content/uploads/2013/10/DSC_9304.jpg
+	 " /></a></div><div class="block__content w-stories__content"><h1 class="w-stories__title block__title"><a href="https://www.dmagazine.com/shopping-fashion/2013/10/shopgirl-katie-bivins/?ref=rtn">Shopgirl Katie Bivins</a></h1><a class="byline" href="https://www.dmagazine.com/author/kristiscot/">Kristi + Scot Redman</a></div></article><article class="w-stories__item scroller__item js-adunit-native display-none" data-adunit-match="/1039436/MissEllie_native_related"></article><div class="adunit adunit--native   adunit--native-related" data-adunit="MissEllie_native_related" data-mapping="mapping_native"></div><article class="w-stories__item scroller__item "><div class="block__image-wrapper w-stories__image-wrapper"><a class="ar-content" href="https://www.dmagazine.com/shopping-fashion/2012/05/saturday-sun/?ref=rtn"><img class="lazyload image" data-srcset="									
+			https://assets.dmagstatic.com/wp-content/uploads/2012/04/DSC_00752.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2012/04/DSC_00752.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2012/04/DSC_00752.jpg
+	 w" sizes="(max-width: px) ,
+		px" data-src="									
+			https://assets.dmagstatic.com/wp-content/uploads/2012/04/DSC_00752.jpg
+	 " /></a></div><div class="block__content w-stories__content"><h1 class="w-stories__title block__title"><a href="https://www.dmagazine.com/shopping-fashion/2012/05/saturday-sun/?ref=rtn">Saturday Sun</a></h1><a class="byline" href="https://www.dmagazine.com/author/kristiscot/">Kristi + Scot Redman</a></div></article><article class="w-stories__item scroller__item "><div class="block__image-wrapper w-stories__image-wrapper"><a class="ar-content" href="https://www.dmagazine.com/shopping-fashion/2013/07/courtney-weekend-flirt/?ref=rtn"><img class="lazyload image" data-srcset="									
+			https://assets.dmagstatic.com/wp-content/uploads/2013/07/Courtney-Kerr-1.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2013/07/Courtney-Kerr-1.jpg
+	 w, 										
+			https://assets.dmagstatic.com/wp-content/uploads/2013/07/Courtney-Kerr-1.jpg
+	 w" sizes="(max-width: px) ,
+		px" data-src="									
+			https://assets.dmagstatic.com/wp-content/uploads/2013/07/Courtney-Kerr-1.jpg
+	 " /></a></div><div class="block__content w-stories__content"><h1 class="w-stories__title block__title"><a href="https://www.dmagazine.com/shopping-fashion/2013/07/courtney-weekend-flirt/?ref=rtn">Courtney, Weekend Flirt</a></h1><a class="byline" href="https://www.dmagazine.com/author/kristiscot/">Kristi + Scot Redman</a></div></article> </div>
+</div>
+</section>
+<div class="container widget--basic">
+<div class="comments" id="jump-comments">
+<h3 class="widget__title widget__header">
+Comments
+</h3>
+<div id="disqus_thread"></div>
+</div>
+<div class="sidebar">
+<div class="adunit adunit--vertical   " data-adunit="MissEllie_vertical" data-mapping="mapping_vertical">
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<div class="footer__blocks">
+<div class="footer__block">
+<h3 class="footer__header">
+D Magazine Partners
+</h3>
+<div class="footer__item">
+<span class="footer__item__sub">750 North St.Paul St.</span>
+<span class="footer__item__sub">Suite 2100</span>
+<span class="footer__item__sub">Dallas, Texas 75201</span>
+</div>
+<div class="footer__item">
+<span class="footer__item__sub">Tel: 214.939.3636</span>
+<span class="footer__item__sub">Fax: 214.748.4579</span>
+</div>
+<div class="footer__items">
+<a class="footer__item" href="/info/contact/">CONTACT US</a>
+<a class="footer__item" href="/site/newsletters">NEWSLETTERS</a>
+</div>
+</div>
+<div class="footer__block">
+<h3 class="footer__header">Sections</h3>
+<ul>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/frontburner/?ref=footer">
+FrontBurner
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/food-drink/?ref=footer">
+Food & Drink
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/arts-entertainment/?ref=footer">
+Arts & Entertainment
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/nightlife/?ref=footer">
+Nightlife
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/home-garden/?ref=footer">
+Home & Design
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/style-beauty-wellness/?ref=footer">
+Living
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/section/business-economy/?ref=footer">
+Business & Economy
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dweddings.com/?ref=footer">
+Weddings
+</a>
+</li>
+</ul>
+</div>
+<div class="footer__block">
+<h3 class="footer__header">Publications</h3>
+<ul>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/publications/d-magazine/2019?ref=footer">
+D Magazine
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/publications/d-home/2019?ref=footer">
+D Home
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/publications/d-ceo/2019?ref=footer">
+D CEO
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/site/subscribe/?ref=footer">
+Magazine Subscription
+</a>
+</li>
+<li class="footer__item">
+<a href="https://ssl.drgnetwork.com/ecom/DMG/app/live/subscriptions?&org=DMG&publ=DM&key_code=R1MWEB&type=R&Gift_Key=">
+Renew D Magazine
+</a>
+</li>
+<li class="footer__item">
+<a href="https://ssl.drgnetwork.com/ecom/DMG/cgi/subcustserv/start?org=DMG&publ=DM">
+Subscriber Services
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/publications/?ref=footer">
+Browse the Archives
+</a>
+</li>
+</ul>
+</div>
+<div class="footer__block">
+<h3 class="footer__header">Company Info</h3>
+<ul>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/about/?ref=footer">
+About Us
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/history/?ref=footer">
+History
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/masthead/?ref=footer">
+Masthead
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/jobs/?ref=footer">
+Job Openings
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/internships/?ref=footer">
+Internships
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/awards/?ref=footer">
+Awards
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/contact/?ref=footer">
+Customer Service
+</a>
+</li>
+</ul>
+</div>
+<div class="footer__block">
+<h3 class="footer__header">Advertise</h3>
+<ul>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/media-kits/?ref=footer">
+Media Kits
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/events/?ref=footer">
+Events
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/reprints/?ref=footer">
+Reprints
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/info/contact/?ref=footer">
+Contact Sales
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.dmagazine.com/site/feedback/?ref=footer">
+Leave Us Feedback
+</a>
+</li>
+</ul>
+</div>
+<div class="footer__block">
+<h3 class="footer__header">Connect</h3>
+<ul>
+<li class="footer__item">
+<a href="https://www.facebook.com/DMagazineOnline?ref=footer">
+Facebook
+</a>
+</li>
+<li class="footer__item">
+<a href="https://twitter.com/dmagazine?ref=footer">
+Twitter
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.instagram.com/d_magazine/?ref=footer">
+Instagram
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.pinterest.com/dallasmagazine/?ref=footer">
+Pinterest
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.youtube.com/user/dmagazine?ref=footer">
+YouTube
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.linkedin.com/company/23220?ref=footer">
+LinkedIn
+</a>
+</li>
+<li class="footer__item">
+<a href="https://plus.google.com/u/0/+DMagazinePartnersDallas?ref=footer">
+Google+
+</a>
+</li>
+<li class="footer__item">
+<a href="https://www.reddit.com/user/d_magazine/?ref=footer">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer__footer">
+Copyright © 2020, D Magazine Partners, Inc. All Rights Reserved.
+<a href="https://www.dmagazine.com/site/privacy-policy">Privacy Policy</a> </div>
+</div>
+<script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+    ttd_dom_ready( function() {
+      if (typeof TTDUniversalPixelApi === 'function') {
+        var universalPixelApi = new TTDUniversalPixelApi();
+        universalPixelApi.init("ktzx4mn", ["xy7dpth"], "https://insight.adsrvr.org/track/up");
+      }
+    });
+  </script>
+</footer>
+
+<div id="parsely-root" style="display: none">
+<div id="parsely-cfg" data-parsely-site="dmagazine.com"></div>
+</div>
+<script data-cfasync="false">
+	(function (s, p, d) {
+		var h = d.location.protocol, i = p + "-" + s,
+			e = d.getElementById(i), r = d.getElementById(p + "-root"),
+			u = h === "https:" ? "d1z2jf7jlzjs58.cloudfront.net"
+				: "static." + p + ".com";
+		if (e) return;
+		e = d.createElement(s);
+		e.id = i;
+		e.async = true;
+		e.setAttribute('data-cfasync', 'false');
+		e.src = h + "//" + u + "/p.js";
+		r.appendChild(e);
+	})("script", "parsely", document);
+</script>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"dmagonline"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"808190 https:\/\/www.dmagazine.com\/?page_id=808190","disqusShortname":"dmagonline","disqusTitle":"The Highland Park Drug Ring","disqusUrl":"https:\/\/www.dmagazine.com\/publications\/d-magazine\/2020\/april\/highland-park-oxycontin-fentanyl-xanax-drug-ring\/","postId":"808190"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/twenty20/assets/js/jquery.twenty20.js?ver=1.5.6'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/twenty20/assets/js/jquery.event.move.js?ver=1.5.6'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/dmagazine/assets/js/jquery-ui.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/plugins/dmagazine/assets/js/jquery.beforeafter-1.4.min.js?ver=1.4'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-content/themes/dmagazine/dist/scripts/main_f05706dc.js'></script>
+<script type='text/javascript' src='https://www.dmagazine.com/wp-includes/js/wp-embed.min.js?ver=5.1.1'></script>
+<script type="text/javascript">
+			(function($) {
+				window.dfp_targeting = {"Page":["story"],"Category":["crime","local-news"],"Section":["frontburner"],"domain":["frontburner_dmagazine_com","www_dmagazine_com"],"Tag":["highland-park","frank-dockery","gary-bussell","todd-shewmake","william-grant-allbrook","gina-corwin","fentanyl","xanax"]};
+
+			})(jQuery);
+		</script>
+
+<div id="cookie-notice" role="banner" class="cookie-notice-hidden cookie-revoke-hidden cn-position-bottom" aria-label="Cookie Notice" style="background-color: #1a1a1a;"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button bootstrap button--blue">OK</a></span></div>
+</div>
+
+
+<script type="text/javascript">
+    var _sf_async_config = { uid: 44922, domain: "dmagazine.com" };
+    (function () {
+        function loadChartbeat() {
+            window._sf_endpt = (new Date()).getTime();
+            var e = document.createElement('script');
+            e.setAttribute('language', 'javascript');
+            e.setAttribute('type', 'text/javascript');
+            e.setAttribute('src',
+              (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+              "js/chartbeat.js");
+            document.body.appendChild(e);
+        };
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+            loadChartbeat : function () { oldonload(); loadChartbeat(); };
+    })();
+</script>
+
+
+<script type="text/javascript">
+(function(d,s,i,r) {
+    if (d.getElementById(i)){return;}
+    var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+    n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/477347.js';
+    e.parentNode.insertBefore(n, e);
+})(document,"script","hs-analytics",300000);
+</script>
+
+
+<script id="dsq-count-scr" src="//dmagonline.disqus.com/count.js" async></script>
+
+
+<script>
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"fdea4a9fd0","applicationID":"100413135","transactionName":"YFUGYUFUXhBWUUZZC1kfJVZHXF8NGEJTVwE=","queueTime":0,"applicationTime":1184,"atts":"TBIFFwlOTR4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

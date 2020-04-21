@@ -1,0 +1,755 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hearst Magazines</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?u8vidh">
+
+  <style>
+    /* RESET */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+    article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { display: block; }
+    ol, ul { list-style: none; }
+    blockquote, q { quotes: none; }
+    blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+    table { border-collapse: collapse; border-spacing: 0; }
+
+    /* NORMALIZE */
+    html, body { width: 100%; height: 100%; }
+    html { line-height: 1.15; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    a { background-color: transparent; -webkit-text-decoration-skip: objects; }
+    a:active, a:hover { outline: 0; }
+    button, input, optgroup, select, textarea { font: inherit; margin: 0; box-sizing: border-box; }
+    button[disabled], html input[disabled] { cursor: default; }
+    img { max-width: 100%; height: auto; border: 0; }
+    input { line-height: normal; }
+    input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { height: auto; }
+    strong { font-weight: bold; }
+    em { font-style: italic; }
+    sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+    sup { top: -0.5em; }
+    sub { bottom: -0.25em; }
+    svg:not(:root) { overflow: hidden; }
+    fieldset {border:0; margin:0; padding:0;}
+
+    /* COMMON STYLES */
+    .cl:after { content: ""; display: table; clear: both; }
+    .nobr { white-space: nowrap; }
+    .pos_r { position: relative; }
+    .txtupcase { text-transform: uppercase; }
+    .no_sel { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+    .no_r_mrgn {margin-right:0!important;}
+    .hide, .mob { display: none; }
+
+    body {font-family:Lato,sans-serif; background-color:#85c3d6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing: grayscale;}
+
+    .cntr {background-color:#fff; max-width:1200px; margin:auto; box-sizing:border-box; box-shadow: 25px 0px 50px 1px rgba(0, 0, 0, .1);}
+
+    .hdr {height:120px; box-shadow:inset 0 8px 8px -3px #dedede;}
+    .hdr img {padding:45px 0 0 0; float:left;}
+
+    .socicons {font-family:'Socicon'; width:375px; display:flex; padding:50px 0 0 0; float:right;}
+    .socicons span {justify-content: space-between; flex-wrap: wrap; width:16.666%; text-align:right;}
+    .socicons a {text-decoration:none; color:#999; font-size:20px; line-height:24px; }
+    .socicons a:hover {color:#333;}
+    .facebook:before {content: "\e028";}
+    .twitter:before {content: "\e08d";}
+    .linkedin:before {content:"\e04c";}
+    .instagram:before {content:"\e044";}
+    .googleplus:before {content:"\e038"; font-size:24px;}
+    .pinterest:before {content:"\e063";}
+
+    .inner {width:1126px; margin:auto;}
+
+    .featured {box-shadow:inset 0 8px 8px -3px #dee4e8; padding:50px 0 20px 0;}
+    .featured .slideshow {width:93.75%; margin:auto;}
+
+    #pp {margin:0;}
+    #pp .cl_l {clear:none;}
+    #pp_main {position:relative;}
+    #pp_img {max-width:100%; position:relative; overflow:hidden; height:auto; padding-bottom:36.25%; margin-bottom:20px;}
+    #slide_cntr {overflow:hidden; position:absolute; top:0; left:0; width:200%;}
+    #pp_img li {width:50%; float:left;}
+    #pp_prev {display:none; width:30px; height:50px; line-height:105px; position:absolute; bottom:56px; left:-32px; cursor:pointer; z-index:2;}
+    #pp_next {display:none; width:30px; height:50px; line-height:105px; position:absolute; bottom:56px; right:-43px; cursor:pointer; z-index:2;}
+    .arrow {width:0; height:0; border-style:solid; margin-top:15px;}
+    .arrow.next {border-width:10px 0 10px 17px; border-color:transparent transparent transparent #b5b5b5;}
+    .arrow.prev {border-width:10px 17px 10px 0; border-color:transparent #b5b5b5 transparent transparent;}
+
+    #pagenav {overflow:hidden; text-align:center;}
+    #pagenav div {border-radius:10px; width:20px; height:20px; background:#e4f2f6; display:inline-block; margin:0 10px;  transition:background .2s; cursor:pointer;}
+    #pagenav div.current {background:#c3e2eb;}
+
+    .magazines {margin:0 0 65px 0;}
+    .magazines h1 {background-image: linear-gradient(to right, #333 20%, rgba(255, 255, 255, 0) 0%); background-position:center; background-size: 8px 2px; background-repeat: repeat-x; font-size:30px; line-height:34px; font-weight:900; color:#333; letter-spacing:.05em; text-align:center; margin-bottom:15px;}
+    .magazines h1 span {background:#fff; padding:0 25px;}
+    .magazines h2 {font-size:21px; line-height:25px; font-weight:700; color:#333; letter-spacing:.01em; text-align:center; margin-bottom:35px;}
+    .mag_cntr {border-top:1px solid #d4d4d4; border-left:1px solid #d4d4d4; box-sizing:border-box;}
+    .mag {border-right:1px solid #d4d4d4; border-bottom:1px solid #d4d4d4; width:375px; float:left; padding:23px 0 23px 30px; box-sizing:border-box; min-height:245px;}
+    .mag img {width:150px; height:195px; float:left; margin-right:25px; -webkit-box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1); box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, .1);}
+    .mag .copy {float:left;}
+    .mag .copy h3 {font-size:16px; line-height:20px; font-weight:900; color:#333; letter-spacing:.03em; margin:17px 0 4px 0;}
+    .mag .copy h3.two {line-height:17px; margin:11px 0 4px 0;}
+    .mag .copy h4 {font-size:16px; font-weight:700; color:#f66; letter-spacing:.05em; margin-bottom:15px;}
+    .mag .copy a {font-size:10px; font-weight:700; color:#666; letter-spacing:.08em; border-bottom:1px solid #d4d4d4; display:block; margin-right:48px; padding:8px 0; text-decoration:none;}
+    .mag .copy a:last-child {border-bottom:none;}
+
+    .ftr {padding:0 0 150px 0;}
+    .ftr img {width:180px; margin:0 50px 0 120px; float:left;}
+    .ftr .copy {float:left;font-family:arial,sans-serif; font-size:21px; line-height:21px; color:#666; text-align:center;}
+    .ftr p {margin:0 0 10px 0;}
+    .ftr a {color:#4d779f; text-decoration:none;}
+    .ftr a:hover {color:#333;}
+    .ftr span {padding:0 10px;}
+
+    .mob {display:none;}
+
+    @media screen and (max-width:1400px) {
+      .featured .slideshow {width:95%; max-width:1122px;}
+    }
+
+    @media screen and (max-width:1126px) {
+      .inner {width:95%;}
+      .mag_cntr {width:751px; margin:auto;}
+      .ftr img {margin:0 auto 20px auto; float:none; display:block;}
+      .ftr .copy {float:none; margin:auto;}
+
+      .mag.desk {display:none;}
+    }
+
+    @media screen and (max-width:865px) {
+      .hdr img {width:330px;}
+      .socicons {width:235px;}
+      .socicons a {font-size:16px; line-height:20px;}
+      .googleplus:before {font-size:18px; line-height:22px;}
+
+      .magazines h1 {font-size:24px; line-height:28px;}
+      .magazines h2 {font-size:18px; line-height:22px;}
+    }
+
+    @media screen and (max-width:752px) {
+      .mag_cntr {width:376px;}
+
+      .featured .slideshow {width:100%;}
+
+    }
+
+    @media screen and (max-width:620px) {
+      .hdr img.desk {float:none; display:block; margin:auto;}
+      .socicons {float:none; padding-top:15px; margin:auto;}
+      .mob {display:block;}
+      .desk,
+      .hdr img.desk {display:none;}
+      .hdr img {width:135px; margin:auto; float:none; padding-top:30px;}
+
+      .socicons {float:none; width:200px; padding-top:20px; margin:auto;}
+      .socicons a {font-size:12px; line-height:16px;}
+      .googleplus:before {font-size:16px; line-height:20px;}
+
+      .featured {padding:4px 0 20px 0;}
+      #pp {margin:0;}
+      #pp_img {padding-bottom:93%;}
+
+
+      .magazines {margin-bottom:30px;}
+      .magazines h1 {font-size:17px; line-height:21px; margin-bottom:5px;}
+      .magazines h1 span {padding:0 10px;}
+      .magazines h2 {font-size:12px; line-height:16px; margin: 0 20px 10px 20px;}
+      .mag_cntr {margin:0 auto; width:325px;}
+      .mag {width:324px; min-height:201px; padding:20px 0 20px 25px;}
+      .mag img {width:124px; height:162px; margin-right:25px;}
+      .mag .copy h3 {font-size:14px; line-height:18px; margin-top:5px;}
+      .mag .copy h3.two {margin-top:0; line-height:16px;}
+      .mag .copy h4 {font-size:14px; margin-bottom:10px;}
+      .mag .copy a {margin-right:25px;}
+
+      .ftr {padding:0 0 50px 0;}
+      .ftr img {width:120px;}
+      .ftr .copy {font-size:11px; line-height:16px;}
+      .ftr span {padding:0 5px;}
+    }
+
+    @media screen and (max-width:480px) {
+      .inner {width:auto;}
+    }
+
+    @media screen and (max-width:360px) {
+      .mag_cntr {margin:0 auto; width:290px;}
+      .mag {width:289px; min-height:201px; padding:18px 0 18px 15px;}
+      .mag img {margin-right:12px;}
+
+      .ftr .copy {font-size:10px; line-height:14px;}
+    }
+  </style>
+  <script type="text/javascript" src="https://subscribe.hearstmags.com//circulation/shared/scripts/jquery-latest-circ.min.js"></script>
+  <script type="text/javascript" src="https://subscribe.hearstmags.com//circulation/shared/scripts/jquery.touchSwipe.min-1.6.17.js"></script>
+  <script>
+    var win_w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    $(function(){
+      $(window).resize(function() {
+        win_w = $(window).width();
+        pp_img_w = $("#pp li").width();
+        $("#slide_cntr").css('left', pp_img_w - (pp_idx * pp_img_w));
+      });
+
+      //SLIDER
+      var screen_width = 320,
+        resizeWin,
+        isSlider = true,
+        pp = $("#pp #slide_cntr"),
+        pp_img_w = $("#pp li").width(),
+        pp_img_show = 1,
+        pp_img_pos = 0,
+        pp_img_off = 0,
+        pp_num_img = $("#pp li").length,
+        pp_win_w = pp_num_img * pp_img_w,
+        pp_hover = $("#pp_main"),
+        pp_prev = $("#pp_prev"),
+        pp_next = $("#pp_next"),
+        pp_idx = 1,
+        pp_init = true;
+
+      function showArrows() {
+        if (pp_num_img <= pp_img_show) {
+          $("#pp_prev, #pp_next").hide();
+        } else {
+          $("#pp_prev, #pp_next").show();
+        }
+      }
+
+      if (win_w <= 480) {
+        //pp_img_w = 245;
+        pp_img_show = 1;
+
+        /* MAG SWIPE  */
+        pp.swipe( {
+          swipeRight:function(event, direction, distance, duration, fingerCount) {
+            if (isSlider) slidePrev(1);
+          },
+          swipeLeft:function(event, direction, distance, duration, fingerCount) {
+            if (isSlider) slideNext(1);
+          }
+        });
+      }
+
+      //create pagenav
+      var numDots = Math.ceil(pp_num_img/pp_img_show);
+      for(var i=1; i<=numDots; i++) {
+        if (i==1){
+          $("#pagenav").append('<div class="current"></div>');
+        } else {
+          $("#pagenav").append('<div></div>');
+        }
+      }
+
+
+      function updateSliderWidth() {
+        screen_width = $(document).width();
+        pp_img_off = (screen_width - pp_img_w)/2;
+        //$("#slide_cntr").css({left:pp_img_off});
+        $("#slide_cntr").css({left:pp_img_off-pp_img_w});
+      //  $("#pp_prev,#pp_next").css({width:pp_img_off-23});
+      }
+
+      function slidePrev(idx) {
+        pp_img_pos = pp.position();
+        pp_img_pos = pp_img_pos.left + (pp_img_w * pp_img_show) * idx;
+        //console.log(pp_img_pos);
+
+        pp.finish().animate({left:pp_img_pos},{queue:false, duration:150});
+        var sendtoback = pp_img_off - (pp_win_w - (pp_img_show * pp_img_w));
+        if (pp_idx <= 1) {
+          pp_idx = pp_num_img - (pp_img_show - 1) * idx;
+          pp.finish().animate({left:sendtoback},200);
+        } else {
+          pp_idx = pp_idx - pp_img_show * idx;
+        }
+        //console.log(pp_idx);
+
+        var curPage = $("#pagenav .current").index();
+        if (curPage == 0) {
+          curPage = numDots-1;
+        } else {
+          curPage-=idx;
+        }
+        //console.log(curPage);
+        $("#pagenav div").removeClass("current");
+        $("#pagenav div").eq(curPage).addClass("current");
+
+      }
+
+      function slideNext(idx) {
+        pp_img_pos = pp.position();
+        pp_img_pos = pp_img_pos.left - (pp_img_w * pp_img_show) * idx;
+        //console.log(pp_img_pos);
+        pp.finish().animate({left:pp_img_pos},{queue:false, duration:150});
+        if (pp_idx >= ((((pp_num_img * pp_img_w) - (pp_img_show * pp_img_w)) / pp_img_w) + 1) ) {
+          pp_idx = 1;
+          pp.finish().animate({left:pp_img_off},200);
+        } else {
+          pp_idx = pp_idx + pp_img_show * idx;
+        }
+        //console.log(pp_idx);
+
+        var curPage = $("#pagenav .current").index();
+        if (curPage < numDots-1) {
+          curPage+=idx;
+        } else {
+          curPage = 0;
+        }
+        //console.log(curPage);
+        $("#pagenav div").removeClass("current");
+        $("#pagenav div").eq(curPage).addClass("current");
+
+      }
+
+      pp_prev.click(function() {
+        slidePrev(1);
+      });
+
+      pp_next.click(function() {
+        slideNext(1);
+      });
+
+      //autoscroll
+      if (win_w > 480) {
+        var scroller = setInterval(slideNext,6000, 1);
+
+        pp.mouseover(function() {
+          clearInterval(scroller);
+        }).mouseout(function() {
+          scroller = setInterval(slideNext,6000, 1);
+        });
+      }
+
+
+      $("#pagenav div").click(function(){
+        var $t = $(this);
+        var cur_idx = $t.index();
+        var prev_idx = $("#pagenav .current").index();
+        var is_cur = $t.hasClass("current");
+        if (!is_cur) {
+          if (cur_idx < prev_idx) {
+            var new_cur = prev_idx - cur_idx;
+            slidePrev(new_cur);
+          } else {
+            var new_cur = cur_idx - prev_idx;
+            slideNext(new_cur);
+          }
+        }
+      });
+    });
+  </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111428232-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111428232-1', {
+      'linker': {
+        'domains': ['hearstmags.com', 'hearstmobile.com']
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <div class="cntr">
+    <header class="hdr">
+      <div class="inner">
+        <img class="desk" src="logo_hearst.png" alt="Hearst Magazines" />
+        <img class="mob" src="logo_hearst_vertical.png" alt="Hearst Magazines" />
+        <div class="socicons">
+          <span><a class="twitter" href="https://twitter.com/Hearst/"></a></span>
+          <span><a class="facebook" href="https://www.facebook.com/HearstCorp"></a></span>
+          <span><a class="linkedin" href="http://www.linkedin.com/company/hearst"></a></span>
+          <span><a class="instagram" href="http://instagram.com/hearst"></a></span>
+          <span><a class="googleplus" href="https://plus.google.com/117276923788526037867"></a></span>
+          <span><a class="pinterest" href="http://www.pinterest.com/hearst/"></a></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="featured">
+      <div class="slideshow">
+        <div id="pp">
+          <div id="pp_main">
+            <div id="pp_img" class="no_sel">
+              <ul id="slide_cntr">
+                <li><a href="https://subscribe.hearstmags.com/subscribe/splits/crosssite/featured_one"><img class="desk" src="https://subscribe.hearstmags.com/circulation/shared/featured01.jpg" alt="Hearst Magazines" /><img class="mob" src="https://subscribe.hearstmags.com/circulation/shared/featured01_mob.jpg" alt="Hearst Magazines" /></a></li>
+                <li><a href="https://subscribe.hearstmags.com/subscribe/splits/crosssite/featured_two"><img class="desk" src="https://subscribe.hearstmags.com/circulation/shared/featured02.jpg" alt="Hearst Magazines" /><img class="mob" src="https://subscribe.hearstmags.com/circulation/shared/featured02_mob.jpg" alt="Hearst Magazines" /></a></li>
+                <!--<li><a href="https://subscribe.hearstmags.com/subscribe/splits/crosssite/featured_one"><img class="desk" src="https://subscribe.hearstmags.com/circulation/shared/featured01.jpg" alt="Hearst Magazines" /><img class="mob" src="https://subscribe.hearstmags.com/circulation/shared/featured01_mob.jpg" alt="Hearst Magazines" /></a></li>-->
+              </ul>
+            </div>
+            <!--<div id="pp_prev" class="no_sel"><div class="arrow prev"></div></div>
+            <div id="pp_next" class="no_sel"><div class="arrow next"></div></div>-->
+            <div id="pagenav"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="inner">
+      <section class="magazines">
+        <h1><span>SUBSCRIPTION CENTER</span></h1>
+        <h2>Subscribe now and save, give a gift subscription or get help with an existing subscription.</h2>
+        <div class="mag_cntr cl">
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/foodnetmag/fnm_csb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/fnm_cvr-lg.jpg" alt="Food Network Magazine" /></a>
+            <div class="copy">
+              <h3 class="two">Food Network<br/>Magazine</h3>
+              <h4>SAVE 78%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/foodnetmag/fnm_csb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/foodnetmag/fnm_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.foodnetwork.com/magazine">VISIT THE WEBSITE</a>
+              <a href="http://service.foodnetwork.com/magazine">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/hgtvmagazine/hgtcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/hgt_cvr-lg.jpg" alt="HGTV Magazine" /></a>
+            <div class="copy">
+              <h3>HGTV Magazine</h3>
+              <h4>SAVE 70%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/hgtvmagazine/hgtcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/hgtvmagazine/hgt_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.hgtv.com/design/packages/hgtv-magazine">VISIT THE WEBSITE</a>
+              <a href="http://service.hgtvmagazine.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/cosmopolitan/coscsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/cos_cvr-lg.jpg" alt="Cosmopolitan" /></a>
+            <div class="copy">
+              <h3>Cosmopolitan</h3>
+              <h4>SAVE 82%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/cosmopolitan/coscsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/cosmopolitan/cos_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.cosmopolitan.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.cosmopolitan.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/menshealth/mhlcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/mhl_cvr-lg.jpg" alt="Men's Health" /></a>
+            <div class="copy">
+              <h3>Men's Health</h3>
+              <h4>SAVE 73%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/menshealth/mhlcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/menshealth/mhl_hm_gift">GIVE A GIFT</a>
+              <a href="https://www.menshealth.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.menshealth.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/womenshealthmag/whlcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/whl_cvr-lg.jpg" alt="Women's Health" /></a>
+            <div class="copy">
+              <h3>Women's Health</h3>
+              <h4>SAVE 80%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/womenshealthmag/whlcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/womenshealthmag/whl_hm_gift">GIVE A GIFT</a>
+              <a href="https://www.womenshealthmag.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.womenshealthmag.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/runnersworld/runcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/run_cvr-lg.jpg" alt="Runner's World" /></a>
+            <div class="copy">
+              <h3>Runner's World</h3>
+              <h4>SAVE 63%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/runnersworld/runcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/runnersworld/run_hm_gift">GIVE A GIFT</a>
+              <a href="https://www.runnersworld.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.runnersworld.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/goodhousekeeping/ghkcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/ghk_cvr-lg.jpg" alt="Good Housekeeping" /></a>
+            <div class="copy">
+              <h3>Good Housekeeping</h3>
+              <h4>SAVE 84%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/goodhousekeeping/ghkcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/goodhousekeeping/ghk_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.goodhousekeeping.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.goodhousekeeping.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/countryliving/clgcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/clg_cvr-lg.jpg" alt="Country Living" /></a>
+            <div class="copy">
+              <h3>Country Living</h3>
+              <h4>SAVE 85%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/countryliving/clgcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/countryliving/clg_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.countryliving.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.countryliving.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/popularmechanics/popcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/pop_cvr-lg.jpg" alt="Popular Mechanics" /></a>
+            <div class="copy">
+              <h3>Popular Mechanics</h3>
+              <h4>SAVE 80%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/popularmechanics/popcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/popularmechanics/pop_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.popularmechanics.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.popularmechanics.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/bicycling/biccsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/bic_cvr-lg.jpg" alt="Bicycling" /></a>
+            <div class="copy">
+              <h3>Bicycling</h3>
+              <h4>SAVE 69%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/bicycling/biccsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/bicycling/bic_hm_gift">GIVE A GIFT</a>
+              <a href="https://www.bicycling.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.bicycling.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/caranddriver/cdbcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/cdb_cvr-lg.jpg" alt="Car and Driver" /></a>
+            <div class="copy">
+              <h3>Car and Driver</h3>
+              <h4>SAVE 79%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/caranddriver/cdbcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/caranddriver/cdb_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.caranddriver.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.caranddriver.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+           <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/elle/elmcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/elm_cvr-lg.jpg" alt="Elle" /></a>
+            <div class="copy">
+              <h3>Elle</h3>
+              <h4>SAVE 90%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/elle/elmcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/elle/elm_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.elle.com/">VISIT THE WEBSITE</a>
+              <a href="https://www.neodata.com/hfm/elle/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/elledecor/edccsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/edc_cvr-lg.jpg" alt="Elle Decor" /></a>
+            <div class="copy">
+              <h3>Elle Decor</h3>
+              <h4>SAVE 87%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/elledecor/edccsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/elledecor/edc_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.elledecor.com/">VISIT THE WEBSITE</a>
+              <a href="https://www.neodata.com/hfm/llde/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/esquire/esqcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/esq_cvr-lg.jpg" alt="Esquire" /></a>
+            <div class="copy">
+              <h3>Esquire</h3>
+              <h4>SAVE 77%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/esquire/esqcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/esquire/esq_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.esquire.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.esquire.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/harpersbazaar/harcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/har_cvr-lg.jpg" alt="Harper's Bazaar" /></a>
+            <div class="copy">
+              <h3>Harper's BAZAAR</h3>
+              <h4>SAVE 87%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/harpersbazaar/harcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/harpersbazaar/har_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.harpersbazaar.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.harpersbazaar.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/housebeautiful/hbucsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/hbu_cvr-lg.jpg" alt="House Beautiful" /></a>
+            <div class="copy">
+              <h3>House Beautiful</h3>
+              <h4>SAVE 85%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/housebeautiful/hbucsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/housebeautiful/hbu_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.housebeautiful.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.housebeautiful.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/marieclaire/marcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/mar_cvr-lg.jpg" alt="Marie Claire" /></a>
+            <div class="copy">
+              <h3>Marie Claire</h3>
+              <h4>SAVE 90%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/marieclaire/marcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/marieclaire/mar_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.marieclaire.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.marieclaire.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/oprah/oprcsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/opr_cvr-lg.jpg" alt="O, The Oprah Magazine" /></a>
+            <div class="copy">
+              <h3 class="two">O, The Oprah<br/>Magazine</h3>
+              <h4>SAVE 79%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/oprah/oprcsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/oprah/opr_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.oprah.com/app/o-magazine.html">VISIT THE WEBSITE</a>
+              <a href="http://service.theoprahmag.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/prevention/precsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/pre_cvr-lg.jpg" alt="Prevention" /></a>
+            <div class="copy">
+              <h3>Prevention</h3>
+              <h4>SAVE 71%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/prevention/precsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/prevention/pre_hm_gift">GIVE A GIFT</a>
+              <a href="https://www.prevention.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.prevention.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/pioneerwomanmag/pwm_csb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/pwm_cvr-lg.jpg" alt="The Pioneer Woman Magazine" /></a>
+            <div class="copy">
+              <h3 class="two">The Pioneer<br/>Woman Magazine</h3>
+              <h4>NEW</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/pioneerwomanmag/pwm_csb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/pioneerwomanmag/pwm_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.thepioneerwomanmagazine.com/">VISIT THE WEBSITE</a>
+              <a href="https://w1.buysub.com/pubs/HR/PWM/combo_login_primary.jsp?cds_page_id=219450&cds_mag_code=PWM&id=1509118444626&lsid=73001034046016559&vid=1">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/roadandtrack/roascb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/roa_cvr-lg.jpg" alt="Road & Track" /></a>
+            <div class="copy">
+              <h3>Road & Track</h3>
+              <h4>SAVE 79%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/roadandtrack/roascb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/roadandtrack/roa_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.roadandtrack.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.roadandtrack.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+<!--
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/seventeen/svncsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/svn_cvr-lg.jpg" alt="Seventeen" /></a>
+            <div class="copy">
+              <h3>Seventeen</h3>
+              <h4>SAVE 60%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/seventeen/svncsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/seventeen/svn_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.seventeen.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.seventeen.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+-->
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/townandcountry/toccsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/toc_cvr-lg.jpg" alt="Town & Country" /></a>
+            <div class="copy">
+              <h3>Town & Country</h3>
+              <h4>SAVE 82%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/townandcountry/toccsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/townandcountry/toc_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.townandcountrymag.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.townandcountrymag.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/veranda/vercsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/ver_cvr-lg.jpg" alt="Veranda" /></a>
+            <div class="copy">
+              <h3>Veranda</h3>
+              <h4>SAVE 76%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/veranda/vercsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/veranda/ver_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.veranda.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.veranda.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/womansday/wdycsb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/wdy_cvr-lg.jpg" alt="Woman's Day" /></a>
+            <div class="copy">
+              <h3>Woman's Day</h3>
+              <h4>SAVE 75%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/womansday/wdycsb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/womansday/wdy_hm_gift">GIVE A GIFT</a>
+              <a href="http://www.womansday.com/">VISIT THE WEBSITE</a>
+              <a href="http://service.womansday.com/">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+
+          <div class="mag">
+            <a href="https://subscribe.hearstmags.com/subscribe/splits/airbnbmag/abb_csb"><img src="https://subscribe.hearstmags.com/circulation/shared/covers/abb_cvr-lg.jpg" alt="Airbnb Magazine" /></a>
+            <div class="copy">
+              <h3>Airbnb Magazine</h3>
+              <h4>SAVE 50%</h4>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/airbnbmag/abb_csb">SUBSCRIBE</a>
+              <a href="https://subscribe.hearstmags.com/subscribe/splits/airbnbmag/abb_hm_gift">GIVE A GIFT</a>
+              <a href="https://airbnbmag.com/">VISIT THE WEBSITE</a>
+              <a href="https://w1.buysub.com/pubs/HR/ABB/combo_login_primary.jsp?cds_page_id=214881&cds_mag_code=ABB&id=1509118467658&lsid=73001034046016559&vid=3">CUSTOMER SERVICE</a>
+            </div>
+          </div>
+          <div class="mag desk">
+            <br/>
+          </div>
+          <div class="mag desk">
+            <br/>
+          </div>
+
+          <!--spacers-->
+          <!--
+          <div class="mag desk">
+            <br/>
+          </div>
+          <div class="mag desk">
+            <br/>
+          </div>
+          -->
+        </div><!--mag_cntr-->
+      </section>
+
+      <footer class="ftr">
+        <img src="logo_hearst_vertical.png" alt="Hearst Magazines" />
+        <div class="copy">
+          <p>Hearst Magazine Media, Inc. &copy;2019</p>
+
+          <a href="https://www.hearst.com/-/us-magazines-privacy-notice">Privacy Notice</a>
+          <span>|</span>
+          <a href="https://www.hearst.com/-/us-magazines-privacy-notice#_ADDITIONAL_INFO">Your California Privacy Rights</a>
+          <span>|</span>
+          <a href="http://subscribe.hearstmags.com/circulation/shared/terms.html">Terms of Use</a>
+		  <div style="margin-top: 20px;"><a style="border: solid 1px #666; border-radius: 5px; padding: 5px; background-color: #eee;" href="https://optout.hearstmags.com/" target="_blank">DO NOT SELL MY INFO</a></div>	
+        </div>
+      </footer>
+    </div><!--inner-->
+  </div><!--cntr-->
+
+
+</body>
+</html>

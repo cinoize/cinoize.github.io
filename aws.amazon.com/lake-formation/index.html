@@ -1,0 +1,821 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-en_US" lang="en-US" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>AWS Lake Formation</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="description" content="AWS Lake Formation is a service that lets you build, secure, and manage your data lake on AWS, reducing the set up time from months to days." /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/lake-formation/" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/lake-formation/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/lake-formation/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/lake-formation/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/lake-formation/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/lake-formation/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/lake-formation/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/lake-formation/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/lake-formation/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/lake-formation/" hreflang="zh-cn" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="AWS Lake Formation" /> 
+  <meta property="twitter:description" content="AWS Lake Formation is a service that lets you build, secure, and manage your data lake on AWS, reducing the set up time from months to days." /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="AWS Lake Formation" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/lake-formation/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'en-US',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'en'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/contact-us/?nc2=h_header">Contact Sales</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Support&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="en">English&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">My Account&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Create an AWS Account</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Products</a></li> 
+        <li><a href="/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Solutions</a></li> 
+        <li><a href="/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Pricing</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentation</a></li> 
+        <li><a href="/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">Learn</a></li> 
+        <li><a href="/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Partner Network</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Customer Enablement</a></li> 
+        <li><a href="/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">Events</a></li> 
+        <li><a href="/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Explore More </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Account Settings</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Billing &amp; Cost Management</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Security Credentials</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Support Center</a> </li> 
+      <li> <a href="/premiumsupport/knowledge-center/?nc2=h_m_ma">Knowledge Center</a> </li> 
+      <li> <a href="/premiumsupport/?nc2=h_m_bc">AWS Support Overview</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Pricing</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentation</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Products</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Related Pages</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutorials</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">See more results for "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/products/?nc2=h_mo">Products</a> </li> 
+      <li> <a href="/solutions/?nc2=h_mo">Solutions</a> </li> 
+      <li> <a href="/pricing/?nc2=h_mo">Pricing</a> </li> 
+      <li> <a href="/what-is-aws/?nc2=h_mo">Introduction to AWS</a> </li> 
+      <li> <a href="/getting-started/?nc2=h_mo">Getting Started</a> </li> 
+      <li> <a href="/documentation/?nc2=h_mo">Documentation</a> </li> 
+      <li> <a href="/training/?nc2=h_mo">Training and Certification</a> </li> 
+      <li> <a href="/developer/?nc2=h_mo">Developer Center</a> </li> 
+      <li> <a href="/solutions/case-studies/?nc2=h_mo">Customer Success</a> </li> 
+      <li> <a href="/partners/?nc2=h_mo">Partner Network</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Support</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Log into Console</a> </li> 
+      <li> <a href="/console/mobile/">Download the Mobile App</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/lake-formation/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/lake-formation/"> AWS Lake Formation</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/lake-formation/"> Overview</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/lake-formation/features/"> Features</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/lake-formation/pricing/"> Pricing</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/lake-formation/resources/"> Resources</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/lake-formation/faqs/"> FAQs</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-bg-left-top-cover lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; margin-top:0px; background-image:url('//d1.awsstatic.com/r2018/h/ImgHead_Michigan.d4bb52fb13623cc51c0f04d9984c700fc31d2de8.jpg');"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h1 id="AWS_Lake_Formation" class="lb-txt-bold lb-txt-white lb-txt-44 lb-none-v-margin lb-h1-large lb-title" style="margin-top:10px; margin-bottom:0px;"> AWS Lake Formation</h1> 
+       <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-12"> 
+         <h3 id="Build_a_secure_data_lake_in_days" class="lb-txt-light lb-txt-white lb-none-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:0px;"> Build a secure data lake in days</h3> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        </div> 
+       </div> 
+       <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:10px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-6"> 
+         <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+          <div class="lb-btn"> 
+           <a class="lb-btn-a-primary" href="https://console.aws.amazon.com/lakeformation/" role="button"> <span> Get started with AWS Lake Formation</span> </a> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-6"> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-6"> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-6"> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-16"> 
+       <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+        <p>AWS Lake Formation is a service that makes it easy to set up a secure data lake in days. A data lake is a centralized, curated, and secured repository that stores all your data, both in its original form and prepared for analysis. A data lake enables you to break down data silos and combine different types of analytics to gain insights and guide better business decisions.</p> 
+        <p>However, setting up and managing data lakes today involves a lot of manual, complicated, and time-consuming tasks. This work includes loading data from diverse sources, monitoring those data flows, setting up partitions, turning on encryption and managing keys, defining transformation jobs and monitoring their operation, re-organizing data into a columnar format, configuring access control settings, deduplicating redundant data, matching linked records, granting access to data sets, and auditing access over time.</p> 
+        <p>Creating a data lake with Lake Formation is as simple as defining data sources and what data access and security policies you want to apply. Lake Formation then helps you collect and catalog data from databases and object storage, move the data into your new <a href="/s3/" target="_blank">Amazon S3</a> data lake, clean and classify your data using machine learning algorithms, and secure access to your sensitive data. Your users can access a centralized <a href="https://aws.amazon.com/glue/faqs/#AWS_Glue_Data_Catalog/" target="_blank">data catalog</a> which describes available data sets and their appropriate usage. Your users then leverage these data sets with their choice of analytics and machine learning services, like <a href="/redshift/" target="_blank">Amazon Redshift</a>, <a href="/athena/" target="_blank">Amazon Athena</a>, and (in beta) <a href="/emr/" target="_blank">Amazon EMR</a> for Apache Spark. Lake Formation builds on the capabilities available in <a href="/glue/" target="_blank">AWS Glue</a>.<br /> </p> 
+       </div> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-8"> 
+       <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="uVF73MXYay8" data-source="youtube" data-video-title="AWS re:Invent 2018 - Announcing AWS Lake Formation"> 
+        <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+         <div class="video-js" poster="//d1.awsstatic.com/r2018/h/Lake%20Formation%20keynote%20video.532c31b6574f7931840aac8c2c7f373f53ceff90.png"></div> 
+         <figcaption> 
+          <div itemprop="name">
+            AWS re:Invent 2018 - Announcing AWS Lake Formation 
+          </div> 
+         </figcaption> 
+         <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=uVF73MXYay8" /> 
+        </figure> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> Benefits</h1> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Build_data_lakes_quickly" class="lb-txt-bold lb-txt-none lb-txt-18 lb-none-v-margin lb-h3 lb-title" style="color:#232f3e; margin-bottom:40px;"> Build data lakes quickly</h3> 
+         <div class="lb-none-v-margin lb-rtxt" style="margin-bottom:15px;"> 
+          <p>With Lake Formation, you can move, store, catalog, and clean your data faster. You simply point Lake Formation at your data sources, and Lake Formation crawls those sources and moves the data into your new Amazon S3 data lake. Lake Formation organizes data in S3 around frequently used query terms and into right-sized chunks to increase efficiency. Lake Formation also changes data into formats like Apache Parquet and ORC for faster analytics. In addition, Lake Formation has built-in machine learning to deduplicate and find matching records (two entries that refer to the same thing) to increase data quality.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Simplify_security_management" class="lb-txt-bold lb-txt-none lb-txt-18 lb-none-v-margin lb-h3 lb-title" style="color:#232f3e; margin-bottom:40px;"> Simplify security management</h3> 
+         <div class="lb-none-v-margin lb-rtxt" style="margin-bottom:15px;"> 
+          <p>You can use Lake Formation to centrally define security, governance, and auditing policies in one place, versus doing these tasks per service, and then enforce those policies for your users across their analytics applications. Your policies are consistently implemented, eliminating the need to manually configure them across security services like AWS Identity and Access Management and AWS Key Management Service, storage services like S3, and analytics and machine learning services like Redshift, Athena, and (in beta) EMR for Apache Spark. This reduces the effort in configuring policies across services and provides consistent enforcement and compliance.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Provide_self-service_access_to_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-none-v-margin lb-h3 lb-title" style="color:#232f3e; margin-bottom:40px;"> Provide self-service access to data</h3> 
+         <div class="lb-none-v-margin lb-rtxt"> 
+          <p>With Lake Formation you build a data catalog that describes the different data sets that are available along with which groups of users have access to each. This makes your users more productive by helping them find the right data set to analyze. By providing a catalog of your data with consistent security enforcement, Lake Formation makes it easier for your analysts and data scientists to use their preferred analytics service.<br /> They can use EMR for Apache Spark (in beta), Redshift, or Athena on diverse data sets now housed in a single data lake. Users can also combine these services without having to move data between silos.</p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="mid_page"></div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="How_it_works" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> How it works</h2> 
+       <figure class="lb-img"> 
+        <div> 
+         <img alt="AWS Lake Formation How It Works" title="AWS Lake Formation How It Works" src="//d1.awsstatic.com/r2018/h/Product-Page-Diagram_AWS-Michigan_How-it-Works.66bf84184ed47056b25e87f6a23bf3b740336436.png" /> 
+        </div> 
+       </figure> 
+       <div class="lb-rtxt"> 
+        <p>Lake Formation helps to build, secure, and manage your data lake. First, identify existing data stores in S3 or relational and NoSQL databases, and move the data into your data lake. Then crawl, catalog, and prepare the data for analytics. Then provide your users secure self-service access to the data through their choice of analytics services. Other AWS services and third-party applications can also access data through the services shown. Lake Formation manages all of the tasks in the orange box and is integrated with the data stores and services shown in the blue boxes.</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Use_cases" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Use cases</h2> 
+       <div class="lb-none-v-margin lb-rtxt"> 
+        <p>Read more about <a href="/big-data/datalakes-and-analytics/what-is-a-data-lake/" target="_blank">&quot;What is a Data Lake?&quot;</a> and use cases.</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Customers" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Customers</h2> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Nuskin logo" title="Nuskin logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Nuskin%20logo.4280413e83f9feb877690f7654ed1124023e256b.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Nu Skin Enterprises is a global direct selling company that distributes more than 200 premium-quality anti-aging products in both the personal care and nutritional supplements categories. </i></p> 
+         <p>&quot;We were challenged with expanding capability and scaling throughput of our existing analytics systems. Our data was distributed amongst various disconnected databases and SaaS solutions, making it difficult to analyze data at scale while restricting access to sensitive data. To overcome this challenge, we built a data lake solution on AWS. This allowed us to aggregate data from various data silos into Amazon S3 where we cataloged and secured all data using AWS Lake Formation. Without AWS Lake Formation, it would have been impossible to achieve the goal of a scalable, easy to use security layer for all data on Amazon S3. It was easy to set up and apply fine-grained access controls based on user personas,&quot; said Joe Sueper, VP Enterprise Architecture, Global Technology at Nu Skin Enterprises<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="panasonic_logo" title="panasonic_logo" src="//d1.awsstatic.com/logos/customers/jp/panasonic_logo.909127c5508bb3cc3364d493c93b56cf509eaa95.jpg" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Panasonic Avionics Corporation is the world's leading supplier of in-flight entertainment and communication systems.</i></p> 
+         <p>“We wanted to create a data platform with the ability to manage the security settings for all the different applications in our environment. With AWS Lake Formation, we can now define policies once and enforce them in the same way, everywhere, for multiple services we use, including AWS Glue and Amazon Athena,” said Anand Desikan, Director of Cloud and Data Services at Panasonic Avionics. “The enhanced level of control gives us secure access to data and meta-data for columns and tables, not just for bulk objects, which is an important part of our data security and governance standard.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Accenture_Logo_Black_Purple_RGB" title="Accenture_Logo_Black_Purple_RGB" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Accenture_Logo_Black_Purple_RGB.5e60b45ddfe074d535a5fe1e8595aa0241c4bc5b.PNG" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Accenture is a leading global professional services company, providing a broad range of services and solutions in strategy, consulting, digital, technology, and operations. </i><br /> </p> 
+         <p>“I focus on helping clients in their ‘Data on Cloud’ journey. Specific to that, we have seen that organizations are dealing with a lack of trusted data when they need to perform analytics on data coming from multiple sources,” said Namrata Maheshwary, Senior Architect for the Data Business Group, Accenture. “Data cleansing is a critical step in data analytics and can greatly impact the business outcome and decision making. The new features in AWS Lake Formation have been hugely beneficial to address the challenge of data veracity and securing access to the data lake. We found it tremendously useful to make use of the advanced machine learning techniques for data preparation to find matching records, clean, and deduplicate data from different data sources. This will help reduce the time, effort, and cost, while improving the quality and accuracy of the data in a customer’s data lakes.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Zalando" title="Zalando" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Zalando.5a70002ed61dcfbab40a85b9a15dfe59dc03daaa.jpg" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Zalando is Europe’s leading online platform for fashion and lifestyle. </i><br /> </p> 
+         <p>“As Europe’s most fashionable tech company, we work hard to find digital solutions for every aspect of the fashion journey,” said Alberto Miorin, Engineering Lead, Zalando SE. “AWS Lake Formation gave us a scalable central point of control for data access through Amazon Redshift that not only simplified the process, but improved it through granular control over how our data is being used. Now we can discover, access, and analyze data in our data lake with our preferred tools, and leverage it for business intelligence and data science. This streamlined workflow helps our executives make the right decisions on time, and fosters innovation through machine learning.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Logo_for_Life360_App" title="Logo_for_Life360_App" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Logo_for_Life360_App.cae109eeee167d0999eb7f597618c46badfa23bd.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Life360 is the world's leading peace of mind service for families. The Life360 app brings families closer with smart features designed to protect and connect the people who matter most. </i><br /> </p> 
+         <p>“We wanted to use AWS Lake Formation to build our data lake for supporting location-based time-series data, and make it much easier to load data. The pre-fabricated blueprints helped get data into the data lake without our data engineering team having to write code from scratch, so they could focus on operationalizing ingest, not reinventing the wheel,” said Richard Chennault, Head of Cloud and Data Services, Life360, Inc. “With AWS Lake Formation we were able to quickly unlock data available in Amazon S3 and make it available to analyze across a broad spectrum of AWS data services. The data remains in place in Amazon S3, we can analyze it in many different ways, and we maintain full control over it.” <br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="change-healthcare-red-blue-logo" title="change-healthcare-red-blue-logo" src="//d1.awsstatic.com/r2018/h/change-healthcare-red-blue-logo.9689b49d521719d40d01accc89d84d26176c35ee.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Change Healthcare is a leading independent healthcare technology company that provides data and analytics-driven solutions that reach approximately 2,100 government and commercial payer connections, 5,500 hospitals, 900,000 physicians, and 33,000 pharmacies.</i></p> 
+         <p>“We handle data from millions of transactions daily while maintaining compliance with healthcare industry regulations, including HIPAA,” said Aaron Symanski, CTO of Change Healthcare. “We are very excited about the launch of AWS Lake Formation, which provides a central point of control to easily load, clean, secure, and catalog data from thousands of clients to our AWS-based data lake, dramatically reducing our operational load. The data access controls in Lake Formation will make it easy for us define our policies once and have them be enforced across all the analytics and machine learning services we use, with audit logs to show compliance.”</p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Fender_digital" title="Fender_digital" src="//d1.awsstatic.com/r2018/h/Fender_digital.2ed320bd6451e4487bfe296e9066eaf0c88d7365.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Fender Digital is a part of Fender, the iconic guitar brand, that makes apps, websites, platforms and tools to complement the guitars, amps and audio gear that Fender makes.</i></p> 
+         <p>“We are generating tons of user and usage data from our digital applications and devices. We are planning to build a data lake on AWS to operate alongside our Amazon Redshift based data warehouse” said Joshua Couch, VP Engineering at Fender Digital. “I can’t wait for my team to get our hands on AWS Lake Formation. Lake Formation will make it easy for us to load, transform, and catalog our data and make it securely available within our organization, across a wide portfolio of AWS services. With an enterprise-ready option like Lake Formation, we will be able to spend more time deriving value from our data rather than doing the heavy lifting involved in manually setting up and managing our data lake.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="cloudreach-logo" title="cloudreach-logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/cloudreach-logo.801c8f4d44903aab777591aa0b918a077674c249.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Supercharged by migration and management software platform, Cloudamize, Cloudreach brings simplicity and absolute confidence to data-driven decision making.</i><br /> </p> 
+         <p>“AWS Lake Formation is democratizing the data lake and creating a point of acceleration for enterprise data strategy,” said Kevin Davis, CTO AWS Practice, Cloudreach. “AWS Lake Formation centralizes security and governance of services, streamlining management and reducing operational overhead. By accelerating the process of de-siloing data across the enterprise, other data initiatives, such as machine learning, start to drive greater business value.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Amgen-logo" title="Amgen-logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Amgen-logo.1b9bafbf6de0ab1be879db55c3ab84f3d9024630.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Amgen is the world's largest independent biotechnology company.</i><br /> </p> 
+         <p>“At Amgen we've been heavy users of Amazon Redshift and Amazon EMR clusters for over three years. Setting up security and access controls for each AWS account, service, user, and data set at the level of detail that was required could be cumbersome,” said Kerby Johnson, Enterprise Data Lake Product Owner, Amgen. “AWS Lake Formation streamlines the process with a central point of control while also enabling us to manage who is using our data, and how, with more detail. AWS Lake Formation allows us to manage permissions on Amazon S3 objects like we would manage permissions on data in a database. Our users will be able to find, access, and analyze the data they need with the tools they prefer. This new workflow can make everyone more productive when using Amgen’s data.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Alcon-logo" title="Alcon-logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/Alcon-logo.380eb41d22b0a120197dd52ba210c846e9d43c77.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Alcon is a leader in innovation and development of life-changing vision and eye care products. </i><br /> </p> 
+         <p>“Like a lot of companies, we started our data lake initiative to get away from having inaccessible silos of data,” said Srinivas Ravilisetty, IT Analytics Lead, Alcon. ”With AWS Lake Formation we can quickly add access to existing Amazon S3 buckets and define what's in them and how it can be used. The data remains in place in S3, but we have full control over it for other uses.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="quantiphi-logo" title="quantiphi-logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/quantiphi-logo.07ab32ba883f6ef7f24d19972e613a5eeaa42ddc.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Quantiphi is an Artificial Intelligence and Big Data software and services company driven by the desire to solve complex business problems. Quantiphi specializes in building data lakes and AI solutions for customers to deliver quantifiable value. </i><br /> </p> 
+         <p>“AWS Lake Formation allows us to deliver a secure data lake with access to relevant data in days,” said Arnav Gupta, AWS Practice Lead, Quantiphi. “We now have the ability to deliver the best of both worlds for our customers – full security, plus simplified access to relevant data for their users to make decisions easily. Our customers can focus on making smarter, analysis-driven business decisions by tapping into a powerful, centralized data source.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="curvolabs_logo" title="curvolabs_logo" src="//d1.awsstatic.com/product-marketing/Lake%20Formation/curvolabs_logo.a9157547f47847c796fb9568eaf33464eba32fce.png" /> 
+         </div> 
+        </figure> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-rtxt"> 
+         <p><i>Curvo is a Software-as-a-Service company focused exclusively on the healthcare supply chain. With deep domain expertise and agile development practices, they build the analytics, the workflow, and the automation to make spend management in healthcare faster and easier.</i></p> 
+         <p>“Data normalization is a critical step in providing better patient outcomes by bringing transparency into benchmark pricing data for clinical and medical products. Using ML Transformations in AWS Lake Formation, we now process data sets in four hours, down from one week, and our degree of accuracy improved to near 100%,&quot; said Nic Sagez, CTO. “This speed and accuracy allows our healthcare customers to quickly respond to market changes, ultimately delivering more affordable care without sacrificing patient outcomes. We deliver to them in one day what takes our competitors 4-6 weeks.”<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-8"> 
+      <figure class="lb-img"> 
+       <div> 
+        <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+       </div> 
+      </figure> 
+      <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+        Learn more about AWS Lake Formation features 
+      </div> 
+      <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/lake-formation/features/"> Learn more&nbsp;<i class="icon-angle-double-right"></i></a> 
+     </div> 
+     <div class="lb-col lb-tiny-24 lb-mid-8"> 
+      <figure class="lb-img"> 
+       <div> 
+        <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+       </div> 
+      </figure> 
+      <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+        Sign up for an account 
+      </div> 
+      <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html"> Sign up&nbsp;<i class="icon-angle-double-right"></i></a> 
+     </div> 
+     <div class="lb-col lb-tiny-24 lb-mid-8"> 
+      <figure class="lb-img"> 
+       <div> 
+        <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+       </div> 
+      </figure> 
+      <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+        Start building in the console 
+      </div> 
+      <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/lakeformation/"> Sign in&nbsp;<i class="icon-angle-double-right"></i></a> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Sign In to the Console</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Learn About AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/what-is-aws/?nc1=f_cc" target="_blank">What Is AWS?</a></li> 
+       <li><a href="/what-is-cloud-computing/?nc1=f_cc" target="_blank">What Is Cloud Computing?</a></li> 
+       <li><a href="/devops/what-is-devops/?nc1=f_cc" target="_blank">What Is DevOps?</a></li> 
+       <li><a href="/containers/?nc1=f_cc" target="_blank">What Is a Container?</a></li> 
+       <li><a href="/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">What Is a Data Lake?</a></li> 
+       <li><a href="/security/?nc1=f_cc" target="_blank">AWS Cloud Security</a></li> 
+       <li><a href="/new/?nc1=f_cc" target="_blank">What's New</a></li> 
+       <li><a href="/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Press Releases</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Resources for AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/getting-started/?nc1=f_cc" target="_blank">Getting Started</a></li> 
+       <li><a href="/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+       <li><a href="/solutions/?nc1=f_cc" target="_blank">AWS Solutions Portfolio</a></li> 
+       <li><a href="/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+       <li><a href="/faqs/?nc1=f_dr" target="_blank">Product and Technical FAQs</a></li> 
+       <li><a href="/resources/analyst-reports/?nc1=f_cc" target="_blank">Analyst Reports</a></li> 
+       <li><a href="/partners/?nc1=f_dr" target="_blank">AWS Partner Network</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Developers on AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/developer/?nc1=f_dr" target="_blank">Developer Center</a></li> 
+       <li><a href="/developer/tools/?nc1=f_dr" target="_blank">SDKs &amp; Tools</a></li> 
+       <li><a href="/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+       <li><a href="/developer/language/python/?nc1=f_dr" target="_blank">Python on AWS</a></li> 
+       <li><a href="/developer/language/java/?nc1=f_dr" target="_blank">Java on AWS</a></li> 
+       <li><a href="/developer/language/php/?nc1=f_cc" target="_blank">PHP on AWS</a></li> 
+       <li><a href="/developer/language/javascript/?nc1=f_dr" target="_blank">Javascript on AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Help</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/contact-us/?nc1=f_m" target="_blank">Contact Us</a></li> 
+       <li><a href="/careers/?nc1=f_hi" target="_blank">AWS Careers</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">File a Support Ticket</a></li> 
+       <li><a href="/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Knowledge Center</a></li> 
+       <li><a href="/premiumsupport/?nc1=f_dr" target="_blank">AWS Support Overview</a></li> 
+       <li><a href="/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Create an AWS Account</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon is an Equal Opportunity Employer: 
+        <i> Minority / Women / Disability / Veteran / Gender Identity / Sexual Orientation / Age.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Language</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:25:31.974-0700 -->  
+ </body>
+</html>

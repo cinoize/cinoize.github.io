@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"02bf0a7962","applicationID":"131593373","transactionName":"dl4KRhNdXFwDQRhKUFlUFx0SWl9H","queueTime":0,"applicationTime":435,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"02bf0a7962",applicationID:"131593373"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',1000,
+{'GTM-P2BQKM':true});</script>
+<title>
+  Prelude 10W Portable Wireless Charger | Digg Store
+</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://store.digg.com/feed.rss" />
+<meta
+  name="description"
+  content="" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+<link rel="apple-touch-icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" media="all" href="https://shops2.stackassets.com/assets/classic-1a38bf9b94b9b8165858d2f834ebf883b5b517f7fe666110625e26914443a16e.css" />
+  <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" />
+
+
+
+<style>.publisher-digg .brand-primary,.publisher-digg .shopping-cart-icon.active,.publisher-digg .my-account-container .nav-tabs li a.active,.publisher-digg #sc-nyop-buttons .btn-default.active .fa-circle,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .upsell-cta--checked::before,.publisher-digg .footer .newsletter .btn-default,.publisher-digg .js-cart-item-remove:hover,.publisher-digg .mobile-search-icon.active .search-input-icon,.publisher-digg .search-input:focus+.search-input-icon{color:#00b0ff}@media (min-width: 992px){.publisher-digg .navbar-master .nav-item-container:hover .nav-item-link,.publisher-digg .navbar-master .nav-item-link:hover{border-color:#00b0ff;color:#00b0ff !important}}.publisher-digg #sc-nyop-leaderboard tr:first-child td:first-child strong,.publisher-digg .table>tbody>tr.active td,.publisher-digg .table>tbody>tr.active:hover td,.publisher-digg .sc-form-group .bar:before,.publisher-digg .sc-form-group .bar:after,.publisher-digg .checkout .edit-address-bar,.publisher-digg .footer-newsletter .btn-primary,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher .nav-item-link,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher.open .nav-item-link{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary:hover{background-color:#009ee6}.publisher-digg .table-hover>tbody>tr:hover,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{background-color:#dbf4ff}.publisher-digg .sc-product-thumbnails .product-thumbnail.active,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .btn-selectable.active,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{border-color:#00b0ff}.publisher-digg .hello-bar{background-color:#000000}.publisher-digg .hello-bar a{color:#FFFFFF}.publisher-digg .alert-notification{background-color:#000;border-color:#000;color:#fff}.publisher-digg .alert-notification hr{border-top-color:#000}.publisher-digg .alert-notification .alert-link{color:#e6e6e6}.publisher-digg .navbar-default,.publisher-digg .search-input,.publisher-digg .navbar-collapse{background-color:#FFFFFF}.publisher-digg .search-input-icon,.publisher-digg .shopping-cart-icon,.publisher-digg .navbar-default .navbar-nav>li>a,.publisher-digg .navbar-default .navbar-nav>li>a:hover,.publisher-digg .nav-item-link,.publisher-digg .dropdown-menu>li>a,.publisher-digg .dropdown-menu>li>a:hover,.publisher-digg .navbar-default .navbar-nav>.open>a{color:#000000}.publisher-digg .navbar-default .navbar-toggle .icon-bar{background-color:#000000}@media (max-width: 991px){.publisher-digg .menu-list>li>a,.publisher-digg .menu-list>li>.subnav-menu-label,.publisher-digg .menu-list .subnav-menu-items a,.publisher-digg .menu-list>li>a:hover{color:#000000;background:none}}.publisher-digg .navbar-toggle .icon-cart{font-size:1.7em}.publisher-digg .navbar-toggle .search-input-icon{font-size:1.4em}@media (max-width: 991px){.publisher-digg .navbar-default .nav-item,.publisher-digg .navbar-default .subnav-menu,.publisher-digg .navbar-default .subnav-menu-items{border:0;border-top:1px solid #aaa}.publisher-digg .navbar-default .nav-item.open{border-color:transparent}.publisher-digg .navbar-default .nav-item:first-child{border:0}}.publisher-digg .navbar-search .search-input,.publisher-digg .navbar-search-mobile .search-input{color:#000000;border:1px solid #aaa}.publisher-digg .shopping-cart-total .badge{background-color:#f41e37}.publisher-digg #sc-hero-unit{background-image:url("https://cdnp2.stackassets.com/56cb74df44425f60e74f5afbab2ed210f8399892/store/776310b17bae3182f521c99a897572bfe8a6ca5accdc3e0e74707c28e6b0/rustic-table-desk.jpg")}.publisher-digg #sc-hero-unit.giveaway-no-banner{background-image:none}.primary-color{color:#00b0ff !important}.active.primary-border-color-active{border-color:#00b0ff !important}.primary-border-color-active:hover{border-color:#66d0ff !important}.primary-border-top{border-top-color:#00b0ff !important}.active.primary-border-top-active{border-top-color:#00b0ff !important}.primary-border-left{border-left-color:#00b0ff !important}.active.primary-border-left-active{border-left-color:#00b0ff !important}.primary-border-bottom{border-bottom-color:#00b0ff !important}.active.primary-border-bottom-active{border-bottom-color:#00b0ff !important}.primary-border-right{border-right-color:#00b0ff !important}.active.primary-border-right-active{border-right-color:#00b0ff !important}.buy-now-column .loyalty-callout{color:#00b0ff}.loyalty-callout--bar{background-color:#00b0ff}@media (min-width: 993px){.loyalty-callout--bar{background-color:#fff;color:#00b0ff}}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+  window['optimizely'] = window['optimizely'] || [];
+  window['optimizely'].push(["customTag", "LoggedIn", false]);
+</script>
+<script src="//cdn.optimizely.com/js/74647825.js"></script>
+
+
+
+<script src="https://shops2.stackassets.com/assets/shared-178e39bdb70b420a918ed588bf4172e270dc8aa76ed55b131ce6a9a30a39bf18.js"></script>
+<!--[if lte IE 9]>
+  <script src="https://shops2.stackassets.com/assets/jquery.html5-placeholder-shim-fd57d1a7d62d64d8cfd7af63ec58c8db8248e7709cac024b6946c984d31e9b7d.js"></script>
+  <script>
+    $.placeholder.shim();
+  </script>
+<![endif]-->
+
+<script src="https://www.recaptcha.net/recaptcha/api.js?render=6LfHudMUAAAAAKBsc6ubBtwsz7xka6zB8S2UXrhk" async="async" defer="defer"></script>
+<script src="https://assets.jetlore.com/js/jlranker.js"></script>
+
+
+
+  <meta name="twitter:card" content="product" />
+<meta name="twitter:title" content="Red Dot Design Award Winner! With Nano-Suction &amp; Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image:src" content="https://cdnp2.stackassets.com/923f1b5c63ff07f5014b5302c211d4d224f88b58/store/7785d14ec757a739f4964ed39daa8801994dd6223d3a4981463f599fcea6/sale_26782_primary_image.jpg" />
+<meta name="twitter:data1" content="$63.99" />
+<meta name="twitter:label1" content="PRICE" />
+<meta name="twitter:data2" content="28%" />
+<meta name="twitter:label2" content="OFF" />
+<meta name="twitter:domain" content="store.digg.com" />
+<meta name="twitter:site" content="@digg" />
+<meta name="twitter:creator" content="@digg" />
+
+<meta property="fb:app_id" content="468274286708621" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Red Dot Design Award Winner! With Nano-Suction &amp; Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging" />
+<meta property="og:image" content="https://cdnp2.stackassets.com/923f1b5c63ff07f5014b5302c211d4d224f88b58/store/7785d14ec757a739f4964ed39daa8801994dd6223d3a4981463f599fcea6/sale_26782_primary_image.jpg" />
+<meta property="og:site_name" content="Digg Store" />
+<meta property="og:url" content="https://store.digg.com/sales/prelude-10w-portable-wireless-charger" />
+
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="p3k4U5+ZLPadEBcP/wvoYt32Kt32/fXFBX7fydCWnSNn+KgLYuuK9Ri1CcS2Zku5bOKZLSM05Qll5Ix3lPt3eA==" />
+
+
+    <!-- Quantcast Tag, part 1 -->
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+      (function() {
+       var elem = document.createElement('script');
+       elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+       elem.async = true;
+       elem.type = "text/javascript";
+       var scpt = document.getElementsByTagName('script')[0];
+       scpt.parentNode.insertBefore(elem, scpt);
+      })();
+    </script>
+
+    <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '675226672634286');
+  fbq('track', "PageView");</script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=675226672634286&ev=PageView&noscript=1"
+  /></noscript>
+
+
+<script type="text/javascript">
+  window.fbq = window.fbq || (function(){});
+  window._fbq = window._fbq || [];
+</script>
+
+<script type="text/javascript">
+  window.dataLayer = [{
+    publisherId: '124',
+    vertical: 'lifestyle',
+    affiliateId: '',
+    appEnvironment: 'production',
+    showEmailCapture: 'true',
+  }];
+
+  window.SC.code.analytics = {
+    customDimension: function(index, name, value) {
+      gtmPayload = {};
+      gtmPayload['dimension' + index] = value;
+      dataLayer.push(gtmPayload);
+    },
+
+    analyticsEvent: function(category, action, opt_label, opt_value, opt_noninteractive) {
+      // ensure value is integer. We encountered weird analytics behavior if decimals are sent
+      integer_value = Math.round(opt_value) || undefined
+
+      dataLayer.push({
+        'event': 'analyticsEvent',
+        'eventCategory': category,
+        'eventAction': action,
+        'eventLabel': opt_label,
+        'eventValue': integer_value,
+        'eventNonInt': opt_noninteractive
+      });
+    },
+
+    analyticsSocial: function(socialNetwork, socialAction, opt_socialTarget, opt_page) {
+      dataLayer.push({
+        'event': 'social',
+        'socialNetwork': socialNetwork,
+        'socialAction': socialAction,
+        'socialTarget': opt_socialTarget,
+        'socialPagePath': opt_page
+      });
+    },
+
+    analyticsVPV: function(virtualPageName) {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': virtualPageName
+      });
+    },
+
+    analyticsClearVPV: function() {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': undefined
+      });
+    },
+
+    analyticsForm: function(f, el) {
+      var formName = f;
+      var elName = el.name || el.id || el.type;
+      var category = 'interaction';
+      var action = 'form: ' + formName;
+      var label = elName + ':' + el.type;
+
+      // Google Tag Manager
+      analyticsEvent(category, action, label);
+    }
+  };
+
+  $(document).ready(function() {
+    window.SC.dataLayer.enqueue('SCDataLayer', 'USER_VISITS', { previouslyPurchasedProducts: 'false' });
+
+
+  });
+</script>
+
+
+
+  <link rel="canonical" href="https://stacksocial.com/sales/prelude-10w-portable-wireless-charger" />
+
+
+<script type="text/javascript">
+var _user_id = '';
+var _session_id = 'f5553767719d51832b94be97c8e1d422';
+
+var _sift = window._sift = window._sift || [];
+_sift.push(['_setAccount', 'ef01e3d959']);
+_sift.push(['_setUserId', _user_id]);
+_sift.push(['_setSessionId', _session_id]);
+_sift.push(['_trackPageview']);
+(function() {
+  function ls() {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.async = true;
+    e.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.siftscience.com/s.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(e, s);
+  }
+  if (window.attachEvent) {
+    window.attachEvent('onload', ls);
+  } else {
+    window.addEventListener('load', ls, false);
+  }
+})();
+</script>
+
+
+<input type="hidden" class="js-jetlore-constructor-tag" id="user_email" value="">
+
+  </head>
+  <body id="stacksocial-wrapper" class="publisher-digg" ng-app="stackApp" ng-class="[cartStateBodyClass]">
+    <a href="https://iar40lbead.execute-api.us-east-1.amazonaws.com/ProdStage" rel="nofollow" style="display: none" aria-hidden="true">nofollow</a>
+    <script type="text/javascript">
+  // dimension1 is reserved for legacy PartnerType and is unused
+  window.SC.code.analytics.customDimension(2, 'User Status', "logged_out");
+
+    window.SC.code.analytics.customDimension(3, "Publisher", "Digg");
+    window.SC.code.analytics.customDimension(4, "Publisher Persona", "Internet Culture");
+
+
+
+
+
+</script>
+
+    <!-- StackCommerce GTM Container -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2BQKM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P2BQKM');
+  </script>
+
+    
+
+    <input type="hidden" name="current_publisher" id="current_publisher" value="124" data-name="Digg" data-checkout-upsell-top-id="20559" data-checkout-upsell-bottom-id="9426" />
+
+    <input type="hidden" name="current_user_favorites" id="current_user_favorites" data-sale-ids="[]" data-sales-url="https://store.digg.com/v0/sales" />
+    <input type="hidden" name="api_url" id="api_url" value="https://store.digg.com/" />
+    <input type="hidden" name="current_cart" id="current_cart" data-current-cart="{&quot;items&quot;:[]}" />
+    <input type="hidden" name="publisher_upsell_sales" id="publisher_upsell_sales" data-sales="[{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true}]" data-max-quantity="4" />
+    <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1">
+  <defs>
+    <symbol id="icon-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M18,38.5L36.2,57c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l9.1-9.2c3-3.1,6.1-6.1,9.1-9.2c4.7-4.8,4.7-12.6,0-17.4c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6l-2,2l-2-2.1c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6C13.3,25.9,13.3,33.7,18,38.5z M20.7,23.5c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6l3.4,3.4c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l3.3-3.4c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6c3.4,3.5,3.4,9.1,0,12.6L37.5,53.2l-0.1-0.1l-16.7-17C17.3,32.6,17.3,27,20.7,23.5z" />
+    </symbol>
+
+    <symbol id="icon-circle-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z M25.05,29.025 C26.25,27.75 27.9,27 29.55,27 C31.2,27 32.85,27.675 34.05,29.025 L36.525,31.65 C36.75,31.875 37.125,32.025 37.5,32.025 C37.875,32.025 38.25,31.875 38.475,31.65 L40.95,29.025 C42.15,27.75 43.8,27 45.45,27 C47.1,27 48.75,27.675 49.95,29.025 C52.5,31.65 52.5,36 49.95,38.7 L37.5,51.825 L37.425,51.675 L25.05,38.7 C22.5,36 22.5,31.725 25.05,29.025 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-circle-heart-filled" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-cart" viewBox="0 0 75 75">
+      <path class="path1" d="M47.8,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3s-2.3-1-2.3-2.3C45.5,53.5,46.5,52.5,47.8,52.5z M30.4,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3c-1.3,0-2.3-1-2.3-2.3C28.1,53.5,29.1,52.5,30.4,52.5z M47.8,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C53.6,51.7,50.9,49.1,47.8,49.1z M30.4,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C36.2,51.7,33.6,49.1,30.4,49.1z M23.2,23.8h34.5L55,35.4l-26.3,2.1L23.2,23.8z M11.4,14.6c-1,0-1.7,0.8-1.7,1.7s0.8,1.7,1.7,1.7h5.8c2.9,7.1,5.7,14.2,8.5,21.2l-2.6,6.3c-0.2,0.5-0.2,1.2,0.2,1.6c0.3,0.5,0.9,0.8,1.4,0.8h28.9c0.9,0,1.8-0.8,1.8-1.7c0-0.9-0.8-1.7-1.8-1.7H27.3l1.5-3.6l27.8-2.2c0.7-0.1,1.4-0.6,1.6-1.3l3.5-15c0.2-1-0.7-2.1-1.7-2.1H21.8l-1.9-4.7c-0.3-0.6-0.9-1.1-1.6-1.1H11.4z" />
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 75 75">
+      <path class="path1" d="M34.1,17.5c-4.4,0-8.6,1.7-11.7,4.9c-3.1,3.1-4.9,7.3-4.9,11.7c0,4.4,1.7,8.6,4.9,11.7c3.1,3.1,7.3,4.9,11.7,4.9c3.7,0,7.2-1.2,10.1-3.5l0.2-0.2l10,10c0.7,0.7,1.9,0.7,2.6,0c0.7-0.7,0.7-1.9,0-2.6v0l-10-10l0.2-0.2c5.1-6.6,4.5-16-1.4-21.9C42.6,19.2,38.5,17.5,34.1,17.5 M43.2,43.2c-2.4,2.4-5.7,3.8-9.1,3.8h0c-3.4,0-6.7-1.3-9.1-3.8c-2.4-2.4-3.8-5.7-3.8-9.1c0-3.4,1.3-6.7,3.8-9.1c2.4-2.4,5.7-3.8,9.1-3.8c3.4,0,6.7,1.3,9.1,3.8c2.4,2.4,3.8,5.7,3.8,9.1S45.6,40.7,43.2,43.2" />
+    </symbol>
+
+    <symbol id="icon-ships-fast" viewBox="0 0 100 100">
+      <path class="st0" d="M30.1,39.2L30.1,39.2l-12.3,0c0,0,0,0,0,0c-0.3,0-0.7,0.1-0.9,0.4c-0.2,0.2-0.4,0.6-0.4,0.9
+        c0,0.3,0.1,0.7,0.4,0.9c0.2,0.2,0.6,0.4,0.9,0.4l12.3,0c0.4,0,0.7-0.1,0.9-0.4c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9
+        C30.8,39.3,30.5,39.2,30.1,39.2z"/>
+      <path class="st0" d="M31.1,35.2c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9c-0.3-0.2-0.6-0.4-0.9-0.4l0,0l0,0H8.3
+        c-0.4,0-0.7,0.1-0.9,0.4C7.1,33.6,7,33.9,7,34.3c0,0.3,0.1,0.7,0.4,0.9c0.3,0.2,0.6,0.4,0.9,0.4l0,0l0,0h21.8
+        C30.5,35.6,30.8,35.4,31.1,35.2z"/>
+      <path class="st0" d="M75.4,36.1l-0.1-0.5c-0.4-1.5-1.9-2.6-3.4-2.6H38.4c-2,0-3.6,1.6-3.6,3.6v21.7c0,2,1.6,3.6,3.6,3.6h4.4l0.1,0.5
+        c0.8,2.7,3.3,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h17.6l0.1,0.5c0.8,2.7,3.4,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h4.5
+        c1.5,0,2.8-1.3,2.8-2.8V48.9c0-1.5-1.3-2.8-2.8-2.8h-0.7L89,45.1c-0.7-1.4-1.5-3.1-2.5-4.7c-0.7-1.2-1.4-2.1-2.1-2.8
+        c-0.7-0.8-1.5-1.5-2.8-1.5H75.4z M53,60.6c0,2.2-1.7,3.9-3.9,3.9c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.7-3.9,3.9-3.9
+        C51.4,56.7,53,58.4,53,60.6L53,60.6z M72.8,59.3H55.5l-0.1-0.5c-0.8-2.8-3.3-4.7-6.2-4.7c-2.8,0-5.4,1.9-6.2,4.7l-0.1,0.5h-4.4
+        c-0.5,0-1-0.5-1-1V36.6c0-0.6,0.4-1,1-1l33.4,0c0.5,0,1,0.5,1,1V59.3z M79.4,64.4c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.8-3.9,3.9-3.9
+        c2.3,0.1,3.9,1.7,3.9,3.9C83.3,62.8,81.6,64.4,79.4,64.4z M90.4,48.7v10.6h-4.7l-0.1-0.5c-0.6-2.8-2.9-4.5-6.2-4.6
+        c-1,0-2.1,0.3-3,0.7l-1,0.5v-6.7H90.4z M82.6,39.3c0.5,0.5,1.1,1.4,1.7,2.4c0.6,1,1.2,2.1,1.9,3.5l0.5,1H75.4v-7.5h6.1l0.2,0
+        l0.2,0.1C82,38.9,82.3,39,82.6,39.3z"/>
+    </symbol>
+
+    <symbol id="icon-facebook" viewBox="0 0 100 100">
+      <path d="M94.48,0h-89A5.52,5.52,0,0,0,0,5.52v89A5.52,5.52,0,0,0,5.52,100h47.9V61.33h-13V46.19h13V35.06c0-12.91,7.89-20,19.41-20a104.57,104.57,0,0,1,11.64.6V29.2h-8c-6.25,0-7.46,3-7.46,7.35v9.64H84l-2,15.14H69V100H94.48A5.52,5.52,0,0,0,100,94.48v-89A5.52,5.52,0,0,0,94.48,0Z" />
+    </symbol>
+
+  </defs>
+</svg>
+
+
+    <div class="container-wrapper">
+      <div class="container-site">
+        <script>
+  window.current_publisher_code = "digg";
+</script>
+
+
+<div class="hello-bar js-hello-bar hidden-xs hidden-sm">
+  <div class="container">
+      <div class="pull-left">
+        <a class="back-link" href="http://digg.com/">
+          <i class='fa fa-sm fa-chevron-left back-to-publisher'></i> back to digg.com
+</a>      </div>
+
+
+      <div class="">
+        <a class="hello-bar-text js-hello-bar" data-sale-slug="babbel-lifetime-subscription-all-languages" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;}" data-sale="{&quot;id&quot;:24208,&quot;name&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;,&quot;title&quot;:&quot;Learn 14 Languages \u0026 Access More Than 10,000 Hours of High-Quality Language Education Online&quot;,&quot;price_in_cents&quot;:15900,&quot;categories&quot;:[{&quot;name&quot;:&quot;Language&quot;}]}" data-track-impression="{&quot;list&quot;:&quot;hello bar&quot;}" href="/sales/babbel-lifetime-subscription-all-languages">
+          Save 60% On A Lifetime Subscription To Babbel&#39;s Language Learning App
+          <i class="fa fa-chevron-right"></i>
+</a>      </div>
+
+    <a class="referal-link" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;refer link&quot;}" href="/user/credits">
+      Give $10,
+      Get $10
+</a>  </div>
+</div>
+
+<nav id="main-navbar"
+  class="navbar navbar-default navbar-fixed-top navbar-master-without-stackbar navbar-master js-navbar-master"
+  role="navigation"
+  data-navbar>
+
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle navbar-menu-button pull-left" type="button" aria-label="Toggle Navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+      </button>
+
+      <div class="navbar-toggle mobile-cart-icon mini-cart">
+        <mini-cart-button></mini-cart-button>
+      </div>
+
+      <div class="navbar-toggle mobile-search-icon js-toggleSearchNav">
+        <svg class="svg-icon search-input-icon">
+          <use xlink:href="#icon-search"></use>
+        </svg>
+      </div>
+
+      <div class="navbar-brand-container">
+        <a class="navbar-brand" href="/">
+            <img class="navbar-logo hidden-xs hidden-sm" alt="Digg" src="https://cdnp2.stackassets.com/6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b/store/c955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30/28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png" />
+
+    <img class="navbar-logo hidden-md hidden-lg" alt="Digg Mobile" src="https://cdnp1.stackassets.com/7233e69003b00a8364724db622d71fbae54b3efc/store/f2e980f91ac9866426d222b593e6332923e0dbac41c3f53b6fa4089945fe/8570c0924c5e16dc571c4330dcef195d95089b07_logo_main_mobile.png" />
+
+</a>      </div>
+    </div>
+
+    <div class="navbar-collapse">
+      <div class="navbar-center">
+        <div class="hidden-xs hidden-sm navbar-search">
+          <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+            <div class="search-container">
+              <input type="text" name="query" id="query" value="" placeholder="Search" class="search-input" aria-label="search" required="required" />
+              <i class="fa fa-search search-input-icon"></i>
+            </div>
+</form>        </div>
+
+        <ul class="nav navbar-nav navbar-right nav-account hidden-xs hidden-sm">
+          <li class="heart-icon-nav">
+            <a class="nav-account-link js-wishlist-nav" aria-label="My Wishlist" href="/user?show=home-tab">
+              <svg class="svg-icon">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+</a>          </li>
+          <li class="cart-icon-nav">
+            <mini-cart-button></mini-cart-button>
+          </li>
+            <li>
+    <a class="nav-account-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+        </ul>
+      </div>
+
+      
+<ul class="nav navbar-nav navbar-main js-navbar-main nav-4-items">
+  
+    
+
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Shop
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/newest-sales">
+                                      New Arrivals
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/best-sellers">
+                                      Best Sellers
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/ending-soon">
+                                      Ending Soon
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/pay-what-you-want">
+                                      Pay What You Want
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifetime-deals">
+                                      Lifetime Subscriptions
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/bundles">
+                                      Online Course Bundles
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/apps-software">
+                            Software
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-backup-storage">
+                                      Backup + Storage
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-entertainment">
+                                      Entertainment
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-productivity">
+                                      Productivity
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-security">
+                                      VPN + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software">
+                                      View All (150+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets">
+                            Gear + Gadgets
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-auto">
+                                      Auto
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-diy">
+                                      DIY
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-computer-tablets">
+                                      Electronics
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-gaming-toys">
+                                      Gaming + Toys
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-power">
+                                      Power + Charging
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-sound">
+                                      Speakers + Headphones
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets">
+                                      View All (450+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/online-courses">
+                            Online Courses
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-business">
+                                      Business
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-Design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-development">
+                                      Development
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-it-security">
+                                      IT + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-marketing">
+                                      Marketing
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses">
+                                      View All (800+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/lifestyle">
+                            Lifestyle
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/every-day-carry">
+                                      Everyday Carry
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-health-fitness">
+                                      Fitness + Health
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-home">
+                                      Home
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-kitchen">
+                                      Kitchen
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-travel">
+                                      Travel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle">
+                                      View All (300+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Best Sellers
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/best-sellers">
+                            Best Sellers Up to 85% off
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Brands
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/vendor-spotlight?sort=best_sellers">
+                                      Vendor Spotlight
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets-computer-tablets">
+                            Electronics
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/apple?sort=best_sellers">
+                                      Apple
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lenovo">
+                                      Lenovo
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lg">
+                                      LG
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/samsung">
+                                      Samsung
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/sennheiser">
+                                      Sennheiser
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Sofware
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/babbel-language-learning-lifetime-subscription">
+                                      Babbel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/nordvpn-3-yr-subscription-2">
+                                      NordVPN
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/rosetta-stone-lifetime-subscription-spanish">
+                                      Rosetta Stone
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/windscribe-vpn-pro-subscriptions-1yr">
+                                      Windscribe
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Top Instructors
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/chris-haroun">
+                                      Chris Haroun
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/rob-percival">
+                                      Rob Percival
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/the-canon-dslr-photography-a-z-course">
+                                      Phil Ebiner
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Free
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/giveaways">
+                            Giveaways
+</a>
+                      </li>
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/free">
+                            Freebies
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+  <li class="nav-username-placeholder hidden-sm hidden-xs">
+      Login
+  </li>
+
+  <li class="nav-item visible-xs visible-sm">
+  <a class="nav-item-link" href="/user?show=home-tab">Wishlist</a>
+</li>
+  <li class="nav-item visible-xs visible-sm">
+    <a class="nav-item-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+</ul>
+
+    </div>
+  </div>
+
+  <div id="search-dropdown-bar"
+    class="hidden-md hidden-lg navbar-search-mobile container js-search-dropdown-bar">
+    <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="text" name="query" id="mobile-search-box" value="" placeholder="Search" class="form-control search-input js-mobile-search-box" />
+</form>  </div>
+
+  
+</nav>
+
+<div id="main-navbar-phantom" class="js-main-navbar-phantom"></div>
+<div class="mobile-nav-overlay"></div>
+
+
+<mini-cart></mini-cart>
+
+        
+
+        <div class="site-contents ">
+          <div class="loyalty-callout loyalty-callout--bar  ">
+  <div class="loyalty-callout__content">
+    <div class="loyalty-callout__icon">
+      <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 35 34" style="enable-background:new 0 0 35 34;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:currentColor;}
+</style>
+<g>
+	<path class="st0" d="M28.5,2.5h-7.6c-1.2,0-2.7,0.6-3.5,1.4L2.7,18.5C2.3,19,2,19.6,2,20.3c0,0.7,0.3,1.3,0.7,1.8l8.6,8.6
+		c0.5,0.5,1.1,0.7,1.8,0.7v0c0.7,0,1.3-0.3,1.8-0.7l14.6-14.6c0.8-0.8,1.4-2.3,1.4-3.5V5C31,3.6,29.9,2.5,28.5,2.5z M29.3,12.7
+		c0,0.7-0.5,1.8-1,2.3L13.8,29.6c-0.2,0.2-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.2l-8.6-8.6c-0.2-0.2-0.2-0.4-0.2-0.6
+		s0.1-0.4,0.2-0.6L18.5,5.2c0.5-0.5,1.6-1,2.3-1h0h7.6c0.5,0,0.8,0.4,0.8,0.8V12.7z"/>
+	<path class="st0" d="M25.1,5.9c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5C27.6,7,26.5,5.9,25.1,5.9z M25.1,9.3
+		c-0.5,0-0.8-0.4-0.8-0.8c0-0.5,0.4-0.8,0.8-0.8c0.5,0,0.8,0.4,0.8,0.8C25.9,8.9,25.5,9.3,25.1,9.3z"/>
+</g>
+</svg>
+
+    </div>
+    <span class="loyalty-callout__text">
+      Get $1 credit for every $25 spent!
+    </span>
+  </div>
+</div>
+
+
+
+
+<div class="course" data-sale="{&quot;id&quot;:26782,&quot;name&quot;:&quot;Prelude 10W Portable Wireless Charger&quot;,&quot;title&quot;:&quot;Red Dot Design Award Winner! With Nano-Suction \u0026 Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging&quot;,&quot;price_in_cents&quot;:6399,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}" data-track-detail="{&quot;list&quot;:&quot;solo page&quot;}" data-sales-show-page="true">
+
+    <div class="container main-display">
+      <div class="row">
+        <div class="col-md-12 breadcrumbs">
+          <p class="text-capitalize">
+            <a class="brand-primary js-breadcrumb-step" data-category="Gear + Gadgets" href="https://store.digg.com/collections/gear-gadgets">Gear + Gadgets</a> > <a class="brand-primary js-breadcrumb-step" data-category="Power" href="https://store.digg.com/collections/gear-gadgets/power">Power</a> > <a class="brand-primary js-breadcrumb-step" data-category="Chargers" href="/search?cat=274&amp;query=Chargers">Chargers</a>
+          </p>
+          <h1>Prelude 10W Portable Wireless Charger</h1>
+          <h3>Red Dot Design Award Winner! With Nano-Suction &amp; Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main-image col-md-7">
+          <div class="row">
+            <div class="col-md-11">
+              <div id="sc-product-image-carousel36672" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+          <li class="active"></li>
+
+          <li class=""></li>
+          <li class=""></li>
+          <li class=""></li>
+          <li class=""></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="true" data-product-id="36672">
+          <figure id="product-video-36672" class="item active embed-responsive embed-responsive-16by9 sc-carousel-video js-carousel-video">
+            <a href class="hidden-md hidden-lg">
+              <img class="img-responsive" alt="Product Video 0" src="https://shops1.stackassets.com/assets/core/video_thumbnail-75ee96ebcf948af0bd771226e63eef5f2725f4a3ce1739134f868f1d7ad3b5dc.jpg" />
+            </a>
+            <iframe width="100%" height="100%" class="embed-responsive-item hidden-xs hidden-sm" src="https://www.youtube.com/embed/PvyXHgF4k4o" title="product video" allowfullscreen></iframe>
+          </figure>
+
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp1.stackassets.com/281c9354916427f1e7d8dd20024e5d25e75a7ec8/store/opt/596/447/56310c8c050628de5f090fab2460bc5bd8eee930a5d28a2a986cf3e64282/product_36672_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp1.stackassets.com/4f62bbb43a8fbdf6416064c04d1c1bce398589b0/store/opt/720/541/56310c8c050628de5f090fab2460bc5bd8eee930a5d28a2a986cf3e64282/product_36672_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp1.stackassets.com/07443dc0a04a0807c86482efbaf431e281220880/store/opt/489/367/56310c8c050628de5f090fab2460bc5bd8eee930a5d28a2a986cf3e64282/product_36672_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp1.stackassets.com/281c9354916427f1e7d8dd20024e5d25e75a7ec8/store/opt/596/447/56310c8c050628de5f090fab2460bc5bd8eee930a5d28a2a986cf3e64282/product_36672_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp3.stackassets.com/90924cdeba5b78868d7d7349e2d53edc9059a433/store/opt/596/447/523b3edfd20ab4a0322871cb49d39894d9184a52d8f1aaa022d5a612f92a/product_36672_product_shots2.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp3.stackassets.com/a4805c3ff1e0da98b7440120f55e00c3c2d60fa5/store/opt/720/541/523b3edfd20ab4a0322871cb49d39894d9184a52d8f1aaa022d5a612f92a/product_36672_product_shots2.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp3.stackassets.com/9e2625af9e678379dfe16a24f6633ddbd653727e/store/opt/489/367/523b3edfd20ab4a0322871cb49d39894d9184a52d8f1aaa022d5a612f92a/product_36672_product_shots2.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp3.stackassets.com/90924cdeba5b78868d7d7349e2d53edc9059a433/store/opt/596/447/523b3edfd20ab4a0322871cb49d39894d9184a52d8f1aaa022d5a612f92a/product_36672_product_shots2.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp1.stackassets.com/2f88ee1bda7a0b99425a991612bbfed1d8e16791/store/opt/596/447/d1fc0a11988db05364f76097eff114f583ab3191d985cd50344db6c7d72b/product_36672_product_shots3.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp1.stackassets.com/df5d65c495c7a5e6b78b2c5ca511c8fc8cdbef4f/store/opt/720/541/d1fc0a11988db05364f76097eff114f583ab3191d985cd50344db6c7d72b/product_36672_product_shots3.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp1.stackassets.com/da645d1d09c974df1ab792744f7a54203f85ce73/store/opt/489/367/d1fc0a11988db05364f76097eff114f583ab3191d985cd50344db6c7d72b/product_36672_product_shots3.jpg" /><img class="img-responsive" alt="Product Image 2" src="https://cdnp1.stackassets.com/2f88ee1bda7a0b99425a991612bbfed1d8e16791/store/opt/596/447/d1fc0a11988db05364f76097eff114f583ab3191d985cd50344db6c7d72b/product_36672_product_shots3.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp3.stackassets.com/9c2216444e912d3e51fb22f0bbd8099757786cf7/store/opt/596/447/6437ef333dc573085094e354b158febf621cd7f6ca676227ef9d4436eb14/product_36672_product_shots4.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp3.stackassets.com/bcf70fd6e2232d587d6a47a8713ab1e5baed72a7/store/opt/720/541/6437ef333dc573085094e354b158febf621cd7f6ca676227ef9d4436eb14/product_36672_product_shots4.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp3.stackassets.com/ebe643c58d4e30fc744e0c88f53fae029315610b/store/opt/489/367/6437ef333dc573085094e354b158febf621cd7f6ca676227ef9d4436eb14/product_36672_product_shots4.jpg" /><img class="img-responsive" alt="Product Image 3" src="https://cdnp3.stackassets.com/9c2216444e912d3e51fb22f0bbd8099757786cf7/store/opt/596/447/6437ef333dc573085094e354b158febf621cd7f6ca676227ef9d4436eb14/product_36672_product_shots4.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp2.stackassets.com/18bbaed674277686f9058c9d74edb6fff2a51c6c/store/opt/596/447/c45d97246e2e84ad14f4814e751c0d55fb8b2aa96d9a5f767fef5010830d/product_36672_product_shots5.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp2.stackassets.com/3032cae5886b4b1cf4ccf3b9e475db0b1748f964/store/opt/720/541/c45d97246e2e84ad14f4814e751c0d55fb8b2aa96d9a5f767fef5010830d/product_36672_product_shots5.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp2.stackassets.com/33fc2c8dbacd638ae408f14ec96b2c15a4c758ff/store/opt/489/367/c45d97246e2e84ad14f4814e751c0d55fb8b2aa96d9a5f767fef5010830d/product_36672_product_shots5.jpg" /><img class="img-responsive" alt="Product Image 4" src="https://cdnp2.stackassets.com/18bbaed674277686f9058c9d74edb6fff2a51c6c/store/opt/596/447/c45d97246e2e84ad14f4814e751c0d55fb8b2aa96d9a5f767fef5010830d/product_36672_product_shots5.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+          <div id="video-thumbnail-36672" class="video-thumbnail col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="0"
+              class="product-thumbnail active"
+            >
+              <img class="img-responsive" alt="Product Video 0" src="https://shops1.stackassets.com/assets/core/video_thumbnail-75ee96ebcf948af0bd771226e63eef5f2725f4a3ce1739134f868f1d7ad3b5dc.jpg" />
+            </figure>
+          </div>
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp1.stackassets.com/1b0f5d3125a09577683c61216cd2cefa2884d26a/store/opt/73/55/56310c8c050628de5f090fab2460bc5bd8eee930a5d28a2a986cf3e64282/product_36672_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="2"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp3.stackassets.com/8cd8f3ec29acf115428d190c7e2402dad2a8ebe8/store/opt/73/55/523b3edfd20ab4a0322871cb49d39894d9184a52d8f1aaa022d5a612f92a/product_36672_product_shots2.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="3"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 2" src="https://cdnp1.stackassets.com/bc9f85547abb4dfbfb71a6759551390321f1b614/store/opt/73/55/d1fc0a11988db05364f76097eff114f583ab3191d985cd50344db6c7d72b/product_36672_product_shots3.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="4"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 3" src="https://cdnp3.stackassets.com/bd7fecc77f7432684e49eb537e070e20c824254e/store/opt/73/55/6437ef333dc573085094e354b158febf621cd7f6ca676227ef9d4436eb14/product_36672_product_shots4.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel36672"
+              data-slide-to="5"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 4" src="https://cdnp2.stackassets.com/29aab1aadf22998245ac421451a44a2d79181093/store/opt/73/55/c45d97246e2e84ad14f4814e751c0d55fb8b2aa96d9a5f767fef5010830d/product_36672_product_shots5.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 buy-now-column">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="loyalty-callout ">
+  <div class="loyalty-callout__content">
+    <div class="loyalty-callout__icon">
+      <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 35 34" style="enable-background:new 0 0 35 34;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:currentColor;}
+</style>
+<g>
+	<path class="st0" d="M28.5,2.5h-7.6c-1.2,0-2.7,0.6-3.5,1.4L2.7,18.5C2.3,19,2,19.6,2,20.3c0,0.7,0.3,1.3,0.7,1.8l8.6,8.6
+		c0.5,0.5,1.1,0.7,1.8,0.7v0c0.7,0,1.3-0.3,1.8-0.7l14.6-14.6c0.8-0.8,1.4-2.3,1.4-3.5V5C31,3.6,29.9,2.5,28.5,2.5z M29.3,12.7
+		c0,0.7-0.5,1.8-1,2.3L13.8,29.6c-0.2,0.2-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.2l-8.6-8.6c-0.2-0.2-0.2-0.4-0.2-0.6
+		s0.1-0.4,0.2-0.6L18.5,5.2c0.5-0.5,1.6-1,2.3-1h0h7.6c0.5,0,0.8,0.4,0.8,0.8V12.7z"/>
+	<path class="st0" d="M25.1,5.9c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5C27.6,7,26.5,5.9,25.1,5.9z M25.1,9.3
+		c-0.5,0-0.8-0.4-0.8-0.8c0-0.5,0.4-0.8,0.8-0.8c0.5,0,0.8,0.4,0.8,0.8C25.9,8.9,25.5,9.3,25.1,9.3z"/>
+</g>
+</svg>
+
+    </div>
+    <span class="loyalty-callout__text">
+      Get $1 credit for every $25 spent!
+    </span>
+  </div>
+</div>
+
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div data-buy-solo-form>
+  <div class="row">
+    <div class="col-md-10 col-sm-12 col-xs-12">
+      <div class="price-container">
+          <span class="price">$63.99</span>
+          <s class="original-price">
+            $89.99
+          </s>
+            <span class="percentage-discount">
+              28% off
+            </span>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="vendor-name col-xs-6">
+            by <a class="brand-primary" href="/brands/bezalel">Bezalel</a>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-12 col-xs-12">
+          <div class="solo-star-rating col-xs-8 ratings-widget js-ratings-widget">
+            <div class="js-ratings-widget-component"
+     data-sale-ratings-path="/v0/sale_ratings"
+     data-sale-id="26782"
+     data-sale-name="Prelude 10W Portable Wireless Charger">
+</div>
+
+<script class="js-ratings-widget-template" type="text/html">
+  <div class="js-ratings-widget-scroll-to-link">
+    <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+    <span class="voters">({{ total_count }})</span>
+  </div>
+</script>
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<ng-form ng-controller="AddToCartCtrl" class="form-horizontal js-sc-purchase-form" data-type="Solo" data-price="63.99" data-name="Prelude 10W Portable Wireless Charger" data-ids="[26782]" role="form">
+
+  <input type="hidden" name="sale_id" id="sale_id" value="26782" data-sale-over="false" />
+
+    <div class="row add-to-cart-form">
+      <div class="col-xs-8 col-md-7">
+        <add-to-cart-button aria-label="Button link to buy Red Dot Design Award Winner! With Nano-Suction &amp; Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging now" class="hidden-xs hidden-sm btn btn-lg btn-block btn-success js-purchase-submit btn-add-to-cart" ng-click="addItem(26782)" ng-disabled="addingToCart" data-button-type="buy_now">
+          Add to Cart
+</add-to-cart-button>        <add-to-cart-button aria-label="Button link to buy Red Dot Design Award Winner! With Nano-Suction &amp; Magnetic Alignment, Prelude Easily Attaches to Any Qi Device for Fast, Portable Charging now" class="visible-xs visible-sm btn btn-lg btn-block btn-success js-sc-sale-form-submit-mobile btn-add-to-cart" ng-click="addItem(26782)" ng-disabled="addingToCart" data-button-type="buy_now">
+          Add to Cart
+</add-to-cart-button>        
+      </div>
+
+      <div class="col-xs-4 col-md-3">
+          <select name="quantity" id="quantity" class="form-control js-quantity quantity-select" aria-label="quantity" data-price="6399" data-recurring="false" ng-model="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+      </div>
+    </div>
+
+  <div class="buy-now-fixed js-sc-sale-buy-now-fixed">
+    <div class="js-no-variant" data-type="Solo" data-toggle=".js-variant-selection"><add-to-cart-button class="btn btn-success btn-lg btn-block js-no-variant-text" data-button-type="buy_now">Add to Cart ($63.99)</add-to-cart-button></div>
+  </div>
+</ng-form>
+
+  <div class="row warranty-checkbox-container">
+    <div class="col-xs-12 col-md-10">
+        <div class="row main-info-row">
+          <div class="col-xs-1 col-sm-1">
+            <input type="checkbox" name="warranty-checkbox" id="warranty-checkbox" value="19002" class="warranty-checkbox" aria-label="Add 1 Year Warranty - $15.99" />
+          </div>
+          <div class="col-xs-11 col-sm-11 main-info-text">
+            Add 1 Year Warranty - $15.99
+          </div>
+        </div>
+        <div class="row main-info-row">
+          <div class="col-xs-1 col-sm-1">
+            <input type="checkbox" name="warranty-checkbox" id="warranty-checkbox" value="19016" class="warranty-checkbox" aria-label="Add 2 Year Warranty - $19.99" />
+          </div>
+          <div class="col-xs-11 col-sm-11 main-info-text">
+            Add 2 Year Warranty - $19.99
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row col-md-12">
+    <a href="https://support.stackcommerce.com/hc/en-us/articles/360026946912-Product-Warranties" target="_blank" class="brand-primary">Learn More</a>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-10">
+    <hr/>
+  </div>
+</div>
+
+              <div class="row vertical-align">
+                <div class="col-xs-5 col-md-5 sale-duration">
+                  <i class="icon-clock"></i>
+                  Ending In: <abbr class="js-interval" data-use-interval="true" data-starts-at="2020-03-27T07:00:01Z" data-ends-at="2120-03-28T06:59:59Z"></abbr>
+                </div>
+                <div class="col-xs-7 col-md-5 slight-top-pad">
+                    <a class="sc-favorite-icon js-favorite js-favorite-track primary-color pull-right" data-sale-name="Prelude 10W Portable Wireless Charger" data-sale-id="26782" data-category="Sale" href="">
+  <i class="fa fa-heart" aria-hidden="true"></i>
+  <i class="fa fa-heart-o" aria-hidden="true"></i>
+
+  <span class="text-capitalize">
+      wishlist
+  </span>
+</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  
+<div class="notification-subscription" data-notification-subscription="true" data-tracking-attributes="{&quot;subscription_sale_id&quot;:26782}">
+  <button class="notification-subscription__cta primary-color">
+    <i class="fa fa-bell-o"></i>
+    <span class="subscribe-text">Stay up-to-date on exclusive new deals!</span>
+  </button>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container js-product-details">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md-11">
+
+                
+
+    <div class="sc-sale-product-specs" id="product_36672-description-content">
+      <p><b>Description</b></p><p>Go on with your life without the extra battery weight. Prelude was brought to life by combining nano-suction and wireless charging technology in an ultra‑slim, small frame, made of a seamlessly smooth body, with no lines or screw holes. With motion sensor, 5,000mAh capacity, and 10W power, Prelude easily adheres to your phone and fast charges it. It also works as a wired portable charger when convenient for you. Now, charge even faster, up to 18W with a Type-C cable. With or without a cable, fully-mobile Prelude is designed with your ever-changing needs in mind.
+<br><br>
+</p>
+<p><b><i>Red Dot Design Award 2019 Winner</i></b></p>
+<ul>
+<li>Easily adheres &amp; detaches to the glossy-surface back of your phone</li>
+<li>Fast charges your smartphone up to 10W</li>
+<li>Works as a wired portable charger &amp; delivers power up to 18W w/ a Type-C cable</li>
+<li>Wirelessly charges most Qi-enabled devices</li>
+<li>LED indicator lights to know battery status</li>
+</ul>
+    </div>
+    <div class="sc-sale-product-specs" id="product_36672-specs-content">
+      <p><b>Specs</b></p>
+<ul>
+<li>Color: black</li>
+<li>Materials: ABS</li>
+<li>Product dimensions: 4.4" x 2.6" x 0.63"</li>
+<li>Weight: 5.6 oz</li>
+<li>Qi wireless technology</li>
+<li>Input:</li>
+<ul>
+<li>Wireless: 12V / 1A</li>
+<li>USB-C: DC 5V/9V, 12V; 18W</li>
+</ul>
+<li>Output:</li>
+<ul>
+<li>Wireless: DC 5V / 1A, 9V / 1.2A, 12V / 0.9A</li>
+<li>USB-C: 5V / 2A, 9V / 1.67A, 12V / 1.5A</li>
+</ul>
+<li>Capacity: 5,000mAh</li>
+<li>4 LED indicator lights</li>
+<li>Charging speed: 10W (wireless), 18W (USB-C)</li>
+<li>Charging time: 1.5 hours</li>
+<li>TSA-approved, can be packed in carry-on bags ONLY</li>
+<li>Manufacturer's 1-year warranty</li>
+</ul>
+
+<p><b>Compatibility</b></p>
+<ul><li>
+<a style="color:blue"></a><a href="https://bezalel.co/pages/futura-x-and-prelude-compatible-devices" target="_blank">Click here</a> to see if your device is compatible</li></ul>
+
+<p><b>Includes</b></p>
+<ul>
+<li>Prelude 10W Portable Wireless Charger</li>
+<li>USB Type-C Cable</li>
+<li>Product Guide</li>
+</ul>
+    </div>
+    <div class="sc-sale-product-specs" id="product_36672-shipping-content">
+      <p><b>Shipping</b></p><ul class="text-capitalize"><li>Ships to Contiguous US</li><li>Expected Delivery: Apr 29 - May  1</li></ul>
+    </div>
+
+  <div class="sc-sale-product-specs">
+    <p><b>Terms</b></p>
+    <ul><li>Returns accepted within 15 days of shipment for orders within the Contiguous US.</li></ul>
+  </div>
+
+
+                <div class="col-md-10">
+                  <div id="sc-share-buttons" class="row js-sc-share-container" data-sale-name="Prelude 10W Portable Wireless Charger">
+  <div class="caption">
+    Give $10, Get $10
+  </div>
+  <a class="sc-share-button js-sc-share-button" data-type="Share With Email" aria-label="share via email" href="mailto:?body=Red%20Dot%20Design%20Award%20Winner%21%20With%20Nano-Suction%20%26%20Magnetic%20Alignment%2C%20Prelude%20Easily%20Attaches%20to%20Any%20Qi%20Device%20for%20Fast%2C%20Portable%20Charging%20https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;subject=Digg%20-%20Prelude%2010W%20Portable%20Wireless%20Charger">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-share-square-o fa-stack-1x fa-inverse"></i>
+    </span>
+</a>  <a onclick="javascript:window.open(this.href,
+    &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=436,width=626&#39;);return false;" class="sc-share-button js-sc-share-button" data-type="Share With Facebook" aria-label="share via Facebook" href="https://www.facebook.com/dialog/feed?app_id=468274286708621&amp;link=https://store.digg.com/sales/prelude-10w-portable-wireless-charger&amp;picture=https://cdnp2.stackassets.com/923f1b5c63ff07f5014b5302c211d4d224f88b58/store/7785d14ec757a739f4964ed39daa8801994dd6223d3a4981463f599fcea6/sale_26782_primary_image.jpg&amp;name=Prelude+10W+Portable+Wireless+Charger&amp;caption=by+Bezalel&amp;description=Red+Dot+Design+Award+Winner%21+With+Nano-Suction+%26+Magnetic+Alignment%2C+Prelude+Easily+Attaches+to+Any+Qi+Device+for+Fast%2C+Portable+Charging&amp;redirect_uri=https://store.digg.com/">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+    </span>
+</a>  <a onclick="javascript:window.open(this.href,
+    &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=260,width=600&#39;);return false;" class="sc-share-button js-sc-share-button" data-type="Share With Twitter" aria-label="share via Twitter" href="http://twitter.com/share?text=Get+Prelude+10W+Portable+Wireless+Charger+-+Red+Dot+Design+Award+Winner%21+With+Nano-Suction+%26+Magnetic+Alignme...&amp;url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;counturl=https%3A%2F%2Fstore.digg.com%2F">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+    </span>
+</a></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-12">
+                  <div>
+                      <div class="intelligent-module"
+  data-track-impression='{ "list": "Related Deals" }'
+  data-sales="[{&quot;id&quot;:24387,&quot;name&quot;:&quot;HyperCharger X Wireless Charger: 2-Pack&quot;,&quot;title&quot;:&quot;This 6,000mAh Charger Functions as a Wireless Charging Pad, Traditional \u0026 Wireless Power Bank All-in-One&quot;,&quot;price_in_cents&quot;:3499,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]},{&quot;id&quot;:25112,&quot;name&quot;:&quot;Portable Keychain Apple Watch Charger&quot;,&quot;title&quot;:&quot;Never Run Out of Power Again with This Sleek, Portable \u0026 Easy-to-Use Mini Wireless Apple Watch Charger&quot;,&quot;price_in_cents&quot;:1699,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]},{&quot;id&quot;:27553,&quot;name&quot;:&quot;2-in-1 Wireless Charger + UV Sanitizer&quot;,&quot;title&quot;:&quot;Power Up \u0026 Disinfect! Using UV-C, This Tool Kills Harmful Bacteria and Germs as You Wirelessly Charge Your Phone ⁠— Great for Other Accessories Too!&quot;,&quot;price_in_cents&quot;:3799,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}]">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="intelligent-module-related-deals">
+        Related Deals
+      </h3>
+    </div>
+  </div>
+  <div>
+      <div class="row intelligent-module-course">
+        <div class="col-xs-5 related-deals-image">
+
+          <div class="sc-sale-unit-image-container">
+            <a href="/sales/hypercharger-x-wireless-charger-2-pack"
+              class="js-sc-sale-image"
+              data-sale="{&quot;id&quot;:24387,&quot;name&quot;:&quot;HyperCharger X Wireless Charger: 2-Pack&quot;,&quot;title&quot;:&quot;This 6,000mAh Charger Functions as a Wireless Charging Pad, Traditional \u0026 Wireless Power Bank All-in-One&quot;,&quot;price_in_cents&quot;:3499,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+              data-list="Related Deals"
+              data-track-list-click
+              data-related-sale-image>
+              <picture><img alt="HyperCharger X Wireless Charger: 2-Pack" class="img-responsive" src="https://cdnp1.stackassets.com/c3adb365df51b246af4e12cf5f7013cf88a09e75/store/opt/596/417/4dd538d2991bfb95cef37e7561f05aa07d2fb790f3ea63d44c397088ffc9/product_33849_product_shots4.jpg" /></picture>
+            </a>
+
+            <button name="button" type="button" class="sc-add-to-favorite js-favorite js-favorite-track " aria-label="add to wishlist" data-sale-name="HyperCharger X Wireless Charger: 2-Pack" data-sale-id="24387" data-category="Intelligent Module">
+  <svg class="svg-icon">
+    <use class="icon-favorite" xlink:href="#icon-circle-heart"></use>
+    <use class="icon-favorite-filled" xlink:href="#icon-circle-heart-filled"></use>
+  </svg>
+</button>
+          </div>
+
+        </div>
+
+        <div class="col-xs-7">
+          <a href="/sales/hypercharger-x-wireless-charger-2-pack"
+            class="js-sc-sale-link"
+            data-sale="{&quot;id&quot;:24387,&quot;name&quot;:&quot;HyperCharger X Wireless Charger: 2-Pack&quot;,&quot;title&quot;:&quot;This 6,000mAh Charger Functions as a Wireless Charging Pad, Traditional \u0026 Wireless Power Bank All-in-One&quot;,&quot;price_in_cents&quot;:3499,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+            data-list="Related Deals"
+            data-track-list-click
+            data-related-sale-text>
+            <div class="title sale-detail-title">HyperCharger X Wireless Charger: 2-Pack</div>
+            <div class="numbers">
+              <span class="price primary-color">$34.99</span>
+
+                <span class="original-price">
+                  <s>$60.00</s>
+                </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row intelligent-module-course">
+        <div class="col-xs-5 related-deals-image">
+
+          <div class="sc-sale-unit-image-container">
+            <a href="/sales/portable-keychain-apple-watch-charger-black"
+              class="js-sc-sale-image"
+              data-sale="{&quot;id&quot;:25112,&quot;name&quot;:&quot;Portable Keychain Apple Watch Charger&quot;,&quot;title&quot;:&quot;Never Run Out of Power Again with This Sleek, Portable \u0026 Easy-to-Use Mini Wireless Apple Watch Charger&quot;,&quot;price_in_cents&quot;:1699,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+              data-list="Related Deals"
+              data-track-list-click
+              data-related-sale-image>
+              <picture><img alt="Portable Keychain Apple Watch Charger" class="img-responsive" src="https://cdnp3.stackassets.com/07a666892315f854040987ca7d02b12b45b844f2/store/opt/596/417/9515b1b60ecdee4c38f8e645fb9bae5ca7c441ac0bcbf7262a88441aea65/sale_25112_primary_image.jpg" /></picture>
+            </a>
+
+            <button name="button" type="button" class="sc-add-to-favorite js-favorite js-favorite-track " aria-label="add to wishlist" data-sale-name="Portable Keychain Apple Watch Charger" data-sale-id="25112" data-category="Intelligent Module">
+  <svg class="svg-icon">
+    <use class="icon-favorite" xlink:href="#icon-circle-heart"></use>
+    <use class="icon-favorite-filled" xlink:href="#icon-circle-heart-filled"></use>
+  </svg>
+</button>
+          </div>
+
+        </div>
+
+        <div class="col-xs-7">
+          <a href="/sales/portable-keychain-apple-watch-charger-black"
+            class="js-sc-sale-link"
+            data-sale="{&quot;id&quot;:25112,&quot;name&quot;:&quot;Portable Keychain Apple Watch Charger&quot;,&quot;title&quot;:&quot;Never Run Out of Power Again with This Sleek, Portable \u0026 Easy-to-Use Mini Wireless Apple Watch Charger&quot;,&quot;price_in_cents&quot;:1699,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+            data-list="Related Deals"
+            data-track-list-click
+            data-related-sale-text>
+            <div class="title sale-detail-title">Portable Keychain Apple Watch Charger</div>
+            <div class="numbers">
+              <span class="price primary-color">$16.99</span>
+
+                <span class="original-price">
+                  <s>$29.99</s>
+                </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row intelligent-module-course">
+        <div class="col-xs-5 related-deals-image">
+
+          <div class="sc-sale-unit-image-container">
+            <a href="/sales/2-in-1-wireless-charger-uv-sanitizer"
+              class="js-sc-sale-image"
+              data-sale="{&quot;id&quot;:27553,&quot;name&quot;:&quot;2-in-1 Wireless Charger + UV Sanitizer&quot;,&quot;title&quot;:&quot;Power Up \u0026 Disinfect! Using UV-C, This Tool Kills Harmful Bacteria and Germs as You Wirelessly Charge Your Phone ⁠— Great for Other Accessories Too!&quot;,&quot;price_in_cents&quot;:3799,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+              data-list="Related Deals"
+              data-track-list-click
+              data-related-sale-image>
+              <picture><img alt="2-in-1 Wireless Charger + UV Sanitizer" class="img-responsive" src="https://cdnp0.stackassets.com/4f8926aa1e0024e1ed6db15712aada06f5b05c52/store/opt/596/417/090656e542e848f3b28b30ac8cde3423c8882d425cf078ffb94fbfae19a9/sale_27553_primary_image.jpg" /></picture>
+            </a>
+
+            <button name="button" type="button" class="sc-add-to-favorite js-favorite js-favorite-track " aria-label="add to wishlist" data-sale-name="2-in-1 Wireless Charger + UV Sanitizer" data-sale-id="27553" data-category="Intelligent Module">
+  <svg class="svg-icon">
+    <use class="icon-favorite" xlink:href="#icon-circle-heart"></use>
+    <use class="icon-favorite-filled" xlink:href="#icon-circle-heart-filled"></use>
+  </svg>
+</button>
+          </div>
+
+        </div>
+
+        <div class="col-xs-7">
+          <a href="/sales/2-in-1-wireless-charger-uv-sanitizer"
+            class="js-sc-sale-link"
+            data-sale="{&quot;id&quot;:27553,&quot;name&quot;:&quot;2-in-1 Wireless Charger + UV Sanitizer&quot;,&quot;title&quot;:&quot;Power Up \u0026 Disinfect! Using UV-C, This Tool Kills Harmful Bacteria and Germs as You Wirelessly Charge Your Phone ⁠— Great for Other Accessories Too!&quot;,&quot;price_in_cents&quot;:3799,&quot;categories&quot;:[{&quot;name&quot;:&quot;Chargers&quot;}]}"
+            data-list="Related Deals"
+            data-track-list-click
+            data-related-sale-text>
+            <div class="title sale-detail-title">2-in-1 Wireless Charger + UV Sanitizer</div>
+            <div class="numbers">
+              <span class="price primary-color">$37.99</span>
+
+                <span class="original-price">
+                  <s>$44.99</s>
+                </span>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container sale-reviews js-sale-reviews">
+    <div class="js-sale-reviews-header"></div>
+    <div class="js-sale-reviews-entries-container"></div>
+
+    <div class="sale-reviews-expand-reviews">
+      <a href="#" class="js-sale-reviews-see-more-link brand-primary">See More Reviews</a>
+    </div>
+  </div>
+
+  <script class="js-sale-reviews-header-template" type="text/html">
+    <div class="sale-reviews-header">
+      <ul class="sale-reviews-line">
+        <li class="sale-reviews-count">
+          <b>Reviews ({{ total_count }})</b>
+        </li>
+        <li class="sale-reviews-stars-average">
+          <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+        </li>
+        <li class="sale-reviews-advice">
+          <img class="sale-reviews-verified-mark" alt="Verified" src="https://shops2.stackassets.com/assets/checkmark-b6bb330dfb8d9035907a79040b8ba7fd46a4dffbad93d6e1334d20d343214888.svg" />
+          All reviews are from verified purchasers. Reviews are collected after purchase.
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <script class="js-sale-reviews-entry-template" type="text/html">
+    <div class="sale-reviews-entry">
+      <hr />
+      <ul class="sale-reviews-line">
+        <li class="sale-reviews-review-author">
+          <b>{{ author }}</b>
+          <img class="sale-reviews-verified-mark" alt="Verified" src="https://shops2.stackassets.com/assets/checkmark-b6bb330dfb8d9035907a79040b8ba7fd46a4dffbad93d6e1334d20d343214888.svg" />
+        </li>
+        <li>
+          <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+        </li>
+        <li class="sale-reviews-review-date">
+          {{ date }}
+        </li>
+      </ul>
+      <br />
+      <i class="sale-reviews-review-description">{{ comment }}</i>
+    </div>
+  </script>
+
+
+  <div class="container intelligent-modules-container">
+    <div class="js-intelligent-module-sale js-best-sellers intelligent-modules-section">
+      <div data-columns="4" data-title="Best Sellers" data-index-url="/best-sellers" data-entries="/v0/search/sales?exclude_sale_ids%5B%5D=26782&amp;per_page=4&amp;publisher_id=124&amp;sort=best_sellers" data-module-type="SalesIntelligentModule" class="intelligent-module js-intelligent-module sales-intelligent-module "></div>
+    </div>
+
+      <div class="js-intelligent-module-sale intelligent-modules-section">
+    <div data-columns="4" data-title="Recently Viewed" data-entries="/v0/search/sales?exclude_sale_ids%5B%5D=26782&amp;per_page=4&amp;publisher_id=124&amp;sale_ids%5B%5D=24387&amp;sale_ids%5B%5D=20157&amp;sale_ids%5B%5D=19393&amp;sale_ids%5B%5D=20526&amp;sort=sale_ids&amp;without_free=false" data-module-type="SalesIntelligentModule" class="intelligent-module js-intelligent-module sales-intelligent-module "></div>
+  </div>
+
+  </div>
+
+</div>
+        </div>
+      </div>
+
+      <footer id="footer" class="footer">
+  <div class="container">
+
+    <div class="footer-menus-row row">
+      <div class="col-md-5">
+        <div class="footer-newsletter">
+    <h5 class="footer-title footer-newsletter-title">Sign up & get 10% Off</h5>
+
+  <form class="clearfix form-inline" id="newsletter-subscribe-form" data-use-recaptcha="true" role="form" action="/subscribe?footer_newsletter=1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="XM2jUDpoYuGsXb3i1tfwZjqSOcJ7L25j6VFzZZUmSfScTDMIxxrE4in4oymfulO9i4aKMq7mfq+JyyDb0Uujrw==" />
+    <div class="clearfix js-mailcheck-container">
+      <input type="hidden" name="source" id="footer-source" value="Footer" />
+      <label for="signup-newsletter" class="sr-only">Email address</label>
+      <input type="email" name="email" id="signup-newsletter" class="form-control js-email-field" placeholder="Email" />
+
+      <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response" />
+
+      <button type="submit" class="btn-primary">
+        Sign up
+      </button>
+    </div>
+
+      <span class="newsletter-legend">
+          *New customers only. Offer lasts 30 days. See Terms.
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+      </span>
+</form></div>
+
+<script type="text/javascript">
+  $('#newsletter-subscribe-form').on('submit', function(event) {
+    submitFormWithRecaptcha(event, "recaptcha_newsletter_subscription")
+  });
+</script>
+
+      </div>
+
+      <div class="col-md-7 footer-menus footer-menus-vendor">
+        <div class="row">
+          <div class="col-xs-4">
+  <h4 class="footer-title">My Account</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a href="/user?show=profile-tab">Profile</a>
+    </li>
+    <li>
+      <a href="/user?show=account-tab">Account</a>
+    </li>
+    <li>
+      <a href="/user/purchases">Purchases</a>
+    </li>
+    <li>
+      <a href="/user/credits">Credits</a>
+    </li>
+    <li>
+      <a href="/user?show=preferences-tab">Preferences</a>
+    </li>
+    <li>
+      <a href="/user?show=info-request">Do Not Sell My Personal Information</a>
+    </li>
+  </ul>
+</div>
+
+<div class="col-xs-4">
+  <h4 class="footer-title">Support</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/requests/new?persona=Internet+Culture&amp;product_name=Prelude+10W+Portable+Wireless+Charger&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26782&amp;sale_name=Prelude+10W+Portable+Wireless+Charger&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;source=lower+footer+contact+link&amp;vendor_id=4531">Contact</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/?persona=Internet+Culture&amp;product_name=Prelude+10W+Portable+Wireless+Charger&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26782&amp;sale_name=Prelude+10W+Portable+Wireless+Charger&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;source=lower+footer+FAQs+link&amp;vendor_id=4531">FAQs</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641992-Shipping?persona=Internet+Culture&amp;product_name=Prelude+10W+Portable+Wireless+Charger&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26782&amp;sale_name=Prelude+10W+Portable+Wireless+Charger&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;source=lower+footer+shipping+link&amp;vendor_id=4531">Shipping</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641952-Refund-and-Return-Policy?persona=Internet+Culture&amp;product_name=Prelude+10W+Portable+Wireless+Charger&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26782&amp;sale_name=Prelude+10W+Portable+Wireless+Charger&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fprelude-10w-portable-wireless-charger&amp;source=lower+footer+returns+link&amp;vendor_id=4531">Returns</a>
+    </li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/accessibility">Accessibility</a></li>
+  </ul>
+</div>
+
+
+            <div class="col-xs-12 col-sm-4 footer-vendor-section">
+  <hr class="visible-xs">
+
+  <h4 class="footer-title">Are you a vendor?</h4>
+  <p class="footer-subtitle">Get exclusive coverage to the world's top publisher sites through the StackCommerce network.</p>
+
+  <a class="pub-footer-link primary-color" target="_blank" href="https://www.stackcommerce.com/vendors">Learn More</a>
+
+  <div class="powered-by">
+  <h6>Powered By</h6>
+
+  <a target="_blank" href="https://stackcommerce.com/">
+    <img alt="StackCommerce" src="https://shops2.stackassets.com/assets/core/logo-light-be04c77da6de1475cb2c1c82cf75120f338265aa36dfd6ed8a6404a720c28431.svg" />
+</a></div>
+
+
+  <div class="hidden-xs pub-copyright">
+    <p>Copyright &copy; 2020 StackCommerce. All Rights Reserved.</p>
+  </div>
+
+  <div class="bbb-badge-container">
+  <a class="sehzbus bbb-badge"
+    id="bbblink"
+    target="_blank" href="https://www.bbb.org/losangelessiliconvalley/business-reviews/online-retailer/stackcommerce-in-venice-ca-1013267#bbbseal"
+    title="StackCommerce, Online Retailer, Venice, CA">
+      <img
+        id="bbblinkimg"
+        src="https://seal-sanjose.bbb.org/logo/sehzbus/stackcommerce-1013267.png"
+        width="200"
+        height="38"
+        alt="StackCommerce, Online Retailer, Venice, CA">
+  </a>
+</div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+        <img alt="Digg logo" class="sc-footer-pub-logo hidden-xs" src="https://cdnp3.stackassets.com/3cd152b6e15fd8734497708cb799013cac905773/store/7c6bb1fa8e748ae29147a733147ae02bbb82ff2b08be0d229110d3b585bd/18485477206329f39051d32ebd95fa7629126b67_logo_footer.png" />
+
+
+  </div>
+</footer>
+
+<script>
+//<![CDATA[
+
+  var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+  document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-sanjose.bbb.org' + unescape('%2Flogo%2Fstackcommerce-1013267.js') + "' type='text/javascript'%3E%3C/script%3E"));
+
+//]]>
+</script>
+    </div>
+
+    <script src="//www.lightboxcdn.com/vendor/2b159396-5db4-4f36-950e-cd35347c27bb/lightbox_inline.js"></script>
+
+    
+    <script src="https://shops2.stackassets.com/assets/config-1f804646a773fcbfb637a5dced669235a1e51d565e9c8824dfb879ad60b483bb.js"></script>
+
+<script>
+  SC.config.setPublisher({"id":124,"name":"Digg","hostname":"store.digg.com","brand_primary_color":"#00B0FF","vertical":"lifestyle"});
+  SC.config.setUser(null);
+  SC.config.setOptions({
+    loyaltySpentAmount: 25,
+    loyaltyAmountInCredit: 1,
+    jetloreCartUpsellFilter: 'PROD_CART_UPSELL_FILTER'
+  });
+</script>
+
+    <script src="https://shops2.stackassets.com/assets/classic-67302364fece7ef493124de4680976ff9d17e5d71d047779a6831f7296275f48.js"></script>
+      <script type="text/javascript">
+    var _at = {}; window._at.track = window._at.track || function(){(window._at.track.q = window._at.track.q || []).push(arguments);};
+
+    _at.domain = 'store.digg.com/';
+    _at.idSite = '8310';
+    _at.webpushid = 'web.56.aimtell.com';
+    _at.owner = '2fcd12b568b6';
+    _at.attributes = {};
+
+    (function() { var u='//s3.amazonaws.com/cdn.aimtell.com/trackpush/'; var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'trackpush.min.js'; s.parentNode.insertBefore(g,s); })();
+  </script>
+
+    <script>
+  window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+    if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    t._e = []; t.ready = function(f) { t._e.push(f); };
+    return t;
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<script>
+</script>
+
+  <!-- Quantcast Tag, part 2 -->
+  <script type="text/javascript">
+    _qevents.push( { qacct:"p-443uI8zl5eTMM" } );
+  </script>
+  <noscript>
+    <div style="display:none;">
+      <img src="//pixel.quantserve.com/pixel/p-443uI8zl5eTMM.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+  </noscript>
+<!-- End Quantcast tag -->
+
+    
+    
+
+      
+      
+    <div bundle-club-modal visible="showModal"></div>
+    
+  </body>
+    <script>
+      var event  =  'SCDataLayer';
+      var action =  'BROWSE';
+
+      SC.dataLayer.enqueue(event, action, {"event":"SCDataLayer","action":"BROWSE","productId":26782,"productPrice":63.99});
+  </script>
+
+  
+</html>

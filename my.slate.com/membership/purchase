@@ -1,0 +1,847 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"f3154255a5",applicationID:"2628866"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"f3154255a5","applicationID":"2628866","transactionName":"YwEAY0tTXkJYURBYVlpLJEJXUURYVlxLXEBrFw5WTVceQUtdHFhcR0oIVldAUVhXHBJYXEMXWHtWVVlfb1sBRhdTARY=","queueTime":0,"applicationTime":4,"agent":""}</script>
+    
+    <meta name="description" content="Sign in securely to an existing account on Slate.com, or create a new account." />
+    
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slate Magazine &mdash; Sign In or Create Account</title>
+
+    
+
+    <link type="text/css" rel="stylesheet" href="/static/janrain/css/janrain.css"/>
+    <script>
+     (function(w, d){
+        window.redirect_uri = null;
+        try {
+          window.redirect_uri = new URL(document.location).searchParams.get('redirect_uri');
+          // confirm that redirect is to a slate site
+          if(!new URL(window.redirect_uri).hostname.match(/(\.slate\.com|slate.com)$/)){
+            window.redirect_uri = null;
+          }
+        } catch(e){
+          console.error(e);
+        }
+     }(window, document))
+    </script>
+    <script data-ad-site="slate" src="/static/js/require.js" ></script>
+
+    
+
+<!-- Amplitude -->
+<script defer>
+  require(['https://cdn.amplitude.com/libs/amplitude-5.6.0-min.gz.js'], function(amplitude) {
+
+    amplitude.getInstance().init('5a7cb616c0717cb7f4f0eee43d9f4e1c');
+
+    window.amplitude = amplitude; // You can bind the amplitude object to window if you want to use it directly.
+  });
+</script>
+
+<script defer>
+  require(['https://cdn.amplitude.com/libs/amplitude-5.6.0-min.gz.js'], function(amplitude) {
+    window.slateAmplitudeQueue = {
+      _q: [],
+      push: function(callback){
+        // TODO, if init has been called, we should run through the queue
+        this._q.push(callback)
+      },
+      init: function(instance, consent){
+        if(consent === 'grant'){
+          instance.setOptOut(false);
+          for (let i = 0; i < this._q.length; i++) {
+            this._q[i](instance);
+          }
+          this._q = [];
+        }
+        if(consent === 'revoke'){
+          instance.setOptOut(true);
+        }
+      }
+    }
+
+    var amplitudeOptions = {
+      saveEvents: true,
+      includeUtm: true,
+      includeReferrer: true,
+      includeGclid: true,
+      saveParamsReferrerOncePerSession: false,
+      domain: '.slate.com'
+    }
+
+    window.slateAmplitudeInit = function(callback) {
+      amplitude.getInstance().init(
+        '5a7cb616c0717cb7f4f0eee43d9f4e1c',
+        null,
+      amplitudeOptions,
+      callback);
+    };
+
+    window.amplitude = amplitude; // You can bind the amplitude object to window if you want to use it directly.
+  });
+</script>
+<!-- End Amplitude -->
+
+
+    <script type="text/javascript" defer>
+    requirejs.config({
+      "baseUrl": "/static/janrain/js",
+      "paths": {
+        "jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min",
+        "jquery-ui": "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min",
+        "modernizr": "https://slate-static-prod.s3.amazonaws.com/etc/designs/slate/js/libs/modernizr-2.6.1.min",
+        "pitch-page": "/static/js/pitch-page"
+       },
+       "shim": {
+         "libs/jquery-plugins/jquery.cookie": ["jquery"],
+         "libs/jquery-plugins/jquery.flexslider": ["jquery"],
+         "jquery-ui": ["jquery"],
+         "modernizr": {
+           "exports": "Modernizr"
+          }
+       }
+     });
+    define('config', {
+      env: {
+        environment: 'prod',
+        siteDomain: 'slate.com',
+        myslateURI: 'https://my.slate.com',
+        slateHost: 'http://www.slate.com'
+      },
+      janrain: {
+        siteConfig: {
+          propertyId: 'login.slate.com',
+          gotoUrl: ''
+        },
+        appUrl: 'https://login.slate.com',
+        capture: {
+          appId: 'dbuhzej2qm7k436x6jg4qpef3f',
+          captureServer: 'https://profile.slate.com',
+          clientId: 'sskdd3tv7ekxx8mt6gq5hnu7mdxpmpha',
+          httpLoadUrl: 'http://widget-cdn.rpxnow.com/load/login.slate.com',
+          httpsLoadUrl: 'https://rpxnow.com/load/login.slate.com'
+        },
+        federate: {
+          federateServer: 'https://slate.janrainsso.com',
+          federateXdReceiver: '/xd_receiver/',
+          federateLogoutUri: '/logout/'
+        }
+      }
+    });
+
+    requirejs(['janrain-init', 'janrain-utils']);
+
+    </script>
+
+    
+
+
+
+
+
+
+
+<style>
+.as-oil .as-oil-content-overlay{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#f8f8f8;color:#222;opacity:1;padding:27px 54px;box-shadow:0 12px 15px 5px rgba(0,0,0,0.5);border:solid 1px #ddd;box-sizing:border-box}.fonts-loaded .as-oil .as-oil-content-overlay{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-content-overlay a{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay a:hover,.as-oil .as-oil-content-overlay a:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay a:hover,.as-oil .as-oil-content-overlay a:focus{border-color:transparent}.as-oil .as-oil-content-overlay .as-oil__heading{font-family:Georgia,Times,serif;font-weight:bold;font-size:1.383rem;grid-row:1;grid-column:1}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil__heading{font-family:Register,Georgia,Times,serif}@media (max-width: 930px){.as-oil .as-oil-content-overlay .as-oil__heading{text-align:left}}.as-oil .as-oil-content-overlay .as-oil__intro-txt{font-size:.87836rem;line-height:1.25;letter-spacing:normal;grid-row:2;grid-column:1;max-width:100%}.as-oil .as-oil-content-overlay .as-oil__btn-optin{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#2c0022;border:1px solid transparent;border-radius:2px;color:#fff;display:inline-block;font-size:1rem;line-height:1;padding:.5em .57143em;text-align:center;text-decoration:none;transition:all 0.15s ease-in-out;user-select:none;vertical-align:middle;white-space:nowrap;font-weight:400}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil__btn-optin{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-content-overlay .as-oil__btn-optin:hover,.as-oil .as-oil-content-overlay .as-oil__btn-optin:focus{background-color:#56334e}@media (max-width: 768px){.as-oil .as-oil-content-overlay .as-oil__btn-optin{width:95px;height:32px;font-size:.87836rem}}.as-oil .as-oil-content-overlay .as-oil-l-buttons{grid-row:1 / span 2;grid-column:2;margin:0;max-width:none}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item{text-align:center;margin:0 auto}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;float:none;padding:0}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:hover,.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:hover,.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:focus{border-color:transparent}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}@media (max-width: 768px){.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{width:auto;margin:0.75rem 0}}.as-oil .as-oil-l-wrapper-layout-max-width{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;grid-column-gap:20px;max-width:1100px;margin:0 auto}@media (max-width: 768px){.as-oil .as-oil-l-wrapper-layout-max-width{display:flex;flex-direction:column}}.as-oil .as-oil-cpc-wrapper{display:block;margin:40px auto 0}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle{border:none}}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle .as-oil-cpc__row-title{margin:0}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle .as-oil-cpc__purpose{border:solid 1px #999;border-radius:0}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left{font-size:.87836rem;text-transform:capitalize;font-weight:bold}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left a{border-bottom:none}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left .as-oil-cpc__category-link:not(.as-oil-cpc__category-link--active){border-color:transparent}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all{margin-right:200px}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all{text-align:left;margin-right:0}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:rgba(0,0,0,0);border:1px solid transparent;border-radius:2px;color:#222;display:inline-block;font-size:1rem;line-height:1;padding:.5em .57143em;text-align:center;text-decoration:none;transition:all 0.15s ease-in-out;user-select:none;vertical-align:middle;white-space:nowrap;font-size:.87836rem;font-weight:normal;width:105px;height:35px;border:solid 1px #999;line-height:25px}.fonts-loaded .as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span:hover,.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span:focus{background-color:#ddd}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all .as-js-btn-deactivate-all{margin-right:19px}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all .as-js-btn-deactivate-all{margin-right:13px}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__category-link--active{border-right:solid 3px #ff0e50}.as-oil .as-oil-cpc-wrapper .as-oil-icon-plus,.as-oil .as-oil-cpc-wrapper .as-oil-icon-minus{stroke:#ff0e50}.as-oil .as-oil-cpc-wrapper .as-oil-third-party-list-element{font-size:.87836rem;font-weight:bold;line-height:1.25;margin-bottom:19px;border-bottom:none}.as-oil .as-oil-cpc-wrapper .as-oil__intro-txt{display:none}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-l-row,.as-oil .as-oil-cpc-wrapper .as-js-purposes{padding-left:0}}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-l-item{text-align:left}}.as-oil .as-oil-cpc-wrapper .as-oil-back-button{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;right:auto;padding:0}.as-oil .as-oil-cpc-wrapper .as-oil-back-button:hover,.as-oil .as-oil-cpc-wrapper .as-oil-back-button:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-cpc-wrapper .as-oil-back-button:hover,.as-oil .as-oil-cpc-wrapper .as-oil-back-button:focus{border-color:transparent}.fonts-loaded .as-oil .as-oil-cpc-wrapper .as-oil-back-button{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-cpc-wrapper .as-oil-back-button::before{content:"\003C"}@media (max-width: 930px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button{top:-40px;padding-left:0}}@media (max-width: 600px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button{display:flex;align-items:center}}.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__icon{display:none}.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__text{font-size:.87836rem;padding-left:5px;margin:0}@media (max-width: 600px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__text{visibility:visible}}
+</style>
+
+
+  <style>.as-oil {
+    display: none !important;
+  }
+  </style>
+
+
+<script>
+
+  if (!window.AS_OIL) {
+
+    window.AS_OIL = {};
+
+    window.AS_OIL.CONFIG = {
+      timeout: 0,
+      config_version: 2, // Important! Bumping this version will re-pop the CMP banner
+      advanced_settings:  false ,
+      advanced_settings_purposes_default: false,
+      publicPath: "https://slate.com/media/components/oil/",
+      preview_mode: false,
+      cookie_expires_in_days: 390,
+      default_to_optin:  true ,
+      customVendorListUrl: "https://slate.com/media/components/oil/customvendorlist.json",
+      poi_activate_poi: true,
+      poi_hub_origin: "https://slate.com",
+      poi_hub_path: "/media/components/oil/hub.html",
+      poi_subscriber_set_cookie: true,
+      poi_group_name: "Slate",
+      locale: {
+        localeId: "enEN_01",
+        version: 1,
+        texts: {
+          label_intro_heading: "We Use Cookies and Related Technology",
+          label_intro:
+            'Slate and our <a href="https://slate.com/thirdpartypartners"> partners </a> use cookies and related technology to deliver relevant advertising on our site, in emails and across the Internet. We and our partners also use these technologies to personalize content and perform site analytics. You can change your mind and choices at any time by accessing your <a  class="as-js-advanced-settings" >Settings</a>. For more information, see our <a href="https://slate.com/terms">terms</a> and <a href="https://slate.com/privacy">privacy policy</a>.',
+          label_button_advanced_settings: "No, take me to settings",
+          label_button_yes: "OK",
+          label_cpc_activate_all: "Turn on all",
+          label_cpc_deactivate_all: "Turn off all",
+          label_cpc_purpose_01_text: "Information storage and access",
+          label_cpc_purpose_01_desc:
+            "The storage of information, or access to information that is already stored, on your device such as advertising identifiers, device identifiers, cookies, and similar technologies.",
+          label_cpc_purpose_02_text: "Personalization",
+          label_cpc_purpose_02_desc:
+            "The collection and processing of information about your use of this service to subsequently personalize advertising and/or content for you in other contexts, such as on other websites or apps, over time. Typically, the content of the site or app is used to make inferences about your interests, which inform future selection of advertising and/or content.",
+          label_cpc_purpose_03_text: "Ad selection, delivery, reporting",
+          label_cpc_purpose_03_desc:
+            "The collection of information, and combination with previously collected information, to select and deliver advertisements for you, and to measure the delivery and effectiveness of such advertisements. This includes using previously collected information about your interests to select ads, processing data about what advertisements were shown, how often they were shown, when and where they were shown, and whether you took any action related to the advertisement, including for example clicking an ad or making a purchase. This does not include personalization, which is the collection and processing of information about your use of this service to subsequently personalize advertising and/or content for you in other contexts, such as websites or apps, over time.",
+          label_cpc_purpose_04_text: "Content selection, delivery, reporting",
+          label_cpc_purpose_04_desc:
+            "The collection of information, and combination with previously collected information, to select and deliver content for you, and to measure the delivery and effectiveness of such content. This includes using previously collected information about your interests to select content, processing data about what content was shown, how often or how long it was shown, when and where it was shown, and whether the you took any action related to the content, including for example clicking on content. This does not include personalization, which is the collection and processing of information about your use of this service to subsequently personalize content and/or advertising for you in other contexts, such as websites or apps, over time.",
+          label_cpc_purpose_05_text: "Measurement",
+          label_cpc_purpose_05_desc:
+            "The collection of information about your use of the content, and combination with previously collected information, used to measure, understand, and report on your usage of the service. This does not include personalization, the collection of information about your use of this service to subsequently personalize content and/or advertising for you in other contexts, i.e. on other service, such as websites or apps, over time.",
+          label_cpc_heading: "Privacy settings:",
+          label_cpc_purpose_desc: "Purposes",
+          label_button_back: "Back",
+          label_third_party: "IAB 3rd Parties",
+          label_custom_thirdparty_heading:"Publisher 3rd Parties",
+          iabVendorListUrl: "https://vendorlist.consensu.org/vendorlist.json"
+        }
+      }
+    }
+  }
+
+
+    
+
+</script>
+
+<script src="https://slate.com/media/components/oil/oilstub.1.3.5-RELEASE.min.js"></script>
+<script src="https://slate.com/media/components/oil/oil.1.3.5-RELEASE.min.js"></script>
+
+
+    
+
+
+  </head>
+  <body >
+    
+
+    
+<nav class="slate-signin">
+    <a href="https://slate.com">
+      <svg xmlns="http://www.w3.org/2000/svg" width="119" height="37" viewBox="0 0 258 80" style="margin: 6px 0 2px;">
+          <title>Slate logo</title>
+          <path fill="#FFF" d="M257.9 18.8h-23.3v12.7h23.3V48h-23.3v13.1h23.3V78h-43V2h43v16.7zM205.7 2v16.7h-16.1v59H170v-59h-16.1V2h51.8zm-85.8 0h13.3L161.9 78h-21l-5.7-16.7h-15.3v-15H130L120 17.1V2zm-55.5 0H84v59.1h26.5V78H64.4V2zM26 18.1a5.6 5.6 0 0 0-2.4 4.8c0 1.4.4 2.5 1.2 3.3.8.9 1.8 1.7 3.1 2.3 1.3.6 2.8 1.2 4.4 1.7 1.7.4 3.3 1 4.9 1.5 6.4 2.1 11 5 14 8.6 3 3.5 4.5 8.2 4.5 14 0 3.9-.7 7.4-2 10.5A22 22 0 0 1 48 73c-2.5 2.3-5.5 4-9.2 5.2A45.2 45.2 0 0 1 0 71.4l8.4-15.8a34 34 0 0 0 8.7 5.8c2.9 1.3 5.7 2 8.5 2 3.2 0 5.6-.8 7.1-2.3a6.8 6.8 0 0 0 1.8-8c-.4-.8-1-1.6-2-2.3a16 16 0 0 0-3.7-2l-5.4-2-7.5-2.6c-2.4-1-4.6-2.3-6.5-3.9a18 18 0 0 1-4.5-6A21.6 21.6 0 0 1 3 24.8c0-3.7.6-7.1 1.8-10.2A22.7 22.7 0 0 1 18.3 1.8C21.6.6 25.2 0 29.2 0a47.3 47.3 0 0 1 23.4 6.1l-7.8 15.4c-2.1-1.7-4.3-3-6.4-3.9a17 17 0 0 0-6.2-1.2 10 10 0 0 0-6.2 1.8z"/>
+      </svg>
+    </a>
+
+  <ul class="slate-signin__links">
+    <li>
+      <a id="captureSignInLink" style="display:none" onclick="janrain.capture.ui.renderScreen('signIn')">Sign In</a>
+    </li>
+    <li>
+      <a id="captureSignUpLink" style="display:none" data-capturescreen="traditionalRegistration">Sign Up</a>
+    </li>
+    <li>
+      <a id="captureProfileLink" style="display:none" href="https://my.slate.com/login/?screenToRender=editProfile">Edit Profile</a>
+    </li>
+    <li>
+      <a id="captureSignOutLink" style="display:none" href="https://my.slate.com/login/?screenToRender=signOut">Sign Out</a>
+    </li>
+  </ul>
+</nav>
+
+  <main>
+    
+
+
+
+    <!--
+    ============================================================================
+        SIGNIN SCREENS:
+        The following screens are part of the sign in user workflow. For a
+        complete out-of-the-box sign in experience, these screens must be
+        included on the page where you are implementing sign in and registration.
+    ============================================================================
+    -->
+
+    <!-- signIn:
+    This is the starting point for sign in and registration. This screen is
+    rendered by default. In order to change this behavior, the Flow must be
+    edited.
+    -->
+    <div style="display:none;" id="signIn">
+        
+        
+        <h1 class="signin-form__heading">Sign In</h1>
+        <p class="roadblock-text1">Sign in securely to your Slate account below. Or <a data-capturescreen="traditionalRegistration">create a new account</a>.</p>
+        
+          {* #signInForm *}
+              {* signInEmailAddress *}
+              {* currentPassword *}
+              <a href="" class="signin-form__forgot" data-capturescreen="forgotPassword">Forgot your password?</a>
+              <div class="text-center"><button class="capture_btn" type="submit" id="test">Sign In</button></div>
+          {* /signInForm *}
+
+          <div class="other-options-line"><span>or</span></div>
+
+          {* loginWidget *}
+    </div>
+
+    <!-- returnSocial:
+    This is the screen the user sees in place of the signIn screen if they've
+    already signed in with a social account on this site. Rendering of this
+    screen is defined in the Flow only when the 'janrainLastAuthMethod' cookie
+    is set to'socialSignin'.
+    -->
+    <div style="display:none;" id="returnSocial">
+        <h1 class="signin-form__heading">Sign In</h1>
+        <h2>Welcome back, {* welcomeName *}!</h2>
+        {* loginWidget *}
+        <a data-cancelcapturereturnexperience="true">Use another account</a>
+    </div>
+
+    <!-- returnTraditional:
+    This is the screen the user sees in place of the signIn screen if they've
+    already signed in with a traditional account on this site. Rendering of this
+    screen is defined in the Flow only when the 'janrainLastAuthMethod' cookie
+    is set to'traditionalSignin'.
+    -->
+    <div style="display:none;" id="returnTraditional">
+        <h1 class="signin-form__heading">Sign In</h1>
+        <h2 class="capture_centerText"><span id="traditionalWelcomeName">Welcome back!</span></h2>
+        <div class="capture_backgroundColor">
+            {* #signInForm *}
+                {* signInEmailAddress *}
+                {* currentPassword *}
+                <button class="capture_btn" type="submit">Sign In</button>
+            {* /signInForm *}
+            <a data-cancelcapturereturnexperience="true">Use another account</a>
+        </div>
+    </div>
+
+    <!-- accountDeactivated:
+        This screen is rendered if the user's account is deactivated. Screen
+        rendering is handled in janrain-init.js.
+    -->
+    <div style="display:none;" id="accountDeactivated">
+        <h1 class="signin-form__heading">Deactivated Account </h1>
+        <p>Your account has been deactivated.</p>
+    </div>
+
+    <!-- legalAcceptances:
+          This screen is rendered if the legal acceptances have been updated since
+          the last time the user logged in.
+     -->
+     <div style="display:none;" id="legalAcceptances">
+          <h1 class="signin-form__heading">Legal Acceptance Test</h1>
+          {* #legalAcceptancesForm *}
+              <p>Please accept our new <a href="https://slate.com/privacy" target="_blank">Terms and Conditions</a>.</p>
+
+              {* submitButton *}
+          {* /legalAcceptancesForm *}
+     </div>
+
+
+
+    <!--
+    ============================================================================
+        REGISTRATION SCREENS:
+        The following screens are part of the registration user workflow. For a
+        complete out-of-the-box registration experience, these screens must be
+        included on the page where you are implementing sign in and
+        registration.
+    ============================================================================
+    -->
+
+    <!-- socialRegistration:
+        When a user clicks an IDP and does not already have an account in your
+        capture application, this screen is rendered. This behavior is defined
+        in the Flow.
+    -->
+    <div style="display:none;" id="socialRegistration">
+        
+        
+        <h1 class="signin-form__heading">Create an Account</h1>
+        
+        <p class="roadblock-text1">Please confirm the information below.</p>
+        {* #socialRegistrationForm *}
+            {* emailAddress *}
+            {* displayName *}
+            {* globalOpt *}
+            {* userTag *}
+
+            <p class="roadblock-text2">By clicking &quot;Create My Account,&quot; you confirm that you accept our <a href="http://www.slate.com/articles/briefing/slate_user_agreement_and_privacy_policy/2012/12/slate_s_terms_of_service.html" target="_blank">terms of service</a> and have read and understand our <a href="http://www.slate.com/articles/briefing/slate_user_agreement_and_privacy_policy/2012/12/slate_s_privacy_policy.html" target="_blank">privacy policy</a>.</p>
+
+            <div class="text-center"><input value="Create Account" type="submit" class="capture_btn"></div>
+        {* /socialRegistrationForm *}
+    </div>
+
+    <!-- traditionalRegistration:
+        When a user clicks the 'Create Account' button this screen is rendered.
+    -->
+    <div style="display:none;" id="traditionalRegistration">
+        
+        
+        <h1 class="signin-form__heading">Create an Account</h1>
+        
+        <p class="roadblock-text1">Please confirm the information below. Already have an account? <a id="capture_traditionalRegistration_navSignIn" data-capturescreen="signIn">Sign In.</a></p>
+
+        {* #registrationForm *}
+            {* emailAddress *}
+            {* displayName *}
+            {* newPassword *}
+            {* newPasswordConfirm *}
+            {* globalOpt *}
+            {* userTag *}
+
+            <p class="roadblock-text2">By clicking &quot;Create My Account,&quot; you confirm that you accept our <a href="http://www.slate.com/articles/briefing/slate_user_agreement_and_privacy_policy/2012/12/slate_s_terms_of_service.html" target="_blank">terms of service</a> and have read and understand our <a href="http://www.slate.com/articles/briefing/slate_user_agreement_and_privacy_policy/2012/12/slate_s_privacy_policy.html" target="_blank">privacy policy</a>.</p>
+
+            <div class="text-center"><input value="Create Account" type="submit" class="capture_btn"></div>
+        {* /registrationForm *}
+    </div>
+
+    <!-- emailVerificationNotification:
+        This screen is rendered after a user has registered. In the case of
+        traditional registration, this screen is always rendered after the user
+        completes registration on the traditionalRegistration screen. In the
+        case of social registration, this screen is only rendered if the data
+        returned from the IDP does not contain a verified email address.
+        Twitter is an example of an IDP that does not return a verified email.
+    -->
+    <div style="display:none;" id="emailVerificationNotification">
+        <h1 class="signin-form__heading">Thank you for registering!</h1>
+        <p>We have sent a confirmation email to {* emailAddressData *}. Please check your email and click on the link to activate your account.</p>
+    </div>
+
+
+
+
+    <!--
+    ============================================================================
+        FORGOT PASSWORD SCREENS:
+        The following screens are part of the forgot password user workflow. For
+        a complete out-of-the-box registration experience, these screens must be
+        included on the page where you are implementing forgot password
+        functionality.
+    ============================================================================
+    -->
+
+    <!-- forgotPassword:
+        Entry point into the forgot password user workflow. This screen is
+        rendered when the user clicks on the 'Forgot your password?' link on the
+        signIn screen.
+    -->
+    <div style="display:none;" id="forgotPassword">
+        <h1 class="signin-form__heading">Create a new password</h1>
+        <p>We'll send you a link to create a new password.</p>
+        {* #forgotPasswordForm *}
+            {* signInEmailAddress *}
+            <input value="Send" type="submit" class="capture_btn">
+        {* /forgotPasswordForm *}
+    </div>
+
+    <!-- forgotPasswordSuccess:
+        When the user submits an email address on the forgotPassword screen,
+        this screen is rendered.
+    -->
+    <div style="display:none;" id="forgotPasswordSuccess">
+      <h1 class="signin-form__heading">Create a new password</h1>
+      <p>We've sent an email with instructions to create a new password. Your existing password has not been changed.</p>
+      <a class="capture_btn" data-capturescreen="signIn">Sign In</a>
+    </div>
+
+
+
+
+    <!--
+    ============================================================================
+        MERGE ACCOUNT SCREENS:
+        The following screens are part of the account merging user workflow. For
+        a complete out-of-the-box account merging experience, these screens must
+        be included on the page where you are implementing account merging
+        functionality.
+    ============================================================================
+    -->
+
+    <!-- mergeAccounts:
+        This screen is rendered if the user created their account through
+        traditional registration and then tries to sign in with an IDP that
+        shares the same email address that exists in their user record.
+
+        NOTE! You will notice special tags you see on this screen. These tags,
+        such as '{| current_displayName |}' are rendered by the Janrain Capture
+        Widget in a way similar to JTL tags, but are more limited. We currently
+        only support modifying the text in this screen through the Flow. You
+        can, however, add your own markup and text throughout this screen as you
+        see fit.
+    -->
+    <div style="display:none;" id="mergeAccounts">
+        {* mergeAccounts {"custom": true} *}
+        <div id="capture_mergeAccounts_mergeAccounts_mergeOptionsContainer" class="capture_mergeAccounts_mergeOptionsContainer">
+            <div class="capture_header">
+                <div class="capture_icon_col">
+                    {| rendered_current_photo |}
+                </div>
+                <div class="capture_displayName_col">
+                    {| current_displayName |}<br />
+                    {| current_emailAddress |}
+                </div>
+                <span class="capture_mergeProvider janrain-provider-icon-24 janrain-provider-icon-{| current_provider_lowerCase |}"></span>
+            </div>
+            <div class="capture_dashed">
+                <div class="capture_mergeCol capture_centerText capture_left">
+                    <p class="capture_bigText">{| foundExistingAccountText |} <b>{| current_emailAddress |}</b>.</p>
+                    <div class="capture_hover">
+                        <div class="capture_popup_container">
+                            <span class="capture_popup-arrow"></span>{| moreInfoHoverText |}<br />
+                            {| existing_displayName |} - {| existing_provider |} : {| existing_siteName |} {| existing_createdDate |}
+                        </div>
+                        {| moreInfoText |}
+                    </div>
+                </div>
+                <div class="capture_mergeCol capture_mergeExisting_col capture_right">
+                    <div class="capture_shadow capture_backgroundColor capture_border">
+                        {| rendered_existing_provider_photo |}
+                        <div class="capture_displayName_col">
+                            {| existing_displayName |}<br />
+                            {| existing_provider_emailAddress |}
+                        </div>
+                        <span class="capture_mergeProvider janrain-provider-icon-16 janrain-provider-icon-{| existing_provider_lowerCase |} "></span>
+                        <div class="capture_centerText capture_smallText">Created {| existing_createdDate |} at {| existing_siteName |}</div>
+                    </div>
+                </div>
+            </div>
+            <div id="capture_mergeAccounts_form_collection_mergeAccounts_mergeRadio" class="capture_form_collection_merge_radioButtonCollection capture_form_collection capture_elementCollection capture_form_collection_mergeAccounts_mergeRadio" data-capturefield="undefined">
+                <div id="capture_mergeAccounts_form_item_mergeAccounts_mergeRadio_1_0" class="capture_form_item capture_form_item_mergeAccounts_mergeRadio capture_form_item_mergeAccounts_mergeRadio_1_0 capture_toggled" data-capturefield="undefined">
+                    <label for="capture_mergeAccounts_mergeAccounts_mergeRadio_1_0">
+                        <input id="capture_mergeAccounts_mergeAccounts_mergeRadio_1_0" data-capturefield="undefined" data-capturecollection="true" value="1" type="radio" class="capture_mergeAccounts_mergeRadio_1_0 capture_input_radio" checked="checked" name="mergeAccounts_mergeRadio">
+                            {| connectLegacyRadioText |}
+                    </label>
+                </div>
+                <div id="capture_mergeAccounts_form_item_mergeAccounts_mergeRadio_2_1" class="capture_form_item capture_form_item_mergeAccounts_mergeRadio capture_form_item_mergeAccounts_mergeRadio_2_1" data-capturefield="undefined">
+                    <label for="capture_mergeAccounts_mergeAccounts_mergeRadio_2_1">
+                        <input id="capture_mergeAccounts_mergeAccounts_mergeRadio_2_1" data-capturefield="undefined" data-capturecollection="true" value="2" type="radio" class="capture_mergeAccounts_mergeRadio_2_1 capture_input_radio" name="mergeAccounts_mergeRadio">
+                            {| createRadioText |} {| current_provider |}
+                    </label>
+                </div>
+                <div class="capture_tip" style="display:none;">
+            </div>
+                <div class="capture_tip_validating" data-elementname="mergeAccounts_mergeRadio">Validating</div>
+                <div class="capture_tip_error" data-elementname="mergeAccounts_mergeRadio"></div>
+            </div>
+            <div class="capture_footer">
+                {| connect_button |}
+                {| create_button |}
+            </div>
+        </div>
+    </div>
+
+    <!-- traditionalAuthenticateMerge:
+        When the user elects to merge their traditional and social account, the
+        user will see this screen. They will then enter their current sign in
+        credentials and, upon successful authorization, the accounts will be
+        merged.
+    -->
+    <div style="display:none;" id="traditionalAuthenticateMerge">
+        <h1 class="signin-form__heading">Sign in to complete account merge</h1>
+        <div class="capture_signin">
+            {* #signInForm *}
+                {* signInEmailAddress *}
+                {* currentPassword *}
+                <button class="capture_btn" type="submit">Sign In</button>
+             {* /signInForm *}
+        </div>
+    </div>
+
+
+
+
+    <!--
+    ============================================================================
+        EMAIL VERIFICATION SCREENS:
+        The following screens are part of the email verification user workflow.
+        For a complete out-of-the-box email verification experience, these
+        screens must be included on page where you are implementing email
+        verification.
+    ============================================================================
+    -->
+
+    <!-- verifyEmail:
+        This is the landing screen after a user clicks on the link in the
+        verification email sent to the user when they've registered with a
+        non-verified email address.
+
+        HOW IT WORKS: The code that is generated by Capture and included in the
+        link sent in the verification email is sent to the server and, if valid,
+        the user's email will be marked as valid and the verifyEmailSuccess
+        screen will be rendered. If the code is not accepted for any reason,
+        the verifyEmail screen is shown and the user has another opportunity
+        to have the verification email sent to them.
+
+        NOTE: The links generated in the emails sent to users are based on
+        Capture settings found in Janrain's Capture Dashboard. In addition to
+        entering the URL of your email verification page, you will need to add
+        'screenToRender' as a parameter in the URL with a value of 'verifyEmail'
+        which is this screen.
+    -->
+    <div style="display:none;" id="verifyEmail">
+        <h1 class="signin-form__heading">Resend Email Verification</h1>
+        <p>Sorry we could not verify that email address. Enter your email below and we'll send you another email.</p>
+        {* #resendVerificationForm *}
+            {* signInEmailAddress *}
+            <input value="Submit" type="submit" class="capture_btn">
+         {* /resendVerificationForm *}
+    </div>
+
+    <!-- resendVerificationSuccess:
+        This screen is rendered when a user enters an email address from the
+        verifyEmail screen.
+    -->
+    <div style="display:none;" id="resendVerificationSuccess">
+        <h1 class="signin-form__heading">Your Verification Email Has Been Sent</h1>
+        <p>Check your email for a link to reset your password.</p>
+        <a class="capture_btn" data-capturescreen="signIn">Sign in</a>
+    </div>
+
+    <!-- verifyEmailSuccess:
+        This screen is rendered if the verification code provided in the link
+        sent to the user in the verification email is accepted and the user's
+        email address has been verified.
+    -->
+    <div style="display:none;" id="verifyEmailSuccess">
+        <h1 class="signin-form__heading">You did it!</h1>
+        <p>Thank you for verifiying your email address.</p>
+        <a class="capture_btn" data-capturescreen="signIn">Sign in</a>
+    </div>
+
+
+
+
+    <!--
+    ============================================================================
+        RESET PASSWORD SCREENS:
+        The following screens are part of the password reset user workflow.
+        For a complete out-of-the-box password reset experience, these screens
+        must be included on the page where you are implementing password reset
+        functionality.
+
+        NOTE: The order in which these screens are rendered is as follows:
+        resetPasswordRequestCode
+        resetPasswordRequestCodeSuccess
+        resetPassword
+        resetPasswordSuccess
+    ============================================================================
+    -->
+
+    <!-- resetPassword:
+        This screen is rendered when the user clicks the link in provided in the
+        password reset email and the code in the link is valid.
+    -->
+    <div style="display:none;" id="resetPassword">
+        <h1 class="signin-form__heading">Change password</h1>
+        {* #changePasswordFormNoAuth *}
+            {* newPassword *}
+            {* newPasswordConfirm *}
+            <input value="Submit" type="submit" class="capture_btn">
+        {* /changePasswordFormNoAuth *}
+    </div>
+
+    <!-- resetPasswordSuccess:
+        This screen is rendered when the user successfully changes their
+        password from the resetPassword screen.
+    -->
+    <div style="display:none;" id="resetPasswordSuccess">
+        <h1 class="signin-form__heading">Your password has been changed</h1>
+        <p>Password has been successfully updated.</p>
+        <a class="capture_btn" data-capturescreen="signIn">Sign in</a>
+    </div>
+
+    <!-- resetPasswordRequestCode:
+        This is the landing screen for the password reset workflow. When the
+        user clicks the link provided in the reset password email, a code is
+        supplied and is passed to Capture for verification. If the code is valid
+        the resetPassword screen is rendered immediately and the content of
+        this screen is not presented. If the code is not accepted for any reason
+        this screen is then presented, allowing the user to re-enter their
+        email address.
+    -->
+    <div style="display:none;" id="resetPasswordRequestCode">
+        <h1 class="signin-form__heading">Create a new password</h1>
+        <p>We didn't recognize that password reset code. Enter your email address to get a new one.</p>
+        {* #resetPasswordForm *}
+            {* signInEmailAddress *}
+            <input value="Send" type="submit" class="capture_btn">
+        {* /resetPasswordForm *}
+    </div>
+
+    <!-- resetPasswordRequestCodeSuccess:
+        This screen is rendered if the user submitted an email address on the
+        resetPasswordRequestCode screen.
+    -->
+    <div style="display:none;" id="resetPasswordRequestCodeSuccess">
+        <h1 class="signin-form__heading">Create a new password</h1>
+        <p>We've sent an email with instructions to create a new password. Your existing password has not been changed.</p>
+        <a class="capture_btn" data-capturescreen="signIn">Sign In</a>
+    </div>
+
+
+
+
+    <!--
+    ============================================================================
+        EDIT PROFILE SCREENS:
+        The following screens are part of the profile editing user workflow.
+        For a complete out-of-the-box profile editing experience, these screens
+        must be included on the page where you are implementing profile editing
+        functionality.
+    ============================================================================
+    -->
+
+    <!-- editProfile
+        This screen is where the user can edit their profile data. It can be
+        rendered in whatever way works best for your implementation, be it
+        using the data-capturescreen attribute, janrain.capture.ui.renderScreen
+        or passing in 'screenToRender' in the URL linking to the page where
+        you have implemented edit profile.
+    -->
+    <div style="display:none;" id="editProfile">
+        
+
+        <h1 class="signin-form__heading">Edit Your Account</h1>
+        <div class="capture_grid_block">
+
+          <!-- sidebar -->
+          <div class="capture_col_4">
+            <section>
+              <h2 class="profile__heading">Profile Photo</h2>
+              {* photoManager *}
+            </section>
+
+            
+
+            <section>
+              <h2 class="profile__heading">Linked Accounts</h2>
+              {* linkedAccounts *}
+              {* #linkAccountContainer *}
+                <div class="capture_header"><h3>Link your accounts</h3></div>
+                <p>Allows you to sign in to your account using that provider in the future.</p>
+                <div class="capture_signin">
+                  {* loginWidget *}
+                </div>
+              {* /linkAccountContainer *}
+            </section>
+
+            <section>
+              <h2 class="profile__heading">Email Newsletters</h2>
+              
+                <a
+                  id="manage_newsletters_nonplus"
+                  class="profile__link"
+                  target="_blank">Manage Email Newsletters</a>
+              
+            </section>
+
+            <section>
+              <!-- Only show this if it was from a traditional login !-->
+              <h2 class="profile__heading janrain_traditional_account_only">Password</h2>
+              <div class="janrain_traditional_account_only">
+                <a href="#" class="profile__link" data-capturescreen="changePassword">Change Password</a>
+              </div>
+            </section>
+
+            
+            <section>
+              <h2 class="profile__heading">Deactivate Account</h2>
+              <div class="capture_deactivate_section contentBoxWhiteShadow clearfix">
+                <a href="#" class="profile__link" data-capturescreen="confirmAccountDeactivation">Deactivate Account</a>
+              </div>
+            </section>
+            
+          </div>
+
+          <!-- main column -->
+          <section class="capture_col_8">
+                <h2 class="profile__heading">Account Info</h2>
+
+                <div class="capture_grid_block">
+                    <div class="capture_center_col capture_col_8">
+                            <div class="capture_editCol">
+                                {* #editProfileForm *}
+                                    {* emailAddress *}
+                                    {* displayName *}
+                                    {* firstName *}
+                                    {* lastName *}
+
+                                    <h2 class="profile__heading">Comment Notifications</h2>
+                                    {* lf_notification_replies *}
+                                    {* lf_notification_comments *}
+                                    {* lf_notification_likes *}
+
+
+                                    <input value="Update my account" type="submit" class="capture_btn">
+                                    {* savedProfileMessage *}
+                                {* /editProfileForm *}
+                            </div>
+                    </div>
+                </div>
+          </section>
+
+        </div>
+    </div>
+
+    <!-- changePassword:
+        This screen is rendered when the user clicks the 'Change Password' link
+        on the edit profile page. After the user enters their new password,
+        the edit profile screen is refreshed and displayed.
+    -->
+    <div style="display:none;" id="changePassword">
+        <h1 class="signin-form__heading">Change password</h1>
+        {* #changePasswordForm *}
+            {* currentPassword *}
+            {* newPassword *}
+            {* newPasswordConfirm *}
+            <input value="Save" type="submit" class="capture_btn">
+        {* /changePasswordForm *}
+    </div>
+
+    <!-- confirmAccountDeactivation:
+        If the user clicks the 'Deactivate Account' link on the edit profile
+        page, this screen is rendered. From here, the user can deactivate their
+        account.
+    -->
+    <div style="display:none;" id="confirmAccountDeactivation">
+        <h1 class="signin-form__heading">Deactivate your Account</h1>
+        <div class="content_wrapper">
+            <p>Are you sure you want to deactivate your account? You will no longer have access to your profile.</p>
+            {* deactivateAccountForm *}
+              <div class="capture_footer">
+                <input value="Yes" type="submit" class="capture_btn capture_primary">
+                <a href="/login/?screenToRender=editProfile" class="capture_btn">No</a>
+              </div>
+              </div>
+            {* /deactivateAccountForm *}
+        </div>
+    </div>
+
+  </main>
+
+    <footer>
+  All contents &copy; <script>document.write(new Date().getFullYear())</script> The Slate Group LLC.
+  All rights reserved.
+</footer>
+
+
+
+
+
+
+    
+  </body>
+</html>

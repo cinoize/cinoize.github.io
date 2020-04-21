@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+
+<!-- Basic Page Needs
+  ================================================== -->
+<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"b2b19a8452",applicationID:"65327233"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+
+
+
+<!-- Mobile Specific Metas
+  ================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/bootstrap.css">
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/flexslider.css">
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/main.css">
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/jquery-ui.css">
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/responsive.css">
+<link rel="stylesheet" href="https://centr.org/templates/centr/css/font-awesome.css">
+
+
+<!-- JS
+  ================================================== -->
+<script type="text/javascript" src="/templates/centr/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/templates/centr/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="/templates/centr/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="/templates/centr/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/templates/centr/js/jquery-migrate-1.0.0.js"></script>
+<script type="text/javascript" src="/templates/centr/js/form_elements.js"></script>
+<script type="text/javascript" src="/templates/centr/js/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="/templates/centr/js/main.js"></script>
+
+<!-- typekit
+================================================== -->
+<script src="https://use.typekit.net/vyf8kfi.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<!--[if lt IE 9]>
+		<script src="/templates/centr/js/html5.js"></script>	
+	<![endif]-->
+
+<!-- Favicons
+	================================================== -->
+<link rel="shortcut icon" href="/templates/centr/images/favicon.ico">
+
+<!-- Header Module -->
+<base href="https://centr.org/library/library/statistics-report/centrstats-global-tld-report-2019-3.html" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="CENTR is the association of European coutry code top-level domain name registries. CENTR’s main purpose is to provide its members with a forum for exchange of information." />
+	<meta name="generator" content="Joomla! - Open Source Content Management" />
+	<title>CENTRstats Global TLD Report 2019/3</title>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="CENTRstats Global TLD Report 2019/3" />
+	<meta property="og:url" content="https://centr.org/library/library/statistics-report/centrstats-global-tld-report-2019-3.html" />
+	<meta property="og:site_name" content="CENTR" />
+	<meta property="og:description" content="CENTR is the association of European coutry code top-level domain name registries. CENTR’s main purpose is to provide its members with a forum for exchange of information." />
+	<link href="/templates/centr/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link href="https://centr.org/component/search/?Itemid=604&amp;catid=119&amp;id=3151&amp;format=opensearch" rel="search" title="Search CENTR" type="application/opensearchdescription+xml" />
+	<script type="application/json" class="joomla-script-options new">{"csrf.token":"f645e5444970ad548ffdcd1a2ff9cbe1","system.paths":{"root":"","base":""},"system.keepalive":{"interval":1740000,"uri":"\/component\/ajax\/?format=json"}}</script>
+	<script src="/media/system/js/polyfill.filter.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<script src="/media/system/js/polyfill.xpath.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<script src="/media/system/js/tabs-state.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<script src="/media/jui/js/bootstrap.min.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<script src="/media/system/js/core.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<!--[if lt IE 9]><script src="/media/system/js/polyfill.event.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script><![endif]-->
+	<script src="/media/system/js/keepalive.js?c4b825741c6f18e6536e5124345878b2" type="text/javascript"></script>
+	<script type="text/javascript">
+jQuery(function($){ initTooltips(); $("body").on("subform-row-add", initTooltips); function initTooltips (event, container) { container = container || document;$(container).find(".hasTooltip").tooltip({"html": true,"container": "body"});} });
+	</script>
+
+ 
+<script src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js" type="text/javascript"></script>
+ 
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.centr.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+<!-- Matomo -->
+<script type="text/javascript">var _paq = window._paq || [];/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function() {var u="//statsmatomo.centr.org/";_paq.push(['setTrackerUrl', u+'matomo.php']);
+_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true;
+g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();</script>
+<!-- End Matomo Code -->
+
+<script>
+	//Created by: Zoran Jambor, twitter.com/ZoranJambor
+
+
+    //This is a first layer of de-obfuscation.
+    //Basically a reversed ROT13 algorithm.
+    function changeLetters(string) {
+        
+        //Helper variables.
+        var currentLetter, 
+            currentPos,
+            currentString = '',
+            
+            //Behold! The one and only counter.
+            i = 0,
+            
+            //We're going to loop through the obfuscated strings characters, so this will come in handy.
+            stringLength = string.length - 1,
+            
+            //Characters that will be used when de-obfuscating email address.
+            //Same as string in PHP obfuscate function (obfuscateEmail).
+            characters = '123456789qwertzuiopasdfghjklyxcvbnmMNBVCXYLKJHGFDSAPOIUZTREWQ',
+            charactersLength = characters.length;
+
+        
+        //Counter variable has been declared before.
+        for( ; i<stringLength; i++ ) {
+            
+            //This letter will be de-obfuscated.
+            currentLetter = string.charAt(i);
+            
+            //Position of the letter in our characters string.
+            currentPos = characters.indexOf(currentLetter);
+            
+            //If character is present in our string, replace it with a character
+            //30 places before (opposite from obfuscating).
+            //If not, leave it as it is (because character wasn't obfuscated).
+            if( currentPos > -1 ) {
+            
+                currentPos -= (charactersLength-1) / 2;
+                currentPos = currentPos < 0 ? charactersLength + currentPos : currentPos;
+                
+            } else {
+            
+                currentString += currentLetter;
+            
+            }
+            
+            //Finally, append a character to our temp string that will be returned.
+            currentString += characters.charAt(currentPos);
+            
+        }
+
+        return currentString;
+    
+    }
+    
+    //Function that will handle email de-obfuscation.
+    //@param element is a reference to html element that will be de-obfuscated.
+    //De-obfuscation is done on text and on href attribute of the element.
+    //Nevertheless, function will work well with any element you pass in, 
+    //even if href attribute won't be present.
+    function deObfuscateEmail( element ) {
+        
+        //Get the text of the element.
+        var text = element.innerHTML,
+            
+            //Get href attribute. If there is no href attribute, set href value to be an empty string.
+            //Regular expression is an IE Fix.
+            //Namely, IE appends obfuscated email to the url (www.domain.com/com.liameym@em).
+            //Therefore, the first part of the link needs to be removed (we grab just everything after the last forward slash '/').
+            href = element.getAttribute('href').replace(/http:\/\/(.+)\//gi, '') || '',
+            
+            //Control variable. if the two @ symbols are present, we will perform de-obfuscation,
+            //if not, the string is not obfuscated and doesn't have to be de-obfuscated.
+            textReplace = text.search(/@.+@/),
+            hrefReplace = href.search(/@.+@/),
+            
+            //This function handles the second layer of de-obfuscation.
+            //It is called later in the code.
+            //Letters of the email are reversed (again) and css direction returned back to ltr.
+            //This is called on mouseover event.
+            reverseEmails = function(){
+                
+                //Only if htef is obfuscated.
+                if( hrefReplace > -1 ) {
+                    
+                    //That's the reversing part right here.
+                    element.setAttribute('href', href.split('').reverse().join('') );
+                    
+                }
+                
+                //Only if text is obfuscated.
+                if( textReplace > -1 ) {
+                
+                    //Reverse the text of the element and
+                    //return the direction to normal (left to right).
+                    element.innerHTML = text.split('').reverse().join('');
+                    element.style.direction = 'ltr';
+                    element.style.unicodeBidi = 'normal';
+                    
+                }
+                
+                
+                //Letters are replaced and the event isn't needed anymore.
+                if( element.removeEventListener ) {
+                    
+                    element.removeEventListener('mouseover', reverseEmails, false);
+                    
+                } else {
+                
+                    // IE8-
+                    element.detachEvent('onmouseover', reverseEmails);
+                    
+                }
+
+            
+            };
+            //End variables and functions definitions.
+        
+    
+        //href has to be processed first, because of the strange 
+        //IE bug that will mix the href and innerHTML values.
+        if( hrefReplace > -1 ) {
+            
+            href = changeLetters(href);
+            element.setAttribute('href', href);
+
+        }
+        
+        //Change the direction of the text to show real address
+        //to users, instead of a reversed one.
+        if( textReplace > -1 ) {
+            
+            text = changeLetters( text );
+            element.innerHTML = text;
+            element.style.direction = 'rtl';
+            element.style.unicodeBidi = 'bidi-override';
+            
+        }
+        
+        
+        //Since we have a rtl text, user can't copy or click on a link.
+        //Therefore we'll replace the value as soon as user hovers over the link.
+        if( element.addEventListener ) {
+            
+            element.addEventListener('mouseover', reverseEmails, false);
+            
+        } else {
+        
+            element.attachEvent('onmouseover', reverseEmails);
+        
+        }
+            
+    }
+        
+    //deObfuscateEmail( document.getElementById('example') );
+   // deObfuscateEmail( document.getElementById('example1') );
+
+
+</script>
+
+</head>
+
+<body class="">
+<div id="centr-wrap"> 
+  <!--Top Bar ================== -->
+  <div class="top-bar">
+    <div class="container">
+<form id="searchFormModule" action="/library/library.html" method="post" class="form-inline">
+
+      <div class="search-bar">          
+         <input type="button" class="searchform" />            
+        <input value="" name="searchword" id="searchword"  maxlength="50" type="text" placeholder="SEARCH"/>
+        
+      </div>
+      <div class="adv-search-filter"> <a class="toggle-advanced-search" href="javascript:void(0)">Advanced</a>
+        <div class="advanced-search">
+          <ul>
+              <li>              
+                <input  type="radio" id="area-content" value="content" name="areas[]">
+              <label>Articles</label>
+            </li>
+            <li>              
+              <input   type="radio" id="area-library" value="library" name="areas[]">
+              <label>Library</label>
+            </li>
+            <li>
+              <input  type="radio" id="area-news" value="news" name="areas[]">
+              <label>News</label>
+            </li>
+            <li>
+              <input  type="radio" id="area-events" value="events" name="areas[]">              
+              <label>Events</label>
+            </li>
+           
+            <li>
+              <div class="filterby_date filter-date"> <span class="title">Date</span>
+               <div class="date-pick" style="display:none;">						 
+                    <span class="datefrom">
+                            <label>From</label>                            
+                                  
+                                            
+                            <input type="text" id="searchstartdate" name="date_from" value="">
+                            <div id="searchtext1" class="datetext"></div>
+                    </span>
+                    <span class="dateto">
+                            <label>To</label>                            
+                                       
+                            <input type="text" id="searchenddate" name="date_to" value="">
+                            <div id="searchtext2" class="datetext"></div>
+                    </span>
+                    <a href="Javascript:void(0);" class="submit-date-search"   >Submit</a>
+                    <a href="javascript:void(0);" class="reset reset_dates">Reset</a>
+
+              </div>
+               
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    <input type="hidden" name="task" value="search" />
+    <input type="hidden" name="option" value="com_search" />
+    <input type="hidden" name="Itemid" value="575" />
+</form>
+
+</div>
+
+  </div>
+  <!--Top Bar--> 
+  
+  <!--Header ================== -->
+  
+  <header class="">
+  	<div class="container">
+        <h1 class="logo"><a href="https://centr.org/"><img src="/templates/centr/images/logo.png"></a></h1>
+        <ul class="social-links">
+            <li><a class="hvr-push" target="_blank" href="https://www.facebook.com/centrnews"><img src="/templates/centr/images/fb-f.png"></a></li>
+            <li><a class="hvr-push" target="_blank" href="https://twitter.com/CENTRnews"><img src="/templates/centr/images/tw-f.png"></a></li>
+            <li><a class="hvr-push" target="_blank" href="https://www.linkedin.com/company/1408638?trk=prof-exp-company-name"><img src="/templates/centr/images/ln-f.png"></a></li>
+            <li><a class="hvr-push" target="_blank" href="https://www.youtube.com/user/CENTRDNS"><img src="/templates/centr/images/yt-f.png"></a></li>
+        </ul>	
+	<span class="nav-mob">nav</span>
+	<ul class="nav menu primary-nav">
+<li class="item-101"><a href="/" >Home</a></li><li class="item-519 parent"><a href="/about/about-centr.html" >About</a></li><li class="item-520 parent"><a href="/education/the-dns.html" >Education</a></li><li class="item-525 parent"><a href="/policy/eu-policy.html" >Policy</a></li><li class="item-522"><a href="/news.html" >News</a></li><li class="item-524 parent"><a href="/statistics-centr/centrstats.html" >Statistics</a></li><li class="item-521 current active parent"><a href="/library/library.html" >Library</a></li><li class="item-523 parent"><a href="/events/upcoming-events.html" >Events</a></li></ul>
+	
+	<div id="logout">		
+		
+ 
+
+
+<div class="member-login">
+<form action="https://centr.org/library/library/statistics-report/centrstats-global-tld-report-2019-3.html" method="post" id="login-form" class="form-inline">
+		<div class="userdata">
+		
+		<h4>Members login</h4>
+		
+		<div id="form-login-username" class="control-group">
+			
+			<div class="controls">
+									<div class="input-prepend">
+						 
+						<input id="modlgn-username" type="text" name="username" class="input-small" tabindex="0" size="18" placeholder="Username"  autocomplete="off" />
+					</div>
+							</div>
+		</div>
+		<div id="form-login-password" class="control-group">
+			<div class="controls">
+									<div class="input-prepend">
+						 
+						<input id="modlgn-passwd" type="password" name="password" class="input-small" tabindex="0" size="18" placeholder="Password" autocomplete="off" />
+					</div>
+							</div>
+		</div>
+						<div id="form-login-submit" class="control-group">
+			<div class="controls">
+				<button type="submit" tabindex="0" name="Submit" id="login-submit" class="btn btn-primary"></button>
+			</div>
+		</div>
+				 
+		<input type="hidden" name="option" value="com_users" />
+		<input type="hidden" name="task" value="user.login" />
+		<input type="hidden" name="return" value="aW5kZXgucGhwP0l0ZW1pZD01NTY=" />
+		<input type="hidden" name="f645e5444970ad548ffdcd1a2ff9cbe1" value="1" />	</div>
+	</form>
+ </div>		
+	</div>
+	
+        
+	    </div><!--Container-->
+  </header>
+  
+  <!--Header--> 
+  
+  <!--SECTION ================== -->
+  <section class="main-content">
+	<div id="system-message-container">
+	</div>
+
+    		    <div class="container container-inner ">			
+		        <div class="row no-margin-top">
+    <div class="col-md-12">
+    <h2>Library</h2>
+	<ul class="nav menu submenu">
+<li class="item-604 current active"><a href="/library/library.html" >Library</a></li><li class="item-605"><a href="/library/legal-case-library.html" >Legal case library</a></li></ul></div>
+    </div>		
+ 
+<div class="row">
+    <div class="col-md-12">
+	<h3>CENTRstats Global TLD Report 2019/3</h3>	
+	    	       
+	    		    <div class="publications-pic-inner">
+			<img src="https://centr.org/images/reports/GlobalTLD-2019_3-cover-160.png">
+		    </div>
+	    	
+	<ul class="library-fliter-detls">
+	    <li><span>Date:</span> 2020-01-21</li>
+	    	    <li><span>Category:</span> <a href="/library/library.html?filter=Statistics report">Statistics report</a></li>
+	    	    	    	     <li class="wggroup"><span>Additional filters:</span>
+		
+		<!--userorgs array-->	
+				
+		<!--mem profiles array-->	
+				
+		    <a  id="2" href="/library/library.html?addtion_filter=profiles&setval=Patrick Myles">Patrick Myles</a>		
+		<!--wgroup array-->		
+				
+		<!--event array-->		
+				
+		<!--location array-->	
+				
+	    </li>
+	     		
+	</ul>
+	<p>Find the online, interactive version <a href="https://stats.centr.org/stats/global">here</a>.</p>	
+		
+	<a href="/library/library.html"  class="primary-btn download_lib_back">Back</a>
+	  
+		    <a rel="9637" href="#" class="primary-btn lib_inner lib_download">Download</a>
+		<!--http://localhost/centr/library.html-->
+	
+	
+		
+    </div><!--col-md-12-->
+</div><!--Row-->
+<script>
+jQuery(document).ready(function() {
+    jQuery(document).on('click', '.lib_download', function() {
+	    var currentAttr = jQuery(this).attr('rel');
+	    
+	    if (currentAttr !="") {	      
+		  window.location.href = 'index.php?option=com_attachments&task=download&id='+ currentAttr;
+	    }
+	    return false;
+    });
+});
+</script>		
+	    </div><!--Container-->
+	              
+  </section>
+  
+  <!--FOOTER ================== -->
+  <footer>
+  	<div class="container">
+    	<div class="row">
+        	<div class="col-md-8">
+            	<h4>CENTR vzw/asbl</h4>
+                <div class="row">
+                	<div class="col-md-5 footer-contact">
+                    	Belliardstraat 20 (6th floor)<br>
+                        1040 Brussels<br>
+                        Belgium<br>
+                        <img src="/templates/centr/images/phone.png">+32 2 627 5550<br>
+                        <img src="/templates/centr/images/fax.png">+32 2 627 5559
+                    </div>
+                    <div class="col-md-5 footer-info">
+			<a href="mailto:secretariat@centr.org" id="main_contact_centr">secretariat@centr.org</a><br>
+			<a href="https://www.centr.org">www.centr.org</a>
+                        <ul class="social-links">
+                            <li><a class="hvr-push" target="_blank" href="https://www.facebook.com/centrnews"><img src="/templates/centr/images/fb-f.png"></a></li>
+                            <li><a class="hvr-push" target="_blank" href="https://twitter.com/CENTRnews"><img src="/templates/centr/images/tw-f.png"></a></li>
+                            <li><a class="hvr-push" target="_blank" href="https://www.linkedin.com/company/1408638?trk=prof-exp-company-name"><img src="/templates/centr/images/ln-f.png"></a></li>
+                            <li><a class="hvr-push" target="_blank" href="https://www.youtube.com/user/CENTRDNS"><img src="/templates/centr/images/yt-f.png"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 footer-links">
+			<ul class="nav menu footermenus">
+<li class="item-572"><a href="/sitemap.html" >Sitemap</a></li><li class="item-573"><a href="/privacy-policy.html" >Privacy Policy</a></li><li class="item-574"><a href="/cookie-policy.html" >Cookie Policy</a></li><li class="item-622"><a href="/responsible-disclosure-policy.html" >Responsible Disclosure Policy</a></li></ul>				
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            	<script defer src="https://centr.org/templates/centr/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+(function($,W,D)
+{
+    var JQUERY4U = {};
+
+    JQUERY4U.UTIL =
+    {
+        setupFormValidation: function()
+        {
+            //form validation rules
+            $("#footer-newsletter-form").validate({
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    organisation: "required"
+                },
+                messages: {
+                    firstname: "",
+                    lastname: "",
+                    email: "",
+                    organisation: ""
+                },
+				
+				
+				
+				submitHandler: function(form) {	
+		jQuery.ajaxSetup({async:false});
+		jQuery.ajax({
+			url: "index.php?option=com_newsletter&task=newsletter.checkCaptcha",
+			type: "POST",
+			async: false,
+			data: {		
+			 g_recaptcha_response : jQuery('#g-recaptcha-response').val()
+			},
+			success: function(resp) {
+				
+				
+				 
+			  if (resp === "1") {
+				jQuery('#frm-subscribe').addClass('processing');
+			    jQuery('#sbt_btn').hide();
+			   // jQuery('#pgr_bar').show();			    
+			    jQuery( "button.progress-button" ).trigger( "click" );				
+			    $.post('index.php?option=com_newsletter&task=newsletter.addSubscriber', $("#footer-newsletter-form").serialize(), function(data) {
+				   if(data =="-1") {
+						alert('Your Email Address is already in our database');
+						jQuery('#frm-subscribe').removeClass('processing');
+						return false;
+				   }else if (data=='1'){
+						jQuery('#msg_subscribe').html('You are successfully subscribed .');
+						jQuery('#frm-subscribe').removeClass('processing');
+						jQuery('#frm-subscribe').hide();
+						jQuery('#footer-newsletter-form').trigger("reset");
+					} else if (data =='2' || data =='0' || data =='') {
+						alert('Please Try Again Later');
+						jQuery('#frm-subscribe').removeClass('processing');
+					} else if (data =='4') {
+						alert('Please enter valid form entries');
+						jQuery('#frm-subscribe').removeClass('processing');
+					}
+					return false;
+				   			  
+				});
+				//Recaptcha.reload();
+				jQuery.ajaxSetup({async:true});
+				return false;				
+			  } else {
+				jQuery('.g-recaptcha').addClass('rcaptcha_error');
+				jQuery('#frm-subscribe').removeClass('processing');
+			   return false;
+			  }
+			}
+		  });	
+			
+	} 
+               
+            });
+        }
+    }
+
+    //when the dom has loaded setup form validation rules
+    $(D).ready(function($) {
+        JQUERY4U.UTIL.setupFormValidation();
+    });
+
+})(jQuery, window, document);
+
+
+function recaptchaCallback() {
+	jQuery('.g-recaptcha').removeClass('rcaptcha_error');
+}
+</script>
+<style>
+	input.error, select.error, input.error:focus {border:2px solid #FE0000!important}
+</style>
+ 
+<h4>Subscribe to our newsletter</h4>
+<div id="msg_subscribe"></div>
+<div id="frm-subscribe" class="email_subscribe">
+	<form id="footer-newsletter-form" name="subscribeNewsForm" action="/library/library.html" method="post" class="subscribe-form" data-controller="CustomForm" >
+	<input maxlength="256" size="30" type="text" name="firstname" placeholder="First name" />
+	<input maxlength="256" size="30" type="text" name="lastname" placeholder="Last name" />
+	 <input maxlength="256" size="30" type="text" name="organisation" placeholder="Organisation" />
+	<input maxlength="256" size="30" type="text" name="email" placeholder="Email" />       
+	
+	
+	  <div class="g-recaptcha" data-theme=""  data-callback="recaptchaCallback" data-sitekey="6LdU5j8UAAAAADknc7KwMGgW0dAwdBLsA5eaYkaN" style="transform:scale(0.68);transform-origin:0 0"></div>
+	  <script type="text/javascript"
+			  src="https://www.google.com/recaptcha/api.js?hl=en">
+	  </script>	
+	<input type="submit" value="Submit" class="primary-btn" />
+ </form>
+ </div>
+  <style media=>
+	.rcaptcha_error{
+		border: solid 1px #fe0000;
+		display:inline-block;
+	}
+</style>  
+            </div>
+        </div>
+    </div>
+  </footer>
+  <!--FOOTER-->
+  
+</div>
+<!--Centr Wrap--> 
+
+<!-- End Document
+================================================== -->
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<link rel="stylesheet" type="text/css" href="https://centr.org/modules/mod_cookielaw/assets/style.min.css"/>
+<style>
+#cc-notification-logo{ display:none !important }
+</style>
+<script type="text/javascript" src="https://centr.org/modules/mod_cookielaw/assets/plugin.min.js"></script>
+<script type="text/javascript">
+// <![CDATA[
+cc.initialise({
+	cookies: {
+		social: {},
+		analytics: {}
+	},
+	settings: {
+		consenttype: "implicit",
+		bannerPosition: "bottom",
+		hideprivacysettingstab: true,
+		onlyshowbanneronce: true,
+		refreshOnConsent: false,
+		disableallsites: true,
+		useSSL: true,
+		seeDetailsLink: "/cookie-policy"
+	},
+	strings: {
+		seeDetailsImplicit: 'Find out more here',
+	}
+});
+// ]]>
+</script>
+<!-- End Cookie Consent plugin -->
+
+
+<!-- Hotjar Tracking Code for https://centr.org/ -->
+
+<script type="text/javascript"> 
+jQuery('#main_contact_centr').attr('href','ILF.LK3YQ@KSGLSKYLQYA:FKRGS4@');
+deObfuscateEmail( document.getElementById('main_contact_centr') );
+$( document ).ready(function(){ /*Task #4750 GDPR changes - Briefing*/
+		jQuery('.item-600').remove();
+});
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b2b19a8452","applicationID":"65327233","transactionName":"ZFcDbRNYXERYVkJZWV0dNEsIFltZXVBOHkZbQg==","queueTime":0,"applicationTime":31,"atts":"SBAAG1tCT0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-es_ES" lang="es-ES" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.328" data-css-version="1.0.339">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>AWS | Almacenamiento de datos seguro en la nube (S3)</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="description" content="&iquest;Busca un almacenamiento de objetos en la nube? Descubre como procesar, analizar datos y optimizar costos con Amazon S3 un servicio de almacenamiento de objetos big data creado para almacenar y recuperar cualquier volumen de datos desde cualquier ubicaci&oacute;n." /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/es/s3/" /> 
+  <link rel="alternate" href="//aws.amazon.com/ar/s3/" hreflang="ar-sa" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/s3/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/s3/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/s3/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/s3/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="AWS | Almacenamiento de datos seguro en la nube (S3)" /> 
+  <meta property="twitter:description" content="&iquest;Busca un almacenamiento de objetos en la nube? Descubre como procesar, analizar datos y optimizar costos con Amazon S3 un servicio de almacenamiento de objetos big data creado para almacenar y recuperar cualquier volumen de datos desde cualquier ubicaci&oacute;n." /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="AWS | Almacenamiento de datos seguro en la nube (S3)" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/es/s3/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.339/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.54',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.339',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'es-ES',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.328' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.328/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.328/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.328/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.97/plc",
+      "scripts": "libra/1.0.328/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.9",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.328/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'es'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/es_ES/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/es/?nc2=h_lg"><span>Haga clic aqu&iacute; para volver a la p&aacute;gina de inicio de Amazon Web Services</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/es/contact-us/?nc2=h_header">P&oacute;ngase en contacto con el departamento de ventas</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Soporte&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="es">Espa&ntilde;ol&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">Mi cuenta&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Crear una cuenta de AWS</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/es/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Productos</a></li> 
+        <li><a href="/es/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Soluciones</a></li> 
+        <li><a href="/es/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Precios</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentaci&oacute;n</a></li> 
+        <li><a href="/es/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">M&aacute;s informaci&oacute;n</a></li> 
+        <li><a href="/es/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Red de socios</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/es/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Capacitaci&oacute;n para clientes</a></li> 
+        <li><a href="/es/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">M&aacute;s informaci&oacute;n </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Buscar" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">Consola de administraci&oacute;n de AWS</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Configuraci&oacute;n de la cuenta</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Administraci&oacute;n de costos y facturaci&oacute;n</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Credenciales de seguridad</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Centro de soporte</a> </li> 
+      <li> <a href="/es/premiumsupport/knowledge-center/?nc2=h_m_ma">Centro de conocimientos</a> </li> 
+      <li> <a href="/es/premiumsupport/?nc2=h_m_bc">Informaci&oacute;n general de AWS Support</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Precios</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentos</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Productos</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Páginas relacionadas</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutoriales</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">Ver más resultados para "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/es_ES/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/es/?nc2=h_lg"><span>Haga clic aqu&iacute; para volver a la p&aacute;gina de inicio de Amazon Web Services</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Buscar" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/es/products/?nc2=h_mo">Productos</a> </li> 
+      <li> <a href="/es/solutions/?nc2=h_mo">Soluciones</a> </li> 
+      <li> <a href="/es/pricing/?nc2=h_mo">Precios</a> </li> 
+      <li> <a href="/es/what-is-aws/?nc2=h_mo">Introducci&oacute;n a AWS </a> </li> 
+      <li> <a href="/es/getting-started/?nc2=h_mo">Introducci&oacute;n</a> </li> 
+      <li> <a href="/es/documentation/?nc2=h_mo">Documentaci&oacute;n</a> </li> 
+      <li> <a href="/es/training/?nc2=h_mo">Formaci&oacute;n t&eacute;cnica y certificaci&oacute;n</a> </li> 
+      <li> <a href="/es/developer/?nc2=h_mo">Centro de desarrolladores</a> </li> 
+      <li> <a href="/es/solutions/case-studies/?nc2=h_mo">Historias de &eacute;xito de los clientes</a> </li> 
+      <li> <a href="/es/partners/?nc2=h_mo">Red de socios</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Soporte</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Inicie sesi&oacute;n en la consola</a> </li> 
+      <li> <a href="/es/console/mobile/">Descargue la aplicaci&oacute;n m&oacute;vil</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/es/s3/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/es/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/es/s3/?nc=sn&amp;loc=1"> Informaci&oacute;n general</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/es/s3/features/?nc=sn&amp;loc=2"> Caracter&iacute;sticas</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/es/s3/storage-classes/?nc=sn&amp;loc=3"> Clases de almacenamiento</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/es/s3/pricing/?nc=sn&amp;loc=4"> Precios</a> 
+       <a class="lb-txt-none lb-txt" href="/es/s3/getting-started/?nc=sn&amp;loc=5"> Introducci&oacute;n</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> Recursos&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/es/s3/faqs/?nc=sn&amp;loc=7"> Preguntas frecuentes</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt" href="/es/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> Recursos</a> 
+    <a class="lb-txt" href="/es/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> Videos</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_s3_simplified" data-lb-comp-ignore="true"> 
+     <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; background-image:url('//d1.awsstatic.com/product-marketing/S3/image-header_s3-2.6bf0d512939e43aba4fbd4185874e05ff0d236d2.png');" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="hero" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Amazon_S3" class="lb-txt-bold lb-txt-white lb-none-v-margin lb-h1-large lb-title"> Amazon S3</h1> 
+        <h3 id="Object_storage_built_to_store_and_retrieve_any_amount_of_data_from_anywhere" class="lb-txt-light lb-txt-white lb-small-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:30px;"> Almacenamiento de objetos creado para almacenar y recuperar cualquier volumen de datos desde cualquier ubicaci&oacute;n</h3> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+           <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta1" data-da-so-url="/s3"> 
+            <a class="lb-btn-a-primary" href="https://s3.console.aws.amazon.com/s3/home" role="button"> <span> Introducci&oacute;n a Amazon S3</span> </a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta2" data-da-so-url="/s3"> 
+           <a class="lb-btn-a" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html" role="button"> <span> Solicite m&aacute;s informaci&oacute;n</span> </a> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="data-attr-wrapper lb-mid-pad lb-small-v-margin lb-grid" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="tile2" data-da-so-version="intro" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+         <p>Amazon Simple Storage Service (Amazon S3) es un servicio de almacenamiento de objetos que ofrece escalabilidad, disponibilidad de datos, seguridad y rendimiento l&iacute;deres en el sector. Esto significa que clientes de todos los tama&ntilde;os y sectores pueden utilizarlo para almacenar y proteger cualquier cantidad de datos para diversos casos de uso, como sitios web, aplicaciones m&oacute;viles, procesos de copia de seguridad y restauraci&oacute;n, operaciones de archivado, aplicaciones empresariales, dispositivos IoT y an&aacute;lisis de big data. Amazon S3 proporciona caracter&iacute;sticas de administraci&oacute;n f&aacute;ciles de utilizar que le permiten organizar los datos y configurar sofisticados controles de acceso con objeto de satisfacer sus requisitos empresariales, organizativos y de conformidad. Amazon S3 est&aacute; dise&ntilde;ado para ofrecer una durabilidad del 99,999999999&nbsp;% (11 nueves) y almacena datos de millones de aplicaciones para empresas de todo el mundo.<br /> </p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="_I14_sXHO8U" data-source="youtube" data-video-title="Introduction to Amazon S3"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Introduction to Amazon S3 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=_I14_sXHO8U" /> 
+         </figure> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> Beneficios</h1> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Industry-leading_performance.2C_scalability.2C_availability.2C_and_durability" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Rendimiento, escalabilidad, disponibilidad y durabilidad l&iacute;deres en el sector</h3> 
+          <div class="lb-rtxt"> 
+           <p>Incremente o reduzca los recursos de almacenamiento para satisfacer la demanda fluctuante, sin necesidad de inversiones iniciales ni ciclos de adquisici&oacute;n de recursos. Amazon S3 est&aacute; dise&ntilde;ado para ofrecer una durabilidad de los datos del 99,999999999&nbsp;% (11 nueves), ya que crea y almacena autom&aacute;ticamente copias de todos los objetos de S3 en varios sistemas. Esto significa que los datos est&aacute;n disponibles cuando se necesitan y protegidos frente a errores y amenazas.<br /> <a href="/es/s3/faqs/#Durability_.26_Data_Protection" target="_blank">M&aacute;s informaci&oacute;n sobre la durabilidad de los datos de S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Wide_range_of_cost-effective_storage_classes" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Gran variedad de clases de almacenamiento rentables</h3> 
+          <div class="lb-rtxt"> 
+           <p>Disminuya los costos sin sacrificar el rendimiento almacenando los datos en las distintas <b>clases de almacenamiento de S3</b>, que admiten varios niveles de acceso a los datos con sus tarifas correspondientes. Puede utilizar el <b>an&aacute;lisis de clases de almacenamiento de S3</b> para detectar datos que se deben mover a una clase de almacenamiento m&aacute;s barata en funci&oacute;n de los patrones de acceso, as&iacute; como configurar una pol&iacute;tica de <b>ciclo de vida de S3</b> para llevar a cabo la transferencia. Tambi&eacute;n puede almacenar datos con patrones de acceso cambiantes o desconocidos mediante la caracter&iacute;stica <b>Capas inteligentes de S3</b>, que dispone los datos en capas en funci&oacute;n de patrones de acceso cambiantes y ofrece autom&aacute;ticamente un ahorro de costos.<br /> <a href="/es/s3/storage-classes/">M&aacute;s informaci&oacute;n sobre las clases de almacenamiento de S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Unmatched_security.2C_compliance.2C_and_audit_capabilities" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Capacidades inigualables de seguridad, conformidad y auditor&iacute;a</h3> 
+          <div class="lb-rtxt"> 
+           <p>Almacene los datos en Amazon S3 y prot&eacute;jalos del acceso no autorizado con caracter&iacute;sticas de cifrado y herramientas de administraci&oacute;n de acceso. S3 es el &uacute;nico servicio de almacenamiento de objetos que le permite bloquear el acceso p&uacute;blico a todos sus objetos a nivel de bucket o cuenta con <b><a href="/es/s3/features/block-public-access/" target="_blank">S3 Block Public Access</a></b>. S3 cuenta con programas de conformidad, como PCI-DSS, HIPAA/HITECH, FedRAMP, la Directiva de Protecci&oacute;n de Datos de la UE y FISMA, para ayudarlo a cumplir requisitos normativos. AWS tambi&eacute;n es compatible con un gran n&uacute;mero de funciones de auditor&iacute;a que permiten monitorizar las solicitudes de acceso a los recursos de S3.<br /> M&aacute;s informaci&oacute;n sobre la <a href="/es/s3/features/#Access_management_and_security">seguridad de S3</a> y la <a href="/es/compliance/">conformidad &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Easily_manage_data_and_access_controls" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Administre datos y acceda a los controles f&aacute;cilmente</h3> 
+          <div class="lb-rtxt"> 
+           <p>S3 le ofrece capacidades s&oacute;lidas para administrar el acceso, el costo, la replicaci&oacute;n y la protecci&oacute;n de datos. Los puntos de acceso de S3 facilitan la administraci&oacute;n del acceso a los datos con permisos espec&iacute;ficos para sus aplicaciones utilizando un conjunto de datos compartidos. Las funciones de replicaci&oacute;n S3 administran la replicaci&oacute;n de datos dentro de la regi&oacute;n o de otras regiones. Las operaciones por lote en S3 ayudan a administrar los cambios a gran escala entre miles de millones de objetos. Dado que S3 funciona con AWS Lambda, los clientes pueden registrar actividades, definir alertas y automatizar flujos de trabajo, todo ello sin administrar ninguna infraestructura adicional.<br /> <a href="/es/s3/features/#Storage_management_and_monitoring"> M&aacute;s informaci&oacute;n sobre las caracter&iacute;sticas de administraci&oacute;n del almacenamiento de S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Query-in-place_services_for_analytics_" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Servicios de consulta in situ para los an&aacute;lisis </h3> 
+          <div class="lb-rtxt"> 
+           <p>Lleve a cabo an&aacute;lisis de big data en los objetos de S3 (y otros conjuntos de datos de AWS) mediante nuestros servicios de consulta in situ. Utilice <b>Amazon Athena</b> para consultar datos de S3 con expresiones SQL est&aacute;ndar y <b>Amazon Redshift Spectrum</b> para analizar datos ubicados en almacenes de datos de AWS y recursos de S3. Tambi&eacute;n puede utilizar <b>S3 Select </b>para recuperar subconjuntos de datos de objetos en lugar del objeto completo y mejorar el rendimiento de las consultas en hasta un 400&nbsp;%.<br /> <a href="/es/s3/features/#Query_in_place">M&aacute;s informaci&oacute;n sobre las consultas in situ &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Most_supported_cloud_storage_service" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> El servicio de almacenamiento en la nube con el mayor nivel de soporte</h3> 
+          <div class="lb-rtxt"> 
+           <p>Almacene y proteja sus datos en Amazon S3 trabajando con un socio de la <b>red de socios de AWS (APN)</b>, la mayor comunidad de proveedores de servicios tecnol&oacute;gicos y de consultor&iacute;a en la nube. APN acredita socios de migraci&oacute;n que transfieren datos a Amazon S3 y socios de almacenamiento que ofrecen soluciones integradas en S3 para almacenamiento principal, copia de seguridad y restauraci&oacute;n, archivado de datos y recuperaci&oacute;n de desastres. Tambi&eacute;n puede adquirir una soluci&oacute;n integrada en AWS directamente en <b>AWS Marketplace</b>, que cuenta con m&aacute;s de 250&nbsp;ofertas espec&iacute;ficas de almacenamiento.<a href="/es/backup-recovery/partner-solutions/"><br /> M&aacute;s informaci&oacute;n sobre APN</a> y<a href="https://aws.amazon.com/marketplace"> AWS Marketplace &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="mid_page"></div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="How_it_works_.E2.80.94_S3_Access_Points" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> C&oacute;mo funciona — Puntos de acceso de S3</h2> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Diagram_S3_Access_Points" title="Diagram_S3_Access_Points" src="//d1.awsstatic.com/re19/Westeros/Diagram_S3_Access_Points.fa88c474dc1073aede962aaf3a6af2d6b02be933.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-24"> 
+          <div class="lb-rtxt"> 
+           <p><b><a name="preview"></a>&nbsp;</b>Los puntos de acceso de Amazon S3 simplifican la administraci&oacute;n del acceso de datos a escala para aplicaciones que utilizan conjuntos de datos compartidos en S3. Con los puntos de acceso de S3, ahora puede f&aacute;cilmente crear cientos de puntos de acceso por bucket, representando un nuevo modo de suministrar acceso a conjuntos de datos compartidos. Los puntos de acceso proporcionan una ruta personalizada hacia un bucket, con un nombre de host &uacute;nico y una pol&iacute;tica de acceso que imponga los permisos espec&iacute;ficos y los controles de red para cualquier solicitud realizada a trav&eacute;s del punto de acceso.</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Use_cases" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Casos de uso</h2> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Backup_and_restore" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Copia de seguridad y restauraci&oacute;n</h3> 
+          <div class="lb-rtxt"> 
+           <p>Cree soluciones de copia de seguridad y restauraci&oacute;n escalables, duraderas y seguras con Amazon S3 y otros servicios de AWS, como <b>S3 Glacier</b>, <b>Amazon EFS</b> y <b>Amazon EBS</b>, que le permitir&aacute;n incrementar o reemplazar las capacidades locales existentes. Los socios de AWS y APN pueden ayudarle a satisfacer los objetivos de tiempo de recuperaci&oacute;n (RTO), los objetivos de punto de recuperaci&oacute;n (RPO) y los requisitos de conformidad. Con AWS, puede realizar copias de seguridad de los datos que ya se encuentran en la nube de AWS o utilizar<b> AWS Storage Gateway</b>, un servicio de almacenamiento h&iacute;brido, para enviar copias de seguridad de datos locales a AWS.<br /> <a href="/es/backup-restore/">M&aacute;s informaci&oacute;n sobre copias de seguridad y restauraci&oacute;n &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Disaster_recovery_.28DR.29" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Recuperaci&oacute;n de desastres (DR)</h3> 
+          <div class="lb-rtxt"> 
+           <p>Proteja los datos, las aplicaciones y los sistemas de TI de importancia cr&iacute;tica que se ejecutan en la nube de AWS o en el entorno local sin incurrir en los gastos que supone disponer de un segundo sitio f&iacute;sico. Con el almacenamiento de Amazon S3, la <b>replicaci&oacute;n entre regiones de S3</b> y otros servicios de base de datos, redes e inform&aacute;tica de AWS, puede crear arquitecturas de recuperaci&oacute;n de desastres para poder recuperarse de forma r&aacute;pida y sencilla de las interrupciones provocadas por desastres naturales, errores del sistema y errores humanos.<a href="/es/disaster-recovery/"><br /> M&aacute;s informaci&oacute;n sobre DR &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Archive" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Archivo</h3> 
+          <div class="lb-rtxt"> 
+           <p>Retire la infraestructura f&iacute;sica y archive los datos con <b>S3 Glacier</b> y <b>S3 Glacier Deep Archive</b>. Estas clases de almacenamiento de S3 retienen objetos a largo plazo con las tarifas m&aacute;s econ&oacute;micas. Solo tiene que crear una pol&iacute;tica de ciclo de vida de S3 para archivar objetos a lo largo de sus ciclos de vida o cargar objetos directamente en las clases de almacenamiento de archivado. Con el <b>bloqueo de objetos de S3</b>, puede aplicar fechas de retenci&oacute;n a los objetos para evitar su eliminaci&oacute;n, as&iacute; como satisfacer los requisitos de conformidad. A diferencia de las bibliotecas de cintas, con S3 Glacier la restauraci&oacute;n de objetos archivados puede tardar desde tan solo un minuto en el caso de las recuperaciones r&aacute;pidas a entre 3&nbsp;y 5&nbsp;horas en el caso de las recuperaciones est&aacute;ndar. Las restauraciones de datos masivos desde S3 Glacier y todas las restauraciones desde S3 Glacier Deep Archive se llevan a cabo en un plazo de 12&nbsp;horas.<a href="/es/glacier/"><br /> M&aacute;s informaci&oacute;n sobre el archivado &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Data_lakes_and_big_data_analytics" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Lagos de datos y an&aacute;lisis de big data</h3> 
+          <div class="lb-rtxt"> 
+           <p>Acelere la innovaci&oacute;n mediante la creaci&oacute;n de un <a href="/es/products/storage/data-lake-storage/" target="_blank">lago de datos en Amazon S3</a> y obtenga informaci&oacute;n valiosa mediante consultas in situ, an&aacute;lisis y herramientas de aprendizaje autom&aacute;tico. A medida que su lago de datos crece, use los puntos de acceso de S3 para configurar f&aacute;cilmente el acceso a sus datos, con permisos espec&iacute;ficos para cada aplicaci&oacute;n o conjuntos de aplicaciones. Tambi&eacute;n puede utilizar <b>AWS Lake Formation </b>para crear r&aacute;pidamente un lago de datos, as&iacute; como para definir y aplicar de forma centralizada pol&iacute;ticas de seguridad, gobernanza y auditor&iacute;a. El servicio recopila datos de las bases de datos y los recursos de S3, los traslada a un lago de datos nuevo en Amazon S3 y los limpia y clasifica mediante algoritmos de aprendizaje autom&aacute;tico. Todos los recursos de AWS pueden ampliarse para ajustarse a los almacenes de datos en expansi&oacute;n, todo ello sin inversiones iniciales.<br /> Obtenga m&aacute;s informaci&oacute;n acerca de c&oacute;mo crear un <a href="/es/products/storage/data-lake-storage/" target="_blank">lago de datos en Amazon S3</a>&nbsp;y <a href="/es/lake-formation/">AWS Lake Formation &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Hybrid_cloud_storage" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Almacenamiento h&iacute;brido en la nube</h3> 
+          <div class="lb-rtxt"> 
+           <p>Cree una conexi&oacute;n perfecta entre las aplicaciones locales y Amazon S3 mediante <b>AWS Storage Gateway</b> con el fin de reducir el tama&ntilde;o de sus centros de datos y aprovechar las caracter&iacute;sticas de escalabilidad, fiabilidad y durabilidad de AWS, as&iacute; como sus innovadoras capacidades de an&aacute;lisis y aprendizaje autom&aacute;tico. Tambi&eacute;n puede automatizar las transferencias de datos entre el almacenamiento local y Amazon S3; para ello, utilice <b>AWS DataSync</b>, que puede transferir datos hasta 10&nbsp;veces m&aacute;s r&aacute;pido que las herramientas de c&oacute;digo abierto. Otra forma de habilitar un entorno de almacenamiento h&iacute;brido en la nube consiste en trabajar con un proveedor de gateways de APN. Tambi&eacute;n puede transferir los archivos directamente hacia y desde Amazon S3 con<b> AWS Transfer for SFTP</b>, un servicio completamente administrado que posibilita el intercambio seguro de archivos con terceros.<br /> M&aacute;s informaci&oacute;n sobre el <a href="/es/storagegateway/">almacenamiento h&iacute;brido</a>, <a href="/es/datasync/">AWS DataSync</a> y <a href="/es/sftp/">AWS Transfer for SFTP &raquo;</a>&nbsp;<br /> </p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Cloud-native_application_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Datos de aplicaciones nativas en la nube</h3> 
+          <div class="lb-rtxt"> 
+           <p>Desarrolle aplicaciones m&oacute;viles y basadas en Internet r&aacute;pidas y rentables utilizando los servicios de AWS y Amazon S3 para almacenar los datos de producci&oacute;n. Con Amazon S3, puede cargar todos los datos que desee y obtener acceso a ellos en cualquier lugar para poder implementar aplicaciones en menos tiempo y llegar a m&aacute;s usuarios finales. El almacenamiento de datos en Amazon S3 tambi&eacute;n significa que dispone de acceso a las herramientas para desarrolladores y servicios de aprendizaje autom&aacute;tico y an&aacute;lisis de AWS m&aacute;s recientes para innovar y optimizar las aplicaciones nativas en la nube.<br /> <a href="/es/products/developer-tools/">M&aacute;s informaci&oacute;n sobre las aplicaciones nativas en la nube &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_tiles_full_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Case_studies" class="lb-txt-bold lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> Casos pr&aacute;cticos</h2> 
+       <div class="lb-xb-grid-wrap" style="margin-top:1px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/es/solutions/case-studies/netflix/"><img alt="Netflix" title="Netflix" src="//d1.awsstatic.com/Industries/Telecom/600x400_Netflix-Logo.3bfbc7a6fa28b81d2e46ca48d3ff71b781abc0ce.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Netflix distribuye miles de millones de horas de contenido desde Amazon S3 a clientes de todo el mundo. Amazon S3 tambi&eacute;n se utiliza como lago de datos para su soluci&oacute;n de an&aacute;lisis de big data. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/es/solutions/case-studies/finra/"><img alt="FINRA" title="FINRA" src="//d1.awsstatic.com/product-marketing/AI/customers/Approved_Logos_600x4001/600x400_FINRA.3cba6a9ca0d18b7a45c036dd7c9e2f34d309b8c3.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            FINRA utiliza Amazon S3 para adquirir y almacenar diariamente datos de m&aacute;s 75&nbsp;000&nbsp;millones de eventos del mercado y las funciones de AWS Lambda para dar formato y validar los datos con m&aacute;s de 200&nbsp;reglas. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/es/solutions/case-studies/airbnb/"><img alt="Airbnb" title="Airbnb" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600x400_Airbnb_Logo.f891e0066454456292ad7009aad136ea679f2cfd.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Airbnb aloja datos de copias de seguridad y archivos est&aacute;ticos en Amazon S3, incluidos m&aacute;s de 10 petabytes de im&aacute;genes de usuarios. Como soluci&oacute;n concebida en la nube, est&aacute;n innovando continuamente la forma de analizar los datos almacenados en Amazon S3. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/es/solutions/case-studies/ge-healthcare/"><img alt="GE Healthcare" title="GE Healthcare" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600X400_GE-Healthcare_Logo.7dd29d40cf5fe1cc9f3a0cc0aedbcb54528a4fe2.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            GE utiliza Amazon S3 para almacenar y proteger un petabyte de datos de im&aacute;genes m&eacute;dicas de importancia cr&iacute;tica para su servicio en la nube GE Health, que conecta cientos de miles de equipos de im&aacute;genes y otros dispositivos m&eacute;dicos. 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Related_content" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Contenido relacionado</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>NOVEDADES</b><br /> <i>S3 presenta la replicaci&oacute;n dentro de una misma regi&oacute;n. Ahora el servicio ofrece replicaci&oacute;n en las mismas regiones o en otras diferentes de AWS.</i><br /> 18&nbsp;DE SEPTIEMBRE DE 2019</p> 
+           <p><a href="/es/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>BLOG DE NOVEDADES DE AWS</b> 
+           </div> 
+           <div> 
+            <i>Amazon S3 anuncia la disponibilidad general de las operaciones por lotes de S3 para la administraci&oacute;n de objetos en las regiones comerciales de AWS y en AWS GovCloud</i> 
+           </div> 
+           <div>
+             por Jeff Barr | 30 de abril de 2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-amazon-s3-batch-operations/" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>NOVEDADES</b> 
+            <br /> 
+            <i>AWS anuncia la disponibilidad general del tipo de almacenamiento Amazon S3 Glacier Deep Archive en todas las regiones comerciales de AWS y en AWS GovCloud (EE.UU.)</i> 
+           </div> 
+           <div>
+             27&nbsp;de marzo de&nbsp;2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="/es/about-aws/whats-new/2019/03/S3-glacier-deep-archive/" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <h2 id="__" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> </h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>BLOG DE NOVEDADES DE AWS<br /> </b> 
+            <i>Nuevo: Optimizaci&oacute;n de costos autom&aacute;tica para Amazon S3 a trav&eacute;s de Capas inteligentes</i> 
+            <br /> de Jeff Barr | 26 de noviembre de 2018 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-automatic-cost-optimization-for-amazon-s3-via-intelligent-tiering/" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>BLOG DE ARQUITECTURA DE AWS</b><br /> <i>S3 &amp; S3 Glacier Launch Announcements for Archival Workloads</i><br /> de Matt Sidley | 26 de noviembre de 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>BLOG DE NOTICIAS</b><br /> <i> Amazon S3 Block Public Access — Another Layer of Protection for Your Accounts and Buckets</i><br /> 16 de noviembre de 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" target="_blank">M&aacute;s informaci&oacute;n &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> &iquest;Listo para comenzar?</h2> 
+      <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Consulte las caracter&iacute;sticas del producto 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Obtenga m&aacute;s informaci&oacute;n sobre las caracter&iacute;sticas para la administraci&oacute;n de datos, la seguridad, la administraci&oacute;n de acceso, el an&aacute;lisis y m&aacute;s.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/es/s3/features/"> M&aacute;s informaci&oacute;n&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Inscr&iacute;base para obtener una cuenta gratuita 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Obtenga acceso al instante a la capa gratuita de AWS y comience a experimentar con Amazon S3.&nbsp;</p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> Inscribirse&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Comience a crear en la consola 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Introducci&oacute;n a la creaci&oacute;n de soluciones con Amazon S3 en la consola de AWS.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> Introducci&oacute;n&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Iniciar sesi&oacute;n en la consola</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Informaci&oacute;n sobre AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/es/what-is-aws/?nc1=f_cc" target="_blank">&iquest;Qu&eacute; es AWS?</a></li> 
+       <li><a href="/es/what-is-cloud-computing/?nc1=f_cc" target="_blank">&iquest;Qu&eacute; es la inform&aacute;tica en la nube?</a></li> 
+       <li><a href="/es/devops/what-is-devops/?nc1=f_cc" target="_blank">&iquest;Qu&eacute; es DevOps?</a></li> 
+       <li><a href="/es/containers/?nc1=f_cc" target="_blank">&iquest;Qu&eacute; es un contenedor?</a></li> 
+       <li><a href="/es/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">&iquest;Qu&eacute; es un lago de datos?</a></li> 
+       <li><a href="/es/security/?nc1=f_cc" target="_blank">Seguridad en la nube de AWS</a></li> 
+       <li><a href="/es/new/?nc1=f_cc" target="_blank">Novedades</a></li> 
+       <li><a href="/es/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Notas de prensa</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Recursos para AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/es/getting-started/?nc1=f_cc" target="_blank">Introducci&oacute;n</a></li> 
+       <li><a href="/es/training/?nc1=f_cc" target="_blank">Formaci&oacute;n t&eacute;cnica y certificaci&oacute;n</a></li> 
+       <li><a href="/es/solutions/?nc1=f_cc" target="_blank">Cartera de soluciones de AWS</a></li> 
+       <li><a href="/es/architecture/?nc1=f_cc" target="_blank">Centro de arquitectura</a></li> 
+       <li><a href="/es/faqs/?nc1=f_dr" target="_blank">Preguntas frecuentes sobre cuestiones t&eacute;cnicas y productos</a></li> 
+       <li><a href="/es/resources/analyst-reports/?nc1=f_cc" target="_blank">Informes de analistas</a></li> 
+       <li><a href="/es/partners/?nc1=f_dr" target="_blank">Red de socios de AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Desarrolladores en AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/es/developer/?nc1=f_dr" target="_blank">Centro de desarrolladores</a></li> 
+       <li><a href="/es/developer/tools/?nc1=f_dr" target="_blank">SDK y herramientas</a></li> 
+       <li><a href="/es/developer/language/net/?nc1=f_dr" target="_blank">.NET en AWS</a></li> 
+       <li><a href="/es/developer/language/python/?nc1=f_dr" target="_blank">Python en AWS</a></li> 
+       <li><a href="/es/developer/language/java/?nc1=f_dr" target="_blank">Java en AWS</a></li> 
+       <li><a href="/es/developer/language/php/?nc1=f_cc" target="_blank">PHP en AWS</a></li> 
+       <li><a href="/es/developer/language/javascript/?nc1=f_dr" target="_blank">JavaScript en AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Ayuda</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/es/contact-us/?nc1=f_m" target="_blank">Cont&aacute;ctenos</a></li> 
+       <li><a href="/es/careers/?nc1=f_hi" target="_blank">Oportunidades de trabajo en AWS</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">Abra un tique de soporte t&eacute;cnico</a></li> 
+       <li><a href="/es/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Centro de conocimientos</a></li> 
+       <li><a href="/es/premiumsupport/?nc1=f_dr" target="_blank">Informaci&oacute;n general de AWS Support</a></li> 
+       <li><a href="/es/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="es" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Crear una cuenta de AWS</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="es" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="es" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="es" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="es" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="es" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon es un empleador que ofrece igualdad de oportunidades: 
+        <i> minor&iacute;as, mujeres, discapacitados, veteranos, identidad de g&eacute;nero, orientaci&oacute;n sexual/edad.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Idioma</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacidad</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">T&eacute;rminos del sitio</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. o sus empresas afiliadas. Todos los derechos reservados.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    Está utilizando un navegador <strong>obsoleto</strong>. Actualice a Internet Explorer 11 o a otro navegador vigente para mejorar su experiencia.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'Está utilizando un navegador <strong>obsoleto</strong>. Actualice a Internet Explorer 11 o a otro navegador vigente para mejorar su experiencia.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-15T15:44:00.522-0700 -->  
+ </body>
+</html>

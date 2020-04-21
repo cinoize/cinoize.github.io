@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      
+<html class="window no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         
+<html class="window no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         
+<html class="window no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if lt IE 10]>         
+<html class="window no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="window no-js"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        
+        <link href="/images/icons/favicon.ico" type="image/x-icon" rel="icon">
+	    <link href="/images/icons/favicon.ico" type="image/x-icon" rel="shortcut icon">
+	    <link href="/images/icons/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed">
+	    
+        <title>FAO MEDIA VAULT</title>
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <script src="/js/modernizr.js"></script>
+        
+        <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
+	    <script type="text/javascript" src="/js/jquery/jquery.tools.min.js"></script>
+	    <script type="text/javascript" src="/js/jquery/jquery.placeholder.js"></script>
+	    
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+    
+    <body class="page">
+    
+		<header class="header">
+			<div class="__row _align-right">
+				<div class="content-wrapper _inline-block">    
+    
+    				<menu class="mobile-menu js-mobile-menu" id="nav-trigger">
+						<nav class="__dropdown" id="nav-mobile">
+							 <ul class="__list">
+						        <li class="__item"><a href="" class="__link">FAO in Action</a></li>
+						        
+						        						        	<li class="__subitem">
+						        		<a href="/category/index/cId/34723551" class="__link">
+						        			Field Projects						        		</a>
+						        	</li>
+						        						        	<li class="__subitem">
+						        		<a href="/category/index/cId/35175141" class="__link">
+						        			Events						        		</a>
+						        	</li>
+						        						        
+						        						        	<li class="__item">
+						        		<a href="/category/index/cId/34723581" class="__link">
+						        			Types of Content						        		</a>
+						        	</li>
+						        						        	<li class="__item">
+						        		<a href="/category/index/cId/34729891" class="__link">
+						        			Regions						        		</a>
+						        	</li>
+						        						    </ul>
+						</nav>
+					</menu>
+    				
+    				
+						
+						<a href="/auth/login?url=%2Fvideo%2Findex%2FentryId%2F1_r72n38iw" class="login">Login</a>
+										
+					<form action="/search" class="searchbar" method="post">
+		                <input type="text" autofocus="autofocus" placeholder="Search" name="searchText" id="searchText" class="__field">
+		                <input type="submit" value="" class="__submit">
+		            </form>
+		            
+				</div>
+			</div>
+			
+			<div class="__row __bg-white">
+				<div class="content-wrapper clearfix">
+					<a href="http://www.fao.org/" target="_blank" class="__logo _link">
+						<div class="__logo-img"></div>
+					</a>
+					<h2 class="__subtitle">FAO MEDIA VAULT</h2>
+				</div>
+			</div>
+			
+		</header>
+		
+		<div class="crumbs">
+			<div class="content-wrapper _relative">
+				
+								
+				<menu class="menu">
+				
+					<li class="__item"><a href="javascript:void(0);" class="__link">FAO in Action</a>
+						<ul class="__submenu">
+							
+															<li class="__subitem">
+									<a href="/category/index/cId/34723551" class="__sublink">
+										Field Projects									</a>
+								</li>
+															<li class="__subitem">
+									<a href="/category/index/cId/35175141" class="__sublink">
+										Events									</a>
+								</li>
+														
+						</ul>
+					</li>
+					
+											<li class="__item">
+							<a href="/category/index/cId/34723581" class="__link">
+								Types of Content							</a>
+						</li>
+											<li class="__item">
+							<a href="/category/index/cId/34729891" class="__link">
+								Regions							</a>
+						</li>
+										
+				</menu>
+				
+				<ul class="__list">
+											<li class="__item">
+						
+															<a href="/" class="__link ">
+									Home								</a>
+													</li>
+											<li class="__item">
+						
+														
+																	<a href="/category/index/cId/34723551" class="__link">
+										Field Projects									</a>
+																
+													</li>
+											<li class="__item">
+						
+														
+																	<a href="/event/index/cId/34723551/evId/156998031" class="__link">
+										Locust Outbreak in Kenya									</a>
+																
+													</li>
+											<li class="__item">
+						
+															<a href="" class="__link _last">
+									FAO's continuous effort to fight Desert Locust upsurge in Kenya despite of COVID-19 constraints.								</a>
+													</li>
+									</ul>
+				
+			</div>
+		</div>
+		
+		
+<script>
+
+		function getInfo( type ) {
+            var elements = [ 'dopesheet', 'shotlist', 'restrictions' ];
+
+            for ( var i=0; i < elements.length; i++ ) {
+                if ($("#" + elements[i]).length > 0) {
+                    var visible = type == elements[i] && !$('#' + type).is(':visible');
+                    $('#' + elements[i]).toggle(visible);
+                    $('#' + elements[i] + '_button').html( visible ? "Close" : "Open" );
+                }
+			}
+		}
+
+        $(document).ready( function() {
+
+            $('[name="downloadable_videos"]').change( function() {
+                if ($(this).attr('checked')) {
+                    var link = "/download/index/entryId/1_r72n38iw/id/1_r72n38iw/format/" + $(this).attr('value');
+					$('#download-link').attr('href', link );
+                }
+            } );
+
+            var chk = document.getElementsByName('downloadable_videos');
+	        var len = chk.length;
+	        
+	        if ( len > 0 ) {
+	        	chk[0].checked = 'checked';
+	        	var link = "/download/index/entryId/1_r72n38iw/id/1_r72n38iw/format/" + chk[0].value;
+	        	$('#download-link').attr('href', link );
+	        }
+	        
+        } );
+        
+</script>
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="section-header">
+            <p class="__label">video.title</p>
+
+            <h1 class="__title">FAO's continuous effort to fight Desert Locust upsurge in Kenya despite of COVID-19 constraints.</h1>
+        </div>
+        
+        <div class="__video-inner">
+        	<div class="__video" style="height:566px">
+        		
+        			                <div style='width: 100%; display: inline-block;position: relative;'><div id='dummy' style='margin-top: 60.2%;'></div><div id='kaltura_player_1417000991' style='position:absolute;top:0;left:0;left: 0;right: 0;bottom:0;' itemprop='video' itemscope itemtype='http://schema.org/VideoObject'><script src='http://cdnapi.kaltura.com/p/1998221/sp/199822100/embedIframeJs/uiconf_id/31220981/partner_id/1998221?autoembed=false&entry_id=1_r72n38iw&playerId=kaltura_player_1417000991&cache_st=1417000991&width=940&height=566'></script></div><script>kWidget.embed({'targetId': 'kaltura_player_1417000991','wid': '_1998221','uiconf_id': 31220981,'flashvars': {'ks': 'YWU4MTI1MjZkMDZkNjcyMzE5MGE5M2E5ZDMxMGUyYzNlZTE1NzEzMHwxOTk4MjIxOzE5OTgyMjE7MTU4NzUzMTE1NTsyOzU1MjU7cGVwZTs=', 'akamaiHD': {'loadingPolicy': 'preInitialize', 'asyncInit' : 'true'}, 'twoPhaseManifest': 'true', 'sourceSelector': {'0':'','plugin':true,'switchOnResize':false,'simpleFormat':true}, 'mediaProxy.preferedFlavorBR': '1600'},'cache_st': 1417000991,'entry_id': '1_r72n38iw'});</script></div>	            	            
+	        </div>
+            <div class="__description">
+                <p>
+                    The Food and Agricultural Organization of the UN (FAO) is continuing efforts to contain the Desert Locust upsurge in East Africa despite restrictions on the movement of personnel and equipment resulting from the COVID-19 pandemic.                 </p>
+            </div>
+        </div>
+        
+        <div class="__info _top-hatching clearfix">
+            <div class="__block">
+                <strong class="__title">
+                    Details                </strong>
+
+                                
+	                <div class="">
+						<span class="__col">
+							Date & Location						</span>
+						<span class="__col">
+										                  
+								31/03/2020				                  
+				                				                	<br> Isiolo county, Samburu county, Laikipia county, Kenya				                						                	, Kenya					                				                				                  	
+				            						</span>
+	                </div>
+	                
+	            	            
+	            	            
+                	<div class="">
+						<span class="__col">
+							Duration						</span>
+						<span class="__col">
+							5' 50''						</span>
+                	</div>
+                	
+               	               	
+               	                
+                	<div class="">
+						<span class="__col">
+							Audios						</span>
+						<span class="__col">
+							Natural / English						</span>
+                	</div>
+                	
+               	                
+                                
+                	<div class="">
+						<span class="__col">
+							Source						</span>
+						<span class="__col">
+							FAO						</span>
+                	</div>
+                	
+                                
+                                
+                	<div class="">
+						<span class="__col">
+							Contact						</span>
+						<span class="__col">
+							Annie Ho, Tszmei.ho@fao.org						</span>
+                	</div>
+                
+                                
+                            
+            </div>
+
+            <div class="__block _video-info-and-attachments">
+    
+    				
+					<div>
+	                    <strong class="__title">
+	                        Video info	                    </strong>
+	                    
+								                    
+		                    <div class="">
+								<span class="__col">
+									Dopesheet								</span>
+								<span class="__col _centred">
+									<a href="#dopesheet" onclick="getInfo('dopesheet');" class="button _size-s">
+		                            	Open		                            </a>
+								</span>
+		                    </div>
+		                    
+		                		                
+		                		                    
+		                    <div class="">
+								<span class="__col">
+									Shotlist								</span>
+								<span class="__col _centred">
+									<a href="#shotlist" onclick="getInfo('shotlist');" class="button _size-s">
+		                        	    Open		                            </a>
+								</span>
+		                    </div>
+		                    
+		                		                    
+		                		                
+		                    <div class="">
+								<span class="__col">
+									Restrictions								</span>
+								<span class="__col _centred">
+									<a href="#restrictions" onclick="getInfo('restrictions');" class="button _size-s">
+		                        	    Open		                            </a>
+								</span>
+		                    </div>
+		                    
+		                		        
+		        	</div>
+		        	    
+	            	            
+	            	        	
+            </div>
+            
+			            
+	            <div class="__block">
+	                <strong class="__title">
+	                    Download	                </strong>
+	                
+	                                	
+    	                <table class="__table">
+    	                    <thead class="__table-head">
+    	                    <tr class="__table-row">
+    	                        <td colspan="2">
+    	                            Format    	                        </td>
+    	                        <td>
+    	                            Size    	                        </td>
+    	                    </tr>
+    	                    </thead>
+    	                    <tbody class="__table-body">
+    	                    
+    	                    	    								    									    									
+    										    										<tr class="__table-row">
+    				                    		<td>
+    				                    			    			                                	Original    			                               	</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141e966').checked = 'checked';">19.7 Mbps</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141e966').checked = 'checked';">842.71 MB</td>
+    				                    	</tr>
+    				                    	    					            								    									    								    									    								    									    								    									    								    									    									
+    										    										<tr class="__table-row">
+    				                    		<td>
+    				                    			    			                                	Web    			                               	</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141ea0e').checked = 'checked';">1.06 Mbps</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141ea0e').checked = 'checked';">45.2 MB</td>
+    				                    	</tr>
+    				                    	    					            								    									    								    									    								    									    								    									    								    									    								    									    								    					            								    									    								    									    								    									    								    									    									
+    										    										<tr class="__table-row">
+    				                    		<td>
+    				                    			    			                                	Web High    			                               	</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141ead1').checked = 'checked';">2.48 Mbps</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141ead1').checked = 'checked';">106.01 MB</td>
+    				                    	</tr>
+    				                    	    					            								    									    								    									    								    									    									
+    										    										<tr class="__table-row">
+    				                    		<td>
+    				                    			    			                                	HD    			                               	</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141eb32').checked = 'checked';">14.83 Mbps</td>
+    				                    		<td onclick="document.getElementById('5e9e7c141eb32').checked = 'checked';">634.56 MB</td>
+    				                    	</tr>
+    				                    	    					            	
+    	                    </tbody>
+    	                </table>
+    	                
+    	                    		            	<a id="download-disabled" href="/auth/login?url=%2Fvideo%2Findex%2FentryId%2F1_r72n38iw" class="button _size-l _with-icon">
+    		            		Download disabled, please log in    		            	</a>
+    		                		            
+										
+	            </div>
+	            
+	     		     	
+		</div>
+		
+			      
+      		<div id="dopesheet" class="__info _top-hatching clearfix" style="margin-top:20px;display:none;">
+	      		<strong>Dopesheet</strong>
+	      	  	<p>
+	            	The Food and Agricultural Organization of the UN (FAO) is continuing efforts to contain the Desert Locust upsurge in East Africa despite restrictions on the movement of personnel and equipment resulting from the COVID-19 pandemic. <br />
+<br />
+The Desert Locust upsurge continues to remain alarming, particularly in Ethiopia, Kenya and Somalia, where it poses an unprecedented threat to food security and livelihoods. In the six East African countries worst affected or at risk of locusts - Ethiopia, Kenya, Somalia, South Sudan, Uganda and Tanzania - around 20 million people are already experiencing acute food insecurity. <br />
+<br />
+Widespread rainfall in March is expected to produce a dramatic increase in locust numbers in East Africa over the coming months, with new swarms expected to move from Kenya into South Sudan and Uganda.  <br />
+<br />
+ “You know our community, the small-scale farmers, it’s a very big problem. For food security in Kenya especially after problem like coronavirus. How are we gonna feed Kenya? All of our produces is for local consumption. I think everyone needs to take it seriously and support every way you can because it’s a very big problem, for Kenya as a whole, ” said a farmer in Laikipia county, Kenya. <br />
+<br />
+Restrictions on the movement of personnel and equipment imposed by COVID-19 have created challenges but FAO is continuing to work with national governments, farmers and agricultural producers on containing the outbreak. <br />
+<br />
+“ When we want to load the aeroplane early in the morning, there are also restrictions of timing and also locating the swarms because of the curfew. However, we are trying to come up with innovative ways like reducing the number of population that are being met at once for the training, as well as also engaging the security officers so that they can allow a small extension of time for the locusts scout as well as the operation team,” said Ambrose Ngetich, FAO project officer based in the Desert Locust control base in Isiolo county in Kenya. <br />
+<br />
+In Kenya, FAO is training farmers to use motorized sprayers to contain the spread of desert locusts. <br />
+<br />
+FAO is augmenting national efforts by providing support for surveillance as well as aerial and ground spraying being conducted in 10 affected countries. <br />
+<br />
+So far over 1 million hectares of land in East Africa have been surveyed for locusts and over than 240,000 hectares treated with chemical pesticides or biopesticides and 740 people have been trained to conduct ground locust control operations.   <br />
+<br />
+But COVID-19 has had an impact on the supply of motorized sprayers and pesticides. Supply of pesticides has been delayed as global air freight has been reduced significantly. <br />
+<br />
+FAO is working to prevent a breakdown in pesticide stock in each country.  <br />
+As COVID-19 restricts the movement of personnel in the field, FAO is intensifying remote data collection and the network of partners, civil society, extension workers and grassroot organizations is critical for providing information from remote locations especially in Ethiopia, Kenya, Somalia and South Sudan.  <br />
+<br />
+FAO is encouraging all countries to use eLocust3, a rugged handheld tablet and app, which records and transmits data in real time via satellite to national locust centres and to the Desert Locust Information Service (DLIS) based at FAO headquarters in Rome.   <br />
+Since 2015, more than 450 of these handheld devices have been distributed to teams in northern Africa, the Near East and southwest Asia, allowing the transfer of real-time data from jeeps in the middle of the desert directly to the national locust office and to FAO’s headquarters.    More recently, FAO has developed a version of eLocust3 that can be used on mobile phones and a GPS device in order to broaden usage and coverage.<br />
+<br />
+The Desert Locust is considered the most destructive migratory pest in the world and a single swarm covering one square kilometer contains up to 80 million locusts.  FAO estimates the number of locusts could increase another 20 times during the upcoming rainy season unless control activities are stepped up.<br />
+<br />
+The current situation represents an unprecedented threat to food security and livelihoods that could lead to further suffering, displacement and potential tensions.<br />
+FAO recently scaled up its Desert Locust appeal to $153 million and so far around $111 million has been pledged or received.  <br />
+<br />
+ENDS<br />
+<br />
+	          	</p>
+	      	</div>
+          
+                
+        	      
+      		<div id="shotlist" class="__info _top-hatching clearfix" style="margin-top:20px;display:none;">
+	      		<strong>Shotlist</strong>
+	      	  	<p>
+	            	LOCATIONS: Isiolo county, Samburu county, Laikipia county, Kenya<br />
+DATE: 31st March, 1,3,4 April, 12020 <br />
+SOUND: Natural / English<br />
+LENGTH: 5’50<br />
+SOURCE: FAO<br />
+ACCESS: ALL<br />
+<br />
+<br />
+Oldonyiro, Isiolo county, Kenya – 31st March 2020<br />
+1.	Drone shot of desert locust swarm flying<br />
+2.	Wide desert locust swarm flying<br />
+3.	Wide hopper bands travelling on the ground<br />
+4.	Close of a desert locust<br />
+5.	Wide of desert locusts on tree, tilt down to desert locusts standing on local vegetation in foreground<br />
+6.	Various of close of desert locusts eating plants<br />
+7.	Wide a motorbike driving through flying desert locusts swarm<br />
+8.	Wide local people with their livestock<br />
+9.	Wide woman and children, tilt down to desert locusts on tree in foreground<br />
+10.	 Wide desert locusts on wooden hut<br />
+Oldonyiro, Isiolo county, Kenya - 1 April 2020<br />
+11.	Drone shot of trees and people walking on ground<br />
+12.	Various of pastoralists<br />
+13.	Wide of desert locust swarm flying, a camel in background<br />
+<br />
+Isiolo town, Isiolo county, Kenya – 3 April 2020<br />
+14.	Low shot of a trainee holding a motorized sprayer<br />
+15.	Wide people in a training on how to use motorized sprayers<br />
+Seren, Samburu county, Kenya – 4 April, 2020<br />
+16.	 Wide workers in protective gear spraying pesticide<br />
+17.	 Wide a vehicle spraying pesticide<br />
+18.	 Wide a worker in protective gear spraying pesticide at desert locust swarm<br />
+19.	 Close of a dead desert locust<br />
+20.	Wide an airplane spraying pesticide<br />
+<br />
+Oldonyiro, Isiolo county, Kenya – 31st March 2020<br />
+21.	 Various of Ambrose Ngetich, FAO project officer talking<br />
+22.	 SOUNDBITE ( English ) Ambrose Ngetich, FAO project officer, “ The locust infestation is happening in a very wide area, and you find every time you try to control in one region, there is a swarm that is happening in another region, it is not possible to control them simultaneously. Because most of the time they are at different stages, so it requires a lot of personnel and capacity to be able to undertake the control operation and also managing the surveillance in term of the ground team.”<br />
+23.	 SOUNDBITE ( English ) Ambrose Ngetich, FAO project officer “ Currently there is a number of procurement that has been done which include the motor vehicle, motorized pumps that’s used to control the locusts, there is also the hiring of planes that is being used for aerial spraying as well as the pesticide that are going to be used in controlling the locusts.”<br />
+24.	 SOUNDBITE ( English ) Ambrose Ngetich, FAO project officer, “ Right now the rains are beginning, and if the farmers will not be able to grow their crops early enough, there will be challenge in terms of availability of food in the future given that the locusts infestation continue without being controlled, it is going to impact a lot on the availability of food.”<br />
+25.	 SOUNDBITE ( English ) Ambrose Ngetich, FAO project officer “ In terms of the Covid-19 restrictions, we agree with the government the need of restrictions. However, in terms of managing the capacity that are being created for the training and also even managing the control. For example, when we want to load the aeroplane early in the morning, there is also restrictions of timing and also locating the swarms because of curfew. However, we are trying to come up with innovative ways like reducing the number of population that are being met at once for the training, as well as also engaging the security officers so that they can allow a small extension of time for the locusts scout as well as the operation team.” <br />
+26.	 Wide of Stanley Kipkoech Arap Talle, senior officials of Ministry of Agriculture of Kenya ( camera left) standing in front of a FAO airplane for pesticide spraying<br />
+27.	 SOUNDBITE ( English ) Stanley Kipkoech Arap Talle, senior officials of Ministry of Agriculture of Kenya, “ FAO has come in about some weeks ago. They come in handy with the support they have given us. They have given us support in a big way. They have given us  supports in terms of training personnel who are supposed to do the ground surveillance. They have also supported us in terms of pesticide – procurement of the pesticide. They have supported us with the hiring of the aircrafts. They have hired three aircrafts for us, spray aircrafts. They have also supported us in terms of surveillance aircrafts. We thank them so much for their support.”  <br />
+<br />
+Kifuku farm, Laikipia county, Kenya – 3 April 2020<br />
+28.	 Various of farmer George Dodds walking on farmland<br />
+29.	 SOUNDBITE ( English ) George Dodds, farmer, “ I think unfortunately because of other things going around the world, people are forgetting about the problem with the locusts. But it’s a very very real problem. We’ve seen it first hand, we didn’t believe it ourselves. We thought the first time they came they didn’t eat anything, so we though it’s fine. We are gonna be okay. And we’ve seen first hand. You know our community, the small-scale farmers, it’s a very big problem. For food security in Kenya especially after problem like coronavirus. How are we gonna feed Kenya? All of our produces is for local consumption. I think everyone needs to take it seriously and support every way you can because it’s a very big problem, for Kenya as a whole.”<br />
+30.	 SOUNDBITE ( English ) George Dodds, farmer, “ Through FAO, we spray today, we sprayed yesterday, we spray the locusts. I think large-scale spraying controlling of the swarms, and just educating everyone on how big this problem is and we can get everyone behind - if anyone sees a swarm let’s report it.  ”<br />
+ENDS<br />
+	          	</p>
+	      	</div>
+          
+                
+        	      
+      		<div id="restrictions" class="__info _top-hatching clearfix" style="margin-top:20px;display:none;">
+	      		<strong>Restrictions</strong>
+	      	  	<p>
+	            	None	          	</p>
+	      	</div>
+          
+                
+	</section>
+</div>
+    
+    	<footer class="footer">
+			<div class="content-wrapper _relative">
+				<div class="__wrapper">
+					
+					<div class="__item _departments">
+						<h4 class="__title">FAO Departments and Offices</h4>
+		
+						<menu class="__nav _first">
+							<li class="__item">
+								<a href="http://www.fao.org/employment/en/" class="__link">
+									Employment								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/unfao/procurement/general-information/en/" class="__link">
+									Procurement								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/unfao/govbodies/gsbhome/gsb-home/en/" class="__link">
+									Governing Bodies								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/aud/en/" class="__link">
+									Office of the Inspector General								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/evaluation/oed-home/en/" class="__link">
+									Evaluation								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/legal/home/legal-office/en/" class="__link">
+									Legal and Ethics Office								</a>
+							</li>
+						</menu>
+		
+						<menu class="__nav">
+							<li class="__item">
+								<a href="http://www.fao.org/ag/portal/ag-home/en/" class="__link">
+									Agriculture and Consumer Protection								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/economic/es-home/en/" class="__link">
+									Economic and Social Development								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/fishery" class="__link">
+									Fisheries and Aquaculture								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/forestry" class="__link">
+									Forestry								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/tc" class="__link">
+									Technical Cooperation								</a>
+							</li>
+						</menu>
+		
+						<menu class="__nav">
+							<li class="__item">
+								<a href="http://www.fao.org/africa/en/" class="__link">
+									Regional Office for Africa								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/asiapacific/en/" class="__link">
+									Regional Office for Asia and the Pacific								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/europe/en/" class="__link">
+									Regional Office for Europe and Central Asia								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/americas/en/" class="__link">
+									Regional Office for Latin America and the Caribbean								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/neareast/en/" class="__link">
+									Regional Office for the Near East and North Africa								</a>
+							</li>
+							<li class="__item">
+								<a href="http://www.fao.org/about/who-we-are/worldwide-offices/en/#c207632" class="__link">
+									Country Offices								</a>
+							</li>
+						</menu>
+						
+					</div>
+					
+					<div class="__item _social">
+						<div class="__social-icons-wrap">
+							<h4 class="__title">Follow us on</h4>
+							<div class="__social-icons __icon">
+								<a href="http://www.facebook.com/pages/Food-and-Agriculture-Organization-of-the-United-Nations-FAO/46370758585?ref=mf" class="__item _facebook" target="_blank"></a>
+								<a href="http://www.flickr.com/photos/faonews/collections/" class="__item _flickr" target="_blank"></a>
+								<a href="https://plus.google.com/+UNFAO/?rel=author" class="__item _google-plus" target="_blank"></a>
+								<a href="https://instagram.com/unfao" class="__item _instagram" target="_blank"></a>
+								<a href="http://www.linkedin.com/company/fao" class="__item _linkedin" target="_blank"></a>
+								<a href="http://www.fao.org/news/rss-feed/en/" class="__item _rss" target="_blank"></a>
+								<a href="http://www.slideshare.net/FAOoftheUN" class="__item _social" target="_blank"></a>
+								<a href="https://soundcloud.com/unfao" class="__item _soundcloud" target="_blank"></a>
+								<a href="https://twitter.com/FAOnews/lists/fao-twitter-accounts" class="__item _twitter" target="_blank"></a>
+								<a href="http://www.youtube.com/user/FAOVideo" class="__item _youtube" target="_blank"></a>
+							</div>
+						</div>
+						<div class="__social-icons-wrap _second">
+							<h4 class="__title">Download our App</h4>
+							<div class="__social-icons">
+								<div class="__item _telephone"></div>
+								<div class="__item _store-wrap">
+									<a href="http://itunes.apple.com/us/app/faonow/id877618174?ls=1&mt=8" class="__item _app_store" target="_blank"></a>
+									<a href="https://play.google.com/store/apps/details?id=org.fao.mobile" class="__item _google_play" target="_blank"></a>
+								</div>
+							</div>
+						</div>
+						<p class="__copy">&copy;&nbsp;FAO 2015</p>
+					</div>
+					
+				</div>
+			</div>
+		</footer>
+			
+    	<script src="/js/main.js"></script>
+    	
+    	<!-- TODO: put here your tracking snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-68315073-1', 'tv.fao.org');
+  ga('send', 'pageview');
+ 
+</script>    	
+    </body>
+    
+</html>
+
+
+

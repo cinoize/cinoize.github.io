@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+<meta charset='utf-8'>
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"e79083cdd8","applicationID":"71306850","transactionName":"e15bR0tdXVtUSh9cUF1QRhxKWl5A","queueTime":0,"applicationTime":75,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={xpid:"VQYOV1NUCxAHVVJSAQkCVg==",licenseKey:"e79083cdd8",applicationID:"71306850"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(22),a=t(21);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(19),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);n.aborted||(e.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):i(this,t),e.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime]))}}function o(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=c(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,n){t.params.status=n.status;var e=w(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(17),m=t(16),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){i(n,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=f(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),u.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=m(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<l;s++)n.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),u.on("xhr-load-added",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],n)}),u.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],n)}),u.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,n){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)}),u.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(t,n){var e=t.responseType;return"json"===e&&null!==n?n:"arraybuffer"===e||"blob"===e||"json"===e?o(t.response):"text"===e||"document"===e||""===e||void 0===e?o(t.responseText):void 0}var o=t(16);n.exports=r},{}],15:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],16:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],17:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],18:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,n){var e=t.getEntries();e.length>0&&c("lcp",[e[e.length-1]])}function i(t){if(t instanceof u&&!l){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:f.now()-e,l=!0,c("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var l=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],19:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],20:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],21:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],22:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],23:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(15),t(18),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<meta content='width=device-width, minimum-scale=1, initial-scale=1' name='viewport'>
+<meta content='yes' name='apple-mobile-web-app-capable'>
+<meta content='black' name='apple-mobile-web-app-status-bar-style'>
+<meta content='430086400490662' property='fb:app_id'>
+<meta content='Aeon' property='og:site_name'>
+<meta content='@aeonmag' property='twitter:site'>
+<link href='https://aeon.co/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<meta content='index, follow' name='robots'>
+<link href='https://aeon.co/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood' rel='canonical'>
+<meta content='Testosterone has a big, popular reputation for causing all sorts of things, but what science tells us is quite different' name='description'>
+<meta content='Testosterone is widely, and sometimes wildly, misunderstood – Matthew Gutmann | Aeon Ideas' property='og:title'>
+<meta content='article' property='og:type'>
+<meta content='https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg' property='og:image'>
+<meta content='Testosterone has a big, popular reputation for causing all sorts of things, but what science tells us is quite different' property='og:description'>
+<meta content='https://aeon.co/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood' property='og:url'>
+<link href='https://aeon.co/amp/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood' rel='amphtml'>
+<meta content='https://www.facebook.com/AeonMagazine' property='article:author'>
+<meta content='https://www.facebook.com/AeonMagazine' property='article:publisher'>
+<meta content='Society' property='article:section'>
+<meta content='summary_large_image' property='twitter:card'>
+<meta content='Testosterone is widely, and sometimes wildly, misunderstood – Matthew Gutmann | Aeon Ideas' property='twitter:title'>
+<meta content='Testosterone has a big, popular reputation for causing all sorts of things, but what science tells us is quite different' property='twitter:description'>
+<meta content='https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg' property='twitter:image:src'>
+
+
+<title>Testosterone is widely, and sometimes wildly, misunderstood | Aeon Ideas</title>
+<link rel="stylesheet" media="all" href="https://alpha.aeon.co/assets/application-1f4f707bb2ebc28041c45e2d410c101a969a1114b0d5611db6066a67c13aae3d.css" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="5FqLnOsCXKLTky3v2AmMmXBvwfejyGslltb9fJ+Le/7jcTMuXAvHXKaBzZRBa8Y5YPCce6q+vpUpk5ulx1E4lw==" />
+<script>
+  window.Aeon = {}
+  window.Aeon.Data = {}
+  window.Aeon.Environment = "production"
+  window.Aeon.Friend = false
+  window.Aeon.SignInUrl = "https://aeon.co/sign-in"
+</script>
+
+<script>
+  if (window.location.host !== 'aeon.co') {
+    window.location.href = 'https://aeon.co'
+  }
+</script>
+<script>
+  if (window.top !== window.self) {
+    window.top.onbeforeunload = function () {}
+    window.top.location.href = window.self.location.href
+  }
+</script>
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MSXMBZ3');
+  </script>
+
+
+</head>
+
+<body class='ideas show page-type--society'>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSXMBZ3" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+<div data-react-class="Aeon.Banner" data-react-props="{&quot;testimonials&quot;:[{&quot;testimonial&quot;:&quot;‘Becoming an Aeon supporter means joining the conversation of humanity – and ensuring it stays alive.’&quot;,&quot;author&quot;:&quot;Andrés P, Guatemala, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I support Aeon because I value excellence over up-to-the-minute, depth over speed, beauty over fact-dropping.’&quot;,&quot;author&quot;:&quot;Ole S, Germany, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I support Aeon because I support the spreading of wisdom.’&quot;,&quot;author&quot;:&quot;Tanner F, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Aeon provides me with high-quality, stimulating and unique content, and this deserves my support.’&quot;,&quot;author&quot;:&quot;Neda M, Australia, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I am a friend of Aeon because I value freedom ... freely provided, intelligently presented information liberates us all.’&quot;,&quot;author&quot;:&quot;Roland M, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I learn more about how to think about the world from Aeon than probably any other publication I regularly read.’&quot;,&quot;author&quot;:&quot;Elizabeth B, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Worldly and thought-provoking, there’s nothing on the internet quite like Aeon.’&quot;,&quot;author&quot;:&quot;Freddie W, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Your articles are smart, well written, and enriching. This is what intelligentsia is about.’&quot;,&quot;author&quot;:&quot;Dien H, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Aeon represents exactly the values that the internet in its purest form is all about. The selfless distribution of wisdom.’&quot;,&quot;author&quot;:&quot;Ben H, UK, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘As a professor, I can teach entire classes using Aeon articles. As a reader, I always find something that teaches me.’&quot;,&quot;author&quot;:&quot;Greg S, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Content that goes beyond the two-hour news cycle. Thinking that grounds.’&quot;,&quot;author&quot;:&quot;Adam W, Canada, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I receive the free Aeon newsletter every day and I look forward to seeing what Aeon has prepared for me. Long story short, Aeon adds value to my life.’&quot;,&quot;author&quot;:&quot;Mabvuto Z, Zambia, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘How lucky I was to come across such a great corner of the internet. Thank you for existing.’&quot;,&quot;author&quot;:&quot;Ana P, Portugal, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Aeon is one of the most consistently great publications on the internet. My life would be poorer without it.’&quot;,&quot;author&quot;:&quot;Lee V, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Thought-provoking, eclectic, open-minded and user friendly. Aeon is like no other site on the internet.’&quot;,&quot;author&quot;:&quot;Larry D, UK, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I believe it’s increasingly important to support accessible scholarship and aspirational ideas. Thinking people can no longer afford to be alone.’&quot;,&quot;author&quot;:&quot;Christine T, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘I read one article and decided that I wanted to support an organisation that promotes critical thinking around ideas that affect our everyday lives.’&quot;,&quot;author&quot;:&quot;John T, Canada, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Aeon, for me, continues to be one of the best places to spend a quiet afternoon, in the company of some of the most brilliant minds around.’&quot;,&quot;author&quot;:&quot;Shivam C, India, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Aeon is always providing great, thought-provoking content, and it would be a crime for me to not donate to a service that I use daily.’&quot;,&quot;author&quot;:&quot;Jarry A, Canada, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘Great ideas need to have a place where they can survive and thrive, and such a place does not build itself.’&quot;,&quot;author&quot;:&quot;Wah Loon K, USA, Friend of Aeon&quot;},{&quot;testimonial&quot;:&quot;‘It makes me happy knowing that my contribution to Aeon means it can continue to deliver amazing content for free.’&quot;,&quot;author&quot;:&quot;Charlie L, USA, Friend of Aeon&quot;}],&quot;userIsDonor&quot;:false,&quot;bannerHiddenByUser&quot;:false}"></div>
+
+<div data-react-class="Aeon.Menu" data-react-props="{}"></div>
+<a class='menu__close-cover' href='#' onclick='document.body.classList.remove(&#39;menu--open&#39;); return false;'></a>
+
+<div data-react-class="Aeon.HeaderBridge" data-react-props="{&quot;header_type&quot;:&quot;unknown&quot;,&quot;sign_in_url&quot;:&quot;https://aeon.co/sign-in&quot;,&quot;donate_url&quot;:&quot;https://aeon.co/donate?utm_medium=web\u0026utm_source=top-bar&quot;,&quot;nav_props&quot;:null}"></div>
+
+<div class='modal-friends'>
+<div class='friends-save'>
+<p class='friends-save__title'>Become a Friend of Aeon to save articles and enjoy other exclusive benefits</p>
+<a class='friends-save__big-button' href='https://aeon.co/donate?theme=friends&amp;utm_medium=web&amp;utm_source=friends-preview'>Make a donation</a>
+<span class='dropdown__triangle'></span>
+</div>
+
+<a class='close-cover' href='#' onclick='document.body.classList.remove(&#39;friends-modal--open&#39;); return false;'></a>
+</div>
+<div class='modal-newsletter'>
+<div class='newsletter-signup'>
+<span data-react-class="Aeon.NewsletterSignup" data-react-props="{&quot;newsletter_source&quot;:&quot;newsletter-signup-header&quot;}"></span>
+</div>
+
+<a class='close-cover' href='#' onclick='document.body.classList.remove(&#39;modal-newsletter--open&#39;); document.body.classList.remove(&#39;open--faq&#39;); return false;'></a>
+</div>
+<div class='modal-newsletter-faq'>
+<div class='faq newsletter_faq'>
+<div class='faq__content'>
+<a class='faq__close-icon' href='' onclick='document.body.classList.remove(&#39;open--newsletter-faq&#39;); return false;'>&times;</a>
+<div class='faq__header'>Newsletter Privacy Policy</div>
+<p>Aeon email newsletters are issued by the not-for-profit, registered charity Aeon Media Group Ltd (Australian Business Number 80 612 076 614). This Email Newsletter Privacy Statement pertains to the personally identifying information you voluntarily submit in the form of your email address to receive our email newsletters</p><p>More generally, when visiting the Aeon site you should refer to our site Privacy Policy <a href="https://aeon.co/privacy">here</a>.</p><p>This Email Newsletter Privacy Statement may change from time to time and was last revised 5 June, 2018.</p><p>By clicking ‘Subscribe’ you agree to the following:</p><ul><li>We will use the email address you provide to send you daily and/or weekly email (depending on your selection). We also send occasional donation requests and, no more than once a year, reader surveys.</li><li>The email address/es you provide will be transferred to our external marketing automation service ‘MailChimp’ for processing in accordance with their <a href="https://mailchimp.com/legal/privacy/?_ga=2.37985569.369556906.1526884532-1949438781.1481075689">Privacy Policy</a> and <a href="https://mailchimp.com/legal/terms/?_ga=2.51018027.369556906.1526884532-1949438781.1481075689">Terms</a>. We use MailChimp to issue our newsletters, donation requests and reader surveys. We have no control over, and assume no responsibility for, the conduct, practices or privacy policies of MailChimp.</li></ul><p><strong>Unsubscribing</strong></p><p>You can change your mind at any time by clicking the ‘unsubscribe link’ in the footer of emails you receive from us, or by contacting us at <a href="mailto:support@aeon.co">support@aeon.co</a>&nbsp;</p><p>If you want to review and correct the personal information we have about you, you can click on ‘update preferences’ in the footer of emails you receive from us, or by contacting us at <a href="mailto:support@aeon.co">support@aeon.co</a></p><p><strong>Security of your personal information</strong></p><p>We are committed to ensuring that your information is secure. We have taken reasonable measures to protect information about you from loss, theft, misuse or unauthorised access, disclosure, alteration and destruction. No physical or electronic security system is impenetrable however and you should take your own precautions to protect the security of any personally identifiable information you transmit. We cannot guarantee that the personal information you supply will not be intercepted while transmitted to us or our marketing automation service Mailchimp.</p><p><strong>Sharing your personal information&nbsp;</strong></p><p>We will not disclose your personal information except: (1) as described by this <a href="https://aeon.co/privacy" rel="">Privacy Policy </a>(2) after obtaining your permission to a specific use or disclosure or (3) if we are required to do so by a valid legal process or government request (such as a court order, a search warrant, a subpoena, a civil discovery request, or a statutory requirement). We will retain your information for as long as needed in light of the purposes for which is was obtained or to comply with our legal obligations and enforce our agreements.</p><p><strong>Access to your personal information</strong></p><p>You may request a copy of the personal information we hold about you by submitting a written request to <a href="mailto:support@aeon.co">support@aeon.co</a> We may only implement requests with respect to the personal information associated with the particular email address you use to send us the request. We will try and respond to your request as soon as reasonably practical. When you receive the information, if you think any of it is wrong or out of date, you can ask us to change or delete it for you.</p><p><br></p>
+</div>
+<a class='faq__close close-cover' href='' onclick='document.body.classList.remove(&#39;open--newsletter-faq&#39;); return false;'></a>
+</div>
+
+</div>
+<div data-react-class="Aeon.Flash" data-react-props="{&quot;type&quot;:null,&quot;message&quot;:null}"></div>
+
+<header class='article__header container'>
+<h1 class='article__header__title article__header__title--idea'>
+Testosterone is widely, and sometimes wildly, misunderstood
+</h1>
+<p class='article-card__authors'>
+<span class='article-card__authors__inner'>Matthew Gutmann</span>
+</p>
+</header>
+<div class='container display-only-on-print'>
+<img alt="<p><em>Photo by Bianca Berg/Unsplash</em></p>" src="https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg" />
+<div class='article__image__caption--print'>
+<p><em>Photo by Bianca Berg/Unsplash</em></p>
+</div>
+</div>
+<div class='article__wrapper'>
+<div class='article container idea' id='idea_3641'>
+<div class='article__body'>
+<div class='article__inline-sidebar article__body__meta'>
+<div class='gutter'>
+<div class='article__image article__image--sidebar'>
+<div class='article__image__wrapper'>
+<img alt="<p><em>Photo by Bianca Berg/Unsplash</em></p>" src="https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg" />
+</div>
+</div>
+<div class='article__image__caption article__image__caption--sidebar'>
+<p><em>Photo by Bianca Berg/Unsplash</em></p>
+</div>
+<div class='article__body__author-details'>
+<p class='article__body__author-name vcard'>
+<a href='https://aeon.co/users/matthew-gutmann'>Matthew Gutmann</a>
+</p>
+<p>is professor of anthropology and faculty fellow at the Watson Institute for International and Public Affairs at Brown University. His latest book is <a href="https://www.basicbooks.com/titles/matthew-gutmann/are-men-animals/9781541699595/" rel=""><em>Are Men Animals? How Modern Masculinity Sells Men Short</em></a> (2019).</p>
+</div>
+<p class='article__word-count'>1,300 words</p>
+<p class='article__body__editor'>
+Edited by
+<a href="https://aeon.co/users/samhaselby">Sam Haselby</a>
+</p>
+<a class='republish-button' href='#' onclick='document.body.classList.add(&#39;show-republish-modal&#39;); return false;'>
+<div class='republish-button__icons'>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.3" cy="32" r="28.8" fill="#fff"></circle><path d="M31.9,0A31.088,31.088,0,0,1,54.8,9.4a31.1,31.1,0,0,1,6.9,10.3A32.012,32.012,0,0,1,64,32a33.221,33.221,0,0,1-2.3,12.3,28.615,28.615,0,0,1-6.8,10.1,34.034,34.034,0,0,1-10.6,7.1A32.962,32.962,0,0,1,32,64a31.1,31.1,0,0,1-12.1-2.4,32.876,32.876,0,0,1-10.4-7A31.591,31.591,0,0,1,2.4,44.2,31.233,31.233,0,0,1,0,32,31.571,31.571,0,0,1,9.5,9.3,30.268,30.268,0,0,1,31.9,0Zm0.2,5.8a24.982,24.982,0,0,0-18.5,7.7A27.329,27.329,0,0,0,7.8,22a24.483,24.483,0,0,0-2,10,26.126,26.126,0,0,0,2,9.9,27.329,27.329,0,0,0,5.8,8.5,26.48,26.48,0,0,0,8.5,5.7,26.126,26.126,0,0,0,9.9,2,26.629,26.629,0,0,0,10-2,27.62,27.62,0,0,0,8.7-5.8A24.583,24.583,0,0,0,58.2,32a26.66,26.66,0,0,0-1.9-10.1,25.44,25.44,0,0,0-5.7-8.5A25.209,25.209,0,0,0,32.1,5.8ZM31.7,26.7l-4.3,2.2a4.311,4.311,0,0,0-1.7-2,3.809,3.809,0,0,0-1.9-.6c-2.9,0-4.3,1.9-4.3,5.7a7.115,7.115,0,0,0,1.1,4.1,3.682,3.682,0,0,0,3.2,1.5,3.873,3.873,0,0,0,3.9-2.7l3.9,2a8.923,8.923,0,0,1-3.5,3.7,9.225,9.225,0,0,1-4.9,1.3,9.353,9.353,0,0,1-6.9-2.6c-1.8-1.8-2.6-4.2-2.6-7.3a9.969,9.969,0,0,1,2.7-7.3A9.045,9.045,0,0,1,23.1,22C27.1,22.1,29.9,23.6,31.7,26.7Zm18.4,0-4.2,2.2a4.311,4.311,0,0,0-1.7-2,3.809,3.809,0,0,0-1.9-.6c-2.9,0-4.3,1.9-4.3,5.7a7.115,7.115,0,0,0,1.1,4.1,3.682,3.682,0,0,0,3.2,1.5,3.873,3.873,0,0,0,3.9-2.7l4,2a10.394,10.394,0,0,1-3.5,3.7,9.225,9.225,0,0,1-4.9,1.3,9.353,9.353,0,0,1-6.9-2.6A10.169,10.169,0,0,1,32.3,32,9.969,9.969,0,0,1,35,24.7,9.045,9.045,0,0,1,41.7,22C45.6,22.1,48.4,23.6,50.1,26.7Z"></path></svg>
+
+</div>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.1" cy="32.3" r="28.3" fill="#fff"></circle><path d="M31.9,0A30.62,30.62,0,0,1,54.6,9.3,30.487,30.487,0,0,1,64,32c0,9-3,16.5-9.1,22.5a32.059,32.059,0,0,1-23,9.5A30.838,30.838,0,0,1,9.4,54.6,30.739,30.739,0,0,1,0,32,31.122,31.122,0,0,1,9.4,9.3,30.649,30.649,0,0,1,31.9,0Zm0.2,5.8a25.141,25.141,0,0,0-18.5,7.7A25.661,25.661,0,0,0,5.8,32a25.113,25.113,0,0,0,7.8,18.4,25.333,25.333,0,0,0,18.5,7.8,25.718,25.718,0,0,0,18.6-7.8,24.428,24.428,0,0,0,7.5-18.3,25.364,25.364,0,0,0-7.7-18.6A24.546,24.546,0,0,0,32.1,5.8Zm8.5,18.3V37.2H37V52.7H27V37.1H23.3v-13A2.051,2.051,0,0,1,25.4,22H38.5a1.974,1.974,0,0,1,1.4.6A1.8,1.8,0,0,1,40.6,24.1ZM27.5,15.8q0-4.5,4.5-4.5t4.5,4.5q0,4.5-4.5,4.5T27.5,15.8Z"></path></svg>
+
+</div>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.1" cy="31.8" r="29" fill="#fff"></circle><path d="M31.9,0A30.778,30.778,0,0,1,54.6,9.3,30.487,30.487,0,0,1,64,32c0,9-3,16.5-9.1,22.5a31.893,31.893,0,0,1-23,9.5A30.838,30.838,0,0,1,9.4,54.6,30.739,30.739,0,0,1,0,32,31.284,31.284,0,0,1,9.4,9.3,30.649,30.649,0,0,1,31.9,0Zm0.2,5.8a25.141,25.141,0,0,0-18.5,7.7A25.661,25.661,0,0,0,5.8,32a24.953,24.953,0,0,0,7.8,18.4,25.333,25.333,0,0,0,18.5,7.8,25.718,25.718,0,0,0,18.6-7.8,24.583,24.583,0,0,0,7.5-18.3,24.982,24.982,0,0,0-7.7-18.5A24.277,24.277,0,0,0,32.1,5.8Zm12,18.7V30H20.9V24.5H44.1Zm0,10.2v5.5H20.9V34.7H44.1Z"></path></svg>
+
+</div>
+</div>
+<div class='republish-button__text'>
+<span>Republish for free</span>
+</div>
+</a>
+
+<div class='republish-modal'>
+<div data-react-class="Aeon.RepublishModal" data-react-props="{&quot;metrics_url&quot;:&quot;https://metrics.aeon.co&quot;,&quot;title&quot;:&quot;Testosterone is widely, and sometimes wildly, misunderstood&quot;,&quot;authors&quot;:&quot;Matthew Gutmann&quot;,&quot;republish_token&quot;:&quot;f1e54413-c076-4fd7-9b98-17aa7b444637&quot;,&quot;content&quot;:&quot;\u003cp\u003eWe place unreasonable trust in biological explanations of male behaviour. Nowhere is this truer than with testosterone. Contemporary pundits invoke the hormone nicknamed ‘T’ to prove points about maleness and masculinity, to show how different men and women are, and to explain why some men (presumably those with more T) have greater libidos. Yet, despite the mythic properties popularly associated with T, in every rigorous \u003ca href=\&quot;https://academic.oup.com/jcem/article/91/7/2509/2656285\&quot; target=\&quot;_blank\&quot;\u003escientific\u003c/a\u003e \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pubmed/22552705\&quot; target=\&quot;_blank\&quot;\u003estudy\u003c/a\u003e to date there is no significant correlation in healthy men between levels of T and sexual desire.\u003c/p\u003e\u003cp\u003eBeginning in the 1990s and really picking up steam in the 2000s, sales of testosterone replacement therapies (TRTs) went from practically zero to over $5 billion annually in 2018. This was either because there was a sudden outbreak of ‘Low T’ when a major medical epidemic was finally recognised, or because T became marketed as a wonder drug for men thrown into a panic when they learned that their T levels \u003ca href=\&quot;https://academic.oup.com/jcem/article/98/8/3289/2833917\&quot; target=\&quot;_blank\&quot;\u003edeclined\u003c/a\u003e 1 per cent annually after they hit 30. \u003c/p\u003e\u003cp\u003eThe answer is not that men’s bodies changed or that Low T was horribly underdiagnosed before but that, in the minds of many, T became nothing short of a magic male molecule that could cure men of declining energy and sexual desire as they aged.\u003c/p\u003e\u003cp\u003eWhat’s more, many have been taught that, if you want to know what causes some men to be aggressive, you just test their T levels, right? Actually, wrong: the \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pubmed/2029601\&quot; target=\&quot;_blank\&quot;\u003escience\u003c/a\u003e doesn’t support this conclusion either. Some of the famous early \u003ca href=\&quot;https://journals.lww.com/psychosomaticmedicine/Citation/1972/07000/Assessment_of_Aggressive_Behavior_and_Plasma.6.aspx\&quot; target=\&quot;_blank\&quot;\u003estudies\u003c/a\u003e linking T and aggression were conducted on prison populations and were used effectively to ‘prove’ that higher levels of T were found in some men (read: darker-skinned men), which explained why they were more violent, which explained why they had to be imprisoned in disproportionate numbers. The methodological flaws in these studies took decades to unravel, and new rigorous \u003ca href=\&quot;https://www.sciencedirect.com/science/article/abs/pii/S135917890000032X?via%3Dihub\&quot; target=\&quot;_blank\&quot;\u003eresearch\u003c/a\u003e showing \u003ca href=\&quot;https://academic.oup.com/jcem/article/89/6/2837/2870329\&quot; target=\&quot;_blank\&quot;\u003elittle\u003c/a\u003e relation between T and aggression (except at very high or very low levels) is just now reaching the general public.\u003c/p\u003e\u003cp\u003eWhat’s more, it turns out that T is not just one thing (a sex hormone) with one purpose (male reproduction). T is also essential in the development of embryos, muscles, female as well as male brains, and red blood cells. Depending on a range of biological, environmental and social factors, its influence is varied – or negligible.\u003c/p\u003e\u003cp\u003eRobert Sapolsky, a neuroscientist at Stanford University in California, \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6306482/\&quot; target=\&quot;_blank\&quot;\u003ecompiled\u003c/a\u003e a table showing that there were only 24 scientific articles on T and aggression 1970-80, but there were more than 1,000 in the decade of the 2010s. New discoveries about aggression and T? No, actually, although there were new \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3170254/\&quot; target=\&quot;_blank\&quot;\u003efindings\u003c/a\u003e in this period showing the importance of T in promoting \u003cem\u003eovulation\u003c/em\u003e. There is also a difference between correlation and cause (T levels and aggression, for example, provide a classic chicken-egg challenge). As leading experts on hormones have shown us for years, for the vast majority of men, it’s impossible to predict who will be aggressive based on their T level, just as if you find an aggressive man (or woman, for that matter), you can’t predict their T level.\u003c/p\u003e\u003cp\u003e\u003cspan class=\&quot;ld-dropcap\&quot;\u003eT\u003c/span\u003eestosterone is a molecule that was \u003ca href=\&quot;https://www.endocrine-abstracts.org/ea/0010/ea0010s2\&quot; target=\&quot;_blank\&quot;\u003emislabelled\u003c/a\u003e almost 100 years ago as a ‘sex hormone’, because (some things never change) scientists were looking for definitive biological differences between men and women, and T was supposed to unlock the mysteries of innate masculinity. T is important for men’s brains, biceps and … that other word for testicles, and it is essential to female bodies. And, for the record, (T level) size doesn’t necessarily mean anything: \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4330791/\&quot; target=\&quot;_blank\&quot;\u003esometimes\u003c/a\u003e, the mere presence of T is more important than the quantity of the hormone. Sort of like starting a car, you just need fuel, whether it’s two gallons or 200. T doesn’t always create differences between men and women, or between men. To top it all off, there is even \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6920068/\&quot; target=\&quot;_blank\&quot;\u003eevidence\u003c/a\u003e that men who report changes after taking T supplements are just as likely reporting placebo effects as anything else.\u003c/p\u003e\u003cp\u003eStill, we continue to imbue T with supernatural powers. In 2018, a US Supreme Court seat hung in the balance. The issues at the confirmation hearings came to focus on male sexual violence against women. Thorough description and analysis were needed. Writers pro and con casually dropped in the T-word to describe, denounce or defend the past behaviour of Justice Brett Kavanaugh: one commentator in \u003cem\u003eForbes\u003c/em\u003e wrote about ‘testosterone-induced gang rapes’; another, interviewed on CNN, asked: ‘But we’re talking about a 17-year-old boy in high school with testosterone running high. Tell me, what boy hasn’t done this in high school?’; and a third, in a column in \u003cem\u003eThe\u003c/em\u003e \u003cem\u003eNew York Times\u003c/em\u003e, wrote: ‘That’s him riding a wave of testosterone and booze…’\u003c/p\u003e\u003cp\u003eAnd it is unlikely that many readers questioned the hormonal logic of Christine Lagarde, then chair of the International Monetary Fund, when she asserted that the economic collapse in 2008 was due in part to too many males in charge of the financial sector: ‘I honestly think that there should never be too much testosterone in one room.’\u003c/p\u003e\u003cp\u003eYou can find T employed as a biomarker to explain (and sometimes excuse) male behaviour in articles and speeches every day. Poetic licence, one might say. Just a punchy way to talk about leaving males in charge. Yet when we raise T as significant in any way to explain male behaviour, we can inadvertently excuse male behaviour as somehow beyond the ability of actual men to control. Casual appeals to biological masculinity imply that patriarchal relationships are rooted in nature.\u003c/p\u003e\u003cp\u003eWhen we normalise the idea that T runs through all high-school boys, and that \u003cem\u003ethis\u003c/em\u003e explains why rape occurs, we have crossed from euphemism to offering men impunity to sexually assault women by offering them the defence ‘not guilty, by reason of hormones’.\u003c/p\u003e\u003cp\u003eInvoking men’s biology to explain their behaviour too often ends up absolving their actions. When we bandy about terms such as T or Y chromosomes, it helps to spread the idea that men are controlled by their bodies. Thinking that hormones and genes can explain why boys will be boys lets men off the hook for all manner of sins. If you believe that T says something meaningful about how men act and think, you’re fooling yourself. Men behave the way they do because culture allows it, not because biology requires it.\u003c/p\u003e\u003cp\u003eNo one could seriously argue that biology is solely responsible for determining what it means to be a man. But words such as testosterone and Y chromosomes slip into our descriptions of men’s activities, as if they explain more than they actually do. T doesn’t govern men’s aggression and sexuality. And it’s a shame we don’t hear as much about the \u003ca href=\&quot;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5068300/\&quot; target=\&quot;_blank\&quot;\u003eresearch\u003c/a\u003e showing that higher levels of T in men just as easily correlate with generosity as with aggression. But generosity is less a stereotypically male virtue, and this would spoil the story about men’s inherent aggressiveness, especially manly men’s aggressiveness. And this has a profound impact on what men and women think about men’s natural inclinations.\u003c/p\u003e\u003cp\u003eWe need to keep talking about toxic masculinity and the patriarchy. They’re real and they’re pernicious. And we also need new ways of talking about men, maleness and masculinity that get us out of the trap of thinking that men’s biology is their destiny. As it turns out, when we sift through the placebo effects and biobabble, T is not a magic male molecule at all but rather – as the researchers Rebecca Jordan-Young and Katrina Karkazis argue in their excellent new \u003ca href=\&quot;https://www.hup.harvard.edu/catalog.php?isbn=9780674725324\u0026amp;content=toc\&quot; target=\&quot;_blank\&quot;\u003ebook\u003c/a\u003e \u003cem\u003eTestosterone\u003c/em\u003e (2019) – a \u003cem\u003esocial\u003c/em\u003e molecule.\u003c/p\u003e\u003cp\u003eRegardless of what you call it, testosterone is too often used as an excuse for letting men off the hook and justifying male privilege.\u003c/p\u003e&quot;,&quot;licence&quot;:{&quot;id&quot;:4,&quot;name&quot;:&quot;Creative Commons Attribution-No Derivatives&quot;,&quot;short&quot;:&quot;CC BY-ND&quot;,&quot;url&quot;:&quot;http://creativecommons.org/licenses/by-nd/4.0/&quot;,&quot;attribution_required&quot;:true,&quot;name_of_license_required&quot;:true,&quot;link_to_license_required&quot;:true,&quot;commercial_use_allowed&quot;:true,&quot;republication_allowed&quot;:true,&quot;derivative_works_allowed&quot;:false,&quot;created_at&quot;:&quot;2016-05-27T05:50:10.780Z&quot;,&quot;updated_at&quot;:&quot;2016-05-27T05:50:10.780Z&quot;},&quot;type&quot;:&quot;Idea&quot;,&quot;creative_commons&quot;:true}"></div>
+</div>
+
+
+<div class='sticky-wrapper'>
+<div class='article__actions'>
+<div class='container'>
+<div class='article__inline-sidebar inner'>
+<div class='gutter'>
+<div class='article__actions__buttons'>
+<span data-react-class="Aeon.ShareButtons" data-react-props="{&quot;id&quot;:3641,&quot;className&quot;:&quot;save save--button&quot;,&quot;article&quot;:&quot;Idea#3641&quot;,&quot;url&quot;:&quot;https://aeon.co/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood/save&quot;}" class="article__actions__buttons__save"></span>
+<span data-react-class="Aeon.SocialShareButtons" data-react-props="{&quot;pageUrl&quot;:&quot;https://aeon.co/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood&quot;,&quot;facebookCount&quot;:1322,&quot;pageTitle&quot;:&quot;Testosterone is widely, and sometimes wildly, misunderstood&quot;}" class="article__actions__buttons__social"></span>
+</div>
+<div class='friends-lounge__article-card'>
+<div class='friends-lounge__article-card__inner'>
+<a class='article-card__link' href='https://aeon.co/friends?utm_medium=web&amp;utm_source=friends-article-card'></a>
+<figure class='responsive-image' style='background-image: url(&#39;https://alpha.aeon.co/assets/friend-badge-bright-d90fc4b950b9503b98bdd1c68271a79b31433864eb81d59f080c0c739b6c4ec5.svg&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='friends-lounge__article-card__text'>
+<h2>
+Aeon for Friends
+</h2>
+<a class='button' href='https://aeon.co/friends?utm_medium=web&amp;utm_source=friends-article-card'>
+Find out more
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='article__body__content'>
+<div class='gutter display-article'>
+<div class='article__image article__image--inline'>
+<div class='article__image__wrapper'>
+<img alt="<p><em>Photo by Bianca Berg/Unsplash</em></p>" src="https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg" />
+</div>
+</div>
+<div class='article__image__caption article__image__caption--inline'>
+<p><em>Photo by Bianca Berg/Unsplash</em></p>
+</div>
+</div>
+<div class='gutter'>
+<div class='has-dropcap' data-selectable>
+<p>We place unreasonable trust in biological explanations of male behaviour. Nowhere is this truer than with testosterone. Contemporary pundits invoke the hormone nicknamed ‘T’ to prove points about maleness and masculinity, to show how different men and women are, and to explain why some men (presumably those with more T) have greater libidos. Yet, despite the mythic properties popularly associated with T, in every rigorous <a href="https://academic.oup.com/jcem/article/91/7/2509/2656285" target="_blank">scientific</a> <a href="https://www.ncbi.nlm.nih.gov/pubmed/22552705" target="_blank">study</a> to date there is no significant correlation in healthy men between levels of T and sexual desire.</p><p>Beginning in the 1990s and really picking up steam in the 2000s, sales of testosterone replacement therapies (TRTs) went from practically zero to over $5 billion annually in 2018. This was either because there was a sudden outbreak of ‘Low T’ when a major medical epidemic was finally recognised, or because T became marketed as a wonder drug for men thrown into a panic when they learned that their T levels <a href="https://academic.oup.com/jcem/article/98/8/3289/2833917" target="_blank">declined</a> 1 per cent annually after they hit 30. </p><p>The answer is not that men’s bodies changed or that Low T was horribly underdiagnosed before but that, in the minds of many, T became nothing short of a magic male molecule that could cure men of declining energy and sexual desire as they aged.</p><p>What’s more, many have been taught that, if you want to know what causes some men to be aggressive, you just test their T levels, right? Actually, wrong: the <a href="https://www.ncbi.nlm.nih.gov/pubmed/2029601" target="_blank">science</a> doesn’t support this conclusion either. Some of the famous early <a href="https://journals.lww.com/psychosomaticmedicine/Citation/1972/07000/Assessment_of_Aggressive_Behavior_and_Plasma.6.aspx" target="_blank">studies</a> linking T and aggression were conducted on prison populations and were used effectively to ‘prove’ that higher levels of T were found in some men (read: darker-skinned men), which explained why they were more violent, which explained why they had to be imprisoned in disproportionate numbers. The methodological flaws in these studies took decades to unravel, and new rigorous <a href="https://www.sciencedirect.com/science/article/abs/pii/S135917890000032X?via%3Dihub" target="_blank">research</a> showing <a href="https://academic.oup.com/jcem/article/89/6/2837/2870329" target="_blank">little</a> relation between T and aggression (except at very high or very low levels) is just now reaching the general public.</p><p>What’s more, it turns out that T is not just one thing (a sex hormone) with one purpose (male reproduction). T is also essential in the development of embryos, muscles, female as well as male brains, and red blood cells. Depending on a range of biological, environmental and social factors, its influence is varied – or negligible.</p><p>Robert Sapolsky, a neuroscientist at Stanford University in California, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6306482/" target="_blank">compiled</a> a table showing that there were only 24 scientific articles on T and aggression 1970-80, but there were more than 1,000 in the decade of the 2010s. New discoveries about aggression and T? No, actually, although there were new <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3170254/" target="_blank">findings</a> in this period showing the importance of T in promoting <em>ovulation</em>. There is also a difference between correlation and cause (T levels and aggression, for example, provide a classic chicken-egg challenge). As leading experts on hormones have shown us for years, for the vast majority of men, it’s impossible to predict who will be aggressive based on their T level, just as if you find an aggressive man (or woman, for that matter), you can’t predict their T level.</p><p><span class="ld-dropcap">T</span>estosterone is a molecule that was <a href="https://www.endocrine-abstracts.org/ea/0010/ea0010s2" target="_blank">mislabelled</a> almost 100 years ago as a ‘sex hormone’, because (some things never change) scientists were looking for definitive biological differences between men and women, and T was supposed to unlock the mysteries of innate masculinity. T is important for men’s brains, biceps and … that other word for testicles, and it is essential to female bodies. And, for the record, (T level) size doesn’t necessarily mean anything: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4330791/" target="_blank">sometimes</a>, the mere presence of T is more important than the quantity of the hormone. Sort of like starting a car, you just need fuel, whether it’s two gallons or 200. T doesn’t always create differences between men and women, or between men. To top it all off, there is even <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6920068/" target="_blank">evidence</a> that men who report changes after taking T supplements are just as likely reporting placebo effects as anything else.</p><p>Still, we continue to imbue T with supernatural powers. In 2018, a US Supreme Court seat hung in the balance. The issues at the confirmation hearings came to focus on male sexual violence against women. Thorough description and analysis were needed. Writers pro and con casually dropped in the T-word to describe, denounce or defend the past behaviour of Justice Brett Kavanaugh: one commentator in <em>Forbes</em> wrote about ‘testosterone-induced gang rapes’; another, interviewed on CNN, asked: ‘But we’re talking about a 17-year-old boy in high school with testosterone running high. Tell me, what boy hasn’t done this in high school?’; and a third, in a column in <em>The</em> <em>New York Times</em>, wrote: ‘That’s him riding a wave of testosterone and booze…’</p><p>And it is unlikely that many readers questioned the hormonal logic of Christine Lagarde, then chair of the International Monetary Fund, when she asserted that the economic collapse in 2008 was due in part to too many males in charge of the financial sector: ‘I honestly think that there should never be too much testosterone in one room.’</p><p>You can find T employed as a biomarker to explain (and sometimes excuse) male behaviour in articles and speeches every day. Poetic licence, one might say. Just a punchy way to talk about leaving males in charge. Yet when we raise T as significant in any way to explain male behaviour, we can inadvertently excuse male behaviour as somehow beyond the ability of actual men to control. Casual appeals to biological masculinity imply that patriarchal relationships are rooted in nature.</p><p>When we normalise the idea that T runs through all high-school boys, and that <em>this</em> explains why rape occurs, we have crossed from euphemism to offering men impunity to sexually assault women by offering them the defence ‘not guilty, by reason of hormones’.</p><p>Invoking men’s biology to explain their behaviour too often ends up absolving their actions. When we bandy about terms such as T or Y chromosomes, it helps to spread the idea that men are controlled by their bodies. Thinking that hormones and genes can explain why boys will be boys lets men off the hook for all manner of sins. If you believe that T says something meaningful about how men act and think, you’re fooling yourself. Men behave the way they do because culture allows it, not because biology requires it.</p><p>No one could seriously argue that biology is solely responsible for determining what it means to be a man. But words such as testosterone and Y chromosomes slip into our descriptions of men’s activities, as if they explain more than they actually do. T doesn’t govern men’s aggression and sexuality. And it’s a shame we don’t hear as much about the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5068300/" target="_blank">research</a> showing that higher levels of T in men just as easily correlate with generosity as with aggression. But generosity is less a stereotypically male virtue, and this would spoil the story about men’s inherent aggressiveness, especially manly men’s aggressiveness. And this has a profound impact on what men and women think about men’s natural inclinations.</p><p>We need to keep talking about toxic masculinity and the patriarchy. They’re real and they’re pernicious. And we also need new ways of talking about men, maleness and masculinity that get us out of the trap of thinking that men’s biology is their destiny. As it turns out, when we sift through the placebo effects and biobabble, T is not a magic male molecule at all but rather – as the researchers Rebecca Jordan-Young and Katrina Karkazis argue in their excellent new <a href="https://www.hup.harvard.edu/catalog.php?isbn=9780674725324&amp;content=toc" target="_blank">book</a> <em>Testosterone</em> (2019) – a <em>social</em> molecule.</p><p>Regardless of what you call it, testosterone is too often used as an excuse for letting men off the hook and justifying male privilege.</p>
+<div class='newsletter-signup newsletter-signup--wide'>
+<span data-react-class="Aeon.NewsletterSignup" data-react-props="{&quot;newsletter_source&quot;:&quot;newsletter-signup-article&quot;}"></span>
+</div>
+
+</div>
+</div>
+<div class='article__shares gutter'>
+<div class='article-card__authors__print'>
+<p class='article__body__author-name vcard'>Matthew Gutmann</p>
+<p><p>is professor of anthropology and faculty fellow at the Watson Institute for International and Public Affairs at Brown University. His latest book is <a href="https://www.basicbooks.com/titles/matthew-gutmann/are-men-animals/9781541699595/" rel=""><em>Are Men Animals? How Modern Masculinity Sells Men Short</em></a> (2019).</p></p>
+</div>
+<div class='article__site'>
+aeon.co
+</div>
+<div class='article__shares--footer'>
+<div class='topics-banner'>
+<a class='topics-banner__topic section--society' href='https://aeon.co/society/gender'>Gender</a>
+<a class='topics-banner__topic section--science' href='https://aeon.co/science/genetics'>Genetics</a>
+<a class='topics-banner__topic section--psychology' href='https://aeon.co/psychology/sex-and-sexuality'>Sex and sexuality</a>
+</div>
+
+<time class='article__date published' datetime='2020-03-10 10:00:00 UTC'>10 March, 2020</time>
+</div>
+<a class='republish-button' href='#' onclick='document.body.classList.add(&#39;show-republish-modal&#39;); return false;'>
+<div class='republish-button__icons'>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.3" cy="32" r="28.8" fill="#fff"></circle><path d="M31.9,0A31.088,31.088,0,0,1,54.8,9.4a31.1,31.1,0,0,1,6.9,10.3A32.012,32.012,0,0,1,64,32a33.221,33.221,0,0,1-2.3,12.3,28.615,28.615,0,0,1-6.8,10.1,34.034,34.034,0,0,1-10.6,7.1A32.962,32.962,0,0,1,32,64a31.1,31.1,0,0,1-12.1-2.4,32.876,32.876,0,0,1-10.4-7A31.591,31.591,0,0,1,2.4,44.2,31.233,31.233,0,0,1,0,32,31.571,31.571,0,0,1,9.5,9.3,30.268,30.268,0,0,1,31.9,0Zm0.2,5.8a24.982,24.982,0,0,0-18.5,7.7A27.329,27.329,0,0,0,7.8,22a24.483,24.483,0,0,0-2,10,26.126,26.126,0,0,0,2,9.9,27.329,27.329,0,0,0,5.8,8.5,26.48,26.48,0,0,0,8.5,5.7,26.126,26.126,0,0,0,9.9,2,26.629,26.629,0,0,0,10-2,27.62,27.62,0,0,0,8.7-5.8A24.583,24.583,0,0,0,58.2,32a26.66,26.66,0,0,0-1.9-10.1,25.44,25.44,0,0,0-5.7-8.5A25.209,25.209,0,0,0,32.1,5.8ZM31.7,26.7l-4.3,2.2a4.311,4.311,0,0,0-1.7-2,3.809,3.809,0,0,0-1.9-.6c-2.9,0-4.3,1.9-4.3,5.7a7.115,7.115,0,0,0,1.1,4.1,3.682,3.682,0,0,0,3.2,1.5,3.873,3.873,0,0,0,3.9-2.7l3.9,2a8.923,8.923,0,0,1-3.5,3.7,9.225,9.225,0,0,1-4.9,1.3,9.353,9.353,0,0,1-6.9-2.6c-1.8-1.8-2.6-4.2-2.6-7.3a9.969,9.969,0,0,1,2.7-7.3A9.045,9.045,0,0,1,23.1,22C27.1,22.1,29.9,23.6,31.7,26.7Zm18.4,0-4.2,2.2a4.311,4.311,0,0,0-1.7-2,3.809,3.809,0,0,0-1.9-.6c-2.9,0-4.3,1.9-4.3,5.7a7.115,7.115,0,0,0,1.1,4.1,3.682,3.682,0,0,0,3.2,1.5,3.873,3.873,0,0,0,3.9-2.7l4,2a10.394,10.394,0,0,1-3.5,3.7,9.225,9.225,0,0,1-4.9,1.3,9.353,9.353,0,0,1-6.9-2.6A10.169,10.169,0,0,1,32.3,32,9.969,9.969,0,0,1,35,24.7,9.045,9.045,0,0,1,41.7,22C45.6,22.1,48.4,23.6,50.1,26.7Z"></path></svg>
+
+</div>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.1" cy="32.3" r="28.3" fill="#fff"></circle><path d="M31.9,0A30.62,30.62,0,0,1,54.6,9.3,30.487,30.487,0,0,1,64,32c0,9-3,16.5-9.1,22.5a32.059,32.059,0,0,1-23,9.5A30.838,30.838,0,0,1,9.4,54.6,30.739,30.739,0,0,1,0,32,31.122,31.122,0,0,1,9.4,9.3,30.649,30.649,0,0,1,31.9,0Zm0.2,5.8a25.141,25.141,0,0,0-18.5,7.7A25.661,25.661,0,0,0,5.8,32a25.113,25.113,0,0,0,7.8,18.4,25.333,25.333,0,0,0,18.5,7.8,25.718,25.718,0,0,0,18.6-7.8,24.428,24.428,0,0,0,7.5-18.3,25.364,25.364,0,0,0-7.7-18.6A24.546,24.546,0,0,0,32.1,5.8Zm8.5,18.3V37.2H37V52.7H27V37.1H23.3v-13A2.051,2.051,0,0,1,25.4,22H38.5a1.974,1.974,0,0,1,1.4.6A1.8,1.8,0,0,1,40.6,24.1ZM27.5,15.8q0-4.5,4.5-4.5t4.5,4.5q0,4.5-4.5,4.5T27.5,15.8Z"></path></svg>
+
+</div>
+<div class='republish-button__icons__icon'>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><circle cx="32.1" cy="31.8" r="29" fill="#fff"></circle><path d="M31.9,0A30.778,30.778,0,0,1,54.6,9.3,30.487,30.487,0,0,1,64,32c0,9-3,16.5-9.1,22.5a31.893,31.893,0,0,1-23,9.5A30.838,30.838,0,0,1,9.4,54.6,30.739,30.739,0,0,1,0,32,31.284,31.284,0,0,1,9.4,9.3,30.649,30.649,0,0,1,31.9,0Zm0.2,5.8a25.141,25.141,0,0,0-18.5,7.7A25.661,25.661,0,0,0,5.8,32a24.953,24.953,0,0,0,7.8,18.4,25.333,25.333,0,0,0,18.5,7.8,25.718,25.718,0,0,0,18.6-7.8,24.583,24.583,0,0,0,7.5-18.3,24.982,24.982,0,0,0-7.7-18.5A24.277,24.277,0,0,0,32.1,5.8Zm12,18.7V30H20.9V24.5H44.1Zm0,10.2v5.5H20.9V34.7H44.1Z"></path></svg>
+
+</div>
+</div>
+<div class='republish-button__text'>
+<span>Republish for free</span>
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='support-bar'>
+<div class='container'>
+<div class='support-bar__columns'>
+<div class='column'>
+<div class='support-bar__inner'>
+<div class='support-bar__heading'>Aeon is not-for-profit <br />and free for everyone</div>
+<a class='support-bar__button support' href='https://aeon.co/donate?utm_medium=web&amp;utm_source=support-bar-article-ideas'>
+Make a donation
+<svg fill="#fff" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg>
+
+</a>
+</div>
+</div>
+<div class='column'>
+<div class='support-bar__inner'>
+<div class='support-bar__heading'>Get Aeon straight <br />to your inbox</div>
+<a class='support-bar__button' onclick='document.body.classList.toggle(&#39;modal-newsletter--open&#39;); return false;'>
+Join our newsletter
+<svg fill="#fff" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg>
+
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='article__related'>
+<div class='article-list--col-3 article-list--list article-list__wrapper'>
+<div class='article-list container'>
+<article class='article-card article-card--col-3 article-card--section-psychology audio' data-align-x='center' data-align-y='center' data-backdrop-strength='3' data-badge-color='white' data-card-play-icon-color='white' data-feature-img-caption-align='right' data-id='3698' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3698}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://omicron.aeon.co/images/4fc3f94b-ad21-4436-b266-3ea286c9753e/card_sized-portrait-of-ramon-gomez-de-la-serna-cubist-painting-diego-rivera.jpg&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+<p>Detail from <em>Portrait of Ramón Gómez de la Serna</em> (1915) by Diego Rivera. <em>Courtesy Diego Rivera Foundation/Wikipedia</em></p>
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3698,&quot;url&quot;:&quot;https://aeon.co/ideas/3698/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Idea<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>Gender and identity</span></div>
+<a class="article-card__title" href="/ideas/what-we-can-learn-about-respect-and-identity-from-plurals">What we can learn about respect and identity from ‘plurals’</a>
+<p class='article-card__authors'>
+<span class='article-card__authors__inner'>Elizabeth Schechter</span>
+</p>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/ideas/what-we-can-learn-about-respect-and-identity-from-plurals"></a>
+</div>
+</div>
+</article>
+<article class='article-card article-card--col-3 article-card--section-society audio' data-align-x='left' data-align-y='bottom' data-backdrop-strength='3' data-feature-img-caption-align='right' data-id='3681' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<span class='comments-corner'>
+<div class='comments-corner__button'>
+<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+  <path d="M21.303,16.553l1.107,3.783l-3.48-2.322c-0.689,0.234-1.422,0.371-2.193,0.371c-1.041,0-2.024-0.234-2.907-0.642 c2.034-1.697,3.333-4.275,3.333-7.166c0-1.994-0.625-3.836-1.677-5.347c0.406-0.073,0.823-0.117,1.251-0.117 c3.762,0,6.814,2.971,6.814,6.634c0,1.594-0.578,3.057-1.539,4.2L21.303,16.553z M15.255,10.684c0,3.861-3.213,6.99-7.176,6.99 c-0.812,0-1.583-0.144-2.31-0.391l-3.667,2.446l1.166-3.985l-0.744-0.638c-1.013-1.203-1.621-2.743-1.621-4.423 c0-3.858,3.215-6.987,7.176-6.987C12.042,3.696,15.255,6.825,15.255,10.684z"></path>
+</svg>
+
+</div>
+</span>
+
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3681}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://epsilon.aeon.co/images/afb580b7-e210-4e22-a45b-de9d72670af6/card_v3-essay-carlow-ibm-q-dilution-refrigerator.jpg&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+<p>The dilution refrigerator for the IBM Q quantum computer, September 2019. <em>Photo by Graham Carlow/IBM</em></p>
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3681,&quot;url&quot;:&quot;https://aeon.co/essays/3681/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Essay<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>The future</span></div>
+<a class="article-card__title" href="/essays/will-brains-or-algorithms-rule-the-kingdom-of-science">At the limits of thought</a>
+<h2 class='article-card__standfirst'>
+Science today stands at a crossroads: will its progress be driven by human minds or by the machines that we’ve created?
+</h2>
+<p class='article-card__authors'>
+<span class='article-card__authors__inner'>David C Krakauer</span>
+</p>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/essays/will-brains-or-algorithms-rule-the-kingdom-of-science"></a>
+</div>
+</div>
+</article>
+<article class='article-card article-card--col-3 article-card--section-philosophy audio' data-align-x='center' data-align-y='center' data-backdrop-strength='3' data-badge-color='white' data-card-play-icon-color='white' data-feature-img-caption-align='right' data-id='3668' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3668}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://epsilon.aeon.co/images/8dd9c2d6-bc34-4a90-89e1-da74ab810c56/card_test-subjects-aeon-vid.png&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+<div class='article-card__overlay__video-icon'>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1225 1225" xml:space="preserve">
+<polygon fill="none" stroke="currentColor" stroke-width="40" stroke-miterlimit="10" points="457.2,844.9 457.2,349.9 839.6,599.6 "></polygon>
+<circle fill="none" stroke="currentColor" stroke-width="40" stroke-miterlimit="10" cx="615" cy="615" r="587.4"></circle>
+</svg>
+
+</div>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3668,&quot;url&quot;:&quot;https://aeon.co/videos/3668/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Video<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>Bioethics</span></div>
+<a class="article-card__title" href="/videos/for-some-animal-testing-is-just-science-for-others-its-just-not-right">For some, animal testing is ‘just science’. For others, it’s just not right</a>
+<h2 class='article-card__standfirst'>
+17 minutes
+</h2>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/videos/for-some-animal-testing-is-just-science-for-others-its-just-not-right"></a>
+</div>
+</div>
+</article>
+
+<article class='article-card article-card--col-3 article-card--section-philosophy audio' data-align-x='center' data-align-y='center' data-backdrop-strength='3' data-badge-color='white' data-card-play-icon-color='white' data-feature-img-caption-align='right' data-id='3688' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3688}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://epsilon.aeon.co/images/3bdb3f18-935d-4980-a69c-fd890996ef84/card_sized-1a34109u.jpg&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+<p>Jim Norris and wife, homesteaders in Pie Town, New Mexico, October 1940. <em>Photo by Russell Lee/Library of Congress</em></p>
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3688,&quot;url&quot;:&quot;https://aeon.co/ideas/3688/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Idea<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>Ethics</span></div>
+<a class="article-card__title" href="/ideas/at-times-of-suffering-the-greatest-gift-is-accompaniment-by-another">At times of suffering, the greatest gift is accompaniment by another</a>
+<p class='article-card__authors'>
+<span class='article-card__authors__inner'>Nicholaos Jones</span>
+</p>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/ideas/at-times-of-suffering-the-greatest-gift-is-accompaniment-by-another"></a>
+</div>
+</div>
+</article>
+<article class='article-card article-card--col-3 article-card--section-science audio' data-align-x='center' data-align-y='bottom' data-backdrop-strength='0' data-feature-img-caption-align='right' data-id='3663' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3663}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://alpha.aeon.co/images/31ac238e-99a0-4232-a9bc-cf0db8035e4f/card_essay-saint-catherine-of-siena.jpg&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+<p><em>Saint Catherine of Siena</em> (<em>c</em>1612) by Juan Bautista Maíno. <em>Courtesy the Museo del Prado, Madrid&nbsp;</em></p>
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3663,&quot;url&quot;:&quot;https://aeon.co/essays/3663/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Essay<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>Illness and disease</span></div>
+<a class="article-card__title" href="/essays/anorexia-nervosa-is-a-battle-site-between-body-and-soul">Unholy anorexia</a>
+<h2 class='article-card__standfirst'>
+Medieval mystics starved the body to feed the soul. Understanding this perfectionist mindset could help treat anorexia today
+</h2>
+<p class='article-card__authors'>
+<span class='article-card__authors__inner'>Paul Broks</span>
+</p>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/essays/anorexia-nervosa-is-a-battle-site-between-body-and-soul"></a>
+</div>
+</div>
+</article>
+<article class='article-card article-card--col-3 article-card--section-society audio' data-align-x='center' data-align-y='center' data-backdrop-strength='3' data-badge-color='white' data-card-play-icon-color='white' data-feature-img-caption-align='right' data-id='3645' data-playing='false'>
+<div class='gutter gutter--outer'>
+<div class='article-card__inner'>
+<div class='article-card__image-wrap' data-image-loaded='false'>
+<div data-react-class="Aeon.AnnotatedCorner" data-react-props="{&quot;id&quot;:3645}"></div>
+<figure class='responsive-image' style='background-image: url(&#39;https://omicron.aeon.co/images/45e15e90-66ce-4a59-a609-522a4c9b7faa/card_0107-b-moll-aeon-video.png&#39;)'>
+<div class='sizer__wrapper'>
+<div class='sizer'></div>
+</div>
+</figure>
+
+<div class='article-card__overlay'>
+<div class='article-card__overlay__video-icon'>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1225 1225" xml:space="preserve">
+<polygon fill="none" stroke="currentColor" stroke-width="40" stroke-miterlimit="10" points="457.2,844.9 457.2,349.9 839.6,599.6 "></polygon>
+<circle fill="none" stroke="currentColor" stroke-width="40" stroke-miterlimit="10" cx="615" cy="615" r="587.4"></circle>
+</svg>
+
+</div>
+</div>
+</div>
+<div class='article__image__caption--print display-only-on-print'>
+
+</div>
+<div class='article-card__contents'>
+<div class='article-card__contents__wrap container'>
+<div class='gutter gutter--inner'>
+<div class='article-card__meta'>
+<div class='article-card__save'><div data-react-class="Aeon.Save" data-react-props="{&quot;id&quot;:3645,&quot;url&quot;:&quot;https://aeon.co/videos/3645/save&quot;}"></div></div>
+<div class='article-card__class__wrapper'>
+<span class='article-card__class'>Video<span class='article-card__separator separator'>/</span></span>
+</div><span class='article-card__topic'>Cities</span></div>
+<a class="article-card__title" href="/videos/bright-nights-lonely-crowds-a-tokyo-train-speeds-through-urban-contradictions">Bright nights, lonely crowds – a Tokyo train speeds through urban contradictions</a>
+<h2 class='article-card__standfirst'>
+3 minutes
+</h2>
+</div>
+</div>
+</div>
+<a class="article-card__link" href="/videos/bright-nights-lonely-crowds-a-tokyo-train-speeds-through-urban-contradictions"></a>
+</div>
+</div>
+</article>
+
+</div>
+</div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aeon.co/ideas/testosterone-is-widely-and-sometimes-wildly-misunderstood"
+  },
+  "headline": "Testosterone is widely, and sometimes wildly, misunderstood",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://omicron.aeon.co/images/0212b30a-88b2-4144-815a-5b5d01dabe96/idea_sized-bianca-berg-wdeano6kb2i-unsplash.jpg",
+    "width": 1400,
+    "height": 840
+  },
+  "datePublished": "2020-03-10T10:00:00Z",
+  "dateModified": "2020-04-21T04:20:14Z",
+  "author": {
+    "@type": "Person",
+    "name": "Matthew Gutmann"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Aeon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aeon.co/logo.png",
+      "width": 168,
+      "height": 60
+    }
+  },
+  "description": "Testosterone has a big, popular reputation for causing all sorts of things, but what science tells us is quite different"
+}
+</script>
+
+
+<div data-react-class="Aeon.Footer" data-react-props="{&quot;companyName&quot;:&quot;Aeon Media Group Ltd&quot;,&quot;urls&quot;:{&quot;essays&quot;:&quot;https://aeon.co/essays&quot;,&quot;ideas&quot;:&quot;https://aeon.co/ideas&quot;,&quot;videos&quot;:&quot;https://aeon.co/videos&quot;,&quot;about&quot;:&quot;https://aeon.co/about&quot;,&quot;contact&quot;:&quot;https://aeon.co/contact&quot;,&quot;rssFeed&quot;:&quot;https://aeon.co/feed.rss&quot;,&quot;donate&quot;:&quot;https://aeon.co/donate?utm_campaign=974c27d15b-EMAIL_CAMPAIGN_2020_04_07_08_43\u0026utm_medium=web\u0026utm_source=footer&quot;,&quot;communityGuidelines&quot;:&quot;https://aeon.co/community-guidelines&quot;,&quot;privacyPolicy&quot;:&quot;https://aeon.co/privacy&quot;,&quot;terms&quot;:&quot;https://aeon.co/terms-of-use&quot;}}"></div>
+
+
+<script src="https://alpha.aeon.co/assets/packs/js/common-439137c8d60ee9bf849a.js"></script>
+<script src="https://alpha.aeon.co/assets/packs/js/aeon-45f0ed437506cb467f1a.chunk.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45522988-1', 'auto');
+
+  ga('require', 'ecommerce');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+<script src='https://apis.google.com/js/platform.js'></script>
+<div id='fb-root'></div>
+<script>
+  // facebook like button
+  (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=430086400490662"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));
+  // twitter follow button
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+</body>
+</html>
