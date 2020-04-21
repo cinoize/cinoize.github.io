@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"7925dc8d76",applicationID:"70084883"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><meta name="title" content="How Bruno Sammartino Escaped Nazis, Bullies to Become the Most Popular Wrestler in America | Inside Edition" /><link rel="canonical" href="https://www.insideedition.com/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457" /><meta property="fb:admins" content="3111204" /><meta property="fb:pages" content="71728150722" /><meta property="og:site_name" content="Inside Edition" /><meta http-equiv="content-language" content="en_US" /><meta name="robots" content="index" /><meta name="twitter:card" content="summary_large_image" /><meta name="description" content="Sammartino died at in 2018 at the age of 82, but his legacy lives on." /><meta property="fb:app_id" content="966341826790079" /><meta name="twitter:title" content="How Bruno Sammartino Escaped Nazis and Bullies to Become the Most Popular Wrestler in America" /><meta name="twitter:description" content="Sammartino died at in 2018 at the age of 82, but his legacy lives on." /><meta property="og:type" content="Article" /><meta name="twitter:site" content="@insideedition" /><meta name="msvalidate.01" content="DC10472F438B55F3A58638BC31271706" /><meta property="og:url" content="https://www.insideedition.com/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457" /><meta name="twitter:site:id" content="23603092" /><link rel="image_src" href="https://www.insideedition.com/sites/default/files/images/2020-03/bruno_web_article.jpg" /><meta name="google-site-verification" content="HcuSVZXpTET14VOTW9-qT-hRmaCgONCR_xaBkjDRGSE" /><meta name="keywords" content="Sports, Entertainment, Inspirational, News, wrestling, italy, world war ii, nazis, pittsburgh, pennsylvania, wwe, INSIDE EDITION InDepth" /><meta property="og:title" content="How Bruno Sammartino Escaped Nazis and Bullies to Become the Most Popular Wrestler in America" /><meta name="referrer" content="origin" /><link rel="publisher" href="http://plus.google.com/104304424115513428440" /><meta property="og:description" content="Sammartino died at in 2018 at the age of 82, but his legacy lives on." /><meta name="twitter:url" content="https://www.insideedition.com/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457" /><meta name="twitter:image" content="https://www.insideedition.com/sites/default/files/images/2020-03/bruno_web_article.jpg" /><meta property="og:image" content="https://www.insideedition.com/sites/default/files/images/2020-03/bruno_web_article.jpg" /><meta property="og:image:width" content="1280" /><meta property="og:image:height" content="720" /><meta property="article:published_time" content="2020-04-04T04:31:40-07:00" /><meta name="Generator" content="Drupal 8 (https://www.drupal.org)" /><meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","image":{"@type":"ImageObject","url":"https:\/\/www.insideedition.com\/sites\/default\/files\/images\/2020-03\/bruno_web_article.jpg","height":720,"width":1280},"headline":"How Bruno Sammartino Escaped Nazis, Bullies to Become the Most Popular Wrestler in America","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.insideedition.com\/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457"},"datePublished":"2020-04-04T04:31:40-07:00","dateModified":"2020-04-07T13:56:48-07:00","articleSection":"News","description":"Sammartino died at in 2018 at the age of 82, but his legacy lives on.","keywords":["Sports","Entertainment","Inspirational","News","wrestling","italy","world war ii","nazis","pittsburgh","pennsylvania","wwe","INSIDE EDITION InDepth"],"@type":"NewsArticle","author":{"@type":"Person","name":"SAL BONO"},"publisher":{"name":"Inside Edition","@type":"Organization","logo":{"@type":"ImageObject","url":"https:\/\/www.insideedition.com\/themes\/custom\/iebs\/logo.png"}},"url":"https:\/\/www.insideedition.com\/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457"}</script><script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-domain-script="1e90d9ec-e15e-4932-a026-f218893ce26c"></script><script type="text/javascript" src="//production-cmp.isgprivacy.cbsi.com/dist/optanon.js" id="bb-cbsoptanon"></script><script type="text/javascript">!function(n){var o=window,a="cbsoptanon",c="cmd",d="config";o[a]=o[a]?o[a]:{},o[a][c]=o[a][c]?o[a][c]:[],o[a][d]=o[a][d]?o[a][d]:[],["onIframesReady","onFormsReady","onScriptsReady","onAdsReady"].forEach(function(n){o[a][n]=o[a][n]||function(){var d=arguments;o[a][c].push(function(){o[a][n].apply(o[a],d)})}})}();
+</script><link rel="shortcut icon" href="/themes/custom/iebs/favicon.ico" type="image/vnd.microsoft.icon" /><link rel="revision" href="https://www.insideedition.com/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457" /><link rel="amphtml" href="https://www.insideedition.com/how-bruno-sammartino-escaped-nazis-and-bullies-to-become-the-most-popular-wrestler-in-america-58457?amp" /><title>How Bruno Sammartino Escaped Nazis, Bullies to Become the Most Popular Wrestler in America | Inside Edition</title><link rel="stylesheet" media="all" href="/sites/default/files/css/css_t7AYp7JtmW7t8Tr7r5RIXoR6Z8kHZFn1Qc1ywtoKmLY.css?q8smev" /><link rel="stylesheet" media="all" href="/sites/default/files/css/css_FC7Pjmdn37IOR6TjdfBRAOC1KHGmVnRt5aDOxVZ_9jM.css?q8smev" /><script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/58457","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"utm_source":"digg"}},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"bootstrap\/popover,bootstrap\/tooltip,core\/html5shiv,ctd_bidbarrel\/bidbarrel_init,ctd_bidbarrel\/uvp_ads,ctd_iris\/iris_uvp,ctd_media_net\/ctd_media_net,ctd_sourcepoint\/ctd_sourcepoint,ctd_taboola\/ctd_taboola,ctd_tealium\/ctd_tealium,ctd_tealium\/uvp_tracking,fastly\/fastly,iebs\/bootstrap-scripts,iebs\/global-scripts,iebs\/global-styling,iebs\/iebs-affix,iebs\/iebs-header-affix,iebs\/iebs-sticky-sidebar,iebs\/post-global-scripts,iebs\/sharethispickerexternalbuttons,iebs\/sharethispickerexternalbuttonsws,iebs\/ui-search,sharethis\/sharethis,system\/base,views\/views.module","theme":"iebs","theme_token":null},"ajaxTrustedUrl":{"\/search":true},"ctdBidBarrel":{"scriptUrl":"https:\/\/at.cbsi.com\/lib\/dist\/prod\/bidbarrel-insideedition.min.js","networkId":"8264","adUnitSizePrefix":"aw-insideedition","mobileAdUnitSizePrefix":"maw-insideedition","pageType":"article","page_targeting":{"nid":"58457","keywords":["wrestling","italy","world war ii","nazis","pittsburgh","pennsylvania","wwe","inside edition indepth"],"category":"sports","categories":["sports","entertainment","inspirational","news"],"ad_page_type":"article","ad_unit_path_suffix":"sports\/article"}},"taboolaScriptUrl":"\/\/cdn.taboola.com\/libtrc\/cbsinteractive-insideedition\/loader.js","bootstrap":{"forms_has_error_value_toggle":1,"modal_animation":1,"modal_backdrop":"true","modal_keyboard":1,"modal_show":1,"modal_size":"","popover_enabled":1,"popover_animation":1,"popover_container":"body","popover_content":"","popover_delay":"0","popover_html":0,"popover_placement":"right","popover_selector":"","popover_title":"","popover_trigger":"click","popover_trigger_autoclose":1,"tooltip_enabled":1,"tooltip_animation":1,"tooltip_container":"body","tooltip_delay":"0","tooltip_html":0,"tooltip_placement":"auto left","tooltip_selector":"","tooltip_trigger":"hover"},"ctd_tealium_url":"\/\/tags.tiqcdn.com\/utag\/cbsi\/insideeditionsite\/prod\/utag.js","sharethis":{"switchTo5x":true,"__st_loadLate":true,"stlight":{"publisher":"dr-c188cc5e-3f0f-2556-e3bd-410bbc0a9ff8","version":"5x","doNotCopy":true,"hashAddressBar":false,"doNotHash":true,"popup":true}},"taboola_page_type":"article","taboola_container":"taboola-below-article-thumbnails","taboola_mode":"thumbnails-a","taboola_placement":"Below Article Thumbnails","user":{"uid":0,"permissionsHash":"f30863c952c49aefca9d0afb9300cadf0deceecea706b723c7bb2229d823c3e3"}}</script><!--[if lte IE 8]><script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script><![endif]--><script src="/sites/default/files/js/js_5a6fzhqfn49cOQiCCJfFN5bAwxbrXjJEKZZ4vZwzY4I.js"></script><script src="/modules/contrib/ctd_taboola/js/ctd-taboola.js?q8smev" type="text/plain" class="optanon-category-4"></script><script src="/modules/contrib/ctd_tealium/js/ctd-tealium.js?q8smev" type="text/plain" class="optanon-category-1"></script><script src="/sites/default/files/js/js_RwcHAF30aVU79bwD_8iBrPbmKnySgAeWjnZvEddxqCs.js"></script><bidbarrel-placeholder token="piUqXkrRSts3MSedilni2J3lrOkXIJIeqZmPtg3L64jA0DX3EQn8C-NU9vQpmiOaV3kSupWvMw"></head><body class="path-node page-node-type-article has-glyphicons"><script>
+var utag_data = {"assetPubDate":"2020-04-04T11:31:40","assetType":"content_article","assetTitle":"How Bruno Sammartino Escaped Nazis and Bullies to Become the Most Popular Wrestler in America","assetId":"58457","authorId":"15","authorName":"(37318)","pageType":"article","videoAutoPlay":"on","videoExists":"true","siteSection":"sports","gaAccount":"UA-1072526-1","siteHier":"sports|article","userState":"not authenticated","userType":"anon"};
+utag_data.pageViewGuid = ctdTealium.viewGuid;
+utag_data.deviceType = (ctdTealium.isMobile == false) ? 'desktop' : 'mobile';
+utag_data.campaign = ctdTealium.campaign;
+// Support legacy Brightcove video plugin.
+site.section = utag_data.siteSection || '';
+if (typeof utag_data['videoAutoPlay'] !== 'undefined' && utag_data['videoAutoPlay']) {
+utag_data['videoAutoPlay'] = (ctdTealium.isMobile === false) ? utag_data['videoAutoPlay'] : false;
+}
+</script><div class="header-padding-offset"> <a href="#main-content" class="visually-hidden focusable skip-link"> Skip to main content </a><div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas><div id="flex-header" class="flex-ad flex-header"><div id="nav_ad" data-ad="nav_ad" class="nav_ad gpt_ads"></div><script>
+BidBarrel.setSizeMappings("nav_ad",
+[
+{
+viewport: [0, 0],
+sizes: [[7, 7]]
+},
+{
+viewport: [300, 0],
+sizes: [[7, 7]]
+},
+{
+viewport: [740, 0],
+sizes: [[7, 7]]
+},
+{
+viewport: [1024, 0],
+sizes: [[7, 7]]
+},
+{
+viewport: [1400, 0],
+sizes: [[7, 7]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "nav",
+}, ["nav_ad"]);
+</script></div><header class="main-header" role="banner" data-spy="affix"><div class="container main-header-container"><div class="row main-header-row"><div class="col-sm-12"><div class="row"><div id="menu-logo-wrapper" class="logo col-sm-2 col-md-1"><div id="menu-btn"> <button type="button" class="menu-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> </button></div> <span id="menu-logo"> <a href="https://www.insideedition.com/"> <img class="menu-logo" src="/themes/custom/iebs/logo.svg" alt="Inside Edition Homepage"> </a> </span></div><div id="navbar" class="navbar-collapse collapse"><div class="navbar-header"><ul class="menu nav navbar-nav"><li class="expanded dropdown menu-link-content-37899cb6-f020-4c35-a84c-f1bd06d2458b"> <a href="/news" class="dropdown-toggle" data-toggle="dropdown" aria-label="News" aria-expanded="false">News</a><ul class="menu dropdown-menu"><li class="menu-link-content-7061d623-efb3-4cd1-8d63-b19c99f34967"> <a href="/news" aria-label="Latest News" data-drupal-link-system-path="taxonomy/term/6">Latest News</a></li><li class="menu-link-content-77fd5e4d-1b09-4e9a-b9ef-7f2cd3f6c27c"> <a href="/crime" aria-label="Crime" data-drupal-link-system-path="taxonomy/term/4">Crime</a></li><li class="menu-link-content-7eb81050-aa78-4e0d-b642-850f6cbebe2b"> <a href="/politics" aria-label="Politics" data-drupal-link-system-path="taxonomy/term/5">Politics</a></li><li class="menu-link-content-6298b762-56b4-40bb-9f8a-fde76e0f2f1a"> <a href="/health" aria-label="Health" data-drupal-link-system-path="taxonomy/term/7">Health</a></li><li class="menu-link-content-7162b157-b550-48ee-b28f-757f83c75984"> <a href="/entertainment" aria-label="Entertainment" data-drupal-link-system-path="taxonomy/term/1">Entertainment</a></li><li class="menu-link-content-770e30c5-be12-4619-a77f-def704366867"> <a href="/flashback" aria-label="Flashback" data-drupal-link-system-path="taxonomy/term/46185">Flashback</a></li><li class="menu-link-content-436e839c-444f-4d13-93ff-61a45a531adc"> <a href="/royals" aria-label="Royals" data-drupal-link-system-path="taxonomy/term/45299">Royals</a></li><li class="menu-link-content-5afa2959-f45b-4045-babb-0209cc9aad3d"> <a href="/tag/coronavirus" aria-label="Coronavirus" data-drupal-link-system-path="taxonomy/term/46874">Coronavirus</a></li></ul></li><li class="menu-link-visible menu-link-content-7f1c4464-33be-4d36-8824-e6de94189c64"> <a href="/videos" aria-label="Video" data-drupal-link-system-path="videos">Video</a></li><li class="menu-link-content-890af9c5-f9d2-4c05-a66a-f97218aed59f"> <a href="/investigative" aria-label="Investigative" data-drupal-link-system-path="taxonomy/term/2">Investigative</a></li><li class="menu-link-content-a57cbb7f-4639-45d2-85fd-10e7b1306abd"> <a href="/inspirational" aria-label="Inspirational" data-drupal-link-system-path="taxonomy/term/9">Inspirational</a></li><li class="menu-link-content-cbf524ed-b8ff-4358-b4fa-8924b66a98e0"> <a href="/offbeat" aria-label="Offbeat" data-drupal-link-system-path="taxonomy/term/10">Offbeat</a></li><li class="expanded dropdown views-view-views-section-pages-section-more"> <a href="/more" class="dropdown-toggle" data-toggle="dropdown" aria-label="More" aria-expanded="false">More</a><ul class="menu dropdown-menu"><li class="menu-link-content-d8d15c78-7c89-40f4-b0be-b0756eccba3b"> <a href="/animals" aria-label="Animal Edition" data-drupal-link-system-path="taxonomy/term/11">Animal Edition</a></li><li class="views-view-views-section-pages-section-photos"> <a href="/photos" aria-label="Photos" data-drupal-link-system-path="photos">Photos</a></li><li class="menu-link-content-bee89807-436d-4c69-94dd-0ed39c40d38b"> <a href="/heroes" aria-label="Heroes" data-drupal-link-system-path="taxonomy/term/46711">Heroes</a></li><li class="menu-link-content-0801d8a7-8ebd-4869-9274-cad32913c92b"> <a href="/in-depth" aria-label="Inside Edition InDepth" data-drupal-link-system-path="taxonomy/term/8">Inside Edition InDepth</a></li></ul></li><li class="expanded dropdown menu-link-content-cc557156-fd42-4305-991a-a8cd967ddcba"> <a href="/showfinder" class="dropdown-toggle" data-toggle="dropdown" aria-label="Watch on TV" aria-expanded="false">Watch on TV</a><ul class="menu dropdown-menu"><li class="menu-link-content-12feafda-166a-4569-9d85-cb03a64964bc"> <a href="/showfinder" aria-label="Local Listings" data-drupal-link-system-path="showfinder">Local Listings</a></li><li class="menu-link-content-46759da3-82b9-4257-8f9e-0b2a5777df80"> <a href="/meet-the-team" aria-label="Meet the Team" data-drupal-link-system-path="meet-the-team">Meet the Team</a></li><li class="menu-link-content-90756a3e-d4c0-4958-812e-494f4425ad16"> <a href="/tag/today-inside-edition" aria-label="Today on Inside Edition" data-drupal-link-system-path="taxonomy/term/46643">Today on Inside Edition</a></li></ul></li></ul></div></div><div class="search-header pull-right"><div class="block-ie-search"><div class="search"> <section class="block block-gcs-search block-gcs-search__search-form-block clearfix"><form class="search-block-form" data-drupal-selector="search-block-form" action="/search" method="get" id="search-block-form" accept-charset="UTF-8"><div class="form-item js-form-item form-type-search js-form-type-search form-item-keywords js-form-item-keywords form-no-label form-group"> <label for="edit-keywords" aria-hidden="true" aria-label=" " class="control-label sr-only">Search</label> <input title="Enter the terms you wish to search for." data-drupal-selector="edit-keywords" class="form-search form-control" placeholder="Search" type="search" id="edit-keywords" name="keywords" value="" size="15" maxlength="128" /><div id="edit-keywords--description" class="description help-block"> Enter the terms you wish to search for.</div></div><input autocomplete="off" data-drupal-selector="form-z-3wnc40t4kpeo8z0iteievgbsubu2drf7ndefq0uc" type="hidden" name="form_build_id" value="form-_Z-3Wnc40T4KPeo8z0ITEiEvGbSuBU2dRf7nDEfQ0uc" /><input data-drupal-selector="edit-search-block-form" type="hidden" name="form_id" value="search_block_form" /><div data-drupal-selector="edit-actions" class="form-actions form-group js-form-wrapper form-wrapper" id="edit-actions"><button data-drupal-selector="edit-go" class="button js-form-submit form-submit btn-default btn" type="submit" id="edit-go" name="op" value="" aria-hidden="true" tabindex="-1"></button></div></form> </section> <span class="sb-icon-search"><span class="icon-search"></span></span></div></div> <span class="sb-icon-close"><button class="close-search" aria-label="Close Search"></button></span><div class="block-ie-social hidden-xs"> <section class="block block-ie block-social-block clearfix"><ul class="social-block-content"><li><a href="http://www.facebook.com/Inside.Edition" class="icon icon-facebook" aria-label="Facebook Inside Edition"></a></li><li><a href="http://twitter.com/insideedition" class="icon icon-twitter" aria-label="Twitter Inside Edition"></a></li><li><a href="https://instagram.com/insideedition/" class="icon icon-instagram" aria-label="Instagram Inside Edition"></a></li><li><a href="https://www.youtube.com/insideedition" class="icon icon-youtube" aria-label="YouTube Inside Edition"></a></li><li><a href="/rss" class="icon icon-rss" aria-label="RSS Inside Edition"></a></li></ul> </section></div></div><div class="header-social"><ul class="header-social-share"><li class="header-social-share-item"> <span class="button button--share button--share-facebook st_facebook_custom"> <img alt="Facebook" class="icon icon-facebook" src="/themes/custom/iebs/images/sharethis/facebook.svg"> </span></li><li class="header-social-share-item"> <span class="button button--share button--share-twitter st_twitter_custom"> <img alt="Twitter" class="icon icon-twitter" src="/themes/custom/iebs/images/sharethis/twitter.svg"> </span></li><li class="header-social-share-item"> <span class="button button--share button--share-whatsapp st_whatsapp_custom"> <img alt="Whatsapp" class="icon icon-whatsapp" src="/themes/custom/iebs/images/sharethis/whatsapp.svg"> </span></li><li class="header-social-share-item"> <span class="button button--share button--share-reddit st_reddit_custom"> <img alt="Reddit" class="icon icon-reddit" src="/themes/custom/iebs/images/sharethis/reddit.svg"> </span></li></ul></div></div></div></div></div></header><div class="page-skin-container"><div role="main" class="main-container container js-quickedit-main-content"><div class="article-header visible-xs-block"><h1 class="page-header"> How Bruno Sammartino Escaped Nazis and Bullies to Become the Most Popular Wrestler in America</h1><div class="article-meta"> <span class="category"> <a href="/sports">Sports</a> </span> <span class="publish-details"> 4:31 AM PDT, April 4, 2020 - <a href="/bios/sal-bono" hreflang="en">SAL BONO</a> </span></div></div><div id="incontent_ad_top" data-ad="incontent_ad_top" class="incontent_ad_top gpt_ads"></div><script>
+if (ctdBidBarrelUtility.isMobile() || (!ctdBidBarrelUtility.isMobile() && '[320, 50]' != '')) {
+BidBarrel.setSizeMappings("incontent_ad_top",
+[
+{
+viewport: [0, 0],
+sizes: [[320, 50]]
+},
+{
+viewport: [300, 0],
+sizes: [[320, 50]]
+},
+{
+viewport: [740, 0],
+sizes: [[728, 90]]
+},
+{
+viewport: [1024, 0],
+sizes: [[970, 66], [970, 90], [728, 90], [970, 250]]
+},
+{
+viewport: [1400, 0],
+sizes: [[970, 66], [970, 90], [728, 90], [970, 250]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "top",
+}, ["incontent_ad_top"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("incontent_ad_top")
+}
+</script><div class="row main-row"> <section class="col-xs-12 col-sm-8 col-md-9 col-sm-push-4 col-md-push-3"> <a id="main-content"></a><div class="region region-content"><div data-drupal-messages-fallback class="hidden"></div> <article role="article" class="article full clearfix"><div class="article-header hidden-xs"><h1 class="page-header"> <span>How Bruno Sammartino Escaped Nazis and Bullies to Become the Most Popular Wrestler in America</span></h1><div class="article-meta"> <span class="category"><div class="field field--name-field-category field--type-entity-reference field--label-hidden field--item"><a href="/sports" aria-label="Category Sports" hreflang="en">Sports</a></div> </span> <span class="publish-details"><time datetime="2020-04-04T11:31:40Z">4:31 AM PDT, April 4, 2020</time> - <a href="/bios/sal-bono" hreflang="en">SAL BONO</a></span></div></div><div class="article-hero"><div class="video-placeholder"><div class="video-placeholder-image"><img src="/themes/custom/iebs/images/IE-Stickyplayer-BG-930x524.svg"></div><div class="video-container-outer"><div class="video-container"><div class="field field--name-field-video field--type-entity-reference field--label-hidden field--item"><div class="uvp-outer"><div class="adBanner"></div><div class="uvp-ad-blocked"> This video is unavailable because we were unable to load a message from our sponsors. <br /><br />If you are using ad-blocking software, please disable it and reload the page.</div><div class="uvp-wrapper"><div data-site-uvpc-url="/onetrust/uvpconfig" data-hls="https://cbsi-insideedition-video-fastly.global.ssl.fastly.net/2020/04/02/1719372355536/465066_hls/master.m3u8" data-duration="529" data-title="How Bruno Sammartino Escaped Nazis and Defied Bullies to Become Wrestling Champ" data-keywords="entertainment,sports,in depth,inside_edition,Inside Edition,ie indepth,wrestling,WWE,bruno sammartino,wrestler,pittsburgh,italy,arnold schwarzenegger,world war II,Vince McMahon,madison square garden,msg" data-has-preroll-ad="true" data-player-has-preroll-ads="true" data-ad-url="https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=%2F8264%2Fvaw-ctd%2FPH-DEVICE-TYPE%2Finside_edition&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=xml_vmap1&amp;unviewed_position_start=1&amp;description_url=https%3A%2F%2Fwww.insideedition.com&amp;correlator=" data-brand="inside_edition" data-cms-id="2289" data-recommendation="true" data-tracking-data="{&quot;assetId&quot;:&quot;7xBIHRhHlED__dmRiFs9_bjsFoJvjy4K&quot;,&quot;assetPubDate&quot;:&quot;2020-04-04T11:29:28Z&quot;,&quot;assetTitle&quot;:&quot;How Bruno Sammartino Escaped Nazis and Defied Bullies to Become Wrestling Champ&quot;,&quot;assetType&quot;:&quot;video&quot;,&quot;authorId&quot;:&quot;28&quot;,&quot;authorName&quot;:&quot;Inside Edition Staff&quot;,&quot;brandPlatformId&quot;:&quot;insideedition_site&quot;,&quot;deviceType&quot;:null,&quot;mediaContentType&quot;:&quot;vod&quot;,&quot;pageName&quot;:null,&quot;pageType&quot;:null,&quot;pageURL&quot;:null,&quot;pageViewGuid&quot;:null,&quot;sitePrimaryRsid&quot;:&quot;cbsiinsideeditionsite&quot;,&quot;siteSection&quot;:&quot;entertainment&quot;,&quot;siteType&quot;:null,&quot;userState&quot;:&quot;not authenticated&quot;,&quot;userType&quot;:&quot;anon&quot;}" data-instance-uvpc="{&quot;modules&quot;:[{&quot;category&quot;:&quot;recommendationEngine&quot;,&quot;enabled&quot;:true,&quot;name&quot;:&quot;IrisTvPlugin&quot;,&quot;params&quot;:[{&quot;name&quot;:&quot;clientToken&quot;,&quot;value&quot;:&quot;9QG0F78TTZHSOJI&quot;},{&quot;name&quot;:&quot;platform&quot;,&quot;value&quot;:&quot;Mpx&quot;},{&quot;name&quot;:&quot;playlistLength&quot;,&quot;value&quot;:20},{&quot;name&quot;:&quot;useThumbsUp&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;useThumbsDown&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;useSkipForward&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;useSkipBack&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;displayUpNextAtContentStart&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;displayUpNextAtContentEnd&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;upNextTextAtStart&quot;,&quot;value&quot;:&quot;Up Next&quot;},{&quot;name&quot;:&quot;upNextTextAtEnd&quot;,&quot;value&quot;:&quot;Up Next&quot;},{&quot;name&quot;:&quot;upNextDisplayTime&quot;,&quot;value&quot;:4000},{&quot;name&quot;:&quot;skipOnThumbsDown&quot;,&quot;value&quot;:true},{&quot;name&quot;:&quot;disableForMobile&quot;,&quot;value&quot;:false}]}]}" data-uvp data-endscreen="false" data-partner="can" data-default-autoplay="true" data-default-muted="true" data-mobile-autoplay="true" data-mobile-muted="true" data-poster-url="/sites/default/files/styles/video_1920x1080/public/images/2020-04/bruno_web.jpg?itok=bV5DpQrL" data-captions-url="/sites/default/files/video/captions/2020-04/Bruno_web.vtt" data-env-uvpc="null" data-ref-id="7xBIHRhHlED__dmRiFs9_bjsFoJvjy4K" class="uvp-player uvp-inner"></div></div></div><div class="end-screen-overlay end-screen-template" style="display:none;"><div class="end-screen-outer"><form><h1 class="uvp-endslate-title"></h1> <label class="uvp-endslate-embed-code" aria-label="Read Only: Embed Code"> <span class="uvp-endslate-label-text">Embed Code</span> </label> <button tabindex="0" class="uvp-endslate-replay">Restart</button></form></div></div><div id="hero" class="owl-theme hero-video--carousel"><div class="owl-controls"><div class="owl-nav"></div></div><div class="owl-carousel"></div> <span class="carousel-item-template visually-hidden"><div class="item"> <a class="player_link"><div class="image-container"> <img src="/themes/custom/iebs/images/1x1_transparent.png"> <span class="now-playing">Now playing</span><div class="time-block"> <svg class="video-play-button"></svg> <span class="timecode"></span></div></div><h2 class="item__title"></h2> </a></div> </span></div></div><div class="playing"> <span class="playing-text">Playing</span> <span class="playing-title"></span></div></div></div></div></div> <section class="content"><div class="story_parent"><div class="story_links story_links-vertical" > <button class="button button--share button--share-facebook st_facebook_custom" st_image=""> <img alt="Facebook" class="icon icon-facebook" src="/themes/custom/iebs/images/sharethis/facebook.svg"> </button> <button class="button button--share button--share-twitter st_twitter_custom" st_image=""> <img alt="Twitter" class="icon icon-twitter" src="/themes/custom/iebs/images/sharethis/twitter.svg"> </button> <button class="button button--share button--share-email st_email_custom" st_image=""> <img alt="Email" class="icon icon-email" src="/themes/custom/iebs/images/sharethis/email.svg"> </button> <button class="button button--share button--share-reddit st_reddit_custom" st_image=""> <img alt="Reddit" class="icon icon-reddit" src="/themes/custom/iebs/images/sharethis/reddit.svg"> </button></div></div><div class="row--article-text"><div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"><div><p>During his pro-wrestling&nbsp;heyday, Bruno Sammartino sold out Madison Square Garden 188 times, was named the world&rsquo;s strongest man and held the <a href="https://www.insideedition.com/media/videos/stone-cold-steve-austin-on-how-he-helped-dwayne-the-rock-johnsons-wwe-career-57595" target="_blank">WWE Championship Belt</a> for 2,803 consecutive days. Arnold Schwarzenegger called&nbsp;Bruno's life "one of the greatest immigration stories that anyone can think of."&nbsp;</p><p>But that life of triumph&nbsp;almost didn't happen. Bruno grew up in poverty in Pizzoferrato, Italy, during World War II. As a boy, he was chronically ill. When his family fled&nbsp;the Nazis for America, he faced prejudice and bullying for being an immigrant.</p><div id="mobile_incontent_ad_middle_top" data-ad="mobile_incontent_ad_middle_top" class="mobile_incontent_ad_middle_top gpt_ads"></div><script>
+if (ctdBidBarrelUtility.isMobile() || (!ctdBidBarrelUtility.isMobile() && '' != '')) {
+var ctdSlotPos = '';
+if (ctdBidBarrelUtility.isMobile()) {
+if ('article' == 'gallery_slideshow') {
+ctdSlotPos = 'top';
+}
+else {
+ctdSlotPos = 'middle';
+}
+}
+BidBarrel.setSizeMappings("mobile_incontent_ad_middle_top",
+[
+{
+viewport: [0, 0],
+sizes: [[300, 250], [320, 50], [7, 7], [321, 31]]
+},
+{
+viewport: [300, 0],
+sizes: [[300, 250], [320, 50], [7, 7], [321, 31]]
+},
+{
+viewport: [740, 0],
+sizes: []
+},
+{
+viewport: [1024, 0],
+sizes: []
+},
+{
+viewport: [1400, 0],
+sizes: []
+}
+]
+);
+BidBarrel.setTargeting({
+pos: ctdSlotPos,
+}, ["mobile_incontent_ad_middle_top"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("mobile_incontent_ad_middle_top")
+}
+</script><p>Yet through it all, Bruno carried with him his determination and will to triumph over the odds. Here is the story of his remarkable life.&nbsp;</p><p><strong>Escaping death</strong></p><div id="native_top" data-ad="native_top" class="native_top gpt_ads"></div><script>
+BidBarrel.setSizeMappings("native_top",
+[
+{
+viewport: [0, 0],
+sizes: [[11, 11], "fluid"]
+},
+{
+viewport: [300, 0],
+sizes: [[11, 11], "fluid"]
+},
+{
+viewport: [740, 0],
+sizes: [[11, 11], "fluid"]
+},
+{
+viewport: [1024, 0],
+sizes: [[11, 11], "fluid"]
+},
+{
+viewport: [1400, 0],
+sizes: [[11, 11], "fluid"]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "top",
+strnativekey: "PsS7rzpJA1mvNhnsyKFKsPW9"
+}, ["native_top"]);
+</script><p>Bruno was born in October 1935 in the Abruzzo region of Italy outside of Rome. He was the youngest of seven children, and four of his siblings died when he was just a child, so Sammartino knew what suffering was at a young age.&nbsp;</p><p>When Bruno was 4, his father left his wife and children behind and&nbsp;immigrated to Pittsburgh, Pennsylvania, as a way to earn a living&nbsp;for his family.&nbsp;</p><p>&ldquo;My dad's early life,&nbsp;when he was a kid, it wasn't the best," Darryl Sammartino told InsideEdition.com. &ldquo;They were very poor. Then he got sick. He was sickly for most of his younger years.&rdquo;</p><p>Bruno Sammartino was also struck with rheumatic fever, which left him gravely ill for most of his childhood. Darryl said his father's family were forced to flee their town as the Nazis moved in, living for 14 months on the top of a mountain.&nbsp;</p><p>&ldquo;They lived outside and he was a very sickly, sickly kid. They were basically starving to death," Darryl said.&nbsp;</p><p>Bruno and his family narrowly escaped death, said&nbsp;Larry Richert, the executive producer of "Bruno Sammartino," a documentary about the wrestler.&nbsp;</p><p>&ldquo;Nazis came to their village, took over, and had at one point captured them, lined them up to be executed,&rdquo;&nbsp;Richert told Inside Edition. &ldquo;His mother took his brother, Paul, sister, Mary, and him under her arms, and said, &lsquo;Don't worry. We'll never be hungry again. We'll never be cold again. We'll be in paradise with Jesus.&rsquo; Just then, they were saved at the last minute by their own villagers who had followed the Germans and killed them right there on the spot.&rdquo;</p><p>Darryl said Bruno always admired his mother's toughness. She would leave her kids on the mountain as she risked her own safety to return to their village to find food.&nbsp;</p><p>&ldquo;My dad didn't think he was tough, but he thought his mom was tough," Daryl said. "My dad would sit on a rock and wonder if she was even coming back. It would take 24 hours to get there, 24 hours back. My grandmother was captured, she was shot and jumped off the truck and still came up with food."&nbsp;</p><p>After the war ended, the Sammartinos were able to return to their home in Pizzoferrato. But they longed&nbsp;to go to America to join Bruno's father and make a better life for themselves.&nbsp;</p><p>Bruno&rsquo;s fragile health kept the family back.</p><p>&ldquo;My dad couldn't pass a physical with the Salvation Army,&rdquo; Darryl recalled. &ldquo;He held my whole family back for three years. Then he finally passed it. As a matter of fact, the doctor saw my dad and told my grandmother, &lsquo;I don't expect to see Bruno here tomorrow, because I think he's going to die.&rsquo;&rdquo;</p><p>But Bruno pulled through, and no one could have imagined that a boy who had suffered through such a sickly childhood would go on to become the world's strongest man.&nbsp;</p><p><strong>Life in America</strong></p><p>By 1950, the rest of the Sammartinos had joined their patriarch in Pittsburgh.&nbsp;</p><p>The family immigrated through Ellis Island, but had no idea that the city that was home to&nbsp;the Statue of Liberty would one day become Bruno's home.&nbsp;</p><p>Pittsburgh was where the family laid their foundation and worked toward their American dream. But they didn't find the city welcoming, and Bruno suffered in particular because of his small stature and rough English.&nbsp;</p><p>&ldquo;My dad came from Italy and he was very, very happy to come to the United States. As he said, &lsquo;The streets were paved in gold.&rsquo; [But] he&nbsp;got bullied when he was a kid,&rdquo; Darryl said. &ldquo;He was getting black eyes and bloody noses.&rdquo;</p><p>Bruno grew tired&nbsp;of getting picked on. As luck would have it, he met a local landscaper&nbsp;who introduced him to weightlifting. Bruno was hooked, and the bullying stopped.&nbsp;</p><p><strong>Finding his strength</strong></p><p>&ldquo;When he lifted weights, Bruno said the first time he did it, something clicked. He knew this was a magic moment for him," Richart said. "He did it clean, never used any steroids or drugs, and he became this incredibly focused and powerful man.&nbsp;He built himself up to be the strongest man in the world."&nbsp;</p><p>Bruno also started playing football, catching the attention of the pro Pittsburgh Steelers. Thanks to his&nbsp;brute strength and force, he was also catching the eye&nbsp;of wrestling promoters, who saw him at weightlifting competitions and watched him wrestle at the University of Pittsburgh.&nbsp;</p><p>&ldquo;My dad was winning all these weightlifting competitions," Daryl said, and after a promoter saw him win a title in Oklahoma City,&nbsp;'He said, &lsquo;Oh, we got to bring this Bruno guy in, this Bruno Sammartino, we got to see what he can do.'"&nbsp;</p><p>Bruno had a choice between playing for the Steelers and pursuing a pro-wrestling career. It was a good choice to have. Bruno ultimately chose wrestling because of its $35,000 per year starting salary, versus the $9,000 he would have made as a lineman, Daryl said.&nbsp;</p><p><strong>Creating a name&nbsp;</strong></p><p>Bruno Sammartino made his professional wrestling debut in December 1959. Earlier that&nbsp;year, he had married his sweetheart, Carol. The couple went on to have three children.&nbsp;</p><p>Weeks after his debut in the early part of 1960, Bruno competed in a match at&nbsp;New York Ctiy's Madison Square Garden, long considered the most famous wrestling arena.&nbsp;He won his match in five minutes.&nbsp;</p><p>&ldquo;When he came into the ring, people were standing and screaming, and screaming and screaming,&rdquo; Schwarzenegger recalled&nbsp;in the &ldquo;Bruno Sammartino" documentary. &ldquo;And then the fight began. I mean, he started throwing this guy around. He lifted people up that were 400 pounds, overhead. This is how powerful he was.&rdquo;</p><p>The globe took notice of his size and skill, and&nbsp;once his professional wrestling career got going, Bruno became America&rsquo;s biggest ticket.&nbsp;</p><p>&ldquo;He was a megastar in Japan, wrestled in Australia, Canada, Europe, Mexico, South America," Richert said, adding that he sold out Madison Square Garden, "arguably the biggest house in the world, 188 times is the headliner."</p><p>"People like Frank Sinatra wanted to hang with him,&rdquo; Richert added.&nbsp;</p><p><strong>Family man</strong></p><p>While Bruno&rsquo;s fame also brought him&nbsp;fortune, everything he did was for his family,&nbsp;especially his mother. His family said that he bought his mom a Rolls Royce so she could travel to church in style. It was a small "thank you" for everything she did for Bruno and his siblings during the war.</p><p>But to his family, especially his kids, Bruno was simply dad.</p><p>During the height of his career, Bruno was on the road 300 days a year.&nbsp;Daryl said he would travel to competitions with him, attending events in&nbsp;arenas such as the Philly Spectrum and Boston Gardens.&nbsp;</p><p>&ldquo;I would hear 20,000 people chanting his name," Daryl remembered.&nbsp;"I'm like, &lsquo;Huh. Do other dads get their name chanted?' My dad was just my dad. My dad was no better than anybody else. He was my dad and it was just the job that he had.&rdquo;</p><p>He also taught his children lessons he had learned during World War II.&nbsp;</p><p>&ldquo;There were many times when we didn't finish our food on a plate and he would not like that," Daryl said.&nbsp;"He was like, &lsquo;You're going to eat everything that's on your plate, because you don't know what it's like to starve."&nbsp;</p><p>The same went for when Daryl or his brothers complained about working at a job they didn't like.&nbsp;</p><p>"My dad would say, &lsquo;You don't know what tough is. That's not tough. You have no idea what tough is,'" Daryl said. "Then as I got older and matured, I understood."&nbsp;</p><p>When Bruno retired in 1987, he made up for lost time with&nbsp;his children, Daryl said. But the 30-year&nbsp;career that had made him&nbsp;a household name and a hero in the Italian-American community had also taken&nbsp;a toll on Bruno's body.</p><p>His son said Bruno&nbsp;estimated he had been&nbsp;body slammed over 8,000 times. He had also&nbsp;broken his nose 13 times and broken his neck once in 1976, an injury that&nbsp;came within a millimeter of leaving him paralyzed.&nbsp;</p><p><strong>Leaving a legacy</strong></p><p>Even after Bruno left the ring, he continued to inspire many. But even some of his biggest fans didn't know all of the obstacles&nbsp;he had faced throughout his life.</p><p>&ldquo;In Bruno's case, people always looked up to him because he was such a star and celebrity, but people had no idea what he overcame to get there. I think that resonates with people,&rdquo; Richert said.&nbsp;</p><p>His is also an immigrant's story, which makes it even more powerful,&nbsp;Schwarzenegger said in Richert's documentary.&nbsp;</p><p>&ldquo;I think that we have such love for this country, that we are not just like another American, but we have to kind of really pay back the debt of what has been offered to us,&rdquo; Schwarzenegger said. "[Bruno] says as an immigrant, he always felt like working harder. And he was so appreciative for the kind of a career he had as an immigrant coming over here to America.&rdquo;</p><p>In 2013, Schwarzenegger inducted his friend and hero into the WWE Hall of Fame with&nbsp;a rousing speech at&nbsp;Sammartino&rsquo;s second home &ndash; Madison Square Garden.&nbsp;</p><p>&ldquo;He became such a great inspiration because not only did he wrestle for all of these millions of people but he brought so much <a href="https://www.insideedition.com/how-famous-florida-sextuplets-celebrated-turning-12-58072" target="_blank">inspiration</a> to millions of children and got them turned on to working out," Schwarzenegger said at the time.&nbsp;</p><p>As he took the stage to accept his award, the&nbsp;crowd chanted &ldquo;Bruno! Bruno!&rdquo; It was as if they were back in Bruno's heyday.</p><p>Richert recalled&nbsp;that backstage during the induction, people lined up to meet him, including wrestler Triple H, Donald Trump and&nbsp;and the president of Deutsche Bank. It was something Bruno was used to; almost everywhere he went, people would recognize him, ask for autographs or a photo and share a story about how much he meant to them.&nbsp;</p><p>&ldquo;He would treat that person the same as he would treat the president of a company,&rdquo; Richert said. &ldquo;He would stay, sign autographs, and never blow them off. Because, he said, 'These are the people that made me who I am.&rsquo;&rdquo;</p><p>Daryl attributes his dad's longevity to a health diet and plenty of exercise.&nbsp;Even after he retired, Bruno would work out every day, run 12 miles and skip the sweets that are often popular in Italian homes.</p><p>Bruno eventually was hospitalized for heart problems. But Daryl&nbsp;said that even as his father was lying in a hospital bed for 68 days, he would check to make sure&nbsp;Daryl had&nbsp;done his daily workout&nbsp;and&nbsp;was eating right.&nbsp;</p><p>In&nbsp;April 2018, Bruno Sammartino died from multiple organ failure brought on by&nbsp;heart problems. He was 82.&nbsp;</p><p>And while&nbsp;Bruno is&nbsp;<a href="https://www.insideedition.com/media/videos/james-brown-talks-his-love-of-inside-edition-in-one-of-his-final-interviews-57670" target="_blank">no longer alive</a>, the lessons he offered live on. He always celebrated America's diversity, Richert said, and drew attention to the many Italian immigrants and immigrants from all over the world&nbsp;"who have overcome struggles to be here."</p><p>His legacy also lives on in his children.&nbsp;</p><p>&ldquo;My dad is 100 percent&nbsp;the American dream,&rdquo; Daryl said.&nbsp;</p><p><strong>RELATED STORIES</strong></p><p class="speedbump"> <a target="_blank" href="https://www.insideedition.com/how-entire-village-hid-cave-escape-nazis-amid-operation-husky-45004"> Life During Wartime: Operation Husky and the Cave That Sheltered an Entire Village </a></p><p class="speedbump"> <a target="_blank" href="https://www.insideedition.com/98-year-old-world-war-ii-veteran-working-as-grocery-store-bagger-gets-surprise-birthday-bash-55479"> 98-Year-Old World War II Veteran Working as Grocery Store Bagger Gets Surprise Birthday Bash </a></p><div id="mobile_incontent_ad_middle_bottom" data-ad="mobile_incontent_ad_middle_bottom" class="mobile_incontent_ad_middle_bottom gpt_ads"></div><script>
+if (ctdBidBarrelUtility.isMobile() || (!ctdBidBarrelUtility.isMobile() && '' != '')) {
+var ctdSlotPos = '';
+if (['video'].includes('article')) {
+ctdSlotPos = 'middle';
+}
+else {
+ctdSlotPos = 'middle2';
+}
+BidBarrel.setSizeMappings("mobile_incontent_ad_middle_bottom",
+[
+{
+viewport: [0, 0],
+sizes: [[300, 250], [320, 50]]
+},
+{
+viewport: [300, 0],
+sizes: [[300, 250], [320, 50]]
+},
+{
+viewport: [740, 0],
+sizes: []
+},
+{
+viewport: [1024, 0],
+sizes: []
+},
+{
+viewport: [1400, 0],
+sizes: []
+}
+]
+);
+BidBarrel.setTargeting({
+pos: ctdSlotPos,
+}, ["mobile_incontent_ad_middle_bottom"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("mobile_incontent_ad_middle_bottom")
+}
+</script><p class="speedbump"> <a target="_blank" href="https://www.insideedition.com/operation-husky-and-turning-tide-world-war-ii-did-mafia-help-allies-invade-sicily-45001"> Did the Mafia Help the Allies Invade Sicily at the Height of World War II? </a></p><article role="article" class="video related clearfix node--shortcode-video-embed"><h2> <a href="/media/videos/grandmother-recounts-desperate-escape-during-wwii-allied-invasion-italy-45035" rel="bookmark"><span>Grandmother Recounts Desperate Escape During WWII Allied Invasion in Italy</span></a></h2><div class="content"><div class="field field--name-field-video-mpx-id field--type-string field--label-hidden field--item"><div class="uvp-outer"><div class="adBanner"></div><div class="uvp-ad-blocked"> This video is unavailable because we were unable to load a message from our sponsors. <br /><br />If you are using ad-blocking software, please disable it and reload the page.</div><div class="uvp-wrapper"><div data-site-uvpc-url="/onetrust/uvpconfig" data-hls="https://cbsi-insideedition-video-fastly.global.ssl.fastly.net/2019/09/09/1600033347677/299601_hls/master.m3u8" data-duration="447" data-title="Grandmother Recounts Desperate Escape During WWII Allied Invasion in Italy" data-keywords="allied forces,brother,cat-news,cecilia maltempi,fascist,grandma,grandmother,ie indepth,inside edition,inside_edition,italy,mara montalbano,messina,mussolini,nazis,oliveri,sal bono,shot,sicily,survived,world war ii" data-has-preroll-ad="true" data-player-has-preroll-ads="true" data-ad-url="https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&amp;iu=%2F8264%2Fvaw-ctd%2FPH-DEVICE-TYPE%2Finside_edition&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=xml_vmap1&amp;unviewed_position_start=1&amp;description_url=https%3A%2F%2Fwww.insideedition.com&amp;correlator=" data-brand="inside_edition" data-cms-id="2289" data-recommendation="false" data-tracking-data="{&quot;assetId&quot;:&quot;5809916582001&quot;,&quot;assetPubDate&quot;:&quot;2018-07-16T18:27:02Z&quot;,&quot;assetTitle&quot;:&quot;Grandmother Recounts Desperate Escape During WWII Allied Invasion in Italy&quot;,&quot;assetType&quot;:&quot;video&quot;,&quot;authorId&quot;:&quot;1849&quot;,&quot;authorName&quot;:&quot;Inside Edition Staff&quot;,&quot;brandPlatformId&quot;:&quot;insideedition_site&quot;,&quot;deviceType&quot;:null,&quot;mediaContentType&quot;:&quot;vod&quot;,&quot;pageName&quot;:null,&quot;pageType&quot;:null,&quot;pageURL&quot;:null,&quot;pageViewGuid&quot;:null,&quot;sitePrimaryRsid&quot;:&quot;cbsiinsideeditionsite&quot;,&quot;siteSection&quot;:&quot;news&quot;,&quot;siteType&quot;:null,&quot;userState&quot;:&quot;not authenticated&quot;,&quot;userType&quot;:&quot;anon&quot;}" data-instance-uvpc="[]" data-uvp data-endscreen="false" data-partner="can" data-default-autoplay="false" data-default-muted="false" data-mobile-autoplay="false" data-mobile-muted="false" data-poster-url="/sites/default/files/styles/video_1920x1080/public/images/2018-07/grandmamain1280x720_0.jpg?itok=z7OlT781" data-captions-url="" data-env-uvpc="null" data-ref-id="5809916582001" class="uvp-player uvp-inner"></div></div></div><div class="end-screen-overlay end-screen-template" style="display:none;"><div class="end-screen-outer"><form><h1 class="uvp-endslate-title"></h1> <label class="uvp-endslate-embed-code" aria-label="Read Only: Embed Code"> <span class="uvp-endslate-label-text">Embed Code</span> </label> <button tabindex="0" class="uvp-endslate-replay">Restart</button></form></div></div><div id="hero" class="owl-theme hero-video--carousel"><div class="owl-controls"><div class="owl-nav"></div></div><div class="owl-carousel"></div> <span class="carousel-item-template visually-hidden"><div class="item"> <a class="player_link"><div class="image-container"> <img src="/themes/custom/iebs/images/1x1_transparent.png"> <span class="now-playing">Now playing</span><div class="time-block"> <svg class="video-play-button"></svg> <span class="timecode"></span></div></div><h2 class="item__title"></h2> </a></div> </span></div></div></div></article></div></div><div class="article-social"><div class="field field--name-field-tags field--type-entity-reference field--label-hidden field--items"><div class="field--item"><a href="/tag/italy" hreflang="en">italy</a></div><div class="field--item"><a href="/tag/nazis" hreflang="en">nazis</a></div><div class="field--item"><a href="/tag/pittsburgh" hreflang="en">pittsburgh</a></div><div class="field--item"><a href="/tag/pennsylvania" hreflang="en">pennsylvania</a></div><div class="field--item"><a href="/in-depth" hreflang="en">INSIDE EDITION InDepth</a></div></div><ul class="article-social-share"><li class="article-social-share-item article-social-share-li-facebook"> <button class="button button--share button--share-facebook st_facebook_custom"> <img alt="Facebook" class="icon icon-facebook" src="/themes/custom/iebs/images/sharethis/article_facebook_share.svg"> </button></li><li class="article-social-share-item article-social-share-li-twitter"> <button class="button button--share button--share-twitter st_twitter_custom"> <img alt="Twitter" class="icon icon-twitter" src="/themes/custom/iebs/images/sharethis/article_twitter_share.svg"> </button></li><li class="article-social-share-item article-social-share-li-reddit"> <button class="button button--share button--share-reddit st_reddit_custom"> <img alt="Reddit" class="icon icon-reddit" src="/themes/custom/iebs/images/sharethis/article_reddit_share.png"> </button></li></ul></div></div> </section></article></div><div class="content-bottom" id="content-bottom"><div class="region region-content-bottom"> <section id="block-taboolawidget" class="block block-ctd-taboola clearfix"><div id="taboola-below-article-thumbnails" class="ctd-taboola"></div> </section><section id="block-taboolawidget-5" class="block block-ctd-taboola clearfix"><div id="taboola-below-article-thumbnails" class="ctd-taboola"></div> </section><section id="block-medianetwidget" class="block block-ctd-media-net clearfix"><div id="434717348"><script>
+window.cbsoptanon.onAdsReady(function(cmp,_cbsoptanon, adOpts) {
+cmp.ot.targetingAllowed(function(allowed) {
+if (allowed) {
+try {
+window._mNHandle.queue.push(function () {
+window._mNDetails.loadTag("434717348", "800x200", "434717348");
+});
+}
+catch (error) {
+}
+}
+});
+});
+</script></div> </section></div></div> </section> <aside class="col-xs-12 col-sm-4 col-md-3 col-sm-pull-8 col-md-pull-9" role="complementary"><div class="sidebar-container"><div class="sidebar-one-container" ><div class="region region-sidebar"> <section class="views-element-container block block-views block-views-blocklatest-news-latest-news clearfix" id="block-views-block-latest-news-latest-news"><h2 class="block-title">Latest <span class="last-word">News</span></h2><div class="form-group"><div class="view view-latest-news view-id-latest_news view-display-id-latest_news js-view-dom-id-badd793f96bb516f351687fda813e1e36913f47b9c8a40489ba8b8a235955086"><div class="view-content"><div class="views-row"> <article role="article" class="article teaser-small-single-link teaser-template node--article--teaser-small-single-link node--teaser-small-single-link teaser-small clearfix"> <a href="/what-meghan-markle-and-prince-harry-texted-her-dad-thomas-markle-days-before-their-wedding-59152"><div role="text"> <span class="hero-media"> <span role="article" class="article teaser-small-single-link teaser-template node--article--teaser-small-single-link node--teaser-small-single-link teaser-small clearfix image-overlay-container"> <article class="media media-image view-mode-article-teaser-small-single-link"><div class="field field--name-field-image field--type-image field--label-hidden field--item"> <img data-portal-copyright="(Getty)" src="/sites/default/files/styles/100x100/public/images/2020-04/042020-meghan-harry-1280x720.jpg?h=c673cd1c&amp;itok=rYHuuS1C" width="100" height="100" class="img-responsive" /></div> </article> </span> </span> <span class="article-details"><h4><div class="field field--name-field-display-headline field--type-string field--label-hidden field--item">What Meghan Markle and Prince Harry Texted Her Dad Thomas Markle Days Before Their Wedding</div></h4> </span></div> </a></article></div><div class="views-row"> <article role="article" class="article teaser-small-single-link teaser-template node--article--teaser-small-single-link node--teaser-small-single-link teaser-small clearfix"> <a href="/tv-reporter-accidentally-broadcasts-husband-in-shower-while-filming-standup-59150"><div role="text"> <span class="hero-media"> <span role="article" class="article teaser-small-single-link teaser-template node--article--teaser-small-single-link node--teaser-small-single-link teaser-small clearfix image-overlay-container"> <article class="media media-image view-mode-article-teaser-small-single-link"><div class="field field--name-field-image field--type-image field--label-hidden field--item"> <img data-portal-copyright="KCRA" src="/sites/default/files/styles/100x100/public/images/2020-04/naked.jpg?h=c4243e31&amp;itok=DkCFzGoK" width="100" height="100" class="img-responsive" /></div> </article> </span> </span> <span class="article-details"><h4><div class="field field--name-field-display-headline field--type-string field--label-hidden field--item">TV Reporter Accidentally Broadcasts Husband in Shower While Filming Standup</div></h4> </span></div> </a></article></div></div></div></div> </section><section id="block-ctdbidbarreladwidget" class="block block-ctd-bidbarrel block-ctd-bidbarrel-ad-block clearfix"><div id="incontent_ad_middle_top" data-ad="incontent_ad_middle_top" class="incontent_ad_middle_top gpt_ads"></div><script>
+if (!ctdBidBarrelUtility.isMobile() || (ctdBidBarrelUtility.isMobile() && '' != '')) {
+var ctdSlotPos = '';
+if (!ctdBidBarrelUtility.isMobile()) {
+if (['section_door', 'tag_page'].includes('article')) {
+ctdSlotPos = "middle";
+}
+else {
+ctdSlotPos = "top";
+}
+}
+else {
+if (['section_door', 'tag_page', 'home', 'video'].includes('article')) {
+ctdSlotPos = "middle";
+}
+else {
+ctdSlotPos = "middle2";
+}
+}
+BidBarrel.setSizeMappings("incontent_ad_middle_top",
+[
+{
+viewport: [0, 0],
+sizes: []
+},
+{
+viewport: [300, 0],
+sizes: []
+},
+{
+viewport: [740, 0],
+sizes: [[300, 250], [300, 600]]
+},
+{
+viewport: [1024, 0],
+sizes: [[300, 250], [300, 600]]
+},
+{
+viewport: [1400, 0],
+sizes: [[300, 250], [300, 600]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: ctdSlotPos,
+}, ["incontent_ad_middle_top"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("incontent_ad_middle_top")
+}
+</script></section><section id="block-gotatipblock-2" class="block block-ie block-tip-block clearfix"><div class="tip-block-content speech-bubble"> <span class="block-title">Got a tip?</span><p>Email Us: <strong>tips@insideedition.com</strong></p><p>Call Us: <strong>(212) 817-5555</strong></p></div> </section><section id="block-trendingnow-2" class="block block-block-content block-block-contenteb27e4b4-600f-4e94-871e-94a577d7dec8 clearfix"><h2 class="block-title">Trending <span class="last-word">Now</span></h2><ol class="field field--name-field-links field--type-link field--label-hidden field--items"><li class="field--item"><a href="https://www.insideedition.com/woman-recognizes-self-one-other-in-photos-found-in-accused-killers-home-help-police-identify-the">Woman Recognizes Self, One Other in Photos Found in Accused Killer&#039;s Home. </a></li><li class="field--item"><a href="https://www.insideedition.com/gallery/snapshots-childhood-alcatraz-41973">Snapshots of a Childhood on Alcatraz</a></li><li class="field--item"><a href="https://www.insideedition.com/21-year-old-steps-up-to-raise-her-five-siblings-after-their-parents-die-58376">21-Year-Old Steps Up to Raise Her Five Siblings After Their Parents Die</a></li><li class="field--item"><a href="https://www.insideedition.com/this-indigenous-youtuber-is-spotlighting-her-culture-from-beaded-eyebrows-to-regalia-inspired-58421">How This Indigenous YouTuber is Spotlighting Her Culture</a></li><li class="field--item"><a href="https://www.insideedition.com/what-is-social-distancing-and-other-steps-to-prevent-coronavirus-58600">What Is &#039;Social Distancing&#039;? And Other Steps to Prevent Coronavirus</a></li></ol> </section></div></div><div class="sidebar-two-container"><div class="region region-sidebar-two"> <section id="block-ctdbidbarreladwidget-2" class="block block-ctd-bidbarrel block-ctd-bidbarrel-ad-block clearfix"><div id="incontent_ad_middle_bottom" data-ad="incontent_ad_middle_bottom" class="incontent_ad_middle_bottom gpt_ads"></div><script>
+if (!ctdBidBarrelUtility.isMobile() || (ctdBidBarrelUtility.isMobile() && '' != '')) {
+var ctdSlotPos = '';
+if (!ctdBidBarrelUtility.isMobile() && ['home', 'article', 'video', 'gallery', 'gallery_landing', 'gallery_slideshow'].includes('article')) {
+ctdSlotPos = "bottom";
+}
+else {
+ctdSlotPos = "middle2";
+}
+BidBarrel.setSizeMappings("incontent_ad_middle_bottom",
+[
+{
+viewport: [0, 0],
+sizes: []
+},
+{
+viewport: [300, 0],
+sizes: []
+},
+{
+viewport: [740, 0],
+sizes: [[300, 250]]
+},
+{
+viewport: [1024, 0],
+sizes: [[300, 250]]
+},
+{
+viewport: [1400, 0],
+sizes: [[300, 250]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: ctdSlotPos,
+}, ["incontent_ad_middle_bottom"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("incontent_ad_middle_bottom")
+}
+</script></section></div></div></div> </aside></div><div id="incontent_ad_bottom" data-ad="incontent_ad_bottom" class="incontent_ad_bottom gpt_ads"></div><script>
+BidBarrel.setSizeMappings("incontent_ad_bottom",
+[
+{
+viewport: [0, 0],
+sizes: [[300, 250], [320, 50]]
+},
+{
+viewport: [300, 0],
+sizes: [[300, 250], [320, 50]]
+},
+{
+viewport: [740, 0],
+sizes: [[728, 90]]
+},
+{
+viewport: [1024, 0],
+sizes: [[970, 66], [728, 90], [970, 90]]
+},
+{
+viewport: [1400, 0],
+sizes: [[970, 66], [728, 90], [970, 90]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "bottom",
+}, ["incontent_ad_bottom"]);
+</script></div></div> <footer class="footer" role="contentinfo"><div class=" container"><div class="region region-footer row"><div class="col-lg-1 grey-no-display"></div> <section id="block-social-footer" class="col-sm-2 col-sm-push-8 block block-ie block-social-block clearfix"><ul class="social-block-content"><li><a href="http://www.facebook.com/Inside.Edition" class="icon icon-facebook" aria-label="Facebook Inside Edition"></a></li><li><a href="http://twitter.com/insideedition" class="icon icon-twitter" aria-label="Twitter Inside Edition"></a></li><li><a href="https://instagram.com/insideedition/" class="icon icon-instagram" aria-label="Instagram Inside Edition"></a></li><li><a href="https://www.youtube.com/insideedition" class="icon icon-youtube" aria-label="YouTube Inside Edition"></a></li><li><a href="/rss" class="icon icon-rss" aria-label="RSS Inside Edition"></a></li></ul> </section><nav role="navigation" aria-labelledby="block-footeraboutmenu-menu" id="block-footeraboutmenu" class="col-sm-2 col-sm-pull-2"><h4 id="block-footeraboutmenu-menu">About Us</h4><ul class="menu menu--footer-about-menu nav"><li> <a href="/meet-the-team" data-drupal-link-system-path="meet-the-team">Meet the Team</a></li><li> <a href="/awards" data-drupal-link-system-path="awards">Awards</a></li><li> <a href="/contact" data-drupal-link-system-path="node/1">Contact</a></li></ul> </nav><nav role="navigation" aria-labelledby="block-footerconnectmenu-menu" id="block-footerconnectmenu" class="col-sm-2 col-sm-pull-2"><h4 id="block-footerconnectmenu-menu">Connect</h4><ul class="menu menu--footer-connect-menu nav"><li> <a href="https://www.facebook.com/Inside.Edition">Facebook</a></li><li> <a href="https://twitter.com/insideedition">Twitter</a></li><li> <a href="https://instagram.com/insideedition/">Instagram</a></li><li> <a href="https://plus.google.com/104304424115513428440">Google+</a></li><li> <a href="https://www.youtube.com/insideedition">YouTube</a></li><li> <a href="/rss" data-drupal-link-system-path="node/2">RSS</a></li><li> <a href="https://cbsinteractive.com/advertising/">Advertise with Us</a></li></ul> </nav><nav role="navigation" aria-labelledby="block-footerwatchiemenu-menu" id="block-footerwatchiemenu" class="col-sm-2 col-sm-pull-2"><h4 id="block-footerwatchiemenu-menu">Watch Inside Edition</h4><ul class="menu menu--footer-watch-ie-menu nav"><li> <a href="/showfinder" data-drupal-link-system-path="showfinder">Local Listings</a></li><li> <a href="/form/we-want-your-story-ideas">Submit a Story</a></li></ul> </nav><nav role="navigation" aria-labelledby="block-footersitesmenu-menu" id="block-footersitesmenu" class="col-sm-2 col-sm-pull-2"><h4 id="block-footersitesmenu-menu">Sites We Love</h4><ul class="menu menu--footer-sites-menu nav"><li> <a href="https://www.cbsnews.com/">CBS News</a></li><li> <a href="https://www.tvguide.com/">TV Guide</a></li><li> <a href="https://www.tv.com/">TV.com</a></li><li> <a href="https://www.etonline.com/">ETonline</a></li><li> <a href="https://www.metacritic.com/">Metacritic</a></li><li> <a href="https://www.last.fm/">Last.fm</a></li><li> <a href="https://www.metrolyrics.com/">Metrolyrics</a></li><li> <a href="https://www.rachaelrayshow.com/">Rachael Ray Show</a></li></ul> </nav><div class="col-lg-1 grey-no-display"></div></div><div class="legal"> <a href="https://legalterms.cbsinteractive.com/terms-of-use" target="_blank">Terms of Use</a> | <a href="https://legalterms.cbsinteractive.com/privacy" target="_blank">Privacy Policy</a> | <a href="https://legalterms.cbsinteractive.com/eula" target="_blank">Mobile User Agreement</a> | <a href="http://www.cbs.com/closed-captioning/" target="_blank">Closed Captioning</a> | <a href="https://www.cbsinteractive.com/legal/cbsi/privacy-policy/video-services-and-social-networking" target="_blank">Video Services Policy</a> | <a href="https://www.cbsinteractive.com/legal/cbsi/privacy-policy/third-party-online-advertising" target="_blank">Ad Choices</a> | <a href="https://ca.privacy.cbs" target="_blank">California Privacy/Info We Collect</a> | <a href="https://ca.privacy.cbs/donotsell" target="_blank">California Do Not Sell My Info</a> | In Partnership with <a href="http://www.etonline.com" target="_blank">ETonline</a>. CBS interactive &#169; 2020 Inside Edition Inc. All Rights Reserved.</div></div></footer></div><div id="omni_intromercial" data-ad="omni_intromercial" class="omni_intromercial gpt_ads"></div><script>
+if (!ctdBidBarrelUtility.isMobile()) {
+BidBarrel.setSizeMappings("omni_intromercial",
+[
+{
+viewport: [0, 0],
+sizes: []
+},
+{
+viewport: [300, 0],
+sizes: []
+},
+{
+viewport: [740, 0],
+sizes: [[6, 6]]
+},
+{
+viewport: [1024, 0],
+sizes: [[6, 6]]
+},
+{
+viewport: [1400, 0],
+sizes: [[6, 6]]
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "top",
+}, ["omni_intromercial"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("omni_intromercial")
+}
+</script><div id="mobile_omni_intromercial" data-ad="mobile_omni_intromercial" class="mobile_omni_intromercial gpt_ads"></div><script>
+if (ctdBidBarrelUtility.isMobile()) {
+BidBarrel.setSizeMappings("mobile_omni_intromercial",
+[
+{
+viewport: [0, 0],
+sizes: [[6, 6]]
+},
+{
+viewport: [300, 0],
+sizes: [[6, 6]]
+},
+{
+viewport: [740, 0],
+sizes: []
+},
+{
+viewport: [1024, 0],
+sizes: []
+},
+{
+viewport: [1400, 0],
+sizes: []
+}
+]
+);
+BidBarrel.setTargeting({
+pos: "top",
+}, ["mobile_omni_intromercial"]);
+}
+else {
+ctdBidBarrelUtility.addInvalidUnits("mobile_omni_intromercial")
+}
+</script></div><script src="/sites/default/files/js/js_4Lm1LR_R-0n4fkj-VlLlu0NyX4R6CmEmbLd0oSydNGw.js"></script><script src="/modules/contrib/ctd_sourcepoint/js/ctd-sourcepoint-loader.js?q8smev" type="text/plain" class="optanon-category-4"></script><script src="/sites/default/files/js/js_j7QwzNciVHQsnwn1I_YlBNCUr3Z4lJ0RrJvhbuy7Esg.js"></script><script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script><script src="/sites/default/files/js/js__jeOd8_QF4a679pqZiZKtuOHnLm7-S8pu3NlpEfZGO4.js"></script><script src="https://vidtech.cbsinteractive.com/uvpjs/0.43.2982/CBSI-PLAYER.js"></script><script src="/sites/default/files/js/js_l2mNpEMh2S2cbOaCoc7eApaYmCG6i7_7Xndtr0A-dRs.js"></script><script src="https://ovp.iris.tv/libs/adaptive/v2/iris.adaptive.js"></script><script src="/sites/default/files/js/js_gmi3G8qU1bpu4h5-sC3BwDUxYhqxyHCBKkWRiFxJAmo.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"7925dc8d76","applicationID":"70084883","transactionName":"bwMAYhdUXUJSVUxZV1ZJN0QMGlpfV1NAHkhQFg==","queueTime":0,"applicationTime":200,"atts":"Q0QDFF9OTkw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body></html>

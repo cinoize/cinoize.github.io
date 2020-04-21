@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>S3 and Wikidot outage - Wikidot.com blog</title>
+    
+    
+    
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--javascript/init.combined.js"></script>
+    <script  type="text/javascript">
+        var URL_HOST = 'www.wikidot.com';
+        var URL_DOMAIN = 'wikidot.com';
+        var USE_SSL =  true ;
+        var URL_STATIC = 'http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9';
+        // global request information
+        
+        var WIKIREQUEST = {};
+        WIKIREQUEST.info = {};
+        
+        WIKIREQUEST.info.domain = "blog.wikidot.com";
+        WIKIREQUEST.info.siteId = 56993;
+        WIKIREQUEST.info.siteUnixName = "blog";
+        WIKIREQUEST.info.categoryId = 643856;
+        WIKIREQUEST.info.themeId = 192074;
+        WIKIREQUEST.info.requestPageName = "blog:s3-outage";
+        OZONE.request.timestamp = 1587427998;
+        OZONE.request.date = new Date();
+        WIKIREQUEST.info.lang = 'en';
+                WIKIREQUEST.info.pageUnixName = "blog:s3-outage";
+        WIKIREQUEST.info.pageId = 47663656;
+                        WIKIREQUEST.info.lang = "en";
+        OZONE.lang = "en";
+        var isUAMobile = !!/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    </script>
+    
+    
+
+
+    
+        <script  type="text/javascript">
+    
+        require.config({
+            baseUrl: URL_STATIC + '/common--javascript',
+            paths: {
+                'jquery.ui': 'jquery-ui.min',
+                'jquery.form': 'jquery.form'
+            }
+        });
+    
+    </script>
+    
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+            
+    
+    
+    
+    
+    <meta http-equiv="content-language" content="en"/>
+    <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--javascript/WIKIDOT.combined.js"></script>
+            <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--bootstrap/3.0.0/bootstrap.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        
+        <link href="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--fonts/awesome/3.2.1/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    
+    <style type="text/css" id="internal-style">
+        
+        /* modules */
+@import url(http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--modules/css/list/PageCalendarModule.css);
+
+
+        
+                /* bootstrap */
+            @import url(http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--bootstrap/3.0.0/bootstrap.min.css);
+                
+        /* theme */
+                    @import url(http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--theme/bootstrap-base/css/style.css);
+                    @import url(http://blog.wdfiles.com/local--theme/wikidot-3-0-content-theme/style.css);
+            </style>
+    
+            <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        
+            <script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--javascript/skrollr.min.js"></script>
+        
+    <link rel="shortcut icon" href="/local--favicon/favicon.gif"/>
+    <link rel="icon" type="image/gif" href="/local--favicon/favicon.gif"/>
+    
+            <link rel="apple-touch-icon" href="/common--images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/common--images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/common--images/apple-touch-icon-114x114.png" />
+        
+        
+            <link rel="alternate" type="application/wiki" title="Edit this page" href="javascript:WIKIDOT.page.listeners.editClick()"/>
+    
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-18234656-1']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        _gaq.push(['old._setAccount', 'UA-68540-5']);
+        _gaq.push(['old._setDomainName', 'none']);
+        _gaq.push(['old._setAllowLinker', true]);
+        _gaq.push(['old._trackPageview']);
+
+            </script>
+    
+    <script type="text/javascript">
+        window.google_analytics_uacct = 'UA-18234656-1';
+        window.google_analytics_domain_name = 'none';
+    </script>
+    
+        <link rel="manifest" href="/onesignal/manifest.json" />
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" acync=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: null,
+          });
+        });
+    </script>
+        
+<style>
+.forum-mini-stat .title {
+display: none;
+}
+</style>
+<script src="https://s.nitropay.com/ads-143.js"></script>
+<link rel="alternate" type="application/rss+xml" title="Comments for the page &quot;S3 and Wikidot outage&quot;" href="/feed/page/comments-47663656.xml"/><script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--modules/js/forum/ForumCommentsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--modules/js/forum/ForumViewThreadModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--modules/js/forum/ForumViewThreadPostsModule.js"></script>
+<script type="text/javascript" src="http://d3g0gp89917ko0.cloudfront.net/v--3e3a6f7dbcc9/common--modules/js/forum/sub/ForumNewPostFormModule.js"></script>
+</head>
+<body id="html-body">
+<div id="skrollr-body">
+<script type="text/javascript"> 
+                    jQuery(document).ready(function() {
+                        if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+                            var s = skrollr.init();
+                        }
+                        
+                    });
+                </script>
+                
+
+<div class="topbar">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".wikidot-menu-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <div class="site-name">
+                    <a class="navbar-brand" href="/">Wikidot.com blog</a>
+                </div>
+
+                <div class="site-subtitle">
+                    Official Wikidot.com Blog
+                </div>
+                
+                <div class="loginStatus">
+                    <a href="javascript:;" onclick="WIKIDOT.page.listeners.createAccount(event)" class="login-status-create-account btn">Create account</a> <span>or</span> <a href="javascript:;" onclick="WIKIDOT.page.listeners.loginClick(event)" class="login-status-sign-in btn btn-primary">Sign in</a> 
+                </div>
+            </div>
+            
+            <div class="collapse navbar-collapse wikidot-menu-collapse">
+            
+            </div>
+        </div>
+            
+        <div class="horizontal-scrollbar" data-start="width: 0%;" data-end="width: 100%"></div>
+    </nav>
+</div>
+
+<dic class="content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="search-box">
+                    <div id="search-top-box" class="form-search">
+    <form id="search-top-box-form" action="dummy" class="input-append">
+        <input id="search-top-box-input" class="text empty search-query" type="text" size="15" name="query" value="Search this site" onfocus="if(YAHOO.util.Dom.hasClass(this, 'empty')){YAHOO.util.Dom.removeClass(this,'empty'); this.value='';}"/><input class="button btn" type="submit" name="search" value="Search"/>
+    </form>
+</div>
+                 </div>
+                 
+                    <nav role="navigation">
+                        <div class="container">
+                            <div class="navbar-header docs-navigation">
+                                <a type="button" class="btn btn-default navbar-toggle docs-navigation-toggle" data-toggle="collapse" data-target=".doc-menu-collapse">
+                                    <i class="icon-chevron-sign-down"></i> Menu
+                                </a>
+                            </div>        
+                    
+                            <div class="collapse navbar-collapse doc-menu-collapse doc-navigation-sidebar">
+                            
+
+<div class="page-calendar-box">
+			<ul>
+					<li >
+				<a href="/blog:_start/date/2018">2018 (1)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2018.11">November (1)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2017">2017 (2)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2017.11">November (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2017.3">March (1)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2016">2016 (5)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2016.12">December (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2016.11">November (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2016.10">October (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2016.5">May (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2016.1">January (1)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2015">2015 (6)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2015.11">November (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2015.10">October (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2015.6">June (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2015.3">March (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2015.1">January (2)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2014">2014 (11)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2014.12">December (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.11">November (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.10">October (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.8">August (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.4">April (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.3">March (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2014.1">January (1)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2013">2013 (16)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2013.12">December (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.11">November (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.9">September (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.7">July (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.6">June (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.5">May (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.4">April (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.3">March (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.2">February (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2013.1">January (2)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2012">2012 (23)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2012.12">December (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.11">November (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.10">October (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.9">September (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.8">August (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.7">July (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.6">June (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.5">May (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.4">April (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.3">March (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.2">February (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2012.1">January (1)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2011">2011 (36)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2011.12">December (5)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.11">November (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.10">October (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.9">September (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.8">August (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.7">July (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.6">June (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.5">May (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.4">April (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.3">March (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.2">February (3)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2011.1">January (4)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2010">2010 (60)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2010.12">December (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.11">November (5)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.10">October (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.9">September (5)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.8">August (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.7">July (1)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.6">June (4)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.5">May (2)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.4">April (6)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.3">March (8)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.2">February (12)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2010.1">January (8)</a>
+						</li>
+									</ul>
+			</li>
+					<li >
+				<a href="/blog:_start/date/2009">2009 (161)</a>
+				<ul>
+											<li >
+							<a href="/blog:_start/date/2009.12">December (12)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.11">November (15)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.10">October (37)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.9">September (36)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.8">August (25)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.7">July (35)</a>
+						</li>
+											<li >
+							<a href="/blog:_start/date/2009.6">June (1)</a>
+						</li>
+									</ul>
+			</li>
+				</ul>
+	</div>
+<p><span style="font-size:smaller;"><a href="http://blog.wikidot.com/feed/pages/category/blog/t/Wikidot+Blog">RSS feed, postings only</a></span></p>
+
+
+
+                            </div>
+                        </div>
+                    </nav>
+                
+            </div>
+        
+            <div class="col-md-9">
+                
+                <div class="page-title">
+                    S3 and Wikidot outage
+                </div>
+                
+
+                
+
+                
+        
+            <!-- wikidot_top_728x90 -->
+<div id="wad-tier3-above-content" class="wd-adunit wd-ad-np wd-adunit-above_content"></div>
+<script type='text/javascript'>
+nads.createAd('wad-tier3-above-content', {
+  "refreshLimit": 10,
+  "refreshTime": 94,
+  "sizes": [ [ 728, 90 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+<div id="page-content">
+
+<div class="blogpost-author" style="float: left; width: 500px;">
+<p>by michal-frackowiak <span style="color: gray">on <span class="odate time_1488365688 format_%25e%20%25B%20%25Y%2C%20%25H%3A%25M">01 Mar 2017 10:54</span></span></p>
+</div>
+<div style="clear:both; height: 0px; font-size: 1px"></div>
+<div class="blogpost-content">
+<p>Some of you noticed Wikidot was down yestarday for more than two hour. This is not something that happens often &#8212; previous serious outage we had was in November 2014.</p>
+<p>The root cause of this outage was Amazon S3 failure. Wikidot, as well as millions of other websites all over the internet, rely on S3 for hosting files. S3 is exactly where we keep the files you upload in your wikis, but it's also where we keep JavaScript and CSS files required for displaying our web pages in your browsers.</p>
+<div class="image-container aligncenter"><img src="http://blog.wdfiles.com/local--files/files/Selection_042.png" style="width: 400px;max-width:100%;-moz-box-shadow: 3px 3px 8px #aaa; -webkit-box-shadow: 3px 3px 8px #aaa; box-shadow: 3px 3px 8px #aaa" alt="Selection_042.png" class="image" /></div>
+<p>Till now S3 has never failed before to this extent. It sure was not a small failure and it took down several other Amazon services. It also affected all services and websites that use Amazon Web Services. It's not just Wikidot alone: Trello, Travis CI, GitHub and GitLab, Quora, Medium, Signal, Slack, Imgur, Twitch.tv, Razer, Apple's iCloud and several other websites could not function properly (or were not reachable at all). A significant percentage of websites all over the world relies on S3 and only now we learned what happens when it's down.</p>
+<p>The issue was so severe that even Amazon could not update their status board to let us know about the problems. It was probably hosted on S3 as well&#8230; It looks like engineers simply assumed that S3 would be available no matter what.</p>
+<p>Wikidot infrastructure design relies on a certain assumption about S3 as well. We simply assumed everything can break, but not S3 itself. Even our backup site (in case databases and servers fail) is hosted on S3.</p>
+<p>I guess today several admins and developers (especially from services affected by the S3 outage) try to find a way to loosen their dependencies on S3 and protect their services against similar events. We are going to look at this too &#8212; the data you keep with us is our top priority.</p>
+<p>Thanks for your understanding and I am sorry for any trouble our outage might have caused.</p>
+<p>Michal and the Wikidot Team</p>
+<div class="content-separator" style="display: none:"></div>
+</div>
+<div style="overflow:hidden; height: 30px;">
+<div style="float: left; width: 100px">
+<p><iframe src="http://www.facebook.com/plugins/like.php?app_id=144309642316380&amp;href=http://blog.wikidot.com/blog:s3-outage&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true"></iframe></p>
+</div>
+<div style="float: left; width: 110px">
+<p><iframe src="/blog:s3-outage/html/a922c1c7e3f3e6bf2438342fbceb8af060905081-1021434634971507693" allowtransparency="true" frameborder="0" class="html-block-iframe"></iframe></p>
+</div>
+<div style="float: left; width: 100px">
+<p><iframe src="/blog:s3-outage/html/7a0270e874ff2cb632d06e61583b41e7a67eeb54-711681918726820312" allowtransparency="true" frameborder="0" class="html-block-iframe"></iframe></p>
+</div>
+</div>
+<h2 id="toc0"><span><strong>Comments:</strong> 20</span></h2>
+<div class="comments-box">
+		
+	<div class="options" id="comments-options-hidden" style="display: none">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.showComments(event)">Show Comments</a> 
+	</div>
+		
+	<div id="thread-container" class="thread-container" style="margin-top: 1em">
+					
+
+
+<script type="text/javascript">
+	WIKIDOT.forumThreadId = 2146833;
+</script>
+
+
+	<div class="options" id="comments-options-shown">
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumCommentsModule.listeners.hideComments(event)" class="btn btn-default btn-small btn-sm">Hide All Comments</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.unfoldAll(event)" class="btn btn-default btn-small btn-sm">Unfold All</a> 
+		<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.foldAll(event)" class="btn btn-default btn-small btn-sm">Fold All</a>
+	</div>
+
+<div id="thread-container-posts" style="display: none">
+    
+
+<div class="pager"><span class="pager-no">page 1 of 2</span><span class="current">1</span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">2</a></span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">next &raquo;</a></span></div>
+
+	
+					
+      
+    <div class="post-container" id="fpc-2757911">
+                      
+		<div class="post" id="post-2757911">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2757911)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2757911">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32953&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="leiger" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32953)"/></a><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;" >leiger</a></span> <span class="odate time_1488366526 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Mar 2017 11:08</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2757911">
+									
+
+<p>Thank you for the prompt and detailed response here on the blog, and the regular updates on Twitter.</p>
+<p>Communication is key and I believe you handled the problem quite well despite being unable to physically do much to rectify it apart from waiting on Amazon.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p><span style="font-size:115%;"><strong><span style="color: #1982cd">~ Shane</span></strong> (Wikidot Community Admin - Volunteer)<br />
+<strong>Wikidot:</strong> <a href="https://blog.shane-smith.com">My Blog</a>, <a href="https://www.wdeditor.com/">Wikidot Editor</a>, <a href="https://www.wikidot.com/doc:start">Official Docs</a><br />
+<strong>Work:</strong> <a href="https://zoomplanner.com">ZoomPlanner</a> (built for freelancers/small business)<br />
+<strong>Other:</strong> <a href="https://youtube.com/user/LeigerGaming">YouTube</a> (gaming channel)</span></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2757911)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2757911)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2757911" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2757911)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2757911)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32953&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="leiger" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32953)"/></a><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;" >leiger</a></span>, <span class="odate time_1488366526 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Mar 2017 11:08</span>
+		</div>
+	</div>
+ 
+                
+                	
+
+
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2758612">
+                      
+		<div class="post" id="post-2758612">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2758612)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2758612">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span> <span class="odate time_1488437260 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">02 Mar 2017 06:47</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2758612">
+									
+
+<p>Hi Michal,<br />
+thanks for Information!<br />
+What a gift from Amazon for this time:<br />
+Congratulation to your birthday!</p>
+<p>Regards<br />
+Helmut</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p>Service is my success. My webtips:<a href="http://www.blender.org/" onclick="window.open(this.href, '_blank'); return false;">www.blender.org (Open source)</a>, <a href="http://handbook.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">Wikidot-Handbook</a>.</p>
+<p>Sie können fragen und mitwirken in der deutschsprachigen » <a href="http://user-gemeinschaft.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">User-Gemeinschaft für WikidotNutzer</a> oder<br />
+im deutschen » <a href="http://handbook.wikidot.com/de:start" onclick="window.open(this.href, '_blank'); return false;">Wikidot Handbuch</a> ?</p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2758612)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2758612)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2758612" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2758612)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2758612)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span>, <span class="odate time_1488437260 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">02 Mar 2017 06:47</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2759756">
+                      
+		<div class="post" id="post-2759756">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2759756)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2759756">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/cold-blood3d" onclick="WIKIDOT.page.listeners.userInfo(90994); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=90994&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="cold_blood3d" style="background-image:url(http://www.wikidot.com/userkarma.php?u=90994)"/></a><a href="http://www.wikidot.com/user:info/cold-blood3d" onclick="WIKIDOT.page.listeners.userInfo(90994); return false;" >cold_blood3d</a></span> <span class="odate time_1488592337 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">04 Mar 2017 01:52</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2759756">
+									
+
+<p>Thanks for the detailed info, and job well done. Hopefully these sort of events raise awareness and reduce the likelihood of recurrence!</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2759756)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2759756)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2759756" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2759756)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2759756)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/cold-blood3d" onclick="WIKIDOT.page.listeners.userInfo(90994); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=90994&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="cold_blood3d" style="background-image:url(http://www.wikidot.com/userkarma.php?u=90994)"/></a><a href="http://www.wikidot.com/user:info/cold-blood3d" onclick="WIKIDOT.page.listeners.userInfo(90994); return false;" >cold_blood3d</a></span>, <span class="odate time_1488592337 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">04 Mar 2017 01:52</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2761708">
+                      
+		<div class="post" id="post-2761708">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2761708)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2761708">
+																		Importante
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/columna" onclick="WIKIDOT.page.listeners.userInfo(3003827); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3003827&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Columna" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3003827)"/></a><a href="http://www.wikidot.com/user:info/columna" onclick="WIKIDOT.page.listeners.userInfo(3003827); return false;" >Columna</a></span> <span class="odate time_1488859100 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">07 Mar 2017 03:58</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2761708">
+									
+
+<p>Perdón por molestar, únicamente me cree una cuenta aquí para compartir mis opiniones con los demás pero antes quiero informarme bien sobre algunos de los &quot;scp&quot; que tenéis expuestos, pero en algunos me pide autorización de nivel 4 y quería saber como puedo contactar con ese personal o con personal superior para preguntar mis dudas y ellos me respondan con sinceridad. Respetare absolutamente todo lo que me digan y no les reprochare nada esté o no de acuerdo. Si me pudieras ayudar me harías un gran favor. Un saludo y muchas gracias.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2761708)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2761708)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2761708" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2761708)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2761708)">Importante</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/columna" onclick="WIKIDOT.page.listeners.userInfo(3003827); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3003827&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Columna" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3003827)"/></a><a href="http://www.wikidot.com/user:info/columna" onclick="WIKIDOT.page.listeners.userInfo(3003827); return false;" >Columna</a></span>, <span class="odate time_1488859100 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">07 Mar 2017 03:58</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-2761890">
+                      
+		<div class="post" id="post-2761890">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2761890)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2761890">
+																		Re: Importante
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span> <span class="odate time_1488875456 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">07 Mar 2017 08:30</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2761890">
+									
+
+<p>Un poco de ayuda: <a href="http://handbook.wikidot.com/es:start" target="_blank">http://handbook.wikidot.com/es:start</a></p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p>Service is my success. My webtips:<a href="http://www.blender.org/" onclick="window.open(this.href, '_blank'); return false;">www.blender.org (Open source)</a>, <a href="http://handbook.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">Wikidot-Handbook</a>.</p>
+<p>Sie können fragen und mitwirken in der deutschsprachigen » <a href="http://user-gemeinschaft.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">User-Gemeinschaft für WikidotNutzer</a> oder<br />
+im deutschen » <a href="http://handbook.wikidot.com/de:start" onclick="window.open(this.href, '_blank'); return false;">Wikidot Handbuch</a> ?</p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2761890)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2761890)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2761890" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2761890)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2761890)">Re: Importante</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span>, <span class="odate time_1488875456 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">07 Mar 2017 08:30</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2779069">
+                      
+		<div class="post" id="post-2779069">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2779069)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2779069">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/adam-gie" onclick="WIKIDOT.page.listeners.userInfo(2682019); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=2682019&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Adam Gie" style="background-image:url(http://www.wikidot.com/userkarma.php?u=2682019)"/></a><a href="http://www.wikidot.com/user:info/adam-gie" onclick="WIKIDOT.page.listeners.userInfo(2682019); return false;" >Adam Gie</a></span> <span class="odate time_1490815026 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Mar 2017 19:17</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2779069">
+									
+
+<p>I keep on Amazon s3 only backups. I 've never had any problems. For such purposes is ok, but for important things, maybe not necessarily.</p>
+
+							</div>
+
+								
+							<div class="changes">
+					Last edited on <span class="odate time_1490816262 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Mar 2017 19:37</span>
+					by <span class="printuser"><a href="http://www.wikidot.com/user:info/adam-gie" onclick="WIKIDOT.page.listeners.userInfo(2682019); return false;" >Adam Gie</a></span>
+					<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showHistory(event,2779069)"><i class="icon-plus"></i> Show more</a>
+				</div>
+				<div class="revisions" style="display: none"></div>
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2779069)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2779069)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2779069" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2779069)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2779069)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/adam-gie" onclick="WIKIDOT.page.listeners.userInfo(2682019); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=2682019&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Adam Gie" style="background-image:url(http://www.wikidot.com/userkarma.php?u=2682019)"/></a><a href="http://www.wikidot.com/user:info/adam-gie" onclick="WIKIDOT.page.listeners.userInfo(2682019); return false;" >Adam Gie</a></span>, <span class="odate time_1490815026 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Mar 2017 19:17</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2838277">
+                      
+		<div class="post" id="post-2838277">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2838277)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2838277">
+																		Update on anything at all?
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/dreamhowl" onclick="WIKIDOT.page.listeners.userInfo(282046); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=282046&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Dreamhowl" style="background-image:url(http://www.wikidot.com/userkarma.php?u=282046)"/></a><a href="http://www.wikidot.com/user:info/dreamhowl" onclick="WIKIDOT.page.listeners.userInfo(282046); return false;" >Dreamhowl</a></span> <span class="odate time_1496278817 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Jun 2017 01:00</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2838277">
+									
+
+<p>Hey Wikidot, it feels like you have become disconnected from your users. Many pages appear not updated or abandoned. No one has any idea if you are working on new features, or have disappeared unless something brings down the farm. I also hear that spam is an issue.</p>
+<p>Will any of this be addressed? Can you let us know what is going on, what is being planned, and what the future will be? The feedback page has items 'in progress' from 2010. Thats SEVEN years ago.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2838277)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2838277)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2838277" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2838277)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2838277)">Update on anything at all?</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/dreamhowl" onclick="WIKIDOT.page.listeners.userInfo(282046); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=282046&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Dreamhowl" style="background-image:url(http://www.wikidot.com/userkarma.php?u=282046)"/></a><a href="http://www.wikidot.com/user:info/dreamhowl" onclick="WIKIDOT.page.listeners.userInfo(282046); return false;" >Dreamhowl</a></span>, <span class="odate time_1496278817 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">01 Jun 2017 01:00</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-2850640">
+                      
+		<div class="post" id="post-2850640">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2850640)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2850640">
+																		Re: Update on anything at all?
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/mauryfrapi" onclick="WIKIDOT.page.listeners.userInfo(3149084); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3149084&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="mauryfrapi" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3149084)"/></a><a href="http://www.wikidot.com/user:info/mauryfrapi" onclick="WIKIDOT.page.listeners.userInfo(3149084); return false;" >mauryfrapi</a></span> <span class="odate time_1497308028 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Jun 2017 22:53</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2850640">
+									
+
+<p>yeah we feels that too¡¡¡ :/</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2850640)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2850640)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2850640" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2850640)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2850640)">Re: Update on anything at all?</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/mauryfrapi" onclick="WIKIDOT.page.listeners.userInfo(3149084); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3149084&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="mauryfrapi" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3149084)"/></a><a href="http://www.wikidot.com/user:info/mauryfrapi" onclick="WIKIDOT.page.listeners.userInfo(3149084); return false;" >mauryfrapi</a></span>, <span class="odate time_1497308028 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">12 Jun 2017 22:53</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-2890901">
+                      
+		<div class="post" id="post-2890901">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,2890901)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-2890901">
+																		Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span> <span class="odate time_1498179484 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">23 Jun 2017 00:58</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-2890901">
+									
+
+<p>We are still waiting on answers and waiting on information. Why have you not added a layer of security to joining that will stop most of the bots? Why don't you update? Why do you ignore us? Half of your new users every time I refresh the whats hot page are spam users making spam wikis. How long has this been going on for? Are the majority of the wikis hosted on wikidot just spam? How much space are you wasting hosting these sites instead of communicating with us? No business would find this acceptable. Have you given up on Wikidot?</p>
+<p>SEVEN YEARS for the wishlist updates? Do you even have staff anymore? Is that the issue here?</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p style="text-align: center;"><strong>Omnia mutantur, nihil interit.</strong></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,2890901)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,2890901)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-2890901" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,2890901)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,2890901)">Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span>, <span class="odate time_1498179484 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">23 Jun 2017 00:58</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-3560158">
+                      
+		<div class="post" id="post-3560158">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3560158)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3560158">
+																		Re: Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32953&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="leiger" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32953)"/></a><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;" >leiger</a></span> <span class="odate time_1501302678 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Jul 2017 04:31</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3560158">
+									
+
+<p>Hi Naomi,</p>
+<p>From the bot-fighting point of view I can add some input, as a community administrator.</p>
+<p>Wikidot has over the years tried multiple different techniques to block bot users, and thousands are getting automatically blocked and/or deleted by the system when they match certain activity patterns.</p>
+<p>Further, thousands more are being deleted manually be community administrators, which trains the automatic tool further and catches the less standard bots (of which there are plenty).</p>
+<p>It's hard to explain just how massive the attacks have been in recent times, but you probably have somewhat of an idea from your email notifications if you're watching some of the main sites. About 1-2 weeks ago there was a significant one on the community site.</p>
+<p><strong>Everything else:</strong> I cannot comment on this, that's for Wikidot to answer.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p><span style="font-size:115%;"><strong><span style="color: #1982cd">~ Shane</span></strong> (Wikidot Community Admin - Volunteer)<br />
+<strong>Wikidot:</strong> <a href="https://blog.shane-smith.com">My Blog</a>, <a href="https://www.wdeditor.com/">Wikidot Editor</a>, <a href="https://www.wikidot.com/doc:start">Official Docs</a><br />
+<strong>Work:</strong> <a href="https://zoomplanner.com">ZoomPlanner</a> (built for freelancers/small business)<br />
+<strong>Other:</strong> <a href="https://youtube.com/user/LeigerGaming">YouTube</a> (gaming channel)</span></p>
+
+				</div>
+					
+							<div class="changes">
+					Last edited on <span class="odate time_1501302728 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Jul 2017 04:32</span>
+					by <span class="printuser"><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;" >leiger</a></span>
+					<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showHistory(event,3560158)"><i class="icon-plus"></i> Show more</a>
+				</div>
+				<div class="revisions" style="display: none"></div>
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3560158)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3560158)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3560158" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3560158)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3560158)">Re: Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32953&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="leiger" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32953)"/></a><a href="http://www.wikidot.com/user:info/leiger" onclick="WIKIDOT.page.listeners.userInfo(32953); return false;" >leiger</a></span>, <span class="odate time_1501302678 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">29 Jul 2017 04:31</span>
+		</div>
+	</div>
+ 
+                
+        
+                      
+    <div class="post-container" id="fpc-3612419">
+                      
+		<div class="post" id="post-3612419">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3612419)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3612419">
+																		Re: Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span> <span class="odate time_1507864435 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Oct 2017 03:13</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3612419">
+									
+
+<p>Goodness I was salty. Well, I still stand by it for the most part.</p>
+<p>I have no gripes with the community admins and mods because you have all been doing the best you can and I can only shower you in kudos for it. I do still think a pre-account creation action would be effective rather than trying to do damage control after these accounts are made. But I imagine that is out of everyone's hands here because its not dealing with users but with account/signup nuts and bolts.</p>
+<p>I am deeply worried over Wikidot's silence. I have been waiting on purchasing a pro account for some months now in fear that the plug will suddenly be pulled or some sort of incident.</p>
+<p>Hmm.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p style="text-align: center;"><strong>Omnia mutantur, nihil interit.</strong></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,3612419)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3612419" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3612419)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3612419)">Re: Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span>, <span class="odate time_1507864435 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">13 Oct 2017 03:13</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-3613980">
+                      
+		<div class="post" id="post-3613980">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3613980)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3613980">
+																		Re: Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/ed-johnson" onclick="WIKIDOT.page.listeners.userInfo(38854); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=38854&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Ed Johnson" style="background-image:url(http://www.wikidot.com/userkarma.php?u=38854)"/></a><a href="http://www.wikidot.com/user:info/ed-johnson" onclick="WIKIDOT.page.listeners.userInfo(38854); return false;" >Ed Johnson</a></span> <span class="odate time_1508112396 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">16 Oct 2017 00:06</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3613980">
+									
+
+<p>I couldn't agree more, Naomi.</p>
+<p>I have been spreading some salt of my own over the last few years - sometimes a subtle jab and other times trying to rub it into an open wound, but it continues to have no effect. I have given up on any new features being added or bugs being fixed.</p>
+<p>It's extremely disappointing and makes zero sense to me from a business point of view. I don't know what Wikidot is worth, but I bet it would be worth a whole lot more if they invested in some development resources and started engaging the community. I'd love to see Wikidot end up in the hands of a group who cares and doesn't ignore their user base.</p>
+<p>I'll continue to hang out here and help squash whatever spam I can and offer help once in a while, but my enthusiasm is long gone.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p><span style="font-size:85%;"><a href="http://community.wikidot.com" target="_blank">Community Admin</a></span></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,3613980)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3613980" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3613980)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3613980)">Re: Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/ed-johnson" onclick="WIKIDOT.page.listeners.userInfo(38854); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=38854&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Ed Johnson" style="background-image:url(http://www.wikidot.com/userkarma.php?u=38854)"/></a><a href="http://www.wikidot.com/user:info/ed-johnson" onclick="WIKIDOT.page.listeners.userInfo(38854); return false;" >Ed Johnson</a></span>, <span class="odate time_1508112396 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">16 Oct 2017 00:06</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-3634451">
+                      
+		<div class="post" id="post-3634451">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3634451)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3634451">
+																		Re: Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span> <span class="odate time_1510905570 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">17 Nov 2017 07:59</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3634451">
+									
+
+<p>Whats so buck wild to me is that there is NO way to contact anyone that has proper control of the site, at least I didn't come up with anything in my digging. I went so far as to try and use the 'contact us' feature on projects the Company owner has been working on (no reply of course).</p>
+<p>On the one hand, I wonder if the pushing is causing more silence. On the other, what is the fear here? Is it the hope that Wikidot fades out after having been the poster child held up as credentials to speak at seminars and conferences? Is Wikidot no longer meant to succeed/is being sabotaged via inaction in hopes it goes away?</p>
+<p>If they want it to go away, give it to the users who care about it, because it IS a great system. A great system that hosts mostly bot content these days.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p style="text-align: center;"><strong>Omnia mutantur, nihil interit.</strong></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+																					<a href="javascript:;" onclick="togglePostOptions(event,3634451)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3634451" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3634451)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3634451)">Re: Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span>, <span class="odate time_1510905570 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">17 Nov 2017 07:59</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+                      
+    <div class="post-container" id="fpc-3634456">
+                      
+		<div class="post" id="post-3634456">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3634456)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3634456">
+																		Re: Still waiting
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span> <span class="odate time_1510906097 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">17 Nov 2017 08:08</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3634456">
+									
+
+<p>In the first time Wikidot had great problems to communicate with their users - after they have installed a dedicated one for communications alone it was a better time and a massive go forwards with implementations an innovations. Sqwark has left wikidot and it is siloence now since this moment.<br />
+Peter - he was the CEO for some years and pushed a lot forward in internal technic - is dead.</p>
+<p>I do not know the philosophy behind the workload of Wikidot now , the team, the organisation - nobody is answering now on private messages or on mails.</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p>Service is my success. My webtips:<a href="http://www.blender.org/" onclick="window.open(this.href, '_blank'); return false;">www.blender.org (Open source)</a>, <a href="http://handbook.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">Wikidot-Handbook</a>.</p>
+<p>Sie können fragen und mitwirken in der deutschsprachigen » <a href="http://user-gemeinschaft.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">User-Gemeinschaft für WikidotNutzer</a> oder<br />
+im deutschen » <a href="http://handbook.wikidot.com/de:start" onclick="window.open(this.href, '_blank'); return false;">Wikidot Handbuch</a> ?</p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3634456)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3634456)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3634456" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3634456)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3634456)">Re: Still waiting</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span>, <span class="odate time_1510906097 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">17 Nov 2017 08:08</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-3409703">
+                      
+		<div class="post" id="post-3409703">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3409703)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3409703">
+																		Still nothing?
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span> <span class="odate time_1500511400 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Jul 2017 00:43</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3409703">
+									
+
+<p>This is ridiculous. Half of the comments you get here are bots. Aren't you embarrassed?</p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p style="text-align: center;"><strong>Omnia mutantur, nihil interit.</strong></p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3409703)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3409703)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3409703" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3409703)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3409703)">Still nothing?</a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=32984&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Naomi Wiflath" style="background-image:url(http://www.wikidot.com/userkarma.php?u=32984)"/></a><a href="http://www.wikidot.com/user:info/naomi-wiflath" onclick="WIKIDOT.page.listeners.userInfo(32984); return false;" >Naomi Wiflath</a></span>, <span class="odate time_1500511400 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Jul 2017 00:43</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-3597976">
+                      
+		<div class="post" id="post-3597976">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3597976)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3597976">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/puspendu" onclick="WIKIDOT.page.listeners.userInfo(3350603); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3350603&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="puspendu" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3350603)"/></a><a href="http://www.wikidot.com/user:info/puspendu" onclick="WIKIDOT.page.listeners.userInfo(3350603); return false;" >puspendu</a></span> <span class="odate time_1505901535 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Sep 2017 09:58</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3597976">
+									
+
+<p>Yes wikihow does not remains down everyday but if it remains down then it makes us boring.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3597976)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3597976)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3597976" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3597976)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3597976)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/puspendu" onclick="WIKIDOT.page.listeners.userInfo(3350603); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3350603&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="puspendu" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3350603)"/></a><a href="http://www.wikidot.com/user:info/puspendu" onclick="WIKIDOT.page.listeners.userInfo(3350603); return false;" >puspendu</a></span>, <span class="odate time_1505901535 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">20 Sep 2017 09:58</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+
+	
+					
+      
+    <div class="post-container" id="fpc-3610401">
+                      
+		<div class="post" id="post-3610401">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3610401)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3610401">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/doctorgeisteskrank" onclick="WIKIDOT.page.listeners.userInfo(3385467); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3385467&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="DoctorGeisteskrank" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3385467)"/></a><a href="http://www.wikidot.com/user:info/doctorgeisteskrank" onclick="WIKIDOT.page.listeners.userInfo(3385467); return false;" >DoctorGeisteskrank</a></span> <span class="odate time_1507574287 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">09 Oct 2017 18:38</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3610401">
+									
+
+<p>I was completely unaware of this outage, thank you for sharing this information. To be honest, I am done with the scams from bots.</p>
+<p>That is a ton of bots around here, huh? Well, good luck on getting rid of them because it's nearly impossible. Nearly impossible, not impossible.</p>
+
+							</div>
+
+								
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3610401)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3610401)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3610401" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3610401)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3610401)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/doctorgeisteskrank" onclick="WIKIDOT.page.listeners.userInfo(3385467); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=3385467&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="DoctorGeisteskrank" style="background-image:url(http://www.wikidot.com/userkarma.php?u=3385467)"/></a><a href="http://www.wikidot.com/user:info/doctorgeisteskrank" onclick="WIKIDOT.page.listeners.userInfo(3385467); return false;" >DoctorGeisteskrank</a></span>, <span class="odate time_1507574287 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">09 Oct 2017 18:38</span>
+		</div>
+	</div>
+ 
+                
+                	
+
+
+        
+                      
+    <div class="post-container" id="fpc-3610782">
+                      
+		<div class="post" id="post-3610782">
+		<div class="long">
+			<div class="head">
+									<div class="options">
+						<a href="javascript:;" onclick="togglePostFold(event,3610782)" class="btn btn-default btn-small btn-sm">Fold</a>
+					</div>
+								<div class="title" id="post-title-3610782">
+																		
+															</div>
+				<div class="info">
+					<span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span> <span class="odate time_1507637466 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">10 Oct 2017 12:11</span>
+														</div>
+			</div>
+			<div class="content" id="post-content-3610782">
+									
+
+<p>If you get lots of spam (bots or human) you can always message these users/accounts on <a href="http://spambotdeathwall.wikidot.com/" target="_blank">http://spambotdeathwall.wikidot.com/</a></p>
+
+							</div>
+
+										<div class="signature">
+					<hr class="signature-separator"/>
+					
+
+<p>Service is my success. My webtips:<a href="http://www.blender.org/" onclick="window.open(this.href, '_blank'); return false;">www.blender.org (Open source)</a>, <a href="http://handbook.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">Wikidot-Handbook</a>.</p>
+<p>Sie können fragen und mitwirken in der deutschsprachigen » <a href="http://user-gemeinschaft.wikidot.com/" onclick="window.open(this.href, '_blank'); return false;">User-Gemeinschaft für WikidotNutzer</a> oder<br />
+im deutschen » <a href="http://handbook.wikidot.com/de:start" onclick="window.open(this.href, '_blank'); return false;">Wikidot Handbuch</a> ?</p>
+
+				</div>
+					
+					
+						<div class="options">
+				
+													<strong><a href="javascript:;" onclick="postReply(event,3610782)" class="btn btn-primary btn-small btn-sm">Reply</a></strong> 
+																	<a href="javascript:;" onclick="togglePostOptions(event,3610782)" class="btn btn-default btn-small btn-sm">Options</a>
+							</div>
+									
+			<div id="post-options-3610782" class="options" style="display: none">
+			</div>
+		</div>
+		<div class="short">
+							<a class="options btn btn-default btn-mini btn-xs" href="javascript:;" onclick="togglePostFold(event,3610782)" c>Unfold</a>
+						<a class="title" href="javascript:;" onclick="togglePostFold(event,3610782)"></a> by <span class="printuser avatarhover"><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;"  ><img class="small" src="http://www.wikidot.com/avatar.php?userid=17609&amp;amp;size=small&amp;amp;timestamp=1587427998" alt="Helmut_pdorf" style="background-image:url(http://www.wikidot.com/userkarma.php?u=17609)"/></a><a href="http://www.wikidot.com/user:info/helmut-pdorf" onclick="WIKIDOT.page.listeners.userInfo(17609); return false;" >Helmut_pdorf</a></span>, <span class="odate time_1507637466 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%7Cagohover">10 Oct 2017 12:11</span>
+		</div>
+	</div>
+ 
+                
+        
+            </div>
+ 
+            </div>
+ 
+
+
+<div class="pager"><span class="pager-no">page 1 of 2</span><span class="current">1</span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">2</a></span><span class="target"><a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadPostsModule.listeners.updateList(2)">next &raquo;</a></span></div>
+</div>
+
+        <a href="javascript:;" id="new-post-button" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.newPost(event,null)"
+      style="display:  block ; margin-bottom:1em"
+    >Add a New Comment</a>
+
+ 
+
+<div style="display:none" id="post-options-template">
+	<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.showPermalink(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Permanent Link</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.editPost(event,'%POST_ID%')" class="btn btn-default btn-small btn-sm">Edit</a>
+			<a href="javascript:;" onclick="WIKIDOT.modules.ForumViewThreadModule.listeners.deletePost(event,'%POST_ID%')" class="btn btn-danger btn-small btn-sm">Delete</a>
+</div>
+	
+			</div>
+	
+	
+	
+</div>
+<hr />
+</div><div id="action-area" style="display: none;"></div>
+        
+            <!-- mobile bottom 320x50 -->
+<script type='text/javascript'>
+
+$j( function(){
+
+    if(isUAMobile && screen.width < 400 && screen.height > 600) {
+        var $o = $j('<div id="wad-tier3-mobile-anchor" class="wd-adunit wd-ad-np wd-adunit-mobile_anchor"></div>');
+        $j('body').append($o);
+        $j('body').css('margin-bottom', '200px');
+
+        var res = function(){
+            $o = $j('#wad-tier3-mobile-anchor');
+            if($o.length > 0){
+                $o.show();
+                var $w = $j(window);
+                var scale = $w.width() / 320;
+                $o.css('transform', 'scale('+scale+')');
+            } else {
+                $o.hide();
+            }
+        }
+
+        res();
+        setInterval(res, 1000);
+
+        nads.createAd('wad-tier3-mobile-anchor', {
+          "refreshLimit": 1,
+          "refreshTime": 90,
+          "format": "display",
+          "sizes": [ [ 320, 50 ] ],
+          "report": {
+            "enabled": true,
+            "wording": "Report Ad",
+            "position": "bottom-right"
+          }
+                  });
+    }
+});
+</script>
+        
+    
+
+
+        
+            <!-- wikidot_bottom_300x250 -->
+<div id="wad-tier3-below-content" class="wd-adunit wd-ad-np wd-adunit-below_content"></div>
+<script type='text/javascript'>
+nads.createAd('wad-tier3-below-content', {
+  "refreshLimit": 10,
+  "refreshTime": 83,
+  "sizes": [ [ 300, 250 ] ],
+  "report": {
+    "enabled": true,
+    "wording": "Report Ad",
+    "position": "bottom-right"
+  }
+  });
+</script>
+        
+    
+
+
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="page-options-container container">
+            <div id="page-info">page revision: 0, last edited: <span class="odate time_1488365688 format_%25e%20%25b%20%25Y%2C%20%25H%3A%25M%20%28%25O%20ago%29">01 Mar 2017 10:54</span></div>
+            <div id="page-options-bottom"  class="page-options-bottom">
+            <a href="javascript:;" class="btn btn-default" id="edit-button">Edit</a>
+<a href="javascript:;" class="btn btn-default" id="tags-button">Tags</a>
+<a href="/forum/t-2146833/blog:s3-outage" class="btn btn-default" id="discuss-button">Discuss (20)</a>
+<a href="javascript:;" class="btn btn-default" id="history-button">History</a>
+<a href="javascript:;" class="btn btn-default" id="files-button">Files</a>
+<a href="javascript:;" class="btn btn-default" id="print-button">Print</a>
+<a href="javascript:;" class="btn btn-default" id="site-tools-button">Site tools</a>
+<a href="javascript:;" class="btn btn-default" id="more-options-button">+&nbsp;Options</a> 
+</div>
+<div id="page-options-bottom-2" class="page-options-bottom form-actions" style="display:none">
+    <a href="javascript:;" class="btn btn-default" id="edit-sections-button">Edit Sections</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-append-button">Append</a>
+    <a href="javascript:;" class="btn btn-default" id="edit-meta-button">Edit Meta</a>
+    <a href="javascript:;" class="btn btn-default" id="watchers-button">Watchers</a> 
+    <a href="javascript:;" class="btn btn-default" id="backlinks-button">Backlinks</a> 
+    <a href="javascript:;" class="btn btn-default" id="view-source-button">Page Source</a> 
+    <a href="javascript:;" class="btn btn-default" id="parent-page-button">Parent</a> 
+    <a href="javascript:;" class="btn btn-default" id="page-block-button">Lock Page</a>    
+    <a href="javascript:;" class="btn btn-default" id="rename-move-button">Rename</a> 
+    <a href="javascript:;" class="btn btn-default" id="delete-button">Delete</a> 
+</div>
+<div id="page-options-area-bottom">
+</div>
+
+        </div>
+    
+</div>
+
+<div class="footer">
+    <div class="container">
+        <div class="options" style="display: block; visibility: visible;">
+    <a href="http://www.wikidot.com/doc" id="wikidot-help-button">Help</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:terms-of-service" id="wikidot-tos-button">Terms of Service</a>
+    &nbsp;|
+    <a href="http://www.wikidot.com/legal:privacy-policy" id="wikidot-privacy-button">Privacy</a>
+    &nbsp;|
+    <a href="javascript:;" id="bug-report-button" onclick="WIKIDOT.page.listeners.pageBugReport(event)">Report a bug</a>
+    &nbsp;|
+    <a href="javascript:;" id="abuse-report-button" onclick="WIKIDOT.page.listeners.flagPageObjectionable(event)">Flag as objectionable</a>
+</div>
+Powered by <a href="http://www.wikidot.com">Wikidot.com</a> 
+    </div>
+    <div class="container license-area">
+        Unless otherwise stated, the content of this page is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</a>
+    </div>
+</div>
+</div>
+<div id="dummy-ondomready-block" style="display: none;" ></div>
+    <!-- Google Analytics load -->
+    <script type="text/javascript">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <!-- Quantcast -->
+    <script type="text/javascript">
+    _qoptions={
+        qacct:"p-edL3gsnUjJzw-"
+    };
+    (function() {
+        var qc = document.createElement('script'); qc.type = 'text/javascript'; qc.async = true;
+        qc.src = ('https:' == document.location.protocol ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(qc, s);
+    })();
+    </script>
+    <noscript>
+        <img src="http://pixel.quantserve.com/pixel/p-edL3gsnUjJzw-.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+    </noscript>
+
+
+
+
+<div id="page-options-bottom-tips" style="display: none;">
+    <div id="edit-button-hovertip">
+        Click here to edit contents of this page.    </div>
+</div>
+<div id="page-options-bottom-2-tips"  style="display: none;">
+    <div id="edit-sections-button-hovertip">
+        Click here to toggle editing of individual sections of the page (if possible).         Watch headings for an &quot;edit&quot; link when available.    </div>
+    <div id="edit-append-button-hovertip">
+        Append content without editing the whole page source.    </div>
+    <div id="history-button-hovertip">
+        Check out how this page has evolved in the past.    </div>
+    <div id="discuss-button-hovertip">
+        If you want to discuss contents of this page - this is the easiest way to do it.    </div>
+    <div id="files-button-hovertip">
+        View and manage file attachments for this page.    </div>
+    <div id="site-tools-button-hovertip">
+        A few useful tools to manage this Site.    </div>
+    <div id="backlinks-button-hovertip">
+        See pages that link to and include this page.    </div>
+    <div id="rename-move-button-hovertip">
+        Change the name (also URL address, possibly the category) of the page.    </div>
+    <div id="view-source-button-hovertip">
+        View wiki source for this page without editing.    </div>
+    <div id="parent-page-button-hovertip">  
+        View/set parent page (used for creating breadcrumbs and structured layout).    </div>
+            <div id="abuse-report-button-hovertip">
+            Notify administrators if there is objectionable content in this page.        </div>
+        <div id="bug-report-button-hovertip">
+            Something does not work as expected? Find out what you can do.        </div>
+        <div id="wikidot-help-button-hovertip">
+            General Wikidot.com documentation and help section.        </div>
+        <div id="wikidot-tos-button-hovertip">
+            Wikidot.com Terms of Service - what you can, what you should not etc.        </div>
+        <div id="wikidot-privacy-button-hovertip">
+            Wikidot.com Privacy Policy.          
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,405 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"f3154255a5",applicationID:"2628866"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"f3154255a5","applicationID":"2628866","transactionName":"YwEAY0tTXkJYURBYVlpLJEJXUURYVlxLXEBrFw5WTVceQkxQF1JLXRQWXlZcQx9PWwFGSg40C0NaWmBQXlcyWFxDSgVSTQ==","queueTime":0,"applicationTime":7,"agent":""}</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="keywords" content="Slate Plus">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://slate.com/favicon.ico">
+
+
+    
+  <title>Join Slate Plus</title>
+  <meta name="description" content="Support Slate's journalism with a Slate Plus membership and receive a suite of benefits, including ad-free podcasts and exclusive content." />
+  <link rel="canonical" href="https://my.slate.com/plus/?utm_medium=link&amp;utm_campaign=plus&amp;utm_content=&amp;utm_source=nav" />
+  <meta id="ogtitle" property="og:title" content="Join Slate Plus" />
+  <meta property="og:url" content="https://my.slate.com/plus/?utm_medium=link&amp;utm_campaign=plus&amp;utm_content=&amp;utm_source=nav" />
+  <meta property="og:description" content="Support Slate's journalism with a Slate Plus membership and receive a suite of benefits, including ad-free podcasts and exclusive content." />
+  <meta name="apple-itunes-app" content="app-id=357555242, affiliate-data=ct=Smart%20Banner&pt=31813800, app-argument=https://my.slate.com/plus/?utm_medium=link&amp;utm_campaign=plus&amp;utm_content=&amp;utm_source=nav">
+
+
+     <!-- Facebook OG -->
+    <meta property="article:publisher" content="http://www.facebook.com/Slate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://slate.com/media/sites/slate-com/icon.400x400.png" />
+    <meta property="og:site_name" content="Slate Magazine" />
+    <meta property="fb:app_id" content="142011022527753" />
+
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css"/>
+
+    <script data-ad-site="slate" src="/static/js/require.js"></script>
+
+    <script type="text/javascript">
+    requirejs.config({
+      "baseUrl": "/static/js",
+      "paths": {
+        "jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min",
+        "amplitude": "https://cdn.amplitude.com/libs/amplitude-5.6.0-min.gz"
+       },
+       "shim": {
+         "libs/jquery-plugins/jquery.cookie": ["jquery"],
+         "libs/jquery-plugins/jquery.storageapi": ["jquery"]
+       }
+     });
+    define('config', {
+      env: {
+        environment: 'prod',
+        siteDomain: 'slate.com',
+        myslateURI: 'https://my.slate.com',
+        slateHost: 'http://www.slate.com'
+      },
+      janrain: {
+        siteConfig: {
+          propertyId: 'login.slate.com',
+          gotoUrl: ''
+        },
+        appUrl: 'https://login.slate.com',
+        capture: {
+          appId: 'dbuhzej2qm7k436x6jg4qpef3f',
+          captureServer: 'https://profile.slate.com',
+          clientId: 'sskdd3tv7ekxx8mt6gq5hnu7mdxpmpha'
+        }
+      }
+    });
+    </script>
+
+    <!-- parsely meta tracking -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "headline": "",
+        "url": "https://my.slate.com/plus/?utm_medium=link&amp;utm_campaign=plus&amp;utm_content=&amp;utm_source=nav",
+        "thumbnailUrl": "",
+        "dateCreated": "",
+        "creator": "",
+        "keywords": ["slate plus"]
+      }
+    </script>
+
+    
+
+
+
+
+
+
+
+<style>
+.as-oil .as-oil-content-overlay{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#f8f8f8;color:#222;opacity:1;padding:27px 54px;box-shadow:0 12px 15px 5px rgba(0,0,0,0.5);border:solid 1px #ddd;box-sizing:border-box}.fonts-loaded .as-oil .as-oil-content-overlay{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-content-overlay a{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay a:hover,.as-oil .as-oil-content-overlay a:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay a:hover,.as-oil .as-oil-content-overlay a:focus{border-color:transparent}.as-oil .as-oil-content-overlay .as-oil__heading{font-family:Georgia,Times,serif;font-weight:bold;font-size:1.383rem;grid-row:1;grid-column:1}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil__heading{font-family:Register,Georgia,Times,serif}@media (max-width: 930px){.as-oil .as-oil-content-overlay .as-oil__heading{text-align:left}}.as-oil .as-oil-content-overlay .as-oil__intro-txt{font-size:.87836rem;line-height:1.25;letter-spacing:normal;grid-row:2;grid-column:1;max-width:100%}.as-oil .as-oil-content-overlay .as-oil__btn-optin{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:#2c0022;border:1px solid transparent;border-radius:2px;color:#fff;display:inline-block;font-size:1rem;line-height:1;padding:.5em .57143em;text-align:center;text-decoration:none;transition:all 0.15s ease-in-out;user-select:none;vertical-align:middle;white-space:nowrap;font-weight:400}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil__btn-optin{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-content-overlay .as-oil__btn-optin:hover,.as-oil .as-oil-content-overlay .as-oil__btn-optin:focus{background-color:#56334e}@media (max-width: 768px){.as-oil .as-oil-content-overlay .as-oil__btn-optin{width:95px;height:32px;font-size:.87836rem}}.as-oil .as-oil-content-overlay .as-oil-l-buttons{grid-row:1 / span 2;grid-column:2;margin:0;max-width:none}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item{text-align:center;margin:0 auto}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;float:none;padding:0}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:hover,.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:hover,.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc:focus{border-color:transparent}.fonts-loaded .as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}@media (max-width: 768px){.as-oil .as-oil-content-overlay .as-oil-l-buttons .as-oil-l-item .as-oil__btn-cpc{width:auto;margin:0.75rem 0}}.as-oil .as-oil-l-wrapper-layout-max-width{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;grid-column-gap:20px;max-width:1100px;margin:0 auto}@media (max-width: 768px){.as-oil .as-oil-l-wrapper-layout-max-width{display:flex;flex-direction:column}}.as-oil .as-oil-cpc-wrapper{display:block;margin:40px auto 0}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle{border:none}}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle .as-oil-cpc__row-title{margin:0}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__middle .as-oil-cpc__purpose{border:solid 1px #999;border-radius:0}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left{font-size:.87836rem;text-transform:capitalize;font-weight:bold}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left a{border-bottom:none}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__left .as-oil-cpc__category-link:not(.as-oil-cpc__category-link--active){border-color:transparent}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all{margin-right:200px}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all{text-align:left;margin-right:0}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background-color:rgba(0,0,0,0);border:1px solid transparent;border-radius:2px;color:#222;display:inline-block;font-size:1rem;line-height:1;padding:.5em .57143em;text-align:center;text-decoration:none;transition:all 0.15s ease-in-out;user-select:none;vertical-align:middle;white-space:nowrap;font-size:.87836rem;font-weight:normal;width:105px;height:35px;border:solid 1px #999;line-height:25px}.fonts-loaded .as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span:hover,.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all span:focus{background-color:#ddd}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all .as-js-btn-deactivate-all{margin-right:19px}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-cpc__row-btn-all .as-js-btn-deactivate-all{margin-right:13px}}.as-oil .as-oil-cpc-wrapper .as-oil-cpc__category-link--active{border-right:solid 3px #ff0e50}.as-oil .as-oil-cpc-wrapper .as-oil-icon-plus,.as-oil .as-oil-cpc-wrapper .as-oil-icon-minus{stroke:#ff0e50}.as-oil .as-oil-cpc-wrapper .as-oil-third-party-list-element{font-size:.87836rem;font-weight:bold;line-height:1.25;margin-bottom:19px;border-bottom:none}.as-oil .as-oil-cpc-wrapper .as-oil__intro-txt{display:none}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-l-row,.as-oil .as-oil-cpc-wrapper .as-js-purposes{padding-left:0}}@media (max-width: 768px){.as-oil .as-oil-cpc-wrapper .as-oil-l-item{text-align:left}}.as-oil .as-oil-cpc-wrapper .as-oil-back-button{text-decoration:none;border-bottom:2px solid;border-color:#ff0e50;border-color:var(--theme-color, #ff0e50);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;right:auto;padding:0}.as-oil .as-oil-cpc-wrapper .as-oil-back-button:hover,.as-oil .as-oil-cpc-wrapper .as-oil-back-button:focus{color:#ff0e50;color:var(--theme-color, #ff0e50)}.as-oil .as-oil-cpc-wrapper .as-oil-back-button:hover,.as-oil .as-oil-cpc-wrapper .as-oil-back-button:focus{border-color:transparent}.fonts-loaded .as-oil .as-oil-cpc-wrapper .as-oil-back-button{font-family:Retina,Helvetica Neue,Helvetica,Arial,sans-serif}.as-oil .as-oil-cpc-wrapper .as-oil-back-button::before{content:"\003C"}@media (max-width: 930px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button{top:-40px;padding-left:0}}@media (max-width: 600px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button{display:flex;align-items:center}}.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__icon{display:none}.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__text{font-size:.87836rem;padding-left:5px;margin:0}@media (max-width: 600px){.as-oil .as-oil-cpc-wrapper .as-oil-back-button .as-oil-back-button__text{visibility:visible}}
+</style>
+
+
+  <style>.as-oil {
+    display: none !important;
+  }
+  </style>
+
+
+<script>
+
+  if (!window.AS_OIL) {
+
+    window.AS_OIL = {};
+
+    window.AS_OIL.CONFIG = {
+      timeout: 0,
+      config_version: 2, // Important! Bumping this version will re-pop the CMP banner
+      advanced_settings:  false ,
+      advanced_settings_purposes_default: false,
+      publicPath: "https://slate.com/media/components/oil/",
+      preview_mode: false,
+      cookie_expires_in_days: 390,
+      default_to_optin:  true ,
+      customVendorListUrl: "https://slate.com/media/components/oil/customvendorlist.json",
+      poi_activate_poi: true,
+      poi_hub_origin: "https://slate.com",
+      poi_hub_path: "/media/components/oil/hub.html",
+      poi_subscriber_set_cookie: true,
+      poi_group_name: "Slate",
+      locale: {
+        localeId: "enEN_01",
+        version: 1,
+        texts: {
+          label_intro_heading: "We Use Cookies and Related Technology",
+          label_intro:
+            'Slate and our <a href="https://slate.com/thirdpartypartners"> partners </a> use cookies and related technology to deliver relevant advertising on our site, in emails and across the Internet. We and our partners also use these technologies to personalize content and perform site analytics. You can change your mind and choices at any time by accessing your <a  class="as-js-advanced-settings" >Settings</a>. For more information, see our <a href="https://slate.com/terms">terms</a> and <a href="https://slate.com/privacy">privacy policy</a>.',
+          label_button_advanced_settings: "No, take me to settings",
+          label_button_yes: "OK",
+          label_cpc_activate_all: "Turn on all",
+          label_cpc_deactivate_all: "Turn off all",
+          label_cpc_purpose_01_text: "Information storage and access",
+          label_cpc_purpose_01_desc:
+            "The storage of information, or access to information that is already stored, on your device such as advertising identifiers, device identifiers, cookies, and similar technologies.",
+          label_cpc_purpose_02_text: "Personalization",
+          label_cpc_purpose_02_desc:
+            "The collection and processing of information about your use of this service to subsequently personalize advertising and/or content for you in other contexts, such as on other websites or apps, over time. Typically, the content of the site or app is used to make inferences about your interests, which inform future selection of advertising and/or content.",
+          label_cpc_purpose_03_text: "Ad selection, delivery, reporting",
+          label_cpc_purpose_03_desc:
+            "The collection of information, and combination with previously collected information, to select and deliver advertisements for you, and to measure the delivery and effectiveness of such advertisements. This includes using previously collected information about your interests to select ads, processing data about what advertisements were shown, how often they were shown, when and where they were shown, and whether you took any action related to the advertisement, including for example clicking an ad or making a purchase. This does not include personalization, which is the collection and processing of information about your use of this service to subsequently personalize advertising and/or content for you in other contexts, such as websites or apps, over time.",
+          label_cpc_purpose_04_text: "Content selection, delivery, reporting",
+          label_cpc_purpose_04_desc:
+            "The collection of information, and combination with previously collected information, to select and deliver content for you, and to measure the delivery and effectiveness of such content. This includes using previously collected information about your interests to select content, processing data about what content was shown, how often or how long it was shown, when and where it was shown, and whether the you took any action related to the content, including for example clicking on content. This does not include personalization, which is the collection and processing of information about your use of this service to subsequently personalize content and/or advertising for you in other contexts, such as websites or apps, over time.",
+          label_cpc_purpose_05_text: "Measurement",
+          label_cpc_purpose_05_desc:
+            "The collection of information about your use of the content, and combination with previously collected information, used to measure, understand, and report on your usage of the service. This does not include personalization, the collection of information about your use of this service to subsequently personalize content and/or advertising for you in other contexts, i.e. on other service, such as websites or apps, over time.",
+          label_cpc_heading: "Privacy settings:",
+          label_cpc_purpose_desc: "Purposes",
+          label_button_back: "Back",
+          label_third_party: "IAB 3rd Parties",
+          label_custom_thirdparty_heading:"Publisher 3rd Parties",
+          iabVendorListUrl: "https://vendorlist.consensu.org/vendorlist.json"
+        }
+      }
+    }
+  }
+
+
+    
+
+</script>
+
+<script src="https://slate.com/media/components/oil/oilstub.1.3.5-RELEASE.min.js"></script>
+<script src="https://slate.com/media/components/oil/oil.1.3.5-RELEASE.min.js"></script>
+
+
+    
+
+<!-- Amplitude -->
+<script defer>
+  require(['https://cdn.amplitude.com/libs/amplitude-5.6.0-min.gz.js'], function(amplitude) {
+
+    amplitude.getInstance().init('5a7cb616c0717cb7f4f0eee43d9f4e1c');
+
+    window.amplitude = amplitude; // You can bind the amplitude object to window if you want to use it directly.
+  });
+</script>
+
+<script defer>
+  require(['https://cdn.amplitude.com/libs/amplitude-5.6.0-min.gz.js'], function(amplitude) {
+    window.slateAmplitudeQueue = {
+      _q: [],
+      push: function(callback){
+        // TODO, if init has been called, we should run through the queue
+        this._q.push(callback)
+      },
+      init: function(instance, consent){
+        if(consent === 'grant'){
+          instance.setOptOut(false);
+          for (let i = 0; i < this._q.length; i++) {
+            this._q[i](instance);
+          }
+          this._q = [];
+        }
+        if(consent === 'revoke'){
+          instance.setOptOut(true);
+        }
+      }
+    }
+
+    var amplitudeOptions = {
+      saveEvents: true,
+      includeUtm: true,
+      includeReferrer: true,
+      includeGclid: true,
+      saveParamsReferrerOncePerSession: false,
+      domain: '.slate.com'
+    }
+
+    window.slateAmplitudeInit = function(callback) {
+      amplitude.getInstance().init(
+        '5a7cb616c0717cb7f4f0eee43d9f4e1c',
+        null,
+      amplitudeOptions,
+      callback);
+    };
+
+    window.amplitude = amplitude; // You can bind the amplitude object to window if you want to use it directly.
+  });
+</script>
+<!-- End Amplitude -->
+
+
+
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-794295919"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-794295919');
+    </script>
+
+  </head>
+  <body>
+
+  <svg style="display:none;" tabindex="-1" aria-hidden="true">
+      <symbol id="slate-logo-icon" viewBox="0 0 366.6 133">
+        <path class="st0" fill="currentColor" d="M326.5 114.7c-14.5 0-25.6-10.6-25.6-27.7h65.7c0-11.4-1.4-25.5-9.8-36.2-8.5-10.5-19.3-15.5-33-15.5-26.5 0-44.9 19.9-44.9 48.4 0 23 16.1 49.1 47.6 49.1 27.9 0 38.4-22.2 39.1-31.9h-20.1s-1.5 13.8-19 13.8zm-2.3-61.4c19.4 0 20.6 16.6 20.6 17.7h-43c.2-1.6 3.8-17.7 22.4-17.7z"/><path class="st0" fill="currentColor" d="M260.7 38.6V10.3L240.3 30v8.7h-13.8v14.6h13.8v58.1c0 17.4 14.6 21.4 26.3 21.4h7.2v-19.5c-8.2-.3-13-2.2-13-7.9V53.3H281V38.6h-20.3zM221.8 107.8V65c0-13.4-3.6-29.7-38.6-29.7-6.8 0-19.3.8-27.6 6.6-10.3 7-11.5 16.9-11.9 22.5h20c.8-5.4 2.7-12.7 18.8-12.7 17.9 0 17.9 10.1 17.9 15.5v.8s-2.8 2.2-20.8 5.4c-18.5 3.2-30.8 4.9-37 17.8-1.7 3.7-2.5 8.1-2.5 13 0 14 8.4 28.6 32 28.6 20.1 0 28.7-11.7 28.7-11.7l.6 4.2s.5 3.4.8 4.7h23.1c-2.8-8.5-3.3-13.6-3.5-22.2zm-21.4-21.4c0 12.7 0 17-5.9 22.4-4.4 3.8-10.5 6-16.7 6-11.3 0-15.3-6.2-15.3-11.5 0-11.7 15.2-13 19.7-13.9 9.8-2 16.4-4.1 16.4-4.1l1.8-.5v1.6zM112.4 10.3h20.5v119.8h-20.5zM54.1 17.8c18.2.5 28.5 11.8 33 18.1l15.3-14C99.9 18.6 84.7.9 54.4 0 22.8-.9 5.7 18.5 5.2 38.1c-.3 9.1 3.6 17.9 10.5 24 7.4 6.4 17 9 26.5 11.5 0 0 17.9 4.2 18 4.2 8.6 2 22.9 5.3 22.5 18.1-.3 9.5-9.7 18.8-30.1 18.3-22.8-.7-31.6-13-35.7-19.9-4 3.4-11.9 10.9-16.9 15.8 4.9 6.1 13.6 14.6 28.7 19.4 6.1 1.9 13.3 3.2 21.7 3.5 27.6.8 54.3-10 54.6-40.3.1-9.5-2.8-17.5-9.1-23.8-2.9-2.9-6.2-5-9.6-6.7L83.6 61c-3.4-1.4-6.8-2.4-10.2-3.2-1.8-.5-3.7-.9-5.4-1.3-.1 0-17.3-3.8-17.8-3.9C41 50.4 27 47.1 27.3 35c.2-7.5 8.6-17.7 26.8-17.2z"/>
+      </symbol>
+      <symbol id="slate-plus-icon" viewBox="0 0 24 24">
+        <title>Slate Plus</title>
+        <g><path fill="currentColor" d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Z"></path><path fill="#FFF" d="M8.58,18a7.22,7.22,0,0,1-2-.32A5.28,5.28,0,0,1,4,16l1.52-1.45a3.55,3.55,0,0,0,3.25,1.81c1.86.05,2.71-.8,2.74-1.66,0-1.16-1.27-1.46-2-1.64l-1.63-.38a5.81,5.81,0,0,1-2.4-1,2.79,2.79,0,0,1-1-2.18C4.52,7.64,6.07,5.88,8.94,6a5.7,5.7,0,0,1,4.36,2L11.91,9.22a3.78,3.78,0,0,0-3-1.64c-1.65,0-2.42.88-2.43,1.55,0,1.1,1.24,1.4,2.08,1.6l1.62.35.49.12a6.82,6.82,0,0,1,.93.3l.24.11a3.35,3.35,0,0,1,.88.6,2.88,2.88,0,0,1,.82,2.16C13.51,17.13,11.08,18.11,8.58,18Zm11.43-7H17.22v2.8H15.85v-2.8H13.12V9.8h2.74V6.92h1.37V9.8H20Z"></path></g>
+      </symbol>
+      <symbol id="settings-icon" viewBox="0 0 17 15">
+        <path fill="#4A4A4A" d="M0.78550979,5.94827586 C0.467050664,5.94827586 0.217821782,6.18103448 0.217821782,6.47844828 L0.217821782,8.54741379 C0.217821782,8.84482759 0.467050664,9.07758621 0.78550979,9.07758621 L1.82396346,9.07758621 C1.97627,9.63362069 2.21165283,10.1637931 2.53011196,10.6551724 L1.81011741,11.3275862 C1.58858063,11.5344828 1.58858063,11.8706897 1.81011741,12.0775862 L3.37472095,13.5387931 C3.59625773,13.7456897 3.95625501,13.7456897 4.17779179,13.5387931 L4.91163239,12.8534483 C5.43778225,13.137931 6.00547025,13.3577586 6.60085036,13.5 L6.60085036,14.4698276 C6.60085036,14.7672414 6.85007924,15 7.16853837,15 L9.3839062,15 C9.70236533,15 9.95159421,14.7672414 9.95159421,14.4698276 L9.95159421,13.487069 C10.5469743,13.3448276 11.1008163,13.125 11.6269661,12.8405172 L12.3746528,13.5387931 C12.5961896,13.7456897 12.9561868,13.7456897 13.1777236,13.5387931 L14.7423272,12.0775862 C14.9638639,11.8706897 14.9638639,11.5344828 14.7423272,11.3275862 L13.9946405,10.6293103 C14.2992536,10.137931 14.5346364,9.62068966 14.686943,9.06465517 L15.7392427,9.06465517 C16.0577018,9.06465517 16.3069307,8.83189655 16.3069307,8.53448276 L16.3069307,6.46551724 C16.3069307,6.16810345 16.0577018,5.93534483 15.7392427,5.93534483 L14.686943,5.93534483 C14.5346364,5.37931034 14.2992536,4.86206897 13.9946405,4.37068966 L14.7423272,3.67241379 C14.9638639,3.46551724 14.9638639,3.12931034 14.7423272,2.92241379 L13.1638776,1.47413793 C12.9423408,1.26724138 12.5823435,1.26724138 12.3608067,1.47413793 L11.6269661,2.15948276 C11.1008163,1.875 10.5331283,1.65517241 9.93774816,1.5 L9.93774816,0.530172414 C9.93774816,0.232758621 9.68851928,0 9.37006016,0 L7.15469232,0 C6.83623319,0 6.58700431,0.232758621 6.58700431,0.530172414 L6.58700431,1.5 C5.99162421,1.64224138 5.4239362,1.86206897 4.89778634,2.14655172 L4.16394574,1.4612069 C3.94240896,1.25431034 3.58241168,1.25431034 3.3608749,1.4612069 L1.79627137,2.93534483 C1.57473458,3.14224138 1.57473458,3.47844828 1.79627137,3.68534483 L2.51626591,4.35775862 C2.19780679,4.84913793 1.96242395,5.37931034 1.81011741,5.94827586 L0.78550979,5.94827586 L0.78550979,5.94827586 Z M3.65878899,4.56092649 C3.8129426,4.35146022 3.78491467,4.06344411 3.58871917,3.88016113 L2.94407682,3.26485398 L3.71484485,2.5448137 L4.37350117,3.16012085 C4.56969667,3.34340383 4.87800388,3.36958711 5.10222731,3.22557905 C5.74686966,2.80664653 6.4755958,2.53172205 7.24636383,2.40080564 C7.51262915,2.34843907 7.72283862,2.13897281 7.72283862,1.87713998 L7.72283862,1 L8.81592782,1 L8.81592782,1.87713998 C8.81592782,2.13897281 9.01212332,2.36153072 9.27838864,2.40080564 C10.0491567,2.53172205 10.7638688,2.81973817 11.4085112,3.22557905 C11.6327346,3.36958711 11.9410418,3.34340383 12.1372373,3.16012085 L12.8099076,2.53172205 L13.5806757,3.25176234 L12.9080054,3.88016113 C12.7118099,4.06344411 12.6837819,4.35146022 12.8379356,4.56092649 C13.2723684,5.16314199 13.5666617,5.83081571 13.7208153,6.55085599 C13.7768712,6.79959718 14.0151085,6.9959718 14.2813739,6.9959718 L15.2343234,6.9959718 L15.2343234,8.01711984 L14.2813739,8.01711984 C14.0010946,8.01711984 13.7628572,8.20040282 13.7208153,8.44914401 C13.5806757,9.16918429 13.2863824,9.83685801 12.8379356,10.4390735 C12.6837819,10.6485398 12.7118099,10.9365559 12.9080054,11.1198389 L13.5806757,11.7482377 L12.8099076,12.4682779 L12.1372373,11.8398792 C11.9410418,11.6565962 11.6327346,11.6304129 11.4085112,11.7744209 C10.7638688,12.1933535 10.0491567,12.4682779 9.27838864,12.5991944 C9.01212332,12.6515609 8.81592782,12.8741188 8.81592782,13.12286 L8.81592782,14 L7.72283862,14 L7.72283862,13.12286 C7.72283862,12.8610272 7.52664312,12.6384693 7.24636383,12.5991944 C6.46158184,12.4682779 5.74686966,12.1933535 5.10222731,11.7744209 C4.87800388,11.6304129 4.56969667,11.6565962 4.37350117,11.8398792 L3.71484485,12.4551863 L2.94407682,11.7744209 L3.60273314,11.1591138 C3.79892864,10.9758308 3.82695657,10.6878147 3.67280296,10.4783484 C3.2243561,9.87613293 2.93006286,9.19536757 2.77590925,8.47532729 C2.71985339,8.2265861 2.49562997,8.04330312 2.21535068,8.04330312 L1.29042904,8.04330312 L1.29042904,7.02215509 L2.21535068,7.02215509 C2.481616,7.00906344 2.71985339,6.82578046 2.77590925,6.56394763 C2.91604889,5.83081571 3.2243561,5.16314199 3.65878899,4.56092649 Z M8.26237624,11 C10.3331572,11 12.0165017,9.43060498 12.0165017,7.5 C12.0165017,5.56939502 10.3331572,4 8.26237624,4 C6.19159532,4 4.50825083,5.56939502 4.50825083,7.5 C4.50825083,9.43060498 6.19159532,11 8.26237624,11 L8.26237624,11 Z M8.26237624,5 C9.74462245,5 10.9438944,6.11809045 10.9438944,7.5 C10.9438944,8.88190955 9.74462245,10 8.26237624,10 C6.78013002,10 5.58085809,8.88190955 5.58085809,7.5 C5.58085809,6.11809045 6.78013002,5 8.26237624,5 L8.26237624,5 Z"/>
+      </symbol>
+      <symbol id="edit-icon" viewBox="0 0 17 15">
+        <path fill="#4A4A4A" fill-rule="evenodd" d="M15.7328079,38 L15.7328079,38 C16.0472085,38 16.3069307,38.2317073 16.3069307,38.5 C16.3069307,38.7682927 16.0608781,39 15.7464775,39 L0.778275024,39 C0.477544016,39 0.217821782,38.7682927 0.217821782,38.5 C0.217821782,38.2317073 0.463874425,38 0.778275024,38 L15.7328079,38 Z M0.231427794,33 L0.231427794,33 C0.231427794,32.8607595 0.299457853,32.7341772 0.394699935,32.6329114 L7.68752224,25.8607595 L9.51072782,24.1518987 C9.74203002,23.9493671 10.0957863,23.9493671 10.3134825,24.1518987 L12.9258368,26.6075949 C13.143533,26.8227848 13.143533,27.1518987 12.9258368,27.3544304 L3.80980889,35.835443 C3.70096079,35.9367089 3.56490068,35.9873418 3.41523455,35.9873418 L0.775668265,36 C0.626002135,36 0.489942017,35.9493671 0.381093923,35.8481013 C0.272245829,35.7468354 0.217821782,35.6075949 0.217821782,35.4683544 L0.231427794,33 Z M9.95770572,25 L8.79867987,26.0805687 L10.8574758,28 L12.0165017,26.9194313 L9.95770572,25 Z M1.30404945,33.2829889 L1.29042904,35 L3.14280476,34.9872814 L9.87128713,28.7170111 L8.03253182,27 L1.30404945,33.2829889 Z" transform="translate(0 -24)"/>
+      </symbol>
+      <symbol id="upgrade-icon" viewBox="0 0 19 16" fill="none" stroke="#4A4A4A" stroke-linecap="round" stroke-linejoin="round" transform="translate(1 1)">
+        <path d="M0.00354492922,7.33788842 L8.26406667,8.45027973 C8.46954493,8.45545364 8.67945797,8.40519277 8.86793623,8.28988842 C9.05715362,8.17458407 9.19758841,8.01123625 9.28702319,7.82571451 L9.28850145,7.82497538 L12.0572841,0.0204971167"/>
+        <path d="M7.95747536 14.0435015L16.4508232 9.09871886C16.9756058 8.79271886 17.1559536 8.11567538 16.8529101 7.58571886L12.8261275.55437103C12.5230841.024414508 11.8519536-.157411579 11.3264319.148588421L.549171016 6.42306668C.0243884075 6.72906668-.155959419 7.40611016.14708406 7.93606668L3.64391015 14.0435015M1.47818406 14.0435015L15.5216623 14.0435015"/>
+      </symbol>
+  </svg>
+
+  <header class="header" role="banner">
+      <a href="https://slate.com">
+        <svg width="74" height="27" viewBox="0 0 258 80" aria-labelledby="logo-icon-slate">
+          <title id="logo-icon-slate">Slate logo</title>
+          <path fill="#FFF" d="M257.9 18.8h-23.3v12.7h23.3V48h-23.3v13.1h23.3V78h-43V2h43v16.7zM205.7 2v16.7h-16.1v59H170v-59h-16.1V2h51.8zm-85.8 0h13.3L161.9 78h-21l-5.7-16.7h-15.3v-15H130L120 17.1V2zm-55.5 0H84v59.1h26.5V78H64.4V2zM26 18.1a5.6 5.6 0 0 0-2.4 4.8c0 1.4.4 2.5 1.2 3.3.8.9 1.8 1.7 3.1 2.3 1.3.6 2.8 1.2 4.4 1.7 1.7.4 3.3 1 4.9 1.5 6.4 2.1 11 5 14 8.6 3 3.5 4.5 8.2 4.5 14 0 3.9-.7 7.4-2 10.5A22 22 0 0 1 48 73c-2.5 2.3-5.5 4-9.2 5.2A45.2 45.2 0 0 1 0 71.4l8.4-15.8a34 34 0 0 0 8.7 5.8c2.9 1.3 5.7 2 8.5 2 3.2 0 5.6-.8 7.1-2.3a6.8 6.8 0 0 0 1.8-8c-.4-.8-1-1.6-2-2.3a16 16 0 0 0-3.7-2l-5.4-2-7.5-2.6c-2.4-1-4.6-2.3-6.5-3.9a18 18 0 0 1-4.5-6A21.6 21.6 0 0 1 3 24.8c0-3.7.6-7.1 1.8-10.2A22.7 22.7 0 0 1 18.3 1.8C21.6.6 25.2 0 29.2 0a47.3 47.3 0 0 1 23.4 6.1l-7.8 15.4c-2.1-1.7-4.3-3-6.4-3.9a17 17 0 0 0-6.2-1.2 10 10 0 0 0-6.2 1.8z"/>
+        </svg>
+      </a>
+  </header>
+
+  
+
+  <div class="hero hero--sm">
+    <svg class="hero__pluslogo" aria-labelledby="logo-icon-slateplus" role="presentation" aria-hidden="true">
+        <title id="logo-icon-slateplus">Slate Plus</title>
+        <use xlink:href="#slate-plus-icon" href="#slate-plus-icon"/>
+    </svg>
+  </div>
+
+  <main role="main" class="content-area">
+
+    <section class="content-area__section content-area__section">
+      <h1 class="content-area__title">Support Slate’s Independent Journalism</h1>
+      <p>Join Slate Plus and you’ll help support the reporting, commentary, and criticism you can’t find anywhere else. Every subscription comes with a suite of great benefits. It's just $35 for your first year.*</p>
+<div class="text-center">
+   <a href="https://my.slate.com/membership/purchase/" class="btn__subscribe">Start my free<br /> 2-week trial</a>
+<p><br />Already a member? <a href="https://my.slate.com/login?redirect_uri=https%3A%2F%2Fmy.slate.com%2Fmembership%2Fwelcome%2F">Log in.</a></p>
+</div>
+    </section>
+
+    
+      <section class="content-area__section content-area__section--pitch">
+        <div class="content-area__img" role="presentation">
+          
+        </div>
+        <h2 class="content-area__title">Unlimited reading</h2>
+        <p>Your subscription unlocks <strong>unlimited articles on Slate and in the Slate app every month</strong>. Read every Slatest news post, all our culture coverage, and smart analyses from Dahlia Lithwick, Mark Joseph Stern, Christina Cauterucci, Jordan Weissmann, Willa Paskin and others. Never miss a column from Dear Prudence, Care and Feeding, or How to Do It. </p>
+      </section>
+    
+      <section class="content-area__section content-area__section--pitch">
+        <div class="content-area__img" role="presentation">
+          <img src="https://www.slate.com/content/dam/slate/slateplus/pitch/slateplus-AccessSlatesters.jpg" alt="The hosts of the Culture Gabfest podcast, seated behind microphones. Stephen Metcalf is speaking.">
+        </div>
+        <h2 class="content-area__title">Listen longer</h2>
+        <p style="margin-bottom: 20px">Get ad-free versions of all Slate podcasts, as well as extended versions of the Political Gabfest, the Culture Gabfest, Mom and Dad Are Fighting, and other shows. And only members can unlock  exclusive episodes of Dear Prudence, Trumpcast, Flashback, as well as the archives of Slate’s hit podcast Slow Burn. </p>
+      </section>
+    
+      <section class="content-area__section content-area__section--pitch">
+        <div class="content-area__img" role="presentation">
+          
+        </div>
+        <h2 class="content-area__title">And more subscriber benefits:</h2>
+        <p><ul>
+<li>Be the first to hear about Slate events like live Q&As with Dear Prudence. Meet Slate writers and podcast hosts at exclusive pre-show parties, and get 30 percent off tickets to most live events.</li>
+<li>Fewer ads: members don’t see advertising that interrupts reading, like in-article video ads.</li>
+<li>A member-exclusive weekly newsletter, with the best stories from Slate and elsewhere, plus behind-the-scenes interviews with Slatesters.</li>
+<li>A private Facebook group where you can get to know Slatesters and fellow Slate Plus members.</li>
+</ul></p>
+      </section>
+    
+
+  </main>
+
+  <aside class="sticky-content"><a href="/membership/purchase/" class="btn__sticky">Start my free trial</a></aside>
+
+
+
+  <footer class="footer">
+    <ul class="help-links" style="margin-bottom: 10px;">
+      <li><a href="https://slate.com/terms" target="_blank">Terms of Service</a></li>
+      <li><a href="https://slate.com/privacy" target="_blank">Privacy Policy</a></li>
+      
+    </ul>
+    All contents &copy; 2020 The Slate Group LLC. All rights reserved.
+  </footer>
+
+  
+  <script src="/static/js/pitch.js"></script>
+
+
+
+
+  
+
+  <!-- Parsely -->
+  
+  <div id="parsely-root" style="display: none;">
+    <span id="parsely-cfg" data-parsely-site="slate.com"></span>
+  </div>
+
+  <script>
+      // Call Parsely Onload Handler
+      PARSELY = {
+        autotrack: false,
+        onload: function() {
+          parselyLoaded = true;
+          PARSELY.beacon.trackPageView(parselyEvent);
+        }
+      };
+
+      (function(s, p, d) {
+        var h=d.location.protocol, i=p+"-"+s,
+            e=d.getElementById(i), r=d.getElementById(p+"-root"),
+            u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+            :"static."+p+".com";
+        if (e) return;
+        e = d.createElement(s); e.id = i; e.async = true;
+        e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+      })("script", "parsely", document);
+  </script>
+  <!-- End Parsely -->
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq)return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '166975463695820');
+    fbq('track', 'ViewContent', {
+      commercial_node: window.commercialNode,
+      referrer: document.referrer
+    });
+  </script>
+  <!-- End Facebook Pixel Code -->
+
+
+  </body>
+</html>

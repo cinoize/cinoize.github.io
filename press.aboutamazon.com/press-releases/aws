@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"87675502"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="AWS press releases | Amazon.com, Inc. - Press Room" />
+<meta property="og:site_name" content="Amazon.com, Inc. - Press Room" />
+<link rel="canonical" href="https://press.aboutamazon.com/press-releases/aws/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://press.aboutamazon.com/press-releases/aws" />
+<meta property="og:title" content="AWS press releases | Amazon.com, Inc. - Press Room" />
+<meta property="og:description" content="The Investor Relations website contains information about Amazon.com, Inc. - Press Room&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb37121/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://press.aboutamazon.com/press-releases/aws" />
+<link rel="revision" href="https://press.aboutamazon.com/press-releases/aws" />
+
+    <title>AWS press releases | Amazon.com, Inc. - Press Room</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb37121/files/css/css_8zWKN6qWWUtDIuPxDLTytXs0iepG3wRB9x86fVDdjDc.css?q8dha0" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb37121/files/css/css_knrhVB-j8Tzw5Oya4xR-Tncoh_kwjB0PwcbhS0bI52E.css?q8dha0" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb37121/files/css/css_31Pb4-j2bLX6RRPYdHuWoBu-0RQ6bkwbZdvi8RVmk4U.css?q8dha0" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb37121/files/css/css_qEIT6H___LfrVNZA5R2Kzd9_O7_IYVIc09T0lhwXw4M.css?q8dha0" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb37121/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+<script src="/sites/g/files/knoqqb37121/files/js/js__gXsFD20umzZxYHA4qnln41OAtfy5of3Fiqh3LbN0zs.js"></script>
+
+    
+
+    <script async custom-element="amp-analytics" src="//cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--23311">
+    <!-- Start Alexa AMP Certify Javascript -->
+    <amp-analytics type="alexametrics">
+      <script type="application/json"> {"vars": { "atrk_acct": "bSTXp1d0RC20XR", "domain": "aboutamazon.com" }}</script>
+    </amp-analytics>
+    <!-- End Alexa AMP Certify Javascript -->
+
+
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var body = document.getElementsByTagName('body')[0]
+            if (body) {
+                body.setAttribute('data-dayofweek', new Date().getDay())
+            }
+        })
+    </script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" id="iconsMap">
+        <symbol id="icon-facebook" viewBox="0 0 512 512">
+            <title>Facebook</title>
+            <path d="M288,192v-38.1c0-17.2,3.8-25.9,30.5-25.9H352V64h-55.9c-68.5,0-91.1,31.4-91.1,85.3V192h-45v64h45v192h83V256h56.4l7.6-64
+                            H288z" />
+        </symbol>
+        <symbol id="icon-googleplus" viewBox="0 0 512 512">
+            <title>Google Plus</title>
+            <g>
+                <path d="M242.1,275.6l-18.2-13.7l-0.1-0.1c-5.8-4.6-10-8.3-10-14.7c0-7,5-11.8,10.9-17.4l0.5-0.4c20-15.2,44.7-34.3,44.7-74.6
+                                c0-26.9-11.9-44.7-23.3-57.7h13L320,64H186.5c-25.3,0-62.7,3.2-94.6,28.6l-0.1,0.3C70,110.9,57,137.4,57,163.5
+                                c0,21.2,8.7,42.2,23.9,57.4c21.4,21.6,48.3,26.1,67.1,26.1c1.5,0,3,0,4.5-0.1c-0.8,3-1.2,6.3-1.2,10.3c0,10.9,3.6,19.3,8.1,26.2
+                                c-24,1.9-58.1,6.5-84.9,22.3C35.1,328.4,32,361.7,32,371.3c0,38.2,35.7,76.8,115.5,76.8c91.6,0,139.5-49.8,139.5-99
+                                C287,312,264.2,293.5,242.1,275.6z M116.7,139.9c0-13.4,3-23.5,9.3-30.9c6.5-7.9,18.2-13.1,29-13.1c19.9,0,32.9,15,40.4,27.6
+                                c9.2,15.5,14.9,36.1,14.9,53.6c0,4.9,0,20-10.2,29.8c-7,6.7-18.7,11.4-28.6,11.4c-20.5,0-33.5-14.7-40.7-27
+                            C120.4,173.5,116.7,153.1,116.7,139.9z M237.8,368c0,27.4-25.2,44.5-65.8,44.5c-48.1,0-80.3-20.6-80.3-51.3
+                            c0-26.1,21.5-36.8,37.8-42.5c18.9-6.1,44.3-7.3,50.1-7.3c3.9,0,6.1,0,8.7,0.2C224.9,336.8,237.8,347.7,237.8,368z" />
+                <polygon points="402,142 402,64 368,64 368,142 288,142 288,176 368,176 368,257 402,257 402,176 480,176 480,142 	" />
+            </g>
+        </symbol>
+        <symbol id="icon-instagram" viewBox="0 0 29 28">
+            <title>Instagram</title>
+            <g>
+                <path d="M14.192.061c-3.796 0-4.272.016-5.763.084C6.941.213 5.925.45 5.036.793a6.852 6.852 0 0 0-2.475 1.61 6.834 6.834 0 0 0-1.613 2.47c-.345.887-.582 1.9-.65 3.385-.068 1.488-.084 1.963-.084 5.75 0 3.788.016 4.263.085 5.751.067 1.485.304 2.498.65 3.386a6.835 6.835 0 0 0 1.612 2.47 6.852 6.852 0 0 0 2.475 1.609c.89.344 1.905.58 3.393.648 1.491.068 1.967.084 5.763.084 3.797 0 4.273-.016 5.763-.084 1.488-.068 2.504-.304 3.393-.648a6.852 6.852 0 0 0 2.476-1.609 6.836 6.836 0 0 0 1.612-2.47c.346-.888.582-1.901.65-3.386.068-1.488.084-1.963.084-5.75 0-3.788-.016-4.263-.084-5.75-.068-1.485-.304-2.5-.65-3.387a6.835 6.835 0 0 0-1.612-2.47A6.852 6.852 0 0 0 23.348.793C22.46.45 21.443.213 19.955.145 18.465.077 17.99.061 14.192.061m0 2.513c3.733 0 4.175.014 5.649.081 1.362.062 2.103.29 2.595.48a4.332 4.332 0 0 1 1.607 1.044c.49.488.792.953 1.046 1.604.191.491.419 1.23.481 2.59.067 1.47.082 1.911.082 5.635 0 3.725-.015 4.166-.082 5.636-.062 1.36-.29 2.099-.481 2.59a4.32 4.32 0 0 1-1.046 1.604c-.489.488-.954.79-1.607 1.043-.492.191-1.233.419-2.595.48-1.474.068-1.916.082-5.649.082-3.732 0-4.174-.014-5.648-.081-1.363-.062-2.103-.29-2.595-.48a4.331 4.331 0 0 1-1.608-1.044 4.322 4.322 0 0 1-1.045-1.604c-.192-.491-.42-1.23-.482-2.59-.067-1.47-.081-1.911-.081-5.636 0-3.724.014-4.165.081-5.635.063-1.36.29-2.099.482-2.59A4.321 4.321 0 0 1 4.34 4.179c.49-.488.955-.79 1.608-1.043.492-.191 1.232-.419 2.595-.48 1.474-.068 1.916-.082 5.648-.082" />
+                <path d="M14.192 18.658a4.654 4.654 0 0 1-4.659-4.65 4.654 4.654 0 0 1 4.66-4.649 4.654 4.654 0 0 1 4.659 4.65 4.654 4.654 0 0 1-4.66 4.649m0-11.812c-3.964 0-7.177 3.207-7.177 7.163 0 3.955 3.213 7.162 7.177 7.162 3.965 0 7.178-3.207 7.178-7.162 0-3.956-3.213-7.163-7.178-7.163M23.331 6.563c0 .925-.75 1.674-1.677 1.674-.926 0-1.678-.75-1.678-1.674 0-.924.752-1.673 1.678-1.673.926 0 1.677.749 1.677 1.673" />
+            </g>
+        </symbol>
+        <symbol id="icon-mailto" viewBox="0 0 512 512">
+            <title>Mail To</title>
+            <g>
+                <path d="M67,148.7c11,5.8,163.8,89.1,169.5,92.1c5.7,3,11.5,4.4,20.5,4.4c9,0,14.8-1.4,20.5-4.4c5.7-3,158.5-86.3,169.5-92.1
+                            c4.1-2.1,11-5.9,12.5-10.2c2.6-7.6-0.2-10.5-11.3-10.5H257H65.8c-11.1,0-13.9,3-11.3,10.5C56,142.9,62.9,146.6,67,148.7z" />
+                <path d="M455.7,153.2c-8.2,4.2-81.8,56.6-130.5,88.1l82.2,92.5c2,2,2.9,4.4,1.8,5.6c-1.2,1.1-3.8,0.5-5.9-1.4l-98.6-83.2
+                                c-14.9,9.6-25.4,16.2-27.2,17.2c-7.7,3.9-13.1,4.4-20.5,4.4c-7.4,0-12.8-0.5-20.5-4.4c-1.9-1-12.3-7.6-27.2-17.2l-98.6,83.2
+                                c-2,2-4.7,2.6-5.9,1.4c-1.2-1.1-0.3-3.6,1.7-5.6l82.1-92.5c-48.7-31.5-123.1-83.9-131.3-88.1c-8.8-4.5-9.3,0.8-9.3,4.9
+                                c0,4.1,0,205,0,205c0,9.3,13.7,20.9,23.5,20.9H257h185.5c9.8,0,21.5-11.7,21.5-20.9c0,0,0-201,0-205
+                                C464,153.9,464.6,148.7,455.7,153.2z" />
+            </g>
+        </symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 512 512">
+            <title>LinkedIn</title>
+            <path d="M417.2,64H96.8C79.3,64,64,76.6,64,93.9v321.1c0,17.4,15.3,32.9,32.8,32.9h320.3c17.6,0,30.8-15.6,30.8-32.9V93.9
+                                C448,76.6,434.7,64,417.2,64z M183,384h-55V213h55V384z M157.4,187H157c-17.6,0-29-13.1-29-29.5c0-16.7,11.7-29.5,29.7-29.5
+                                c18,0,29,12.7,29.4,29.5C187.1,173.9,175.7,187,157.4,187z M384,384h-55v-93.5c0-22.4-8-37.7-27.9-37.7
+                                c-15.2,0-24.2,10.3-28.2,20.3c-1.5,3.6-1.9,8.5-1.9,13.5V384h-55V213h55v23.8c8-11.4,20.5-27.8,49.6-27.8
+                                c36.1,0,63.4,23.8,63.4,75.1V384z" />
+        </symbol>
+        <symbol id="icon-pinterest" viewBox="0 0 512 512">
+            <title>Pinterest</title>
+            <g>
+                <path d="M256,32C132.3,32,32,132.3,32,256c0,91.7,55.2,170.5,134.1,205.2c-0.6-15.6-0.1-34.4,3.9-51.4
+                                c4.3-18.2,28.8-122.1,28.8-122.1s-7.2-14.3-7.2-35.4c0-33.2,19.2-58,43.2-58c20.4,0,30.2,15.3,30.2,33.6
+                                c0,20.5-13.1,51.1-19.8,79.5c-5.6,23.8,11.9,43.1,35.4,43.1c42.4,0,71-54.5,71-119.1c0-49.1-33.1-85.8-93.2-85.8
+                                c-67.9,0-110.3,50.7-110.3,107.3c0,19.5,5.8,33.3,14.8,43.9c4.1,4.9,4.7,6.9,3.2,12.5c-1.1,4.1-3.5,14-4.6,18
+                                c-1.5,5.7-6.1,7.7-11.2,5.6c-31.3-12.8-45.9-47-45.9-85.6c0-63.6,53.7-139.9,160.1-139.9c85.5,0,141.8,61.9,141.8,128.3
+                                c0,87.9-48.9,153.5-120.9,153.5c-24.2,0-46.9-13.1-54.7-27.9c0,0-13,51.6-15.8,61.6c-4.7,17.3-14,34.5-22.5,48
+                                c20.1,5.9,41.4,9.2,63.5,9.2c123.7,0,224-100.3,224-224C480,132.3,379.7,32,256,32z" />
+            </g>
+        </symbol>
+        <symbol id="icon-tumblr" viewBox="0 0 512 512">
+            <title>Tumblr</title>
+            <g>
+                <path d="M321.2,396.3c-11.8,0-22.4-2.8-31.5-8.3c-6.9-4.1-11.5-9.6-14-16.4c-2.6-6.9-3.6-22.3-3.6-46.4V224h96v-64h-96V48h-61.9
+                                c-2.7,21.5-7.5,44.7-14.5,58.6c-7,13.9-14,25.8-25.6,35.7c-11.6,9.9-25.6,17.9-41.9,23.3V224h48v140.4c0,19,2,33.5,5.9,43.5
+                                c4,10,11.1,19.5,21.4,28.4c10.3,8.9,22.8,15.7,37.3,20.5c14.6,4.8,31.4,7.2,50.4,7.2c16.7,0,30.3-1.7,44.7-5.1
+                                c14.4-3.4,30.5-9.3,48.2-17.6v-65.6C363.2,389.4,342.3,396.3,321.2,396.3z" />
+            </g>
+        </symbol>
+        <symbol id="icon-twitter" viewBox="0 0 512 512">
+            <title>Twitter</title>
+            <g>
+                <path d="M492,109.5c-17.4,7.7-36,12.9-55.6,15.3c20-12,35.4-31,42.6-53.6c-18.7,11.1-39.4,19.2-61.5,23.5
+                                C399.8,75.8,374.6,64,346.8,64c-53.5,0-96.8,43.4-96.8,96.9c0,7.6,0.8,15,2.5,22.1c-80.5-4-151.9-42.6-199.6-101.3
+                                c-8.3,14.3-13.1,31-13.1,48.7c0,33.6,17.2,63.3,43.2,80.7C67,210.7,52,206.3,39,199c0,0.4,0,0.8,0,1.2c0,47,33.4,86.1,77.7,95
+                                c-8.1,2.2-16.7,3.4-25.5,3.4c-6.2,0-12.3-0.6-18.2-1.8c12.3,38.5,48.1,66.5,90.5,67.3c-33.1,26-74.9,41.5-120.3,41.5
+                                c-7.8,0-15.5-0.5-23.1-1.4C62.8,432,113.7,448,168.3,448C346.6,448,444,300.3,444,172.2c0-4.2-0.1-8.4-0.3-12.5
+                                C462.6,146,479,129,492,109.5z" />
+            </g>
+        </symbol>
+        <symbol id="icon-youtube" viewBox="0 0 512 512">
+            <title>Youtube</title>
+            <g>
+                <path d="M508.6,148.8c0-45-33.1-81.2-74-81.2C379.2,65,322.7,64,265,64c-3,0-6,0-9,0s-6,0-9,0c-57.6,0-114.2,1-169.6,3.6
+                                c-40.8,0-73.9,36.4-73.9,81.4C1,184.6-0.1,220.2,0,255.8C-0.1,291.4,1,327,3.4,362.7c0,45,33.1,81.5,73.9,81.5
+                                c58.2,2.7,117.9,3.9,178.6,3.8c60.8,0.2,120.3-1,178.6-3.8c40.9,0,74-36.5,74-81.5c2.4-35.7,3.5-71.3,3.4-107
+                                C512.1,220.1,511,184.5,508.6,148.8z M207,353.9V157.4l145,98.2L207,353.9z" />
+            </g>
+        </symbol>
+        <symbol id="icon-magnify" viewBox="0 0 512 512">
+            <title>magnify</title>
+            <g>
+                <path d="M337.509,305.372h-17.501l-6.571-5.486c20.791-25.232,33.922-57.054,33.922-93.257
+                                C347.358,127.632,283.896,64,205.135,64C127.452,64,64,127.632,64,206.629s63.452,142.628,142.225,142.628
+                                c35.011,0,67.831-13.167,92.991-34.008l6.561,5.487v17.551L415.18,448L448,415.086L337.509,305.372z M206.225,305.372
+                                c-54.702,0-98.463-43.887-98.463-98.743c0-54.858,43.761-98.742,98.463-98.742c54.7,0,98.462,43.884,98.462,98.742
+                                C304.687,261.485,260.925,305.372,206.225,305.372z" />
+            </g>
+        </symbol>
+        <symbol id="icon-greater-than" viewBox="0 0 202 342">
+            <title>greater than</title>
+            <g>
+                <polygon points="135 171 0.002 312.077 31 342 202 171 31 0 1.078 29.924"></polygon>
+            </g>
+        </symbol>
+        <symbol id="icon-quote" viewBox="0 0 35 31">
+            <title>Quote</title>
+            <g>
+                <path fill-rule="evenodd" d="M14.966.972c-2.736 1.368-4.932 3.168-6.588 5.4-1.656 2.232-2.484 4.572-2.484 7.02 0 2.016.81 3.672 2.43 4.968 1.62 1.296 3.906 2.124 6.858 2.484 0 2.952-.612 5.256-1.836 6.912-1.224 1.656-2.88 2.484-4.968 2.484-2.448 0-4.338-1.008-5.67-3.024C1.376 25.2.71 22.356.71 18.684c0-3.744.846-7.236 2.538-10.476C4.94 4.968 7.19 2.592 9.998 1.08 11.222.36 12.302 0 13.238 0c.864 0 1.44.324 1.728.972zm19.224 0c-2.736 1.368-4.932 3.168-6.588 5.4-1.656 2.232-2.484 4.572-2.484 7.02 0 2.016.81 3.672 2.43 4.968 1.62 1.296 3.906 2.124 6.858 2.484 0 2.952-.612 5.256-1.836 6.912-1.224 1.656-2.88 2.484-4.968 2.484-2.448 0-4.338-1.008-5.67-3.024-1.332-2.016-1.998-4.86-1.998-8.532 0-3.744.846-7.236 2.538-10.476 1.692-3.24 3.942-5.616 6.75-7.128C30.446.36 31.526 0 32.462 0c.864 0 1.44.324 1.728.972z" />
+            </g>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 512 512">
+            <title>Close</title>
+            <g>
+                <path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5
+                            c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9
+                            c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z" />
+            </g>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 512 512">
+            <g>
+                <rect x="96" y="241" width="320" height="32" />
+                <rect x="96" y="145" width="320" height="32" />
+                <rect x="96" y="337" width="320" height="32" />
+            </g>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 512 512">
+            <title>Search</title>
+            <g>
+                <path d="M337.509,305.372h-17.501l-6.571-5.486c20.791-25.232,33.922-57.054,33.922-93.257
+                                C347.358,127.632,283.896,64,205.135,64C127.452,64,64,127.632,64,206.629s63.452,142.628,142.225,142.628
+                                c35.011,0,67.831-13.167,92.991-34.008l6.561,5.487v17.551L415.18,448L448,415.086L337.509,305.372z M206.225,305.372
+                                c-54.702,0-98.463-43.887-98.463-98.743c0-54.858,43.761-98.742,98.463-98.742c54.7,0,98.462,43.884,98.462,98.742
+                                C304.687,261.485,260.925,305.372,206.225,305.372z" />
+            </g>
+        </symbol>
+        <symbol id="icon-right-arrow" viewBox="0 0 7 12">
+            <title>Right arrow</title>
+            <g>
+                <path d="M1.845 10.988a.618.618 0 0 1-.452.19.618.618 0 0 1-.452-.19.618.618 0 0 1-.191-.452v-9c0-.174.064-.325.19-.452a.618.618 0 0 1 .453-.191c.174 0 .325.063.452.19l4.5 4.5c.127.128.19.279.19.453a.618.618 0 0 1-.19.452l-4.5 4.5z" />
+            </g>
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24">
+            <title>Download Icon</title>
+            <g fill-rule="evenodd">
+                <path d="M23 16.718a1 1 0 0 0-1 1v1.913C22 20.675 21.119 22 20.13 22H3.869C2.88 22 2 20.675 2 19.63v-1.912a1 1 0 0 0-2 0v1.913C0 21.694 1.654 24 3.869 24H20.13c2.215 0 3.87-2.306 3.87-4.37v-1.912a1 1 0 0 0-1-1" />
+                <path d="M11.292 18.315a1 1 0 0 0 1.415 0l7-6.999a.999.999 0 1 0-1.414-1.414L13 15.195V1a1 1 0 0 0-2 0v14.195L5.707 9.902a.999.999 0 1 0-1.414 1.414l6.999 7z" />
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="CategoryPage-header" data-with-toggle-menu itemscope itemtype="http://schema.org/WPHeader">
+    
+        <div class="CategoryPage-hat">
+            <div class="CategoryPage-hat-contentWrapper">
+
+                <div class="CategoryPage-gateway">
+                    <a href="http://www.amazon.com" target="_blank" data-cms-ai="0">Back to Amazon</a>
+                    <div class="CategoryPage-gateway-dropdown">
+                        <span class="CategoryPage-gateway-dropdown-first" data-flag="us">us</span>
+                        <div class="CategoryPage-gateway-dropdown-content">
+                            <hr class="mood-bgcolor"></hr>
+                            <div class="CategoryPage-gateway-dropdown-content-items">
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="au" href="http://www.amazon.com.au" target="_blank" data-cms-ai="0">au</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="br" href="http://www.amazon.com.br" target="_blank" data-cms-ai="0">br</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="ca" href="http://www.amazon.ca" target="_blank" data-cms-ai="0">ca</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="cn" href="http://www.amazon.cn" target="_blank" data-cms-ai="0">cn</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="de" href="http://www.amazon.de" target="_blank" data-cms-ai="0">de</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="fr" href="http://www.amazon.fr" target="_blank" data-cms-ai="0">fr</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="in" href="http://www.amazon.in" target="_blank" data-cms-ai="0">in</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="it" href="http://www.amazon.it" target="_blank" data-cms-ai="0">it</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="jp" href="http://www.amazon.co.jp" target="_blank" data-cms-ai="0">jp</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="mx" href="http://www.amazon.com.mx" target="_blank" data-cms-ai="0">mx</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="nl" href="http://www.amazon.nl" target="_blank" data-cms-ai="0">nl</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="es" href="http://www.amazon.es" target="_blank" data-cms-ai="0">es</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="uk" href="http://www.amazon.co.uk" target="_blank" data-cms-ai="0">uk</a></div>
+                                <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="us" href="http://www.amazon.com" target="_blank" data-cms-ai="0">us</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="CategoryPage-hat-logo">
+
+                    <a href="https://www.blog.aboutamazon.com" data-cms-ai="0">
+                        <img class="PageLogo-image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/dayOne_tag@3x.svg" alt="Day One Blog" width="165" />
+                    </a>
+
+                </div>
+                <div class="CategoryPage-hat-navigation" data-toggle-item="hat-navigation">
+                    <button class="CategoryPage-hat-navigation-toggle" data-toggle-trigger="hat-navigation"><span>Site Navigation</span></button>
+
+                    <nav class="Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                      
+        
+<h3 class="visually-hidden">Category Navigation</h3>
+
+
+                  <ul data-block-uuid="5b5460c4-e151-4f15-869f-56385a895db0" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="https://ir.aboutamazon.com/" target="" rel="">Investors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://press.aboutamazon.com/" target="" rel="">Press Center</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.seattlespheres.com/" target="" rel="">The Spheres</a>
+                  </li>
+          </ul>
+  
+
+
+
+
+
+                    </nav>
+
+                </div>
+                <div class="CategoryPage-hat-banner">
+
+                </div>
+                <div class="CategoryPage-hat-content">
+
+                    <div class="PromoHat">
+
+                        <div class="PromoHat-title">
+                            <a class="Link" href="https://email.aboutamazon.com/l/637851/2018-10-26/7z82j?Traffic_Source=ir&Module=hat" target="_blank" data-amzn-id="00000162-1662-d15c-ab62-f6f73b3c0001" data-cms-ai="0">Get the latest news in your inbox</a>
+                        </div>
+
+                        <div class="PromoHat-media">
+                            <a class="Link" href="https://email.aboutamazon.com/l/637851/2018-10-26/7z82j?Traffic_Source=ir&Module=hat" target="_blank" data-amzn-id="00000162-1662-d15c-ab62-f6f73b3c0001" data-cms-ai="0">
+                                <picture>
+                                    <source width="54" height="35" media="(min-width: 768px)" srcset="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/newsletter-box-3x.png 1x,/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/newsletter-box-3x.png 2x" alt="Newsletter Box">
+                                    <source width="54" height="35" srcset="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/newsletter-box-3x.png 1x,/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/newsletter-box-3x.png 2x" alt="Newsletter Box">
+                                    <img class="Image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/newsletter-box-3x.png" alt="Newsletter Box">
+                                </picture>
+                            </a>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="CategoryPage-header-bottom">
+            <div class="CategoryPage-header-contentWrapper">
+                <div class="CategoryPage-header-menuLogo">
+                    <div class="CategoryPage-header-menuToggle-bg">
+                        <button class="CategoryPage-header-menuToggle" aria-label="Menu" aria-controls="navigation" data-toggle-trigger="navigation">
+                            <svg>
+                                <use xlink:href="#icon-menu" />
+                            </svg><span>Menu</span></button>
+                    </div>
+
+                    <div class="CategoryPage-navigation" data-main-navigation data-toggle-item="navigation">
+                        <div class="CategoryPage-navigation-heading">
+                            <div class="CategoryPage-header-menuClose-bg">
+                                <button class="CategoryPage-header-menuClose" aria-label="Menu" aria-controls="navigation" data-toggle-trigger="navigation">
+                                    <svg>
+                                        <use xlink:href="#icon-close" />
+                                    </svg><span>Close</span></button>
+                            </div>
+
+                            <div class="CategoryPage-logo">
+
+                                <a href="https://www.aboutamazon.com" data-amzn-id="00000162-0242-d25e-a5ee-b6f6eb5e0000" data-cms-ai="0">
+                                    <img class="PageLogo-image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/logo-black.svg" alt="amazon-logo-rgb-wht.svg" width="165" />
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <nav class="Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                          
+        
+<h3 class="visually-hidden">Corporate Menu</h3>
+
+
+    
+
+
+              <ul class="Navigation-items">
+          
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.aboutamazon.com/sustainability" data-cms-ai="0">Sustainability</a>
+                </div>
+            </div>
+
+                  </li>
+      
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.aboutamazon.com/supporting-small-businesses" data-cms-ai="0">Supporting small business</a>
+                </div>
+            </div>
+
+                  </li>
+      
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.aboutamazon.com/job-creation-and-investment/" data-cms-ai="0">Job creation &amp; investment</a>
+                </div>
+            </div>
+
+                  </li>
+      
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.aboutamazon.com/working-at-amazon" data-cms-ai="0">Working at Amazon</a>
+                </div>
+            </div>
+
+                  </li>
+      
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.aboutamazon.com/our-communities" data-cms-ai="0">Our communities</a>
+                </div>
+            </div>
+
+                  </li>
+      
+          <li class="Navigation-items-item">
+            <div class="NavigationItem mood-color">
+
+                <div class="NavigationItem-text">
+
+                    <a class="NavigationItem-text-link mood-hover" href="https://www.amazon.science/" data-cms-ai="0">Innovation</a>
+                </div>
+            </div>
+
+                  </li>
+          </ul>
+  
+
+
+
+
+
+
+                          
+    <div id="block-gbdayonenav" class="block-content--nir-global-block block-content--nir-global-block--22161 block--block-content69e95814-2ea9-4f9a-9d47-722eccf5996f block--block-content69e95814-2ea9-4f9a-9d47-722eccf5996f--23311 block--dayone-navigation--block-content--69e95814-2ea9-4f9a-9d47-722eccf5996f block--dayone-navigation--block-content--69e95814-2ea9-4f9a-9d47-722eccf5996f--23311 block--c6663242-32b7-423d-8125-69b6f30791f4 block--c6663242-32b7-423d-8125-69b6f30791f4--23311 block block-block-content block-block-content69e95814-2ea9-4f9a-9d47-722eccf5996f">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><ul class="Navigation-itemsBelow"><li class="Navigation-itemsBelow-item">
+	<div class="NavigationItem mood-color">
+	<div class="NavigationItem-text"><a class="NavigationItem-text-link mood-hover" data-cms-ai="0" href="https://blog.aboutamazon.com/">Day One: The Amazon Blog</a></div>
+
+	<ul class="NavigationItem-items"><li class="NavigationItem-items-item">
+		<div class="NavigationSubnav">
+		<ul class="NavigationSubnav-items"><li class="NavigationSubnav-items-item">
+			<div class="NavigationSubnavItem">
+			<div class="NavigationSubnavItem-text"><a class="NavigationSubnavItem-text-link" data-cms-ai="0" href="https://blog.aboutamazon.com/working-at-amazon">Work Here</a></div>
+
+			<ul class="NavigationSubnavItem-items"><li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/amazon-campus">Amazon Campus</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/culture-and-diversity">Culture and Diversity </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/veterans">Veterans </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/working-at-amazon">Working at Amazon</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://www.amazon.jobs/?utm_source=amazonblog&amp;utm_medium=footerlink&amp;utm_campaign=footer">Amazon.jobs</a></li>
+			</ul></div>
+			</li>
+			<li class="NavigationSubnav-items-item">
+			<div class="NavigationSubnavItem">
+			<div class="NavigationSubnavItem-text"><a class="NavigationSubnavItem-text-link" data-cms-ai="0" href="https://blog.aboutamazon.com/working-at-amazon">Our Business</a></div>
+
+			<ul class="NavigationSubnavItem-items"><li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/amazon-prime">Amazon Prime</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/aws">AWS</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/devices">Devices </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/entertainment">Entertainment </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/innovation">Innovation</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/operations">Operations </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/transportation">Transportation</a></li>
+			</ul></div>
+			</li>
+			<li class="NavigationSubnav-items-item">
+			<div class="NavigationSubnavItem">
+			<div class="NavigationSubnavItem-text"><a class="NavigationSubnavItem-text-link" data-cms-ai="0" href="https://blog.aboutamazon.com/community">Our Communities </a></div>
+
+			<ul class="NavigationSubnavItem-items"><li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/community">Community </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/policy">Policy </a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://blog.aboutamazon.com/sustainability">Sustainability </a></li>
+			</ul></div>
+			</li>
+			<li class="NavigationSubnav-items-item">
+			<div class="NavigationSubnavItem">
+			<div class="NavigationSubnavItem-text"><a class="NavigationSubnavItem-text-link" data-cms-ai="0" href="https://www.blog.aboutamazon.com/">Amazon Blogs</a></div>
+
+			<ul class="NavigationSubnavItem-items"><li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://developer.amazon.com/blogs/alexa/" target="_blank">Alexa Developer Blog</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://developer.amazon.com/blogs" target="_blank">Amazon Developer Blog</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="http://www.amazonbusinessblog.com/" target="_blank">Amazon Business Blog</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://aws.amazon.com/blogs/aws/" target="_blank">AWS News Blog</a></li>
+				<li class="NavigationSubnavItem-items-item"><a class="NavigationLink" data-cms-ai="0" href="https://www.amazon.com/primeinsider" target="_blank">Prime Insider </a></li>
+			</ul></div>
+			</li>
+		</ul></div>
+		</li>
+	</ul></div>
+	</li>
+</ul></div>
+      
+</div>
+      
+  </div>
+
+
+
+
+                        </nav>
+
+                    </div>
+
+                    <div class="CategoryPage-logo">
+                      <span class="CategoryPage-logo-image">
+                        <a href="https://www.aboutamazon.com" data-amzn-id="00000162-0242-d25e-a5ee-b6f6eb5e0000" data-cms-ai="0">
+                          <img class="PageLogo-image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/logo.svg" alt="About Amazon logo" width="165"/>
+                        </a>
+                      </span>
+                      <span class="CategoryPage-logo-image-inverse">
+                        <a href="https://www.aboutamazon.com" data-amzn-id="00000162-0242-d25e-a5ee-b6f6eb5e0000" data-cms-ai="0">
+                            <img class="PageLogo-image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/logo-black.svg" alt="amazon-logo-rgb-wht.svg" width="165"/>
+                        </a>
+                      </span>
+                    </div>
+
+                </div>
+
+                <div class="CategoryPage-header-content">
+
+                    <div class="CategoryPage-search-wrapper" data-search-toggle>
+                        <button class="CategoryPage-search-toggle" data-toggle-trigger="search">
+                            <svg>
+                                <use xlink:href="#icon-search" />
+                            </svg><span>Open Search</span></button>
+                        <form class="CategoryPage-search" action="https://www.aboutamazon.com/search" novalidate="" autocomplete="off" data-toggle-item="search">
+
+                            <button type="submit" class="CategoryPage-searchButton">
+                                <svg>
+                                    <use xlink:href="#icon-search" />
+                                </svg><span>Search</span></button>
+
+                            <input type="text" class="CategoryPage-searchInput" placeholder="Search..." name="q">
+
+                            <button class="CategoryPage-search-close" data-toggle-trigger="search">
+                                <svg>
+                                    <use xlink:href="#icon-close" />
+                                </svg><span>Close Search</span></button>
+                        </form>
+                    </div>
+                    <button class="CategoryPage-header-backTop">Back To Top</button>
+                    <div class="CategoryPage-language" data-toggle-item="language">
+                        <button class="LanguagesMenu-toggle" data-toggle-trigger="language"><span>en</span></button>
+                        <div class="CategoryPage-language-dropdown">
+                            <div class="CategoryPage-language-dropdown-header" data-toggle-trigger="language">
+                                <button class="LanguagesMenu-toggle"><span>en</span></button>
+                                <div class="CategoryPage-language-dropdown-header-content">
+                                    <svg>
+                                        <use xlink:href="#icon-greater-than" />
+                                    </svg>
+                                    Visit a different Amazon site
+                                </div>
+                            </div>
+                            <div class="CategoryPage-language-dropdown-content">
+                              
+    <div id="block-gbothercountries" class="block-content--nir-global-block block-content--nir-global-block--22166 block--block-content60269457-480d-4cdb-b04a-e42077062cd7 block--block-content60269457-480d-4cdb-b04a-e42077062cd7--23311 block--other-countries--block-content--60269457-480d-4cdb-b04a-e42077062cd7 block--other-countries--block-content--60269457-480d-4cdb-b04a-e42077062cd7--23311 block--2f81ac3b-157d-453f-850b-64eaeed73462 block--2f81ac3b-157d-453f-850b-64eaeed73462--23311 block block-block-content block-block-content60269457-480d-4cdb-b04a-e42077062cd7">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="LanguagesMenu-dropdown-content">
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="eu" href="https://www.aboutamazon.eu/" target="">European Union</a>
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.eu/">English</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="fr" href="https://www.aboutamazon.fr" target="">France</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.fr">Français</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="de" href="https://www.aboutamazon.de/" target="">Germany (Deutschland)</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.de/">Deutsch</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="in" href="https://www.aboutamazon.in" target="">India </a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.in">English</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="it" href="https://www.aboutamazon.it" target="">Italy (Italia)</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.it">Italiano</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="es" href="https://www.aboutamazon.es" target="">Spain (España)</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.es">Español</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="uk" href="https://www.aboutamazon.co.uk/" target="">United Kingdom</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.co.uk/">English</a></div>
+</div>
+
+<div class="LanguagesMenu-dropdown-content-item"><a class="LanguagesMenuItem-link" data-cms-ai="0" data-flag="us" href="https://www.aboutamazon.com/" target="">United States</a>
+
+<div class="LanguagesMenuItem-languages"><a class="Link" data-cms-ai="0" href="https://www.aboutamazon.com/">English</a></div>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="ArticlePage-contentWrapper">
+
+    <main class="ArticlePage-main" data-statusbar-headline="Responsible sourcing" data-statusbar-headlinetext="Reading Now">
+
+        <article class="ArticlePage-mainContent" itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Article">
+
+            <div class="ArticlePage-lede">
+                <div class="ArticlePage-lede-content">
+                    <div class="ArticlePage-breadcrumbs">
+                      
+    <div id="block-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--23311 block--breadcrumbs--system-breadcrumb-block block--breadcrumbs--system-breadcrumb-block--23311 block--5d6b0702-256d-401d-b7e4-2d7af260664e block--5d6b0702-256d-401d-b7e4-2d7af260664e--23311 block block-system block-system-breadcrumb-block">
+  
+    
+      <div class="ArticlePage-breadcrumbs-item">
+  <a href="https://www.aboutamazon.com/"> About Amazon</a>
+  <span class="mood-fill">
+      <svg>
+          <use xlink:href="#icon-right-arrow"></use>
+      </svg>
+  </span>
+  <a href="/">Press Center</a>
+  <span class="mood-fill">
+      <svg>
+          <use xlink:href="#icon-right-arrow"></use>
+      </svg>
+  </span>
+          
+                                    <a href="/press-releases">
+              Press release archive
+            </a>
+        
+        <span class="mood-fill">
+            <svg>
+                <use xlink:href="#icon-right-arrow"></use>
+            </svg>
+        </span>
+            <a href="">AWS press releases</a>
+  <span class="mood-fill">
+      <svg>
+          <use xlink:href="#icon-right-arrow"></use>
+      </svg>
+  </span>
+</div>
+
+  </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="ArticlePage-content">
+
+                <div class="ArticlePage-articleBody articleBody" itemprop="articleBody">
+                  <section id="content">
+                      <div id="content-header">
+
+                          
+
+                      </div>
+
+
+                      <div class="row" id="ndq-content">
+                        <div class="column col-md-4 no-padding" >
+                          <nav class="NavigationSection" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                              
+    
+<h3>Press center</h3>
+
+
+    
+
+
+    
+          <ol class="ListOrdered-items">
+    
+            
+                  <li  class="ListOrdered-items-item current">
+        
+          <a class=""  href="/press-releases" data-cms-ai="0">Press release archive</a>
+
+                  </li>
+            
+                  <li  class="ListOrdered-items-item">
+        
+          <a class=""  href="/images-videos" data-cms-ai="0">Images and videos</a>
+
+                  </li>
+            
+                  <li  class="ListOrdered-items-item">
+        
+          <a class="external"  href="https://www.aboutamazon.com/" data-cms-ai="0">About Amazon</a>
+
+                  </li>
+            
+                  <li  class="ListOrdered-items-item">
+        
+          <a class="external"  href="https://www.blog.aboutamazon.com/" data-cms-ai="0">The Amazon blog</a>
+
+                  </li>
+            
+                  <li  class="ListOrdered-items-item">
+        
+          <a class=""  href="/contact-pr" data-cms-ai="0">Contact Amazon PR</a>
+
+                  </li>
+          </ul>
+  
+
+
+
+
+
+                          </nav>
+                          <div class="facets">
+                                                       </div>
+                        </div>
+                        <div class="col-md-8 ndq-23311">
+                          <h1 class="ArticlePage-headline" itemprop="headline">
+                                                            AWS press releases
+                                                      </h1>
+
+                          
+    <div id="block-nir-pid2497-websitenoticeblock" class="block--website-notice-block block--website-notice-block--23311 block--content--website-notice-block block--content--website-notice-block--23311 block--0f3f10b6-d05c-4976-9e1a-1b8300142464 block--0f3f10b6-d05c-4976-9e1a-1b8300142464--23311 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2497-content" class="block--system-main-block block--system-main-block--23311 block--content--system-main-block block--content--system-main-block--23311 block--76602d03-21a8-4b4f-ab47-03716b617044 block--76602d03-21a8-4b4f-ab47-03716b617044--23311 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              AWS press releases
+          </h1>
+    
+
+  <div>
+    
+<div class="panel-display boxton clearfix " >
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-news__widget block--nir-news__widget--23311 block--contentmain--nir-news__widget block--contentmain--nir-news__widget--23311 block--45456bf9-4322-46f3-bfbc-8519ef13468a block--45456bf9-4322-46f3-bfbc-8519ef13468a--23311 block block-nir-news block-nir-news__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/press-releases/aws" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-a3fa0922-year" id="edit-a3fa0922-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-a3fa0922-year-value js-form-item-a3fa0922-year-value">
+      <label for="edit-a3fa0922-year-value">Year</label>
+        <select data-drupal-selector="edit-a3fa0922-year-value" id="edit-a3fa0922-year-value" name="a3fa0922_year[value]" class="form-select"><option value="_none">None</option><option value="2020" selected="selected">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-a3fa0922-widget-id" type="hidden" name="a3fa0922_widget_id" value="a3fa0922" />
+<input autocomplete="off" data-drupal-selector="form-2j2f9hu-bq3aavrdi2h7vfe44aiprabyntleri-ptwc" type="hidden" name="form_build_id" value="form-2j2F9hu-BQ3aAVRDI2H7Vfe44aIpraBYntlerI-pTWc" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      March 31, 2020
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/aws-announces-general-availability-amazon-detective" hreflang="en">AWS Announces General Availability of Amazon Detective</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      February 17, 2020
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/3m-selects-aws-its-preferred-cloud-provider-enterprise-it" hreflang="en">3M Selects AWS as Its Preferred Cloud Provider for Enterprise IT</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      February 14, 2020
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/second-spectrum-selects-aws-its-preferred-cloud-machine-learning" hreflang="en">Second Spectrum Selects AWS as its Preferred Cloud, Machine Learning, Artificial Intelligence, and Media Services Provider</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      February 5, 2020
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/carrier-selects-aws-its-preferred-cloud-provider-drive-digital" hreflang="en">Carrier Selects AWS as its Preferred Cloud Provider to Drive Digital Transformation</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      January 13, 2020
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/bundesliga-goes-all-aws-revolutionize-football-viewing" hreflang="en">Bundesliga Goes All-In on AWS to Revolutionize Football Viewing Experience</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+
+
+
+                        </div>
+
+                  </div><!--- end row --->
+
+
+                  </section>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+
+      <div class="ArticlePage-stickyEnd" data-sticky-end=""></div>
+              </div>
+
+  <!-- footer starts here -->
+<footer class="CategoryPage-footer" itemscope itemtype="https://schema.org/WPFooter">
+    <div class="CategoryPage-footer-contentWrapper">
+        <div class="CategoryPage-footer-topRow">
+
+            <div class="CategoryPage-logo">
+                <div class="CategoryPage-logo-image">
+
+                    <a href="https://www.aboutamazon.com" data-amzn-id="00000162-0242-d25e-a5ee-b6f6eb5e0000" data-cms-ai="0">
+                        <img class="PageLogo-image" src="/sites/g/files/knoqqb37121/themes/site/nir_pid2497/styleguide/media/logo.svg" alt="About Amazon logo" width="165" />
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="CategoryPage-social">
+                <div class="SocialBar">
+                  
+        
+<h3 class="visually-hidden">Social Links</h3>
+
+
+            <ul class="SocialBar-items">
+      
+        <li class="SocialBar-items-item">
+          <a class="SocialLink" href='https://www.facebook.com/Amazon/' target="_blank" data-social-service="facebook" data-cms-ai="0">
+            <svg>
+                <use xlink:href="#icon-facebook" />
+            </svg>
+          </a>
+                    </li>
+
+      
+        <li class="SocialBar-items-item">
+          <a class="SocialLink" href='https://www.instagram.com/insideamazon/' target="_blank" data-social-service="instagram" data-cms-ai="0">
+            <svg>
+                <use xlink:href="#icon-instagram" />
+            </svg>
+          </a>
+                    </li>
+
+      
+        <li class="SocialBar-items-item">
+          <a class="SocialLink" href='https://www.linkedin.com/company/1586/' target="_blank" data-social-service="linkedin" data-cms-ai="0">
+            <svg>
+                <use xlink:href="#icon-linkedin" />
+            </svg>
+          </a>
+                    </li>
+
+      
+        <li class="SocialBar-items-item">
+          <a class="SocialLink" href='https://twitter.com/amazonnews' target="_blank" data-social-service="twitter" data-cms-ai="0">
+            <svg>
+                <use xlink:href="#icon-twitter" />
+            </svg>
+          </a>
+                    </li>
+
+      
+        <li class="SocialBar-items-item">
+          <a class="SocialLink" href='https://www.youtube.com/amazonnews' target="_blank" data-social-service="youtube" data-cms-ai="0">
+            <svg>
+                <use xlink:href="#icon-youtube" />
+            </svg>
+          </a>
+                    </li>
+
+      
+  
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="CategoryPage-footerContent">
+
+                <a class="PromoTextItem" href="https://www.amazon.com" target="" data-amzn-id="00000162-2c06-dfbd-af6f-2f466b680001" data-cms-ai="0">
+                    <span class="PromoTextItem-title">Shop Amazon.com</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="CategoryPage-gateway">
+            <a href="http://www.amazon.com" target="_blank" data-cms-ai="0">Back to Amazon</a>
+            <div class="CategoryPage-gateway-dropdown">
+                <span class="CategoryPage-gateway-dropdown-first" data-flag="us">us</span>
+                <div class="CategoryPage-gateway-dropdown-content">
+                    <hr class="mood-bgcolor"></hr>
+                    <div class="CategoryPage-gateway-dropdown-content-items">
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="au" href="http://www.amazon.com.au" target="_blank" data-cms-ai="0">au</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="br" href="http://www.amazon.com.br" target="_blank" data-cms-ai="0">br</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="ca" href="http://www.amazon.ca" target="_blank" data-cms-ai="0">ca</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="cn" href="http://www.amazon.cn" target="_blank" data-cms-ai="0">cn</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="de" href="http://www.amazon.de" target="_blank" data-cms-ai="0">de</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="fr" href="http://www.amazon.fr" target="_blank" data-cms-ai="0">fr</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="in" href="http://www.amazon.in" target="_blank" data-cms-ai="0">in</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="it" href="http://www.amazon.it" target="_blank" data-cms-ai="0">it</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="jp" href="http://www.amazon.co.jp" target="_blank" data-cms-ai="0">jp</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="mx" href="http://www.amazon.com.mx" target="_blank" data-cms-ai="0">mx</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="nl" href="http://www.amazon.nl" target="_blank" data-cms-ai="0">nl</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="es" href="http://www.amazon.es" target="_blank" data-cms-ai="0">es</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="uk" href="http://www.amazon.co.uk" target="_blank" data-cms-ai="0">uk</a></div>
+                        <div class="CategoryPage-gateway-dropdown-content-item"><a class="LinkGateway" data-flag="us" href="http://www.amazon.com" target="_blank" data-cms-ai="0">us</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="CategoryPage-footerNavigation">
+          
+        
+<h3 class="visually-hidden">Footer Navigation</h3>
+
+
+            
+    
+              
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://www.aboutamazon.com/supporting-small-businesses">SUPPORTING SMALL BUSINESS</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/supporting-small-businesses" target="" rel="">How we support small businesses</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/supporting-small-businesses/small-business-impact-report" target="" rel="">Small business impact report</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/supporting-small-businesses/success-stories" target="" rel="">Success stories</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.amazon.com/b?node=17395088011&amp;ref=azussoa_shorturl_insights&amp;ld=AZUSSOA-shorturl-insights" target="" rel="">Advice for small business owners</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://www.aboutamazon.com/job-creation-and-investment">JOB CREATION &amp; INVESTMENT</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/job-creation-and-investment" target="" rel="">Explore job creation and investment</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://www.aboutamazon.com/working-at-amazon">WORKING AT AMAZON</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/working-at-amazon" target="" rel="">Explore working at Amazon</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/working-at-amazon/amazon-offices" target="" rel="">Amazon offices</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/working-at-amazon/get-to-know-us" target="" rel="">Get to know us</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/working-at-amazon/opportunities-for-veterans" target="" rel="">Opportunities for veterans</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/working-at-amazon/our-culture" target="" rel="">Our culture</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.amazon.jobs/" target="" rel="">Jobs</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://www.aboutamazon.com/our-communities">OUR COMMUNITIES</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/our-communities" target="" rel="">Our communities</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://sustainability.aboutamazon.com/">SUSTAINABILITY</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://sustainability.aboutamazon.com/" target="" rel="">Explore sustainability</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/sustainability/packaging" target="" rel="">Packaging</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.amazon.com/sustainabilityquestionbank" target="" rel="">Sustainability Question Bank</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  <a href="https://www.amazon.science/">INNOVATION</a>
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://www.amazon.science/" target="" rel="">Our innovations</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+        
+                      <div class="ListFooter">
+              <div class="ListFooter-title">
+                                  Our Company
+                              </div>
+          
+                                        <ul class="ListFooter-items">
+    
+              
+                        <li class="ListFooter-items-item"><a href="https://ir.aboutamazon.com/" target="" rel="">Investors</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://press.aboutamazon.com/" target="" rel="">Press center</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.seattlespheres.com/" target="" rel="">The Spheres</a></li>
+          
+            
+            
+        
+                        <li class="ListFooter-items-item"><a href="https://www.aboutamazon.com/our-company/select-awards-and-recognition" target="" rel="">Select awards and recognition</a></li>
+          
+            
+            
+              
+    </ul>
+
+  
+            
+                          </div>
+            
+              
+    </ul>
+
+  
+
+
+
+
+
+        </div>
+        <div class="CategoryPage-disclaimer">
+          
+        
+<h3 class="visually-hidden">Footer</h3>
+
+
+        
+              <a href="http://www.amazon.com/" target="_blank" data-cms-ai="0">Amazon.com</a>
+
+          
+              <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=508088" target="_blank" data-cms-ai="0">Conditions of Use</a>
+
+          
+      
+  
+
+
+
+
+
+          &copy; 1996-2020 Amazon.com, Inc. - Press Room or its affiliates
+        </div>
+
+    </div>
+</footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb689";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/23311","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"classy\/node,core\/drupal.collapse,core\/html5shiv,nir_base\/adobe_omniture,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid2497\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2497","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"afa7826996c406e5d6eb1284b3f36251f7864880be1dc9838501d065cd72ce93"}}</script>
+<script src="/sites/g/files/knoqqb37121/files/js/js_SGwqJLZTLcz6RHLPQXwzpjIYd1RIKWJ3ArXvOFZwDCI.js"></script>
+
+    <script type="text/javascript">
+/*<![CDATA[*/
+(function() {
+var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+sz.src = '//siteimproveanalytics.com/js/siteanalyze_6029594.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+})();
+/*]]>*/
+</script>
+
+<script id="parsely-cfg" src="//cdn.parsely.com/keys/press.aboutamazon.com/p.js"></script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"761e715901","applicationID":"87675502,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGl2ChNQaXZXQg5sd19HWCcUXFlUXUJODkNVW1EAE2VZUVtVC19dVFBHIw5HWHFbRApfXw==","queueTime":0,"applicationTime":554,"atts":"ShJUF18aSEg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

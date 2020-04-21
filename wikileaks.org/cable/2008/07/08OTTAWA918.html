@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/cg.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 08OTTAWA918_a</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+<div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+		<p>This key's fingerprint is A04C 5E09 ED02 B328 03EB  6116 93ED 732E 9231 8DBA</p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQNBFUoCGgBIADFLp+QonWyK8L6SPsNrnhwgfCxCk6OUHRIHReAsgAUXegpfg0b
+rsoHbeI5W9s5to/MUGwULHj59M6AvT+DS5rmrThgrND8Dt0dO+XW88bmTXHsFg9K
+jgf1wUpTLq73iWnSBo1m1Z14BmvkROG6M7+vQneCXBFOyFZxWdUSQ15vdzjr4yPR
+oMZjxCIFxe+QL+pNpkXd/St2b6UxiKB9HT9CXaezXrjbRgIzCeV6a5TFfcnhncpO
+ve59rGK3/az7cmjd6cOFo1Iw0J63TGBxDmDTZ0H3ecQvwDnzQSbgepiqbx4VoNmH
+OxpInVNv3AAluIJqN7RbPeWrkohh3EQ1j+lnYGMhBktX0gAyyYSrkAEKmaP6Kk4j
+/ZNkniw5iqMBY+v/yKW4LCmtLfe32kYs5OdreUpSv5zWvgL9sZ+4962YNKtnaBK3
+1hztlJ+xwhqalOCeUYgc0Clbkw+sgqFVnmw5lP4/fQNGxqCO7Tdy6pswmBZlOkmH
+XXfti6hasVCjT1MhemI7KwOmz/KzZqRlzgg5ibCzftt2GBcV3a1+i357YB5/3wXE
+j0vkd+SzFioqdq5Ppr+//IK3WX0jzWS3N5Lxw31q8fqfWZyKJPFbAvHlJ5ez7wKA
+1iS9krDfnysv0BUHf8elizydmsrPWN944Flw1tOFjW46j4uAxSbRBp284wiFmV8N
+TeQjBI8Ku8NtRDleriV3djATCg2SSNsDhNxSlOnPTM5U1bmh+Ehk8eHE3hgn9lRp
+2kkpwafD9pXaqNWJMpD4Amk60L3N+yUrbFWERwncrk3DpGmdzge/tl/UBldPoOeK
+p3shjXMdpSIqlwlB47Xdml3Cd8HkUz8r05xqJ4DutzT00ouP49W4jqjWU9bTuM48
+LRhrOpjvp5uPu0aIyt4BZgpce5QGLwXONTRX+bsTyEFEN3EO6XLeLFJb2jhddj7O
+DmluDPN9aj639E4vjGZ90Vpz4HpN7JULSzsnk+ZkEf2XnliRody3SwqyREjrEBui
+9ktbd0hAeahKuwia0zHyo5+1BjXt3UHiM5fQN93GB0hkXaKUarZ99d7XciTzFtye
+/MWToGTYJq9bM/qWAGO1RmYgNr+gSF/fQBzHeSbRN5tbJKz6oG4NuGCRJGB2aeXW
+TIp/VdouS5I9jFLapzaQUvtdmpaeslIos7gY6TZxWO06Q7AaINgr+SBUvvrff/Nl
+l2PRPYYye35MDs0b+mI5IXpjUuBC+s59gI6YlPqOHXkKFNbI3VxuYB0VJJIrGqIu
+Fv2CXwy5HvR3eIOZ2jLAfsHmTEJhriPJ1sUG0qlfNOQGMIGw9jSiy/iQde1u3ZoF
+so7sXlmBLck9zRMEWRJoI/mgCDEpWqLX7hTTABEBAAG0x1dpa2lMZWFrcyBFZGl0
+b3JpYWwgT2ZmaWNlIEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKFlv
+dSBjYW4gY29udGFjdCBXaWtpTGVha3MgYXQgaHR0cDovL3dsY2hhdGMzcGp3cGxp
+NXIub25pb24gYW5kIGh0dHBzOi8vd2lraWxlYWtzLm9yZy90YWxrKSA8Y29udGFj
+dC11cy11c2luZy1vdXItY2hhdC1zeXN0ZW1Ad2lraWxlYWtzLm9yZz6JBD0EEwEK
+ACcCGwMFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AFAlb6cdIFCQOznOoACgkQk+1z
+LpIxjbrlqh/7B2yBrryWhQMGFj+xr9TIj32vgUIMohq94XYqAjOnYdEGhb5u5B5p
+BNowcqdFB1SOEvX7MhxGAqYocMT7zz2AkG3kpf9f7gOAG7qA1sRiB+R7mZtUr9Kv
+fQSsRFPb6RNzqqB9I9wPNGhBh1YWusUPluLINwbjTMnHXeL96HgdLT+fIBa8ROmn
+0fjJVoWYHG8QtsKiZ+lo2m/J4HyuJanAYPgL6isSu/1bBSwhEIehlQIfXZuS3j35
+12SsO1Zj2BBdgUIrADdMAMLneTs7oc1/PwxWYQ4OTdkay2deg1g/N6YqM2N7rn1W
+7A6tmuH7dfMlhcqw8bf5veyag3RpKHGcm7utDB6k/bMBDMnKazUnM2VQoi1mutHj
+kTCWn/vF1RVz3XbcPH94gbKxcuBi8cjXmSWNZxEBsbirj/CNmsM32Ikm+WIhBvi3
+1mWvcArC3JSUon8RRXype4ESpwEQZd6zsrbhgH4UqF56pcFT2ubnqKu4wtgOECsw
+K0dHyNEiOM1lL919wWDXH9tuQXWTzGsUznktw0cJbBVY1dGxVtGZJDPqEGatvmiR
+o+UmLKWyxTScBm5o3zRm3iyU10d4gka0dxsSQMl1BRD3G6b+NvnBEsV/+KCjxqLU
+vhDNup1AsJ1OhyqPydj5uyiWZCxlXWQPk4p5WWrGZdBDduxiZ2FTj17hu8S4a5A4
+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
+J3x7gtxUMkTadELqwY6hrU8=
+=BLTH
+-----END PGP PUBLIC KEY BLOCK-----
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+                        <div class="onion-url">http://rpzgejae7cxxst5vysqsijblti4duzn3kjsmn43ddi2l3jblhk4a44id.onion (<a href="https://wikileaks.org/verify-upload-address.txt">Verify</a>)</div>
+			<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face support-link" href="https://wikileaks.shop/" target="_blank">Shop</a>
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">COUNSELOR, CSIS DIRECTOR DISCUSS CT THREATS, PAKISTAN, AFGHANISTAN, IRAN</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 2008 July 9, 18:49 (Wednesday)">2008 July 9, 18:49 (Wednesday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 08OTTAWA918_a">08OTTAWA918_a</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" SECRET,NOFORN">SECRET,NOFORN</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" SECRET,NOFORN">SECRET,NOFORN</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- Not Assigned -- (251287 documents)">-- Not Assigned --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 8587">8587</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ONLINE (1885254 documents)">TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" AF - Afghanistan | CA - Canada | IR - Iran | MOPS - Military and Defense Affairs--Military Operations | PK - Pakistan | PREL - Political Affairs--External Political Relations | PTER - Political Affairs--Terrorists and Terrorism"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=AF#result" title="AF Afghanistan (18740 documents)" >AF<span style="color: #216B7C;"> - Afghanistan</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CA#result" title="CA Canada (41623 documents)" >CA<span style="color: #216B7C;"> - Canada</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=IR#result" title="IR Iran (39924 documents)" >IR<span style="color: #216B7C;"> - Iran</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=MOPS#result" title="MOPS Military and Defense Affairs: Military Operations (28821 documents)" >MOPS<span style="color: #216B7C;"> - Military and Defense Affairs--Military Operations</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PK#result" title="PK Pakistan (26991 documents)" >PK<span style="color: #216B7C;"> - Pakistan</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PREL#result" title="PREL Political Affairs: External Political Relations (149906 documents)" >PREL<span style="color: #216B7C;"> - Political Affairs--External Political Relations</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PTER#result" title="PTER Political Affairs: Terrorists and Terrorism (28839 documents)" >PTER<span style="color: #216B7C;"> - Political Affairs--Terrorists and Terrorism</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" -- Not Assigned --"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=--+Not+Assigned+--#result" title="-- Not Assigned -- (251287 documents)">-- Not Assigned --</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" -- N/A or Blank -- (1411046 documents)">-- N/A or Blank --</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" -- Not Assigned -- (251288 documents)">-- Not Assigned --</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" Canada Ottawa (17336 documents)"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=Canada%23%23Ottawa#result" title="Canada Ottawa (17336 documents)">Canada Ottawa</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Afghanistan Kabul  | Canada All Canada Posts  | Central Intelligence Agency   | Defense Intelligence Agency   | Department of Defense   | Department of Homeland Security   | Joint Chiefs of Staff   | National Security Council   | Pakistan Islamabad  | Pakistan Peshawar  | RHMFISS CDR USCENTCOM   | RHMFISS HQ USNORTHCOM   | Secretary of State "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Afghanistan%23%23Kabul#result" title="Afghanistan Kabul (15012 documents)">Afghanistan Kabul</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Canada%23%23All Canada Posts#result" title="Canada All Canada Posts (1000 documents)">Canada All Canada Posts</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Central Intelligence Agency#result" title="Central Intelligence Agency  (49267 documents)">Central Intelligence Agency </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Defense Intelligence Agency#result" title="Defense Intelligence Agency  (43356 documents)">Defense Intelligence Agency </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of Defense#result" title="Department of Defense  (21276 documents)">Department of Defense </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of Homeland Security#result" title="Department of Homeland Security  (4390 documents)">Department of Homeland Security </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Joint Chiefs of Staff#result" title="Joint Chiefs of Staff  (33780 documents)">Joint Chiefs of Staff </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=National Security Council#result" title="National Security Council  (59709 documents)">National Security Council </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Pakistan%23%23Islamabad#result" title="Pakistan Islamabad (25881 documents)">Pakistan Islamabad</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Pakistan%23%23Peshawar#result" title="Pakistan Peshawar (3628 documents)">Pakistan Peshawar</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=RHMFISS CDR USCENTCOM#result" title="RHMFISS CDR USCENTCOM  (25 documents)">RHMFISS CDR USCENTCOM </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=RHMFISS HQ USNORTHCOM#result" title="RHMFISS HQ USNORTHCOM  (162 documents)">RHMFISS HQ USNORTHCOM </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of State#result" title="Secretary of State  (1328443 documents)">Secretary of State </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">S E C R E T SECTION 01 OF 03 OTTAWA 000918 
+ 
+C O R R E C T E D COPY//SUBJECT LINE////////////////////////////////// 
+ 
+NOFORN 
+SIPDIS 
+ 
+E.O. 12958: DECL: 07/09/2018 
+TAGS: PREL, PTER, MOPS, IR, PK, AF, CA 
+SUBJECT: COUNSELOR, CSIS DIRECTOR DISCUSS CT THREATS, 
+PAKISTAN, AFGHANISTAN, IRAN 
+ 
+REF: A. OTTAWA 360 </div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">     B. OTTAWA 808 
+     C. OTTAWA 850 
+     D. OTTAWA 878 
+ 
+OTTAWA 00000918  001.2 OF 003 
+ 
+ 
+Classified By: PolMinCouns Scott Bellard, reasons, 1.4 (b) and (d). 
+ 
+1.  (S/NF) Summary.  Canadian Security Intelligence Service 
+(CSIS) Director Judd discussed domestic and foreign terror 
+threats with Counselor of the State Department Cohen in 
+Ottawa on July 2.  Judd admitted that CSIS was increasingly 
+distracted from its mission by legal challenges that could 
+endanger foreign intelligence-sharing with Canadian agencies. 
+ He predicted that the upcoming release of a DVD of 
+Guantanamo detainee and Canadian citizen Omar Khadr's 
+interrogation by Canadian officials would lead to heightened 
+pressure on the government to press for his return to Canada, 
+which the government would continue to resist.  Judd shared 
+Dr. Cohen's negative assessment of current political, 
+economic, and security trends in Pakistan, and was worried 
+about what it would mean for the ISAF mission in Afghanistan. 
+ Canada has begun formulating an inter-agency Pakistan 
+strategy, and CSIS had agreed to open a channel to Iran's 
+intelligence service which Judd has not yet &quot;figured out.&quot; 
+(Septel will cover Dr. Cohen's discussions regarding Pakistan 
+and the OEF and ISAF missions in Afghanistan.) End summary. 
+ 
+2.  (S/NF) Counselor of the Department of State Eliot Cohen 
+and CSIS Director Jim Judd in Ottawa on July 2 discussed 
+threats posed by violent Islamist groups in Canada, and 
+recent developments in Pakistan and Afghanistan.  (CSIS is 
+Canada's lead agency for national security intelligence.) 
+Director Judd ascribed an &quot;Alice in Wonderland&quot; worldview to 
+Canadians and their courts, whose judges have tied CSIS &quot;in 
+knots,&quot; making it ever more difficult to detect and prevent 
+terror attacks in Canada and abroad.  The situation, he 
+commented, left government security agencies on the defensive 
+and losing public support for their effort to protect Canada 
+and its allies. 
+ 
+Legal Wrangling Risks Chill Effect 
+---------------------------------- 
+ 
+3.  (S/NF) Responding to Dr. Cohen's query, Judd said CSIS 
+had responded to recent, non-specific intelligence on 
+possible terror operations by &quot;vigorously harassing&quot; known 
+Hezbollah members in Canada.  According to Judd, CSIS' 
+current assessment is that no attack is &quot;in the offing&quot; in 
+Canada.  He noted, however, that Hezbollah members, and their 
+lawyers, were considering new avenues of litigation resulting 
+from recent court rulings that, Judd complained, had 
+inappropriately treated intelligence agencies like law 
+enforcement bodies (refs A and C).  The Director observed 
+that CSIS was &quot;sinking deeper and deeper into judicial 
+processes,&quot; making Legal Affairs the fastest growing division 
+of his organization.  Indeed, he added, legal challenges were 
+becoming a &quot;distraction&quot; that could have a major &quot;chill 
+effect&quot; on intelligence officials. 
+ 
+4.  (S/NF) Judd derided recent judgments in Canada's courts 
+that threaten to undermine foreign government intelligence- 
+Qthat threaten to undermine foreign government intelligence- 
+and information-sharing with Canada.  These judgments posit 
+that Canadian authorities cannot use information that &quot;may 
+have been&quot; derived from torture, and that any Canadian public 
+official who conveys such information may be subject to 
+criminal prosecution.  This, he commented, put the government 
+in a reverse-onus situation whereby it would have to &quot;prove&quot; 
+the innocence of partner nations in the face of assumed 
+wrongdoing. 
+ 
+5.  (S/NF) Judd credited Prime Minister Stephen Harper's 
+minority Conservative government for &quot;taking it on the chin 
+and pressing ahead&quot; with common sense measures despite court 
+challenges and political knocks from the opposition and 
+interest groups.  When asked to look to the future, Judd 
+predicted that Canada would soon implement UK-like legal 
+procedures that make intelligence available to &quot;vetted 
+defense lawyers who see everything the judge sees.&quot; 
+ 
+ 
+OTTAWA 00000918  002.2 OF 003 
+ 
+ 
+Terror Cases and Communities Present Mixed Pictures 
+--------------------------------------------- ------ 
+ 
+6.  (C/NF) Judd commented that cherry-picked sections of the 
+court-ordered release of a DVD of Guantanamo detainee and 
+Canadian citizen Omar Khadr (ref D) would likely show three 
+(Canadian) adults interrogating a kid who breaks down in 
+tears.  He observed that the images would no doubt trigger 
+&quot;knee-jerk anti-Americanism&quot; and &quot;paroxysms of moral outrage, 
+a Canadian specialty,&quot; as well as lead to a new round of 
+heightened pressure on the government to press for Khadr's 
+return to Canada.  He predicted that PM Harper's government 
+would nonetheless continue to resist this pressure. 
+7.  (C) The Director mentioned other major cases that also 
+presented CSIS with major legal headaches due to the use of 
+intelligence products in their development: Momin Khawaja has 
+been on trial for his role in an Al Qaeda UK bomb plot since 
+June 23 in the first major test of Canada's 2001 
+Anti-Terrorism Act, and Canada's ability to protect 
+intelligence supplied by foreign government sources (ref D); 
+the trial of the first of the home-grown Toronto 11 (down 
+from 18) terror plotters, which is also now underway; and, 
+the prosecution of Global Islamic Media Front propagandist 
+Said Namouh, who was arrested in Quebec in 2007 for 
+conspiring to conduct bombings in Austria and Germany. 
+ 
+8.  (C) Judd said he viewed Khawaja and his &quot;ilk&quot; as 
+outliers, due in part to the fact that Canada's ethnic 
+Pakistani community is unlike its ghettoized and poorly 
+educated UK counterpart.  It is largely made up of traders, 
+lawyers, doctors, engineers, and others who see promise for 
+themselves and their children in North America, he observed, 
+so its members are unlikely to engage in domestic terror 
+plots.  He said that therefore CSIS main domestic focus is 
+instead on fundraising and procurement, as well as the 
+recruitment of a small number of Canadian &quot;wannabes&quot; of 
+Pakistani origin for mostly overseas operations. 
+ 
+Pakistan and Afghanistan 
+------------------------ 
+ 
+9.  (C) Turning to Pakistan, Counselor Cohen briefed his 
+recent trip to Islamabad and Peshawar, noting his alarm at 
+the degrading economic, political, and security situation 
+there, and its implications for Pakistan, Afghan, and 
+regional stability.  Judd responded that Dr. Cohen's sober 
+assessment tracked with CSIS' own view of Pakistan, and that 
+&quot;it is hard to see a good outcome there&quot; due to that 
+country's political, economic, and security failures, on top 
+of fast-rising oil and food prices.  Canada does not have an 
+explicit strategy for Pakistan, Judd said, but Privy Council 
+Deputy Secretary David Mulroney (who leads the interagency on 
+Afghanistan) now has the lead on developing one (septel). 
+Dr. Cohen remarked, and Judd agreed, that it would be 
+necessary to avoid approaching Pakistan as simply an adjunct 
+to the ISAF and OEF missions in Afghanistan. 
+ 
+10.  (S/NF) CSIS is far from being &quot;high-five mode&quot; on 
+Q10.  (S/NF) CSIS is far from being &quot;high-five mode&quot; on 
+Afghanistan, Judd asserted, due in part to Karzai's weak 
+leadership, widespread corruption, the lack of will to press 
+ahead on counter-narcotics, limited Afghan security force 
+capability (particularly the police) and, most recently, the 
+Sarpoza prison break.  He commented that CSIS had seen 
+Sarpoza coming, and its link to the Quetta Shura in Pakistan, 
+but could not get a handle on the timing. 
+ 
+Iranian Outreach 
+---------------- 
+ 
+11.  (S/NF) Judd added that he and his colleagues are &quot;very, 
+very worried&quot; about Iran.  CSIS recently talked to Iran's 
+Ministry of Intelligence and Security (MOIS) after that 
+agency requested its own channel of communication to Canada, 
+he said.  The Iranians agreed to &quot;help&quot; on Afghan issues, 
+including sharing information regarding potential attacks. 
+However, &quot;we have not figured out what they are up to,&quot; Judd 
+confided, since it is clear that the &quot;Iranians want ISAF to 
+bleed...slowly.&quot; 
+ 
+ 
+OTTAWA 00000918  003.2 OF 003 
+ 
+ 
+12.  (U)  Dr. Cohen has cleared this message. 
+ 
+Visit Canada,s Economy and Environment Forum at 
+http://www.intelink.gov/communities/state/can ada 
+ 
+WILKINS 
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">S E C R E T SECTION 01 OF 03 OTTAWA 000918 
+ 
+C O R R E C T E D COPY//SUBJECT LINE////////////////////////////////// 
+ 
+NOFORN 
+SIPDIS 
+ 
+E.O. 12958: DECL: 07/09/2018 
+TAGS: PREL, PTER, MOPS, IR, PK, AF, CA 
+SUBJECT: COUNSELOR, CSIS DIRECTOR DISCUSS CT THREATS, 
+PAKISTAN, AFGHANISTAN, IRAN 
+ 
+REF: A. OTTAWA 360 
+     B. OTTAWA 808 
+     C. OTTAWA 850 
+     D. OTTAWA 878 
+ 
+OTTAWA 00000918  001.2 OF 003 
+ 
+ 
+Classified By: PolMinCouns Scott Bellard, reasons, 1.4 (b) and (d). 
+ 
+1.  (S/NF) Summary.  Canadian Security Intelligence Service 
+(CSIS) Director Judd discussed domestic and foreign terror 
+threats with Counselor of the State Department Cohen in 
+Ottawa on July 2.  Judd admitted that CSIS was increasingly 
+distracted from its mission by legal challenges that could 
+endanger foreign intelligence-sharing with Canadian agencies. 
+ He predicted that the upcoming release of a DVD of 
+Guantanamo detainee and Canadian citizen Omar Khadr's 
+interrogation by Canadian officials would lead to heightened 
+pressure on the government to press for his return to Canada, 
+which the government would continue to resist.  Judd shared 
+Dr. Cohen's negative assessment of current political, 
+economic, and security trends in Pakistan, and was worried 
+about what it would mean for the ISAF mission in Afghanistan. 
+ Canada has begun formulating an inter-agency Pakistan 
+strategy, and CSIS had agreed to open a channel to Iran's 
+intelligence service which Judd has not yet &quot;figured out.&quot; 
+(Septel will cover Dr. Cohen's discussions regarding Pakistan 
+and the OEF and ISAF missions in Afghanistan.) End summary. 
+ 
+2.  (S/NF) Counselor of the Department of State Eliot Cohen 
+and CSIS Director Jim Judd in Ottawa on July 2 discussed 
+threats posed by violent Islamist groups in Canada, and 
+recent developments in Pakistan and Afghanistan.  (CSIS is 
+Canada's lead agency for national security intelligence.) 
+Director Judd ascribed an &quot;Alice in Wonderland&quot; worldview to 
+Canadians and their courts, whose judges have tied CSIS &quot;in 
+knots,&quot; making it ever more difficult to detect and prevent 
+terror attacks in Canada and abroad.  The situation, he 
+commented, left government security agencies on the defensive 
+and losing public support for their effort to protect Canada 
+and its allies. 
+ 
+Legal Wrangling Risks Chill Effect 
+---------------------------------- 
+ 
+3.  (S/NF) Responding to Dr. Cohen's query, Judd said CSIS 
+had responded to recent, non-specific intelligence on 
+possible terror operations by &quot;vigorously harassing&quot; known 
+Hezbollah members in Canada.  According to Judd, CSIS' 
+current assessment is that no attack is &quot;in the offing&quot; in 
+Canada.  He noted, however, that Hezbollah members, and their 
+lawyers, were considering new avenues of litigation resulting 
+from recent court rulings that, Judd complained, had 
+inappropriately treated intelligence agencies like law 
+enforcement bodies (refs A and C).  The Director observed 
+that CSIS was &quot;sinking deeper and deeper into judicial 
+processes,&quot; making Legal Affairs the fastest growing division 
+of his organization.  Indeed, he added, legal challenges were 
+becoming a &quot;distraction&quot; that could have a major &quot;chill 
+effect&quot; on intelligence officials. 
+ 
+4.  (S/NF) Judd derided recent judgments in Canada's courts 
+that threaten to undermine foreign government intelligence- 
+Qthat threaten to undermine foreign government intelligence- 
+and information-sharing with Canada.  These judgments posit 
+that Canadian authorities cannot use information that &quot;may 
+have been&quot; derived from torture, and that any Canadian public 
+official who conveys such information may be subject to 
+criminal prosecution.  This, he commented, put the government 
+in a reverse-onus situation whereby it would have to &quot;prove&quot; 
+the innocence of partner nations in the face of assumed 
+wrongdoing. 
+ 
+5.  (S/NF) Judd credited Prime Minister Stephen Harper's 
+minority Conservative government for &quot;taking it on the chin 
+and pressing ahead&quot; with common sense measures despite court 
+challenges and political knocks from the opposition and 
+interest groups.  When asked to look to the future, Judd 
+predicted that Canada would soon implement UK-like legal 
+procedures that make intelligence available to &quot;vetted 
+defense lawyers who see everything the judge sees.&quot; 
+ 
+ 
+OTTAWA 00000918  002.2 OF 003 
+ 
+ 
+Terror Cases and Communities Present Mixed Pictures 
+--------------------------------------------- ------ 
+ 
+6.  (C/NF) Judd commented that cherry-picked sections of the 
+court-ordered release of a DVD of Guantanamo detainee and 
+Canadian citizen Omar Khadr (ref D) would likely show three 
+(Canadian) adults interrogating a kid who breaks down in 
+tears.  He observed that the images would no doubt trigger 
+&quot;knee-jerk anti-Americanism&quot; and &quot;paroxysms of moral outrage, 
+a Canadian specialty,&quot; as well as lead to a new round of 
+heightened pressure on the government to press for Khadr's 
+return to Canada.  He predicted that PM Harper's government 
+would nonetheless continue to resist this pressure. 
+7.  (C) The Director mentioned other major cases that also 
+presented CSIS with major legal headaches due to the use of 
+intelligence products in their development: Momin Khawaja has 
+been on trial for his role in an Al Qaeda UK bomb plot since 
+June 23 in the first major test of Canada's 2001 
+Anti-Terrorism Act, and Canada's ability to protect 
+intelligence supplied by foreign government sources (ref D); 
+the trial of the first of the home-grown Toronto 11 (down 
+from 18) terror plotters, which is also now underway; and, 
+the prosecution of Global Islamic Media Front propagandist 
+Said Namouh, who was arrested in Quebec in 2007 for 
+conspiring to conduct bombings in Austria and Germany. 
+ 
+8.  (C) Judd said he viewed Khawaja and his &quot;ilk&quot; as 
+outliers, due in part to the fact that Canada's ethnic 
+Pakistani community is unlike its ghettoized and poorly 
+educated UK counterpart.  It is largely made up of traders, 
+lawyers, doctors, engineers, and others who see promise for 
+themselves and their children in North America, he observed, 
+so its members are unlikely to engage in domestic terror 
+plots.  He said that therefore CSIS main domestic focus is 
+instead on fundraising and procurement, as well as the 
+recruitment of a small number of Canadian &quot;wannabes&quot; of 
+Pakistani origin for mostly overseas operations. 
+ 
+Pakistan and Afghanistan 
+------------------------ 
+ 
+9.  (C) Turning to Pakistan, Counselor Cohen briefed his 
+recent trip to Islamabad and Peshawar, noting his alarm at 
+the degrading economic, political, and security situation 
+there, and its implications for Pakistan, Afghan, and 
+regional stability.  Judd responded that Dr. Cohen's sober 
+assessment tracked with CSIS' own view of Pakistan, and that 
+&quot;it is hard to see a good outcome there&quot; due to that 
+country's political, economic, and security failures, on top 
+of fast-rising oil and food prices.  Canada does not have an 
+explicit strategy for Pakistan, Judd said, but Privy Council 
+Deputy Secretary David Mulroney (who leads the interagency on 
+Afghanistan) now has the lead on developing one (septel). 
+Dr. Cohen remarked, and Judd agreed, that it would be 
+necessary to avoid approaching Pakistan as simply an adjunct 
+to the ISAF and OEF missions in Afghanistan. 
+ 
+10.  (S/NF) CSIS is far from being &quot;high-five mode&quot; on 
+Q10.  (S/NF) CSIS is far from being &quot;high-five mode&quot; on 
+Afghanistan, Judd asserted, due in part to Karzai's weak 
+leadership, widespread corruption, the lack of will to press 
+ahead on counter-narcotics, limited Afghan security force 
+capability (particularly the police) and, most recently, the 
+Sarpoza prison break.  He commented that CSIS had seen 
+Sarpoza coming, and its link to the Quetta Shura in Pakistan, 
+but could not get a handle on the timing. 
+ 
+Iranian Outreach 
+---------------- 
+ 
+11.  (S/NF) Judd added that he and his colleagues are &quot;very, 
+very worried&quot; about Iran.  CSIS recently talked to Iran's 
+Ministry of Intelligence and Security (MOIS) after that 
+agency requested its own channel of communication to Canada, 
+he said.  The Iranians agreed to &quot;help&quot; on Afghan issues, 
+including sharing information regarding potential attacks. 
+However, &quot;we have not figured out what they are up to,&quot; Judd 
+confided, since it is clear that the &quot;Iranians want ISAF to 
+bleed...slowly.&quot; 
+ 
+ 
+OTTAWA 00000918  003.2 OF 003 
+ 
+ 
+12.  (U)  Dr. Cohen has cleared this message. 
+ 
+Visit Canada,s Economy and Environment Forum at 
+http://www.intelink.gov/communities/state/can ada 
+ 
+WILKINS 
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">VZCZCXRO3160
+OO RUEHGA RUEHHA RUEHMT RUEHQU RUEHVC
+DE RUEHOT #0918/01 1911849
+ZNY SSSSS ZZH
+O 091849Z JUL 08
+FM AMEMBASSY OTTAWA
+TO RUEHC/SECSTATE WASHDC IMMEDIATE 8157
+INFO RUCNCAN/ALL CANADIAN POSTS COLLECTIVE PRIORITY
+RUEHBUL/AMEMBASSY KABUL PRIORITY 0198
+RUEHIL/AMEMBASSY ISLAMABAD PRIORITY 0815
+RUSBPW/AMCONSUL PESHAWAR PRIORITY 0098
+RUEKJCS/JOINT STAFF WASHDC PRIORITY
+RUEKJCS/OSD WASHDC PRIORITY
+RHEHNSC/WHITE HOUSE NSC WASHINGTON DC PRIORITY
+RUEAIIA/CIA WASHDC PRIORITY
+RHMFISS/CDR USCENTCOM  PRIORITY
+RUEAHLC/DEPT OF HOMELAND SECURITY WASHDC PRIORITY
+RUEKDIA/DIA WASHDC PRIORITY
+RHMFISS/HQ USNORTHCOM  PRIORITY</div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>08OTTAWA918_a</strong>.</p>
+<form action="/plusd/pdf/?df=84022" method="post">
+	<input type="hidden" name="p" value="a" />
+	<input type="hidden" name="r" value="08OTTAWA918_a" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>08OTTAWA918_a</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/08OTTAWA918_a.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[08OTTAWA918_a](https://www.wikileaks.org/plusd/cables/08OTTAWA918_a.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/08OTTAWA918_a.html&quot; title=&quot;08OTTAWA918_a&quot;&gt;08OTTAWA918_a&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/08OTTAWA918_a.html]08OTTAWA918_a[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F08OTTAWA918_a.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F08OTTAWA918_a.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F08OTTAWA918_a"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=08OTTAWA918_a&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F08OTTAWA918_a.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<table class="references">
+	<thead>
+		<tr>
+			<th>References to this document in other cables</th>
+			<th>References in this document to other cables</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+									<a class="j" href="/plusd/cables/08OTTAWA951.html" title="OTTAWA 918">08OTTAWA951</a>
+							</td>
+			<td>
+									<a class="j" href="/plusd/cables/08OTTAWA360.html" title="OTTAWA 360">08OTTAWA360</a>
+							</td>
+		</tr>
+	</tbody>
+
+</table>
+<p style="text-align:center">If the reference is ambiguous all possibilities are listed.</p>
+
+</div>
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+<fieldset><legend>Use your credit card to send donations</legend>
+<p>The Freedom of the Press Foundation is tax deductible in the U.S.</p>
+<p style="font-weight: bold;font-size: large; text-align: center"><a target="_blank" class="st" href="https://pressfreedomfoundation.org/wikileaks">Donate to WikiLeaks via the <br />Freedom of the Press Foundation</a></p>
+</fieldset>
+<p style="font-weight: bold;font-size: medium; text-align: center">For other ways to donate please see <a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a></p>
+</div>
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+<fieldset><legend>Use your credit card to send donations</legend>
+
+<p>The Freedom of the Press Foundation is tax deductible in the U.S.</p>
+<p style="font-weight: bold;font-size: large; text-align: center"><a target="_blank" class="st" href="https://pressfreedomfoundation.org/wikileaks">Donate to Wikileaks via the <br />Freedom of the Press Foundation</a></p>
+
+<p style="font-weight: bold;font-size: medium; text-align: center">For other ways to donate please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a></p>
+</fieldset>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

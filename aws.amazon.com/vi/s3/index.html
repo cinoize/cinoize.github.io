@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-vi_VN" lang="vi-VN" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>Lưu trữ đối tượng đ&aacute;m m&acirc;y | Lưu trữ v&agrave; truy xuất dữ liệu ở mọi nơi | Amazon Simple Storage Service (S3)</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/vi/s3/" /> 
+  <link rel="alternate" href="//aws.amazon.com/ar/s3/" hreflang="ar-sa" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/s3/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/s3/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/s3/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/s3/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="Lưu trữ đối tượng đ&aacute;m m&acirc;y | Lưu trữ v&agrave; truy xuất dữ liệu ở mọi nơi | Amazon Simple Storage Service (S3)" /> 
+  <meta property="twitter:description" content="" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="Lưu trữ đối tượng đ&aacute;m m&acirc;y | Lưu trữ v&agrave; truy xuất dữ liệu ở mọi nơi | Amazon Simple Storage Service (S3)" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/vi/s3/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'vi-VN',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'vi'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/vi_VN/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/vi/?nc2=h_lg"><span>Nhấp v&agrave;o đ&acirc;y để quay lại trang chủ Amazon Web Services</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/vi/contact-us/?nc2=h_header">Li&ecirc;n hệ bộ phận b&aacute;n h&agrave;ng</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Hỗ trợ&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="vi">Ti&ecirc;́ng Việt&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">T&agrave;i khoản của t&ocirc;i&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Tạo t&agrave;i khoản AWS</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/vi/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Sản phẩm</a></li> 
+        <li><a href="/vi/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Giải ph&aacute;p</a></li> 
+        <li><a href="/vi/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Gi&aacute; cả</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">T&agrave;i liệu</a></li> 
+        <li><a href="/vi/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">T&igrave;m hiểu</a></li> 
+        <li><a href="/vi/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Mạng lưới đối t&aacute;c</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/vi/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Tiếp cận kh&aacute;ch h&agrave;ng</a></li> 
+        <li><a href="/vi/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Kh&aacute;m ph&aacute; th&ecirc;m </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="T&igrave;m kiếm" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">Bảng điều khiển quản l&yacute; AWS</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Thiết lập t&agrave;i khoản</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Quản l&yacute; h&oacute;a đơn v&agrave; chi ph&iacute;</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Th&ocirc;ng tin x&aacute;c thực bảo mật</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Trung t&acirc;m Hỗ trợ</a> </li> 
+      <li> <a href="/vi/premiumsupport/knowledge-center/?nc2=h_m_ma">Trung t&acirc;m kiến thức</a> </li> 
+      <li> <a href="/vi/premiumsupport/?nc2=h_m_bc">Tổng quan về AWS Support</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Giá</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Tài liệu</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Sản phẩm</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Trang liên quan</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Hướng dẫn</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blog</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">Xem thêm kết quả về "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/vi_VN/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/vi/?nc2=h_lg"><span>Nhấp v&agrave;o đ&acirc;y để quay lại trang chủ Amazon Web Services</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="T&igrave;m kiếm" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/vi/products/?nc2=h_mo">Sản phẩm</a> </li> 
+      <li> <a href="/vi/solutions/?nc2=h_mo">Giải ph&aacute;p</a> </li> 
+      <li> <a href="/vi/pricing/?nc2=h_mo">Gi&aacute; cả</a> </li> 
+      <li> <a href="/vi/what-is-aws/?nc2=h_mo">Giới thiệu AWS</a> </li> 
+      <li> <a href="/vi/getting-started/?nc2=h_mo">Bắt đầu</a> </li> 
+      <li> <a href="/vi/documentation/?nc2=h_mo">T&agrave;i liệu</a> </li> 
+      <li> <a href="/vi/training/?nc2=h_mo">Đ&agrave;o tạo v&agrave; chứng nhận</a> </li> 
+      <li> <a href="/vi/developer/?nc2=h_mo">Trung t&acirc;m d&agrave;nh cho nh&agrave; ph&aacute;t triển</a> </li> 
+      <li> <a href="/vi/solutions/case-studies/?nc2=h_mo">Th&agrave;nh c&ocirc;ng của kh&aacute;ch h&agrave;ng</a> </li> 
+      <li> <a href="/vi/partners/?nc2=h_mo">Mạng lưới đối t&aacute;c</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Hỗ trợ</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Đăng nhập v&agrave;o Bảng điều khiển</a> </li> 
+      <li> <a href="/vi/console/mobile/">Tải xuống ứng dụng di động</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/vi/s3/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/vi/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/vi/s3/?nc=sn&amp;loc=1"> Tổng quan</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/vi/s3/features/?nc=sn&amp;loc=2"> T&iacute;nh năng</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/vi/s3/storage-classes/?nc=sn&amp;loc=3"> Lớp lưu trữ</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/vi/s3/pricing/?nc=sn&amp;loc=4"> Gi&aacute;</a> 
+       <a class="lb-txt-none lb-txt" href="/vi/s3/getting-started/?nc=sn&amp;loc=5"> Bắt đầu</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> T&agrave;i nguy&ecirc;n&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/vi/s3/faqs/?nc=sn&amp;loc=7"> C&acirc;u hỏi thường gặp</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt" href="/vi/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> T&agrave;i nguy&ecirc;n</a> 
+    <a class="lb-txt" href="/vi/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> Video</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_s3_simplified" data-lb-comp-ignore="true"> 
+     <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; background-image:url('//d1.awsstatic.com/product-marketing/S3/image-header_s3-2.6bf0d512939e43aba4fbd4185874e05ff0d236d2.png');" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="hero" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Amazon_S3" class="lb-txt-bold lb-txt-white lb-none-v-margin lb-h1-large lb-title"> Amazon S3</h1> 
+        <h3 id="Object_storage_built_to_store_and_retrieve_any_amount_of_data_from_anywhere" class="lb-txt-light lb-txt-white lb-small-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:30px;"> Dịch vụ lưu trữ đối tượng được x&acirc;y dựng để lưu trữ v&agrave; truy xuất dữ liệu thuộc mọi k&iacute;ch thước v&agrave; từ mọi nơi</h3> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+           <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta1" data-da-so-url="/s3"> 
+            <a class="lb-btn-a-primary" href="https://s3.console.aws.amazon.com/s3/home" role="button"> <span> Bắt đầu với Amazon S3</span> </a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta2" data-da-so-url="/s3"> 
+           <a class="lb-btn-a" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html" role="button"> <span> Y&ecirc;u cầu th&ecirc;m th&ocirc;ng tin</span> </a> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="data-attr-wrapper lb-mid-pad lb-small-v-margin lb-grid" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="tile2" data-da-so-version="intro" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+         <p>Amazon Simple Storage Service (Amazon S3) l&agrave; một dịch vụ lưu trữ đối tượng cung cấp khả năng thay đổi theo quy m&ocirc;, t&iacute;nh khả dụng của dữ liệu, bảo mật v&agrave; hiệu năng h&agrave;ng đầu trong lĩnh vực. Điều n&agrave;y c&oacute; nghĩa l&agrave; kh&aacute;ch h&agrave;ng thuộc mọi quy m&ocirc; v&agrave; lĩnh vực c&oacute; thể sử dụng dịch vụ n&agrave;y để lưu trữ v&agrave; bảo vệ bất kỳ lượng dữ liệu n&agrave;o cho nhiều trường hợp sử dụng kh&aacute;c nhau, chẳng hạn như trang web, ứng dụng di động, sao lưu v&agrave; kh&ocirc;i phục, lưu trữ, ứng dụng doanh nghiệp, thiết bị IoT v&agrave; ph&acirc;n t&iacute;ch dữ liệu hớn. Amazon S3 cung cấp c&aacute;c t&iacute;nh năng quản l&yacute; dễ sử dụng, nhờ đ&oacute;, bạn c&oacute; thể tổ chức dữ liệu v&agrave; cấu h&igrave;nh c&aacute;c kiểm so&aacute;t truy cập được tinh chỉnh để đ&aacute;p ứng y&ecirc;u cầu cụ thể của doanh nghiệp, tổ chức v&agrave; y&ecirc;u cầu về tu&acirc;n thủ. Amazon S3 được thiết kế để đảm bảo độ bền 99,999999999% (11 9's) v&agrave; lưu trữ dữ liệu của h&agrave;ng triệu ứng dụng cho c&aacute;c c&ocirc;ng ty tr&ecirc;n to&agrave;n thế giới.<br /> </p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="_I14_sXHO8U" data-source="youtube" data-video-title="Giới thiệu về Amazon S3"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Giới thiệu về Amazon S3 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=_I14_sXHO8U" /> 
+         </figure> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> Lợi &iacute;ch</h1> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Industry-leading_performance.2C_scalability.2C_availability.2C_and_durability" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Hiệu năng, khả năng thay đổi theo quy m&ocirc;, t&iacute;nh khả dụng v&agrave; độ bền h&agrave;ng đầu trong lĩnh vực</h3> 
+          <div class="lb-rtxt"> 
+           <p>Tăng v&agrave; giảm quy m&ocirc; t&agrave;i nguy&ecirc;n lưu trữ của bạn để đ&aacute;p ứng nhu cầu hay thay đổi, m&agrave; kh&ocirc;ng cần c&aacute;c khoản đầu tư trả trước hay chu kỳ thu mua t&agrave;i nguy&ecirc;n. Amazon S3 được thiết kế để đảm bảo độ bền dữ liệu 99,999999999% (11 9’s) v&igrave; dịch vụ n&agrave;y tự động tạo v&agrave; lưu trữ bản sao của tất cả đối tượng S3 tr&ecirc;n nhiều hệ thống. Điều n&agrave;y c&oacute; nghĩa l&agrave; dữ liệu của bạn khả dụng khi cần v&agrave; được bảo vệ khỏi c&aacute;c sự cố, lỗi v&agrave; mối đe dọa.<br /> <a href="/s3/faqs/#Durability_.26_Data_Protection" target="_blank">T&igrave;m hiểu về độ bền dữ liệu S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Wide_range_of_cost-effective_storage_classes" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Nhiều lớp lưu trữ tiết kiệm chi ph&iacute;</h3> 
+          <div class="lb-rtxt"> 
+           <p>Tiết kiệm chi ph&iacute; m&agrave; kh&ocirc;ng phải hi sinh hiệu suất bằng c&aacute;ch lưu trữ dữ liệu tr&ecirc;n <b>C&aacute;c lớp lưu trữ S3</b> hỗ trợ c&aacute;c cấp độ truy cập dữ liệu kh&aacute;c nhau ở mức gi&aacute; tương ứng. Bạn c&oacute; thể sử dụng <b>Ph&acirc;n t&iacute;ch lớp lưu trữ S3</b> để kh&aacute;m ph&aacute; dữ liệu cần di chuyển sang lớp lưu trữ c&oacute; chi ph&iacute; thấp hơn dựa tr&ecirc;n c&aacute;c cấu tr&uacute;c truy cập v&agrave; cấu h&igrave;nh một ch&iacute;nh s&aacute;ch <b>V&ograve;ng đời S3</b> để thực thi việc truyền dữ liệu. Bạn cũng c&oacute; thể lưu trữ dữ liệu với c&aacute;c cấu tr&uacute;c truy cập kh&ocirc;ng x&aacute;c định hoặc hay thay đổi trong <b>S3 Th&ocirc;ng minh-Ph&acirc;n bậc</b>, dịch vụ n&agrave;y ph&acirc;n bậc đối tượng dựa tr&ecirc;n c&aacute;c cấu tr&uacute;c truy cập hay thay đổi v&agrave; tự động tiết kiệm chi ph&iacute;.<br /> <a href="/s3/storage-classes/">T&igrave;m hiểu th&ecirc;m về C&aacute;c lớp lưu trữ của Amazon S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Unmatched_security.2C_compliance.2C_and_audit_capabilities" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Bảo mật, t&iacute;nh tu&acirc;n thủ v&agrave; khả năng kiểm tra chưa từng c&oacute;</h3> 
+          <div class="lb-rtxt"> 
+           <p>Lưu trữ dữ liệu của bạn trong Amazon S3 v&agrave; ngăn chặn h&agrave;nh vi truy cập dữ liệu tr&aacute;i ph&eacute;p với c&aacute;c t&iacute;nh năng m&atilde; h&oacute;a v&agrave; c&ocirc;ng cụ quản l&yacute; truy cập. S3 l&agrave; dịch vụ lưu trữ đối tượng duy nhất cho ph&eacute;p bạn chặn quyền truy cập c&ocirc;ng cộng v&agrave;o tất cả đối tượng trong bộ chứa hoặc ở cấp t&agrave;i khoản bằng t&iacute;nh năng <b><a href="/s3/features/block-public-access/" target="_blank">Chặn quyền truy cập c&ocirc;ng cộng S3</a></b>. Dịch vụ S3 duy tr&igrave; c&aacute;c chương tr&igrave;nh tu&acirc;n thủ, chẳng hạn như PCI-DSS, HIPAA/HITECH, FedRAMP, Chỉ thị bảo vệ dữ liệu của Li&ecirc;n minh ch&acirc;u &Acirc;u v&agrave; FISMA, để gi&uacute;p bạn đ&aacute;p ứng c&aacute;c y&ecirc;u cầu về quy định. AWS cũng hỗ trợ nhiều khả năng kiểm tra để gi&aacute;m s&aacute;t c&aacute;c y&ecirc;u cầu truy cập v&agrave;o t&agrave;i nguy&ecirc;n S3 của bạn.<br /> T&igrave;m hiểu th&ecirc;m về <a href="/s3/features/#Access_management_and_security">t&iacute;nh bảo mật</a> v&agrave; <a href="/compliance/">tu&acirc;n thủ của S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Easily_manage_data_and_access_controls" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Dễ d&agrave;ng quản l&yacute; c&aacute;c biện ph&aacute;p kiểm so&aacute;t dữ liệu v&agrave; quyền truy cập</h3> 
+          <div class="lb-rtxt"> 
+           <p>S3 mang đến cho bạn c&aacute;c chức năng mạnh mẽ để quản l&yacute; quyền truy cập, chi ph&iacute;, hoạt động sao ch&eacute;p v&agrave; bảo vệ dữ liệu. Điểm truy cập S3 gi&uacute;p bạn dễ d&agrave;ng quản l&yacute; quyền truy cập dữ liệu với c&aacute;c quyền cụ thể d&agrave;nh cho c&aacute;c ứng dụng sử dụng bộ dữ liệu được chia sẻ. C&aacute;c t&iacute;nh năng Sao ch&eacute;p S3 quản l&yacute; hoạt động sao ch&eacute;p dữ liệu trong khu vực hoặc đến c&aacute;c khu vực kh&aacute;c. S3 Batch Operations gi&uacute;p quản l&yacute; c&aacute;c thay đổi quy m&ocirc; lớn trong h&agrave;ng tỷ đối tượng. Do S3 hoạt động c&ugrave;ng AWS Lambda n&ecirc;n bạn c&oacute; thể ghi nhật k&yacute; hoạt động, định nghĩa cảnh b&aacute;o v&agrave; tự động h&oacute;a luồng c&ocirc;ng việc m&agrave; kh&ocirc;ng phải quản l&yacute; th&ecirc;m cơ sở hạ tầng n&agrave;o.<br /> <a href="/s3/features/#Storage_management_and_monitoring">T&igrave;m hiểu th&ecirc;m về c&aacute;c t&iacute;nh năng quản l&yacute; lưu trữ trong S3 &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Query-in-place_services_for_analytics_" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Dịch vụ truy vấn tại chỗ cho ph&acirc;n t&iacute;ch </h3> 
+          <div class="lb-rtxt"> 
+           <p>Chạy ph&acirc;n t&iacute;ch dữ liệu lớn tr&ecirc;n c&aacute;c đối tượng S3 của bạn (v&agrave; c&aacute;c tập hợp dữ liệu kh&aacute;c trong AWS) với dịch vụ truy vấn tại chỗ của ch&uacute;ng t&ocirc;i. Sử dụng <b>Amazon Athena</b> để truy vấn dữ liệu S3 với c&aacute;c biểu thức SQL ti&ecirc;u chuẩn v&agrave; <b>Amazon Redshift Spectrum</b> để ph&acirc;n t&iacute;ch dữ liệu được lưu trữ tr&ecirc;n kho lưu trữ dữ liệu AWS v&agrave; t&agrave;i nguy&ecirc;n S3 của bạn. Bạn cũng c&oacute; thể sử dụng <b>S3 Select </b>để truy xuất c&aacute;c tập hợp nhỏ dữ liệu đối tượng thay v&igrave; to&agrave;n bộ đối tượng v&agrave; tăng tới 400% hiệu suất truy vấn.<br /> <a href="/s3/features/#Query_in_place">T&igrave;m hiểu th&ecirc;m về truy vấn tại chỗ &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Most_supported_cloud_storage_service" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Dịch vụ lưu trữ đ&aacute;m m&acirc;y được hỗ trợ nhiều nhất</h3> 
+          <div class="lb-rtxt"> 
+           <p>Lưu trữ v&agrave; bảo vệ dữ liệu của bạn trong Amazon S3 bằng c&aacute;ch l&agrave;m việc với đối t&aacute;c từ <b>Mạng lưới đối t&aacute;c AWS (APN)</b> — cộng đồng nh&agrave; cung cấp dịch vụ tư vấn v&agrave; c&ocirc;ng nghệ lớn nhất. APN nhận diện c&aacute;c đối t&aacute;c di chuyển truyền dữ liệu sang Amazon S3 v&agrave; đối t&aacute;c lưu trữ cung cấp giải ph&aacute;p t&iacute;ch hợp S3 để phục vụ lưu trữ ch&iacute;nh, sao lưu v&agrave; kh&ocirc;i phục, lưu trữ v&agrave; kh&ocirc;i phục sau thảm họa. Bạn cũng c&oacute; thể mua giải ph&aacute;p t&iacute;ch hợp AWS trực tiếp từ <b>AWS Marketplace</b>, tại đ&acirc;y c&oacute; hơn 250 dịch vụ d&agrave;nh ri&ecirc;ng cho lưu trữ.<a href="/backup-recovery/partner-solutions/"><br /> T&igrave;m hiểu về APN</a> v&agrave;<a href="https://aws.amazon.com/marketplace"> AWS Marketplace &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="mid_page"></div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="How_it_works_.E2.80.94_S3_Access_Points" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> C&aacute;ch thức hoạt động — Điểm truy cập S3</h2> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Diagram_S3_Access_Points" title="Diagram_S3_Access_Points" src="//d1.awsstatic.com/re19/Westeros/Diagram_S3_Access_Points.fa88c474dc1073aede962aaf3a6af2d6b02be933.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-24"> 
+          <div class="lb-rtxt"> 
+           <p><b><a name="preview"></a>&nbsp;</b>Điểm truy cập Amazon S3 gi&uacute;p đơn giản h&oacute;a việc quản l&yacute; quyền truy cập dữ liệu ở quy m&ocirc; lớn cho c&aacute;c ứng dụng sử dụng bộ dữ liệu được chia sẻ tr&ecirc;n S3. Với Điểm truy cập S3, giờ bạn c&oacute; thể dễ d&agrave;ng tạo h&agrave;ng trăm điểm truy cập cho mỗi bộ chứa, mở ra c&aacute;ch cung cấp quyền truy cập mới v&agrave;o c&aacute;c bộ dữ liệu được chia sẻ. Điểm truy cập cung cấp một đường dẫn t&ugrave;y chỉnh v&agrave;o bộ chứa, với t&ecirc;n m&aacute;y chủ ri&ecirc;ng v&agrave; ch&iacute;nh s&aacute;ch truy cập thực thi c&aacute;c quyền v&agrave; biện ph&aacute;p kiểm so&aacute;t mạng cụ thể cho mọi y&ecirc;u cầu được thực hiện qua điểm truy cập đ&oacute;.</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Use_cases" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Trường hợp sử dụng</h2> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Backup_and_restore" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Sao lưu v&agrave; phục hồi</h3> 
+          <div class="lb-rtxt"> 
+           <p>X&acirc;y dựng c&aacute;c giải ph&aacute;p sao lưu v&agrave; kh&ocirc;i phục c&oacute; thể thay đổi theo quy m&ocirc;, c&oacute; độ bền v&agrave; bảo mật với Amazon S3 v&agrave; c&aacute;c dịch vụ AWS kh&aacute;c, chẳng hạn như <b>S3 Glacier</b>, <b>Amazon EFS</b> v&agrave; <b>Amazon EBS</b>, để tăng cường hoặc thay thế c&aacute;c khả năng tại chỗ hiện c&oacute;. C&aacute;c đối t&aacute;c AWS v&agrave; APN c&oacute; thể gi&uacute;p bạn đ&aacute;p ứng Thời gian kh&ocirc;i phục (Recovery Time Objectives – RTO), Thời điểm kh&ocirc;i phục (Recovery Point Objectives – RPO) v&agrave; c&aacute;c y&ecirc;u cầu về tu&acirc;n thủ. Với AWS, bạn c&oacute; thể sao lưu dữ liệu đ&atilde; c&oacute; trong Đ&aacute;m m&acirc;y AWS hoặc sử dụng<b> AWS Storage Gateway</b>, một dịch vụ lưu trữ kết hợp để gửi c&aacute;c bản sao lưu dữ liệu tại chỗ sang AWS.<br /> <a href="/backup-restore/">T&igrave;m hiểu th&ecirc;m về sao lưu v&agrave; kh&ocirc;i phục &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Disaster_recovery_.28DR.29" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Kh&ocirc;i phục sau thảm họa (DR)</h3> 
+          <div class="lb-rtxt"> 
+           <p>Bảo vệ dữ liệu, ứng dụng v&agrave; hệ thống CNTT quan trọng đang chạy trong Đ&aacute;m m&acirc;y AWS hoặc trong m&ocirc;i trường tại chỗ của bạn m&agrave; kh&ocirc;ng phải chịu ph&iacute; tổn của một cơ sở vật l&yacute; phụ. Với lưu trữ Amazon S3, <b>Sao ch&eacute;p li&ecirc;n khu vực S3</b>, v&agrave; c&aacute;c dịch vụ cơ sở dữ liệu, mạng v&agrave; điện to&aacute;n AWS kh&aacute;c, bạn c&oacute; thể tạo c&aacute;c kiến tr&uacute;c DR để kh&ocirc;i phục nhanh ch&oacute;ng v&agrave; dễ d&agrave;ng sau khi mất điện do thảm họa thi&ecirc;n nhi&ecirc;n, sự cố hệ thống v&agrave; lỗi của con người.<a href="/disaster-recovery/"><br /> T&igrave;m hiểu th&ecirc;m về DR &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Archive" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Lưu trữ</h3> 
+          <div class="lb-rtxt"> 
+           <p>Giải ph&oacute;ng cơ sở hạ tầng vật l&yacute; v&agrave; lưu trữ dữ liệu với <b>S3 Glacier</b> v&agrave; <b>S3 Glacier Deep Archive</b>. C&aacute;c lớp lưu trữ S3 n&agrave;y duy tr&igrave; c&aacute;c đối tượng l&acirc;u d&agrave;i với mức gi&aacute; thấp nhất. Chỉ cần tạo một ch&iacute;nh s&aacute;ch V&ograve;ng đời S3 để lưu trữ đối tượng trong to&agrave;n bộ v&ograve;ng đời hoặc tải đối tượng trực tiếp l&ecirc;n c&aacute;c lớp lưu trữ. Với <b>S3 Object Lock</b>, bạn c&oacute; thể &aacute;p dụng ng&agrave;y duy tr&igrave; với đối tượng để ngăn đối tượng bị x&oacute;a v&agrave; đ&aacute;p ứng c&aacute;c y&ecirc;u cầu về tu&acirc;n thủ. Kh&ocirc;ng giống c&aacute;c thư viện băng từ, S3 Glacier cho ph&eacute;p bạn kh&ocirc;i phục đối tượng đ&atilde; lưu trữ chỉ trong một ph&uacute;t đối với truy xuất nhanh v&agrave; 3-5 giờ đối với truy xuất ti&ecirc;u chuẩn. Qu&aacute; tr&igrave;nh kh&ocirc;i phục khối lượng dữ liệu lớn từ S3 Glacier v&agrave; kh&ocirc;i phục to&agrave;n bộ từ S3 Glacier Deep Archive ho&agrave;n tất trong v&ograve;ng 12 giờ.<a href="/glacier/"><br /> T&igrave;m hiểu th&ecirc;m về lưu trữ &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Data_lakes_and_big_data_analytics" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Kho dữ liệu v&agrave; ph&acirc;n t&iacute;ch dữ liệu lớn</h3> 
+          <div class="lb-rtxt"> 
+           <p>Đẩy nhanh qu&aacute; tr&igrave;nh đổi mới bằng c&aacute;ch <a href="/products/storage/data-lake-storage/" target="_blank">x&acirc;y dựng một kho dữ liệu tr&ecirc;n Amazon S3</a> v&agrave; tr&iacute;ch xuất th&ocirc;ng tin chi tiết c&oacute; gi&aacute; trị bằng c&aacute;c c&ocirc;ng cụ machine learning, ph&acirc;n t&iacute;ch v&agrave; truy vấn tại chỗ. Khi kho dữ liệu ph&aacute;t triển, bạn c&oacute; thể sử dụng Điểm truy cập S3 để dễ d&agrave;ng đặt cấu h&igrave;nh quyền truy cập v&agrave;o dữ liệu, với c&aacute;c quyền cụ thể cho mỗi ứng dụng hay tập hợp ứng dụng. Bạn cũng c&oacute; thể sử dụng <b>AWS Lake Formation </b>để tạo nhanh một kho dữ liệu v&agrave; tập trung x&aacute;c định cũng như thực thi c&aacute;c ch&iacute;nh s&aacute;ch bảo mật, quản trị v&agrave; kiểm tra. Dịch vụ n&agrave;y thu thập dữ liệu ở c&aacute;c cơ sở dữ liệu v&agrave; t&agrave;i nguy&ecirc;n S3 của bạn, di chuyển dữ liệu v&agrave;o một kho dữ liệu mới trong Amazon S3 v&agrave; dọn dẹp cũng như ph&acirc;n loại dữ liệu bằng c&aacute;c thuật to&aacute;n machine learning. Mọi t&agrave;i nguy&ecirc;n AWS đều c&oacute; thể được tăng quy m&ocirc; để đ&aacute;p ứng c&aacute;c kho dữ liệu mở rộng của bạn m&agrave; kh&ocirc;ng cần đầu tư trước.<br /> T&igrave;m hiểu th&ecirc;m về x&acirc;y dựng <a href="/products/storage/data-lake-storage/" target="_blank">kho dữ liệu tr&ecirc;n Amazon S3</a>&nbsp;v&agrave; <a href="/lake-formation/">AWS Lake Formation &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Hybrid_cloud_storage" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Lưu trữ đ&aacute;m m&acirc;y lai</h3> 
+          <div class="lb-rtxt"> 
+           <p>Tạo một kết nối liền mạch giữa ứng dụng tại chỗ v&agrave; Amazon S3 với <b>AWS Storage Gateway</b> để giảm phạm vi của trung t&acirc;m dữ liệu v&agrave; sử dụng quy m&ocirc;, độ tin cậy v&agrave; độ bền của AWS, cũng như c&aacute;c khả năng ph&acirc;n t&iacute;ch v&agrave; machine learning đổi mới của AWS. Bạn cũng c&oacute; thể tự động h&oacute;a qu&aacute; tr&igrave;nh truyền dữ liệu giữa lưu trữ tại chỗ v&agrave; Amazon S3 bằng <b>AWS DataSync</b>, dịch vụ n&agrave;y c&oacute; thể truyền dữ liệu ở tốc độ nhanh hơn tới 10 lần so với c&aacute;c c&ocirc;ng cụ nguồn mở. Một c&aacute;ch kh&aacute;c để hỗ trợ m&ocirc;i trường lưu trữ đ&aacute;m m&acirc;y lai l&agrave; l&agrave;m việc với nh&agrave; cung cấp cổng từ APN. Bạn cũng c&oacute; thể truyền tệp trực tiếp v&agrave;o hoặc ra khỏi Amazon S3 với<b> AWS Transfer for SFTP </b>— một dịch vụ được quản l&yacute; đầy đủ, cho ph&eacute;p trao đổi tệp an to&agrave;n với c&aacute;c b&ecirc;n thứ ba.<br /> T&igrave;m hiểu th&ecirc;m về <a href="/storagegateway/">lưu trữ lai</a>, <a href="/datasync/">AWS DataSync</a> v&agrave; <a href="/sftp/">AWS Transfer for SFTP &raquo;</a>&nbsp;<br /> </p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Cloud-native_application_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Dữ liệu ứng dụng d&agrave;nh cho đ&aacute;m m&acirc;y</h3> 
+          <div class="lb-rtxt"> 
+           <p>X&acirc;y dựng c&aacute;c ứng dụng tr&ecirc;n Internet v&agrave; di động hiệu quả về chi ph&iacute;, c&oacute; tốc độ nhanh bằng c&aacute;ch sử dụng Dịch vụ AWS v&agrave; Amazon S3 để lưu trữ dữ liệu sản xuất. Với Amazon S3, bạn c&oacute; thể tải l&ecirc;n bất kỳ khối lượng dữ liệu n&agrave;o v&agrave; truy cập dữ liệu ở mọi nơi để triển khai ứng dụng nhanh hơn v&agrave; tiếp cận nhiều người d&ugrave;ng cuối hơn. Việc lưu trữ dữ liệu trong Amazon S3 cũng c&oacute; nghĩa l&agrave; bạn c&oacute; quyền truy cập c&aacute;c c&ocirc;ng cụ, dịch vụ mới nhất về machine learning v&agrave; ph&acirc;n t&iacute;ch d&agrave;nh cho nh&agrave; ph&aacute;t triển AWS để đổi mới v&agrave; tối ưu h&oacute;a ứng dụng d&agrave;nh cho đ&aacute;m m&acirc;y của bạn.<br /> <a href="/products/developer-tools/">T&igrave;m hiểu th&ecirc;m về ứng dụng d&agrave;nh cho đ&aacute;m m&acirc;y &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_tiles_full_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Case_studies" class="lb-txt-bold lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> Nghi&ecirc;n cứu điển h&igrave;nh</h2> 
+       <div class="lb-xb-grid-wrap" style="margin-top:1px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/netflix/"><img alt="Netflix" title="Netflix" src="//d1.awsstatic.com/Industries/Telecom/600x400_Netflix-Logo.3bfbc7a6fa28b81d2e46ca48d3ff71b781abc0ce.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Netflix ph&acirc;n phối h&agrave;ng tỷ giờ nội dung đến kh&aacute;ch h&agrave;ng tr&ecirc;n khắp thế giới từ Amazon S3. Amazon S3 cũng đ&oacute;ng vai tr&ograve; l&agrave; kho dữ liệu cho giải ph&aacute;p ph&acirc;n t&iacute;ch dữ liệu lớn của họ. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/finra/"><img alt="FINRA" title="FINRA" src="//d1.awsstatic.com/product-marketing/AI/customers/Approved_Logos_600x4001/600x400_FINRA.3cba6a9ca0d18b7a45c036dd7c9e2f34d309b8c3.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            FINRA sử dụng Amazon S3 để thu nạp v&agrave; lưu trữ dữ liệu cho hơn 75 tỷ sự kiện thị trường h&agrave;ng ng&agrave;y v&agrave; c&aacute;c h&agrave;m AWS Lambda để định dạng v&agrave; x&aacute;c thực dữ liệu dựa tr&ecirc;n 200 quy tắc. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/airbnb/"><img alt="AirBnB" title="AirBnB" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600x400_Airbnb_Logo.f891e0066454456292ad7009aad136ea679f2cfd.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Airbnb để dữ liệu sao lưu v&agrave; tập tin tĩnh tr&ecirc;n Amazon S3, trong đ&oacute; c&oacute; tr&ecirc;n 10 petabyte h&igrave;nh ảnh người d&ugrave;ng. L&agrave; giải ph&aacute;p được sinh ra tr&ecirc;n đ&aacute;m m&acirc;y, họ li&ecirc;n tục s&aacute;ng tạo ra nhiều c&aacute;ch thức mới để ph&acirc;n t&iacute;ch dữ liệu được lưu trữ tr&ecirc;n Amazon S3. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/ge-healthcare/"><img alt="Dịch vụ y tế của GE" title="Dịch vụ y tế của GE" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600X400_GE-Healthcare_Logo.7dd29d40cf5fe1cc9f3a0cc0aedbcb54528a4fe2.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            GE sử dụng Amazon S3 để lưu trữ v&agrave; bảo vệ một petabyte dữ liệu h&igrave;nh ảnh y tế quan trọng cho dịch vụ Đ&aacute;m m&acirc;y sức khỏe GE, kết nối h&agrave;ng trăm ngh&igrave;n m&aacute;y chụp v&agrave; c&aacute;c thiết bị y tế kh&aacute;c. 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Related_content" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Nội dung li&ecirc;n quan</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>TH&Ocirc;NG TIN MỚI</b><br /> <i>S3 giới thiệu t&iacute;nh năng Sao ch&eacute;p c&ugrave;ng khu vực. Hiện đ&atilde; cung cấp t&iacute;nh năng sao ch&eacute;p trong c&ugrave;ng một khu vực hoặc đến c&aacute;c Khu vực AWS kh&aacute;c.</i><br /> NG&Agrave;Y 18 TH&Aacute;NG 9 NĂM 2019</p> 
+           <p><a href="/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>BLOG TIN TỨC VỀ AWS</b> 
+           </div> 
+           <div> 
+            <i>Amazon S3 c&ocirc;ng bố t&iacute;nh khả dụng chung của S3 Batch Operations để quản l&yacute; đối tượng trong c&aacute;c khu vực AWS thương mại v&agrave; AWS GovCloud</i> 
+           </div> 
+           <div>
+             bởi Jeff Barr | NG&Agrave;Y 30 TH&Aacute;NG 4 NĂM 2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-amazon-s3-batch-operations/" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>T&Iacute;NH NĂNG MỚI</b> 
+            <br /> 
+            <i> AWS c&ocirc;ng bố cung cấp rộng r&atilde;i Lớp lưu trữ Amazon S3 Glacier Deep Archive tại tất cả c&aacute;c Khu vực thương mại AWS v&agrave; AWS GovCloud (US)</i> 
+           </div> 
+           <div>
+             NG&Agrave;Y 27 TH&Aacute;NG 3 NĂM 2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="/about-aws/whats-new/2019/03/S3-glacier-deep-archive/" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <h2 id="__" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> </h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>BLOG TIN TỨC VỀ AWS<br /> </b> 
+            <i>Mới&nbsp;— Tự động tối ưu h&oacute;a chi ph&iacute; cho Amazon S3 th&ocirc;ng qua Ph&acirc;n bậc th&ocirc;ng minh</i> 
+            <br /> bởi Jeff Barr | NG&Agrave;Y 26 TH&Aacute;NG 11 NĂM 2018 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-automatic-cost-optimization-for-amazon-s3-via-intelligent-tiering/" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>BLOG VỀ KIẾN TR&Uacute;C CỦA AWS</b><br /> <i>Th&ocirc;ng b&aacute;o về S3 v&agrave; S3 Glacier Launch cho khối lượng c&ocirc;ng việc lưu trữ</i><br /> của Matt Sidley | NG&Agrave;Y 26 TH&Aacute;NG 11 NĂM 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>BLOG TIN TỨC</b><br /> <i> Amazon S3 Block Public Access — Một lớp bảo vệ kh&aacute;c cho t&agrave;i khoản v&agrave; bộ chứa của bạn</i><br /> NG&Agrave;Y 16 TH&Aacute;NG 11 NĂM 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" target="_blank">T&igrave;m hiểu th&ecirc;m &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Bạn đ&atilde; sẵn s&agrave;ng để bắt đầu chưa?</h2> 
+      <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Xem c&aacute;c t&iacute;nh năng sản phẩm 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">T&igrave;m hiểu th&ecirc;m về c&aacute;c t&iacute;nh năng quản l&yacute; dữ liệu, bảo mật, quản l&yacute; truy cập, ph&acirc;n t&iacute;ch v&agrave; nhiều t&iacute;nh năng kh&aacute;c.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/s3/features/"> T&igrave;m hiểu th&ecirc;m&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Đăng k&yacute; t&agrave;i khoản miễn ph&iacute; 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Truy cập ngay v&agrave;o Bậc miễn ph&iacute; của AWS v&agrave; bắt đầu trải nghiệm Amazon S3.&nbsp;</p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> Đăng k&yacute;&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Bắt đầu x&acirc;y dựng trong bảng điều khiển 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Bắt đầu x&acirc;y dựng với Amazon S3 tr&ecirc;n Bảng điều khiển AWS.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> Bắt đầu&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Đăng nhập v&agrave;o bảng điều khiển</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> T&igrave;m hiểu về AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/vi/what-is-aws/?nc1=f_cc" target="_blank">AWS l&agrave; g&igrave;?</a></li> 
+       <li><a href="/vi/what-is-cloud-computing/?nc1=f_cc" target="_blank">Điện to&aacute;n đ&aacute;m m&acirc;y l&agrave; g&igrave;?</a></li> 
+       <li><a href="/vi/devops/what-is-devops/?nc1=f_cc" target="_blank">DevOps l&agrave; g&igrave;?</a></li> 
+       <li><a href="/vi/containers/?nc1=f_cc" target="_blank">Bộ chứa l&agrave; g&igrave;?</a></li> 
+       <li><a href="/vi/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">Kho dữ liệu l&agrave; g&igrave;?</a></li> 
+       <li><a href="/vi/security/?nc1=f_cc" target="_blank">Khả năng bảo mật của Đ&aacute;m m&acirc;y AWS</a></li> 
+       <li><a href="/vi/new/?nc1=f_cc" target="_blank">Th&ocirc;ng tin mới</a></li> 
+       <li><a href="/vi/blogs/?nc1=f_cc" target="_blank">Blog</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Th&ocirc;ng c&aacute;o b&aacute;o ch&iacute;</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> T&agrave;i nguy&ecirc;n d&agrave;nh cho AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/vi/getting-started/?nc1=f_cc" target="_blank">Bắt đầu</a></li> 
+       <li><a href="/vi/training/?nc1=f_cc" target="_blank">Đ&agrave;o tạo v&agrave; chứng nhận</a></li> 
+       <li><a href="/vi/solutions/?nc1=f_cc" target="_blank">Danh mục giải ph&aacute;p AWS</a></li> 
+       <li><a href="/vi/architecture/?nc1=f_cc" target="_blank">Trung t&acirc;m kiến tr&uacute;c</a></li> 
+       <li><a href="/vi/faqs/?nc1=f_dr" target="_blank">C&acirc;u hỏi thường gặp về sản phẩm v&agrave; kỹ thuật</a></li> 
+       <li><a href="/vi/resources/analyst-reports/?nc1=f_cc" target="_blank">B&aacute;o c&aacute;o từ chuy&ecirc;n gia ph&acirc;n t&iacute;ch</a></li> 
+       <li><a href="/vi/partners/?nc1=f_dr" target="_blank">Mạng lưới đối t&aacute;c AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Nh&agrave; ph&aacute;t triển tr&ecirc;n AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/vi/developer/?nc1=f_dr" target="_blank">Trung t&acirc;m d&agrave;nh cho nh&agrave; ph&aacute;t triển</a></li> 
+       <li><a href="/vi/developer/tools/?nc1=f_dr" target="_blank">SDK v&agrave; C&ocirc;ng cụ</a></li> 
+       <li><a href="/vi/developer/language/net/?nc1=f_dr" target="_blank">.NET tr&ecirc;n AWS</a></li> 
+       <li><a href="/vi/developer/language/python/?nc1=f_dr" target="_blank">Python tr&ecirc;n AWS</a></li> 
+       <li><a href="/vi/developer/language/java/?nc1=f_dr" target="_blank">Java tr&ecirc;n AWS</a></li> 
+       <li><a href="/vi/developer/language/php/?nc1=f_cc" target="_blank">PHP tr&ecirc;n AWS</a></li> 
+       <li><a href="/vi/developer/language/javascript/?nc1=f_dr" target="_blank">JavaScript tr&ecirc;n AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Trợ gi&uacute;p</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/vi/contact-us/?nc1=f_m" target="_blank">Li&ecirc;n hệ với ch&uacute;ng t&ocirc;i</a></li> 
+       <li><a href="/vi/careers/?nc1=f_hi" target="_blank">Việc l&agrave;m tại AWS</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">Nộp phiếu hỗ trợ</a></li> 
+       <li><a href="/vi/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Trung t&acirc;m kiến thức</a></li> 
+       <li><a href="/vi/premiumsupport/?nc1=f_dr" target="_blank">Tổng quan về AWS Support</a></li> 
+       <li><a href="/vi/legal/?nc1=f_cc" target="_blank">Ph&aacute;p l&yacute;</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="vi" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Tạo t&agrave;i khoản AWS</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="vi" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="vi" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="vi" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="vi" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="vi" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon l&agrave; một c&ocirc;ng ty làm vi&ecirc;̣c b&igrave;nh đẳng: 
+        <i> kh&ocirc;ng ph&acirc;n biệt D&acirc;n tộc thiểu số / Nữ giới / Người khuyết tật / Cựu chiến binh / Bản dạng giới / Khuynh hướng t&igrave;nh dục / Tuổi t&aacute;c.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Ng&ocirc;n ngữ</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Bảo m&acirc;̣t</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Điều khoản &aacute;p dụng cho trang web</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. hoặc c&aacute;c chi nh&aacute;nh của Amazon. Bảo lưu mọi quyền.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    Bạn đang sử dụng trình duyệt <strong>cũ</strong>. Hãy nâng cấp lên Internet Explorer 11 hoặc trình duyệt mới hơn để cải thiện trải nghiệm của bạn.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'Bạn đang sử dụng trình duyệt <strong>cũ</strong>. Hãy nâng cấp lên Internet Explorer 11 hoặc trình duyệt mới hơn để cải thiện trải nghiệm của bạn.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T21:01:13.265-0700 -->  
+ </body>
+</html>

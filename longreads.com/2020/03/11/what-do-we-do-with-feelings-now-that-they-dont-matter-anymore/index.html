@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name='viewport' content='width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0' />
+<title>What Do We Do With Feelings Now That They Don&#8217;t Matter&nbsp;Anymore? </title>
+<!--[if IE]>
+<link href="https://s2.wp.com/wp-content/themes/a8c/longreads/style-ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<![endif]-->
+<meta name="google-site-verification" content="XXZiHbIgLil8z0afFdsuYUUbdb02vjrSjt4_HxVqMnk" />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9sb25ncmVhZHMuY29t"
+		+ "&wpcomid=70135762"
+		+ "&time=1587444790";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//longreadsblog.wordpress.com' />
+<link rel='dns-prefetch' href='//d1xnn692s7u6t6.cloudfront.net' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel='dns-prefetch' href='//s.pubmine.com' />
+<link rel='dns-prefetch' href='//x.bidswitch.net' />
+<link rel='dns-prefetch' href='//static.criteo.net' />
+<link rel='dns-prefetch' href='//ib.adnxs.com' />
+<link rel='dns-prefetch' href='//aax.amazon-adsystem.com' />
+<link rel='dns-prefetch' href='//bidder.criteo.com' />
+<link rel='dns-prefetch' href='//cas.criteo.com' />
+<link rel='dns-prefetch' href='//gum.criteo.com' />
+<link rel='dns-prefetch' href='//ads.pubmatic.com' />
+<link rel='dns-prefetch' href='//gads.pubmatic.com' />
+<link rel='dns-prefetch' href='//tpc.googlesyndication.com' />
+<link rel='dns-prefetch' href='//ad.doubleclick.net' />
+<link rel='dns-prefetch' href='//googleads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//cdn.switchadhub.com' />
+<link rel='dns-prefetch' href='//delivery.g.switchadhub.com' />
+<link rel='dns-prefetch' href='//delivery.swid.switchadhub.com' />
+<link rel='dns-prefetch' href='//a.teads.tv' />
+<link rel='dns-prefetch' href='//prebid.media.net' />
+<link rel='dns-prefetch' href='//adserver-us.adtech.advertising.com' />
+<link rel='dns-prefetch' href='//fastlane.rubiconproject.com' />
+<link rel='dns-prefetch' href='//prebid-server.rubiconproject.com' />
+<link rel='dns-prefetch' href='//hb-api.omnitagjs.com' />
+<link rel='dns-prefetch' href='//mtrx.go.sonobi.com' />
+<link rel='dns-prefetch' href='//apex.go.sonobi.com' />
+<link rel='dns-prefetch' href='//u.openx.net' />
+<link rel="alternate" type="application/rss+xml" title="Longreads &raquo; Feed" href="https://longreads.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Longreads &raquo; Comments Feed" href="https://longreads.com/comments/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s2.wp.com/_static/??-eJylVNtyGyEM/aESksZp3YdOv4UFBSvmNqDN1n8fsazjje2SdDyeWSOhc3SBg5yS0DEQBJJ+FMmNFkORU9LRi+LRweHMutOlfJMr2BHzPDonChIIMEgY7MImfz7+uuffRjKLj0EaLLSsL8gGF+2pipiNMkVaFwflLmJX9WZwisCIFAudWT2Ywz0U+QKUlN6L2XoPx6DdaHibHa1krm2OGrLKB1no4ODO42UPR3Y7sjlAtmJGrhKpQxxJ2IxmoflviqzqhMsn8M+PpM27zqllaJ2+Ikw3kMIrxzNuDGTiFNbMV7duSHWcB6EHhwFalnPvDQnabByzrts49/YumY4Z2O+TohrhOZMCB57DerAJjQVq16+tBcHfPmTW6TCkDKUI/nocvaAd5+rKoGqxHkuTQ034wdOgKEMkZHR5X1xwtlRSbbV0MdgMVb3Xr+iVTimmRcBfhsDIu3GPwJqaJIFPVflfILAQBR8cq4gfpLUhnp3C3H9rqmh4aedRncweSOlKPqh8Wt1wKduDKOYua7NcuWYpq9C9iHW2rT1ZdirXBpb/HqpEjZyLe4wfjX+d/m6zerD/+N8PT9sfm+/bh8f7lzfNH2d/?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJyNUNsOwiAM/SEZ7kE3H4zfUllFFmgRyox/L5rtZVFj0qTp6TmnF32PypHxZcCsxxq3gukxp2bMG/2LoIKzCQSb4GghGyZBkhc38Nl5VCVjAluxanThNS8UFX2xjrJO6KvZoCJnWVVrlVwx1IUmF/Wirl3LbOtAIPAPceYj9sUJeqM9k00Iw/tQAzRBVgGp/Cs5M0uWBHH+xykc213XHrbdft+PT5tlh0I='></script>
+<script src='//d1xnn692s7u6t6.cloudfront.net/widget.js?ver=5.4'></script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJyNy1EOgyAMgOELDTsWNeNh2Vk6bBCo1NAmXn8egcc/+T+4ThelGTUD2+kgBXxHYGmpE24KRYGz/e6o1KeiDxgQRacoUjONgobpQubRndFIzZ2ipi71vN3we3z84p/hNfs1lD/vXU58'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://longreadsblog.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel='shortlink' href='https://wp.me/p4KhvY-zZq' />
+	<style>
+		@font-face {
+			font-family: Recoleta;
+			src: url('https://s1.wp.com/i/fonts/recoleta/400.woff2')
+		}
+	</style>
+	<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Flongreads.com%2F2020%2F03%2F11%2Fwhat-do-we-do-with-feelings-now-that-they-dont-matter-anymore%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Flongreads.com%2F2020%2F03%2F11%2Fwhat-do-we-do-with-feelings-now-that-they-dont-matter-anymore%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What Do We Do With Feelings Now That They Don&#8217;t Matter&nbsp;Anymore? " />
+<meta property="og:url" content="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/" />
+<meta property="og:description" content="Sarah Miller thinks about climate change and other current horrors, and what it&#8217;s like just being sad forever." />
+<meta property="article:published_time" content="2020-03-11T10:00:13+00:00" />
+<meta property="article:modified_time" content="2020-03-12T04:05:00+00:00" />
+<meta property="og:site_name" content="Longreads" />
+<meta property="og:image" content="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1200" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="700" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@longreads" />
+<meta name="twitter:site" content="@longreads" />
+<meta name="twitter:text:title" content="What Do We Do With Feelings Now That They Don&#8217;t Matter&nbsp;Anymore?" />
+<meta name="twitter:image" content="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:app:name:iphone" content="WordPress" />
+<meta name="twitter:app:id:iphone" content="335703880" />
+<meta name="twitter:app:name:ipad" content="WordPress" />
+<meta name="twitter:app:id:ipad" content="335703880" />
+<meta name="twitter:app:name:googleplay" content="WordPress" />
+<meta name="twitter:app:id:googleplay" content="org.wordpress.android" />
+<meta name="twitter:app:url:iphone" content="wordpress://viewpost?blogId=70135762&amp;postId=138348" />
+<meta name="twitter:app:url:ipad" content="wordpress://viewpost?blogId=70135762&amp;postId=138348" />
+<meta name="twitter:app:url:googleplay" content="wordpress://viewpost?blogId=70135762&amp;postId=138348" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/e68667ec6ee7cdd0c6b5416a84c52a9c?s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/e68667ec6ee7cdd0c6b5416a84c52a9c?s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/e68667ec6ee7cdd0c6b5416a84c52a9c?s=114" />
+<link rel='openid.server' href='https://longreads.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://longreads.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://longreads.com/osd.xml" title="Longreads" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+			<meta property="fb:pages" content="165460226798426" />
+			<link rel="canonical" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/" />
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Longreads" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="The best longform stories on the web" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://longreads.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/e68667ec6ee7cdd0c6b5416a84c52a9c?s=16" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="Sarah Miller thinks about climate change and other current horrors, and what it&#039;s like just being sad forever." />
+		<script type="text/javascript">
+		function __ATA_CC() {var v = document.cookie.match('(^|;) ?personalized-ads-consent=([^;]*)(;|$)');return v ? 1 : 0;}
+		var __ATA_PP = { pt: 1, ht: 1, tn: 'longreads', amp: false, siteid: 70135762, consent: __ATA_CC() };
+		var __ATA = __ATA || {};
+		__ATA.cmd = __ATA.cmd || [];
+		__ATA.criteo = __ATA.criteo || {};
+		__ATA.criteo.cmd = __ATA.criteo.cmd || [];
+		</script>
+		<script type="text/javascript">
+		(function(){var g=Date.now||function(){return+new Date};function h(a,b){a:{for(var c=a.length,d="string"==typeof a?a.split(""):a,e=0;e<c;e++)if(e in d&&b.call(void 0,d[e],e,a)){b=e;break a}b=-1}return 0>b?null:"string"==typeof a?a.charAt(b):a[b]};function k(a,b,c){c=null!=c?"="+encodeURIComponent(String(c)):"";if(b+=c){c=a.indexOf("#");0>c&&(c=a.length);var d=a.indexOf("?");if(0>d||d>c){d=c;var e=""}else e=a.substring(d+1,c);a=[a.substr(0,d),e,a.substr(c)];c=a[1];a[1]=b?c?c+"&"+b:b:c;a=a[0]+(a[1]?"?"+a[1]:"")+a[2]}return a};var l=0;function m(a,b){var c=document.createElement("script");c.src=a;c.onload=function(){b&&b(void 0)};c.onerror=function(){b("error")};a=document.getElementsByTagName("head");var d;a&&0!==a.length?d=a[0]:d=document.documentElement;d.appendChild(c)}function n(a){var b=void 0===b?document.cookie:b;return(b=h(b.split("; "),function(c){return-1!=c.indexOf(a+"=")}))?b.split("=")[1]:""}function p(a){return"string"==typeof a&&0<a.length}
+		function r(a,b,c){b=void 0===b?"":b;c=void 0===c?".":c;var d=[];Object.keys(a).forEach(function(e){var f=a[e],q=typeof f;"object"==q&&null!=f||"function"==q?d.push(r(f,b+e+c)):null!==f&&void 0!==f&&(e=encodeURIComponent(b+e),d.push(e+"="+encodeURIComponent(f)))});return d.filter(p).join("&")}function t(a,b){a||((window.__ATA||{}).config=b.c,m(b.url))}var u=Math.floor(1E13*Math.random()),v=window.__ATA||{};window.__ATA=v;v.rid=u;v.createdAt=g();var w=window.__ATA||{},x="s.pubmine.com";
+		w&&w.serverDomain&&(x=w.serverDomain);var y="//"+x+"/conf",z=window.top===window,A=window.__ATA_PP&&window.__ATA_PP.gdpr_applies,B="boolean"===typeof A?Number(A):null,C=window.__ATA_PP||null,D=z?document.referrer?document.referrer:null:null,E=z?window.location.href:document.referrer?document.referrer:null,F,G=n("__ATA_tuuid");F=G?G:null;var H=window.innerWidth+"x"+window.innerHeight,I=n("usprivacy"),J=r({gdpr:B,pp:C,rid:u,src:D,ref:E,tuuid:F,vp:H,us_privacy:I?I:null},"",".");
+		(function(a){var b=void 0===b?"cb":b;l++;var c="callback__"+g().toString(36)+"_"+l.toString(36);a=k(a,b,c);window[c]=function(d){t(void 0,d)};m(a,function(d){d&&t(d)})})(y+"?"+J);}).call(this);
+		</script><link rel="amphtml" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/amp/">		<link rel="stylesheet" id="custom-css-css" type="text/css" href="https://s2.wp.com/?custom-css=1&#038;csblog=4KhvY&#038;cscache=6&#038;csrev=20" />
+		</head>
+
+
+<body class="post-template-default single single-post postid-138348 single-format-standard customizer-styles-applied highlander-enabled highlander-light">
+
+<div id="wrapper" class="hfeed ">
+
+	<nav class="nav-off-canvas" role="navigation">
+        <svg class="menu-toggle close-icon" width="16" height="16" viewBox="0 0 16 16"><path fill="#8D8D8D" fill-rule="evenodd" d="M7.999 9.415l-5.657 5.657-1.414-1.415L6.585 8 .928 2.344 2.342.929l5.657 5.657L13.656.93l1.414 1.415L9.413 8l5.657 5.657-1.414 1.415-5.657-5.657z"/></svg>
+        <a href="https://longreads.com/" class="longreads-full-sm">Longreads</a>
+		<div class="nav-off-canvas--container">
+            <ul>
+                <li><a href="https://longreads.com/">Home</a></li>
+                <li><a href="https://longreads.com/editors-picks">Editors&rsquo; Picks</a></li>
+                <li><a href="https://longreads.com/features">Features</a></li>
+                <li><a href="https://longreads.com/topics">Topics</a></li>
+                                        <li><a href="https://longreads.com/best-of-2019">Best Of 2019</a></li>
+                                    <li><a href="https://store.longreads.com/">Store</a></li>
+                <li class="menu-divider menu-divider--lg"></li>
+                                    <li><a class="button-red" href="https://longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=menu&#038;utm_campaign=member-promo">Become a  Member</a>
+                    <li><a class="button" href="https://longreads.com/thank-you-for-supporting-longreads/">Log In</a></li>
+                                <li class="menu-divider"></li>
+                <li><div class="ui-form header-search"><form method="get" id="searchform" action="https://longreads.com/">
+	<div>
+		<input type="text" value="" name="s" id="s" placeholder="Search" />
+		<input type="submit" id="searchsubmit" />
+	</div>
+</form></div></li>
+                <li class="menu-divider"></li>
+                <li><a href="http://eepurl.com/VEEfb">Weekly Email</a></li>
+                <li><a href="http://twitter.com/longreads">Twitter</a></li>
+                <li><a href="http://www.facebook.com/longreads">Facebook</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="header">
+			<div id="slim-header">
+                <span id="header-menu" class="menu">
+                                            <a href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=donate-button&#038;utm_campaign=member-promo" class="mobile-become-member">Support Us</a>
+                                        <div class="signup-links">
+                                                    <a href="https://longreads.com/thank-you-for-supporting-longreads/">Log In</a>
+                            <a href="https://store.longreads.com/">Store</a>
+                            <a href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=donate-button&#038;utm_campaign=member-promo" class="signup-accounts-active become-member">Support Us</a>
+                                                <div class="ui-form header-search expanding-search"><form method="get" id="searchform" action="https://longreads.com/">
+	<div>
+		<input type="text" value="" name="s" id="s" placeholder="Search" />
+		<input type="submit" id="searchsubmit" />
+	</div>
+</form></div>
+                        <svg class="search-toggle icon-search" width="14" height="14" viewBox="0 0 14 14"><path fill="#DEDEDE" fill-rule="evenodd" d="M8.75 0C11.65 0 14 2.35 14 5.25s-2.35 5.25-5.25 5.25a5.162 5.162 0 0 1-2.803-.81l-3.954 3.97c-.227.227-.535.34-.826.34-.308 0-.6-.113-.827-.34a1.174 1.174 0 0 1 0-1.653l3.97-3.954A5.162 5.162 0 0 1 3.5 5.25C3.5 2.35 5.85 0 8.75 0zm0 8.75c1.928 0 3.5-1.572 3.5-3.5s-1.572-3.5-3.5-3.5a3.506 3.506 0 0 0-3.5 3.5c0 1.928 1.572 3.5 3.5 3.5z"/></svg>
+                        <svg class="search-toggle search-close" width="16" height="16" viewBox="0 0 16 16"><path fill="#DEDEDE" fill-rule="evenodd" d="M7.999 9.415l-5.657 5.657-1.414-1.415L6.585 8 .928 2.344 2.342.929l5.657 5.657L13.656.93l1.414 1.415L9.413 8l5.657 5.657-1.414 1.415-5.657-5.657z"/></svg>
+	                </div>
+                </span>
+                                    <svg class="menu-toggle icon-menu" width="18" height="14" viewBox="0 0 18 14"><path fill="#DEDEDE" fill-rule="evenodd" d="M0 6h18v2H0V6zm0-6h18v2H0V0zm0 12h18v2H0v-2z"/></svg>
+                                <div class="menu-items-left">
+                    <a href="https://longreads.com/editors-picks">Editors&rsquo; Picks</a>
+                    <a href="https://longreads.com/features">Features</a>
+                    <a href="https://longreads.com/topics">Topics</a>
+                                                <a href="https://longreads.com/best-of-2019">Best Of 2019</a>
+                                        </div>
+                <a href="https://longreads.com/" class="longreads-full-sm">Longreads</a>
+            </div>
+    </header>
+
+    
+    <div class="site-content__wrapper">
+	<!-- .site-content__wrapper is required for the responsive nav to work properly. It acts as the container for everything outside of the nav. -->
+
+<div id="container">
+
+	<section id="content" role="main">
+					<article id="post-138348" class="post-138348 post type-post status-publish format-standard has-post-thumbnail hentry category-editors-pick category-essays-criticism category-featured category-nonfiction-2 category-story tag-anxiety tag-climate-change tag-depression tag-end-times tag-phoebe-bridgers tag-sarah-miller">
+
+	
+<div class="member-drive-banner-wrapper">
+    <div class="member-drive-banner-content">
+        <h2 class="member-drive-banner-header">
+            Longreads Needs Your&nbsp;Help        </h2>
+        <div class="member-drive-banner-text">
+            <p>
+                During our Winter Member Drive, we are hoping to raise $50,000 in funding for new journalism and storytelling.            </p>
+            <i class="member-drive-banner-secondary-text">
+                If you support our mission, please contribute today:            </i>
+            <a href="/join" class="member-drive-banner-cta lg-button">
+                Make a contribution            </a>
+        </div>
+        <div class="member-drive-banner-mobile-text-container">
+            <p class="member-drive-banner-mobile-text">
+                Your support means more top&#8209;notch journalism and storytelling.            </p>
+            <a href="/join" class="member-drive-banner-mobile-cta">
+                Make a contribution            </a>
+        </div>
+    </div>
+</div>
+<header>
+
+	<div class="exclusive-meta">
+	
+		<h1 class="entry-title">
+			
+				<a href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/" title="What Do We Do With Feelings Now That They Don&#8217;t Matter&nbsp;Anymore?" rel="bookmark">What Do We Do With Feelings Now That They Don&#8217;t Matter&nbsp;Anymore?</a>
+
+					</h1>
+		
+					<span class="entry-subhead"><p>Sarah Miller thinks about climate change and other current horrors, and what it&#8217;s like just being sad forever.</p>
+</span>
+		
+	</div>
+
+	<div class="featured-image-container">
+	
+	<img src="https://longreadsblog.wordpress.com/wp-content/themes/vip/plugins/lazy-load/images/1x1.trans.gif?m=1322061781h" data-lazy-src="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1680" width="1680" height="980" class="attachment-featured-large size-featured-large wp-post-image" alt srcset="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1680 1680w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=150 150w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=300 300w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=768 768w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1024 1024w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg 2400w" sizes="(max-width: 1680px) 100vw, 1680px" data-attachment-id="138453" data-permalink="https://longreads.com/funeral-song/" data-orig-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg" data-orig-size="2400,1400" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="funeral-song" data-image-description data-medium-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=300" data-large-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1024"><noscript><img width="1680" height="980" src="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1680" class="attachment-featured-large size-featured-large wp-post-image" alt="" srcset="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1680 1680w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=150 150w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=300 300w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=768 768w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1024 1024w, https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg 2400w" sizes="(max-width: 1680px) 100vw, 1680px" data-attachment-id="138453" data-permalink="https://longreads.com/funeral-song/" data-orig-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg" data-orig-size="2400,1400" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="funeral-song" data-image-description="" data-medium-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=300" data-large-file="https://longreadsblog.files.wordpress.com/2020/03/funeral-song.jpg?w=1024" /></noscript><div class="credit">CSA Images / Getty / Illustration by Longreads</div>	
+	</div>
+	
+	
+<div class="member-promo slim">
+	<div class="member-promo-container">
+		<div class="member-logo"><a class="member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-top&#038;utm_campaign=member-promo"></a></div>
+		<div class="member-promo-content">
+							<h2 class="member-promo-title"><a class="member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-top&#038;utm_campaign=member-promo">This story was funded by Longreads Members</a></h3>
+				<div class="member-promo-body">
+					<a class="member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-top&#038;utm_campaign=member-promo">Join and help support great storytelling</a>
+				</div>
+					</div>
+	</div>
+</div>
+</header>
+	<section class="entry-content">
+<p style="text-align:center;"><i><a href="http://twitter.com/sarahlovescali/">Sarah Miller</a> | Longreads | March 2020 | 7 minutes (1,800 words)</i></p>
+<p>A few months ago I was visiting my brother in suburban San Diego, a place that always makes me wonder if the world should just start over. My sister-in-law and niece and I were in the car together, and my iPad started playing over the stereo, by accident, the song “Funeral” by Phoebe Bridgers.</p>
+<p>I had never even heard of Phoebe Bridgers until three months before this happened, when I was visiting New York City and the song played in the Cobble Hill outpost of the store BIRD as I was leafing through $150 T-shirts. (I bought one, because it was the nicest T-shirt I have ever seen, and because I had a job with a salary, and I figured I would probably never have one again, so why not?) The song made me cry. I didn’t want the salespeople to see this so I had to take cover in the corner of the shop for a minute and pretend to be looking at a pair of shoes — which, as worth it as the T-shirts at BIRD are, the shoes are useful only to look at to hide the fact that you’re crying.<b> </b></p>
+<p>I binge-listened to the song during that whole trip and then after, and then for a few months forgot about it, until the day when it just started playing in my sister-in-law’s car. I started to turn it off but my sister-in-law said, “Oh just leave it,” and I started to remember how much I liked the song, because it is so skillfully sad, and just lays you out, when my niece started making fun of it. “What is this? Jesus Christ, ‘I’m so blue all the time’!?” she quoted the song in an exaggerated sad-sack tone of voice, mimicking its bleakness. “This is sooo depressing. Why do you LISTEN to stuff like this?” She listened again for a moment and recommenced her assault. “Oh my God — she just said ‘We might just kill ourselves,’ What is WRONG with this person?”</p>
+<blockquote class="pullquote center"><p>Nothing would be better for the world right now than if we all stopped trying to achieve things and said, &#8216;We no longer believe work will set us free, it is the opposite, in fact,&#8217; and behaved accordingly.</p></blockquote>
+<p>I felt simultaneously enraged and sad — the way I feel a lot of the time, the way that is my knee-jerk reaction to so many things. First of all, she was making fun of something I liked, and I felt exposed, particularly because I’m not a Phoebe Bridgers fan, per se — like I’m not a Moon juice-fasting 30-year-old living in Echo Park — and listening to her, I guess, I felt like my niece might think I was trying to pose as one.</p>
+<p>I had kind of wanted my relationship to “Funeral” to be private. I felt like liking this song tapped into parts of my personality that would be difficult to explain, and that most people who knew me wouldn’t understand. Mostly, I was upset because the song is so brutally sad. It’s about someone dying, but it’s also about how when something sad happens and you’re already a depressed person you’re less like, “Here is a sad event that made me sad,” than like, “When someone dies or something else bad happens I merely see more clearly how sad I am all the time.”</p>
+<p>The saddest part of this sad song is the chorus, the very part my niece singled out for ridicule: “Jesus Christ I’m so blue all the time and I guess that’s just how I feel. I always have, and I always will, I always have, and I always will.” The repetition at the end is the knife in the heart. It’s at once maturely resigned and immaturely petulant. The singer wants to be understood and sympathized with, but she also knows it doesn’t matter, because it won’t change anything.</p>
+<p>I don’t remember what I said to my niece. I do know that I was trying really hard not to show too much sadness or anger because my niece, of course, hadn’t done anything wrong. It was my problem, not hers, that I was so upset. Her attack was full of youthful, energetic certainty, which is appropriate, and expressing the enormity of my sadness and anger would have been in no way appropriate. I’d like to add that she is not generally someone who bothers me, so there was no need to serve as an adult curb to her developing personality. Plus, her mother seemed annoyed enough. She said something like, “It’s a sad song, surely you’ve heard sad songs before?” and then kind of looked at me like “Sorry.” I shook my head and said, “It’s fine,” and was sure that I would get over it soon, since nothing had really happened.<br />
+<span id="more-138348"></span></p>
+<p style="text-align:center;">***</p>
+<p>That night I woke up at around 3 AM and couldn’t fall back asleep. I thought about all the feelings that we have. We love people, we stop loving them. We feel attractive, we feel ugly, stupid, and then smart. We go to work and weddings and cook and eat things, and those of us lucky to have any spare time have opinions about those things: this is a good friend or a bad one, that meal was not worth it, that movie was too violent, my parents loves my brother more than they love me, everyone thinks I am great, everyone thinks I am a piece of shit, everyone wants to fuck me, no one does. And all around me most people are still having those feelings. They are like, this is my life, what’s up for my life today, what’s up for me and what I will eat and what I will get and who I will like or not like and what will I buy? And I am so jealous of them because I can’t think of anything except when the end of humanity will come and how.</p>
+<div class="in-story">
+<hr />
+<p style="text-align:center;">Kickstart your weekend reading by getting the week&#8217;s best Longreads delivered to your inbox every Friday afternoon.</p>
+<p style="text-align:center;"><a class="sm-button-red" href="https://longreads.com/newsletter/?utm_source=in-story&amp;utm_medium=banner&amp;utm_campaign=email-signup" rel="nofollow">Sign up</a></p>
+<hr />
+</div>
+<p>I can’t think about anything other than fires, floods, coronavirus, and people fighting and killing each other over water and space. I can’t think about anything other than borders and who will be invited to cross them and who will die on the wrong side. I try to think about what I can do or say that will make things better, or just to live inside the comfortable life I have now, which, believe me, I know I <i>should</i> be grateful for, and sometimes I succeed. I seem to give myself full permission to relax when it rains, but where I live, in Northern California, it looks like we’re going to go back into a drought. So that’s not a lot of rain, not a lot of full permission to relax.</p>
+<p>For whom will it be fast or and for whom will it be slow? Will it hurt? What will it be like to see the seasons stop? What if there is a miracle and we can somehow turn this around? Will I go back to caring about other things again, or would I just walk around in a daze of wordless happiness until I died?</p>
+<p>We’re in a moment now where we have had these lives that we’ve lived, things we have said, things we have achieved, people we love, but in the end, the stuff that matters is whether or not we can survive, and who else we can help to survive. You may have been told all your life that there were certain things you needed and certain things you needed to do, but it turns out that you don’t need most of those things and you don’t really need to do anything. In fact, nothing would be better for the world right now than if we all stopped trying to achieve things and said, “We no longer believe work will set us free, it is the opposite, in fact,” and behaved accordingly. There is nothing to achieve right now except to insist that the only achievement is caring for others, and not caring specially for family or friends, but in caring for every person as our family or friend.</p>
+<blockquote class="pullquote center"><p>There is nothing to achieve right now except to insist that the only achievement is caring for others, and not caring specially for family or friends, but in caring for every person as our family or friend.</p></blockquote>
+<p>I can’t worry about becoming sane at some point or becoming a <i>whole person</i> or <i>forgiving myself </i>or <i>forgiving others</i>. There was a time when that stuff mattered. That time is over, and I’m both embarrassed about the time I wasted thinking about it and miss the luxury of that time. I wish everything still mattered, but it just doesn’t, and I have no idea what I’m supposed to do with my depression and insecurities and personal petty fears now. They used to be so tragic and important. Now they are old plastic toys.</p>
+<p style="text-align:center;">***</p>
+<p>The first time I heard “Funeral” I tried not to like it. I tried not to be sucked in by the stomach-scraping sadness of it, and told myself it was too trite to affect me. About a minute in she sings, “Last night I had a dream I was screaming underwater, and my friends were all waving from the shore,” and I was like, “Oh god, ‘screaming underwater,’ what are you 23?” (Yes, about that.) But then she finishes that verse: “And I don’t need you to tell me what that means, I don’t believe in that stuff anymore,” and that’s when I had to admit the song was wrecking me and I thought, “Yes, I don’t believe in it either. Fuck Freud and Jung and everything in between and after that made us think that we were fascinating, and that a person and their brilliant thoughts and ideas could be the center of anything.” It was at that moment when I headed over to stare into a half-price bright yellow clog-boot that no one would ever really actually wear until I felt capable of smiling and signing my charge slip.</p>
+<p>Part of me still wants to explain to my niece, “No, this song isn’t about someone who just feels bad, it’s about someone who knows it doesn’t even matter if she feels bad, and it’s so awful. Don’t you see how awful it is?” Another part of me doesn’t want her to see how awful it is. She is still happy, and that’s good. It is supposed to rain tonight, maybe I will call her and for a few minutes, we can be happy at the same time.</p>
+<p style="text-align:center;">* * *</p>
+<p style="text-align:center;"><em><a href="http://twitter.com/sarahlovescali/">Sarah Miller</a> is a writer and lives in Nevada City, California.<br />
+</em></p>
+<p style="text-align:center;"><em>Editor: <a href="http://twitter.com/saribotton">Sari Botton</a></em></p>
+<div class="sponsor-double"><div class='sponsor-300'>		<style>
+		div.sponsor-300 { display:block !important; }
+		</style>
+		<div style="padding-bottom:15px;width:300px;height:250px;">
+		<div id="atatags-701357621-6699">
+			<script type="text/javascript">
+			__ATA.cmd.push(function() {
+				__ATA.initSlot('atatags-701357621-6699',  {
+					collapseEmpty: 'after',
+					sectionId: '701357621',
+					width: 300,
+					height: 250
+				});
+			});
+			</script>
+		</div></div></div><div class='sponsor-300'>		<style>
+		div.sponsor-300 { display:block !important; }
+		</style>
+		<div style="padding-bottom:15px;width:300px;height:250px;">
+		<div id="atatags-701357621-2082">
+			<script type="text/javascript">
+			__ATA.cmd.push(function() {
+				__ATA.initSlot('atatags-701357621-2082',  {
+					collapseEmpty: 'after',
+					sectionId: '701357621',
+					width: 300,
+					height: 250
+				});
+			});
+			</script>
+		</div></div></div></div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-138348" class="share-twitter sd-button share-icon no-text" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-138348" class="share-facebook sd-button share-icon no-text" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-pocket"><a rel="nofollow noopener noreferrer" data-shared="" class="share-pocket sd-button share-icon no-text" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?share=pocket" target="_blank" title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket (Opens in new window)</span></a></li><li class="share-custom share-custom-instapaper"><a rel="nofollow noopener noreferrer" data-shared="" class="share-custom share-custom-instapaper sd-button share-icon no-text" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?share=custom-1422885119" target="_blank" title="Click to share on Instapaper"><span style="background-image:url(&quot;https://longreadsblog.files.wordpress.com/2015/02/instapaper4.png&quot;);"></span><span class="sharing-screen-reader-text">Click to share on Instapaper (Opens in new window)</span></a></li><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon no-text" href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-70135762-138348-5e9e7c3661810' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=70135762&amp;post_id=138348&amp;origin=longreadsblog.wordpress.com&amp;obj_id=70135762-138348-5e9e7c3661810&amp;domain=longreads.com' data-name='like-post-frame-70135762-138348-5e9e7c3661810'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div><div class="entry-links"></div>
+</section>
+		<div class="entry-meta">
+
+	<div class="post-meta">
+		<div class="author-mini">
+							<div class="author-date">
+					Posted by 					<img alt='' src='https://2.gravatar.com/avatar/b269c084d18ceb17b64bd35e6712574b?s=32&#038;d=identicon&#038;r=G' class='avatar avatar-32' height='32' width='32' /><a href="https://longreads.com/author/sarahpetersmiller1969/" title="Posts by Sarah Miller" class="author url fn" rel="author">Sarah Miller</a>					 on <a href="https://longreads.com/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/">March 11, 2020</a>
+				</div>
+					</div>
+
+		<div class="meta-left">
+										<span class="cat-links icon-folder"></span>
+										<span class="tag-links icon-tag"></span>
+						<a href=''><span class='article-actions icon-edit'></span></a>
+		</div>
+
+		<div class="cat-links-categories"><span class="meta-title">Categories: </span><a href="https://longreads.com/category/editors-pick/" rel="category tag">Editor's Pick</a>, <a href="https://longreads.com/category/essays-criticism/" rel="category tag">Essays &amp; Criticism</a>, <a href="https://longreads.com/category/featured/" rel="category tag">Featured</a>, <a href="https://longreads.com/category/nonfiction-2/" rel="category tag">Nonfiction</a>, <a href="https://longreads.com/category/story/" rel="category tag">Story</a></div>
+		<div class="tag-links-tags"><span class="meta-title">Tags: </span><a href="https://longreads.com/tag/anxiety/" rel="tag">anxiety</a>, <a href="https://longreads.com/tag/climate-change/" rel="tag">climate change</a>, <a href="https://longreads.com/tag/depression/" rel="tag">depression</a>, <a href="https://longreads.com/tag/end-times/" rel="tag">end times</a>, <a href="https://longreads.com/tag/phoebe-bridgers/" rel="tag">Phoebe Bridgers</a>, <a href="https://longreads.com/tag/sarah-miller/" rel="tag">sarah miller</a></div>
+	</div>
+
+</div>
+
+				<footer class="entry-footer">
+
+	<div class="entry-email-signup">
+	<div class="icon-email"></div>
+	<div class="email-signup-content">
+	    <h2 class="email-promo-title">Get the Longreads Weekly Email</h2>
+		<form action="//longreads.us2.list-manage.com/subscribe/post?u=1854296747731744c923a33ef&amp;id=bd2ad42066&SIGNUP=article" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate ui-form" target="_blank" novalidate>
+			<div class="email-promo-body">
+				Sign up to get the week&rsquo;s best Longreads delivered to your inbox every Friday afternoon.			</div>
+			<div class="mc-field-group ui-form">
+				<input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="sm-button">
+			</div>
+			<div id="mce-responses" class="clear">
+				<div class="response" id="mce-error-response" style="display:none"></div>
+				<div class="response" id="mce-success-response" style="display:none"></div>
+			</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+			<div style="position: absolute; left: -5000px;"><input type="text" name="b_1854296747731744c923a33ef_bd2ad42066" tabindex="-1" value=""></div>
+	   </form>
+	</div>
+</div>
+
+<div class="member-promo">
+	<div class="member-logo"><a class="member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-bottom&#038;utm_campaign=member-promo"></a></div>
+	<div class="member-promo-content">
+		<h2 class="member-promo-title"><a class="member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-bottom&#038;utm_campaign=member-promo">Friends: We Need Your Help to Fund More Stories</a></h2>
+		<div class="member-promo-body">
+			We want to dramatically increase our story fund this year, but we can't do it without your support. Every dollar you contribute goes to writers and publishers who spend hours, weeks, and months reporting and writing outstanding stories. Now is the time to join us.		</div>
+		<a class="sm-button-red member-promo-link" href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=story-bottom&#038;utm_campaign=member-promo">Become a Member</a>
+	</div>
+</div>
+
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div><div class='sponsor-728'>		<style>
+		div.sponsor-300 { display:block !important; }
+		</style>
+		<div style="padding-bottom:15px;width:728px;height:90px;">
+		<div id="atatags-701357621-7508">
+			<script type="text/javascript">
+			__ATA.cmd.push(function() {
+				__ATA.initSlot('atatags-701357621-7508',  {
+					collapseEmpty: 'after',
+					sectionId: '701357621',
+					width: 728,
+					height: 90
+				});
+			});
+			</script>
+		</div></div></div>
+<div class="support-footer">
+  <div class="section-header">
+     <h3 class="h-three">Support Longreads</h3>
+  </div>
+    <ul class="big_links">
+                  <li>
+              <a href="//longreads.com/join/?utm_source=what-do-we-do-with-feelin&#038;utm_medium=banner&#038;utm_content=page-footer&#038;utm_campaign=member-promo">
+                  <div class="support-longreads support-link">
+                      Become a Longreads Member for just $3 per month                      <span class="icon-longreads-color support-icon"></span>
+                  </div>
+              </a>
+          </li>
+                <li>
+            <a href="http://www.twitter.com/longreads/" target="_blank">
+                <div class="support-twitter support-link">
+                   Follow us on Twitter                   <span class="icon-twitter-color support-icon"></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://longreads.com/follow">
+                <div class="support-WordPress support-link">
+                    Follow us on WordPress.com                    <span class="icon-wordpress-color support-icon"></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.facebook.com/longreads/"
+            target="_blank">
+                <div class="support-facebook support-link">
+                    Follow us on Facebook                    <span class="icon-facebook-color support-icon"></span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href='https://instagram.com/longreads/' target='_blank'>
+                <div class='support-link'>
+                    Follow us on Instagram                    <span class='icon-instagram support-icon'></span>
+                </div>
+            </a>
+        </li>
+        <li class="email">
+            <div class="support-email support-link">Get the Longreads Weekly Email                <span class="icon-email support-icon"></span>
+            </div>
+            <div class="support-mailchimp">
+               <form action="//longreads.us2.list-manage.com/subscribe/post?u=1854296747731744c923a33ef&amp;id=bd2ad42066&SIGNUP=footer" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate ui-form" target="_blank" novalidate>
+                   <div class="mc-field-group ui-form">
+                       <input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+                       <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="sm-button">
+                   </div>
+                   <div id="mce-responses" class="clear">
+                       <div class="response" id="mce-error-response" style="display:none"></div>
+                       <div class="response" id="mce-success-response" style="display:none"></div>
+                   </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                   <div style="position: absolute; left: -5000px;"><input type="text" name="b_1854296747731744c923a33ef_bd2ad42066" tabindex="-1" value=""></div>
+               </form>
+            </div>
+        </li>
+    </ul>
+</div><div class="wp-footer">
+	<div class="wp-footer__container">
+		<svg class="wp-footer__logo" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><title>wordpress-logo</title><path d="M18 0c-9.925 0-18 8.075-18 17.999 0 9.926 8.075 18.001 18 18.001s18-8.075 18-18.001c0-9.925-8.075-17.999-18-17.999zm-16.183 17.999c0-2.346.503-4.574 1.401-6.587l7.72 21.151c-5.399-2.623-9.121-8.158-9.121-14.564zm16.183 16.185c-1.589 0-3.122-.234-4.572-.659l4.856-14.11 4.974 13.629.116.222c-1.682.592-3.489.918-5.374.918zm2.23-23.772c.974-.051 1.852-.154 1.852-.154.872-.103.77-1.385-.103-1.334 0 0-2.621.206-4.314.206-1.59 0-4.262-.206-4.262-.206-.873-.051-.975 1.282-.102 1.334 0 0 .825.103 1.697.154l2.521 6.908-3.542 10.621-5.893-17.529c.975-.051 1.852-.154 1.852-.154.872-.103.769-1.385-.104-1.334 0 0-2.621.206-4.313.206-.303 0-.661-.008-1.042-.02 2.894-4.393 7.868-7.294 13.522-7.294 4.213 0 8.049 1.611 10.928 4.249l-.209-.013c-1.59 0-2.718 1.385-2.718 2.873 0 1.334.769 2.462 1.59 3.795.615 1.078 1.334 2.462 1.334 4.463 0 1.386-.411 3.129-1.231 5.232l-1.614 5.393-5.848-17.396zm5.906 21.575l4.943-14.291c.924-2.309 1.231-4.155 1.231-5.796 0-.596-.039-1.149-.109-1.664 1.263 2.305 1.982 4.95 1.982 7.764 0 5.97-3.236 11.183-8.047 13.988z" fill="#0087BE"/></svg>
+		<div class="wp-footer__text">
+			<a href="https://wordpress.com/?aff=2669&utm_source=longreads&utm_medium=automattic_referred&utm_campaign=footer" class="wp-footer__link">
+				<h2 class="wp-footer__headline">Proudly powered by WordPress</h2>
+				<p class="wp-footer__body">
+					Create your own site at WordPress.com					<svg class="wp-footer__arrow" width="10" height="16" viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg"><title>arrow-right</title><path d="M1.502 16l8.498-8-8.498-8-1.502 1.414 6.996 6.586-6.996 6.586z" fill="#555"/></svg>
+				</p>
+			</a>
+		</div>
+	</div>
+</div>
+</footer>
+
+						<a class="kindleWidget kindle-bottom"><span class="icon-amazon"></span></a>
+			<script type="text/javascript">
+			jQuery( document ).ready( function( $ ) {
+				jQuery( ".kindle-bottom").prependTo("li.share-end");
+			} );
+			</script>
+	
+</article>
+					</section>
+
+
+<script type='text/javascript'>
+								var _gaq = _gaq || [];
+								_gaq.push(['_setAccount', 'UA-19317901-1']);
+_gaq.push(['_trackPageview']);
+
+								(function() {
+									var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+									ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+									var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+								})();
+							</script>
+</div>
+
+<footer id="footer" class="h-small" role="contentinfo">
+	<div class="footer-links">
+		<a href="https://longreadsblog.wordpress.com/">Home</a>
+		<a href="https://longreadsblog.wordpress.com/about/">About</a>
+		<a href="https://longreads.com/member/">Membership</a>
+		<a href="https://longreadsblog.wordpress.com/faq/">FAQ</a>
+		<a href="https://longreadsblog.wordpress.com/submissions/">Submissions</a>
+		<a href="http://automattic.com/privacy">Privacy Policy</a>
+		<a href="https://longreadsblog.wordpress.com/press/">Press</a>
+		<a id="rss-link" class="icon-rss" href="https://longreads.com/feed/">RSS Feed</a>
+		<div id="footer-automattic">
+			Part of the <a href="http://www.automattic.com?utm_source=longreads&utm_medium=automattic_referred&utm_campaign=footer" id="automattic-logo">Automattic</a> family.
+		</div>
+		<div id="copyright">
+			&copy; 2020 Longreads		</div>
+	</div>
+	<div style='display: none'>
+		get_longreads_user_info:
+		false	</div>
+</footer>
+</div> <!-- Closing .site-content__wrapper -->
+</div>
+<script type="text/javascript">
+	// Tracks functions
+	window._tkq = window._tkq || []; window._tkq.push( [ 'recordEvent', 'wpcom_longreads_page_view', {
+		utm_campaign: 'what-do-we-do-with-feelings-now-that-they-dont-matter-anymore'
+	} ] );
+	jQuery( function($) {
+		$( '.become-member' ).on( 'click', function() {
+			_tkq.push( ['recordEvent', 'wpcom_longreads_membership_click',{
+				utm_campaign: 'donate-button'
+			} ] );
+		});
+	});
+			_tkq.push( [ 'recordEvent', 'wpcom_longreads_exclusive_view', {
+			utm_campaign: 'what-do-we-do-with-feelings-now-that-they-dont-matter-anymore'
+		} ] );
+
+		// Membership button clicks
+		jQuery( function($) {
+			$( '.member-promo-link' ).on( 'click', function() {
+				_tkq.push( ['recordEvent', 'wpcom_longreads_membership_click',{
+					utm_campaign: 'what-do-we-do-with-feelings-now-that-they-dont-matter-anymore'
+				} ] );
+			});
+		});
+	 </script>
+<!--  -->
+<script type="text/javascript">(function k(){window.$SendToKindle&&window.$SendToKindle.Widget?$SendToKindle.Widget.init({"content":"entry-content","title":"entry-title","author":"author-name","published":"entry-date"}):setTimeout(k,500);})();</script><script src='//0.gravatar.com/js/gprofiles.js?ver=202017y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-b269c084d18ceb17b64bd35e6712574b">
+	</div>
+	</div>
+			<script type="text/javascript">
+			( function( $ ) {
+				$( document.body ).on( 'post-load', function () {
+					if ( typeof __ATA.insertInlineAds === 'function' ) {
+						__ATA.insertInlineAds();
+					}
+				} );
+			} )( jQuery );
+			</script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/longreads.com\/2020\/03\/11\/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore\/":138348};
+	</script>
+					<div id="sharing_email" style="display: none;">
+		<form action="/2020/03/11/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore/?utm_source=digg" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<div
+				class="g-recaptcha"
+				data-sitekey="6LcmyE0UAAAAALID28yVNg7pFCodGaArJzHitez_"
+				data-theme="light"
+				data-type="image"
+				data-tabindex="0"></div>
+			<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en" async></script>
+			
+			<img style="float: right; display: none" class="loading" src="https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+<link rel='stylesheet' id='all-css-0-2' href='https://s2.wp.com/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css?m=1583834955h&cssminify=yes' type='text/css' media='all' />
+<script>
+var comment_like_text = {"loading":"Loading..."};
+</script>
+<script>
+var actionbardata = {"siteID":"70135762","siteName":"Longreads","siteURL":"https:\/\/longreads.com","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/e68667ec6ee7cdd0c6b5416a84c52a9c?s=50&d=https%3A%2F%2Fs2.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"a8c\/longreads","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Flongreads.com%2F2020%2F03%2F11%2Fwhat-do-we-do-with-feelings-now-that-they-dont-matter-anymore%2F&signup_flow=account&domain=longreads.com","themeURL":"","xhrURL":"https:\/\/longreads.com\/wp-admin\/admin-ajax.php","nonce":"7bf2826c5f","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"5cd34e72e9\" \/>","referer":"https:\/\/longreads.com\/2020\/03\/11\/what-do-we-do-with-feelings-now-that-they-dont-matter-anymore\/?utm_source=digg","canFollow":"1","feedID":"22973954","statusMessage":"","customizeLink":"https:\/\/longreadsblog.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Flongreadsblog.wordpress.com%2F2020%2F03%2F11%2Fwhat-do-we-do-with-feelings-now-that-they-dont-matter-anymore%2F%3Futm_source%3Ddigg","postID":"138348","shortlink":"https:\/\/wp.me\/p4KhvY-zZq","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/longreads.com\/138348","statsLink":"https:\/\/wordpress.com\/stats\/post\/138348\/longreads.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Longreads","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 51,943,680 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Flongreads.com%2F2020%2F03%2F11%2Fwhat-do-we-do-with-feelings-now-that-they-dont-matter-anymore%2F&signup_flow=account&domain=longreads.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJydU9tSwjAQ/SHTgKDig+O3pMlSts3NbNIKX29qoUJhysj0IZuzOWfOXso7z6SzEWzkNXEFLUrw30VNT/wy5R1FA0SiglMWrdRJAf0ykSJvwSoX+pR3er9FrQuDdirmdarQEt8mrRlhBAYKI9qKDRn+tnpf5G/NpTPG2UF7iG8Yq78ShP3xKNC2CN3dZzVEL2TDAhAeYPrcJHYyqbHJBWZSgp2wSkN4vJxSuwzmPhLLoWyOTbvh98xAX3eG2GCk7h2VnDr0c66vSBfA4xVA24tIl2xUrrPHMibojK8OVQWROKScdQ0C06LjEYzXIsIEn+rEHeQFzP3yo2MtDnumnVB/Ey7IWRFu7d09/niZKUCoLMxKEbgRFCHkiLkWQsD+PxixfyrEkHfxaiznJBnR2Z40RjOv+xVjWy0wcNqJkAd5OjPp03wsXzav6+fNcrWofwAA633C'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?m=1585663916h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?m=1585663916h&#038;ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?61" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'70135762','blog_tz':'-4','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'70135762','v':'wpcom','tz':'-4','user_id':'0','post':'138348','subd':'longreadsblog'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGRkOFF6NmFWW245RUxZPXRYY2RWLGJYd3dqRWRERHoseDlnUmduLjhuOXE/SERZVF1UNzhUSmxpdnlQSF9TbHloaXpTQmxXUTU/cG9IWkx4JWlYcjdRLy5MNUxsb0JfLSVycTZtY0lXM3hRelprZ3dTcmRuRHlUTzBmeGpra1hJT3psV2lZWTd0dV1uNiVwRGxZTnNGc0kxTXdNUVFGb19jWGJLQSxycU5aVnFFOXZteGtVUDMxRXZIdklPcXFvMGkyPWcuUGZhJTlVdDRsb00/Li4sUEVLMmF5QQ=='}]);
+_stq.push([ 'clickTrackerInit', '70135762', '138348' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script></body>
+</html>

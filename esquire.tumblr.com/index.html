@@ -1,0 +1,2148 @@
+<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="https://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=b9f848c06fcba7eaf305d4a7cb7a1b98"></script><!DOCTYPE html>
+
+<!--
+
+Observer Theme
+By Zack Sultan
+Released January 2013
+Revised June 25, 2017
+
+-->
+
+<html>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+        <title>Esquire</title>
+        <style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="stylesheet" media="screen" href="https://assets.tumblr.com/client/prod/standalone/blog-network-npf/index.build.css?_v=6e121b6530ce38be364bf1089290570b"><link rel="shortcut icon" href="https://66.media.tumblr.com/avatar_688c5b96d8f0_128.pnj">
+        <link rel="alternate" type="application/rss+xml" href="https://esquire.tumblr.com/rss">
+        
+            <meta name="description" content="Man at His Best" />
+        
+        <link rel="shortcut icon" href="https://66.media.tumblr.com/avatar_688c5b96d8f0_128.pnj">
+        <link rel="alternate" type="application/rss+xml" href="https://esquire.tumblr.com/rss">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+
+
+
+<!-- Options -->
+
+
+        <meta name="if:Show Navigation" content="1"/>
+        <meta name="if:Alternate Header Layout" content="0"/>
+        <meta name="if:Show Description" content="0"/>
+        <meta name="if:Show Archive Navigation Link" content="1"/>
+        <meta name="if:Wide Images" content="1"/>
+        <meta name="if:Photoset Layout" content="0"/>
+        <meta name="if:Show Post Tags" content="1"/>
+        <meta name="if:Show Post Notes" content="1"/>
+        <meta name="if:Show Copyright" content="0"/>
+
+        <meta name="Title font" content="Gibson">
+        <meta name="Title font weight" content="bold" title="Bold">
+        <meta name="Title font weight" content="normal" title="Normal">
+        <meta name="font:Body font" content="Calluna"/>
+
+        <meta name="Background color" content="#fff">
+        <meta name="Title color" content="#444444">
+        <meta name="Link color" content="#5f79a4">
+
+        <meta name="color:Body text" content="#333333"/>
+		<meta name="color:Secondary text" content="#888888"/>
+        <meta name="image:Logo" content=""/>
+        <meta name="text:TypeKit ID" content=""/>
+        <meta name="text:Title Font" content=""/>
+        <meta name="text:Body Font" content=""/>
+        <meta name="text:Post Headline Font" content=""/>
+        <!--<meta name="text:Secondary Font" content=""/>-->
+
+        <meta name='text:Disqus Shortname' content='' />
+        <meta name='text:Google Analytics' content='' />
+
+<!-- Scripts -->
+
+    <script src="https://static.tumblr.com/4kpnlef/Pttmhz2ap/jquery-1.9.1.min.js"></script>
+
+    
+
+    <!-- Media resizing -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Make desktop tumblr video stretch to 100%
+            $('.tumblr_video_container').css({ 'width' : '100%', 'height' : '100%' });
+            // Resize tumblr video on mobile
+            $('.iphone-video a').css({ 'width' : '100%', 'height' : '200px' });
+		});
+
+        //Make Spotify the right size and responsive
+	    $(document).ready(function(){
+	        $('.mobile-spotify iframe').css('height', '80px');
+            $('.mobile-spotify iframe').css('width', '290px');
+            $('iframe[src*="embed.spotify.com"]').each( function() {
+                $(this).css('width',$(this).parent(1).css('width'));
+                $(this).css('height', '82');
+                $(this).attr('src',$(this).attr('src'));
+            });
+        });
+        $(window).resize(function() {
+            $('iframe[src*="embed.spotify.com"]').each( function() {
+                $(this).css('width',$(this).parent(1).css('width'));
+                $(this).css('height', '82');
+                $(this).attr('src',$(this).attr('src'));
+            });
+        });
+
+        // Fix Flickr images treated as videos.
+        $(document).ready(function(){
+          // Grab the videoWrappers that are already here.
+          var videoWrappers = document.querySelectorAll('.videoWrapper');
+          for(var i = 0, len = videoWrappers.length; i < len; i++) {
+              fixFlickr(videoWrappers[i]);
+          }
+
+          // Also process any new nodes that are added to the page.
+          var observer,
+          observerConfig = {
+          	childList: true,
+          	subtree: true
+          };
+
+          observer = new MutationObserver(function (mutations) {
+          	for (var i = 0, len = mutations.length; i < len; i++) {
+          		// If there were new nodes added, we check that they are valid flickr embeds
+          		if (mutations[i].addedNodes.length && mutations[i].addedNodes[0].querySelector) {
+          		    var newVideoWrapper = mutations[i].addedNodes[0].querySelector('.videoWrapper');
+          			if (newVideoWrapper !== null) {
+          				fixFlickr(newVideoWrapper);
+          			}
+          		}
+          	}
+          });
+
+          observer.observe(document.getElementById('content'), observerConfig);
+        });
+
+        function fixFlickr(videoWrapper){
+          var potentialEmbed = videoWrapper.firstElementChild;
+          if(potentialEmbed.hasAttribute('data-flickr-embed')) {
+              videoWrapper.style.paddingBottom = 0;
+              videoWrapper.style.height = 'auto';
+          }
+        }
+
+        //disable safari active states
+        document.addEventListener("touchstart", function() {},false);
+
+	</script>
+
+
+
+
+<!-- Style Sheet -->
+
+<style type="text/css">
+
+.regular p {
+	font-weight: bold;
+	color:aqua;
+}
+
+.regular .bottom-nav {
+	display: none;
+}
+
+::selection {
+    background: #d42700; /* Safari */
+	color: #333333;
+	}
+
+::-moz-selection {
+	background: #d42700; /* Firefox */
+	color: #333333;
+}
+
+body {
+	margin: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+    font-size:18px;
+	-webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+p, li, blockquote {
+	line-height: 28px;
+	margin: 0;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+	font-size: 30px;
+}
+
+.ir {
+	text-indent: -99999em;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Global colors
+********************************/
+
+body {
+	color: #333333;
+	background-color: #FAFAFA;
+}
+
+.blog-description {
+	color: #888888;
+}
+
+a {
+	color: #333333;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+#header h1 a {
+	color: #444444;
+	border-bottom: none;
+}
+
+a:hover {
+}
+
+a:active {
+	position: relative;
+	outline: none;
+	top: 1px;
+}
+
+
+.metadata a, #footer-links a, #footer p.promo a, .links a {
+	color: #888888;
+	border-bottom: none;
+}
+
+.metadata a:hover, #footer-links a:hover, #footer p.promo a:hover, .links a:hover, .more a:hover, a.mobile-player:hover {
+
+}
+
+.post {
+	border-bottom: 1px solid rgba(136, 136, 136, 0.2);
+}
+
+.colophon p {
+	color: #888888;
+}
+
+
+/* Global fonts
+********************************/
+
+body {
+	font-family:  'News Gothic FS', sans-serif, georgia, serif;
+	font-weight: normal;
+}
+
+.title h1, .link-title h1, .chat-title h1, .q h1, .a h1, .album-info h2, #footer h2 {
+	font-family:  'News Gothic FS', sans-serif, georgia, serif;
+	font-weight: bold;
+}
+
+.blog-title h1 {
+	font-family:  'News Gothic FS', sans-serif, futura, helvetica, arial, sans-serif;
+	font-weight: bold;
+	font-size: 96px;
+	line-height: 1em;
+}
+
+.metadata a {
+	font-family:  , helvetica, arial, sans-serif;
+	font-weight: normal;
+}
+
+
+/* Page
+********************************/
+
+
+#page {
+	border: 0px solid;
+	max-width: 900px;
+	padding-left:  50px;
+	padding-right: 50px;
+	margin: auto;
+}
+
+
+
+
+
+
+
+
+/* Header Centered
+********************************/
+
+#header {
+	margin-top: 20px;
+	margin-bottom: 80px;
+	display: block;
+	overflow: visible;
+}
+
+#header a {
+	text-decoration: none;
+}
+
+.blog-title {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 70px;
+}
+
+.blog-title a {
+	border-bottom: none;
+}
+
+.blog-title img {
+	max-width: 100%;
+}
+
+.blog-description {
+	font-size: 16px;
+	line-height: 20px;
+	margin-top: 20px;
+}
+
+.links {
+	margin-top: 0px;
+	text-align: center;
+	float: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.2);
+}
+
+.links ul {
+	margin-top: 10px;
+	padding: 0;
+	display: block;
+	text-align: center;
+	float: none;
+}
+
+.links li {
+	display: inline;
+	margin-left: 10px;
+	text-transform: none;
+}
+
+.links li:first-child {
+	margin-left: 0px;
+}
+
+
+
+/* Post wrappers
+********************************/
+
+#content {
+	width: 100%;
+	overflow-x: hidden;
+	clear: both;
+}
+
+.post {
+	margin-bottom: 45px;
+	padding-bottom: 40px;
+	width: 100%;
+}
+
+.narrow {
+	max-width: 640px;
+	margin: auto;
+}
+
+
+/* Headings
+********************************/
+
+.title h1, .link-title h1, .chat-title h1 {
+	text-align: center;
+	margin: auto;
+	margin-bottom: 25px;
+	font-size: 42px;
+	line-height: 50px;
+}
+
+.link-title a {
+	text-decoration: none;
+	position: relative;
+	border: none;
+	color: #d42700;
+}
+
+span.link-arrow {
+	position: relative;
+	font-size: 20px;
+	bottom: 3px;
+}
+
+.quote-short {
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 25px;
+}
+
+.photo img, .album-art img, .videoWrapper {
+  max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	border-radius: 2px;
+}
+
+.photo img, .album-art img, .videoWrapper img {
+	min-width: 640px;
+}
+
+.photoset-layout {
+    max-width: 700px;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.tumblr_audio_player {
+	height: 250px;
+}
+
+.audio iframe {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.videoWrapper iframe, .videoWrapper object {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.videoWrapper iframe.flickr-embed-frame, .videoWrapper img {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Post body styles
+********************************/
+
+.caption p {
+	margin-bottom: 15px;
+}
+
+.caption h1 {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.caption h2 {
+	font-weight: bold;
+	margin-bottom: 15px;
+	font-size: 24px;
+}
+
+.caption blockquote {
+	margin-bottom: 10px;
+	border-left: 3px solid rgba(136, 136, 136, 0.2);
+	margin-left: 5px;
+	padding-left: 15px;
+	line-height: 26px;
+}
+
+.caption pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	background-color: rgba(136, 136, 136, 0.2);
+	border-radius: 2px;
+	padding: 10px 15px 10px 15px;
+	font-size: 15px;
+	line-height: 24px;
+	margin: 15px 0 25px 0;
+}
+
+.caption ul, ol {
+	margin-top: 0;
+	margin-bottom: 25px;
+	padding-left: 40px;
+}
+
+.caption img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 30px auto 30px auto;
+    border-radius: 2px;
+}
+
+.quote-short {
+	line-height: 40px;
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.quote-medium, .quote-long {
+	line-height: 32px;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+ul.chat {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.chat li {
+	border-bottom: 1px solid rgba(136, 136, 136, 0.3);
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.chat li:last-child {
+	border: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+span.odd, span.even  {
+	font-weight: bold;
+}
+
+.more a {
+	display: block;
+	width: 99%;
+	height: 30px;
+	border: 1px solid rgba(136, 136, 136, 0.3);
+	text-align: center;
+	text-decoration: none;
+	border-radius: 2px;
+	padding-top: 10px;
+	margin-bottom: 30px;
+}
+
+
+.more a:active {
+    background: rgba(136, 136, 136, 0.08);
+    box-shadow: inset 0px 1px 4px rgba(136, 136, 136, 0.2);
+    top: 0px;
+}
+
+.audio-module {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 25px;
+}
+
+a.mobile-player {
+	border: 1px solid rgba(136, 136, 136, 0.2);
+	background: rgba(136, 136, 136, 0.1);
+	width: 99%;
+	padding: 30px 0 30px 0;
+	margin-bottom: 25px;
+	border-radius: 2px;
+	display: none;
+}
+
+a.mobile-player:active {
+    top: 0px;
+    box-shadow: inset 0px 1px 4px rgba(136, 136, 136, 0.2);
+    background: rgba(136, 136, 136, 0.18);
+    border: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+.play-triangle {
+	margin-left: 20px;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 6.5px 0 6.5px 10px;
+	border-color: transparent transparent transparent rgba(136, 136, 136, 0.8);
+}
+
+.album-info {
+	display: block;
+	float: left;
+	width: 63%;
+}
+
+.player {
+	display: block;
+	background-color: #ffffff;
+	float: right;
+	padding-top: 5px;
+	padding-right: 2px;
+	border: 1px solid rgba(136, 136, 136, 0.3);
+}
+
+.desktop-spotify {
+	display: block;
+
+}
+
+.mobile-spotify {
+	display: none;
+	width: 290px;
+	margin: auto;
+}
+
+.iphone-video object {
+    display: block;
+    margin: 0px auto 20px;
+}
+
+.asker-block, .answer-text {
+	display: block;
+	overflow: auto;
+}
+
+p.question {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+p.album, p.question {
+	font-size: 24px;
+	line-height: 32px;
+}
+
+h1.qa-letter {
+	display: block;
+	float: left;
+	width: 45px;
+	position: relative;
+	bottom: 3px;
+	font-size: 30px;
+}
+
+.q {
+	margin-bottom: 20px;
+}
+
+img.asker {
+	float:left;
+	margin-right: 8px;
+	border-radius: 2px;
+	position: relative;
+	top: 2px;
+}
+
+p.asker {
+	font-style: italic;
+}
+
+p.question {
+	clear: both;
+}
+
+
+/* Metadata
+********************************/
+
+.metadata {
+	border: 0px solid gray;
+	overflow: auto;
+	font-size: 12px;
+	text-transform: uppercase;
+	margin-top: 20px;
+}
+
+.metadata a {
+	text-decoration: none;
+}
+
+.date, .tags, .notes-count {
+	display: block;
+	float: left;
+	margin-right: 15px;
+}
+
+.tags a, .notes-count a, .date a {
+	margin-right: 5px;
+}
+
+
+/* Footer
+********************************/
+
+#footer {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#footer a {
+	text-decoration: none;
+	border-bottom: none;
+}
+
+a.back-next {
+    margin: 0px 10px 0px 10px;
+}
+
+#footer h2 {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+#footer-links ul {
+	margin-bottom: 0px;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
+
+#footer-links li {
+	display: inline;
+	margin-left: 5px;
+	font-size: 14px;
+}
+
+#footer-links li:first-child {
+	margin-left: 0px;
+}
+
+#footer .colophon p {
+	font-size: 14px;
+	font-style: italic;
+}
+
+#footer p.promo {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-style: normal;
+}
+
+
+/* Notes and comments
+********************************/
+
+#permalink-content {
+	margin-top: 40px;
+}
+
+.avatar_frame {
+	position: relative;
+	top: 4px;
+	margin-right: 10px;
+}
+
+.comments {
+	margin-bottom: 35px;
+}
+
+.comments h3, .permalink-notes h3 {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.permalink-notes ol {
+	padding-left: 0;
+}
+
+.permalink-notes li {
+	list-style: none;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(136, 136, 136, 0.3);
+	font-size: 13px;
+}
+
+.permalink-notes blockquote {
+	margin: 5px 0px 5px 0px;
+	border-left: 3px solid rgba(136, 136, 136, 0.2);
+	margin-left: 20px;
+	padding-left: 15px;
+    line-height: 24px;
+}
+
+.notes a {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+
+.post iframe, .post object {
+max-width: 100%;
+}
+
+
+/* Browser size break-points
+********************************/
+
+
+@media screen and (max-width: 800px) {
+
+#header {
+	margin-top: 20px;
+	display: block;
+	overflow: visible;
+	padding-bottom: 0px;
+}
+
+.blog-title {
+	display: block;
+	text-align: center;
+	margin-top: 50px;
+	float: none;
+	width: 100%;
+    margin-bottom: 50px;
+}
+
+.blog-title h1 {
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.blog-description {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.links {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+	float: none;
+	border-bottom: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+.links ul {
+	margin-top: 10px;
+	padding: 0;
+	display: block;
+	text-align: center;
+	float: none;
+}
+
+.links li {
+	display: inline;
+	margin-left: 16px;
+	font-size: 17px;
+	text-transform: none;
+}
+
+
+.metadata {
+	font-size: 16px;
+	}
+
+.player {
+	display: none;
+}
+
+a.mobile-player {
+	display: block;
+}
+
+.album-info {
+	width: 100%
+}
+
+.title h1, .link-title h1, .chat-title h1 {
+text-align: center;
+font-size: 36px;
+line-height: 42px;
+}
+
+}
+
+@media screen and (max-width: 740px) {
+
+#page {
+	padding-left:  1em;
+	padding-right: 1em;
+}
+
+#header {
+	margin-bottom: 50px;
+}
+
+/* WRANGLE TUMBLR VIDEO PLAYER */
+
+
+.iphone-video img {
+	width: 90%;
+}
+
+.iphone-video a {
+	margin-bottom: 20px;
+}
+
+/* IMAGES */
+
+.photo img, .album-art img, .videoWrapper img {
+	min-width: 100%;
+}
+
+.link-title a {
+	line-height: 50px;
+}
+
+.desktop-spotify {
+	display: none;
+}
+
+.mobile-spotify {
+	display: block;
+}
+
+}
+
+@media only screen and (min-width: 768px) {
+  article p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  article .tagged {
+  clear: both;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    height: 300px;
+    padding: 15px;
+    max-width: 1000px;
+  }
+  
+  .centered-wrap {
+  display: table;
+  width: 100%;
+  height: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  article {
+    max-width: 800px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+  section.the-posts {
+    padding: 30px;
+    margin-top: 0px;
+    z-index: 100;
+  }
+  
+.the-profile .logo {
+margin-top: 24px;
+}
+
+article .article-content .inner-wrap {
+  max-width: 100%;
+}
+
+article .caption {
+  margin-top: 0;
+}
+p {
+  text-align: left;
+}
+
+.tagged a {padding-right:9px;
+color: #999999;
+}
+
+article .tagged {
+margin-top:20px;
+}
+
+@media only screen and (min-width: 768px) {
+  article {
+    padding: 0 80px 40px 80px;
+  }
+  
+.post-divide {
+border-top: 5px solid #CFCFCF;
+
+}
+  
+  article.type_quote .quote.medium {
+    font-size: 32px;
+  }
+  article.type_quote .quote.long {
+    font-size: 32px;
+  }
+  
+  article.type_photo .article-content {
+
+  max-width: 614px;
+}
+article.type_video .video-wrap {
+  max-width: 614px;
+}
+  .post-divide {
+    margin: 20px auto 0;
+     width: 100%;
+     max-width:100%;
+    border-top: 1px solid #CFCFCF;
+}
+  }
+}
+.header-overlay {
+  background: #ffffff;
+}
+
+body {
+background: #fff;
+}
+article.type_quote .quote {
+  text-transform: none;
+}
+
+article.type_quote .quote.long  {
+font-size: 24px;
+line-height: 36px;
+}
+
+@media only screen and (min-width: 768px) {
+  article.type_quote .quote.short {
+   font-size: 36px;
+line-height: 42px;
+  }
+  
+article .article-content {
+  text-align: left;
+}
+
+@media only screen and (min-width: 768px) {
+  article .article-content .icons {
+  
+    text-align: center;
+}
+
+.tagged h4{
+	float: left;
+	margin: 0px 10px 10px 0;
+	font-family: 'arial black';
+	font-size: 12px;
+	letter-spacing:-.5px;
+	line-height:22px;
+}
+
+.time { margin: 0 0 40px 0;
+text-transform:uppercase;
+font-size:12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .posts-holder > article:first-child {
+    padding-top: 40px;
+  
+    border-top: 1px solid #E6E6E6;
+    margin-top: 15px;
+}
+
+</style>
+
+<!-- End header -->
+
+    <link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=esquire%26postID=134988518363" /><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=esquire&postID=134988518363" /><link rel="alternate" type="application/json+oembed" href="https://www.tumblr.com/oembed/1.0?url=https://esquire.tumblr.com/post/134988518363/adidas-x-hypebeast-ultra-boost-uncaged-to" title="Adidas x Hypebeast Ultra Boost UncagedTo celebrate its 10th anniversary, Hypebeast has teamed up with Adidas to create an updated version of the Ultra Boost. To keep things fresh, the two brands decided to strip away the cage on the vamp&mdash;hence the..."/><script src="https://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=a8fadfa499d8cb7c3f8eefdf0b1adfdd"></script><link rel="stylesheet" type="text/css" href="https://assets.tumblr.com/fonts/newsgothicfs/stylesheet.css?v=3"><meta name="keywords" content="menswear,esquire,thenewstyle,pittiuomo,public school" /><!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. --><!-- Read more: http://ogp.me/ --><meta property="fb:app_id" content="48119224995" /><meta property="og:title" content="Esquire" /><meta property="og:url" content="https://esquire.tumblr.com/?og=1" /><meta property="og:description" content="Man at His Best" /><meta property="og:type" content="tumblr-feed:tumblelog" /><meta property="og:image" content="https://66.media.tumblr.com/avatar_688c5b96d8f0_128.pnj" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=esquire" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=esquire" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" /><!-- END TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- TWITTER TAGS --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="app" /><meta name="twitter:description" content="esquire" /><meta name="twitter:title" content="esquire" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=esquire&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=esquire&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=esquire&amp;referrer=twitter-cards" /><!-- GOOGLE CAROUSEL --><script type="application/ld+json">
+	{"@type":"ItemList","url":"https:\/\/esquire.tumblr.com","itemListElement":[{"@type":"ListItem","position":1,"url":"https:\/\/esquire.tumblr.com\/post\/138036473828\/160125-sundance"},{"@type":"ListItem","position":2,"url":"https:\/\/esquire.tumblr.com\/post\/137228942648\/our-thenewstyle-photoshoots-are-under-way-from"},{"@type":"ListItem","position":3,"url":"https:\/\/esquire.tumblr.com\/post\/137216940550\/its-time-for-thenewstyle-the-days-of-the"},{"@type":"ListItem","position":4,"url":"https:\/\/esquire.tumblr.com\/post\/135258884788\/katie-aselton-funny-joke-from-a-beautiful-woman"},{"@type":"ListItem","position":5,"url":"https:\/\/esquire.tumblr.com\/post\/135206684473\/so-long-junior"},{"@type":"ListItem","position":6,"url":"https:\/\/esquire.tumblr.com\/post\/135004362618\/this-custom-bmw-motorcycle-is-absolutely-stunning"},{"@type":"ListItem","position":7,"url":"https:\/\/esquire.tumblr.com\/post\/134999558723\/the-real-face-of-jesus-forensic-science-reveals"},{"@type":"ListItem","position":8,"url":"https:\/\/esquire.tumblr.com\/post\/134991253313\/hey-this-post-may-contain-adult-content-so-weve"},{"@type":"ListItem","position":9,"url":"https:\/\/esquire.tumblr.com\/post\/134990344883\/our-friends-at-publicschoolnyc-are-dropped-this"},{"@type":"ListItem","position":10,"url":"https:\/\/esquire.tumblr.com\/post\/134988518363\/adidas-x-hypebeast-ultra-boost-uncaged-to"}],"@context":"http:\/\/schema.org"}</script><link rel="canonical" href="https://esquire.tumblr.com" /></head>
+
+	<body>
+
+		<div id="page">
+
+			<div id="header">
+
+                
+				<div class="links">
+					<ul>
+						<li><a href="/">Home</a></li>
+                        
+                        
+                        
+                        
+					</ul>
+				</div>
+				
+
+
+
+				<div class="blog-title">
+
+                    
+                    <a href="/"><img src="https://static.tumblr.com/115ffc1f4915a4864b7b7e78d6b10a48/vh0vuzm/pfinz04v3/tumblr_static_m6r4jvltonk8wws888goskkc.jpg" alt="Esquire"/></a>
+                    
+
+                    
+
+                    
+					<p class="blog-description">Man at His Best</p>
+                    
+				</div>
+
+
+
+			</div> <!-- header end -->
+
+			<div id="content">
+            
+
+
+                
+
+				
+
+
+                
+    			<!-- PHOTOSET POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					
+
+					
+					<div class="photoset-layout">
+                 		<div id="photoset_138036473828" class="html_photoset">    <iframe
+                id="photoset_iframe_138036473828" name="photoset_iframe_138036473828"
+                class="photoset" scrolling="no" frameborder="0"
+                height="0" width="100%" style="border:0px; background-color:transparent; overflow:hidden;" src="/post/138036473828/photoset_iframe/esquire/tumblr_o1ih8qfRQw1r1thfz/0/false"
+            ></iframe></div>
+					</div class="photoset-layout">
+					
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p><a class="tumblr_blog" href="http://instagram.tumblr.com/post/138035354772">instagram</a>:</p><blockquote><h1><strong>Capturing the Creative Energy of Sundance with @victoriawill</strong></h1><p class="intro"><i>To see more of her Victoria&rsquo;s diverse portrait photography, follow @<a href="https://t.umblr.com/redirect?z=https%3A%2F%2Finstagram.com%2Fvictoriawill&amp;t=NTEzMjVkZDlmMzkyM2E0YzA3NWRhNzg5MGFjZjNlNTdlMGNjOGM1YiwzMXJGelg5TA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F138036473828%2F160125-sundance&amp;m=1">victoriawill</a> on Instagram.</i></p><p>For the last three Sundance Film Festivals, Victoria Will (@<a href="https://t.umblr.com/redirect?z=https%3A%2F%2Finstagram.com%2Fvictoriawill&amp;t=NTEzMjVkZDlmMzkyM2E0YzA3NWRhNzg5MGFjZjNlNTdlMGNjOGM1YiwzMXJGelg5TA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F138036473828%2F160125-sundance&amp;m=1">victoriawill</a>) created old-time tintype prints to capture celebrities in their element, but this year at the Esquire (@<a href="https://t.umblr.com/redirect?z=https%3A%2F%2Finstagram.com%2Fesquire&amp;t=ZTc5NWEzNjkxMTU4ZTY4ZTI5YjBmNDI1ZDM3NzcxNzVmOGE0ZmJkYywzMXJGelg5TA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F138036473828%2F160125-sundance&amp;m=1">esquire</a>) portrait studio, she jumped centuries ahead with moving portraits. &ldquo;This takes a still image and adds a little bit of a narrative to it,&rdquo; the photographer from Brooklyn, New York, says. &ldquo;It asks more questions than it answers.&rdquo; Victoria is drawn to the infectious creative energy inherent in Sundance&rsquo;s culture, and occasionally, she gets star struck &mdash; she has esteemed entertainers like Nick Jonas posing for her, after all. But the butterflies dissipate once the stars say hello. &ldquo;Every 15 minutes, someone new walks in the door,&rdquo; she explains. &ldquo;I say, &lsquo;This is great. It&rsquo;s so nice to meet you. I&rsquo;m Victoria. Come on in. Let&rsquo;s do this.&rsquo;&rdquo;</p></blockquote>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/138036473828/160125-sundance">Jan. 25 2016</a>
+							</div>
+                            
+
+                            
+        					<div class="date">
+								<a href="https://instagram.tumblr.com/post/138035354772/160125-sundance">Via instagram</a>
+							</div>
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/138036473828/160125-sundance">473 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+    			<!-- PHOTOSET POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					
+
+					
+					<div class="photoset-layout">
+                 		<div id="photoset_137228942648" class="html_photoset">    <iframe
+                id="photoset_iframe_137228942648" name="photoset_iframe_137228942648"
+                class="photoset" scrolling="no" frameborder="0"
+                height="-10" width="100%" style="border:0px; background-color:transparent; overflow:hidden;" src="/post/137228942648/photoset_iframe/esquire/tumblr_o0wk71s0Uh1qg6ejr/0/false"
+            ></iframe></div>
+					</div class="photoset-layout">
+					
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p>Our #TheNewStyle photoshoots are under way from Pitti Uomo 89. Learn more about the movement <a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Fstyle%2Fmens-fashion%2Fa41166%2Fits-time-for-the-new-style%2F&amp;t=NDU0OGU4ZTAyMDIzMmY4MmVmMDgyZjgwYzE0ZWIzNjU2M2VhMjU4ZCxxU0pzc1RNdA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F137228942648%2Four-thenewstyle-photoshoots-are-under-way-from&amp;m=1">here</a>, and follow Esquire on Instagram to see the best of the best of the men we&rsquo;ve selected. <a href="https://t.umblr.com/redirect?z=http%3A%2F%2Finstagram.com%2Fesquire.&amp;t=MTQ1YWRlNjAyMjIzMjEyOTJkZjVlM2VkNjlhZDM4MTMyMmQzODg3YSxxU0pzc1RNdA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F137228942648%2Four-thenewstyle-photoshoots-are-under-way-from&amp;m=1">http://instagram.com/esquire.</a> &nbsp;</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/137228942648/our-thenewstyle-photoshoots-are-under-way-from">Jan. 13 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/thenewstyle">#thenewstyle</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pittiuomo">#pittiuomo</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pitti">#pitti</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/menswear">#menswear</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/streetstyle">#streetstyle</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/esquire">#esquire</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pittiuomo89">#pittiuomo89</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/137228942648/our-thenewstyle-photoshoots-are-under-way-from">658 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://esquire.tumblr.com/image/137216940550">
+
+						<img src="https://66.media.tumblr.com/56bf9aa27805fc2f4e4370105cfff62a/tumblr_o0w53ilSJ71qg6ejro1_1280.jpg" alt="It&rsquo;s Time for #TheNewStyle
+The days of the sartorial peacock are numbered.If you follow the world of men&rsquo;s fashion, there&rsquo;s little doubt you&rsquo;re already familiar with the scene. But allow us to set the stage anyway.
+We open on the Fortezza de Bosso,..." />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <h2><b>It&rsquo;s Time for #TheNewStyle<br /></b>The days of the sartorial peacock are numbered.</h2><p>If you follow the world of men&rsquo;s fashion, there&rsquo;s little doubt you&rsquo;re already familiar with the scene. But allow us to set the stage anyway.</p><p>We open on the Fortezza de Bosso, the site of the twice-yearly Pitti Uomo trade show in Florence, Italy. Fade into a group of men, resplendent in their finery, milling about in the Fortezza&rsquo;s main interior square. They&rsquo;re decked the hell out.</p><p>We&rsquo;re talking suits in the most brazen of patterns and colors, paired with all manner of accessories. There are pocket squares, practically exploding out of breast pockets. There are scarves or ties in paisley and ancient madder and far more ostentatious modern prints, nestled just so around the neck. There are double-monks and fedoras and overcoats and bracelets stacked to the breaking point on wrists bedecked with watches that cost as much as a used car. Every once in a while, there&rsquo;s a cloak. (Yes, a cloak.)</p><p>These are the peacocks of Pitti, and they are not isolated phenomena. You can find them in New York, Milan, Paris, London&hellip; anywhere you care to look. They are endlessly chronicled by street style photographers. Endlessly Instagrammed and tweeted and reblogged. And their days are numbered.</p><p>Because at this moment there is something to be said for doing more with less. The dandy is not dead&mdash;the dandy will likely never die, nor should he&mdash;but in 2016 he has given way to the sort of man who appreciates the intersection of ostentation and understatement. The sort man who embraces the idea that one should not look like a character, and much less a caricature. The sort of man whose style doesn&rsquo;t just seem effortless, but actually is.</p><p>Now is the time for #TheNewStyle, which is just our social media-friendly way of saying that menswear is due for a shot in the arm. We need men that dress with substance, not just ornament. And we&rsquo;ve come to Florence to find them.</p><p>Over the next few days, we&rsquo;ll be documenting our endeavor. Follow along on <a href="https://t.umblr.com/redirect?z=http%3A%2F%2Finstagram.com%2Fesquire&amp;t=ODBkMjVmZDdlOTliYTljNjRkMTE0YjlkY2Q3OTI0MTE3Y2RmYjc4MSxFRGRSY2JnWA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F137216940550%2Fits-time-for-thenewstyle-the-days-of-the&amp;m=1">Instagram</a> to see them in real time, and check back here for photo galleries of the best of the best. We&rsquo;re searching for the men who will help define the way we should dress now and the way we will dress in the days and months and years to come. And we hope you&rsquo;ll come along for the ride. </p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/137216940550/its-time-for-thenewstyle-the-days-of-the">Jan. 13 2016</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/menswear">#menswear</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pittiuomo">#pittiuomo</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pitti">#pitti</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/pittiuomo89">#pittiuomo89</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/streetstyle">#streetstyle</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/men%27s-style">#men&#039;s style</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/esquire">#esquire</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/thenewstyle">#thenewstyle</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/137216940550/its-time-for-thenewstyle-the-days-of-the">20 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        
+
+						<img src="https://66.media.tumblr.com/aab11cb811075d325190eff1af6b3c76/tumblr_nzes7wA4F61qg6ejro1_500.jpg" alt="Katie Aselton: Funny* Joke from a Beautiful WomanThe Joke:
+What did the elephant say to the naked guy? &ldquo;Fine, but can it pick up peanuts?&rdquo;
+About the Jokester:
+If she&rsquo;s not careful, Katie Aselton could end up being typecast as the perfect wife. On..." />
+
+                        
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <h2><b>Katie Aselton: Funny* Joke from a Beautiful Woman</b></h2><p>The Joke:<br /></p><p>What did the elephant say to the naked guy? &ldquo;Fine, but can it pick up peanuts?&rdquo;</p><p>About the Jokester:</p><p>If she&rsquo;s not careful, Katie Aselton could end up being typecast as the perfect wife. On FX&rsquo;s surprise hit The League, her character not only puts up with her husband&rsquo;s fantasy-football obsession, she helps him pick his players. And in the new film The Freebie (out in October), which the 32-year-old wrote and directed, her character agrees to take a night off from the romantic restrictions of marriage (to a mop-haired Dax Shepard) in order to spice things up. Asked about her own tolerance for that sort of thing, the Maine native says, &ldquo;I&rsquo;m a fan of monogamy, but let&rsquo;s be honest, as an actor, there are legal freebies all over the place.&rdquo; Our next career? Actor.<br /><br />*Esquire cannot guarantee that this joke will be funny to everyone.<br /></p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/135258884788/katie-aselton-funny-joke-from-a-beautiful-woman">Dec. 15 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/the-league">#the league</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/katie-aselton">#katie aselton</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/comedy">#comedy</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/esquire">#esquire</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/funny">#funny</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/135258884788/katie-aselton-funny-joke-from-a-beautiful-woman">79 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+                <!-- TEXT POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post text">
+
+					<div class="narrow">
+
+                        
+						<div class="title">
+							<h1>So long, Junior.</h1>
+						</div>
+                        
+
+						<div class="caption">
+
+						<p><a class="tumblr_blog" href="http://benwise.tumblr.com/post/135204692221">benwise</a>:</p><blockquote><p></p><figure class="tmblr-full" data-orig-height="960" data-orig-width="1280"><img src="https://66.media.tumblr.com/33821e868758b5e7be8bd11a7cf21840/tumblr_inline_nzd384djsZ1qzt8ok_500.jpg" data-orig-height="960" data-orig-width="1280" width="500" height="375" alt="image" /></figure><p>It&rsquo;s been a week (to the hour) since you passed. I wanted to share some thoughts I&rsquo;ve had this week while mourning you and experiencing my first real taste of absolute, gut-wrenching loss.</p><p>- This is so very worth it. I would change nothing. There wasn&rsquo;t a day or even a span of hours in your life when you were taken for granted. There wasn&rsquo;t any show of love that wasn&rsquo;t reciprocated tenfold in either direction. This was the upside of having two dads that work from home and it&rsquo;s why we&rsquo;re all (yes, still) as bonded as we are. You resided mostly at our feet, helping us accomplish whatever task was at hand. You&rsquo;d spend a couple hours in Dave&rsquo;s office, then prompt him to let you come out to my studio for a bit, then reverse and repeat all day, every day. This was never a nuisance, never got old and never failed to fill us with as much joy as it did you. Naps were always the best and you were the best partner in the crime of day sleep. I&rsquo;m having a lot of trouble napping on the huge beanbag - which you LOVED - without tears happening first. It&rsquo;s been hard for both of us to sleep at night without you at the end of the bed, alternating whose legs you&rsquo;ve got your back pressed up against. The prospect of bed-sharing is partly why I insisted on a non-shedding breed - the reason we were led to you - but I had no idea what else we were getting with the package.</p><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/9820970dd7b75393ad4d72094a5dda62/tumblr_inline_nzd3dsPkpD1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/99d477ae7c8608b879494806acda7ddc/tumblr_inline_nzd3hiqUVY1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><figure class="tmblr-full" data-orig-height="2342" data-orig-width="2342"><img src="https://66.media.tumblr.com/2e9b33238273ec28c4fc4d4f8d282440/tumblr_inline_nzd3jaii1R1qzt8ok_500.jpg" data-orig-height="2342" data-orig-width="2342" width="500" height="500" alt="image" /></figure><p>- I am starting an entire, possibly larger, second phase of learning everything you were sent to teach me. It&rsquo;s an awful lot and it&rsquo;s weird to realize that in 40 years of living, some of the most basic things a human needs to know about themselves and the world can be non-verbally communicated through a uniquely gifted non-human like yourself. But then, you kinda were human. Given the amount of human activities we included you in, it&rsquo;s not surprising that you practically changed teams. You never really fetched, had only a brief interest in any dog toys (certainly not for lack of us continuing to buy them), stayed closer to us off-leash than on, and try as we did with the food training, you just preferred to eat when we were eating. Like family. A couple times a day, you&rsquo;d see or hear a squirrel and need to be immediately let out so you could run full bore at it, which was the most doglike activity you engaged in. (Wheatens are an Irish breed that chase vermin out of barns and off properties for their hardworking farmer/owners, so there it is. Who&rsquo;s a good boy?!?)</p><figure class="tmblr-full" data-orig-height="2592" data-orig-width="1936"><img src="https://66.media.tumblr.com/f17e49fd07989a350c44572a0f5476b6/tumblr_inline_nzd3mcVUFl1qzt8ok_500.jpg" data-orig-height="2592" data-orig-width="1936" width="500" height="669" alt="image" /></figure><p>- I keep thinking about an evening - around maybe 4 or 5 months of having you - when we were still crating you anytime we left the house. Because we were around so much, there was some separation anxiety to contend with early on. Dave remarked &ldquo;He is 100% emotionally dependent on us and I guess we&rsquo;ll have to address that.&rdquo; Funny now to realize who was actually emotionally dependent on who, and how thoroughly you tricked us. I later taught you the phrase &ldquo;You&rsquo;re gonna stay here&rdquo;, which made it easier for you to swallow the news of your not coming along with us wherever, find a comfy spot and enjoy some solo time. Because we all need solo time. That&rsquo;s when you tended to do your heaviest sleeping, as you tried to be awake as much as possible when we were home. It was really, really hard to catch you with your eyes closed; maybe happened 3 times for me in those 10 years. (I have one picture of it, but this isn&rsquo;t it. That one&rsquo;s strictly between us.)</p><figure class="tmblr-full" data-orig-height="2448" data-orig-width="3264"><img src="https://66.media.tumblr.com/ff4b7eb7362d1115d2ffd21a15d9b708/tumblr_inline_nzd3t92TDq1qzt8ok_500.jpg" data-orig-height="2448" data-orig-width="3264" width="500" height="375" alt="image" /></figure><p>- Sneezing was your version of standup: it happened in groups of 8-or-so. But yours were as violent as my own, which both you and Dave can attest to. Your head would nearly shake right off of your neck, and between each one in the series you would have around 3 seconds to look right at us with a very concerned &ldquo;Umm&hellip;what the HELL was that?&rdquo; with all the hair on your face sticking out. Then onto the next until the fit subsided. You&rsquo;d end up looking like mid-1980&rsquo;s Tina Turner and it took you a few minutes of primping to get all the hair on your face back in place. Oh, we&rsquo;re gonna miss you, you goof.</p><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/776c4bd7fab82e211c8cc6f374749b68/tumblr_inline_nzd3wkFMkA1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/f23b9ecc470d15afdebf1b5c691dfdee/tumblr_inline_nzd3u1Mlrq1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><p>- Grieving- turns out we had no true experience in this department and you are teaching us a tremendously important life lesson. We&rsquo;ve gotten into it. We&rsquo;ve welcomed it, embraced it and let it run its course. No, I&rsquo;m not done with it yet, but having surrendered to it the moment you passed, I&rsquo;ve found it to be a pretty beautiful process. Don&rsquo;t get me wrong, this is a kind of pain I didn&rsquo;t know existed and I&rsquo;m not excited about its next visit. I&rsquo;ve now lost all 4 grandparents - the last one just a month ago, which hey&hellip;thanks for getting me through that, man - and 3 of them lived long, fruitful lives. There was an equal amount of celebration folded into the grief because of that long, full life. But Junes&hellip;you let us know something was wrong literally on your 10th birthday. (I&rsquo;ve been having many bizarre thoughts about that, by the way.) Most sources told us that the Wheaten life expectancy is around 14-16 fully energetic years, so we had planned to do so much more with you. More trips to wine country, more trips to the beach, another NYC sublet for a few months, more dog park visits, more walks, more 3-mile runs and endless patio dining experiences all would have happened. And you wouldn&rsquo;t have missed a beat so long as we were all together. Sure, we were lucky to not have lost you for whatever reason any sooner, but still. The bizarre, unforeseeable suddenness of your passing paired with your early exit has added many layers to our grief. Again, you are totally worth every exhausting moment of it, little man. And since you suffered only the briefest, if any, pain in the end, we have no problem bearing that load for you.</p><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/f4808377763a93af365c52409f6faf23/tumblr_inline_nzd3z7vRjB1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><p>- Thank you for helping make Dave and I the people and couple that we are. It&rsquo;s like your 12-week-old self showed up, said &ldquo;These guys are doing pretty well, but they could use a little help; I&rsquo;m just the guy for the job.&rdquo; and just went to work. You sniffed out our incredible sensitivity the day we met you - which is why your sensitive self chose us - and once we became a family, you set about expanding our hearts while always filling them to the point they might burst any moment. It was love for each other and for you. My entire body has ached in flu-like fashion throughout the past week of grief, and I think it&rsquo;s because my heart finally did burst and scatter throughout my being when you left us. We&rsquo;re wrangling the many pieces of our hearts back into our chests and piecing them back together. The portion of it that binds the two of us stayed in place, is as strong as ever, and that&rsquo;s partly your doing.</p><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/5f78adda1441e10203cdcd215a399109/tumblr_inline_nzd4i7wtHQ1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><p>- Thank you for also growing so many others&rsquo; hearts. It&rsquo;s impossible for non-owners of a dog - certainly for non-dog lovers - to have the same experience or connection its owners do, but you certainly gave that a run for its money. A few friends were lucky enough to housesit for us and get a glimpse of how little you asked for and how much you gave. When it was time to be happy and excited, you were. Otherwise, you just wanted to chill out together. You preferred smaller, more intimate hangs, but handled life in our &lsquo;revolving door/borderline community center&rsquo; home with aplomb. When numbers got up there, you&rsquo;d stick close to us or find an introverted soul hanging in the margins and cozy right up to them. I can think of at least 4 friends who began the search for their own dog after spending a little time around you and experiencing our family. You taught some of their dogs how to play and always shared your home with them remarkably well. We watched a variety of dogs for friends and you were a champ at making them feel right at home.</p><figure class="tmblr-full" data-orig-height="2448" data-orig-width="3264"><img src="https://66.media.tumblr.com/391fb937bf1ea6332d567d71094d9c65/tumblr_inline_nzd4g6pz6X1qzt8ok_500.jpg" data-orig-height="2448" data-orig-width="3264" width="500" height="375" alt="image" /></figure><figure class="tmblr-full" data-orig-height="2448" data-orig-width="3264"><img src="https://66.media.tumblr.com/5c5ea78e40483a81abd17a01d5633d22/tumblr_inline_nzd4cwAD2Y1qzt8ok_500.jpg" data-orig-height="2448" data-orig-width="3264" width="500" height="375" alt="image" /></figure><figure class="tmblr-full" data-orig-height="3264" data-orig-width="2448"><img src="https://66.media.tumblr.com/ed7fe9cf169e5e9f849ed3c760835b99/tumblr_inline_nzd4kxSR7m1qzt8ok_500.jpg" data-orig-height="3264" data-orig-width="2448" width="500" height="667" alt="image" /></figure><p>- Oh, buddy boy, I could go on forever. But it&rsquo;s time to wrap this up. The thought of saying another Thank You or Goodbye instantly fills me with tears and heartache due to the finality of it. We already did that a week ago when we last got to touch you, smell you and clip a couple locks of hair from your ears. But if we&rsquo;re to make these happy tears at some point, we have to accurately define your current and future status. We have to focus on the fact that you&rsquo;re always going to be here with us. No, we can&rsquo;t touch, smell, see or hear you anymore; those suddenly feel like selfish acts anyway. I now realize your real presence has always been just as strong, if not stronger, in the non-physical sense. You&rsquo;re irremovably in our hearts, minds and souls. You will continue to live there, forever doing your best, most loving work.</p><figure class="tmblr-full" data-orig-height="2448" data-orig-width="2448"><img src="https://66.media.tumblr.com/7ff6e917e416603749212461a3af3014/tumblr_inline_nzd4pyVxdM1qzt8ok_500.jpg" data-orig-height="2448" data-orig-width="2448" width="500" height="500" alt="image" /></figure></blockquote>
+
+						</div> <!-- End caption -->
+
+                        
+
+						<div class="metadata">
+
+                            
+        					<div class="date">
+								<a href="https://esquire.tumblr.com/post/135206684473/so-long-junior">Dec. 14 2015</a>
+							</div>
+                            
+
+                            
+        					<div class="date">
+								<a href="https://benwise.tumblr.com/post/135204692221/so-long-junior">Via benwise</a>
+							</div>
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/135206684473/so-long-junior">96 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- text end -->
+
+				</div> <!-- post end -->
+                
+
+				
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+
+
+                
+    			<!-- PHOTOSET POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					
+
+					
+					<div class="photoset-layout">
+                 		<div id="photoset_135004362618" class="html_photoset">    <iframe
+                id="photoset_iframe_135004362618" name="photoset_iframe_135004362618"
+                class="photoset" scrolling="no" frameborder="0"
+                height="-8" width="100%" style="border:0px; background-color:transparent; overflow:hidden;" src="/post/135004362618/photoset_iframe/esquire/tumblr_nz7qq13ywi1qg6ejr/0/false"
+            ></iframe></div>
+					</div class="photoset-layout">
+					
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <h2><b><a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Fstyle%2Fmens-accessories%2Fa40434%2Fthis-custom-bmw-motorcycle-is-absolutely-stunning%2F&amp;t=M2NlY2QxOWRhZTI4ZTA1ZTg1Y2M3OTM2NjdjZjZhYTY4MmE5NWZiMCxWeWw0djRqdw%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F135004362618%2Fthis-custom-bmw-motorcycle-is-absolutely-stunning&amp;m=1">This Custom BMW Motorcycle Is Absolutely Stunning</a></b></h2><p>Few things are as universally recognized as badass as a finely crafted, vintage motorcycle. Now make that bike a BMW and strip it down to its pure essentials, then build it back up with custom components and leather details, and you&rsquo;ve got something so damn cool it&rsquo;s borderline illegal. That is this, the DV 100 collaboration build from motorcycle apparel and accessories brand Cardinal Motors and luxe eyewear label Dom Vetro. Based on a 1978 BMW model R100/7, the custom build was designed and fabricated by designer Chad Hodge (of Bell Bullitt fame) in his Brooklyn workshop.</p><p>Inspired by a classic tracker style bike, the DV100 features beefy tires, minimal controls, and a laundry list of completely custom parts, including a sub-frame and seat with a 3D-printed tail piece and specially engineered exhaust pipes and headers. To accompany the bike, Cardinal Motors also designed and manufactured a leather tool roll/dopp kit and a magnetic tank strap with stash pocket for everything from sunglasses to cash for toll roads. Though black is generally the color of choice for Cardinal, both accessories are available for a limited time in a unique burgundy colorway exclusive to Dom Vetro, which also released a new sunglasses frame style as part of the collaboration.</p><p>Read more, <b><a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Fstyle%2Fmens-accessories%2Fa40434%2Fthis-custom-bmw-motorcycle-is-absolutely-stunning%2F&amp;t=M2NlY2QxOWRhZTI4ZTA1ZTg1Y2M3OTM2NjdjZjZhYTY4MmE5NWZiMCxWeWw0djRqdw%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F135004362618%2Fthis-custom-bmw-motorcycle-is-absolutely-stunning&amp;m=1">here</a></b>.&nbsp;</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/135004362618/this-custom-bmw-motorcycle-is-absolutely-stunning">Dec. 11 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/bmw">#bmw</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/motorcycles">#motorcycles</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/custom-bikes">#custom bikes</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/lifestyle">#lifestyle</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/esquire">#esquire</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/bmw-motorcycle">#bmw motorcycle</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/135004362618/this-custom-bmw-motorcycle-is-absolutely-stunning">766 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="http://www.esquire.com/lifestyle/a40399/jesus-real-face/">
+
+						<img src="https://66.media.tumblr.com/d7cc15a25d44c0eeae60edff23aeeaaa/tumblr_nz7mlwaexN1qg6ejro1_500.jpg" alt="The Real Face of Jesus
+Forensic science reveals the most famous face in historyFrom the first time Christian children settle into Sunday school classrooms, an image of Jesus Christ is etched into their minds. In North America he is most often..." />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <h2><b><a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Flifestyle%2Fa40399%2Fjesus-real-face%2F&amp;t=NmQ5YTI4NTM2OGMwMGRmMGM1OTIwMDFhMDk1ODFkMzAwY2RiMTllZixXYTBzN0Q2Tg%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F134999558723%2Fthe-real-face-of-jesus-forensic-science-reveals&amp;m=1">The Real Face of Jesus</a><br /></b><i>Forensic science reveals the most famous face in history</i></h2><div>From the first time Christian children settle into Sunday school classrooms, an image of Jesus Christ is etched into their minds. In North America he is most often depicted as being taller than his disciples, lean, with long, flowing, light brown hair, fair skin and light-colored eyes. Familiar though this image may be, it is inherently flawed. A person with these features and physical bearing would have looked very different from everyone else in the region where Jesus lived and ministered. Surely the authors of the Bible would have mentioned so stark a contrast. On the contrary, according to the Gospel of Matthew, when Jesus was arrested in the garden of Gethsemane before the Crucifixion, Judas Iscariot had to indicate to the soldiers whom Jesus was because they could not tell him apart from his disciples. Further clouding the question of what Jesus looked like is the simple fact that nowhere in the New Testament is Jesus described, nor have any drawings of him ever been uncovered. There is the additional problem of having neither a skeleton nor other bodily remains to probe for DNA. In the absence of evidence, our images of Jesus have been left to the imagination of artists. The influences of the artists&rsquo; cultures and traditions can be profound, observes Carlos F. Cardoza-Orlandi, associate professor of world Christianity at Columbia Theological Seminary in Atlanta. &ldquo;While Western imagery is dominant, in other parts of the world he is often shown as black, Arab or Hispanic.&rdquo; And so the fundamental question remains: What did Jesus look like?<br /></div><div><br /></div><div><br /></div><div>Read more, <b><a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Flifestyle%2Fa40399%2Fjesus-real-face%2F&amp;t=NmQ5YTI4NTM2OGMwMGRmMGM1OTIwMDFhMDk1ODFkMzAwY2RiMTllZixXYTBzN0Q2Tg%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F134999558723%2Fthe-real-face-of-jesus-forensic-science-reveals&amp;m=1">here</a></b>.&nbsp;</div>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/134999558723/the-real-face-of-jesus-forensic-science-reveals">Dec. 11 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/jesus">#jesus</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/jesus-christ">#jesus christ</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/religion">#religion</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/christianity">#christianity</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/134999558723/the-real-face-of-jesus-forensic-science-reveals">30 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://www.tumblr.com/policy/community">
+
+						<img src="https://66.media.tumblr.com/0afe983308d5f82323f9006f85dcaafe/tumblr_pjqvhfIbAu1uh5jdoo1_1280.jpg" alt="Hey, this post may contain adult content, so we&rsquo;ve hidden it from public view.
+Learn more." />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p>Hey, this post may contain adult content, so we&rsquo;ve hidden it from public view.</p><p><a href="https://www.tumblr.com/policy/community" target="_blank">Learn more.</a></p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/134991253313/hey-this-post-may-contain-adult-content-so-weve">Dec. 11 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/134991253313/hey-this-post-may-contain-adult-content-so-weve">116 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://www.instagram.com/p/_IcqfMjmBo/">
+
+						<img src="https://66.media.tumblr.com/03fd5608134def4b438addb05eecd703/tumblr_nz7drdtYvZ1qg6ejro1_1280.jpg" alt="Our friends at @publicschoolnyc are dropped this tee (along with a snapback and a hoodie) last night at 9 ET to celebrate their #PSNYxJORDAN collab. #Jordan #PSNY" />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <p>Our friends at @publicschoolnyc are dropped this tee (along with a snapback and a hoodie) last night at 9 ET to celebrate their #PSNYxJORDAN collab. #Jordan #PSNY </p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/134990344883/our-friends-at-publicschoolnyc-are-dropped-this">Dec. 11 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/psny">#psny</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/jordan">#jordan</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/psnyxjordan">#psnyxjordan</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/menswear">#menswear</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/public-school">#public school</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/mens-fashion">#mens fashion</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/134990344883/our-friends-at-publicschoolnyc-are-dropped-this">11 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+
+                
+
+				
+				<!-- PHOTO POST
+				///////////////////////////////////////////////////////-->
+
+				<div class="post photo">
+
+					<div class="wide">
+                        <a href="https://esquire.tumblr.com/image/134988518363">
+
+						<img src="https://66.media.tumblr.com/01df8dc518e3f4c6db8cba6c34df1b79/tumblr_nz7bws94Dc1qg6ejro1_1280.jpg" alt="Adidas x Hypebeast Ultra Boost UncagedTo celebrate its 10th anniversary, Hypebeast has teamed up with Adidas to create an updated version of the Ultra Boost. To keep things fresh, the two brands decided to strip away the cage on the vamp&mdash;hence the..." />
+
+                        </a>
+					</div>
+
+					<div class="narrow">
+
+                        
+						<div class="caption">
+						    <h2><b><a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.esquire.com%2Fstyle%2Fmens-accessories%2Fa40407%2Fadidas-hypbeast-ultra-boost-uncaged%2F&amp;t=OGU2Njg1YTA2NDdmMDZiM2U2MzdmN2JkZThkZjliYmQ1NjJmZmE0MSw1aXpSQ0ZiMA%3D%3D&amp;b=t%3Aaavmsen-768hJ_8RlTDW8Q&amp;p=https%3A%2F%2Fesquire.tumblr.com%2Fpost%2F134988518363%2Fadidas-x-hypebeast-ultra-boost-uncaged-to&amp;m=1">Adidas x Hypebeast Ultra Boost Uncaged</a></b></h2><p>To celebrate its 10th anniversary, Hypebeast has teamed up with Adidas to create an updated version of the Ultra Boost. To keep things fresh, the two brands decided to strip away the cage on the vamp&mdash;hence the &ldquo;Uncaged&rdquo; moniker&mdash;to reveal the entirety of the Primeknit upper. They also opted for Adidas&rsquo; tire-inspired Continental outsole for better traction and stability. </p><p>There&rsquo;s a lot of innovation that went into the design, but the most high-tech addition is one you might not notice at first: the brands replaced the Ultra Boost&rsquo;s normal tongue tab with an NFC chip. If your phone can read it, it&rsquo;ll take you directly to a microsite with content from Hypebeast and Adidas that updates weekly. (If you&rsquo;re a little more old school, you can just scan the QR code on the hangtag.) </p><p>In anticipation of demand&mdash;which will no doubt outweigh supply&mdash;the new style is being sold via raffle. Starting tonight at midnight EST, you can enter your name at Hypebeast&rsquo;s online store. Registration ends at midnight on December 14. After that, the randomly-selected customers lucky enough to get picked will receive an email with purchase details. Cross your fingers. </p><p>Ultra Boost Uncaged sneakers ($180) by Adidas x Hypebeast, store.hypebeast.com</p>
+						</div>
+                        
+
+						<div class="metadata">
+
+							
+    						<div class="date">
+								<a href="https://esquire.tumblr.com/post/134988518363/adidas-x-hypebeast-ultra-boost-uncaged-to">Dec. 11 2015</a>
+							</div>
+                            
+
+                            
+
+                            
+							
+                            <div class="tags">
+                                
+								<a href="https://esquire.tumblr.com/tagged/adidas">#adidas</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/hypebeast">#hypebeast</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/kicks">#kicks</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/adidas-ultra-boost">#adidas ultra boost</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/ultra-boost">#ultra boost</a>
+							    
+								<a href="https://esquire.tumblr.com/tagged/shoe-collab">#shoe collab</a>
+							    
+							</div>
+                            
+						    
+
+                            
+                            
+                            <div class="notes-count">
+								<a href="https://esquire.tumblr.com/post/134988518363/adidas-x-hypebeast-ultra-boost-uncaged-to">7 notes</a>
+							</div>
+                            
+                            
+
+						</div> <!-- metadata end -->
+
+					</div> <!-- narrow end -->
+
+				</div> <!-- post end -->
+
+                
+
+
+                
+
+
+				
+
+
+				
+
+
+                
+
+
+
+				
+
+
+
+		        
+
+
+
+				
+
+            
+
+            
+
+			</div> <!-- content end -->
+
+			<div id="footer">
+
+
+                
+
+                <h2>
+                
+
+                
+                <a class="back-next" href="/page/2">Next</a>
+                
+                </h2>
+
+                
+
+
+				<div id="footer-links">
+
+						<ul>
+							<li><a href="/">Home</a></li>
+                            
+                            
+                            
+                            <li><a href="/archive">Archive</a></li>
+					</ul>
+				</div>
+
+				<div class="colophon">
+
+                    
+
+					<p class="promo"><a href="http://zacksultan.com">Observer theme by Zack Sultan</a></p>
+
+				</div>
+
+			</div><!-- content end -->
+
+		</div> <!-- page end -->
+
+
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'No';
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#" +
+                              "https://esquire.tumblr.com";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/?route=%2F'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+    })();
+</script><script type="text/javascript" nonce="uZ1ZCYk8xIpYPnL5hCVonVhxGCY">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1587444319&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2VzcXVpcmUudHVtYmxyLmNvbS8iLCJyZXF0eXBlIjowLCJyb3V0ZSI6Ii8ifQ==&U=GNBMGJODMN&K=0ccc160b03bb16b91448d38e1f845eb4c7a908e156384996acb9972ae7ede6af&R=https%3A%2F%2Fwww.esquire.com%2Fnews-politics%2Fa32106810%2Fwhy-are-we-angry-american-dream%2F%3Futm_source%3Ddigg'.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1587444319&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDovL2VzcXVpcmUudHVtYmxyLmNvbS8iLCJyZXF0eXBlIjowLCJyb3V0ZSI6Ii8iLCJub3NjcmlwdCI6MX0=&U=GNBMGJODMN&K=b1a9e9cbbfc91a5d32c059ee785ba810eedfd7fdbf242dd7f59981a1eb94fb69&R=https%3A%2F%2Fwww.esquire.com%2Fnews-politics%2Fa32106810%2Fwhy-are-we-angry-american-dream%2F%3Futm_source%3Ddigg"></noscript><script type="text/javascript" nonce="uZ1ZCYk8xIpYPnL5hCVonVhxGCY">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1587444319&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9lc3F1aXJlLnR1bWJsci5jb20vIiwicmVxdHlwZSI6MCwicm91dGUiOiIvIiwicG9zdHMiOlt7InJvb3RfYmxvZ2lkIjoiMjU3NzQ4MjIiLCJyb290X3Bvc3RpZCI6IjEzODAzNTM1NDc3MiIsInBvc3RpZCI6IjEzODAzNjQ3MzgyOCIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM3MjI4OTQyNjQ4IiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzcyMTY5NDA1NTAiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEzNTI1ODg4NDc4OCIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicm9vdF9ibG9naWQiOiI1NTM4MTEiLCJyb290X3Bvc3RpZCI6IjEzNTIwNDY5MjIyMSIsInBvc3RpZCI6IjEzNTIwNjY4NDQ3MyIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM1MDA0MzYyNjE4IiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzQ5OTk1NTg3MjMiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEzNDk5MTI1MzMxMyIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM0OTkwMzQ0ODgzIiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzQ5ODg1MTgzNjMiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfV19&U=AKLMBPGAGF&K=086d7ae146bdfad05f896d8bcde9e4d344626bd7b53696f5eb7282da69cb0eba&R=https%3A%2F%2Fwww.esquire.com%2Fnews-politics%2Fa32106810%2Fwhy-are-we-angry-american-dream%2F%3Futm_source%3Ddigg'.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1587444319&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9lc3F1aXJlLnR1bWJsci5jb20vIiwicmVxdHlwZSI6MCwicm91dGUiOiIvIiwicG9zdHMiOlt7InJvb3RfYmxvZ2lkIjoiMjU3NzQ4MjIiLCJyb290X3Bvc3RpZCI6IjEzODAzNTM1NDc3MiIsInBvc3RpZCI6IjEzODAzNjQ3MzgyOCIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM3MjI4OTQyNjQ4IiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzcyMTY5NDA1NTAiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEzNTI1ODg4NDc4OCIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicm9vdF9ibG9naWQiOiI1NTM4MTEiLCJyb290X3Bvc3RpZCI6IjEzNTIwNDY5MjIyMSIsInBvc3RpZCI6IjEzNTIwNjY4NDQ3MyIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM1MDA0MzYyNjE4IiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzQ5OTk1NTg3MjMiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfSx7InBvc3RpZCI6IjEzNDk5MTI1MzMxMyIsImJsb2dpZCI6MTE4Njc1ODIsInNvdXJjZSI6MzN9LHsicG9zdGlkIjoiMTM0OTkwMzQ0ODgzIiwiYmxvZ2lkIjoxMTg2NzU4Miwic291cmNlIjozM30seyJwb3N0aWQiOiIxMzQ5ODg1MTgzNjMiLCJibG9naWQiOjExODY3NTgyLCJzb3VyY2UiOjMzfV0sIm5vc2NyaXB0IjoxfQ==&U=AKLMBPGAGF&K=7420b0e0b75fe1b2614d82d08aa20901d87fc2da6206de9bbb45e2ed89929075&R=https%3A%2F%2Fwww.esquire.com%2Fnews-politics%2Fa32106810%2Fwhy-are-we-angry-american-dream%2F%3Futm_source%3Ddigg"></noscript><noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;NotificationPoller&quot;:{&quot;messaging_keys&quot;:[],&quot;token&quot;:&quot;c86f8a500596474a7ef5034081f694bd&quot;,&quot;inbox_unread&quot;:0},&quot;DesktopDashboardLogo&quot;:{&quot;animations&quot;:[[&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1.png?_v=161861acded461bb6e995593a3bae835&quot;,&quot;https:\/\/assets.tumblr.com\/images\/logo\/hover-animations\/1@2x.png?_v=496a774637302a598c851381d00009b0&quot;]]},&quot;TumblelogIframe&quot;:{&quot;unified&quot;:true,&quot;variant&quot;:null,&quot;isCompact&quot;:true,&quot;tumblelogBundleSrc&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=772341018c92c7aa9174215b0020a3c3&quot;,&quot;tumblelogName&quot;:&quot;esquire&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;canSubscribe&quot;:false,&quot;isSubscribed&quot;:false,&quot;tumblelogTitle&quot;:&quot;Esquire&quot;,&quot;tumblelogAvatar&quot;:&quot;https:\/\/66.media.tumblr.com\/avatar_688c5b96d8f0_64.pnj&quot;,&quot;tumblelogHost&quot;:&quot;https:\/\/esquire.tumblr.com&quot;,&quot;isOptica&quot;:false,&quot;isCustomTheme&quot;:false,&quot;themeHeaderImage&quot;:&quot;https:\/\/static.tumblr.com\/6221bc04e9893fa73962a100d1867796\/vh0vuzm\/vQnnzeuu4\/tumblr_static_tumblr_static_dtl0aekr1fwoccc8kwkgskksw_focused_v3.jpg&quot;,&quot;themeBackgroundColor&quot;:&quot;#FAFAFA&quot;,&quot;themeTitleColor&quot;:&quot;#444444&quot;,&quot;themeAccentColor&quot;:&quot;#d42700&quot;,&quot;brag&quot;:true,&quot;adsEnabled&quot;:true,&quot;canShowAd&quot;:false,&quot;isPremium&quot;:false,&quot;showLrecAds&quot;:false,&quot;showStickyLrecBackfill&quot;:false,&quot;showGeminiAds&quot;:false,&quot;geminiSectionCodeDesktop&quot;:&quot;a10bca9c-0c5d-4a02-ab13-14ab8513d81d&quot;,&quot;geminiSectionCodeMobile&quot;:&quot;ced63809-b609-4aca-96a0-abc099acba6b&quot;,&quot;currentPageType&quot;:&quot;blog&quot;,&quot;currentPage&quot;:1,&quot;searchQuery&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;&quot;,&quot;src&quot;:&quot;https:\/\/esquire.tumblr.com\/&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showFanMailButton&quot;:false,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;https:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=3de94a184d600617102ddd5b48fb36e9&quot;,&quot;appInstallUrls&quot;:{&quot;android&quot;:&quot;https:\/\/play.google.com\/store\/apps\/details?id=com.tumblr\u0026referrer=utm_source%3Dtumblr%26utm_medium%3Diframe%26utm_campaign%3Dtumblr_new_iframe&quot;,&quot;ios&quot;:&quot;https:\/\/apps.apple.com\/app\/apple-store\/id305343404?pt=212308\u0026ct=tumblr_new_iframe\u0026mt=8&quot;},&quot;appOpenReferrer&quot;:&quot;tumblr_new_iframe&quot;,&quot;isShowSearch&quot;:true,&quot;supplyLogging&quot;:[],&quot;secondsSinceLastActivity&quot;:-1}},&quot;Flags&quot;:{&quot;doods&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwibW9iaWxlX3dlYl9nYXRlIjp0cnVlLCJzYWZlX21vZGUiOnRydWUsInNhZmVfbW9kZV9lbmFibGVkIjp0cnVlLCJrZXljb21tYW5kX2F1dG9fcGFnaW5hdGUiOnRydWUsImxvZ2dlZF9vdXRfc2VhcmNoIjp0cnVlLCJrcmFrZW5fd2ViX2xvZ2dpbmdfbGlicmFyeSI6dHJ1ZSwibGl2ZXBob3Rvc193ZWIiOnRydWUsInVzZXJfdGFnX2ZpbHRlcmluZyI6dHJ1ZSwicHJvamVjdF94X2FwcGVhbCI6dHJ1ZSwicHJvamVjdF94X3dlYl9zZW5zaXRpdmVfY292ZXJzIjp0cnVlLCJzYWZlX21vZGVfb3duX3Bvc3QiOnRydWUsIm1vYmlsZV93ZWJfcGhvdG9zZXRzIjp0cnVlLCJoaWRlX2RlZmF1bHRfaGVhZGVyc19ibG9nX2NhcmRzIjp0cnVlLCJub3RpZmljYXRpb25fcmVwbHlfbGlua190b19ub3RlcyI6dHJ1ZSwidHlwaW5nX2luZGljYXRvcl93cml0ZSI6dHJ1ZSwiZ2Rwcl9ndWNlX2lzX3JlcXVpcmVkIjp0cnVlLCJ0dW1ibHJfdmlkZW9fc3BvbnNvcmVkX2RheSI6dHJ1ZSwiY2FwdGNoYTp1c2VfcmVjYXB0Y2hhMiI6dHJ1ZSwibGl0dGxlX3Npc3RlciI6dHJ1ZSwibG9nX2xhZHkiOnRydWUsImpzX3BlcmZvcm1hbmNlX2xvZ2dpbmciOnRydWUsImRhcmxhX2FkX2ZlZWRiYWNrIjp0cnVlLCJzdGF0dXNfaW5kaWNhdG9yIjp0cnVlLCJjb252ZXJzYXRpb25hbF9ub3RpZmljYXRpb25zIjp0cnVlLCJkaXNhYmxlX3lhaG9vX2JfY29va2llIjp0cnVlLCJsaXZlcGhvdG9zIjp0cnVlfQ==&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1587444319000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;https:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;https:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;,&quot;assets&quot;:&quot;https:\/\/assets.tumblr.com\/client\/prod\/&quot;},&quot;Translations&quot;:{&quot;%1$sReport %2$s&#039;s post?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;,&quot;%1$sReport %2$s&#039;s reply?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;:&quot;%1$sReport %2$s&#039;s reblog?%3$sIf it violates our community guidelines, we&#039;ll remove it.%4$s&quot;}}"></noscript><script src="https://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=772341018c92c7aa9174215b0020a3c3"></script></body>
+
+</html>

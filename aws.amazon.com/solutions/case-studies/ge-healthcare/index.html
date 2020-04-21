@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="aws-v1-page no-js aws-lng-en_US" lang="en-US" xmlns="http://www.w3.org/1999/xhtml" data-aws-assets="https://a0.awsstatic.com" data-js-version="1.0.505" data-css-version="1.0.470">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>GE Healthcare Case Study – Amazon Web Services (AWS)</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="description" content="GE Healthcare aims to improve patient outcomes by reducing workflow processing time through sharing of medical image data across specialists and referring physicians. The organization manufactures and distributes diagnostic imaging equipment, as well as imaging agents and radiopharmaceuticals used in medical imaging procedures. GE Healthcare runs its GE Health Cloud, which will connect to 500,000 imaging devices, on AWS." /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/solutions/case-studies/ge-healthcare/" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/main/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/main/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/main/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/main/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/main/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/main/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="GE Healthcare Case Study – Amazon Web Services (AWS)" /> 
+  <meta property="twitter:description" content="GE Healthcare aims to improve patient outcomes by reducing workflow processing time through sharing of medical image data across specialists and referring physicians. The organization manufactures and distributes diagnostic imaging equipment, as well as imaging agents and radiopharmaceuticals used in medical imaging procedures. GE Healthcare runs its GE Health Cloud, which will connect to 500,000 imaging devices, on AWS." /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/main/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="GE Healthcare Case Study – Amazon Web Services (AWS)" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/solutions/case-studies/ge-healthcare/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/main/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="alternate" href="//aws.amazon.com/solutions/case-studies/ge-healthcare/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/solutions/case-studies/ge-healthcare/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/solutions/case-studies/ge-healthcare/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/solutions/case-studies/ge-healthcare/" hreflang="zh-cn" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/main/css/1.0.470/style.css" /> 
+  <script>
+    var AWS = {
+      PageSettings: {
+        supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+        defaultLanguage: 'en',
+        logDataSet: 'LIVE:PROD',
+        logInstance: 'PUB',
+        csdsEndpoint: 'https://aws.amazon.com/',
+        framework: 'v1',
+        g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+        i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+        libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+        isLoggingEnabled: true,
+        currentLanguage: 'en-US',
+        isRTL: false
+      },
+    };
+
+    var require = {
+      baseUrl: "https://a0.awsstatic.com/chrome/js/1.0.505/",
+      paths: {
+        "jquery": "jquery-amd",
+        "psf": "https://a0.awsstatic.com/psf/1.1.8",
+        "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+        "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+        "libra": "https://a0.awsstatic.com/libra/1.0.326",
+        "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+        "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib"
+      },
+      deps: ["scripts"],
+      shim: {
+        "scripts": ["jquery"],
+        "forms": ["jquery"],
+        "pricing-table": ["jquery", "scripts"],
+        "plugins/bootstrap.button": ["jquery"],
+        "plugins/bootstrap.collapse": ["jquery"],
+        "plugins/bootstrap.dropdown": ["jquery"],
+        "plugins/bootstrap.popover": ["jquery"],
+        "plugins/bootstrap.tab": ["jquery"],
+        "plugins/bootstrap.tooltip": ["jquery"],
+        "plugins/free-tier": ["jquery", "scripts"],
+        "plugins/jquery.caroufredsel": ["jquery"],
+        "plugins/jquery.fancybox": ["jquery"],
+        "plugins/jwplayer.html5": ["jquery"],
+        "plugins/jwplayer": ["jquery"],
+        "plugins/pbSize": ["jquery"],
+        "plugins/pushstate": ["jquery", "scripts"],
+        "plugins/search-controller": ["jquery"],
+        "plugins/jquery.touchSwipe": ["jquery"]
+      },
+      waitSeconds: 15
+    };
+
+    </script> 
+  <script src="https://a0.awsstatic.com/chrome/js/1.0.505/head.2.0.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,holdJqueryReady: true,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'en'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/contact-us/?nc2=h_header">Contact Sales</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Support&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="en">English&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">My Account&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Create an AWS Account</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Products</a></li> 
+        <li><a href="/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Solutions</a></li> 
+        <li><a href="/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Pricing</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentation</a></li> 
+        <li><a href="/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">Learn</a></li> 
+        <li><a href="/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Partner Network</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Customer Enablement</a></li> 
+        <li><a href="/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">Events</a></li> 
+        <li><a href="/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Explore More </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Account Settings</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Billing &amp; Cost Management</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Security Credentials</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Support Center</a> </li> 
+      <li> <a href="/premiumsupport/knowledge-center/?nc2=h_m_ma">Knowledge Center</a> </li> 
+      <li> <a href="/premiumsupport/?nc2=h_m_bc">AWS Support Overview</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Pricing</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentation</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Products</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Related Pages</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutorials</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">See more results for "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/products/?nc2=h_mo">Products</a> </li> 
+      <li> <a href="/solutions/?nc2=h_mo">Solutions</a> </li> 
+      <li> <a href="/pricing/?nc2=h_mo">Pricing</a> </li> 
+      <li> <a href="/what-is-aws/?nc2=h_mo">Introduction to AWS</a> </li> 
+      <li> <a href="/getting-started/?nc2=h_mo">Getting Started</a> </li> 
+      <li> <a href="/documentation/?nc2=h_mo">Documentation</a> </li> 
+      <li> <a href="/training/?nc2=h_mo">Training and Certification</a> </li> 
+      <li> <a href="/developer/?nc2=h_mo">Developer Center</a> </li> 
+      <li> <a href="/solutions/case-studies/?nc2=h_mo">Customer Success</a> </li> 
+      <li> <a href="/partners/?nc2=h_mo">Partner Network</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Support</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Log into Console</a> </li> 
+      <li> <a href="/console/mobile/">Download the Mobile App</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="page-content"> 
+   <div class="wrapper row"> 
+    <aside class="three columns leftnavcontainer" role="complementary"> 
+     <div class="leftnav"> 
+      <div class="sidebar parsys iparsys"> 
+       <div class="section"> 
+        <div class="new"></div> 
+       </div> 
+       <div class="iparys_inherited"> 
+        <div class="sidebar parsys iparsys"></div> 
+       </div> 
+      </div> 
+     </div> 
+    </aside> 
+    <div class="nine columns content-with-nav"> 
+     <main role="main"> 
+      <section data-page-alert-target="true"> 
+       <div class="row"> 
+        <div class="nine columns"> 
+         <div class="title-wrapper"> 
+          <div class="row title"> 
+           <div class="twelve columns"> 
+            <h1 id="GE_Healthcare_Launches_Health_Cloud_on_AWS,_Improving_Collaboration_and_Patient_Outcomes_"> <a name="GE_Healthcare_Launches_Health_Cloud_on_AWS,_Improving_Collaboration_and_Patient_Outcomes_"> GE Healthcare Launches Health Cloud on AWS, Improving Collaboration and Patient Outcomes </a> </h1> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="three columns company-logo"> 
+         <div class="aws-comp"> 
+          <figure class="image-box "> 
+           <div class="image parbase"> 
+            <img alt="GE_Healthcare_Logo_v2" title="GE_Healthcare_Logo_v2" src="//d1.awsstatic.com/product-marketing/IronMan/GE_Healthcare_Logo_v2.860c4d8091b325dc6a6fd7b3d3570ef811672acd.png" /> 
+           </div> 
+          </figure> 
+         </div> 
+        </div> 
+       </div> 
+       <hr /> 
+       <div class="parsys content"> 
+        <div class="aws-comp section"> 
+         <figure class="image-box "> 
+          <div class="image parbase"> 
+           <img alt="GE_Healthcare" title="GE_Healthcare" src="//d1.awsstatic.com/case-studies/US/GE_Healthcare.c39fe9cc89a46ad7efc575ed60d8a3f974ee4676.jpg" /> 
+          </div> 
+         </figure> 
+        </div> 
+        <div class="customer-snap parbase section text"> 
+         <div class="customer-snapshot csts-vertical"> 
+          <div class="customer-quote">
+            By running the GE Health Cloud on AWS, we are able to collect, store, process, and provide access to data from a diverse and global set of medical devices starting with imaging. Healthcare providers can use our cloud apps to share this data and collaborate more easily. 
+           <br /> 
+          </div> 
+          <div class="attribution clearfix"> 
+           <div class="author"> 
+            <span class="author-name">Andre Sublett</span> 
+            <span class="author-title">Health Cloud, Learning Factory, and Core Services Engineer, Healthcare Digital at GE</span> 
+           </div> 
+           <div class="logos clearfix "> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="columnbuilder parbase section"> 
+         <div class="row column-builder"> 
+          <div class="four columns "> 
+           <div class="parsys col1"> 
+            <div class="aws-comp section"> 
+             <div class="content-expander offset-large expander-menu-accordion expander-menu-top clearfix" id="aws-element-8cdc7125-594c-4bb5-b309-30fc15389749"> 
+              <div class="content-expander-content expander-content-padding-0"> 
+               <ul class="content-wrapper"> 
+                <li id="aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-1" class="content-item active"> <h4 class="tab-title" data-target="#aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-1" data-toggle="tab">About GE Healthcare <i class="icon-arrow"></i></h4> 
+                 <div class="content-item-wrapper"> 
+                  <div class="par parsys"> 
+                   <div class="aws-text-box section"> 
+                    <div class="  "> 
+                     <p>Headquartered in Chicago, Illinois, <a href="https://www.gehealthcare.com/en/global-gateway" target="_blank">GE Healthcare</a> manufactures and distributes diagnostic imaging equipment, as well as imaging agents and radiopharmaceuticals used in medical imaging procedures. Founded in 1994, GE Healthcare operates as a subsidiary of General Electric and has a presence in more than 100 countries.</p> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> </li> 
+                <li id="aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-2" class="content-item "> <h4 class="tab-title" data-target="#aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-2" data-toggle="tab">AWS Services Used <i class="icon-arrow"></i></h4> 
+                 <div class="content-item-wrapper"> 
+                  <div class="par parsys"> 
+                   <div class="aws-text-box section"> 
+                    <div class="  "> 
+                     <ul> 
+                      <li><a href="/aurora/">Amazon Aurora</a></li> 
+                      <li><a href="/s3/">Amazon Simple Storage Service</a></li> 
+                      <li><a href="/ec2/">Amazon Elastic Compute Cloud</a></li> 
+                      <li><a href="/servicecatalog/">AWS Service Catalog</a></li> 
+                      <li><a href="/cognito/">Amazon Cognito</a></li> 
+                      <li><a href="/sagemaker/">Amazon SageMaker</a></li> 
+                     </ul> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> </li> 
+                <li id="aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-3" class="content-item "> <h4 class="tab-title" data-target="#aws-element-8cdc7125-594c-4bb5-b309-30fc15389749-3" data-toggle="tab">Benefits of AWS <i class="icon-arrow"></i></h4> 
+                 <div class="content-item-wrapper"> 
+                  <div class="par parsys"> 
+                   <div class="aws-text-box section"> 
+                    <div class="  "> 
+                     <ul> 
+                      <li>Enables image data collaboration across primary care, specialists, and care settings</li> 
+                      <li>Provides access and advanced visualization of imaging data </li> 
+                      <li>Establishes an ecosystem for innovation and helping to deliver higher value to connected devices and specialty applications</li> 
+                     </ul> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> </li> 
+               </ul> 
+              </div> 
+             </div> 
+             <script>
+    require(['scripts', 'plugins/bootstrap.tab'], function() {
+      $.awsComponent.contentExpander('aws-element-8cdc7125-594c-4bb5-b309-30fc15389749');
+    });
+  </script> 
+            </div> 
+            <div class="aws-text-box section"> 
+             <div class="  "> 
+              <p><a href="//d1.awsstatic.com/case-studies/US/GE%20Healthcare_Case%20Study.pdf" target="_blank">Download the case study PDF</a>.&nbsp;</p> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="eight columns "> 
+           <div class="parsys col2"> 
+            <div class="title-wrapper section"> 
+             <div class="row title"> 
+              <div class="twelve columns"> 
+               <h2 id="Seeking_to_Ease_Healthcare_Collaboration"> <a name="Seeking_to_Ease_Healthcare_Collaboration"> Seeking to Ease Healthcare Collaboration</a> </h2> 
+              </div> 
+             </div> 
+            </div> 
+            <div class="aws-text-box section"> 
+             <div class="  "> 
+              <p><a href="http://www3.gehealthcare.com/en/global_gateway" target="_blank">GE Healthcare</a> is known for its medical imaging equipment and diagnostic imaging agents, but has—over the last several years—continued in its digital transformation. “Every day, healthcare data flows through millions of medical devices, including more than 500,000 GE Healthcare medical imaging devices globally,” says Mitch Jackson, vice president of cloud strategy and technology for GE Healthcare Digital. “We want to increase customer value from device usage and data by enabling supplemental leverage of cloud compute, storage, and access.”</p> 
+              <p>With faster access to healthcare data when and where clinicians need it, the GE Health Cloud can assist them in improving diagnoses and treatment. Survey data shows that up to 35 percent of patient cases are misdiagnosed, partially due to a lack of access to images, data, and records. Additionally, better interoperability between systems could save healthcare ecosystems $30 billion per year, according to GE Healthcare.</p> 
+              <p>The company launched the GE Health Cloud in the United States to provide radiologists and other healthcare professionals with a single portal to access enterprise imaging applications (e.g., PACS) to view, process, and easily share images and patient cases. Further GE Health Cloud offerings, both services and applications, are in the pipeline for release this year, ranging from device protocol management to care pathway analytics.<br /> </p> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="title-wrapper section"> 
+         <div class="row title"> 
+          <div class="twelve columns"> 
+           <h2 id="Creating_New_Business_Opportunities"> <a name="Creating_New_Business_Opportunities"> Creating New Business Opportunities</a> </h2> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="aws-text-box section"> 
+         <div class="  "> 
+          <p>Jackson says, “Connectivity is the cornerstone of our digital strategy. We can create more value for customers by liberating data and applying machine learning to create smarter devices, new products, and entry into new markets. As AWS gets more recognition in this industry as a cloud provider, we can work with AWS to invite our shared customers onto the GE Health Cloud. Healthcare requires hybrid compute across devices, enterprise, and the cloud. The role of the cloud in healthcare will steadily increase across a variety of market segments, and many of our customers have already begun this transition.” These customers include both large and small hospitals, other healthcare organizations, and, increasingly, patients, all of which can benefit from the potential cost savings and operational improvements enabled by the GE Health Cloud.</p> 
+          <p>GE Healthcare plans to expand its use of AWS services as it expands the GE Health Cloud. For instance, the company is taking advantage of <a href="/sagemaker/">Amazon SageMaker</a>, a managed service for building, training, and deploying machine-learning models. “We are all in on Amazon SageMaker for our deep-learning capabilities going forward,” says Andre Sublett, Health Cloud, Learning Factory, and Core Services engineer at GE Healthcare Digital.</p> 
+          <p>GE Healthcare will also continue leaning on AWS to help support the organization’s digital transformation. “Our digital strategy is about improving connectivity, elasticity, and or use of applied analytics,” says Jackson. “We want to establish a framework at a global scale to achieve these goals, and we can do that by running our GE Health Cloud on AWS.”</p> 
+          <p>By helping its customers connect devices, GE Healthcare may also better support its mission of helping healthcare delivery organizations improve operational productivity and patient outcomes. Sublett says, “We wanted to start by making it easier for healthcare providers to collaborate in their decision making by orchestrating the sharing of medical image data within their organizations and with other stakeholders.”</p> 
+          <p>Jackson adds, “Securely connecting systems and devices to the cloud was the best way to enable outreach and ultimately new insights into data from the scalability, flexibility, and lower cost of ownership it provides. Advancing medical outcomes requires processing large amounts of healthcare data with governed access to that data for research as well as clinical application. We believe the role of the cloud is pivotal to actualizing this vision.”<br /> </p> 
+         </div> 
+        </div> 
+        <div class="title-wrapper section"> 
+         <div class="row title"> 
+          <div class="twelve columns"> 
+           <h2 id="Creating_the_GE_Health_Cloud_on_AWS"> <a name="Creating_the_GE_Health_Cloud_on_AWS"> Creating the GE Health Cloud on AWS</a> </h2> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="aws-text-box section"> 
+         <div class="  "> 
+          <p>To achieve its goal of enabling customers to extract value from data, GE Healthcare created the GE Health Cloud, a new solution based on the Amazon Web Services (AWS) Cloud. “We chose AWS for its breadth of services and commitment to making those services compliant with global health data regulations, which was key for us,” says Sublett.</p> 
+          <p>The GE Health Cloud runs on <a href="/ec2/">Amazon Elastic Compute Cloud</a> (Amazon EC2) instances. Close to one petabyte of medical imaging data is stored on <a href="/s3/">Amazon Simple Storage Service</a> (Amazon S3). “Amazon S3 is the cornerstone of our solution, and it gives us the durability and reliability we need for storing critical data,” Sublett says. The company relies on <a href="/aurora/">Amazon Aurora</a> as its database service, and it uses the <a href="/servicecatalog/">AWS Service Catalog</a> to create and manage IT services. “Everything we deploy in the cloud is automated through the AWS Service Catalog,” remarks Sublett. GE Healthcare also takes advantage of <a href="/cognito/">Amazon Cognito</a> for federated single sign-on to the Health Cloud for customers. “Using Amazon Cognito, our customers can continue to use their existing credentials and still access our health cloud apps.”</p> 
+          <p>Jackson concludes, “Healthcare is a dynamic field, and we needed to get our solution up and running as fast as possible with scale. Using AWS, we gained the agility and flexibility to deploy hundreds of apps to multiple countries very quickly in the future.”<br /> </p> 
+         </div> 
+        </div> 
+        <div class="title-wrapper section"> 
+         <div class="row title"> 
+          <div class="twelve columns"> 
+           <h2 id="Learn_More"> <a name="Learn_More"> Learn More</a> </h2> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="aws-text-box section"> 
+         <div class="  "> 
+          <p>Learn more about <a href="/health/">AWS solutions for healthcare and life sciences</a>.</p> 
+          <p><a href="https://www.youtube.com/watch?v=XiPd1y9ULic&amp;feature=youtu.be">Watch Keith Bigelow, GM and SVP at GE Healthcare, speak at&nbsp;AWS re:Invent 2018.&nbsp;</a></p> 
+         </div> 
+        </div> 
+       </div> 
+      </section> 
+     </main> 
+    </div> 
+   </div> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Sign In to the Console</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Learn About AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/what-is-aws/?nc1=f_cc" target="_blank">What Is AWS?</a></li> 
+       <li><a href="/what-is-cloud-computing/?nc1=f_cc" target="_blank">What Is Cloud Computing?</a></li> 
+       <li><a href="/devops/what-is-devops/?nc1=f_cc" target="_blank">What Is DevOps?</a></li> 
+       <li><a href="/containers/?nc1=f_cc" target="_blank">What Is a Container?</a></li> 
+       <li><a href="/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">What Is a Data Lake?</a></li> 
+       <li><a href="/security/?nc1=f_cc" target="_blank">AWS Cloud Security</a></li> 
+       <li><a href="/new/?nc1=f_cc" target="_blank">What's New</a></li> 
+       <li><a href="/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Press Releases</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Resources for AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/getting-started/?nc1=f_cc" target="_blank">Getting Started</a></li> 
+       <li><a href="/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+       <li><a href="/solutions/?nc1=f_cc" target="_blank">AWS Solutions Portfolio</a></li> 
+       <li><a href="/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+       <li><a href="/faqs/?nc1=f_dr" target="_blank">Product and Technical FAQs</a></li> 
+       <li><a href="/resources/analyst-reports/?nc1=f_cc" target="_blank">Analyst Reports</a></li> 
+       <li><a href="/partners/?nc1=f_dr" target="_blank">AWS Partner Network</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Developers on AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/developer/?nc1=f_dr" target="_blank">Developer Center</a></li> 
+       <li><a href="/developer/tools/?nc1=f_dr" target="_blank">SDKs &amp; Tools</a></li> 
+       <li><a href="/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+       <li><a href="/developer/language/python/?nc1=f_dr" target="_blank">Python on AWS</a></li> 
+       <li><a href="/developer/language/java/?nc1=f_dr" target="_blank">Java on AWS</a></li> 
+       <li><a href="/developer/language/php/?nc1=f_cc" target="_blank">PHP on AWS</a></li> 
+       <li><a href="/developer/language/javascript/?nc1=f_dr" target="_blank">Javascript on AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Help</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/contact-us/?nc1=f_m" target="_blank">Contact Us</a></li> 
+       <li><a href="/careers/?nc1=f_hi" target="_blank">AWS Careers</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">File a Support Ticket</a></li> 
+       <li><a href="/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Knowledge Center</a></li> 
+       <li><a href="/premiumsupport/?nc1=f_dr" target="_blank">AWS Support Overview</a></li> 
+       <li><a href="/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Create an AWS Account</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon is an Equal Opportunity Employer: 
+        <i> Minority / Women / Disability / Veteran / Gender Identity / Sexual Orientation / Age.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Language</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script>require(['jquery', 'scripts']);</script> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:44:17.730-0700 -->  
+ </body>
+</html>

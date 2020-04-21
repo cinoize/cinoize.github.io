@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+ <html amp>
+   <head><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,300" rel="stylesheet" type="text/css">
+     <style amp-custom>#branch-sdk{position:fixed;bottom:0;left:0;right:0;}
+       body {
+         margin: 0;
+         word-wrap: break-word;
+         font-family: "Open Sans", Helvetica, serif;
+       }
+       /* ============ Portrait ============ */
+       .main-image {
+         width: 100%;
+         height: 250px;
+         height: 75vw;
+           background-image: url(https://d2xuupin39grhy.cloudfront.net/assets/img/mix-og-ad8a6cbdda05e95a4174ec9d030ca21b.png);
+         background-size: cover;
+         background-position: top center;
+       }
+       #content-container {
+         box-sizing: border-box;
+         padding: 24px;
+         margin: 0 24px;
+         background-color: #fff;
+       }
+       .app-title {
+         font-size: 14px;
+         padding-bottom: 11px;
+         text-transform: uppercase;
+       }
+       .card-title {
+         font-size: 33px;
+         line-height: 36px;
+       }
+       .app-content {
+         padding-top: 10px;
+         padding-bottom: 100px;
+         font-size: 20px;
+       }
+       .input-wrapper {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+         height: 110px;
+         background-color: #fff;
+         box-shadow: 0px -20px 20px -8px rgba(255,255,255,1);
+       }
+       .input-container {
+         width: 100%;
+         padding: 0 24px;
+         text-align: center;
+         box-sizing: border-box;
+       }
+       .form-get-the-app {
+         display: -webkit-box;
+         display: flex;
+         text-align: center;
+         padding-top: 10px;
+         border-top: 2px solid #cecece;
+         min-height: 300px;
+       }
+       .input-label {
+         padding: 4px 10px;
+         font-size: 13px;
+         overflow: hidden;
+         word-wrap: break-word;
+         text-align: center;
+       }
+       .app-icon {
+         width: 62px;
+         height: 62px;
+         line-height: 62px;
+         background-size: 100% auto;
+           background-image: url(https://cdn.branch.io/branch-assets/1530509806045-og_image.jpg);
+       }
+       .cta-button {
+         -webkit-box-flex: 1;
+         flex-grow: 1;
+         height: 62px;
+         line-height: 62px;
+         background-color: #444;
+         border-radius: 2px;
+         font-size: 20px;
+         padding: 0 20px;
+         margin-left: 10px;
+         color: #fff;
+         text-align: center;
+         text-decoration: none;
+         display: block;
+       }
+       /* No data (portrait) */
+       @media only screen and (orientation: portrait) {
+         .card--no-data .main-image {
+           background-image: url("http://s3-us-west-1.amazonaws.com/branch-assets/b_stripes-small.png");
+           background-size: auto;
+           background-position: top center;
+           background-repeat: repeat;
+           height: 190px;
+         }
+         .card--no-data > .app-icon {
+           position: absolute;
+           top: 160px;
+           left: 34px;
+         }
+         .card--no-data #content-container {
+           margin-top: 20px;
+         }
+         }
+         @media screen /* >= iPhone 5 */
+         and (min-device-width: 321px) {
+         .input-label {
+           font-size: 14px;
+         }
+       }
+       @media only screen /* >= iPhone 6 */
+         and (min-device-width: 375px)
+         and (orientation: portrait) {
+         .main-image {
+           height: 300px;
+           height: 80vw;
+         }
+         .app-content {
+           padding-bottom: 120px;
+         }
+         .input-wrapper {
+           height: 115px;
+         }
+       }
+       @media only screen /* >= iPhone 6+ */
+       and (min-device-width: 414px)
+       and (orientation: portrait) {
+         .main-image {
+           height: 390px;
+           height: 95vw;
+         }
+       }
+       /* ============ Landscape ============ */
+       @media only screen and (orientation: landscape){
+         .main-image {
+           position: fixed;
+           height: 100%;
+           height: 100vh;
+           width: 50%;
+         }
+         .input-wrapper {
+           right: 0;
+           left: auto;
+           width: 50%;
+         }
+         #content-container {
+           float: left;
+           width: 50%;
+           margin-left: 50%;
+         }
+         .input-wrapper {
+           height: 108px;
+         }
+         .app-content {
+           padding-bottom: 110px;
+         }
+         .form-get-the-app {
+           padding-top: 8px;
+         }
+         .input-container {
+           left: 50%;
+         }
+         .cta-button {
+           height: 44px;
+           line-height: 44px;
+           padding: 0 5px;
+           margin-left: 50px;
+         }
+         .app-icon {
+           width: 44px;
+           height: 44px;
+         }
+         /* No data (landscape) */
+         .card--no-data .main-image {
+           height: 100%;
+         }
+         .card--no-data > .app-icon {
+           display: none;
+         }
+         .card--no-data #content-container {
+           margin-top: 0;
+         }
+       }
+       @media only screen /* >= iPhone 6 */
+       and (min-device-width: 645px)
+       and (orientation: landscape) {
+         .form-get-the-app {
+           padding-top: 8px;
+         }
+         .cta-button {
+           height: 62px;
+           line-height: 62px;
+           padding: 0 20px;
+           margin-left: 70px;
+         }
+         .app-icon {
+           width: 62px;
+           height: 62px;
+           top: -2px;
+         }
+       }
+       /* Reusables */
+       .text-bold {
+         font-weight: 700
+       }
+       .text-light {
+         font-weight: 300;
+       }
+       .cta-button--no-app-icon {
+         margin-left: 0;
+       }
+     </style>
+       <link rel="alternate" href="ios-app://1092817691/mix/open?link_click_id=link-419621764096830765">
+       <link rel="alternate" href="android-app://com.mix.android/mix/open?link_click_id=link-419621764096830765">
+       <link rel="apple-touch-icon" href="https://d2xuupin39grhy.cloudfront.net/assets/img/mix-og-ad8a6cbdda05e95a4174ec9d030ca21b.png">
+       <meta property="al:ios:url" content="mix://open?link_click_id=link-419621764096830765-eyIkb2dfdGl0bGUiOiJEaXNjb3ZlciwgY29sbGVjdCwgYW5kIHNoYXJlIHRoZSBiZXN0IG9mIHRoZSB3ZWIiLCIkbWFya2V0aW5nX3RpdGxlIjoiV2ViOiBNb2JpbGUgU3BsYXNoIiwifmNyZWF0aW9uX3NvdXJjZSI6MSwiJG9nX2Rlc2NyaXB0aW9uIjoiQ29ubmVjdGluZyB0aGUgY3VyaW91cyAmIGNyZWF0aXZlLiIsIiRvZ19pbWFnZV91cmwiOiJodHRwczovL2QyeHV1cGluMzlncmh5LmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pbWcvbWl4LW9nLWFkOGE2Y2JkZGEwNWU5NWE0MTc0ZWM5ZDAzMGNhMjFiLnBuZyIsIn5mZWF0dXJlIjoibWFya2V0aW5nIiwiJG9nX3R5cGUiOiJ3ZWJzaXRlIiwiK3VybCI6Imh0dHBzOi8vejg3dC5hcHAubGluay9ieVRidkRlMjlFIiwiJG9nX2FwcF9pZCI6IjE2MzMyMzkwNTY5NTA5NDUiLCJ-dGFncyI6WyJ3ZWIiXSwifm1hcmtldGluZyI6dHJ1ZSwifmlkIjoiNDE5NjIxNzY0MDk2ODMwNzY1IiwiJG9uZV90aW1lX3VzZSI6ZmFsc2UsIn5jYW1wYWlnbiI6IldlYiBNb2JpbGUgU3BsYXNoIiwiJGNhbm9uaWNhbF91cmwiOiJodHRwczovL21peC5jb20iLCJ-Y2hhbm5lbCI6IldlYnNpdGUiLCIrZG9tYWluIjoibGluay5taXguY29tIiwiK2NsaWNrX3RpbWVzdGFtcCI6MTU4NzM3NzEzOSwiK3JlZmVycmVyIjoiaHR0cHM6Ly9taXguY29tL21peGl0P3N1PXN1Ym1pdCZ1cmw9VVJJIn0">
+       <meta name="twitter:app:url:iphone" content="mix://open?link_click_id=link-419621764096830765-eyIkb2dfdGl0bGUiOiJEaXNjb3ZlciwgY29sbGVjdCwgYW5kIHNoYXJlIHRoZSBiZXN0IG9mIHRoZSB3ZWIiLCIkbWFya2V0aW5nX3RpdGxlIjoiV2ViOiBNb2JpbGUgU3BsYXNoIiwifmNyZWF0aW9uX3NvdXJjZSI6MSwiJG9nX2Rlc2NyaXB0aW9uIjoiQ29ubmVjdGluZyB0aGUgY3VyaW91cyAmIGNyZWF0aXZlLiIsIiRvZ19pbWFnZV91cmwiOiJodHRwczovL2QyeHV1cGluMzlncmh5LmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pbWcvbWl4LW9nLWFkOGE2Y2JkZGEwNWU5NWE0MTc0ZWM5ZDAzMGNhMjFiLnBuZyIsIn5mZWF0dXJlIjoibWFya2V0aW5nIiwiJG9nX3R5cGUiOiJ3ZWJzaXRlIiwiK3VybCI6Imh0dHBzOi8vejg3dC5hcHAubGluay9ieVRidkRlMjlFIiwiJG9nX2FwcF9pZCI6IjE2MzMyMzkwNTY5NTA5NDUiLCJ-dGFncyI6WyJ3ZWIiXSwifm1hcmtldGluZyI6dHJ1ZSwifmlkIjoiNDE5NjIxNzY0MDk2ODMwNzY1IiwiJG9uZV90aW1lX3VzZSI6ZmFsc2UsIn5jYW1wYWlnbiI6IldlYiBNb2JpbGUgU3BsYXNoIiwiJGNhbm9uaWNhbF91cmwiOiJodHRwczovL21peC5jb20iLCJ-Y2hhbm5lbCI6IldlYnNpdGUiLCIrZG9tYWluIjoibGluay5taXguY29tIiwiK2NsaWNrX3RpbWVzdGFtcCI6MTU4NzM3NzEzOSwiK3JlZmVycmVyIjoiaHR0cHM6Ly9taXguY29tL21peGl0P3N1PXN1Ym1pdCZ1cmw9VVJJIn0">
+       <meta property="al:ios:app_store_id" content="1092817691">
+       <meta name="twitter:app:id:iphone" content="1092817691">
+       <meta property="al:ios:app_name" content="Mix">
+       <meta name="twitter:app:name:iphone" content="Mix">
+       <meta property="al:android:url" content="mix://open?link_click_id=link-419621764096830765-eyIkb2dfdGl0bGUiOiJEaXNjb3ZlciwgY29sbGVjdCwgYW5kIHNoYXJlIHRoZSBiZXN0IG9mIHRoZSB3ZWIiLCIkbWFya2V0aW5nX3RpdGxlIjoiV2ViOiBNb2JpbGUgU3BsYXNoIiwifmNyZWF0aW9uX3NvdXJjZSI6MSwiJG9nX2Rlc2NyaXB0aW9uIjoiQ29ubmVjdGluZyB0aGUgY3VyaW91cyAmIGNyZWF0aXZlLiIsIiRvZ19pbWFnZV91cmwiOiJodHRwczovL2QyeHV1cGluMzlncmh5LmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pbWcvbWl4LW9nLWFkOGE2Y2JkZGEwNWU5NWE0MTc0ZWM5ZDAzMGNhMjFiLnBuZyIsIn5mZWF0dXJlIjoibWFya2V0aW5nIiwiJG9nX3R5cGUiOiJ3ZWJzaXRlIiwiK3VybCI6Imh0dHBzOi8vejg3dC5hcHAubGluay9ieVRidkRlMjlFIiwiJG9nX2FwcF9pZCI6IjE2MzMyMzkwNTY5NTA5NDUiLCJ-dGFncyI6WyJ3ZWIiXSwifm1hcmtldGluZyI6dHJ1ZSwifmlkIjoiNDE5NjIxNzY0MDk2ODMwNzY1IiwiJG9uZV90aW1lX3VzZSI6ZmFsc2UsIn5jYW1wYWlnbiI6IldlYiBNb2JpbGUgU3BsYXNoIiwiJGNhbm9uaWNhbF91cmwiOiJodHRwczovL21peC5jb20iLCJ-Y2hhbm5lbCI6IldlYnNpdGUiLCIrZG9tYWluIjoibGluay5taXguY29tIiwiK2NsaWNrX3RpbWVzdGFtcCI6MTU4NzM3NzEzOSwiK3JlZmVycmVyIjoiaHR0cHM6Ly9taXguY29tL21peGl0P3N1PXN1Ym1pdCZ1cmw9VVJJIn0">
+       <meta name="twitter:app:url:googleplay" content="mix://open?link_click_id=link-419621764096830765-eyIkb2dfdGl0bGUiOiJEaXNjb3ZlciwgY29sbGVjdCwgYW5kIHNoYXJlIHRoZSBiZXN0IG9mIHRoZSB3ZWIiLCIkbWFya2V0aW5nX3RpdGxlIjoiV2ViOiBNb2JpbGUgU3BsYXNoIiwifmNyZWF0aW9uX3NvdXJjZSI6MSwiJG9nX2Rlc2NyaXB0aW9uIjoiQ29ubmVjdGluZyB0aGUgY3VyaW91cyAmIGNyZWF0aXZlLiIsIiRvZ19pbWFnZV91cmwiOiJodHRwczovL2QyeHV1cGluMzlncmh5LmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pbWcvbWl4LW9nLWFkOGE2Y2JkZGEwNWU5NWE0MTc0ZWM5ZDAzMGNhMjFiLnBuZyIsIn5mZWF0dXJlIjoibWFya2V0aW5nIiwiJG9nX3R5cGUiOiJ3ZWJzaXRlIiwiK3VybCI6Imh0dHBzOi8vejg3dC5hcHAubGluay9ieVRidkRlMjlFIiwiJG9nX2FwcF9pZCI6IjE2MzMyMzkwNTY5NTA5NDUiLCJ-dGFncyI6WyJ3ZWIiXSwifm1hcmtldGluZyI6dHJ1ZSwifmlkIjoiNDE5NjIxNzY0MDk2ODMwNzY1IiwiJG9uZV90aW1lX3VzZSI6ZmFsc2UsIn5jYW1wYWlnbiI6IldlYiBNb2JpbGUgU3BsYXNoIiwiJGNhbm9uaWNhbF91cmwiOiJodHRwczovL21peC5jb20iLCJ-Y2hhbm5lbCI6IldlYnNpdGUiLCIrZG9tYWluIjoibGluay5taXguY29tIiwiK2NsaWNrX3RpbWVzdGFtcCI6MTU4NzM3NzEzOSwiK3JlZmVycmVyIjoiaHR0cHM6Ly9taXguY29tL21peGl0P3N1PXN1Ym1pdCZ1cmw9VVJJIn0">
+       <meta property="al:android:package" content="com.mix.android">
+       <meta name="twitter:app:id:googleplay" content="com.mix.android">
+       <meta property="al:android:app_name" content="Mix">
+       <meta name="twitter:app:name:googleplay" content="Mix">
+           <meta name="twitter:card" content="summary_large_image">
+       <meta property="og:image" content="https://d2xuupin39grhy.cloudfront.net/assets/img/mix-og-ad8a6cbdda05e95a4174ec9d030ca21b.png">
+         <meta name="twitter:image:src" content="https://d2xuupin39grhy.cloudfront.net/assets/img/mix-og-ad8a6cbdda05e95a4174ec9d030ca21b.png">
+       <title>Discover, collect, and share the best of the web</title>
+       <meta property="og:title" content="Discover, collect, and share the best of the web">
+         <meta name="twitter:title" content="Discover, collect, and share the best of the web">
+       <meta property="og:description" content="Connecting the curious &amp; creative.">
+         <meta name="twitter:description" content="Connecting the curious &amp; creative.">
+       <meta property="fb:app_id" content="1633239056950945">
+       <meta property="og:type" content="website">
+       <meta name="twitter:app:country" content="US">
+   <script async src="https://cdn.ampproject.org/v0.js"></script><script async src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js" custom-element="amp-iframe"></script><script async src="https://cdn.ampproject.org/v0/amp-list-0.1.js" custom-element="amp-list"></script><script async src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js" custom-template="amp-mustache"></script><link rel="canonical" href="https://z87t.app.link/byTbvDe29E"></head>
+   <body>
+     <div class="card center">
+       <div class="main-image"></div>
+       <div id="content-container">
+         <div class="app-title text-bold">Mix</div>
+         <div class="card-title text-light">Discover, collect, and share the best of the web</div>
+         <div class="app-content text-light">Connecting the curious &amp; creative.</div>
+       </div>
+       <div class="input-wrapper">
+         <div class="input-container">
+           <div class="input-label text-light">See this content immediately after install</div>
+           <div class="form-get-the-app">
+               <div class="app-icon">&#xA0;</div>
+             <amp-list src="https://z87t.app.link/byTbvDe29E?__branch_amp_json=1" layout="flex-item">
+      <template type="amp-mustache" id="cta-template">
+        <a href="{{action}}" class="cta-button text-light">
+               Get The App
+             </a>
+      <amp-iframe id="branch-sdk" src="/amp-iframe-redirect?scheme_redirect={{scheme_redirect}}&redirect_strategy={{redirect_strategy}}&app_id=319548851629347507&has_app=false" sandbox="allow-scripts allow-top-navigation" height="11" layout="fixed-height" frameborder="0"></amp-iframe></template>
+    </amp-list>
+           </div>
+         </div>
+       </div>
+     </div>
+   </body>
+ </html>

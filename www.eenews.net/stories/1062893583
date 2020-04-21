@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="eep no-js ie lt-ie9 lt-ie8 lt-ie7 "> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="eep no-js ie lt-ie9 lt-ie8 "> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="eep no-js ie lt-ie9 "> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="eep no-js ie lt-ie10 "> <![endif]-->
+<!--[if !(IE)]><!--> <html lang="en" class="eep test_running no-js "> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"57a0e6af43","applicationID":"2175329","transactionName":"IQsNEkdeDV4HQUwRRw0WCgNGHhJaDUQ=","queueTime":0,"applicationTime":178,"agent":"","atts":"GUYWRA9KQ1ENXRcQXA4IBhR0UhVbDV1BWBERDAwRFx1DQhBaFQNQGycMCEZUD0YmWgIOXAU3CwlCX0MIBFIPEVZORhMUXEcAURtjDA5aAR0gClxSClcGdRENXiYNAgpaVkMIBFIPEVZORhEDRl4UQAFWQVgRMRAMFEwTTRAQVhANRhAHBi9RE1sDUgVRWgpRUVtVGRMSXhdUQVgRMiUtInB8KHFAH0ELQDIRAQpcUkMIUx9BEkYACAoFVEUIXQwRWUBwDg0OB0FUFlsQVkFOERYLEw9WQiBeDlwUB1dAXlFKF0UOQgtQECtdAQgWAlBVQwhSH0ESXBENFw9aX0MIUx9BEkYACAoVXWYlUxsRWVcfQBcGBUFYDlxACUExYy0wLy9yeTUQThEGBloWDQwIZkUOQBtwDBddFkZZXxkTBVsRQw8DSjIRAQpcUgBGC1wNQAlAIUUjFX8ERRERHh8="}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={xpid:"VwQOV15QGwEBU1RRBQg=",licenseKey:"57a0e6af43",applicationID:"2175329"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(18),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(19),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(6),t(5),"addEventListener"in window&&t(3),c.xhrWrappable&&t(7),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(19),a=t(18);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],5:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],6:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],7:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,g="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],8:[function(t,e,n){function r(t){if(!i(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,s=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,n,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var e=!1,n=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,n=!!r.enabled),n)if(t.sameOrigin)e=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return n&&e}var a=t(16),s=t(10);e.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],9:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function o(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=c(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(10),f=t(8).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(14),m=t(13),v=t(11),g=window.XMLHttpRequest;a.features.xhr=!0,t(7),t(4),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){i(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);n&&n.header&&(e.setRequestHeader("newrelic",n.header),this.dt=n)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){var e,n=t[1]||{};"string"==typeof t[0]?e=t[0]:t[0]&&t[0].url&&(e=t[0].url),e&&(this.parsedOrigin=c(e),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in n)i[a]=n[a];i.headers=new Headers(n.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],10:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],11:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||"document"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(13);e.exports=r},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(18),s=t(19),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=o(l+e,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();n.length>0&&c("lcp",[n[n.length-1]])}function i(t){if(t instanceof u&&!l){var e,n=Math.round(t.timeStamp);e=n>1e12?Date.now()-n:f.now()-n,l=!0,c("timing",["fi",n,{type:t.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var l=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],16:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(e=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}e.exports={generateUuid:r,generateCatId:o}},{}],17:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],18:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],19:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],20:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!l.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[n]];return d&&d.push([x,n,r,a]),a}}function p(t,e){w[t]=m(t).concat(e)}function h(t,e){var n=w[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return w[t]||[]}function v(t){return d[t]=d[t]||o(n)}function g(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var w={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:g,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(18),u={},d={},l=e.exports=o();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+b.offset],null,"api");var n=p.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(18),u=t("ee"),d=t(17),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},x=v&&g&&g[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:s,now:a,origin:w,features:{},xhrWrappable:x,userAgent:d};t(12),t(15),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(20)},{}],"wrap-function":[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(19),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){l([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}]},{},["loader",2,9]);</script>
+<title>PANDEMIC: Coronavirus is reducing CO2. Why that&#39;s worrisome -- Friday, April 17, 2020 -- www.eenews.net
+</title>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="QA/izdHgsttHpLH+vynGjsKHJQlw3Ku1JqAA74z3hSza3gOYLHkdN1MdoJrY12omLPwBb0XqCe/C90ctPvllIQ==" />
+<meta name="HandheldFriendly" content="True"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="A growing number of estimates say global carbon dioxide emissions could fall 5% in 2020. That would be the largest annual drop on record. But climate researchers say there is little reason for celebration."/>
+<meta name="keywords" content="PANDEMIC"/>
+
+<!-- favicon_2017 -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=alj9Bpy3y9">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=alj9Bpy3y9" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=alj9Bpy3y9" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=alj9Bpy3y9" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=alj9Bpy3y9">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=alj9Bpy3y9" color="#003366">
+<link rel="shortcut icon" href="/favicon.ico?v=alj9Bpy3y9">
+<meta name="apple-mobile-web-app-title" content="E&amp;E News">
+<meta name="application-name" content="E&amp;E News">
+<meta name="msapplication-TileColor" content="#003366">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=alj9Bpy3y9">
+<meta name="theme-color" content="#003366">
+<!--end favicon_2017 -->
+
+  <meta property="og:title" content="PANDEMIC: Coronavirus is reducing CO2. Why that&#39;s worrisome" />
+  <meta property="og:description" content="A growing number of estimates say global carbon dioxide emissions could fall 5% in 2020. That would be the largest annual drop on record. But climate researchers say there is little reason for celebration." />
+  <meta property="og:url" content="https://www.eenews.net/stories/1062893583" />
+  <meta property="fb:app_id" content="1670327216365411" />
+  <meta property="og:image" content="https://www.eenews.net/image_assets/2020/04/image_asset_79261.jpg?1587421255" />
+  <meta name="twitter:image" content="https://www.eenews.net/image_assets/2020/04/image_asset_79261.jpg?1587421255" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@EENewsUpdates" />
+    <meta name="twitter:image:alt" content="Rush hour traffic is pictured along FDR Drive in New York City. Photo credit: John Angelillo/UPI/Newscom" />
+    <meta name="twitter:creator" content="@bstorrow" />
+    <meta itemprop="author" content="Benjamin Storrow">
+
+
+<link rel="stylesheet" media="all" href="/packs/css/application-c685ffa2.css" />
+
+
+
+
+
+<!--[if lt IE 9 ]>
+<script src="/application_assets/jquery1.8.3-4ded875446ebaeb2e1cbe3d1d1a87589d4c25911a458258c03b84fc9c747f958.js"></script>
+<!--<![endif]-->
+<script src="/application_assets/application-da46a0494ef2e24e5461e6e5930886c930734c686d1ecff56e3aaa2c1d5fc4b4.js"></script>
+ 
+<script src="/packs/js/site-5052b71019e8ac38818d.js"></script>
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160747936-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160747936-2');
+</script>
+
+
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+  var gads = document.createElement('script');
+  gads.async = true;
+  gads.type = 'text/javascript';
+  var useSSL = 'https:' == document.location.protocol;
+  gads.src = (useSSL ? 'https:' : 'http:') +
+    '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+new EENews.dfpPlacement({
+  unit: 'leaderboard',
+  code: 'eep-ldrbrd-hdr',
+  id: 'hdr_leaderboardStory_1062893583',
+  obj: 'Story',
+  })
+new EENews.dfpPlacement({
+  unit: 'leaderboard',
+  code: 'eep-ldrbrd-ftr',
+  id: 'footer_leaderboardPublication_0',
+  obj: 'Publication',
+  })
+
+googletag.cmd.push(function() {
+  googletag.pubads().enableSingleRequest();
+  googletag.disablePublisherConsole();
+  googletag.pubads().setTargeting('pubOrigin', 'climatewire');
+googletag.pubads().setTargeting('section', 'SPOTLIGHT');
+  googletag.enableServices();
+});
+</script>
+</head>
+
+
+<body class="">
+<header role="banner" class="banner">
+
+<section class="ad leaderboard" style="display:none">
+  <p class="label">Advertisement</p>
+  <div class="ad_container" id="hdr_leaderboardStory_1062893583">
+      <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('hdr_leaderboardStory_1062893583')})
+      </script>
+</div></section>
+
+<nav class="main">
+<ul class="secondary_nav">
+<li><a href="/">E&amp;E Home</a></li><li><a href="/eep/learn_more/">About</a></li><li><a href="/eep/learn_more/staff_directory">Contact</a></li><li>	<a class="highlight" href="/trial?t=https%3A%2F%2Fwww.eenews.net%2Fstories%2F1062893583">Start a Trial</a></li><li><a class="highlight" href="/subscribe">Subscribe</a></li>
+</ul>
+<ul>
+<li class="tab ew"><a href="/ew">Energywire</a></li><li class="tab cw"><a href="/cw">Climatewire</a></li><li class="tab eed"><a href="/eed">E&E&nbsp;Daily</a></li><li class="tab gw"><a href="/gw">Greenwire</a></li><li class="tab pm"><a href="/pm">E&E&nbsp;News&nbsp;PM</a></li>
+</ul>
+<ul>
+<li class="tab special_reports"><a href="/special_reports">Reports</a></li>
+</ul>
+</nav>
+<section class="mast">
+  <h1><a href="/eep"><span class="eep_header sprite " title="E&amp;E News"><span>E&amp;E News</span></span></a></h1>
+  
+</section>
+</header>
+<section class="publication site_container" data-email-modal="{&quot;label&quot;:&quot;story&quot;,&quot;url&quot;:&quot;/stories/1062893583/email_send&quot;}" id="publication_0">
+<header class="promo">
+
+<nav class="edition">
+  <ul>
+  </ul>
+  <form action="/search/stories"  method="get">
+  <label for="keyword"><a title="Search Stories and Videos" href="/search">Search:</a></label>
+  <input type="search" name="keyword" id="keyword" class="search" onFocus="this.select()" placeholder="enter keyword" />
+  <input type="submit" name="commit" value="go!" data-disable-with="go!" />
+  </form>
+</nav>
+<nav class="breadcrumbs">    <a href="/">Back to E&amp;E News index page.</a>
+
+</nav>
+</header>
+
+
+
+
+
+
+
+  <article class="story full ee-row" id="story_1062893583">
+
+    <header class="headline_block span24">
+    <h2 class="slug">PANDEMIC</h2>
+
+    <h1 class="headline featured_image_headline">Coronavirus is reducing CO2. Why that's worrisome</h1>
+
+  <section class="byline">
+    <span class="authors"><a href="/staff/Benjamin_Storrow">Benjamin Storrow</a>, E&E News reporter</span>
+    <time datetime="2020-04-17 06:46:40 -0400">Climatewire: Friday, April 17, 2020</time>
+  </section>
+
+  <aside id="image_asset_layout_75171" class="left span24 image_asset_layout"><img src="https://www.eenews.net/image_assets/2020/04/image_asset_79261.jpg" alt="Rush hour traffic is pictured along FDR Drive in New York City. Photo credit: John Angelillo/UPI/Newscom"><p class="caption">Rush hour traffic is pictured along FDR Drive in New York City on Wednesday. <span class="credit">John Angelillo/UPI/Newscom</span></p></aside>
+</header>
+
+      <section class="span16">
+
+        <section class="content">
+
+          <!--mkm, aw, mh-->
+
+	<p>A growing number of prognosticators expect that global carbon dioxide emissions could fall 5% this year as a result of the coronavirus pandemic, amounting to the largest annual reduction on record. But climate researchers say there is little reason for celebration, for people or the planet.</p>
+
+
+	<p>CO2 is a long-lived gas. An annual drop in emissions, even one of historic proportions, is unlikely to dramatically change the concentrations of carbon dioxide swirling around Earth's atmosphere. Then there is the nature of the reductions. Few think draconian economic lockdowns, like those implemented to halt the virus's spread, represent a viable decarbonization strategy.</p>
+
+
+	<p>Mostly, the emissions projections show just how much work the world needs to do to green the economy. Holding global temperature rise below 1.5 degrees Celsius, for instance, would require annual emission reductions of 7.6% over the next decade, according to the United Nations' <a href="https://www.unenvironment.org/interactive/emissions-gap-report/2019/">projections</a>.</p>
+
+
+	<p>"If this is all we get from shutting the entire world down, it illustrates the scope and scale of the climate challenge, which is fundamentally changing the way we make and use energy and products," said Costa Samaras, a professor who studies climate and energy systems at Carnegie Mellon University.</p>
+
+
+	<p>A host of forecasters have produced emission estimates in recent weeks as the world has rushed to understand the fallout from the pandemic. In late March, the Breakthrough Institute <a href="https://thebreakthrough.org/issues/energy/covid-emissions">predicted</a> global emissions would be down 0.5% to 2.2%. The U.S. Energy Information Administration <a href="https://www.eia.gov/outlooks/steo/report/renew_co2.php">expects</a> energy-related emissions in America to decline by 7.5% this year, in large part driven by a drop in vehicle miles traveled and a decline in coal generation, which is pushed to the margins by falling electricity demand.</p>
+
+
+	
+
+<section class="ad medium">
+  <p class="label">Advertisement</p>
+  <div class="ad_container" id="mobile_mediumStory_1062893583"></div></section><p>At first glance, such projections are staggering. The United States has averaged emission reductions of 0.9% since 2005. In 2019, preliminary estimates suggest emissions were down 2.1% (<a href="https://www.eenews.net/climatewire/stories/1062013157"><em>Climatewire</em></a>, Jan. 7).</p>
+
+
+	<p>Yet projections for 2020 already look conservative. Most emissions estimates are tied to economic growth. A few weeks ago, most prognosticators predicted the world economy would rebound in the second half of 2020, resulting in little to no growth for the entire year. The International Monetary Fund <a href="https://blogs.imf.org/2020/04/14/the-great-lockdown-worst-economic-downturn-since-the-great-depression/">now expects</a> the world economy to contract by 3%, with the U.S. economy shrinking by almost 6%.</p>
+
+
+	<p>That prediction comes amid a wave of increasingly grim economic statistics. The International Energy Agency said this week it <a href="https://www.iea.org/reports/oil-market-report-april-2020/">expects</a> global demand for oil could fall by 9.3 million barrels a day in 2020, the largest annual reduction ever. It expects demand could fall by a whopping 29 million barrels a day in April, reducing consumption to levels not seen since 1995.</p>
+
+
+	<p>In the United States, gasoline consumption has plunged to its <a href="https://www.eia.gov/todayinenergy/detail.php?id=43375">lowest levels</a> since 1991. The Federal Reserve's monthly industrial production report showed factory output <a href="https://www.federalreserve.gov/releases/g17/current/default.htm">dropping</a> in March at rates not seen since the Great Depression.</p>
+
+
+	<p>Steel production for last week is <a href="https://www.steel.org/industry-data">down a third</a> compared with the same time last year, according to industry figures. And demand for electricity is down, though that has been tempered by stable residential consumption (<a href="https://www.eenews.net/energywire/stories/1062798303"><em>Energywire</em></a>, April 6).</p>
+
+
+	<p>Such figures have prompted emission forecasters to raise the CO2 reductions projected for 2020. Carbon Brief yesterday <a href="https://www.carbonbrief.org/analysis-coronavirus-set-to-cause-largest-ever-annual-fall-in-co2-emissions">revised</a> its global emissions estimate from 4% to 5.5%.</p>
+
+
+	<p>Glen Peters, director of the Center for International Climate Research, said on Twitter that the IMF's economic projections would equate to a 5.7% drop in emissions this year.</p>
+
+
+	<p>"I think the amount of disruption people have had in their lives from lockdowns will lead to a disappointing drop in emissions," Peters wrote in an email, noting that big-ticket emitters like electricity generation, industry and agriculture are not covered by the clampdowns imposed by many governments.</p>
+
+
+	<p>Yet the scope of the emission reduction in 2020 is almost beside the point, said Taryn Fransen, a senior fellow at the World Resources Institute. Emissions are not falling because of a change in technology or because people have made a long-term change in behavior. They're falling because governments have ordered their citizens to stay home.</p>
+
+
+	<p>"When we're talking about cutting emissions, this is not how to do it," she said. "No one is arguing that we should suppress economic activity to reduce emissions."</p>
+
+
+	<p>The more important question, Fransen said, is whether the crisis prompts any long-term shifts in behavior. If people resume flying and driving as they did before the pandemic, the crisis will have a negligible impact on climate. But if it results in more remote work and less commuting, it might lead to a larger, more sustainable reduction in emissions.</p>
+
+
+	<p>Rob Jackson, a Stanford University professor who chairs the Global Carbon Project, pointed to recent data showing vastly improved air quality in cities around the world. He wondered whether the clear skies would result in a greater push toward cleaner technologies.</p>
+
+
+	<p>"We could have this every day if we had a proportion of the [electric vehicles] that Norway had, one-third of light vehicle traffic," he said.</p>
+
+
+	<p>The sentiment illustrates a wider point, analysts said. In recent years, much of the debate over climate policy has focused on individual actions like choosing whether to drive or fly. But even today, with millions of people around the world stuck at home, the world economy is consuming vast quantities of fossil fuel and emitting large amounts of CO2.</p>
+
+
+	<p>The dynamic highlights the limits of individual action and the need to transform how the economy is fueled, said Shahzeen Attari, a professor who studies human behavior and climate change at the University of Indiana.</p>
+
+
+	<p>"I think what we need is structural change, and that comes from transitioning our entire energy system, the type of vehicles we buy, electricity we consume, weatherizing our homes," Attari said. "Individuals can, in aggregate, push the system, but we need to figure out these pathways of pushing the system."</p>
+
+
+	<p>How the world answers that question will be the ultimate measure of emissions in future years.</p>
+
+        </section>
+
+          <div data-react-class="StoryAssets/PromotionBlock" data-react-props="{&quot;automated_promotion&quot;:{&quot;author_twitter&quot;:&quot;bstorrow&quot;,&quot;author_email&quot;:&quot;bstorrow@eenews.net&quot;},&quot;custom_promotions&quot;:[]}" data-hydrate="t" data-react-cache-id="StoryAssets/PromotionBlock-0"><section class="promotion generated" data-reactroot=""><span>Twitter: <a href="https://twitter.com/bstorrow">@bstorrow</a></span><span>Email: <a href="mailto:bstorrow@eenews.net">bstorrow@eenews.net</a></span></section></div>
+
+
+          <div data-react-class="StoryAssets/OpenStoryPromotionBox" data-react-props="{&quot;open_story_promotion_box_path&quot;:&quot;/trial?t=https%3A%2F%2Fwww.eenews.net%2Fstories%2F1062893583%3Ffbclid%3DIwAR12vn-cpfRZGiqcZR32dyRyKG4xZBi9CxLcK2EXHT1SnRkj0ygQpzBzJBA&quot;}" data-hydrate="t" data-react-cache-id="StoryAssets/OpenStoryPromotionBox-0"><section class="promo_container trial_promo" data-reactroot=""><h1>Like what you see?</h1><h2 class="bottom_1"><strong>We thought you might.</strong></h2><h2 class="bottom_1 global_red">Start a free trial now.</h2><p class="bottom_1">Get access to our comprehensive, daily coverage of energy and environmental politics and policy.</p><a href="/trial?t=https%3A%2F%2Fwww.eenews.net%2Fstories%2F1062893583%3Ffbclid%3DIwAR12vn-cpfRZGiqcZR32dyRyKG4xZBi9CxLcK2EXHT1SnRkj0ygQpzBzJBA"><button class="access_button red half-width">Sign up today!</button></a></section></div>
+
+</section>
+      <section class="span8 fixed promo-column">
+  
+<section class="tools_wrapper">
+  <div class="tools">
+    <ul class="first">
+
+        <li class="share_via_email">
+        </li>
+        <li>
+          <a href="/stories/1062893583/print">
+              <span class="print_icon sprite " title="Print"><span>Print</span></span> Print
+</a>        </li>
+
+    </ul>
+  </div>
+
+  <div class="share_tools ">
+    <ul>
+      <li class="share-facebook"><a rel="noopener" title="Share via Facebook" href="https://www.facebook.com/dialog/share?app_id=1670327216365411&amp;display=page&amp;href=https://www.eenews.net/stories/1062893583&amp;redirect_uri=https://www.eenews.net/stories/1062893583"><span class="facebook_icon sprite " title="Share via Facebook"><span>Share via Facebook</span></span></a></li>
+      <li class="share-twitter"><a target="_blank" rel="noopener" title="Share via Twitter" href="https://twitter.com/intent/tweet?url=https://www.eenews.net/stories/1062893583&amp;text=PANDEMIC:%20Coronavirus%20is%20reducing%20CO2.%20Why%20that&#39;s%20worrisome&amp;via=EENewsUpdates"><span class="twitter_icon sprite " title="Share via Twitter"><span>Share via Twitter</span></span></a></li>
+      <li class="share-linkedin"><a target="_blank" rel="noopener" title="Share via LinkedIn" href="https://www.linkedin.com/shareArticle?url=https://www.eenews.net/stories/1062893583"><span class="linked_in_icon sprite " title="Share via LinkedIn"><span>Share via LinkedIn</span></span></a></li>
+    </ul>
+  </div>
+</section>
+
+  
+
+<section class="ad medium">
+  <p class="label">Advertisement</p>
+  <div class="ad_container" id="desktop_mediumStory_1062893583">
+        <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display('desktop_mediumStory_1062893583')});
+        </script>
+</div></section>
+
+  
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('mobile_mediumStory_1062893583')});
+</script>
+
+
+
+
+</section>
+
+
+
+
+</article>
+
+
+  <section class="span24">
+    
+<section class="ad leaderboard">
+  <p class="label">Advertisement</p>
+  <div class="ad_container" id="footer_leaderboardPublication_0">
+      <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('footer_leaderboardPublication_0')})
+      </script>
+</div></section>
+  </section>
+
+<section class="ee-row no-print">
+<section class="layout_module span24">
+<section class="latest_headlines">
+	<h1 class="header bottom_divider">Latest Selected Headlines</h1>
+	<section class="ee-row-fl no_gutter">
+				<section class="span6 no_gutter">
+					<a href="/pm/2020/04/20">
+						<h1 class="publication_header">
+							<span class="pm_logo sprite " title="E&amp;E News PM"><span>E&amp;E News PM</span></span>
+						</h1>
+						<time datetime="2020-04-20 16:17:17 -0400" class="date">Monday, April 20, 2020 <span>&mdash;&nbsp; 4:17&nbsp;PM</span></time>
+</a>						<article class="story" id="story_1062927011">
+		<a href="/eenewspm/2020/04/20/stories/1062927011">
+			<h2 class="slug pm">FEDERAL WORKFORCE</h2>
+			<h1 class="headline">White House to agencies: Get ready to return to offices </h1>
+</a></article>	<article class="story" id="story_1062926791">
+		<a href="/eenewspm/2020/04/20/stories/1062926791">
+			<h2 class="slug pm">ENERGY MARKETS</h2>
+			<h1 class="headline">Oil price goes negative as demand collapses </h1>
+</a></article>	<article class="story" id="story_1062927111">
+		<a href="/eenewspm/2020/04/20/stories/1062927111">
+			<h2 class="slug pm">POLITICS</h2>
+			<h1 class="headline">Senate back in session tomorrow with hopes of deal </h1>
+</a></article>	<article class="story" id="story_1062926865">
+		<a href="/eenewspm/2020/04/20/stories/1062926865">
+			<h2 class="slug pm">LAW</h2>
+			<h1 class="headline">Court says it can't rush EPA to write incinerator rules </h1>
+</a></article>
+					<h2 class="more_headlines">
+						<a href="/pm/2020/04/20"><span class="arrow_icon sprite " title="More headlines"><span>More headlines</span></span>More headlines</a>
+					</h2>
+</section>				<section class="span6 no_gutter">
+					<a href="/gw/2020/04/20">
+						<h1 class="publication_header">
+							<span class="gw_logo sprite " title="Greenwire"><span>Greenwire</span></span>
+						</h1>
+						<time datetime="2020-04-20 13:09:10 -0400" class="date">Monday, April 20, 2020 <span>&mdash;&nbsp; 1:09&nbsp;PM</span></time>
+</a>						<article class="story" id="story_1062925979">
+		<a href="/greenwire/2020/04/20/stories/1062925979">
+			<h2 class="slug gw">SUPERFUND</h2>
+			<h1 class="headline">Supreme Court ruling isn't 'outright victory' for polluters </h1>
+</a></article>	<article class="story" id="story_1062890825">
+		<a href="/greenwire/2020/04/20/stories/1062890825">
+			<h2 class="slug gw">GULF SPILL ANNIVERSARY</h2>
+			<h1 class="headline">Pandemic shows feds failed to learn from 2010 disaster </h1>
+</a></article>	<article class="story" id="story_1062925737">
+		<a href="/greenwire/2020/04/20/stories/1062925737">
+			<h2 class="slug gw">BRISTOL BAY</h2>
+			<h1 class="headline">Court deals blow to Pebble mine foes </h1>
+</a></article>	<article class="story" id="story_1062925877">
+		<a href="/greenwire/2020/04/20/stories/1062925877">
+			<h2 class="slug gw">AGRICULTURE</h2>
+			<h1 class="headline">Farmers fret as pandemic creates animal surplus </h1>
+</a></article>
+					<h2 class="more_headlines">
+						<a href="/gw/2020/04/20"><span class="arrow_icon sprite " title="More headlines"><span>More headlines</span></span>More headlines</a>
+					</h2>
+</section>				<section class="span6 no_gutter">
+					<a href="/ew/2020/04/20">
+						<h1 class="publication_header">
+							<span class="ew_logo sprite " title="Energywire"><span>Energywire</span></span>
+						</h1>
+						<time datetime="2020-04-20 07:29:40 -0400" class="date">Monday, April 20, 2020 <span>&mdash;&nbsp; 7:29&nbsp;AM</span></time>
+</a>						<article class="story" id="story_1062920485">
+		<a href="/energywire/2020/04/20/stories/1062920485">
+			<h2 class="slug ew">PANDEMIC</h2>
+			<h1 class="headline">Zoom bombings, cancellations: Energy hearings in chaos </h1>
+</a></article>	<article class="story" id="story_1062920197">
+		<a href="/energywire/2020/04/20/stories/1062920197">
+			<h2 class="slug ew">CARBON CAPTURE</h2>
+			<h1 class="headline">BLM reviews CO2 pipelines, but will anyone build them? </h1>
+</a></article>	<article class="story" id="story_1062920029">
+		<a href="/energywire/2020/04/20/stories/1062920029">
+			<h2 class="slug ew">PANDEMIC</h2>
+			<h1 class="headline">CEO: Oil drilling, fracking could drop another 60% </h1>
+</a></article>	<article class="story" id="story_1062919991">
+		<a href="/energywire/2020/04/20/stories/1062919991">
+			<h2 class="slug ew">RENEWABLE ENERGY</h2>
+			<h1 class="headline">'Mysterious' group pushes FERC to end net metering </h1>
+</a></article>
+					<h2 class="more_headlines">
+						<a href="/ew/2020/04/20"><span class="arrow_icon sprite " title="More headlines"><span>More headlines</span></span>More headlines</a>
+					</h2>
+</section>				<section class="span6 no_gutter">
+					<a href="/eed/2020/04/20">
+						<h1 class="publication_header">
+							<span class="eed_logo sprite " title="E&amp;E Daily"><span>E&amp;E Daily</span></span>
+						</h1>
+						<time datetime="2020-04-20 07:22:59 -0400" class="date">Monday, April 20, 2020 <span>&mdash;&nbsp; 7:22&nbsp;AM</span></time>
+</a>						<article class="story" id="story_1062920763">
+		<a href="/eedaily/2020/04/20/stories/1062920763">
+			<h2 class="slug eed">AGENDA</h2>
+			<h1 class="headline">Stimulus deal near as Hill prepares for extended disruption </h1>
+</a></article>	<article class="story" id="story_1062901321">
+		<a href="/eedaily/2020/04/20/stories/1062901321">
+			<h2 class="slug eed">ADVOCACY</h2>
+			<h1 class="headline">How the pandemic upended climate politics </h1>
+</a></article>	<article class="story" id="story_1062920183">
+		<a href="/eedaily/2020/04/20/stories/1062920183">
+			<h2 class="slug eed">AIR POLLUTION</h2>
+			<h1 class="headline">EPA power plant mercury rule divides Republicans </h1>
+</a></article>	<article class="story" id="story_1062920789">
+		<a href="/eedaily/2020/04/20/stories/1062920789">
+			<h2 class="slug eed">OFFSHORE DRILLING</h2>
+			<h1 class="headline">Congressional action still lags a decade after Gulf spill </h1>
+</a></article>
+					<h2 class="more_headlines">
+						<a href="/eed/2020/04/20"><span class="arrow_icon sprite " title="More headlines"><span>More headlines</span></span>More headlines</a>
+					</h2>
+</section>	</section>
+</section>
+</section>
+</section>
+
+
+</section><footer>
+<nav>
+<ul class="secondary_nav">
+<li><a href="/">E&amp;E&nbsp;Home</a></li><li><a href="/eep/learn_more">About</a></li><li><a href="/get_access?site_link=1">Get Access</a></li><li> <a href="/trial?t=https%3A%2F%2Fwww.eenews.net%2Fstories%2F1062893583">Start&nbsp;a&nbsp;Trial</a></li><li><a href="/email_alerts/">Get Email Alerts</a></li><li><a href="/eep/advertise">Advertise</a></li><li><a href="/eep/learn_more/staff_directory">Staff&nbsp;Directory</a></li><li><a href="/special_reports">Reports</a></li>
+</ul>
+<ul class="brands">
+<li class="eep"><a href="/eep"><span class="eep_footer sprite " title="E&amp;E News"><span>E&amp;E News</span></span></a></li><li class="ew"><a href="/ew"><span class="ew_footer sprite " title="Energywire"><span>Energywire</span></span></a></li><li class="cw"><a href="/cw"><span class="cw_footer sprite " title="Climatewire"><span>Climatewire</span></span></a></li><li class="eed"><a href="/eed"><span class="eed_footer sprite " title="E&amp;E Daily"><span>E&amp;E Daily</span></span></a></li><li class="gw"><a href="/gw"><span class="gw_footer sprite " title="Greenwire"><span>Greenwire</span></span></a></li><li class="pm"><a href="/pm"><span class="pm_footer sprite " title="E&amp;E News PM"><span>E&amp;E News PM</span></span></a></li>
+</ul>
+</nav>
+<div class="copy_tag">
+<p class="tagline">The essential news for energy &amp; environment professionals</p>
+<p class="copyright">&copy; 1996-2020 Environment &amp; Energy Publishing, LLC&nbsp;&nbsp;
+  <span>
+    <a href="/eep/learn_more/privacy_policy">Privacy and Data Practices Policy</a>&nbsp;&nbsp;
+    <a href="/eep/learn_more/site_map">Site Map</a>&nbsp;&nbsp;
+    <a href="/eep/learn_more/staff_directory">Contact&nbsp;Us</a>
+  </span>
+</p>
+</div>
+</footer>
+</div>
+
+
+<script type="text/javascript">
+    new EENews.Beacon('/0/Story/22845/public_display/1062893583/ident');
+</script>
+</body>
+</html>

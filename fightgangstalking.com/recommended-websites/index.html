@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html id="ie8" lang="en">
+<![endif]-->
+<!--[if !(IE 8)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<title>Recommended Websites | Fight &quot;Gang Stalking&quot;</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://fightgangstalking.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://s2.wp.com/wp-content/themes/pub/dusk-to-dawn/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9maWdodGdhbmdzdGFsa2luZy5jb20%3D"
+		+ "&wpcomid=51777463"
+		+ "&time=1587424929";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//fightgangstalking.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Feed" href="https://fightgangstalking.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Comments Feed" href="https://fightgangstalking.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Fight &quot;Gang Stalking&quot; &raquo; Recommended Websites Comments Feed" href="https://fightgangstalking.com/recommended-websites/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJylU1tuwjAQvFCdJYUW+lH1LHa8TQ1+yWsT5fZdYlAjKFAVRbKyj5mxJhMYouiCz+gzuCKiLb3xBEPsghPkjMXxrGo6oieYwU6Yz2KtIJNRoDbZ+P7IBuvl24KfFTCLCx60oXx8vyCb3cGaHRJsMUfZ7cRUXdXuC5cKU8+ThLBuNk0LqhirQdkwwVWSaQTKo8U/0EyombocQ8miT0b/lyLJgyd0B37fRKblZqBMVaHauTc4PECKe95nXPFZh8HPmX8dPSB18iMbh9Z4rCrn3asCXTj62jbPi6YVUzYrRx001eDp4z9wzeqwZd65GefdW/k9JJH7Lsp82HCsJNGi47VbsPqzKRUTEgk+nSlO5C8GXua/tiEWBboQ2xeEloP/CdmHe29fNq+r5027XGy/Af8YdB0=?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='ubuntu-css'  href='https://fonts.googleapis.com/css?family=Ubuntu%3A300%2C400%2C700&#038;ver=5.4' media='all' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s1.wp.com/_static/??-eJzTLy/QTc7PK0nNK9HPLdUtyClNz8wr1k9PzdfNyU9OLMnMz0Ph6KblJGYW6SUXF+voY9dalJqUk58OZKbrA1UhcUGa7HNtDU1MLU1MLMwNTbIAmkQtqg==?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-3-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s0.wp.com/_static/??-eJx9jtsOgjAMhl/IWRBUvDA+S5ljVMtG1hLj2zsTiRgS04u2yfcf4DEaG4O6oDBMZuTJUxBAqxRDi+l7ba3IBhb4zHYTsxFSZ9yVlIL/uMCxOhV5avAcW8yMPtkJiKKShZYx3Femiw5jFDUdIyWQHlM2nvc/lURLOYujj7/PSqS9G3Kdfu73Bi7Dudw3h3rXlFVxewFn6WiM?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5McXJ+XklqXglIbW5+UmZOqm5pcWpRYjpQDGhQWj5QnX2uraGpqYWxqZmZqXEWALkfL7E='></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://fightgangstalking.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://fightgangstalking.com/recommended-websites/" />
+<link rel='shortlink' href='https://wp.me/P3vfGn-r' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Ffightgangstalking.com%2Frecommended-websites%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Ffightgangstalking.com%2Frecommended-websites%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Recommended Websites" />
+<meta property="og:url" content="https://fightgangstalking.com/recommended-websites/" />
+<meta property="og:description" content="________________________________________________________ ACLU – Spy Files This is the page within the website of the ACLU (American Civil Liberties Union) which provides an overview of the agencies…" />
+<meta property="article:published_time" content="2013-05-08T00:24:21+00:00" />
+<meta property="article:modified_time" content="2019-10-22T02:33:18+00:00" />
+<meta property="og:site_name" content="Fight &quot;Gang Stalking&quot;" />
+<meta property="og:image" content="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=300" />
+<meta property="og:image:width" content="100" />
+<meta property="og:image:height" content="76" />
+<meta property="og:image:alt" content="Anti Nazi image" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@wordpressdotcom" />
+<meta name="twitter:text:title" content="Recommended Websites" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://fightgangstalking.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://fightgangstalking.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://fightgangstalking.com/osd.xml" title="Fight &#34;Gang Stalking&#34;" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+	<style>
+		a,
+		.entry-title a:hover,
+		.widget_flickr #flickr_badge_uber_wrapper a:hover,
+		.widget_flickr #flickr_badge_uber_wrapper a:link,
+		.widget_flickr #flickr_badge_uber_wrapper a:active,
+		.widget_flickr #flickr_badge_uber_wrapper a:visited,
+		#infinite-footer .blog-info a,
+		#infinite-footer .blog-credits a,
+		#infinite-footer .blog-info a:hover,
+		#infinite-footer .blog-info a:focus,
+		#infinite-footer .blog-credits a:hover,
+		#infinite-footer .blog-credits a:focus,
+		#infinite-handle span,
+		#infinite-handle span:before,
+		#infinite-handle span:hover,
+		#infinite-handle span:focus,
+		#infinite-handle span:hover:before,
+		#infinite-handle span:focus:before {
+			color: #1a44ff;
+		}
+		.entry-header,
+		.right-sidebar .entry-header {
+			border-color: #1a44ff;
+		}
+	</style>
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Fight &quot;Gang Stalking&quot;" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Expose illegal stalking by corrupt law enforcement personnel" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://fightgangstalking.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="________________________________________________________ ACLU – Spy Files This is the page within the website of the ACLU (American Civil Liberties Union) which provides an overview of the agencies and programs which the ACLU suggests are involved in “illegal domestic spying.” ________________________________________________________ Agitator A blog by Radley Balko, author of Rise of the Warrior Cop – a critique&hellip;" />
+	<style type="text/css">
+			#site-title a {
+			color: #a8002c;
+		}
+		</style>
+	</head>
+
+<body class="page-template-default page page-id-27 customizer-styles-applied single-author left-sidebar sidebar-content highlander-enabled highlander-light">
+<div id="super-super-wrapper">
+	<div id="super-wrapper">
+		<div id="wrapper">
+					<div id="page" class="hfeed">
+				<header id="branding" role="banner">
+					<hgroup>
+						<h1 id="site-title"><a href="https://fightgangstalking.com/" title="Fight &quot;Gang Stalking&quot;" rel="home">Fight &quot;Gang Stalking&quot;</a></h1>
+						<h2 id="site-description">Expose illegal stalking by corrupt law enforcement personnel</h2>
+					</hgroup>
+				</header><!-- #branding -->
+
+				<div id="main" class="clear-fix">
+										<div id="header-image">
+						<a href="https://fightgangstalking.com/">
+							<img src="https://fightgangstalking.files.wordpress.com/2013/05/black-banner-background-2.jpg" width="870" height="220" alt="" />
+						</a>
+					</div>
+					
+<div id="primary">
+	<div id="content" role="main">
+
+		
+			<article id="post-27" class="post-27 page type-page status-publish hentry">
+	<header class="entry-header">
+		<h1 class="entry-title">Recommended Websites</h1>
+	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content">
+		<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png"><br />
+<img class="aligncenter size-large wp-image-259" src="https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=474&#038;h=209" alt="GlobalConnections" width="474" height="209" srcset="https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=474&amp;h=209 474w, https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=948&amp;h=418 948w, https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=150&amp;h=66 150w, https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=300&amp;h=132 300w, https://fightgangstalking.files.wordpress.com/2013/05/globalconnections.png?w=768&amp;h=339 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<p>________________________________________________________</p>
+<p><a href="https://www.aclu.org/spy-files"><strong>ACLU – Spy Files</strong></a></p>
+<p>This is the page within the website of the ACLU (American Civil Liberties Union) which provides an overview of the agencies and programs which the ACLU suggests are involved in <span style="color:#000000;"><strong>“illegal domestic spying.”</strong></span></p>
+<p>________________________________________________________</p>
+<p><a href="http://www.huffingtonpost.com/news/the-agitator"><b>Agitator</b></a></p>
+<p>A blog by Radley Balko, author of <i>Rise of the Warrior Cop</i> – a critique of the militarization of American police agencies.</p>
+<p>________________________________________________________</p>
+<p><span style="color:#000000;"><strong><a href="http://alexaobrien.com/" target="_blank" rel="noopener noreferrer">Alexa O’Brien</a></strong></span></p>
+<p>A national security journalist. Her reporting on the U.S. government’s court-martial of whistle-blower Chelsea Manning received international attention. As noted on her website, O’Brien’s articles have been published by <em>VICE News, The Cairo Review of Global Affairs, Guardian UK, Salon, The Daily Beast. </em>She has also appeared on<em> BBC, PBS Frontline, On The Media, Democracy Now!, and Public Radio International</em>.</p>
+<p>A good example of O’Brien’s reporting and insights can be seen <a href="http://www.truthdig.com/avbooth/item/video_chris_hedges_on_the_militarization_of_higher_education_20151125" target="_blank" rel="noopener noreferrer">in this video</a>, posted in November 2015 on <em>truthdig</em>, in which she is interviewed by journalist Chris Hedges, regarding the militarization of American colleges and universities.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.theguardian.com/technology/anonymous"><b>Anonymous  (news about the Anonymous movement at <i>the Guardian</i>)</b></a></p>
+<p><strong><em>Anonymous</em></strong> is a movement started by political activist computer hackers (“hacktivists”) in 2003. It is not an organization, but rather a loosely-associated global community of anonymous activists who seek to expose and disrupt government and corporate corruption, secrecy, and censorship. The movement embraces various progressive, libertarian, and anarchist values. This page at <em>the Guardian</em> is devoted to covering the Anonymous movement.</p>
+<p><u>A note about <em>the Guardian</em></u>:</p>
+<p>Readers seeking information about government and corporate surveillance issues should be aware that most – perhaps all – major newspapers have mixed records of journalistic integrity when reporting on spying, policing, and warfare. <em>The New York Times</em> published <a href="https://en.wikipedia.org/wiki/Pentagon_Papers" target="_blank" rel="noopener noreferrer">the Pentagon Papers</a>, but it also functioned as <a href="http://www.thenation.com/article/when-nyt-offered-weak-mini-culpa-hyping-iraq-wmd/" target="_blank" rel="noopener noreferrer">a propaganda tool for the Iraq War</a>. Similarly, <em>the Guardian</em> has published excellent articles and commentary (including <a href="http://www.theguardian.com/commentisfree/series/glenn-greenwald-security-liberty" target="_blank" rel="noopener noreferrer">columns by Glenn Greenwald</a>, 2012 to 2013) about civil rights issues, surveillance, war crimes, and corruption, but it also has a record of cowardice on some important matters involving whistle-blowers and investigative reporters. Among the paper’s detractors is <a href="http://motherboard.vice.com/blog/jacob-appelbaum-utopia-interview" target="_blank" rel="noopener noreferrer">Jacob Appelbaum</a>, a journalist, technologist, and political activist, who is one of the founders of the <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">Tor browser project</a>. Appelbaum is a high-level “targeted individual” of the U.S. government because, like NSA whistle-blower, Edward Snowden, and WikiLeaks founder, Julian Assange, he works to expose crimes perpetrated by America’s government and its corporate clients. Appelbaum’s scathing critique of <em>the Guardian</em> <a href="https://voicerepublic.com/talks/reports-from-the-front" target="_blank" rel="noopener noreferrer">can be heard here </a>(starting at 73:30), in a speech given in March 2016. Another interesting, critical take on the newspaper that deserves noting is <a href="http://www.newsweek.com/assange-how-guardian-milked-edward-snowdens-story-323480" target="_blank" rel="noopener noreferrer">this one</a> by Assange, published by <em>Newsweek</em> in April 2015.</p>
+<p>________________________________________________________</p>
+<p><a href="https://twitter.com/YourAnonNews"><b>Anonymous   (the <i>YourAnonNews </i>Twitter Page)</b></a></p>
+<p>________________________________________________________</p>
+<p><a href="https://www.facebook.com/anonymousforjustice/" target="_blank" rel="noopener noreferrer"><strong>Anonymous  (the <em>We Are Anonymous</em> Facebook page)</strong></a></p>
+<p>________________________________________________________</p>
+<p><strong><a href="https://theintercept.com/staff/freebarrett_/" target="_blank" rel="noopener noreferrer">Barrett Brown</a></strong></p>
+<p>Barrett Brown is an award-winning journalist (<a href="https://ellieawards.secure-platform.com/a/page/2016-winners" target="_blank" rel="noopener noreferrer">National Magazine Award</a> winner in the “Columns and Commentary” category, and <a href="https://freebarrettbrown.org/2016/05/11/barrett-brown-wins-new-york-press-club-journalism-award-for-intercept-column/" target="_blank" rel="noopener noreferrer">New York Press Club journalism award</a> winner), humorist, and former unofficial spokesman for the <a href="https://twitter.com/YourAnonNews" target="_blank" rel="noopener noreferrer">Anonymous</a> movement.</p>
+<p>Brown was <a href="http://arstechnica.com/tech-policy/2016/11/barrett-brown-journalist-once-linked-to-anonymous-finally-released-from-prison/" target="_blank" rel="noopener noreferrer">released from federal prison</a> in November 2016, after four years behind bars for acts related to his role in the exposure of emails hacked from the private security-intelligence firms, <a href="https://en.wikipedia.org/wiki/HBGary" target="_blank" rel="noopener noreferrer">HBGary</a> and <a href="https://www.stratfor.com/" target="_blank" rel="noopener noreferrer">Stratfor</a>, in 2011. The emails exposed the use of counterintelligence schemes by private contractors. As of this writing, <a href="http://www.truthdig.com/report/item/feeding_the_flame_of_revolt_20131117" target="_blank" rel="noopener noreferrer">Jeremy Hammond</a> – the activist hacker who stole the Stratfor emails and gave them to <em><a href="https://wikileaks.org/" target="_blank" rel="noopener noreferrer">WikiLeaks</a></em> – remains in prison, serving a ten-year sentence. For a complete account of the matter, see the December 18, 2016 posting on this site.</p>
+<p>While incarcerated, he wrote a dozen or so very funny essays for <em>D Magazine,</em> (“D” for Dallas, Texas – where Brown was born), <a href="http://www.dmagazine.com/frontburner/2015/06/the-barrett-brown-review-of-arts-and-letters-and-jail-eff-you-axl-rose/" target="_blank" rel="noopener noreferrer">such as this one</a><strong>, </strong>from June of last year. He was then hired by <em>The Intercept</em>, for which he wrote another dozen or so pieces, all of which can be <a href="https://theintercept.com/staff/freebarrett_/" target="_blank" rel="noopener noreferrer">seen here.</a> A good example of his writing is <a href="https://theintercept.com/2016/07/09/barrett-brown-the-fact-of-sisyphus/" target="_blank" rel="noopener noreferrer">this account</a> of prison life in the U.S. More importantly for anyone interested in illegal spying and overt surveillance (harassment) by America’s security-intelligence industry, Brown also exposes the criminality and abuses of power in that sphere.</p>
+<p>________________________________________________________</p>
+<p><span style="color:#000000;"><strong><a href="https://chapotraphouse.com/" target="_blank" rel="noopener">Chapo Trap House</a></strong></span></p>
+<p>A smart, funny podcast of political analysis from a left perspective. Because these guys have a realistic view of power, they don’t shy away from discussing the lying and criminality associated with the U.S. intelligence agencies and their allies. (<a href="https://www.youtube.com/watch?v=PBcyPkdyXpQ" target="_blank" rel="noopener">This July 25, 2019 episode</a> about the interesting death of Jeffrey Epstein is a good example.) If you’re concerned about the deep moral rot and idiocy in America’s ruling class – and its establishment media – at least you can laugh about it.</p>
+<p><a href="https://soundcloud.com/chapo-trap-house" target="_blank" rel="noopener">Chapo on Soundcloud</a></p>
+<p><a href="https://www.youtube.com/channel/UCokqzNPBJ65raczldVuHAww" target="_blank" rel="noopener">Chapo on YouTube</a></p>
+<p>________________________________________________________</p>
+<p><strong><span style="color:#000000;"><a href="https://consortiumnews.com/" target="_blank" rel="noopener noreferrer">Consortium News</a></span></strong></p>
+<p>Independent journalism. Founded by Robert Parry (1949-2018), who was one of the reporters who helped expose the Iran-Contra scandal for The Associated Press in the mid-1980s.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.counterpunch.org/"><b>CounterPunch</b></a></p>
+<p>A progressive/leftist news and opinion journal. They publish some articles by libertarians and occasionally (paleo) conservatives also. They seem to be editorially fearless &#8211; for example, see the January 21, 2013 article in the “Gang Stalking News” section of this website for their excellent article on the past and present versions of Cointelpro (gang stalking).</p>
+<p>________________________________________________________</p>
+<p><a href="http://cryptome.org/"><b>Cryptome</b></a></p>
+<p>Similar to WikiLeaks, <i>Cryptome</i> is described in Wikipedia as follows: <i>“</i><i>a digital library host created in 1996 by American independent scholars and architects John Young and Deborah Natsios. The digital library functions as a repository for information about freedom of speech, cryptography, spying, and surveillance.”</i></p>
+<p>Here is a portion of Cryptome’s mission statement:</p>
+<p><i>“Cryptome welcomes documents for publication that are prohibited by governments worldwide, in particular material on freedom of expression, privacy, cryptography, dual-use technologies, national security, intelligence, and secret governance &#8212; open, secret and classified documents &#8212; but not limited to those.” </i></p>
+<p>________________________________________________________</p>
+<p><span style="color:#000000;"><strong><a href="http://cryptoscatology.blogspot.com/" target="_blank" rel="noopener noreferrer">Cryptoscatology</a></strong></span></p>
+<p>A blog by Robert Guffey, a writing instructor at California State University–Long Beach. Guffey is the author of several books, including <a href="http://www.orbooks.com/catalog/chameleo/" target="_blank" rel="noopener noreferrer"><em>CHAMELEO</em> </a>(OR Books, 2015), a credible, well-written account of the stalking and terrorizing of a man in California – apparently, at the hands of counterintelligence agents from the Naval Criminal Investigative Service (NCIS). Robert Guffey has discussed the issue of “gang stalking” in a number of public forums, including <a href="https://www.youtube.com/watch?v=jePZAfo6kb0" target="_blank" rel="noopener noreferrer">radio programs</a> and <a href="http://skylightbooks.podbean.com/e/robert-guffey-reads-from-his-new-book-chameleo-with-gerry-fialka/" target="_blank" rel="noopener noreferrer">bookstore appearances</a>. In his blog, he sometimes writes about organized stalking and other surveillance state topics.</p>
+<p>________________________________________________________</p>
+<p><a style="line-height:1.5em;" href="http://www.democracynow.org/"><b>Democracy Now!</b></a></p>
+<p>A daily TV and radio news program from a progressive perspective. Award-winning investigative journalist Amy Goodman is the co-founder and news director.</p>
+<p>________________________________________________________</p>
+<p><a href="http://dissenter.firedoglake.com/"><b>Dissenter</b></a></p>
+<p><em>The Dissenter</em> is a blog at <i>Firedoglake </i>by Kevin Gosztola, a documentary filmmaker and writer who often covers abuses of power by intelligence agencies.</p>
+<p>________________________________________________________</p>
+<p><b><a href="https://twitter.com/jimmy_dore?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener">Jimmy Dore</a></b></p>
+<p><a href="https://www.chicagotribune.com/entertainment/theater/ct-ott-jimmy-dore-thalia-hall-ttd-0712-20190711-4leuqq3mwzbt5ep76rurat6fvy-story.html" target="_blank" rel="noopener"><u>Dore’s description of his show</u>:</a> <b><i>“It’s like a live version of &#8216;The Daily Show’ when Jon Stewart did it, if Jon Stewart wasn’t a millionaire and it wasn’t funded by a huge corporation.”</i></b></p>
+<p><a href="https://www.youtube.com/watch?v=jU-238gJq-o" target="_blank" rel="noopener">“Jimmy Dore and Why Everyone Hates the Media”</a> – a September 5, 2019 interview by Matt Taibbi and Katie Halper on their <i>Rolling Stone</i> podcast, “Useful Idiots.” The three discuss the state of political comedy in America and dishonesty in America’s corporate press. <u>The discussion with Dore starts at 34:10</u></p>
+<p><a href="https://www.youtube.com/watch?v=O_iJsy-bJ-k" target="_blank" rel="noopener">The Jimmy Dore Show – October 17, 2019</a> – a review of recent<b> </b>lying in the news media and social media by US national security establishment apparatchiks (the current version of the CIA’s Operation Mockingbird).</p>
+<p><a href="https://podcasts.apple.com/us/podcast/the-jimmy-dore-show/id390071758" target="_blank" rel="noopener">Jimmy Dore on iTunes</a></p>
+<p>________________________________________________________</p>
+<p><a href="http://www.drudgereport.com/"><b>Drudge Report</b></a></p>
+<p>The premier conservative/libertarian news aggregation website. Even people who do not share Matt Drudge’s political orientation should be aware that his website often links to articles about civil liberties issues relevant to the police state tendencies of both major parties. The site also has a convenient index of links to news and commentary websites from across the political spectrum. <i>Drudge Report</i> frequently posts links to articles on alternative news media websites which cover topics deemed unsafe by corporate media outlets.</p>
+<p>________________________________________________________</p>
+<p><a href="https://www.eff.org/"><strong>Electronic Frontier Foundation (EFF) </strong></a></p>
+<p>EFF is a non-profit civil liberties defense organization which closely follows issues such as illegal electronic surveillance by the U.S. government, online censorship, and encryption. Their work includes fighting legal battles for individual rights and reporting on corruption and abuses of power by government agencies. Much of EFF’s reporting and advocacy is based upon information obtained via Freedom of Information Act (FOIA) requests.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.theguardian.com/commentisfree/series/glenn-greenwald-security-liberty"><b>Glenn Greenwald&#8217;s Columns at <i>the Guardian</i></b></a><strong><br />
+</strong></p>
+<p>Greenwald’s column &#8220;On Security and Liberty&#8221; addressed important civil rights issues and offered a critique of U.S. foreign policy. His role in exposing secret documents leaked by NSA whistle-blower Edward Snowden earned him a Pulitzer Prize. Greenwald left <em>the Guardian</em> in October 2013 and is one of the founding editors of <em>The Intercept</em>.</p>
+<p>________________________________________________________</p>
+<p><a href="https://twitter.com/ggreenwald"><strong>Glenn Greenwald’s Twitter page</strong></a></p>
+<p>________________________________________________________</p>
+<p><strong><span style="color:#000000;"><a href="https://grayzoneproject.com/" target="_blank" rel="noopener noreferrer">Gray Zone</a></span></strong></p>
+<p>Edited by award-winning journalist <a href="https://twitter.com/MaxBlumenthal" target="_blank" rel="noopener noreferrer"><strong>Max Blumenthal</strong></a>, The Grayzone Project features news and analysis which aims <em>“to shine a journalistic light on America’s state of perpetual war and its dangerous domestic repercussions.”</em></p>
+<p>A good example of this site’s investigative journalism is <a href="https://grayzoneproject.com/2018/12/17/inside-the-temple-of-covert-propaganda-the-integrity-initiative-and-the-uks-scandalous-information-war/" target="_blank" rel="noopener noreferrer">this December 2018 article</a> about a British military-intelligence influence operation.</p>
+<p>________________________________________________________</p>
+<p><span style="color:#000000;"><strong><a href="https://insidersurveillance.com/" target="_blank" rel="noopener noreferrer">Insider Surveillance</a></strong></span></p>
+<p>Although most of the helpful information posted online about illegal spying is at websites operated by people who believe in things like individual freedom, privacy, and government transparency, it’s a good idea to also have a look at some of the websites which reflect the interests of individuals, corporations, and governments which hold those values in contempt. <em>Insider Surveillance</em> offers a glimpse of the view from inside the spy industry pig trough. This site provides information, such as product reviews, for clients of the companies which sell the hardware, software, and services used for spying.</p>
+<p>Here is the website’s description of itself:</p>
+<p><em>“<u>Insider Surveillance</u></em><em> </em><em>is the most widely read source of information on surveillance technologies for law enforcement, government agencies, military intelligence, communications companies and technology leaders who together safeguard national security and protect the public from criminals and terrorists.”</em></p>
+<p>You can get a sense of the philosophy of this site’s editors from the following statement, posted in the section on “surveillance laws.”</p>
+<p><em>“As for the Constitutional right to privacy — there’s no such thing, at least not in the document penned by the Founding Fathers. That interpretation of the 4th Amendment came well over a century later, in the 1920s, in a ruling by the Supreme Court.”</em></p>
+<p>Note: most of this site’s contents cannot be viewed without a paid subscription.</p>
+<p>________________________________________________________</p>
+<p><a href="http://leaksource.wordpress.com/"><b>LeakSource</b></a></p>
+<p>As the name suggests, this site is one of the small versions of WikiLeaks. I could not find a mission statement, but they clearly share the values of groups like Anonymous and WikiLeaks.</p>
+<p>________________________________________________________</p>
+<p><a href="http://littlesis.org/"><strong>LittleSis</strong></a></p>
+<p>An excellent website for a quick look at the elite members of the U.S. oligarchy. Many of the individuals and organizations who make up America’s “shadow government” are listed here – along with explanations of their connections and political influence. The name “Little Sis” is a play on the Orwellian term “Big Brother.” <a href="https://twitter.com/twittlesis"><strong>Here is their Twitter page.</strong></a></p>
+<p>________________________________________________________</p>
+<p><a href="http://www.rollingstone.com/politics/blogs/taibblog"><b>Matt Taibbi (at <i>Rolling Stone</i>)</b></a></p>
+<p>Matt Taibbi&#8217;s excellent reportage on the U.S. financial industry provides insights about crony capitalism and politicized federal law enforcement. Taibbi has written some excellent columns on surveillance state issues as well, such as <a href="http://www.rollingstone.com/politics/blogs/taibblog/wikileaks-was-just-a-preview-were-headed-for-an-even-bigger-showdown-over-secrets-20130322">this March 2013 account</a> of the information war between America’s government and its citizens.</p>
+<p>________________________________________________________</p>
+<p><a href="https://www.muckrock.com/"><b>Muckrock.com</b></a></p>
+<p>A website for filing Freedom of Information Act (FOIA) requests to obtain government records simply and affordably. (As of February 2014, you could file 5 requests for just $20.) The website’s staff includes people with both journalism and technology backgrounds.</p>
+<p>Here is the website’s description of its purpose:</p>
+<p><i>Filing Freedom of Information Requests doesn’t need to be difficult. At MuckRock, we are dedicated to wading through the muck so you don’t. What does this mean for you? Less time spent mitigating complex bureaucratic processes so that you can focus on analyzing and reporting on the issues that matter most to you and your organization or business.</i></p>
+<p><i>As the only public records request service of its kind in the United States, MuckRock serves journalists, researchers, activists and historians, with a track record of over 2,000 requests. Simply login to your account and submit your FOI request via our simple web-interface.</i></p>
+<p><i>MuckRock acts as a request proxy, e-mailing, faxing or even snail mailing the request on your behalf. Documents are sent to our offices to be prepared by our team of experts for your convenience. We can even assist with analyzing your data. Our intuitive system ensures that your documents are for your eyes only until you&#8217;re ready to publish.</i></p>
+<p>Here are some examples of gang stalking-related document requests filed by one user:</p>
+<p><a style="line-height:1.5em;" href="https://www.muckrock.com/accounts/profile/Cdweissenberg/">https://www.muckrock.com/accounts/profile/Cdweissenberg/</a></p>
+<p>________________________________________________________</p>
+<p><a href="http://www.thenation.com/" target="_blank" rel="noopener noreferrer"><strong>The Nation</strong></a></p>
+<p>Established in 1865, <em>The Nation</em> is described by Wikipedia as “the oldest continuously published weekly magazine in the U.S.” Among the magazine’s articles relevant to organized stalking was <a href="http://www.thenation.com/article/174851/strange-case-barrett-brown">a piece published in 2013</a> about the exposure of counterintelligence activities performed for corporate clients by private security-intelligence firms. The article included this observation: <em>“One might think that what we are looking at is Cointelpro 2.0 – an outsourced surveillance state – but in fact it’s worse.”</em></p>
+<p>________________________________________________________</p>
+<p><a href="http://pastebin.com/"><b>Pastebin</b></a></p>
+<p>An online bulletin board for anonymous temporary posting of text. Many of the website’s visitors and users are software programmers who use the site to post source code. The site has also been popular with members of the Anonymous movement – who sometimes post “sensitive” documents there which have been hacked or leaked, and articles which have been taken down from websites where they were originally posted, etc.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.policemisconduct.net/"><strong>Police Misconduct</strong></a></p>
+<p>Aggregated reports of police misconduct compiled and fact-checked by the CATO Institute – a libertarian think tank founded in 1977. The site also features quarterly and annual statistical reports about police misconduct.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.policestateusa.com/"><b>Police State USA</b></a></p>
+<p>Aggregated news stories and commentary about police brutality, the militarization of law enforcement agencies, corruption, bad policies, and civil rights violations.</p>
+<p>________________________________________________________</p>
+<p><strong><a href="https://privacysos.org/blog" target="_blank" rel="noopener noreferrer">Privacy Matters</a></strong></p>
+<p>An excellent blog about the U.S. surveillance state. This is part of the <em>Privacy SOS</em> website of the ACLU of Massachusetts, which describes its concerns this way:</p>
+<p><em>Since 9/11, the government has directed dramatically expanded powers of surveillance at all of us, not just people suspected of wrongdoing. Our international phone calls, our emails, our</em> <em>financial records, our travel itineraries, and our images captured on digital cameras now swell a mountain of data that is being collected in the name of mining for suspicious patterns and associations.</em></p>
+<p><em>But while the government has gained more and more power to watch us, it has largely kept us in the dark about what it is doing, building a new architecture of domestic surveillance, about which we know very little.</em></p>
+<p><em>What must we know if we want to remain a free society? &#8220;PrivacySOS&#8221; shines sunlight on surveillance (SOS) and highlights actions you can take to protect your privacy.</em></p>
+<p>________________________________________________________</p>
+<p><a href="http://progressive.org/"><b>Progressive</b></a></p>
+<p>Just what it sounds like. <i>The Progressive</i> is a leftist monthly magazine published since 1909. They have posted several articles relevant to gang stalking – such as reporting on the national network of data fusion centers.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.raymcgovern.com/"><strong>RayMcGovern.com</strong></a></p>
+<p>Ray McGovern is a retired CIA analyst-turned political activist. He is a highly credible critic of the U.S. military-industrial complex, the U.S. intelligence community, the Iraq War, the Israel Lobby, and the use of torture in interrogations. He has frequently appeared at presentations with other important whistle-blowers, such as Daniel Ellsberg, Thomas Drake, Mike German, and John Kiriakou.</p>
+<p>Here is <em>truthdig</em> editor Robert Scheer, speaking to Ray McGovern, in an April 2017 <a href="http://www.truthdig.com/avbooth/item/former_cia_analyst_ray_mcgovern_cias_history_faulty_intelligence_20170428" target="_blank" rel="noopener noreferrer">interview</a>:</p>
+<p><em>“You are probably one of the most interesting people to come out of the deep state, the CIA in particular. You went there as a young person in 1963, I believe; you were there until 1990. You ended up preparing the briefings for the president each day. So, you really know, from an analyst’s point of view, the inside of the whole American secret state.”</em></p>
+<p>________________________________________________________</p>
+<p><b><a href="http://reason.com/" target="_blank" rel="noopener">Reason</a></b></p>
+<p>Although the wealthy funders of <em>Reason</em> are presumably far more concerned with promoting <em>economic</em> libertarianism than <em>civil</em> libertarianism, the site does publish some useful stuff in the second category. (Even rich people have some concerns about corrupt security state agencies.) <a href="http://reason.com/blog/2016/03/10/dear-tim-cook-republicans-arent-your-all" target="_blank" rel="noopener">Here, for example,</a> is <em>Reason</em> editor Nick Gillespie in an open letter (March 2016) to Tim Cooke, Chief Executive Officer of Apple, about demands from the FBI – and from some authoritarian extremists in congress – that corporations give feds access to Americans’ cell phone data.</p>
+<p>________________________________________________________</p>
+<p><span style="color:#000000;"><strong><a href="https://shadowproof.com/" target="_blank" rel="noopener noreferrer">Shadowproof</a></strong></span><i></i></p>
+<p>Managing Editor – <a href="https://twitter.com/kgosztola" target="_blank" rel="noopener noreferrer">Kevin Gosztola</a></p>
+<p><em>“Reader-supported journalism dedicated to exposing abuses of power in business and government.”</em></p>
+<p>A sample – this <a href="https://shadowproof.com/2019/01/17/house-subcommittee-report-highlights-culture-of-fear-and-retaliation-in-federal-prisons/" target="_blank" rel="noopener noreferrer">Jan. 2019 article</a> about a Congressional report which describes a <em>“culture of fear and retaliation”</em> and <em>“disturbing level of impunity”</em> among senior officials in the U.S. prison system.</p>
+<p>________________________________________________________</p>
+<p><a href="http://snitchwatch.wordpress.com/"><b>SnitchWatch</b></a></p>
+<p>A website dedicated to exposing undercover operatives who infiltrate and subvert political groups.</p>
+<p>________________________________________________________</p>
+<p><a href="https://firstlook.org/theintercept/"><b>The Intercept</b></a></p>
+<p>Glenn Greenwald, Jeremy Scahill, and other investigative journalists cover issues such as surveillance, privacy, civil rights, and the U.S military-industrial complex. Launched in February 2014 by First Look Media, the site’s initial reporting focused heavily on revelations from the classified National Security Agency (NSA) documents leaked by whistle-blower Edward Snowden.</p>
+<p>I frequently cite this news source, because of its excellent reporting on abuses of power by intelligence agencies, law enforcement agencies, and private security firms; however, to my knowledge, <em>The Intercept</em> has never published an article which specifically addresses the subject of “organized stalking” – either to confirm or to dismiss the various reports about such activity in the U.S. In February 2016, <em>The Intercept</em> did, however, publish <a href="https://theintercept.com/2016/02/18/fbi-wont-explain-its-bizarre-new-way-of-measuring-its-success-fighting-terror/" target="_blank" rel="noopener noreferrer">an article</a> which touched upon the subject of “disruption” operations (counterintelligence operations which involve the systematic harassment of individuals). Concerning the vague nature of certain FBI statistics about its counterterrorism efforts, <em>The Intercept</em> reported that the federal agency refuses to discuss exactly what the statistics mean. The article then made the following observation:</p>
+<p>“[The statistics possibly reflect]<em> a new FBI approach to fighting terror that is occurring outside of public view — where the bureau decides someone is a threat and <span style="color:#000000;"><strong>disrupts his or her life in some way that isn’t nearly as subject to oversight and accountability as an indictment or an arrest</strong></span>.</em>” [Emphasis added.]</p>
+<p>Wide and convincing exposure of the use of illegal <em>Zersetzung</em> tactics in the U.S. by intelligence agencies, security-intelligence contractors, and Law Enforcement Intelligence Units (LEIUs), might ultimately require revelations by one or more whistle-blowers with insider information about such operations. Probably, the two best journalism platforms for such exposure are <em>WikiLeaks</em> and <em>The Intercept</em>. <a href="https://theintercept.com/leak/" target="_blank" rel="noopener noreferrer">Here is the webpage</a> at <em>The Intercept</em> which explains how to use the organization’s SecureDrop server for exposing abuses of power.</p>
+<p>________________________________________________________</p>
+<p><a href="http://stopthedrugwar.org/taxonomy/term/27"><b>This Week’s Corrupt Cop Stories</b></a></p>
+<p>Americans relying on mainstream news media for information have no idea of the extent to which the drug war is corrupting America’s law enforcement agencies. Police corruption cases involving drugs are so common that the anti-prohibition organization <i>StopTheDrugWar.Org</i> publishes a weekly review of drug-related crimes by police officers. The group never seems to run out of news – and these are just the cops who get caught.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.tomdispatch.com/"><b>TomDispatch.com</b></a></p>
+<p>Superb commentary on America’s imperial war machine and domestic police state. Tom Engelhardt teaches at the Graduate School of Journalism at the University of California, Berkeley. Award-winning journalist Nick Turse serves as associate editor.</p>
+<p>________________________________________________________</p>
+<p><a href="http://www.truthdig.com/"><b>Truthdig</b></a></p>
+<p>A progressive news website with both original content and aggregated content. I especially recommend reading the archive of columns by the influential journalist Chris Hedges, whose scathing attacks on the American police state are outstanding.</p>
+<p>________________________________________________________</p>
+<p><a href="http://truth-out.org/"><b>truthout</b></a></p>
+<p><i>Truthout</i> is a non-profit news and opinion website that features excellent coverage of police state issues. They have published many articles and opinion pieces on matters relevant to organized stalking.</p>
+<p>________________________________________________________</p>
+<p><a href="http://wemeantwell.com/blog/"><strong>We Meant Well</strong></a></p>
+<p>A blog by Peter Van Buren, a 24-year veteran of the U.S. State Department. Van Buren’s harsh criticism of U.S. policy in Iraq, led to the suspension of his security clearance and his placement on a security watch list, among other repercussions. He writes excellent commentary on surveillance state issues, foreign policy, and whistle-blowers.</p>
+<p>________________________________________________________</p>
+<p><a href="http://whosarat.com/"><b>Who’s A Rat?</b></a></p>
+<p>A database of criminal informants who work for law enforcement agencies. The site also contains news, legal information, message boards, and documents. Unfortunately, the site requires a subscription, but you can purchase a short-term membership for a modest fee.</p>
+<p>________________________________________________________</p>
+<p><a href="http://whowhatwhy.com/"><b>WhoWhatWhy</b></a></p>
+<p>Founded and edited by investigative journalist Russ Baker, whose articles have been published in The New Yorker, Vanity Fair, the Nation, The New York Times, the Washington Post, The Village Voice, Esquire and other major publications. The staff includes other notable reporters and whistle-blowers, such as Daniel Ellsberg, who released the Pentagon Papers.</p>
+<p>________________________________________________________</p>
+<p><b><a href="http://www.wikileaks.org/">WikiLeaks<br />
+</a></b></p>
+<p>NSA Whistle-blower Edward Snowden describing WikiLeaks:</p>
+<p><em>“They run toward the risks everyone else runs away from. No other publisher in the world is prepared to commit to protecting sources—even other journalists’ sources—the way WikiLeaks is.”<br />
+– Vanity Fair, April 8, 2014</em></p>
+<p><i>WikiLeaks</i> is an international non-profit organization founded in 2006 which publishes secret information and news leaks from anonymous sources. The founder and editor is Julian Assange, an Australian journalist and activist. Facing <a href="http://www.telegraph.co.uk/news/uknews/10070597/GCHQ-staff-scolded-over-emails-claiming-Julian-Assange-was-framed.html">trumped-up charges</a> in Sweden, Assange has been granted diplomatic immunity and has been living in the Ecuadorian embassy in London since June 2012.</p>
+<p>Revelations by WikiLeaks included publishing U.S. diplomatic cables in 2010 which corroborated evidence that the U.S. had launched a missile strike in Yemen the year before that killed dozens of civilians – and that the U.S. conspired with Yemen’s government to conceal the fact that the U.S. was behind the attack.</p>
+<p>Exposing that kind of stuff does not endear one to the Washington political establishment. If you read the Wikipedia entry on Julian Assange, you will see a long list of well-known political hacks in both major parties who have labeled Assange a “terrorist” and called for his murder.</p>
+<p>For an excellent interview of Julian Assange, I recommend that you watch the video of his February 8, 2013 appearance on HBO’s <em>Real Time with Bill Maher</em>.</p>
+<p><a href="http://www.hbo.com/video/video.html?vid=1300450">http://www.hbo.com/video/video.html?vid=1300450</a></p>
+<p>________________________________________________________</p>
+<p><a href="http://www.wired.com/security"><strong>Wired – <em>Wired’s</em> News about Security </strong></a></p>
+<p>A terrific source of information on new technologies and government policies about technology issues. Wired’s contributors have credibility both for their technical knowledge and their political independence.</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg"><img class="aligncenter size-large wp-image-3942" src="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&#038;h=10" alt="Blue Line" width="474" height="10" srcset="https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=474&amp;h=10 474w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=150&amp;h=3 150w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg?w=300&amp;h=6 300w, https://fightgangstalking.files.wordpress.com/2013/05/blue-line3.jpg 698w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+<h1 style="text-align:center;"><span style="color:#000000;">Websites About Organized Stalking</span></h1>
+<p style="text-align:center;"><strong> </strong><strong>__________________</strong></p>
+<p>The vast majority of websites about “gang stalking,” “targeted individuals,” and the like, are disinformation sites created to discredit reports of counterintelligence disruption (organized stalking) operations – and to obfuscate the whole subject. Here are two lists. The first is a list of websites which are apparently legitimate. Although I disagree with some of the analysis on sites in the first list, I do not think that those sites are deliberately deceptive. Websites in the second list are all examples – obvious examples, in my view – of disinformation.</p>
+<p style="text-align:center;"><strong>__________________</strong></p>
+<h3><span style="color:#000000;">(1)  <span style="text-decoration:underline;">Legitimate</span> websites about organized stalking </span><strong><br />
+</strong><strong><br />
+</strong></h3>
+<p><span style="color:#000000;"><em><b>Gang Stalking is Murder</b></em></span></p>
+<p><a href="http://gangstalkingismurder.wordpress.com/"><b>http://gangstalkingismurder.wordpress.com/</b></a></p>
+<p>The author of this website, Keith Labella, has contributed a great deal to the exposure of Cointelpro stalking. For several years, he blogged on the subject under the pseudonym “PeaceFrog” at the now-defunct user-generated social news website called <em>NowPublic</em>. One of his contributions there was to helpfully respond to comments posted by readers, including me.</p>
+<p>His current website, <em>Gang Stalking is Murder</em>, is also worth visiting. I do have some differences with him on some areas of analysis, which is perhaps not surprising when writing on a subject that is intentionally shrouded in disinformation.</p>
+<p>__________________________________________________________</p>
+<p><span style="color:#000000;"><strong><em>Gang Stalking World</em></strong></span></p>
+<p><a href="http://gangstalkingworld.wordpress.com/"><strong>http://gangstalkingworld.wordpress.com/</strong></a></p>
+<p><em>Gang Stalking World</em> is probably among the first legitimate websites about government-sanctioned – but illegal – organized stalking by counterintelligence goons in America. Based on the posting dates which appear on the website, the site was active from 2008 to 2010, but then ceased being updated.</p>
+<p>This website (GangStalkingWorld.Wordpress.com) should not be confused with gangstalking.wordpress.com – which is labeled within the site as &#8220;Gang Stalking World&#8221; and might show up first in a Google search of that name. The first site is legitimate; the second is filled with extraneous content and is apparently a disinformation site designed to get web traffic intended for the other site.</p>
+<p>__________________________________________________________</p>
+<p><em><span style="color:#000000;"><strong>Zersetzen</strong></span></em></p>
+<p><strong><a href="http://zersetzen.wikispaces.com/">http://zersetzen.wikispaces.com/</a></strong></p>
+<p>The author of this website, Rodrick Russell, has written several documents on organized stalking by intelligence agencies in the U.K. and Canada which have been posted on the well-known progressive blog <em>Daily Kos</em>. <a href="http://www.dailykos.com/story/2013/01/28/1182880/-The-Guardian-in-America-Icon-of-the-left-or-too-close-to-British-Intelligence">Here is an example</a> of one such document, about the influence upon the British news media by the UK intelligence agencies MI5 and MI6, which also discusses the issue of gang stalking/zersetzung. Rodrick Russell claims – plausibly – that he is a target of such harassment. Like most victims of counterintelligence stalking though, Russell has little objective proof of his claims.</p>
+<p>__________________________________________________________</p>
+<p><em><span style="color:#000000;"><strong>Small Town Terrorism</strong></span></em></p>
+<p><strong><a href="http://krlich.com/">http://krlich.com/</a></strong></p>
+<p>Police and firefighters in America seem to be very familiar with psychological operations tactics, and they seem to be used to getting away with using those tactics against people who are deemed to be targets. A case in point first appeared <a href="http://abcnews.go.com/2020/video/couple-claims-entire-town-turned-23574799">in the national news</a> in May 2014.</p>
+<p>In Hubbard, Ohio a couple was systematically harassed for 7 years in a vengeance campaign orchestrated by the town’s fire chief. Apparently, he was angry at the couple because of a real estate dispute, so he enlisted the help of other firefighters, police officers, and local residents to perpetrate a campaign of continuous harassment of the couple by having people drive by the victims’ home at all hours and honk their horns.</p>
+<p>In this website created by the couple being gang-stalked are police reports and convincing video evidence of their systematic harassment. Legal claims brought by the couple were still pending at the time of the news reports.</p>
+<p>__________________________________________________________</p>
+<p><em><span style="color:#000000;"><b>Systematic Police Harassment – Pinellas County Florida</b></span></em></p>
+<p><b><a href="http://systematicpoliceharassment-pinellascountyflorida.com/">http://systematicpoliceharassment-pinellascountyflorida.com/</a></b></p>
+<p>This website is an account by a divorce attorney in Florida of his experience as a victim of organized stalking – which was apparently initiated in retaliation for angering a senior official of a local county sheriff’s office.</p>
+<p>__________________________________________________________</p>
+<h3><span style="color:#000000;"><b><span style="color:#ff0000;">(<span style="text-decoration:underline;">Disinformation</span>) </span>Websites about Gang Stalking</b></span></h3>
+<p>Countless disinformation websites have been created over the past dozen years or so which purport to be written by victims (or groups of victims) of organized stalking. These websites have two main objectives. First, they seek to feed erroneous information and bad advice to targets of counterintelligence disruption operations who are searching for explanations and solutions regarding the spying and harassment directed at them. Secondly – and more importantly, they seek to create a false impression for readers who have never experienced such stalking, that everyone who reports being a target of such activities is stupid and delusional.</p>
+<p>These websites, in my view, are examples of disinformation which is orchestrated – or at least passively sanctioned (the feds never publicly discuss them) – by the U.S. government.</p>
+<p><u>Characteristics of disinformation websites about organized stalking</u>:</p>
+<p>(1) Few, if any, links are ever posted to credible, published news reports about stalking by law enforcement and intelligence agencies.</p>
+<p>(2) Only vague descriptions of the perpetrators of counterintelligence disruption operations (organized stalking) are provided. Instead of mentioning the FBI, LEIU, JTTFs, surveillance role players, private investigators, disinformation websites tend to make references to undefined “networks” or “communities” or “criminal groups.”</p>
+<p>(3) Advice for victims is exactly the same as what stalking perpetrators would most want their targets to do – namely, to avoid doing anything that would be disruptive (such as distributing flyers).</p>
+<p>Here are some examples of disinformation websites created by people feeding at America’s counterintelligence pig trough:</p>
+<p><a href="http://www.freedomfchs.com/"><b>http://www.freedomfchs.com</b></a>   (FFCHS)</p>
+<p><a href="http://osinformers.lefora.com/"><b>http://osinformers.lefora.com/</b></a>   (OSI)</p>
+<p><a href="http://www.youtube.com/osinformers"><b>http://www.youtube.com/osinformers</b></a>   (OSI)</p>
+<p><a href="http://www.randomcollection.info/rcp.htm"><b>http://www.randomcollection.info/rcp.htm</b></a>   (“Eleanor White”)</p>
+<p><b><a href="http://www.multistalkervictims.org/catchcanada/">http://www.multistalkervictims.org/catchcanada/</a>  </b>(“E. White”)<b></b></p>
+<p><a href="http://lissakr11humane.com/"><b>http://lissakr11humane.com/</b></a>   (“Lissa”)</p>
+<p><b><a href="http://neverending1.wordpress.com/">http://neverending1.wordpress.com/</a></b>   (anonymous)</p>
+<p><a href="http://www.satweapons.com/"><b>http://www.satweapons.com/</b></a>   (“Dr. John Hall”)</p>
+<p><a href="http://www.gangstalkingwiki.com/"><b>http://www.gangstalkingwiki.com/</b></a>   (“Cliff Huylebroeck”)</p>
+<p><a href="http://harassmentterror.wordpress.com/"><b>http://harassmentterror.wordpress.com/</b></a>   (anonymous)</p>
+<p><a href="http://www.dataasylum.com/"><b>http://www.dataasylum.com/</b></a>   (anonymous)</p>
+<p><b><a href="http://stopeg.com/">http://stopeg.com/</a>   </b>(“Peter Mooring”) (Netherlands)</p>
+<p><a href="http://stoporgangstalking.wordpress.com/"><b>http://stoporgangstalking.wordpress.com/</b></a>   (anonymous)</p>
+<p><strong><a href="http://www.newworldwar.org/">http://www.newworldwar.org/</a></strong>  (“Mark M. Rich”)</p>
+<p><a href="http://gangstalking.wordpress.com/"><b>http://gangstalking.wordpress.com/</b></a>   (anonymous)</p>
+<p><a href="http://www.gangstalkingworld.com/"><b>http://www.gangstalkingworld.com</b>/</a>  (This links to the site above.)</p>
+<p><strong><a href="http://viclivingston.blogspot.com/">http://viclivingston.blogspot.com/</a>   </strong>(“Vic Livingston”)</p>
+<p><strong><a href="http://www.cointelprocontinuestoday.com/">http://www.cointelprocontinuestoday.com/</a></strong>   (“Bob S.”)</p>
+<p><a href="http://www.targeted-individuals.com/"><strong>http://www.targeted-individuals.com/</strong></a>  (“Andy Lewis”)</p>
+<p><strong><a href="https://www.intellihub.com/opinion/xkeyscoresblog/">https://www.intellihub.com/opinion/xkeyscoresblog/</a></strong>  (“xkeyscore”)</p>
+<p>__________________________________________________________</p>
+<p>If you can help expose illegal spying and harassment of Americans by intelligence agencies, law enforcement agencies, and private security contractors, please do so. America needs more patriots like Daniel Ellsberg, Edward Snowden, Jeremy Hammond, Barrett Brown, Russell Tice, William Binney, Ray McGovern, Thomas Drake, Frank Serpico, Thomas Tamm, Hugh Thompson, Jr., William C. Davidon, John Raines, Bonnie Raines, Keith Forsyth, Judi Feingold, and Bob Williamson.</p>
+<p><a href="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg"><img class="aligncenter  wp-image-5456" src="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=100&#038;h=76" alt="Anti Nazi image" width="100" height="76" srcset="https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=100&amp;h=76 100w, https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=200&amp;h=150 200w, https://fightgangstalking.files.wordpress.com/2013/05/anti-nazi-image.jpg?w=150&amp;h=113 150w" sizes="(max-width: 100px) 100vw, 100px" /></a></p>
+<p>__________________________________________________________</p>
+<p style="text-align:center;"><span style="color:#000000;"><strong>FightGangStalking.co</strong></span></p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-27" class="share-twitter sd-button share-icon" href="https://fightgangstalking.com/recommended-websites/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-27" class="share-facebook sd-button share-icon" href="https://fightgangstalking.com/recommended-websites/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-51777463-27-5e9e2ea16b464' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=51777463&amp;post_id=27&amp;origin=fightgangstalking.wordpress.com&amp;obj_id=51777463-27-5e9e2ea16b464&amp;domain=fightgangstalking.com' data-name='like-post-frame-51777463-27-5e9e2ea16b464'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div></div>					</div><!-- .entry-content -->
+</article><!-- #post-## -->
+			
+<div id="comments">
+
+	
+	
+	
+</div><!-- #comments -->
+		
+	</div><!-- #content -->
+</div><!-- #primary -->
+
+<div id="secondary" class="widget-area" role="complementary">
+	
+			<nav id="access" role="navigation">
+			<div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-7132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-7132"><a href="https://fightgangstalking.com/">COINTELPRO News (2016 – 2018)</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="https://fightgangstalking.com/cointelpro-news-2015/">COINTELPRO News (2015)</a></li>
+<li id="menu-item-6163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6163"><a href="https://fightgangstalking.com/cointelpro-news-2014/">COINTELPRO News (2014)</a></li>
+<li id="menu-item-5535" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5535"><a href="https://fightgangstalking.com/cointelpro-news-2013/">COINTELPRO News  (2013)</a></li>
+<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="https://fightgangstalking.com/what-is-gang-stalking/">** What is &#8220;Gang Stalking?&#8221; **</a></li>
+<li id="menu-item-591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-591"><a href="https://fightgangstalking.com/gang-stalking-americas-police-state-government/">The American Police State</a></li>
+<li id="menu-item-184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-184"><a href="https://fightgangstalking.com/ffchs-a-disinformation-group/">Disinformation Groups &#8212;&#8212; FFCHS, OSI, etc.</a></li>
+<li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="https://fightgangstalking.com/gang-stalking-videos/">Videos</a></li>
+<li id="menu-item-418" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-418"><a href="https://fightgangstalking.com/gang-stalking-documents/">Documents</a></li>
+<li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-27 current_page_item menu-item-49"><a href="https://fightgangstalking.com/recommended-websites/" aria-current="page">Recommended Websites</a></li>
+<li id="menu-item-350" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-350"><a href="https://fightgangstalking.com/recommended-books/">Recommended Books</a></li>
+<li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="https://fightgangstalking.com/tactics-for-fighting-back/">** Tactics for Fighting Back **</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://fightgangstalking.com/contact-me/">Contact Information</a></li>
+</ul></div>		</nav>
+	
+	<aside id="search-3" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="https://fightgangstalking.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></aside></div><!-- #secondary .widget-area -->
+				</div><!-- #main -->
+			</div><!-- #page -->
+			<footer id="colophon" role="contentinfo">
+				<div id="site-generator">
+										<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+					
+									</div>
+			</footer><!-- #colophon -->
+		</div><!-- #wrapper -->
+	</div><!-- #super-wrapper -->
+</div><!-- #super-super-wrapper -->
+<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=202017y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/fightgangstalking.com\/recommended-websites\/":27};
+	</script>
+				<link rel='stylesheet' id='all-css-0-2' href='https://s2.wp.com/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css?m=1583834955h&cssminify=yes' type='text/css' media='all' />
+<script>
+var actionbardata = {"siteID":"51777463","siteName":"Fight \"Gang Stalking\"","siteURL":"https:\/\/fightgangstalking.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/dusk-to-dawn","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffightgangstalking.com%2Frecommended-websites%2F&signup_flow=account&domain=fightgangstalking.com","themeURL":"","xhrURL":"https:\/\/fightgangstalking.com\/wp-admin\/admin-ajax.php","nonce":"d12b6445f0","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"e52124f4e7\" \/>","referer":"https:\/\/fightgangstalking.com\/recommended-websites\/","canFollow":"","feedID":"11985471","statusMessage":"","customizeLink":"https:\/\/fightgangstalking.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Ffightgangstalking.wordpress.com%2Frecommended-websites%2F","postID":"27","shortlink":"https:\/\/wp.me\/P3vfGn-r","canEditPost":"","editLink":"https:\/\/wordpress.com\/page\/fightgangstalking.com\/27","statsLink":"https:\/\/wordpress.com\/stats\/post\/27\/fightgangstalking.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Dusk To Dawn","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 1,142 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffightgangstalking.com%2Frecommended-websites%2F&signup_flow=account&domain=fightgangstalking.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJydUe1OwzAMfCGybGzA+IF4lizxNreJE+KkZTw9LusmUU3lQ/nhk893si+6T8pGKkBFN6wddGghvS8avtPfqRS5BGA2B7iwSNZXB/ylRC66A3IxD1SK/rRH7xcBaWqWfD0gsd5X7xVjAQUOC9JBnRn9tH5eyttoG0OIdPY+4xuLNW8V8mksC6QOof9xrIGSjG1VBsYPmI6Hqi5LemzlQBFVOBpyHvL/z9n5KE3JkZVA246h3dj3954gmRfRVSou9jQaT7oz9xknP6R2JutguEAWpGIHOePwsdfeHx1KlnB5TmQLRhpEVzQzPWSm9t5g1nw0WXK4VBG9hpfVw/Zxc79drZfNJ6hzC6M='></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?m=1585663916h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?m=1585663916h&#038;ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-url.min.7490158b.js?m=1586214842h&#038;ver=3.6.4"></scr' + 'ipt>' );
+( window.DOMRect ) || document.write( '<script src="https://s1.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-dom-rect.7e21c103.js?m=1586214842h&#038;ver=3.42.0"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?61" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'51777463','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'51777463','v':'wpcom','tz':'-7','user_id':'0','post':'27','subd':'fightgangstalking'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dWOHN6emhLeDJ8S09KY2FOK25BfFZLYlslNCtuP19fb0tHaDkzcThPRSZdVmEsbldTUDF6VW5qYTdCVj1UMmkzOGxuNSxDX3xLcUVbZmMudjY4dkdkOUpLNi5EV1E0el04K3VSTEYrT0Z8SzlHYlVhS0FYUEZzdjJxaHx3aVpDaF1lRVAwcGtWVC11V09JaHEzaSsrbSVCLFhsXUtXZEF+dGNrRC9YST8mSlJk'}]);
+_stq.push([ 'clickTrackerInit', '51777463', '27' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script></body>
+</html>

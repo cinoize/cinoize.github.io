@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-tr_TR" lang="tr-TR" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>Bulut Nesne Depolama | Verileri Her Yerde Depolama ve Alma | Amazon Simple Storage Service (S3)</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/tr/s3/" /> 
+  <link rel="alternate" href="//aws.amazon.com/ar/s3/" hreflang="ar-sa" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/s3/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/s3/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/s3/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/s3/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="Bulut Nesne Depolama | Verileri Her Yerde Depolama ve Alma | Amazon Simple Storage Service (S3)" /> 
+  <meta property="twitter:description" content="" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="Bulut Nesne Depolama | Verileri Her Yerde Depolama ve Alma | Amazon Simple Storage Service (S3)" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/tr/s3/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'tr-TR',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'tr'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/tr_TR/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/tr/?nc2=h_lg"><span>Amazon Web Services ana sayfasına d&ouml;nmek i&ccedil;in buraya tıklayın</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/tr/contact-us/?nc2=h_header">Satış Birimiyle İletişim Kurun</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Destek&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="tr">T&uuml;rk&ccedil;e&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">Hesabım&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Bir AWS Hesabı Oluşturun</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/tr/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">&Uuml;r&uuml;nler</a></li> 
+        <li><a href="/tr/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">&Ccedil;&ouml;z&uuml;mler</a></li> 
+        <li><a href="/tr/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Fiyatlandırma</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Belgeler</a></li> 
+        <li><a href="/tr/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">&Ouml;ğrenin</a></li> 
+        <li><a href="/tr/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">&Ccedil;&ouml;z&uuml;m Ortağı Ağı</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/tr/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">M&uuml;şteri Desteği</a></li> 
+        <li><a href="/tr/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Daha Fazlasını Keşfedin </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Ara" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Hesap Ayarları</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Faturalama ve Maliyet Y&ouml;netimi</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">G&uuml;venlik Kimlik Bilgileri</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Destek Merkezi</a> </li> 
+      <li> <a href="/tr/premiumsupport/knowledge-center/?nc2=h_m_ma">Bilgi Merkezi</a> </li> 
+      <li> <a href="/tr/premiumsupport/?nc2=h_m_bc">AWS Support'a Genel Bakış</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Fiyatlandırma</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Belgeler</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Ürünler</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>İlgili Sayfalar</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Öğreticiler</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Bloglar</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">Şu terim için daha fazla sonuç göster: "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/tr_TR/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/tr/?nc2=h_lg"><span>Amazon Web Services ana sayfasına d&ouml;nmek i&ccedil;in buraya tıklayın</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Ara" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/tr/products/?nc2=h_mo">&Uuml;r&uuml;nler</a> </li> 
+      <li> <a href="/tr/solutions/?nc2=h_mo">&Ccedil;&ouml;z&uuml;mler</a> </li> 
+      <li> <a href="/tr/pricing/?nc2=h_mo">Fiyatlandırma</a> </li> 
+      <li> <a href="/tr/what-is-aws/?nc2=h_mo">AWS'ye Giriş</a> </li> 
+      <li> <a href="/tr/getting-started/?nc2=h_mo">Kullanmaya Başlama</a> </li> 
+      <li> <a href="/tr/documentation/?nc2=h_mo">Belgeler</a> </li> 
+      <li> <a href="/tr/training/?nc2=h_mo">Eğitim ve Sertifikalar</a> </li> 
+      <li> <a href="/tr/developer/?nc2=h_mo">Yazılım Geliştirme Merkezi</a> </li> 
+      <li> <a href="/tr/solutions/case-studies/?nc2=h_mo">M&uuml;şteri Başarı &Ouml;yk&uuml;leri</a> </li> 
+      <li> <a href="/tr/partners/?nc2=h_mo">&Ccedil;&ouml;z&uuml;m Ortağı Ağı</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Destek</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Konsolda Oturum A&ccedil;ın</a> </li> 
+      <li> <a href="/tr/console/mobile/">Mobil Uygulamayı İndirin</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/tr/s3/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/tr/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/tr/s3/?nc=sn&amp;loc=1"> Genel Bakış</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tr/s3/features/?nc=sn&amp;loc=2"> &Ouml;zellikler</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tr/s3/storage-classes/?nc=sn&amp;loc=3"> Depolama sınıfları</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tr/s3/pricing/?nc=sn&amp;loc=4"> Fiyatlandırma</a> 
+       <a class="lb-txt-none lb-txt" href="/tr/s3/getting-started/?nc=sn&amp;loc=5"> Kullanmaya başlama</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> Kaynaklar&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/tr/s3/faqs/?nc=sn&amp;loc=7"> SSS</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt" href="/tr/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> Kaynaklar</a> 
+    <a class="lb-txt" href="/tr/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> Videolar</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_s3_simplified" data-lb-comp-ignore="true"> 
+     <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; background-image:url('//d1.awsstatic.com/product-marketing/S3/image-header_s3-2.6bf0d512939e43aba4fbd4185874e05ff0d236d2.png');" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="hero" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Amazon_S3" class="lb-txt-bold lb-txt-white lb-none-v-margin lb-h1-large lb-title"> Amazon S3</h1> 
+        <h3 id="Object_storage_built_to_store_and_retrieve_any_amount_of_data_from_anywhere" class="lb-txt-light lb-txt-white lb-small-v-margin lb-h3 lb-title" style="margin-top:0px; margin-bottom:30px;"> Her yerden, her boyutta veriyi almak ve depolamak i&ccedil;in oluşturulan nesne depolama.</h3> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_pdp_hero_cta" data-lb-comp-ignore="true"> 
+           <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta1" data-da-so-url="/s3"> 
+            <a class="lb-btn-a-primary" href="https://s3.console.aws.amazon.com/s3/home" role="button"> <span> Amazon S3'&uuml; kullanmaya başlayın</span> </a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <div class="data-attr-wrapper lb-tiny-iblock lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="tile1" data-da-so-version="cta2" data-da-so-url="/s3"> 
+           <a class="lb-btn-a" href="https://pages.awscloud.com/ln_NAMER_AmazonS3-Contact-Us.html" role="button"> <span> Daha fazla bilgi isteyin</span> </a> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="data-attr-wrapper lb-mid-pad lb-small-v-margin lb-grid" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="tile2" data-da-so-version="intro" data-da-so-url="/s3"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-16"> 
+        <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-light lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+         <p>Amazon Simple Storage Service (Amazon S3); sekt&ouml;r lideri &ouml;l&ccedil;eklenebilirlik, veri erişilebilirliği ve performans &ouml;zellikleri sunan bir nesne depolama hizmetidir. Bu, her &ouml;l&ccedil;ek ve sekt&ouml;rden m&uuml;şterilerin bu hizmeti kullanarak internet siteleri, mobil uygulamalar, yedekleme ve geri y&uuml;kleme, arşiv, kurumsal uygulamalar, IoT cihazları ve b&uuml;y&uuml;k veri analizleri gibi &ccedil;eşitli kullanım senaryolarına y&ouml;nelik olarak herhangi bir miktarda veriyi depolayabileceği ve koruyabileceği anlamına gelir. Amazon S3'&uuml;n sunduğu kullanımı kolay y&ouml;netim &ouml;zellikleri sayesinde verilerinizi d&uuml;zenleyebilir ve hassas ayarlanmış erişim denetimlerini size &ouml;zg&uuml; kurumsal ihtiya&ccedil;ları, işletme ve mevzuat uyumluluğu gereksinimlerini karşılayacak doğrultuda yapılandırabilirsiniz. Amazon S3 %99,999999999 (11 adet 9) dayanıklılık hedefiyle tasarlanmış olup d&uuml;nyanın d&ouml;rt bir yanındaki şirketlere ait milyonlarca uygulama i&ccedil;in veri depolamaktadır.<br /> </p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="_I14_sXHO8U" data-source="youtube" data-video-title="Amazon S3'e Giriş"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Amazon S3'e Giriş 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=_I14_sXHO8U" /> 
+         </figure> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h1 id="Benefits" class="lb-txt-bold lb-txt-28 lb-h1 lb-title" style="color:#232f3e;"> Avantajlar</h1> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Industry-leading_performance.2C_scalability.2C_availability.2C_and_durability" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Sekt&ouml;r liderli performans, &ouml;l&ccedil;eklenebilirlik, erişilebilirlik ve dayanıklılık</h3> 
+          <div class="lb-rtxt"> 
+           <p>Depolama kaynaklarınızın &ouml;l&ccedil;eğini, &ouml;nceden yatırım yapmadan veya kaynak tedarik d&ouml;ng&uuml;leriyle uğraşmadan talep dalgalanmalarına uyum sağlayacak şekilde artırın veya azaltın. Amazon S3 %99,999999999 (11 adet 9) oranında veri dayanıklılığı hedefiyle tasarlandığı i&ccedil;in &ccedil;ok sayıda sistemde bulunan t&uuml;m S3 nesnelerinin kopyalarını otomatik olarak oluşturup depolar. Bu, verilerinizin ihtiya&ccedil; duyulan her an kullanıma hazır olduğu ve arıza, hata ve tehditlere karşı korunduğu anlamına gelir.<br /> <a href="/s3/faqs/#Durability_.26_Data_Protection" target="_blank">S3 veri dayanıklılığı hakkında bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Wide_range_of_cost-effective_storage_classes" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Uygun maliyetli geniş depolama sınıfları yelpazesi</h3> 
+          <div class="lb-rtxt"> 
+           <p>Verilerinizi farklı veri erişim seviyelerini uygun fiyatlarla destekleyen <b>S3 Depolama Sınıflarında</b> depolayarak performanstan &ouml;d&uuml;n vermeden maliyet tasarrufu yapın. <b>S3 Depolama Sınıfı Analizini</b> kullanarak erişim modelleri temelinde daha d&uuml;ş&uuml;k maliyetli bir depolama sınıfına taşınması gereken verileri tespit edebilir ve aktarımı ger&ccedil;ekleştirmek &uuml;zere <b>S3 Yaşam d&ouml;ng&uuml;s&uuml;</b> politikası yapılandırabilirsiniz. Ayrıca, değişken veya bilinmeyen erişim modellerine sahip verileri, nesneleri değişken erişim modelleri temelinde katmanlayan ve otomatik olarak maliyet tasarrufu sağlayan <b>S3 Intelligent-Tiering</b> i&ccedil;inde depolayabilirsiniz.<br /> <a href="/s3/storage-classes/">S3 Depolama Sınıfları hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Unmatched_security.2C_compliance.2C_and_audit_capabilities" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Benzersiz g&uuml;venlik, mevzuat uyumluluğu ve denetim &ouml;zellikleri</h3> 
+          <div class="lb-rtxt"> 
+           <p>Verilerinizi Amazon S3'te depolayın ve gerek şifreleme &ouml;zellikleri gerekse erişim y&ouml;netimi ara&ccedil;ları ile yetkisiz erişimden koruyun. S3, <b><a href="/s3/features/block-public-access/" target="_blank">S3 Block Public Access</a></b> ile klas&ouml;r veya hesap d&uuml;zeyinde t&uuml;m nesnelerinize genel erişimi engellemenizi sağlayan tek nesne depolama hizmetidir. S3, mevzuat gerekliliklerini karşılamanıza yardımcı olmak i&ccedil;in PCI-DSS, HIPAA/HITECH, FedRAMP, AB Veri Koruma Direktifi ve FISMA gibi uygunluk programlarını y&uuml;r&uuml;t&uuml;r. AWS, S3 kaynaklarınızla ilgili erişim isteklerinin izlenmesine y&ouml;nelik &ccedil;ok sayıda denetim &ouml;zelliğini de destekler.<br /> <a href="/s3/features/#Access_management_and_security">S3 g&uuml;venliği</a> ve <a href="/compliance/">uygunluğu</a> hakkında daha fazla bilgi edinin &raquo;</p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Easily_manage_data_and_access_controls" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Verileri ve erişim denetimlerini kolayca y&ouml;netme</h3> 
+          <div class="lb-rtxt"> 
+           <p>S3 size erişimi, maliyeti, replikasyonu ve veri korumasını y&ouml;netmeniz i&ccedil;in g&uuml;&ccedil;l&uuml; &ouml;zellikler sunar. S3 Erişim Noktaları, paylaşılan veri k&uuml;mesi kullanan uygulamalarınıza veri erişimini belirli izinler belirleyerek y&ouml;netmenizi kolaylaştırır. S3 Replikasyon &ouml;zellikleri, b&ouml;lge i&ccedil;inde veya başka b&ouml;lgelere veri replikasyonunu y&ouml;netir. S3 Batch Operations, milyonlarca nesne i&ccedil;inde b&uuml;y&uuml;k &ouml;l&ccedil;ekli değişikliklerin y&ouml;netimini kolaylaştırır. S3'&uuml;n AWS Lambda ile &ccedil;alışması sayesinde ek altyapıyı y&ouml;netmek zorunda kalmadan etkinlikleri g&uuml;nl&uuml;ğe kaydedebilir, uyarılar tanımlayabilir ve iş akışlarını otomatik hale getirebilirsiniz.<br /> <a href="/s3/features/#Storage_management_and_monitoring">S3 depolama y&ouml;netimi &ouml;zellikleri hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Query-in-place_services_for_analytics_" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Analiz i&ccedil;in yerinde sorgulama hizmetleri </h3> 
+          <div class="lb-rtxt"> 
+           <p>Yerinde sorgulama hizmetlerimizle S3 nesneleriniz (ve AWS'deki diğer veri setleri) genelinde b&uuml;y&uuml;k veri analizi y&uuml;r&uuml;t&uuml;n. <b>Amazon Athena</b>’yı kullanarak, standart SQL ifadeleri ile S3 verilerini sorgulayın ve <b>Amazon Redshift Spectrum</b>'u kullanarak AWS veri depolarınızda ve S3 kaynaklarınızda depolanan verileri analiz edin. Ayrıca, <b>S3 Select</b>'i kullanarak nesnenin tamamı yerine nesne verilerinin alt k&uuml;melerini alabilir ve sorgulama performansını %400'e varan oranlarda artırabilirsiniz.<br /> <a href="/s3/features/#Query_in_place">Yerinde sorgulama hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Most_supported_cloud_storage_service" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> En fazla desteklenen bulut depolama hizmeti</h3> 
+          <div class="lb-rtxt"> 
+           <p>Teknoloji ve danışmanlık bulut hizmeti sağlayıcılarının oluşturduğu en b&uuml;y&uuml;k topluluk olan <b>AWS &Ccedil;&ouml;z&uuml;m Ortağı Ağı (APN)</b> i&ccedil;inden se&ccedil;eceğiniz bir &ccedil;&ouml;z&uuml;m ortağı ile işbirliği i&ccedil;inde &ccedil;alışarak verilerinizi Amazon S3'te depolayın ve koruyun. APN, Amazon S3'e veri aktarımı yapan ge&ccedil;iş alanındaki &ccedil;&ouml;z&uuml;m ortaklarını ve birincil depolama, yedekleme ve geri y&uuml;kleme, arşivleme ve olağan&uuml;st&uuml; durum kurtarmaya y&ouml;nelik S3 ile entegre &ccedil;&ouml;z&uuml;mler sunan depolama alanındaki &ccedil;&ouml;z&uuml;m ortaklarını belirler. Depolamaya &ouml;zel 250’nin &uuml;zerinde teklif sunan <b>AWS Marketplace</b>'ten de doğrudan AWS ile entegre bir &ccedil;&ouml;z&uuml;m satın alabilirsiniz.<a href="/backup-recovery/partner-solutions/"><br /> APN</a> ve <a href="https://aws.amazon.com/marketplace">AWS Marketplace</a> hakkında bilgi edinin &raquo;</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="mid_page"></div> 
+     <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+     </div> 
+     <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="How_it_works_.E2.80.94_S3_Access_Points" class="lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> Nasıl &ccedil;alışır? - S3 Erişim Noktaları</h2> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Diagram_S3_Access_Points" title="Diagram_S3_Access_Points" src="//d1.awsstatic.com/re19/Westeros/Diagram_S3_Access_Points.fa88c474dc1073aede962aaf3a6af2d6b02be933.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+         <div class="lb-col lb-tiny-24 lb-mid-24"> 
+          <div class="lb-rtxt"> 
+           <p><b><a name="preview"></a>&nbsp;</b>Amazon S3 Erişim Noktaları, S3'te paylaşılan veri k&uuml;melerini kullanan uygulamalar i&ccedil;in uygun &ouml;l&ccedil;ekte veri erişimi y&ouml;netimini basitleştirir. Paylaşılan veri k&uuml;melerine erişim tedariki i&ccedil;in yeni bir yol sunan S3 Erişim Noktaları sayesinde artık klas&ouml;r başına y&uuml;zlerce erişim noktasını kolayca oluşturabilirsiniz. Erişim Noktaları, ilgili erişim noktası aracılığıyla yapılan her t&uuml;rl&uuml; istek i&ccedil;in belirli izinleri ve ağ denetimlerini uygulayan benzersiz bir konak sunucu adı ve erişim politikası &uuml;zerinden klas&ouml;r&uuml;n i&ccedil;ine &ouml;zelleştirilmiş bir yol sağlar.</p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+      <div class="lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-24"> 
+        <h2 id="Use_cases" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Kullanım &ouml;rnekleri</h2> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Backup_and_restore" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Yedekleme ve geri y&uuml;kleme</h3> 
+          <div class="lb-rtxt"> 
+           <p>Amazon S3 aracılığıyla ve <b>S3 Glacier</b>, <b>Amazon EFS</b> ve <b>Amazon EBS</b> gibi diğer AWS hizmetleri ile &ouml;l&ccedil;eklenebilir, dayanıklı ve g&uuml;venli yedekleme ve geri y&uuml;kleme &ccedil;&ouml;z&uuml;mleri geliştirerek mevcut şirket i&ccedil;i olanakları g&uuml;&ccedil;lendirin veya değiştirin. AWS ve APN &ccedil;&ouml;z&uuml;m ortakları, Kurtarma S&uuml;resi Hedeflerinizi (RTO), Kurtarma Noktası Hedeflerinizi (RPO) ve mevzuat uyumluluğu gereksinimlerinizi karşılamanıza yardımcı olabilir. AWS sayesinde, AWS Cloud'da bulunan verileri yedekleyebilir veya hibrit bir depolama hizmeti olan <b>AWS Storage Gateway</b>'i kullanarak şirket i&ccedil;i verilerin yedeklerini AWS'ye g&ouml;nderebilirsiniz.<br /> <a href="/backup-restore/">Yedekleme ve geri y&uuml;kleme hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Disaster_recovery_.28DR.29" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Olağan&uuml;st&uuml; durum kurtarma (DR)</h3> 
+          <div class="lb-rtxt"> 
+           <p>Kritik verileri, uygulamaları ve AWS Cloud &uuml;zerinde ya da şirket i&ccedil;i ortamınızda &ccedil;alışan BT sistemlerini ikinci bir fiziksel altyapı harcaması yapmak zorunda kalmadan koruyun. Amazon S3 depolaması, <b>S3 B&ouml;lgeler Arası Replikasyon</b> ve diğer AWS bilgi işlem, ağ iletişimi ve veritabanı hizmetleri sayesinde DR mimarileri oluşturarak nesnelerinizi doğal afetlerin, sistem hatalarının ve insan hatalarının yol a&ccedil;tığı kesintilerden hızlı ve kolay bir bi&ccedil;imde kurtarabilirsiniz.<a href="/disaster-recovery/"><br /> DR hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Archive" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Arşiv</h3> 
+          <div class="lb-rtxt"> 
+           <p>Fiziksel altyapıyı ve arşiv verilerini, <b>S3 Glacier</b> ve <b>S3 Glacier Deep Archive</b> ile kullanımdan kaldırın. Bu S3 Depolama Sınıfları, nesneleri uzun vadeli olarak en d&uuml;ş&uuml;k fiyatlarla saklar. Nesneleri yaşam d&ouml;ng&uuml;leri boyunca arşivlemek &uuml;zere bir S3 Yaşam D&ouml;ng&uuml;s&uuml; politikası oluşturmanız veya nesneleri doğrudan arşiv depolama sınıflarına y&uuml;klemeniz yeterlidir. <b>S3 Object Lock</b> ile nesnelere saklama s&uuml;releri uygulayarak onları silinmekten koruyabilir ve mevzuat uyumluluğu gereksinimlerini karşılamalarını sağlayabilirsiniz. Manyetik bant kitaplıklarının aksine S3 Glacier, arşivlenmiş nesneleri hızlı alma i&ccedil;in sadece bir dakika i&ccedil;inde, standart alma i&ccedil;in ise 3 ila 5 saat i&ccedil;inde geri y&uuml;klemenize olanak tanır. S3 Glacier'dan toplu veri geri y&uuml;kleme işlemleri ve S3 Glacier Deep Archive'dan t&uuml;m geri y&uuml;kleme işlemleri 12 saat i&ccedil;inde tamamlanır.<a href="/glacier/"><br /> Arşivleme hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Data_lakes_and_big_data_analytics" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Data lake'ler ve b&uuml;y&uuml;k veri analizi</h3> 
+          <div class="lb-rtxt"> 
+           <p><a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3'te bir data lake</a> oluşturarak inovasyona hız verin ve yerinde sorgulama, analiz ve makine &ouml;ğrenimi ara&ccedil;larını kullanarak değerli &ouml;ng&ouml;r&uuml;ler edinin. Data lake’iniz b&uuml;y&uuml;d&uuml;k&ccedil;e her uygulama veya uygulama k&uuml;mesi i&ccedil;in belirli izinler belirleyerek verilerinize erişimi kolayca yapılandırmak &uuml;zere S3 Erişim Noktaları kullanın. Ayrıca, <b>AWS Lake Formation</b>'ı kullanarak hızlı bir şekilde data lake oluşturup g&uuml;venlik, y&ouml;netim ve denetim politikalarını merkezi bir bi&ccedil;imde hem tanımlayabilir hem de uygulayabilirsiniz. Hizmet, veritabanlarınız ve S3 kaynaklarınız genelinde verileri toplar, bu verileri Amazon S3'te yeni bir data lake'e taşır, makine &ouml;ğrenimi algoritmalarını kullanarak temizler ve sınıflandırır. T&uuml;m AWS kaynakları &ouml;nceden yatırım yapmaya gerek olmadan genişleyen veri depolarınıza alan sağlayacak şekilde &ouml;l&ccedil;eklendirilebilir.<br /> <a href="/products/storage/data-lake-storage/" target="_blank">Amazon S3'te data lake</a>&nbsp;oluşturmak ve <a href="/lake-formation/">AWS Lake Formation</a> hakkında daha fazla bilgi edinin &raquo;</p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Hybrid_cloud_storage" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Hibrit bulut depolama alanı</h3> 
+          <div class="lb-rtxt"> 
+           <p><b>AWS Storage Gateway</b> sayesinde şirket i&ccedil;i uygulamalarınız ile Amazon S3 arasında sorunsuz bir bağlantı oluşturarak veri merkezi ayak izinizi azaltın, gerek AWS'nin &ouml;l&ccedil;eğinden, g&uuml;venilirliğinden ve dayanıklılığından, gerekse AWS'nin yenilik&ccedil;i makine &ouml;ğrenimi ve analiz &ouml;zelliklerinden faydalanın. Ayrıca, şirket i&ccedil;i depolama ile Amazon S3 arasında veri aktarımını, a&ccedil;ık kaynaklı ara&ccedil;lara g&ouml;re 10 kat daha hızlı veri aktarımı yapabilen <b>AWS DataSync</b> ile otomatik hale getirebilirsiniz. Hibrit bir bulut depolama ortamını m&uuml;mk&uuml;n kılmanın bir başka yolu da APN'den bir ağ ge&ccedil;idi sağlayıcısı ile &ccedil;alışmaktır. Ayrıca, &uuml;&ccedil;&uuml;nc&uuml; taraflarla g&uuml;venli dosya alışverişine olanak tanıyan tam olarak y&ouml;netilen bir hizmet olan <b>AWS Transfer for SFTP</b> ile Amazon S3'e doğrudan &ccedil;ift taraflı dosya aktarımı yapabilirsiniz.<br /> <a href="/storagegateway/">Hibrit depolama</a>, <a href="/datasync/">AWS DataSync</a> ve <a href="/sftp/">AWS Transfer for SFTP</a> hakkında daha fazla bilgi edinin.&nbsp;<br /> </p> 
+          </div> 
+         </div> 
+         <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          <h3 id="Cloud-native_application_data" class="lb-txt-bold lb-txt-none lb-txt-18 lb-h3 lb-title" style="color:#232f3e;"> Bulut temelli uygulama veri̇leri̇</h3> 
+          <div class="lb-rtxt"> 
+           <p>&Uuml;retim verilerini depolamada AWS hizmetlerini ve Amazon S3'&uuml; kullanarak mobil ve internet tabanlı uygulamaları hızlı ve uygun maliyetli geliştirin. Amazon S3 ile dilediğiniz miktarda veri y&uuml;kleyip bu verilere dilediğiniz yerden erişerek uygulamaları daha hızlı bi&ccedil;imde devreye alabilir ve daha fazla sayıda son kullanıcıya erişebilirsiniz. Verilerinizi Amazon S3'te depolamak aynı zamanda bulut temelli yeni uygulamalar geliştirmek ve bu uygulamaları optimize etmek i&ccedil;in makine &ouml;ğrenimine y&ouml;nelik en son AWS geliştirici ara&ccedil;larına ve hizmetlerine de erişiminiz olacağı anlamına gelir.<br /> <a href="/products/developer-tools/">Bulut temelli uygulamalar hakkında daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_tiles_full_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Case_studies" class="lb-txt-bold lb-txt-28 lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> &Ouml;rnek olay incelemeleri</h2> 
+       <div class="lb-xb-grid-wrap" style="margin-top:1px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/netflix/"><img alt="Netflix" title="Netflix" src="//d1.awsstatic.com/Industries/Telecom/600x400_Netflix-Logo.3bfbc7a6fa28b81d2e46ca48d3ff71b781abc0ce.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Netflix, d&uuml;nyanın d&ouml;rt bir yanındaki m&uuml;şterilerine Amazon S3 &uuml;zerinden milyarlarca saatlik i&ccedil;erik sunuyor. B&uuml;y&uuml;k veri analizi &ccedil;&ouml;z&uuml;m&uuml; i&ccedil;in data lake olarak da Amazon S3'&uuml; kullanıyor. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/finra/"><img alt="FINRA" title="FINRA" src="//d1.awsstatic.com/product-marketing/AI/customers/Approved_Logos_600x4001/600x400_FINRA.3cba6a9ca0d18b7a45c036dd7c9e2f34d309b8c3.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            FINRA, her g&uuml;n 75 milyarın &uuml;zerinde pazar etkinliğini almak ve depolamak i&ccedil;in Amazon S3'&uuml;, verileri bi&ccedil;imlendirmek ve 200'&uuml; aşkın kural &ccedil;er&ccedil;evesinde doğrulamak i&ccedil;in AWS Lambda işlevlerini kullanıyor. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/airbnb/"><img alt="AirBnB" title="AirBnB" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600x400_Airbnb_Logo.f891e0066454456292ad7009aad136ea679f2cfd.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            Airbnb, yedek verileri ve 10 petabayttan fazla kullanıcı resmi dahil olmak &uuml;zere statik dosyaları Amazon S3'te barındırıyor. Bulutta doğmuş bir &ccedil;&ouml;z&uuml;m olarak durmaksızın Amazon S3'te depolanan verileri analiz etmenin yeni yollarını buluyorlar. 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <div> 
+            <a href="/solutions/case-studies/ge-healthcare/"><img alt="GE Healthcare" title="GE Healthcare" src="//d1.awsstatic.com/product-marketing/AI/customers/Case%20Studies%20Page/600X400_GE-Healthcare_Logo.7dd29d40cf5fe1cc9f3a0cc0aedbcb54528a4fe2.png" /></a> 
+           </div> 
+          </figure> 
+          <div class="lb-txt-light lb-txt-none lb-txt-16 lb-txt" style="color:#232f3e;">
+            GE, y&uuml;z binlerce g&ouml;r&uuml;nt&uuml;leme makinesini ve diğer tıbbi cihazları birbirine bağlayan GE Health Cloud hizmeti i&ccedil;in petabayt boyutuna varan kritik tıbbi g&ouml;r&uuml;nt&uuml;leme verilerini depolamak ve korumak i&ccedil;in Amazon S3'&uuml; kullanıyor. 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Related_content" class="lb-txt-bold lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> İlgili i&ccedil;erikler</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>YENİLİKLER</b><br /> <i>S3, Aynı B&ouml;lgede Replikasyon sunuyor. Artık aynı veya farklı AWS B&ouml;lgelerine replikasyon olanağı sağlıyor.</i><br /> 18 EYL&Uuml;L 2019</p> 
+           <p><a href="/about-aws/whats-new/2019/09/amazon-s3-introduces-same-region-replication/" target="_blank">Daha fazla bilgi edinin &raquo;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS NEWS BLOG</b> 
+           </div> 
+           <div> 
+            <i>Amazon S3, S3 Batch Operations'ın Nesne Y&ouml;netimi i&ccedil;in Ticari AWS B&ouml;lgelerinde ve AWS Govcloud'da Genel Erişime Sunulduğunu Duyurdu</i> 
+           </div> 
+           <div>
+             Yazar: Jeff Barr | 30 NİS 2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-amazon-s3-batch-operations/" target="_blank">Daha fazla bilgi edinin &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>YENİLİKLER</b> 
+            <br /> 
+            <i>AWS, Amazon S3 Glacier Deep Archive Depolama Sınıfının t&uuml;m Ticari AWS B&ouml;lgelerinde ve AWS GovCloud’da (ABD) Genel Erişime Sunulduğunu Duyurdu</i> 
+           </div> 
+           <div>
+             27 MAR 2019 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="/about-aws/whats-new/2019/03/S3-glacier-deep-archive/" target="_blank">Daha fazla bilgi edinin &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <h2 id="__" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> </h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <div> 
+            <b>AWS NEWS BLOG<br /> </b> 
+            <i>Yeni — Intelligent Tiering aracılığıyla Amazon S3 i&ccedil;in Otomatik Maliyet Optimizasyonu</i> 
+            <br /> Yazar: Jeff Barr | 26 KAS 2018 
+           </div> 
+           <div>
+             &nbsp; 
+           </div> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/new-automatic-cost-optimization-for-amazon-s3-via-intelligent-tiering/" target="_blank">Daha fazla bilgi edinin &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>AWS ARCHITECTURE BLOG</b><br /> <i>Arşiv İş Y&uuml;kleri i&ccedil;in S3 ve S3 Glacier Lansman Duyuruları</i><br /> Yazar: Matt Sidley | 26 KAS 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/architecture/amazon-s3-amazon-s3-glacier-launch-announcements-for-archival-workloads" target="_blank">Daha fazla bilgi edinin &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px;"> 
+          <div class="lb-txt-normal lb-txt-black lb-txt-14 lb-rtxt"> 
+           <p><b>NEWS BLOG</b><br /> <i>Amazon S3 Block Public Access — Hesaplarınız ve Klas&ouml;rleriniz i&ccedil;in İlave bir Koruma Katmanı</i><br /> 16 KAS 2018<br /> </p> 
+           <div> 
+            <a href="https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/" target="_blank">Daha fazla bilgi edinin &raquo;</a> 
+            <br /> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-txt-none lb-txt-28 lb-h2 lb-title" style="color:#232f3e;"> Başlamaya hazır mısınız?</h2> 
+      <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          &Uuml;r&uuml;n &ouml;zelliklerini keşfedin 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">Veri y&ouml;netimi, g&uuml;venlik, erişim y&ouml;netimi, analitik ve daha fazlasına y&ouml;nelik &ouml;zellikler hakkında daha fazla bilgi edinin.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/s3/features/"> Daha fazla bilgi edinin&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          &Uuml;cretsiz bir hesap i&ccedil;in kaydolun 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">AWS &Uuml;cretsiz Kullanım'a anında erişim elde edin ve Amazon S3'&uuml; denemeye başlayın.&nbsp;</p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> Kaydolun&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-8"> 
+        <figure class="lb-img"> 
+         <div> 
+          <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+         </div> 
+        </figure> 
+        <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+          Konsolda oluşturmaya başlayın 
+        </div> 
+        <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+         <p style="text-align: center;">AWS Konsolunda Amazon S3 ile oluşturmaya başlayın.<br /> </p> 
+        </div> 
+        <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> Kullanmaya başlayın&nbsp;<i class="icon-angle-double-right"></i></a> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Konsolda Oturum A&ccedil;ın</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS Hakkında Bilgi Edinin</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tr/what-is-aws/?nc1=f_cc" target="_blank">AWS Nedir?</a></li> 
+       <li><a href="/tr/what-is-cloud-computing/?nc1=f_cc" target="_blank">Bulut Bilişim Nedir?</a></li> 
+       <li><a href="/tr/devops/what-is-devops/?nc1=f_cc" target="_blank">DevOps Nedir?</a></li> 
+       <li><a href="/tr/containers/?nc1=f_cc" target="_blank">Container Nedir?</a></li> 
+       <li><a href="/tr/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">Data Lake Nedir?</a></li> 
+       <li><a href="/tr/security/?nc1=f_cc" target="_blank">AWS Cloud G&uuml;venliği</a></li> 
+       <li><a href="/tr/new/?nc1=f_cc" target="_blank">Yenilikler</a></li> 
+       <li><a href="/tr/blogs/?nc1=f_cc" target="_blank">Bloglar</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Basın B&uuml;ltenleri</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS i&ccedil;in Kaynaklar</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tr/getting-started/?nc1=f_cc" target="_blank">Kullanmaya Başlama</a></li> 
+       <li><a href="/tr/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+       <li><a href="/tr/solutions/?nc1=f_cc" target="_blank">AWS &Ccedil;&ouml;z&uuml;mleri Portf&ouml;y&uuml;</a></li> 
+       <li><a href="/tr/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+       <li><a href="/tr/faqs/?nc1=f_dr" target="_blank">&Uuml;r&uuml;nler Hakkında ve Teknik SSS'ler</a></li> 
+       <li><a href="/tr/resources/analyst-reports/?nc1=f_cc" target="_blank">Analist Raporları</a></li> 
+       <li><a href="/tr/partners/?nc1=f_dr" target="_blank">AWS &Ccedil;&ouml;z&uuml;m Ortağı Ağı</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> AWS'de Geliştiriciler</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tr/developer/?nc1=f_dr" target="_blank">Yazılım Geliştirme Merkezi</a></li> 
+       <li><a href="/tr/developer/tools/?nc1=f_dr" target="_blank">SDK'lar ve Ara&ccedil;lar</a></li> 
+       <li><a href="/tr/developer/language/net/?nc1=f_dr" target="_blank">AWS'de .NET</a></li> 
+       <li><a href="/tr/developer/language/python/?nc1=f_dr" target="_blank">AWS'de Python</a></li> 
+       <li><a href="/tr/developer/language/java/?nc1=f_dr" target="_blank">AWS'de Java</a></li> 
+       <li><a href="/tr/developer/language/php/?nc1=f_cc" target="_blank">AWS'de PHP</a></li> 
+       <li><a href="/tr/developer/language/javascript/?nc1=f_dr" target="_blank">AWS'de JavaScript</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Yardım</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/tr/contact-us/?nc1=f_m" target="_blank">Bize Ulaşın</a></li> 
+       <li><a href="/tr/careers/?nc1=f_hi" target="_blank">AWS'de Kariyer</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">Destek Bileti Oluşturun</a></li> 
+       <li><a href="/tr/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Bilgi Merkezi</a></li> 
+       <li><a href="/tr/premiumsupport/?nc1=f_dr" target="_blank">AWS Support'a Genel Bakış</a></li> 
+       <li><a href="/tr/legal/?nc1=f_cc" target="_blank">Hukuk</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="tr" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Bir AWS Hesabı Oluşturun</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="tr" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="tr" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="tr" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="tr" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="tr" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon, 
+        <i> Azınlıklar / Kadınlar / Engelliler / Gaziler / Cinsel Kimlik / Cinsel Y&ouml;nelim / Yaş</i> gibi Konularda Eşit Fırsat Sağlayan Bir İşverendir. 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Dil</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Gizlilik</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Koşulları</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. veya bağlı kuruluşları. T&uuml;m hakları saklıdır.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    <strong>Eski</strong> bir tarayıcı kullanıyorsunuz. Deneyiminizi geliştirmek için lütfen Internet Explorer 11'e veya başka bir modern tarayıcıya yükseltin.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = '<strong>Eski</strong> bir tarayıcı kullanıyorsunuz. Deneyiminizi geliştirmek için lütfen Internet Explorer 11\'e veya başka bir modern tarayıcıya yükseltin.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:56:46.079-0700 -->  
+ </body>
+</html>

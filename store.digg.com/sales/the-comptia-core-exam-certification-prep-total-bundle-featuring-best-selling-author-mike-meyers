@@ -1,0 +1,3471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"02bf0a7962","applicationID":"131593373","transactionName":"dl4KRhNdXFwDQRhKUFlUFx0SWl9H","queueTime":0,"applicationTime":220,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"02bf0a7962",applicationID:"131593373"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<!-- Page hiding snippet (recommended)  -->
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',1000,
+{'GTM-P2BQKM':true});</script>
+<title>
+  The Total CompTIA Core Certification Prep Bundle | Digg Store
+</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://store.digg.com/feed.rss" />
+<meta
+  name="description"
+  content="" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+<link rel="apple-touch-icon" type="image/x-icon" href="https://cdnp0.stackassets.com/9b64ebe5fb0bb6bb24781b0b26b2b576af694063/store/00fc99d4f0b1c99cd5be5aea8abb5c24d40ff1c80207fd50cb492af93eb1/favicon.png" />
+
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" media="all" href="https://shops2.stackassets.com/assets/classic-1a38bf9b94b9b8165858d2f834ebf883b5b517f7fe666110625e26914443a16e.css" />
+  <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" />
+
+
+
+<style>.publisher-digg .brand-primary,.publisher-digg .shopping-cart-icon.active,.publisher-digg .my-account-container .nav-tabs li a.active,.publisher-digg #sc-nyop-buttons .btn-default.active .fa-circle,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .upsell-cta--checked::before,.publisher-digg .footer .newsletter .btn-default,.publisher-digg .js-cart-item-remove:hover,.publisher-digg .mobile-search-icon.active .search-input-icon,.publisher-digg .search-input:focus+.search-input-icon{color:#00b0ff}@media (min-width: 992px){.publisher-digg .navbar-master .nav-item-container:hover .nav-item-link,.publisher-digg .navbar-master .nav-item-link:hover{border-color:#00b0ff;color:#00b0ff !important}}.publisher-digg #sc-nyop-leaderboard tr:first-child td:first-child strong,.publisher-digg .table>tbody>tr.active td,.publisher-digg .table>tbody>tr.active:hover td,.publisher-digg .sc-form-group .bar:before,.publisher-digg .sc-form-group .bar:after,.publisher-digg .checkout .edit-address-bar,.publisher-digg .footer-newsletter .btn-primary,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher .nav-item-link,.publisher-digg .navbar.navbar-master .dropdown-nav-switcher.open .nav-item-link{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary{background-color:#00b0ff}.publisher-digg .address-verification-modal .btn-primary:hover{background-color:#009ee6}.publisher-digg .table-hover>tbody>tr:hover,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{background-color:#dbf4ff}.publisher-digg .sc-product-thumbnails .product-thumbnail.active,.publisher-digg input[type=radio]:checked+label:before,.publisher-digg input[type=checkbox]:checked+label:before,.publisher-digg .btn-selectable.active,.publisher-digg .active .shipping-address,.publisher-digg .active .billing-address{border-color:#00b0ff}.publisher-digg .hello-bar{background-color:#000000}.publisher-digg .hello-bar a{color:#FFFFFF}.publisher-digg .alert-notification{background-color:#000;border-color:#000;color:#fff}.publisher-digg .alert-notification hr{border-top-color:#000}.publisher-digg .alert-notification .alert-link{color:#e6e6e6}.publisher-digg .navbar-default,.publisher-digg .search-input,.publisher-digg .navbar-collapse{background-color:#FFFFFF}.publisher-digg .search-input-icon,.publisher-digg .shopping-cart-icon,.publisher-digg .navbar-default .navbar-nav>li>a,.publisher-digg .navbar-default .navbar-nav>li>a:hover,.publisher-digg .nav-item-link,.publisher-digg .dropdown-menu>li>a,.publisher-digg .dropdown-menu>li>a:hover,.publisher-digg .navbar-default .navbar-nav>.open>a{color:#000000}.publisher-digg .navbar-default .navbar-toggle .icon-bar{background-color:#000000}@media (max-width: 991px){.publisher-digg .menu-list>li>a,.publisher-digg .menu-list>li>.subnav-menu-label,.publisher-digg .menu-list .subnav-menu-items a,.publisher-digg .menu-list>li>a:hover{color:#000000;background:none}}.publisher-digg .navbar-toggle .icon-cart{font-size:1.7em}.publisher-digg .navbar-toggle .search-input-icon{font-size:1.4em}@media (max-width: 991px){.publisher-digg .navbar-default .nav-item,.publisher-digg .navbar-default .subnav-menu,.publisher-digg .navbar-default .subnav-menu-items{border:0;border-top:1px solid #aaa}.publisher-digg .navbar-default .nav-item.open{border-color:transparent}.publisher-digg .navbar-default .nav-item:first-child{border:0}}.publisher-digg .navbar-search .search-input,.publisher-digg .navbar-search-mobile .search-input{color:#000000;border:1px solid #aaa}.publisher-digg .shopping-cart-total .badge{background-color:#f41e37}.publisher-digg #sc-hero-unit{background-image:url("https://cdnp2.stackassets.com/56cb74df44425f60e74f5afbab2ed210f8399892/store/776310b17bae3182f521c99a897572bfe8a6ca5accdc3e0e74707c28e6b0/rustic-table-desk.jpg")}.publisher-digg #sc-hero-unit.giveaway-no-banner{background-image:none}.primary-color{color:#00b0ff !important}.active.primary-border-color-active{border-color:#00b0ff !important}.primary-border-color-active:hover{border-color:#66d0ff !important}.primary-border-top{border-top-color:#00b0ff !important}.active.primary-border-top-active{border-top-color:#00b0ff !important}.primary-border-left{border-left-color:#00b0ff !important}.active.primary-border-left-active{border-left-color:#00b0ff !important}.primary-border-bottom{border-bottom-color:#00b0ff !important}.active.primary-border-bottom-active{border-bottom-color:#00b0ff !important}.primary-border-right{border-right-color:#00b0ff !important}.active.primary-border-right-active{border-right-color:#00b0ff !important}.buy-now-column .loyalty-callout{color:#00b0ff}.loyalty-callout--bar{background-color:#00b0ff}@media (min-width: 993px){.loyalty-callout--bar{background-color:#fff;color:#00b0ff}}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+  window['optimizely'] = window['optimizely'] || [];
+  window['optimizely'].push(["customTag", "LoggedIn", false]);
+</script>
+<script src="//cdn.optimizely.com/js/74647825.js"></script>
+
+
+
+<script src="https://shops2.stackassets.com/assets/shared-178e39bdb70b420a918ed588bf4172e270dc8aa76ed55b131ce6a9a30a39bf18.js"></script>
+<!--[if lte IE 9]>
+  <script src="https://shops2.stackassets.com/assets/jquery.html5-placeholder-shim-fd57d1a7d62d64d8cfd7af63ec58c8db8248e7709cac024b6946c984d31e9b7d.js"></script>
+  <script>
+    $.placeholder.shim();
+  </script>
+<![endif]-->
+
+<script src="https://www.recaptcha.net/recaptcha/api.js?render=6LfHudMUAAAAAKBsc6ubBtwsz7xka6zB8S2UXrhk" async="async" defer="defer"></script>
+<script src="https://assets.jetlore.com/js/jlranker.js"></script>
+
+
+
+  <meta name="twitter:card" content="product" />
+<meta name="twitter:title" content="Top-Rated Instructor Mike Meyers Will Help You Ace the CompTIA Core Exams &amp; Boost Your Career as an In-Demand IT Professional⁠ with 80+ Hours of Content" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image:src" content="https://cdnp1.stackassets.com/efe489e34723eec65bcbaf34685f1c3a2326ac29/store/9662fee108a4d67114d47059743b95298d0d5511a4c7cf031984dbdffb38/sale_26147_primary_image.jpg" />
+<meta name="twitter:data1" content="$39.95" />
+<meta name="twitter:label1" content="PRICE" />
+<meta name="twitter:data2" content="94%" />
+<meta name="twitter:label2" content="OFF" />
+<meta name="twitter:domain" content="store.digg.com" />
+<meta name="twitter:site" content="@digg" />
+<meta name="twitter:creator" content="@digg" />
+
+<meta property="fb:app_id" content="468274286708621" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Top-Rated Instructor Mike Meyers Will Help You Ace the CompTIA Core Exams &amp; Boost Your Career as an In-Demand IT Professional⁠ with 80+ Hours of Content" />
+<meta property="og:image" content="https://cdnp1.stackassets.com/efe489e34723eec65bcbaf34685f1c3a2326ac29/store/9662fee108a4d67114d47059743b95298d0d5511a4c7cf031984dbdffb38/sale_26147_primary_image.jpg" />
+<meta property="og:site_name" content="Digg Store" />
+<meta property="og:url" content="https://store.digg.com/sales/the-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers?utm_source=digg.com&amp;utm_medium=referral&amp;utm_campaign=the-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers&amp;utm_term=scsf-369207&amp;utm_content=a0x1P000004NF0k&amp;scsonar=1?utm_source=digg" />
+
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="kGmr3g3NBqKa21/Am0mVtsr+u2ps0mQisrp3SvPlqFRQ6DuG8L+goR9+QQvSJDZte+oImrkbdO7SICT0t4hCDw==" />
+
+
+    <!-- Quantcast Tag, part 1 -->
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+      (function() {
+       var elem = document.createElement('script');
+       elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+       elem.async = true;
+       elem.type = "text/javascript";
+       var scpt = document.getElementsByTagName('script')[0];
+       scpt.parentNode.insertBefore(elem, scpt);
+      })();
+    </script>
+
+    <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '675226672634286');
+  fbq('track', "PageView");</script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=675226672634286&ev=PageView&noscript=1"
+  /></noscript>
+
+
+<script type="text/javascript">
+  window.fbq = window.fbq || (function(){});
+  window._fbq = window._fbq || [];
+</script>
+
+<script type="text/javascript">
+  window.dataLayer = [{
+    publisherId: '124',
+    vertical: 'lifestyle',
+    affiliateId: '',
+    appEnvironment: 'production',
+    showEmailCapture: 'true',
+  }];
+
+  window.SC.code.analytics = {
+    customDimension: function(index, name, value) {
+      gtmPayload = {};
+      gtmPayload['dimension' + index] = value;
+      dataLayer.push(gtmPayload);
+    },
+
+    analyticsEvent: function(category, action, opt_label, opt_value, opt_noninteractive) {
+      // ensure value is integer. We encountered weird analytics behavior if decimals are sent
+      integer_value = Math.round(opt_value) || undefined
+
+      dataLayer.push({
+        'event': 'analyticsEvent',
+        'eventCategory': category,
+        'eventAction': action,
+        'eventLabel': opt_label,
+        'eventValue': integer_value,
+        'eventNonInt': opt_noninteractive
+      });
+    },
+
+    analyticsSocial: function(socialNetwork, socialAction, opt_socialTarget, opt_page) {
+      dataLayer.push({
+        'event': 'social',
+        'socialNetwork': socialNetwork,
+        'socialAction': socialAction,
+        'socialTarget': opt_socialTarget,
+        'socialPagePath': opt_page
+      });
+    },
+
+    analyticsVPV: function(virtualPageName) {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': virtualPageName
+      });
+    },
+
+    analyticsClearVPV: function() {
+      dataLayer.push({
+        'event': 'analyticsVPV',
+        'vpvName': undefined
+      });
+    },
+
+    analyticsForm: function(f, el) {
+      var formName = f;
+      var elName = el.name || el.id || el.type;
+      var category = 'interaction';
+      var action = 'form: ' + formName;
+      var label = elName + ':' + el.type;
+
+      // Google Tag Manager
+      analyticsEvent(category, action, label);
+    }
+  };
+
+  $(document).ready(function() {
+    window.SC.dataLayer.enqueue('SCDataLayer', 'USER_VISITS', { previouslyPurchasedProducts: 'false' });
+
+
+  });
+</script>
+
+
+
+  <link rel="canonical" href="https://stacksocial.com/sales/the-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers" />
+<style>#sc-hero-unit { background-image:url(https://cdnp3.stackassets.com/a018cf0d4be7f48fe72e795d54902e61ae61462b/store/d214112b2db6e1353503689a136726f8acbb9287d0258f6e152784c0e15b/sale_26147_special_sale_banner_bg.jpg) !important }</style>
+
+<script type="text/javascript">
+var _user_id = '';
+var _session_id = 'f5553767719d51832b94be97c8e1d422';
+
+var _sift = window._sift = window._sift || [];
+_sift.push(['_setAccount', 'ef01e3d959']);
+_sift.push(['_setUserId', _user_id]);
+_sift.push(['_setSessionId', _session_id]);
+_sift.push(['_trackPageview']);
+(function() {
+  function ls() {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.async = true;
+    e.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.siftscience.com/s.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(e, s);
+  }
+  if (window.attachEvent) {
+    window.attachEvent('onload', ls);
+  } else {
+    window.addEventListener('load', ls, false);
+  }
+})();
+</script>
+
+
+<input type="hidden" class="js-jetlore-constructor-tag" id="user_email" value="">
+
+  </head>
+  <body id="stacksocial-wrapper" class="publisher-digg" ng-app="stackApp" ng-class="[cartStateBodyClass]">
+    <a href="https://iar40lbead.execute-api.us-east-1.amazonaws.com/ProdStage" rel="nofollow" style="display: none" aria-hidden="true">nofollow</a>
+    <script type="text/javascript">
+  // dimension1 is reserved for legacy PartnerType and is unused
+  window.SC.code.analytics.customDimension(2, 'User Status', "logged_out");
+
+    window.SC.code.analytics.customDimension(3, "Publisher", "Digg");
+    window.SC.code.analytics.customDimension(4, "Publisher Persona", "Internet Culture");
+
+
+
+
+
+</script>
+
+    <!-- StackCommerce GTM Container -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2BQKM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P2BQKM');
+  </script>
+
+    
+
+    <input type="hidden" name="current_publisher" id="current_publisher" value="124" data-name="Digg" data-checkout-upsell-top-id="20559" data-checkout-upsell-bottom-id="9426" />
+
+    <input type="hidden" name="current_user_favorites" id="current_user_favorites" data-sale-ids="[]" data-sales-url="https://store.digg.com/v0/sales" />
+    <input type="hidden" name="api_url" id="api_url" value="https://store.digg.com/" />
+    <input type="hidden" name="current_cart" id="current_cart" data-current-cart="{&quot;items&quot;:[]}" />
+    <input type="hidden" name="publisher_upsell_sales" id="publisher_upsell_sales" data-sales="[{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true},{&quot;from_jetlore&quot;:true}]" data-max-quantity="4" />
+    <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1">
+  <defs>
+    <symbol id="icon-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M18,38.5L36.2,57c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l9.1-9.2c3-3.1,6.1-6.1,9.1-9.2c4.7-4.8,4.7-12.6,0-17.4c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6l-2,2l-2-2.1c-2.3-2.3-5.4-3.6-8.7-3.6c-3.3,0-6.4,1.3-8.7,3.6C13.3,25.9,13.3,33.7,18,38.5z M20.7,23.5c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6l3.4,3.4c0.3,0.3,0.8,0.5,1.3,0.5c0.5,0,1-0.2,1.3-0.5l3.3-3.4c1.7-1.7,3.8-2.6,6.1-2.6c2.3,0,4.4,0.9,6.1,2.6c3.4,3.5,3.4,9.1,0,12.6L37.5,53.2l-0.1-0.1l-16.7-17C17.3,32.6,17.3,27,20.7,23.5z" />
+    </symbol>
+
+    <symbol id="icon-circle-heart" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z M25.05,29.025 C26.25,27.75 27.9,27 29.55,27 C31.2,27 32.85,27.675 34.05,29.025 L36.525,31.65 C36.75,31.875 37.125,32.025 37.5,32.025 C37.875,32.025 38.25,31.875 38.475,31.65 L40.95,29.025 C42.15,27.75 43.8,27 45.45,27 C47.1,27 48.75,27.675 49.95,29.025 C52.5,31.65 52.5,36 49.95,38.7 L37.5,51.825 L37.425,51.675 L25.05,38.7 C22.5,36 22.5,31.725 25.05,29.025 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-circle-heart-filled" viewBox="0 0 75 75">
+      <path class="path1" d="M23.1,40.5 L36.525,54.6 C36.75,54.825 37.125,54.975 37.5,54.975 C37.875,54.975 38.25,54.825 38.475,54.6 L45.15,47.55 C47.4,45.225 49.65,42.825 51.825,40.5 C55.35,36.825 55.35,30.825 51.825,27.15 C50.1,25.35 47.85,24.375 45.375,24.375 C42.9,24.375 40.65,25.35 38.925,27.15 L37.425,28.725 L35.925,27.15 C34.2,25.35 31.95,24.375 29.475,24.375 C27,24.375 24.75,25.35 23.025,27.15 C19.65,30.9 19.65,36.825 23.1,40.5 Z"></path>
+      <path class="path2" d="M37.5,74.625 C17.025,74.625 0.375,57.975 0.375,37.5 C0.375,17.025 17.025,0.375 37.5,0.375 C57.975,0.375 74.625,17.025 74.625,37.5 C74.625,57.975 57.975,74.625 37.5,74.625 Z M37.5,2.625 C18.3,2.625 2.625,18.3 2.625,37.5 C2.625,56.7 18.3,72.375 37.5,72.375 C56.7,72.375 72.375,56.7 72.375,37.5 C72.375,18.3 56.7,2.625 37.5,2.625 Z"></path>
+    </symbol>
+
+    <symbol id="icon-cart" viewBox="0 0 75 75">
+      <path class="path1" d="M47.8,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3s-2.3-1-2.3-2.3C45.5,53.5,46.5,52.5,47.8,52.5z M30.4,52.5c1.3,0,2.3,1,2.3,2.3c0,1.3-1,2.3-2.3,2.3c-1.3,0-2.3-1-2.3-2.3C28.1,53.5,29.1,52.5,30.4,52.5z M47.8,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C53.6,51.7,50.9,49.1,47.8,49.1z M30.4,49.1c-3.2,0-5.8,2.6-5.8,5.8c0,3.2,2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8C36.2,51.7,33.6,49.1,30.4,49.1z M23.2,23.8h34.5L55,35.4l-26.3,2.1L23.2,23.8z M11.4,14.6c-1,0-1.7,0.8-1.7,1.7s0.8,1.7,1.7,1.7h5.8c2.9,7.1,5.7,14.2,8.5,21.2l-2.6,6.3c-0.2,0.5-0.2,1.2,0.2,1.6c0.3,0.5,0.9,0.8,1.4,0.8h28.9c0.9,0,1.8-0.8,1.8-1.7c0-0.9-0.8-1.7-1.8-1.7H27.3l1.5-3.6l27.8-2.2c0.7-0.1,1.4-0.6,1.6-1.3l3.5-15c0.2-1-0.7-2.1-1.7-2.1H21.8l-1.9-4.7c-0.3-0.6-0.9-1.1-1.6-1.1H11.4z" />
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 75 75">
+      <path class="path1" d="M34.1,17.5c-4.4,0-8.6,1.7-11.7,4.9c-3.1,3.1-4.9,7.3-4.9,11.7c0,4.4,1.7,8.6,4.9,11.7c3.1,3.1,7.3,4.9,11.7,4.9c3.7,0,7.2-1.2,10.1-3.5l0.2-0.2l10,10c0.7,0.7,1.9,0.7,2.6,0c0.7-0.7,0.7-1.9,0-2.6v0l-10-10l0.2-0.2c5.1-6.6,4.5-16-1.4-21.9C42.6,19.2,38.5,17.5,34.1,17.5 M43.2,43.2c-2.4,2.4-5.7,3.8-9.1,3.8h0c-3.4,0-6.7-1.3-9.1-3.8c-2.4-2.4-3.8-5.7-3.8-9.1c0-3.4,1.3-6.7,3.8-9.1c2.4-2.4,5.7-3.8,9.1-3.8c3.4,0,6.7,1.3,9.1,3.8c2.4,2.4,3.8,5.7,3.8,9.1S45.6,40.7,43.2,43.2" />
+    </symbol>
+
+    <symbol id="icon-ships-fast" viewBox="0 0 100 100">
+      <path class="st0" d="M30.1,39.2L30.1,39.2l-12.3,0c0,0,0,0,0,0c-0.3,0-0.7,0.1-0.9,0.4c-0.2,0.2-0.4,0.6-0.4,0.9
+        c0,0.3,0.1,0.7,0.4,0.9c0.2,0.2,0.6,0.4,0.9,0.4l12.3,0c0.4,0,0.7-0.1,0.9-0.4c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9
+        C30.8,39.3,30.5,39.2,30.1,39.2z"/>
+      <path class="st0" d="M31.1,35.2c0.3-0.2,0.4-0.6,0.4-0.9c0-0.3-0.1-0.7-0.4-0.9c-0.3-0.2-0.6-0.4-0.9-0.4l0,0l0,0H8.3
+        c-0.4,0-0.7,0.1-0.9,0.4C7.1,33.6,7,33.9,7,34.3c0,0.3,0.1,0.7,0.4,0.9c0.3,0.2,0.6,0.4,0.9,0.4l0,0l0,0h21.8
+        C30.5,35.6,30.8,35.4,31.1,35.2z"/>
+      <path class="st0" d="M75.4,36.1l-0.1-0.5c-0.4-1.5-1.9-2.6-3.4-2.6H38.4c-2,0-3.6,1.6-3.6,3.6v21.7c0,2,1.6,3.6,3.6,3.6h4.4l0.1,0.5
+        c0.8,2.7,3.3,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h17.6l0.1,0.5c0.8,2.7,3.4,4.6,6.2,4.6c2.8,0,5.4-1.9,6.2-4.6l0.1-0.5h4.5
+        c1.5,0,2.8-1.3,2.8-2.8V48.9c0-1.5-1.3-2.8-2.8-2.8h-0.7L89,45.1c-0.7-1.4-1.5-3.1-2.5-4.7c-0.7-1.2-1.4-2.1-2.1-2.8
+        c-0.7-0.8-1.5-1.5-2.8-1.5H75.4z M53,60.6c0,2.2-1.7,3.9-3.9,3.9c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.7-3.9,3.9-3.9
+        C51.4,56.7,53,58.4,53,60.6L53,60.6z M72.8,59.3H55.5l-0.1-0.5c-0.8-2.8-3.3-4.7-6.2-4.7c-2.8,0-5.4,1.9-6.2,4.7l-0.1,0.5h-4.4
+        c-0.5,0-1-0.5-1-1V36.6c0-0.6,0.4-1,1-1l33.4,0c0.5,0,1,0.5,1,1V59.3z M79.4,64.4c-2.2,0-3.9-1.7-3.9-3.9c0-2.2,1.8-3.9,3.9-3.9
+        c2.3,0.1,3.9,1.7,3.9,3.9C83.3,62.8,81.6,64.4,79.4,64.4z M90.4,48.7v10.6h-4.7l-0.1-0.5c-0.6-2.8-2.9-4.5-6.2-4.6
+        c-1,0-2.1,0.3-3,0.7l-1,0.5v-6.7H90.4z M82.6,39.3c0.5,0.5,1.1,1.4,1.7,2.4c0.6,1,1.2,2.1,1.9,3.5l0.5,1H75.4v-7.5h6.1l0.2,0
+        l0.2,0.1C82,38.9,82.3,39,82.6,39.3z"/>
+    </symbol>
+
+    <symbol id="icon-facebook" viewBox="0 0 100 100">
+      <path d="M94.48,0h-89A5.52,5.52,0,0,0,0,5.52v89A5.52,5.52,0,0,0,5.52,100h47.9V61.33h-13V46.19h13V35.06c0-12.91,7.89-20,19.41-20a104.57,104.57,0,0,1,11.64.6V29.2h-8c-6.25,0-7.46,3-7.46,7.35v9.64H84l-2,15.14H69V100H94.48A5.52,5.52,0,0,0,100,94.48v-89A5.52,5.52,0,0,0,94.48,0Z" />
+    </symbol>
+
+  </defs>
+</svg>
+
+
+    <div class="container-wrapper">
+      <div class="container-site">
+        <script>
+  window.current_publisher_code = "digg";
+</script>
+
+
+<div class="hello-bar js-hello-bar hidden-xs hidden-sm">
+  <div class="container">
+      <div class="pull-left">
+        <a class="back-link" href="http://digg.com/">
+          <i class='fa fa-sm fa-chevron-left back-to-publisher'></i> back to digg.com
+</a>      </div>
+
+
+      <div class="">
+        <a class="hello-bar-text js-hello-bar" data-sale-slug="babbel-lifetime-subscription-all-languages" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;}" data-sale="{&quot;id&quot;:24208,&quot;name&quot;:&quot;Babbel Language Learning: Lifetime Subscription (All Languages)&quot;,&quot;title&quot;:&quot;Learn 14 Languages \u0026 Access More Than 10,000 Hours of High-Quality Language Education Online&quot;,&quot;price_in_cents&quot;:15900,&quot;categories&quot;:[{&quot;name&quot;:&quot;Language&quot;}]}" data-track-impression="{&quot;list&quot;:&quot;hello bar&quot;}" href="/sales/babbel-lifetime-subscription-all-languages">
+          Save 60% On A Lifetime Subscription To Babbel&#39;s Language Learning App
+          <i class="fa fa-chevron-right"></i>
+</a>      </div>
+
+    <a class="referal-link" data-track-click="{&quot;category&quot;:&quot;HelloBar&quot;,&quot;label&quot;:&quot;refer link&quot;}" href="/user/credits">
+      Give $10,
+      Get $10
+</a>  </div>
+</div>
+
+<nav id="main-navbar"
+  class="navbar navbar-default navbar-fixed-top navbar-master-without-stackbar navbar-master js-navbar-master"
+  role="navigation"
+  data-navbar>
+
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle navbar-menu-button pull-left" type="button" aria-label="Toggle Navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+        <span class="icon-bar icon-bar-middle"></span>
+      </button>
+
+      <div class="navbar-toggle mobile-cart-icon mini-cart">
+        <mini-cart-button></mini-cart-button>
+      </div>
+
+      <div class="navbar-toggle mobile-search-icon js-toggleSearchNav">
+        <svg class="svg-icon search-input-icon">
+          <use xlink:href="#icon-search"></use>
+        </svg>
+      </div>
+
+      <div class="navbar-brand-container">
+        <a class="navbar-brand" href="/">
+            <img class="navbar-logo hidden-xs hidden-sm" alt="Digg" src="https://cdnp2.stackassets.com/6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b/store/c955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30/28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png" />
+
+    <img class="navbar-logo hidden-md hidden-lg" alt="Digg Mobile" src="https://cdnp1.stackassets.com/7233e69003b00a8364724db622d71fbae54b3efc/store/f2e980f91ac9866426d222b593e6332923e0dbac41c3f53b6fa4089945fe/8570c0924c5e16dc571c4330dcef195d95089b07_logo_main_mobile.png" />
+
+</a>      </div>
+    </div>
+
+    <div class="navbar-collapse">
+      <div class="navbar-center">
+        <div class="hidden-xs hidden-sm navbar-search">
+          <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+            <div class="search-container">
+              <input type="text" name="query" id="query" value="" placeholder="Search" class="search-input" aria-label="search" required="required" />
+              <i class="fa fa-search search-input-icon"></i>
+            </div>
+</form>        </div>
+
+        <ul class="nav navbar-nav navbar-right nav-account hidden-xs hidden-sm">
+          <li class="heart-icon-nav">
+            <a class="nav-account-link js-wishlist-nav" aria-label="My Wishlist" href="/user?show=home-tab">
+              <svg class="svg-icon">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+</a>          </li>
+          <li class="cart-icon-nav">
+            <mini-cart-button></mini-cart-button>
+          </li>
+            <li>
+    <a class="nav-account-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+        </ul>
+      </div>
+
+      
+<ul class="nav navbar-nav navbar-main js-navbar-main nav-4-items">
+  
+    
+
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Shop
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/newest-sales">
+                                      New Arrivals
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/best-sellers">
+                                      Best Sellers
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/ending-soon">
+                                      Ending Soon
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/pay-what-you-want">
+                                      Pay What You Want
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifetime-deals">
+                                      Lifetime Subscriptions
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/bundles">
+                                      Online Course Bundles
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/apps-software">
+                            Software
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-backup-storage">
+                                      Backup + Storage
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-entertainment">
+                                      Entertainment
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-productivity">
+                                      Productivity
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software-security">
+                                      VPN + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/apps-software">
+                                      View All (150+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets">
+                            Gear + Gadgets
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-auto">
+                                      Auto
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-diy">
+                                      DIY
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-computer-tablets">
+                                      Electronics
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-gaming-toys">
+                                      Gaming + Toys
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-power">
+                                      Power + Charging
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets-sound">
+                                      Speakers + Headphones
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/gear-gadgets">
+                                      View All (450+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/online-courses">
+                            Online Courses
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-business">
+                                      Business
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-Design">
+                                      Design
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-development">
+                                      Development
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-it-security">
+                                      IT + Security
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses-marketing">
+                                      Marketing
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/online-courses">
+                                      View All (800+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/lifestyle">
+                            Lifestyle
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/every-day-carry">
+                                      Everyday Carry
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-health-fitness">
+                                      Fitness + Health
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-home">
+                                      Home
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-kitchen">
+                                      Kitchen
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle-travel">
+                                      Travel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/lifestyle">
+                                      View All (300+)
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Best Sellers
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/best-sellers">
+                            Best Sellers Up to 85% off
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Brands
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Featured
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/collections/vendor-spotlight?sort=best_sellers">
+                                      Vendor Spotlight
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <a class="subnav-menu-label js-child-menu-item mobile-dropdown-toggle" href="/collections/gear-gadgets-computer-tablets">
+                            Electronics
+</a>
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/apple?sort=best_sellers">
+                                      Apple
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lenovo">
+                                      Lenovo
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/lg">
+                                      LG
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/samsung">
+                                      Samsung
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/sennheiser">
+                                      Sennheiser
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Sofware
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/babbel-language-learning-lifetime-subscription">
+                                      Babbel
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/nordvpn-3-yr-subscription-2">
+                                      NordVPN
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/rosetta-stone-lifetime-subscription-spanish">
+                                      Rosetta Stone
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/windscribe-vpn-pro-subscriptions-1yr">
+                                      Windscribe
+</a>                                  </li>
+                          </ul>
+                      </li>
+                    
+                      <li class="subnav-menu subnav-menu-group dropdown js-mobile-dropdown">
+                          <span class="subnav-menu-label mobile-dropdown-toggle">
+                            Top Instructors
+                          </span>
+
+                          <ul class="list-unstyled js-nav-filters">
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/chris-haroun">
+                                      Chris Haroun
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/brands/rob-percival">
+                                      Rob Percival
+</a>                                  </li>
+                              
+                                  <li class="subnav-menu-items">
+                                    <a class="js-third-level-menu-item" href="/sales/the-canon-dslr-photography-a-z-course">
+                                      Phil Ebiner
+</a>                                  </li>
+                          </ul>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      
+
+          <li class="dropdown nav-item nav-item-container js-mobile-dropdown ">
+            <a class="mobile-dropdown-toggle nav-item-link js-root-menu-item" role="button" href="#">
+              Free
+</a>            <div class="dropdown-menu mega-menu" role="menu">
+              <div class="container">
+                <ul class="list-unstyled menu-list">
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/giveaways">
+                            Giveaways
+</a>
+                      </li>
+                    
+                      <li class="subnav-menu ">
+                          <a class="subnav-menu-label js-child-menu-item " href="/free">
+                            Freebies
+</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+  <li class="nav-username-placeholder hidden-sm hidden-xs">
+      Login
+  </li>
+
+  <li class="nav-item visible-xs visible-sm">
+  <a class="nav-item-link" href="/user?show=home-tab">Wishlist</a>
+</li>
+  <li class="nav-item visible-xs visible-sm">
+    <a class="nav-item-link" href="/sign_in?source=signup_page">Login</a>
+  </li>
+
+</ul>
+
+    </div>
+  </div>
+
+  <div id="search-dropdown-bar"
+    class="hidden-md hidden-lg navbar-search-mobile container js-search-dropdown-bar">
+    <form class="form-inline js-search-form" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="text" name="query" id="mobile-search-box" value="" placeholder="Search" class="form-control search-input js-mobile-search-box" />
+</form>  </div>
+
+  
+</nav>
+
+<div id="main-navbar-phantom" class="js-main-navbar-phantom"></div>
+<div class="mobile-nav-overlay"></div>
+
+
+<mini-cart></mini-cart>
+
+        
+
+        <div class="site-contents ">
+          <div class="loyalty-callout loyalty-callout--bar loyalty-callout--bundle ">
+  <div class="loyalty-callout__content">
+    <div class="loyalty-callout__icon">
+      <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 35 34" style="enable-background:new 0 0 35 34;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:currentColor;}
+</style>
+<g>
+	<path class="st0" d="M28.5,2.5h-7.6c-1.2,0-2.7,0.6-3.5,1.4L2.7,18.5C2.3,19,2,19.6,2,20.3c0,0.7,0.3,1.3,0.7,1.8l8.6,8.6
+		c0.5,0.5,1.1,0.7,1.8,0.7v0c0.7,0,1.3-0.3,1.8-0.7l14.6-14.6c0.8-0.8,1.4-2.3,1.4-3.5V5C31,3.6,29.9,2.5,28.5,2.5z M29.3,12.7
+		c0,0.7-0.5,1.8-1,2.3L13.8,29.6c-0.2,0.2-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.2l-8.6-8.6c-0.2-0.2-0.2-0.4-0.2-0.6
+		s0.1-0.4,0.2-0.6L18.5,5.2c0.5-0.5,1.6-1,2.3-1h0h7.6c0.5,0,0.8,0.4,0.8,0.8V12.7z"/>
+	<path class="st0" d="M25.1,5.9c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5C27.6,7,26.5,5.9,25.1,5.9z M25.1,9.3
+		c-0.5,0-0.8-0.4-0.8-0.8c0-0.5,0.4-0.8,0.8-0.8c0.5,0,0.8,0.4,0.8,0.8C25.9,8.9,25.5,9.3,25.1,9.3z"/>
+</g>
+</svg>
+
+    </div>
+    <span class="loyalty-callout__text">
+      Get $1 credit for every $25 spent!
+    </span>
+  </div>
+</div>
+
+
+
+<div id="sc-hero-unit" class="hero-unit-bundle ">
+  <div class="container">
+    <div class="row">
+      <header class="col-xs-12 header">
+        <div class="row">
+         <article class="col-xs-12">
+           <h1>The Total CompTIA Core Certification Prep Bundle</h1>
+           <h4 class="hidden-xs hidden-sm">Top-Rated Instructor Mike Meyers Will Help You Ace the CompTIA Core Exams &amp; Boost Your Career as an In-Demand IT Professional⁠ with 80+ Hours of Content</h4>
+         </article>
+        </div>
+      </header>
+    </div>
+
+    <div class="row">
+      <article class="col-xs-12 col-md-7 col-lg-6">
+        <div class="row">
+          <div class="sc-hero-unit-clock col-xs-12 visible-xs visible-sm">
+            <i class="icon-clock"></i>
+            Ending In: <abbr class="js-interval" data-use-interval="true" data-starts-at="2020-02-11T08:00:00Z" data-ends-at="2120-02-12T07:59:59Z"></abbr>
+          </div>
+          <div class="sc-hero-unit-buy-button col-md-7 col-xs-12">
+            <div class="row">
+              <ng-form class="buy-form form-horizontal js-sc-purchase-form" data-type="Bundle" data-price="39.95" data-name="The Total CompTIA Core Certification Prep Bundle" data-ids="[26147]" role="form" ng-controller="AddToCartCtrl">
+
+  <input type="hidden" name="sale_id" id="sale_id" value="26147" data-sale-slug="the-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers" />
+
+
+  <div class="col-md-8 col-xs-12 col-lg-9 ">
+    <add-to-cart-button class="hidden-xs hidden-sm btn btn-lg btn-block btn-success js-purchase-submit form-control additem" ng-click="addItem()" ng-disabled="addingToCart" data-button-type="buy_now">
+      Add to Cart - $39.95
+</add-to-cart-button>    <add-to-cart-button class="visible-xs visible-sm btn btn-lg btn-success js-sc-sale-form-submit-mobile form-control" ng-click="addItem()" ng-disabled="addingToCart" data-button-type="buy_now">
+      <span>
+        Add to Cart - $39.95
+      </span>
+</add-to-cart-button>  </div>
+
+    <div class="hidden-md hidden-lg select-mobile">
+      <select name="quantity" id="quantity" class="form-control js-quantity" data-price="3995" data-recurring="false" ng-model="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+    </div>
+
+    <div class="select-right hidden-xs hidden-sm col-md-4 col-lg-3">
+      <select name="quantity" id="quantity" class="form-control js-quantity" data-price="3995" data-recurring="false" ng-model="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+    </div>
+</ng-form>
+<div class="buy-now-fixed js-sc-sale-buy-now-fixed">
+  <div class="js-no-variant" data-type="Bundle" data-toggle="#sc-purchase-form"><add-to-cart-button class="btn btn-success btn-lg btn-block js-no-variant-text" data-button-type="buy_now">Add to Cart ($39.95)</add-to-cart-button></div>
+</div>
+
+            </div>
+          </div>
+            <div class="col-md-5 col-xs-12">
+              <div class="sc-hero-unit-promotion">
+                  <div class="retail-price">$734.95</div>
+                  <div class="price-drop-message">
+                    94% off
+</div>              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="sc-hero-unit-clock hidden-xs hidden-sm pull-left">
+              <i class="icon-clock"></i>
+              Ending In: <abbr class="js-interval" data-use-interval="true" data-starts-at="2020-02-11T08:00:00Z" data-ends-at="2120-02-12T07:59:59Z"></abbr>
+            </div>
+            <a class="sc-favorite-icon js-favorite js-favorite-track primary-color " id="favorite-bundle" data-sale-name="The Total CompTIA Core Certification Prep Bundle" data-sale-id="26147" data-category="Sale" href="">
+  <i class="fa fa-heart" aria-hidden="true"></i>
+  <i class="fa fa-heart-o" aria-hidden="true"></i>
+
+  <span class="text-capitalize">
+      wishlist
+  </span>
+</a>
+              <div class="bundle-star-rating ratings-widget js-ratings-widget">
+                <div class="bundle-star-rating-content">
+                  <div class="js-ratings-widget-component"
+     data-sale-ratings-path="/v0/sale_ratings"
+     data-sale-id="26147"
+     data-sale-name="The Total CompTIA Core Certification Prep Bundle">
+</div>
+
+<script class="js-ratings-widget-template" type="text/html">
+  <div class="js-ratings-widget-scroll-to-link">
+    <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+    <span class="voters">({{ total_count }})</span>
+  </div>
+</script>
+
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            
+<div class="notification-subscription" data-notification-subscription="true" data-tracking-attributes="{&quot;subscription_sale_id&quot;:26147}">
+  <button class="notification-subscription__cta primary-color">
+    <i class="fa fa-bell-o"></i>
+    <span class="subscribe-text">Stay up-to-date on exclusive new deals!</span>
+  </button>
+</div>
+          </div>
+        </div>
+      </article>
+        <article class="hidden-xs col-lg-6 col-md-5 col-offset-md-1">
+          <div class="bubble-bundle-page-hero visible-md visible-lg text-right">
+            <div class="bubble">
+  <div class="title">Courses</div>
+  <div class="value">5</div>
+</div>
+
+<div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">594</div>
+</div>
+
+<div class="bubble">
+  <div class="title">Enrolled</div>
+  <div class="value">218</div>
+</div>
+
+
+          </div>
+        </article>
+    </div>
+  </div>
+</div>
+
+<div class="container sc-bundle-page" data-sale="{&quot;id&quot;:26147,&quot;name&quot;:&quot;The Total CompTIA Core Certification Prep Bundle&quot;,&quot;title&quot;:&quot;Top-Rated Instructor Mike Meyers Will Help You Ace the CompTIA Core Exams \u0026 Boost Your Career as an In-Demand IT Professional⁠ with 80+ Hours of Content&quot;,&quot;price_in_cents&quot;:3995,&quot;categories&quot;:[{&quot;name&quot;:&quot;IT Certification&quot;}]}" data-track-detail="{&quot;list&quot;:&quot;bundle page&quot;}" data-sales-show-page="true" data-page-bundlePage="true" id="sc-bundle-page">
+    <section>
+      <div class="bubble-bundle-page-header text-center visible-xs visible-sm">
+        <div class="bubble">
+  <div class="title">Courses</div>
+  <div class="value">5</div>
+</div>
+
+<div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">594</div>
+</div>
+
+<div class="bubble">
+  <div class="title">Enrolled</div>
+  <div class="value">218</div>
+</div>
+
+
+      </div>
+    </section>
+  <section>
+    <header>
+      <div class="bundle-page-heading">
+        <h4>What's Included</h4>
+      </div>
+    </header>
+    <section class="row">
+      <div class="products-grid">
+        <div class="products-grid-list">
+    <div class="pagination-table-row products-grid-product anchor-link"
+      data-toggle=".product-detail-header"
+      href="#product-item-35916">
+
+      <div class="products-grid-logo">
+        <img alt="CompTIA ITF+ (FC0-U61) Prep Course: Basic IT Knowledge &amp; IT Skills  - Product Image" src="https://cdnp1.stackassets.com/7fbcc156aad6de70862bfbcd380a884c04170dad/store/opt/204/153/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" />
+      </div>
+      <div class="products-grid-details ">
+        <span class="products-grid-name">CompTIA ITF+ (FC0-U61) Prep Course: Basic IT Knowledge &amp; IT Skills </span>
+          <div class="products-grid-price">$49.99 Value</div>
+      </div>
+    </div>
+    <div class="pagination-table-row products-grid-product anchor-link"
+      data-toggle=".product-detail-header"
+      href="#product-item-35917">
+
+      <div class="products-grid-logo">
+        <img alt="CompTIA A+ Core 1 (220-1001) Prep Course: Basic IT Infrastructure - Product Image" src="https://cdnp3.stackassets.com/bd7e86d731c8169a78b02182e2ab91fbec2eb837/store/opt/204/153/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" />
+      </div>
+      <div class="products-grid-details ">
+        <span class="products-grid-name">CompTIA A+ Core 1 (220-1001) Prep Course: Basic IT Infrastructure</span>
+          <div class="products-grid-price">$144.99 Value</div>
+      </div>
+    </div>
+    <div class="pagination-table-row products-grid-product anchor-link"
+      data-toggle=".product-detail-header"
+      href="#product-item-35918">
+
+      <div class="products-grid-logo">
+        <img alt="CompTIA A+ Core 2 (220-1002) Prep Course: Operating Systems &amp; Security - Product Image" src="https://cdnp3.stackassets.com/e374a1ba463b012243b3e949f36d8e918199511b/store/opt/204/153/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" />
+      </div>
+      <div class="products-grid-details ">
+        <span class="products-grid-name">CompTIA A+ Core 2 (220-1002) Prep Course: Operating Systems &amp; Security</span>
+          <div class="products-grid-price">$144.99 Value</div>
+      </div>
+    </div>
+    <div class="pagination-table-row products-grid-product anchor-link"
+      data-toggle=".product-detail-header"
+      href="#product-item-35919">
+
+      <div class="products-grid-logo">
+        <img alt="CompTIA Network+ N10-007 Prep Course: Troubleshooting &amp; Managing Networks - Product Image" src="https://cdnp2.stackassets.com/eb474cc67c3c8cfd1ce25ee1fba721a60d27cd68/store/opt/204/153/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" />
+      </div>
+      <div class="products-grid-details ">
+        <span class="products-grid-name">CompTIA Network+ N10-007 Prep Course: Troubleshooting &amp; Managing Networks</span>
+          <div class="products-grid-price">$199.99 Value</div>
+      </div>
+    </div>
+    <div class="pagination-table-row products-grid-product anchor-link"
+      data-toggle=".product-detail-header"
+      href="#product-item-35920">
+
+      <div class="products-grid-logo">
+        <img alt="CompTIA Security+ SY0-501 Prep Course: System Threats &amp; Vulnerabilities - Product Image" src="https://cdnp0.stackassets.com/a6700f3be57985da7066fbea33e9eea6575afdab/store/opt/204/153/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" />
+      </div>
+      <div class="products-grid-details ">
+        <span class="products-grid-name">CompTIA Security+ SY0-501 Prep Course: System Threats &amp; Vulnerabilities</span>
+          <div class="products-grid-price">$194.99 Value</div>
+      </div>
+    </div>
+</div>
+
+      </div>
+    </section>
+  </section>
+
+  <hr class="hidden-xs hidden-sm">
+
+  <section class="row">
+    <div class="bundle-summary-container js-pagination-container view-all">
+  <div class="product-detail-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-8">
+          <h4>Product Details</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-detail-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+            <div id="product-item-35916" class="js-product-details row pagination-details">
+              <div class="col-md-6">
+                <div id="sc-product-image-carousel35916" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+
+          <li class="active"></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="false" data-product-id="35916">
+
+          <figure class="image-item item active">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp1.stackassets.com/fe2715cdd7fc3761df66594848d1fc7b018ffdfa/store/opt/596/447/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp1.stackassets.com/c1c3f0ac7f3f840097dd17fe1b74acc70b12ea31/store/opt/720/541/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp1.stackassets.com/a08307a81a3e9cf44bfd6213ff101d81b085f0a5/store/opt/489/367/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp1.stackassets.com/fe2715cdd7fc3761df66594848d1fc7b018ffdfa/store/opt/596/447/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp0.stackassets.com/6d148d2a27ac69f94e9481b770d5988a1f42594e/store/opt/596/447/b82122bc512e1ddf54e350d39d4fc3999b2e861245c8d9cc35c14ad47c24/product_35916_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp0.stackassets.com/0c126b0de7abf93493e832a4fddb4a00778182a2/store/opt/720/541/b82122bc512e1ddf54e350d39d4fc3999b2e861245c8d9cc35c14ad47c24/product_35916_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp0.stackassets.com/2fc9fd3082a61ba5aaa01a4fb92b4efd427405b1/store/opt/489/367/b82122bc512e1ddf54e350d39d4fc3999b2e861245c8d9cc35c14ad47c24/product_35916_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp0.stackassets.com/6d148d2a27ac69f94e9481b770d5988a1f42594e/store/opt/596/447/b82122bc512e1ddf54e350d39d4fc3999b2e861245c8d9cc35c14ad47c24/product_35916_product_shots1.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35916"
+              data-slide-to="0"
+              class="product-thumbnail active primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp1.stackassets.com/c25a9dab4a45ae9289801630fd922f4366cf8876/store/opt/73/55/2cd633aba0a7ec78a2a47541cf5a24093abe1f9dcf9c37f575d8ecd64a34/product_35916_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35916"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp0.stackassets.com/f1665f569d75ddda7eddb91b25d04198018603a5/store/opt/73/55/b82122bc512e1ddf54e350d39d4fc3999b2e861245c8d9cc35c14ad47c24/product_35916_product_shots1.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+
+                    <div class="bubble-bundle-page-product-details text-center">
+                      <div class="bubble">
+  <div class="title">Access</div>
+  <div class="value">Lifetime</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Content</div>
+  <div class="value">4.0 hours</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">64</div>
+</div>
+
+                    </div>
+              </div>
+              <div class="col-md-6 course">
+                <h3><strong>CompTIA ITF+ (FC0-U61) Prep Course: Basic IT Knowledge &amp; IT Skills </strong></h3>
+                <h4>
+                  Iron Out Your IT Foundation Skills on Computer &amp; Mobile Devices, Software, Networks, Security, and Basic Troubleshooting
+                </h4>
+
+                <p>
+                  By <a class="brand-primary" href="/brands/total-seminars">Total Seminars</a>
+                    | in <a class="brand-primary" href="/collections/online-courses">Online Courses</a>
+                </p>
+                  <div class="bundle-page-product-details">
+  
+  <ul class="nav nav-tabs " role="tablist">
+      <li class="col-xs-4 active primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35916-description"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35916-description-content">
+          Description
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35916-instructor"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35916-instructor-content">
+          Instructor
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35916-specs"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35916-specs-content">
+          Specs
+        </a>
+</li>  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="product_35916-description-content" role="tabpanel">
+      <p>Be your own geek. This course is for everyone who has had to call a help desk or a geek friend to help them with basic computer, laptop, mobile, and network issues. You will learn about all kinds of computing devices as well as how to troubleshoot issues. You will also learn about security, safety, and preventative maintenance, as well as the basics of databases and programming, basic IT skills everyone should know these days. With 64 lectures lead by the industry's leading authority on CompTIA Certifications, this course covers everything you need to know to pass the CompTIA IT Fundamentals (ITF+) Certification (FC0-U61) exam, an important first step to higher CompTIA certifications.
+<br><br>
+</p>
+<ul>
+<li>Access 64 lectures &amp; 4 hours of content 24/7</li>
+<li>Better understand setup, software installation &amp; configuration, network connectivity, security issues, and basic troubleshooting</li>
+<li>Identify &amp; understand basic computer components and what they do</li>
+<li>Prepare for the CompTIA IT Fundamentals FC0-U61 Certification exam</li>
+</ul>
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35916-instructor-content" role="tabpanel">
+      Mike Meyers, affectionately called the "Alpha Geek", is the Industry's leading authority on CompTIA Certifications. He is the President and co-founder of Total Seminars, LLC, a provider of PC and network repair seminars, books, videos and courseware for thousands of organizations throughout the world. Mike has been involved in the computer and network repair industry since 1987 as a technician, instructor, author, consultant, and speaker.
+<br><br>
+Author of numerous popular PC books and videos, including the best-selling CompTIA A+ Certification All-in-One Exam Guide and CompTIA Network+ Certification All-in-One Exam Guide. Mike is also the series editor for the highly successful Mike Meyers' Certification Passport series and the Mike Meyers' Guide to series, all published by McGraw-Hill. Mike has sold over a million IT and certification books.
+<br><br>
+As well as writing Mike has personally taught thousands of students, including U.S. senators, U.S. Supreme Court Justices, members of the United Nation, every branch of the U.S. Armed Forces, many branches of the Department of Justice, hundreds of corporate clients and academic students at every level.
+<br><br>
+Mike's humorous and easy to follow approach to teaching comes through in his video training courses as well as his classroom instructor led courses. Making IT concepts easy to understand and fun to learn helps students stay engaged and retain the information.
+    </div>
+    <div class="tab-pane  fade in" id="product_35916-specs-content" role="tabpanel">
+      <p><b>Important Details</b></p>
+<ul>
+<li>Length of time users can access this course: lifetime</li>
+<li>Access options: web &amp; mobile streaming</li>
+<li>Certification of completion included</li>
+<li>Redemption deadline: redeem your code within 30 days of purchase</li>
+<li>Updates included</li>
+<li>Experience level required: intermediate</li>
+</ul>
+
+<p><b>Requirements</b></p>
+<ul><li>Internet access required</li></ul>
+
+    </div>
+  </div>
+
+</div>
+
+  <div class="course-outline inactive">
+    <h4 class="title">Course Outline <i class="fa sc-display-outline pull-right"></i></h4>
+
+      <ul>
+<li>Your First Program <div style="display: block;
+margin: 0 auto;
+padding: 10px;
+text-align: center;
+width: 30%;
+height: auto;
+background: rgb(11, 176, 255);
+border-radius: 5px;
+margin-bottom: 10px;"><a style="color:white;" target="_blank" href="https://stackskills.com/courses/comptia-it-fundamentals-fc0-u61-the-total-course/lectures/13613383">Preview</a></div></li>
+<li>How People Use Computers
+
+<ul>
+<li>Introduction - 2:49</li>
+<li>The Case for Computer Literacy - 2:30</li>
+<li>Features Common to Every Computing Device - 2:25</li>
+<li>Common General-Purpose Computing Devices - 2:19</li>
+<li>Networks of Computing Devices - 4:16</li>
+<li>Remotely-Accessed Computer Systems - 3:37</li>
+<li>Specialized Computer Systems - 2:01</li>
+<li>Specialty I/O Devices - 1:17</li>
+</ul></li>
+<li>System Hardware
+
+<ul>
+<li>CPUs - 3:29</li>
+<li>Passive and Active Cooling - 3:12</li>
+<li>RAM and Active Memory - 4:54</li>
+<li>Motherboards - 2:33</li>
+<li>Power Supplies - 2:57</li>
+<li>AMA - Ask Me Anything about System Hardware - 7:07</li>
+</ul></li>
+<li>Device Ports and Peripherals
+
+<ul>
+<li>Ports and Connectors - 3:13</li>
+<li>General Use of I/O Devices - 2:23</li>
+<li>AMA - Ask Me Anything About I/O, Ports and Peripherals - 7:26</li>
+</ul></li>
+<li>Data Storage and Sharing
+
+<ul>
+<li>Basics of Binary - 3:34</li>
+<li>Storage Technologies - 3:44</li>
+<li>Mass Storage Variation - 2:50</li>
+<li>AMA - Ask Me Anything About Data Storage and Sharing - 6:57</li>
+</ul></li>
+<li>Understanding Operating Systems
+
+<ul>
+<li>Operating System Functions - 4:18</li>
+<li>Operating System Interfaces - 4:32</li>
+<li>AMA - Ask Me Anything About Understanding OSes - 5:13</li>
+</ul></li>
+<li>Setting Up and Configuring a PC
+
+<ul>
+<li>Preparing the Work Area - 1:54</li>
+<li>Setting up a Desktop PC - 1:23</li>
+<li>Completing PC Setup - 4:13</li>
+<li>AMA - Ask Me Anything About Setting up and Configuring a PC - 8:42</li>
+</ul></li>
+<li>Setting Up and Configuring a Mobile Device
+
+<ul>
+<li>Personalizing a Tablet - 7:37</li>
+<li>AMA - Ask Me Anything About Mobile Devices Part 1 - 7:16</li>
+<li>AMA - Ask Me Anything About Mobile Devices Part 2 - 7:10</li>
+</ul></li>
+<li>Managing Files
+
+<ul>
+<li>File Management Tools - 2:00</li>
+<li>File Manipulation - 5:46</li>
+<li>Backups - 3:04</li>
+<li>AMA - Ask Me Anything About Managing Files - 7:38</li>
+</ul></li>
+<li>Using and Managing Application Software
+
+<ul>
+<li>Walking Survey of Applications - 2:46</li>
+<li>Managing Applications - 2:44</li>
+<li>Applications and Extensions - 4:12</li>
+<li>AMA - Ask Me Anything About Working with Applications - 7:10</li>
+</ul></li>
+<li>Configuring Network and Internet Connectivity
+
+<ul>
+<li>Wi-Fi Setup - 6:20</li>
+<li>Going High Speed - 3:11</li>
+<li>Setting Up and Sharing Printers - 4:51</li>
+<li>AMA - Ask Me Anything About Networks and Internet Connectivity Part 1 - 6:35</li>
+<li>AMA - Ask Me Anything About Networks and Internet Connectivity Part 2 - 4:50</li>
+</ul></li>
+<li>IT Security Threat Mitigation
+
+<ul>
+<li>Physical Security - 4:33</li>
+<li>Dealing with Malware - 3:27</li>
+<li>Password Management - 2:45</li>
+<li>Clickworthy - 3:02</li>
+<li>Perils of Public Internet - 2:14</li>
+<li>AMA - Ask Me Anything About IT Threat Mitigation Part 1 - 6:43</li>
+<li>AMA - Ask Me Anything About IT Threat Mitigation Part 2 - 8:24</li>
+</ul></li>
+<li>Computer Maintenance and Management
+
+<ul>
+<li>Power Management - 1:35</li>
+<li>Cleaning and Maintaining Computers - 1:53</li>
+<li>Trash it or Stash it? - 2:25</li>
+<li>AMA - Ask Me Anything About Computer Maintenance and Management - 10:54</li>
+</ul></li>
+<li>IT Troubleshooting
+
+<ul>
+<li>Troubleshooting 101 - 2:54</li>
+<li>AMA - Ask Me Anything About Troubleshooting Computers Part 1 - 10:05</li>
+<li>AMA - Ask Me Anything About Troubleshooting Computers Part 2 - 10:32</li>
+</ul></li>
+<li>Understanding Databases
+
+<ul>
+<li>Introduction to Databases - 5:40</li>
+<li>Database Details - 6:07</li>
+<li>AMA – Ask Me Anything about Databases - 6:09</li>
+</ul></li>
+<li>Developing and Implementing Software
+
+<ul>
+<li>Introduction to Programming - 4:23</li>
+<li>Programming with a PBJ Sandwich - 7:52</li>
+<li>AMA – Ask Me Anything about Programming - 3:52</li>
+</ul></li>
+</ul>
+
+    <p class="text-center">
+      <a class="open-all" data-target=".course-outline" href>View Full Curriculum</a>
+    </p>
+  </div>
+
+              </div>
+            </div>
+            <hr class="product-divider">
+            <div id="product-item-35917" class="js-product-details row pagination-details">
+              <div class="col-md-6">
+                <div id="sc-product-image-carousel35917" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+
+          <li class="active"></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="false" data-product-id="35917">
+
+          <figure class="image-item item active">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp3.stackassets.com/fb7d2a797fcb21c0a9784122533071562fca5db4/store/opt/596/447/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp3.stackassets.com/c42fdc4b4307f541a0a5b162646981651293c811/store/opt/720/541/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp3.stackassets.com/eef3e90aa32c0e5e1de337ec2295161ee0eedfb8/store/opt/489/367/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp3.stackassets.com/fb7d2a797fcb21c0a9784122533071562fca5db4/store/opt/596/447/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp0.stackassets.com/e913de39ef581b4aec954f1762501a043f3380a1/store/opt/596/447/a60fbe7fa115ba5880f9ae8e249756e96552a1441deb2a26e9fb59784744/product_35917_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp0.stackassets.com/7af1504a052053150afb45b05f8d8d79fa608c39/store/opt/720/541/a60fbe7fa115ba5880f9ae8e249756e96552a1441deb2a26e9fb59784744/product_35917_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp0.stackassets.com/67317421b8394f567dd734122ae4d8597c1d5934/store/opt/489/367/a60fbe7fa115ba5880f9ae8e249756e96552a1441deb2a26e9fb59784744/product_35917_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp0.stackassets.com/e913de39ef581b4aec954f1762501a043f3380a1/store/opt/596/447/a60fbe7fa115ba5880f9ae8e249756e96552a1441deb2a26e9fb59784744/product_35917_product_shots1.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35917"
+              data-slide-to="0"
+              class="product-thumbnail active primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp3.stackassets.com/420735d53a65ad9bc04a1031b78a7a6259ac923a/store/opt/73/55/d10bd8076b75d0d8494e97796adc4b17b9c21da52021ed4b7e46f40119ce/product_35917_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35917"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp0.stackassets.com/aba3493071c57e614d3c8f433b7b241452a297eb/store/opt/73/55/a60fbe7fa115ba5880f9ae8e249756e96552a1441deb2a26e9fb59784744/product_35917_product_shots1.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+
+                    <div class="bubble-bundle-page-product-details text-center">
+                      <div class="bubble">
+  <div class="title">Access</div>
+  <div class="value">Lifetime</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Content</div>
+  <div class="value">17.0 hours</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">131</div>
+</div>
+
+                    </div>
+              </div>
+              <div class="col-md-6 course">
+                <h3><strong>CompTIA A+ Core 1 (220-1001) Prep Course: Basic IT Infrastructure</strong></h3>
+                <h4>
+                  Kickstart Your IT Career by Acing the Industry-Standard Certification for Security to Cloud, Data Management &amp; More
+                </h4>
+
+                <p>
+                  By <a class="brand-primary" href="/brands/total-seminars">Total Seminars</a>
+                    | in <a class="brand-primary" href="/collections/online-courses">Online Courses</a>
+                </p>
+                  <div class="bundle-page-product-details">
+  
+  <ul class="nav nav-tabs " role="tablist">
+      <li class="col-xs-4 active primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35917-description"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35917-description-content">
+          Description
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35917-instructor"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35917-instructor-content">
+          Instructor
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35917-specs"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35917-specs-content">
+          Specs
+        </a>
+</li>  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="product_35917-description-content" role="tabpanel">
+      <p>This is the first of a two-course series and is designed to prepare you to take and pass the CompTIA A+ Core 1 (220-1001) exam. CompTIA A+ is the industry standard for establishing a career in IT. Particularly CompTIA A+ 220-1001 covers mobile devices, networking technology, hardware, virtualization and cloud computing, and network troubleshooting. With 131 lectures lead by the industry's leading authority on CompTIA Certifications, this video series will help you better understand these concepts and prepare you to pass the first part of the CompTIA A+ certification.
+<br><br>
+</p>
+<ul>
+<li>Access 131 lectures &amp; 17 hours of content 24/7</li>
+<li>Learn everything about monitors, CPUs, motherboards, hard drives, RAM, &amp; more</li>
+<li>Understand what the cloud is &amp; how virtualization works</li>
+<li>Build everything from a basic workstation to an awesome gaming system</li>
+<li>Troubleshoot hardware &amp; network issues</li>
+</ul>
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35917-instructor-content" role="tabpanel">
+      Mike Meyers, affectionately called the "Alpha Geek", is the Industry's leading authority on CompTIA Certifications. He is the President and co-founder of Total Seminars, LLC, a provider of PC and network repair seminars, books, videos and courseware for thousands of organizations throughout the world. Mike has been involved in the computer and network repair industry since 1987 as a technician, instructor, author, consultant, and speaker.
+<br><br>
+Author of numerous popular PC books and videos, including the best-selling CompTIA A+ Certification All-in-One Exam Guide and CompTIA Network+ Certification All-in-One Exam Guide. Mike is also the series editor for the highly successful Mike Meyers' Certification Passport series and the Mike Meyers' Guide to series, all published by McGraw-Hill. Mike has sold over a million IT and certification books.
+<br><br>
+As well as writing Mike has personally taught thousands of students, including U.S. senators, U.S. Supreme Court Justices, members of the United Nation, every branch of the U.S. Armed Forces, many branches of the Department of Justice, hundreds of corporate clients and academic students at every level.
+<br><br>
+Mike's humorous and easy to follow approach to teaching comes through in his video training courses as well as his classroom instructor led courses. Making IT concepts easy to understand and fun to learn helps students stay engaged and retain the information.
+    </div>
+    <div class="tab-pane  fade in" id="product_35917-specs-content" role="tabpanel">
+      <p><b>Important Details</b></p>
+<ul>
+<li>Length of time users can access this course: lifetime</li>
+<li>Access options: web &amp; mobile streaming</li>
+<li>Certification of completion included</li>
+<li>Redemption deadline: redeem your code within 30 days of purchase</li>
+<li>Updates included</li>
+<li>Experience level required: beginner</li>
+</ul>
+
+<p><b>Requirements</b></p>
+<ul>
+<li>Internet access required</li>
+<li>Basic familiarity with computers and networks</li>
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+  <div class="course-outline inactive">
+    <h4 class="title">Course Outline <i class="fa sc-display-outline pull-right"></i></h4>
+
+      <ul>
+<li>All About the CompTIA A+
+
+<ul>
+<li>CompTIA A+ Core 1 (220-1001) Introduction - 2:04</li>
+<li>What is the CompTIA A+? - 2:12</li>
+<li>Why get CompTIA A+ Certified? - 2:52</li>
+<li>What is on the CompTIA A+ Core 1 (220-1001) Exam? - 8:51</li>
+<li>How to Pass the CompTIA A+ Exams - 4:14</li>
+<li>How to Use this Video Course - 2:32</li>
+</ul></li>
+<li>Book Chapter 1 - Safety and Professionalism
+
+<ul>
+<li>Tools of the Trade - 6:18</li>
+<li>Troubleshooting Theory - 9:59</li>
+</ul></li>
+<li>Book Chapter 2: The Visible Computer
+
+<ul>
+<li>Primary PC Components - 4:51</li>
+<li>External Connections - 10:37</li>
+<li>Inside the PC - 7:48</li>
+<li>What is a Computer? - 6:55</li>
+</ul></li>
+<li>Book Chapter 3 - CPUs
+
+<ul>
+<li>What is a CPU? - 15:04</li>
+<li>CPU Speeds and Cores - 12:02</li>
+<li>Caching - 7:13</li>
+<li>CPU Sockets - 12:16</li>
+<li>Installing a CPU - 11:03</li>
+<li>Liquid Cooling - 3:58</li>
+</ul></li>
+<li>Book Chapter 4 - RAM
+
+<ul>
+<li>RAM Technology - 10:36</li>
+<li>RAM Capacity - 7:59</li>
+<li>RAM Features - 7:23</li>
+<li>Installing RAM - 7:24</li>
+</ul></li>
+<li>Book Chapter 5 - Firmware
+
+<ul>
+<li>What is the BIOS? - 6:02</li>
+<li>POST - 8:46</li>
+<li>System Setup - 8:59</li>
+<li>Troubleshooting Firmware - 11:53</li>
+</ul></li>
+<li>Book Chapter 6 - Motherboards
+
+<ul>
+<li>Form Factors - 6:22</li>
+<li>Chipsets - 4:51</li>
+<li>Touring the Motherboard - 14:11</li>
+<li>Touring the Case - 6:46</li>
+<li>Installing a Motherboard - 9:16</li>
+</ul></li>
+<li>Book Chapter 7 - Power Supplies
+
+<ul>
+<li>The Power Supply - 8:30</li>
+<li>Mouting a Power Supply - 5:18</li>
+<li>Choosing a Power Supply - 7:39</li>
+<li>Cooling Your PC - 11:26</li>
+<li>Troubleshooting Power Supplies - 9:19</li>
+<li>Troubleshooting Core Components - 14:19</li>
+</ul></li>
+<li>Book Chapter 8 - Mass Storage Technologies
+
+<ul>
+<li>Introduction to Mass Storage - 12:32</li>
+<li>Magnetic Disk Drives - 8:28</li>
+<li>Solid State Drives - 8:03</li>
+<li>SCSI - 3:25</li>
+<li>Boot Order - 6:56</li>
+</ul></li>
+<li>Book Chapter 9 - Implementing Mass Storage
+
+<ul>
+<li>New Installation - First Drive - 5:23</li>
+<li>RAID - 11:01</li>
+<li>Hardware RAID - 7:01</li>
+<li>Mass Storage Troubleshooting - 8:00</li>
+</ul></li>
+<li>Book Chapter 10 - Essential Peripherals
+
+<ul>
+<li>Optical Media - 9:53</li>
+<li>USB Standards - 10:11</li>
+<li>Understanding USB - 10:47</li>
+<li>Configuring USB - 7:16</li>
+<li>Thunder and Lightning - 5:41</li>
+<li>Keyboards and Mice - 7:57</li>
+<li>Sight and Sound - 6:35</li>
+<li>Readers and Scanners - 7:33</li>
+<li>Using Expansion Cards - 7:55</li>
+</ul></li>
+<li>Book Chapter 11 - Building a PC
+
+<ul>
+<li>The Right PC for the Job - 12:37</li>
+</ul></li>
+<li>Book Chapter 17 - Display Technologies
+
+<ul>
+<li>Monitor Technologies - 7:51</li>
+<li>LCD Breakdown - 4:14</li>
+<li>Graphics Cards and Connections - 13:06</li>
+<li>Installing a Graphics Card - 6:47</li>
+<li>Projectors - 4:52</li>
+<li>Troubleshooting Monitors - 5:42</li>
+</ul></li>
+<li>Book Chapter 18 - Essentials of Networking
+
+<ul>
+<li>Introduction to Networking - 8:10</li>
+<li>Hubs vs. Switches - 5:17</li>
+<li>Hexadecimal - 7:07</li>
+<li>WANs and Routers - 9:12</li>
+<li>Cables and Connectors - 10:35</li>
+<li>Crimping Cables - 10:03</li>
+<li>Structured Cabling - 10:40</li>
+</ul></li>
+<li>Book Chapter 19 - Local Area Networking
+
+<ul>
+<li>Introduction to TCP/IP - 14:22</li>
+<li>Network IDs and Subnet Masks - 4:44</li>
+<li>Special IP Addresses - 9:26</li>
+<li>NAT - 7:23</li>
+<li>Dynamic IP Addressing - 9:51</li>
+<li>IPv6 - 7:03</li>
+<li>Port Numbers - 11:52</li>
+<li>TCP, UDP, and ICMP - 6:08</li>
+<li>Understanding DNS - 8:48</li>
+<li>Working with DNS - 7:26</li>
+<li>Windows Naming - 7:40</li>
+<li>Routers - 11:35</li>
+<li>Basic Router Configuration - 12:02</li>
+<li>Advanced Router Configuration - 6:15</li>
+<li>VLANs - 7:22</li>
+<li>Network Troubleshooting - 5:25</li>
+</ul></li>
+<li>Book Chapter 20 - Wireless Networking
+
+<ul>
+<li>Wireless Network Hardware - 10:40</li>
+<li>Wi-Fi Standards - 9:32</li>
+<li>Basic WAP Setup - 11:09</li>
+<li>Connecting to a Wi-Fi Network - 8:42</li>
+<li>It&#39;s a Huge Mesh - 4:15</li>
+<li>Beyond Wi-Fi - 6:56</li>
+<li>Troubleshooting Wireless Connections - 6:59</li>
+</ul></li>
+<li>Book Chapter 21 - The Internet
+
+<ul>
+<li>Beyond the LAN - 2:57</li>
+<li>Internet Tiers - 5:58</li>
+<li>Dial-up Connections - 8:18</li>
+<li>Broadband Connections - 10:09</li>
+<li>Firewalls and Servers - 6:15</li>
+<li>FTP - 7:09</li>
+<li>E-Mail - 7:42</li>
+<li>Proxy Servers - 6:23</li>
+<li>Virtual Private Networks (VPNs) - 7:59</li>
+<li>Internet of Things (IoT) - 3:48</li>
+</ul></li>
+<li>Book Chapter 22 - Virtualization
+
+<ul>
+<li>Understanding Virtualization - 10:14</li>
+<li>Your First Virtual Machine - 11:27</li>
+<li>Advanced Virtualization Setup - 10:20</li>
+<li>Cloud Computing - 7:57</li>
+<li>Cloud Ownership - 2:35</li>
+<li>Cloud-Based Applications - 6:23</li>
+</ul></li>
+<li>Book Chapter 23 - Portable Computing
+
+<ul>
+<li>Laptop Features - 8:09</li>
+<li>Laptop Hardware Troubleshooting - The Tools - 4:54</li>
+<li>Laptop Hardware - Core Hardware - 3:41</li>
+<li>Laptop Hardware - CPU and Motherboard - 6:57</li>
+<li>Touring Your Laptop Display - 4:08</li>
+</ul></li>
+<li>Book Chapter 24 - Understanding Mobile Devices
+
+<ul>
+<li>What is a Mobile Device? - 8:48</li>
+<li>Mobile Connections - 9:39</li>
+<li>Touring Android - 10:13</li>
+<li>Touring iOS - 7:39</li>
+<li>Virtual Reality - 2:48</li>
+</ul></li>
+<li>Book Chapter 25 - Care and Feeding of Mobile Devices
+
+<ul>
+<li>Maintaining Mobile Devices - 10:44</li>
+<li>Mobile Devices and E-mail - 9:38</li>
+<li>Mobile Synchronization - 7:41</li>
+</ul></li>
+<li>Book Chapter 26 - Printers and Multifunction Devices
+
+<ul>
+<li>Laser Printers - 12:38</li>
+<li>Inkjet Printers - 7:54</li>
+<li>Impact Printers - 4:06</li>
+<li>Thermal Printers - 3:36</li>
+<li>Installing a Local Printer - 13:55</li>
+<li>Sharing Printers - 8:27</li>
+<li>Installing Wireless and Cloud Printers - 10:19</li>
+<li>Troubleshooting Printers - 10:36</li>
+<li>3D Printing - 7:12</li>
+</ul></li>
+<li>Book Chapter 27 - Securing Computers
+
+<ul>
+<li>Dealing with Threats - 7:24</li>
+</ul></li>
+</ul>
+
+    <p class="text-center">
+      <a class="open-all" data-target=".course-outline" href>View Full Curriculum</a>
+    </p>
+  </div>
+
+              </div>
+            </div>
+            <hr class="product-divider">
+            <div id="product-item-35918" class="js-product-details row pagination-details">
+              <div class="col-md-6">
+                <div id="sc-product-image-carousel35918" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+
+          <li class="active"></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="false" data-product-id="35918">
+
+          <figure class="image-item item active">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp3.stackassets.com/377d9a40f2f6e7fcd1cb4464159594a68a4c75e3/store/opt/596/447/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp3.stackassets.com/a3235dd2cf2f090640a9dfaca41e32b05faafcea/store/opt/720/541/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp3.stackassets.com/31e410214aa34420d371863a67f40201c65f31ee/store/opt/489/367/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp3.stackassets.com/377d9a40f2f6e7fcd1cb4464159594a68a4c75e3/store/opt/596/447/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp2.stackassets.com/be60086de7cf9383eb3b571afaaa9f4f603adcf3/store/opt/596/447/7f20d46b10298cd5a98f266f716b0ce86375c71d6fbc0401da06c9508fe6/product_35918_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp2.stackassets.com/85efd64445b7ef97f24d6554e0dbb19095680a49/store/opt/720/541/7f20d46b10298cd5a98f266f716b0ce86375c71d6fbc0401da06c9508fe6/product_35918_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp2.stackassets.com/b49ce0116bdf26a9f25ea759cd643b67a163c26c/store/opt/489/367/7f20d46b10298cd5a98f266f716b0ce86375c71d6fbc0401da06c9508fe6/product_35918_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp2.stackassets.com/be60086de7cf9383eb3b571afaaa9f4f603adcf3/store/opt/596/447/7f20d46b10298cd5a98f266f716b0ce86375c71d6fbc0401da06c9508fe6/product_35918_product_shots1.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35918"
+              data-slide-to="0"
+              class="product-thumbnail active primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp3.stackassets.com/7eefadaa5778f6e6adaaa21ecbeddeaf246e438c/store/opt/73/55/81063c6a549a2434c793a92eff4c475d6aaafbd1abd3c0121cf5eaa934b6/product_35918_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35918"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp2.stackassets.com/5102caa8707be51f033fb2c6496e8e840f162c6e/store/opt/73/55/7f20d46b10298cd5a98f266f716b0ce86375c71d6fbc0401da06c9508fe6/product_35918_product_shots1.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+
+                    <div class="bubble-bundle-page-product-details text-center">
+                      <div class="bubble">
+  <div class="title">Access</div>
+  <div class="value">Lifetime</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Content</div>
+  <div class="value">14.0 hours</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">106</div>
+</div>
+
+                    </div>
+              </div>
+              <div class="col-md-6 course">
+                <h3><strong>CompTIA A+ Core 2 (220-1002) Prep Course: Operating Systems &amp; Security</strong></h3>
+                <h4>
+                  Develop Expanded Skills on Configurations, Security Software Troubleshooting &amp; Operational Procedures
+                </h4>
+
+                <p>
+                  By <a class="brand-primary" href="/brands/total-seminars">Total Seminars</a>
+                    | in <a class="brand-primary" href="/collections/online-courses">Online Courses</a>
+                </p>
+                  <div class="bundle-page-product-details">
+  
+  <ul class="nav nav-tabs " role="tablist">
+      <li class="col-xs-4 active primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35918-description"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35918-description-content">
+          Description
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35918-instructor"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35918-instructor-content">
+          Instructor
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35918-specs"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35918-specs-content">
+          Specs
+        </a>
+</li>  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="product_35918-description-content" role="tabpanel">
+      <p>The CompTIA A+ certification is an IT credential trusted by employers around the world to identify the go-to person in endpoint management &amp; technical support roles. It requires two exams: Core 1 (220-1001) and Core 2 (220-1002), and this course will help you ace the latter. With 106 lectures lead by the industry's leading authority on CompTIA Certifications, this video series will cover installing and configuring operating systems, expanded security, software troubleshooting and operational procedures. It will help you with these more advanced concepts and prepare you to complete the CompTIA A+ certification. 
+<br><br>
+</p>
+<ul>
+<li>Access 106 lectures &amp; 14 hours of content 24/7</li>
+<li>Learn everything about operating systems: Windows, Mac, Linux, iOS, Android</li>
+<li>Secure your computer, mobile device, &amp; network</li>
+<li>Learn the industry standards &amp; best practices for documentation, change management, disaster prevention, and recovery, procedures, and policies</li>
+<li>Understand security concepts like malware, antivirus, anti-malware, &amp; networking security protocols</li>
+</ul>
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35918-instructor-content" role="tabpanel">
+      Mike Meyers, affectionately called the "Alpha Geek", is the Industry's leading authority on CompTIA Certifications. He is the President and co-founder of Total Seminars, LLC, a provider of PC and network repair seminars, books, videos and courseware for thousands of organizations throughout the world. Mike has been involved in the computer and network repair industry since 1987 as a technician, instructor, author, consultant, and speaker.
+<br><br>
+Author of numerous popular PC books and videos, including the best-selling CompTIA A+ Certification All-in-One Exam Guide and CompTIA Network+ Certification All-in-One Exam Guide. Mike is also the series editor for the highly successful Mike Meyers' Certification Passport series and the Mike Meyers' Guide to series, all published by McGraw-Hill. Mike has sold over a million IT and certification books.
+<br><br>
+As well as writing Mike has personally taught thousands of students, including U.S. senators, U.S. Supreme Court Justices, members of the United Nation, every branch of the U.S. Armed Forces, many branches of the Department of Justice, hundreds of corporate clients and academic students at every level.
+<br><br>
+Mike's humorous and easy to follow approach to teaching comes through in his video training courses as well as his classroom instructor led courses. Making IT concepts easy to understand and fun to learn helps students stay engaged and retain the information.
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35918-specs-content" role="tabpanel">
+      <p><b>Important Details</b></p>
+<ul>
+<li>Length of time users can access this course: lifetime</li>
+<li>Access options: web &amp; mobile streaming</li>
+<li>Certification of completion included</li>
+<li>Redemption deadline: redeem your code within 30 days of purchase</li>
+<li>Updates included</li>
+<li>Experience level required: beginner</li>
+</ul>
+
+<p><b>Requirements</b></p>
+<ul>
+<li>Internet access required</li>
+<li>Basic familiarity with computers and networks</li>
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+  <div class="course-outline inactive">
+    <h4 class="title">Course Outline <i class="fa sc-display-outline pull-right"></i></h4>
+
+      <ul>
+<li>All About the CompTIA A+ 2019 Core 2 Exam
+
+<ul>
+<li>CompTIA A+ Core 2 (220-1002) Introduction - 2:29</li>
+<li>What is the CompTIA A+? - 2:12</li>
+<li>Why get CompTIA A+ Certified? - 2:52</li>
+<li>What is on the CompTIA A+ Core 2 (220-1002) Exam? - 4:13</li>
+<li>How to Pass the CompTIA A+ Exams - 4:14</li>
+<li>How to Use this Video Course - 2:32</li>
+</ul></li>
+<li>Book Chapter 1 - Safety and Professionalism
+
+<ul>
+<li>Professional Communication, Part 1 - 6:19</li>
+<li>Professional Communication, Part 2 - 7:28</li>
+<li>Physical Safety - 7:08</li>
+</ul></li>
+<li>Book Chapter 2 - The Visible Computer
+
+<ul>
+<li>What is an Operating System? - 9:23</li>
+<li>Users and Super Users - 5:22</li>
+<li>Why Windows? - 7:46</li>
+<li>Windows Editions and Versions - 11:35</li>
+<li>Touring the macOS - 6:27</li>
+<li>Touring Linux - 7:55</li>
+</ul></li>
+<li>Book Chapter 3 - CPUs
+
+<ul>
+<li>32-Bit vs. 64-Bit Processing - 11:58</li>
+</ul></li>
+<li>Book Chapter 4 - RAM
+
+<ul>
+<li>Virtual Memory - 6:25</li>
+</ul></li>
+<li>Book Chapter 7 - Power Supply
+
+<ul>
+<li>Power Protection - 9:40</li>
+</ul></li>
+<li>Book Chapter 9 - Implementing Mass Storage
+
+<ul>
+<li>Understanding Partitioning - 4:15</li>
+<li>MBR Partitioning - 11:59</li>
+<li>GPT Partitioning - 8:33</li>
+<li>Understanding File Systems - 11:33</li>
+<li>Popular File Systems - 7:10</li>
+<li>Formatting in Action - 11:07</li>
+<li>Dynamic Disks - 8:33</li>
+<li>Software RAID in Storage Spaces - 9:35</li>
+<li>Encrypting Mass Storage - 9:28</li>
+</ul></li>
+<li>Book Chapter 11 - Building a PC
+
+<ul>
+<li>Boot from Everything - 11:53</li>
+<li>Installing Windows - 12:08</li>
+<li>Post-Installation Tasks - 11:34</li>
+<li>Windows Installation options - 6:43</li>
+</ul></li>
+<li>Book Chapter 12 - Windows Under the Hood
+
+<ul>
+<li>What is the Registry? - 10:38</li>
+<li>Processes - 7:00</li>
+<li>Services - 4:25</li>
+<li>Your Windows Toolset - 8:20</li>
+<li>Windows 7 Task Manager - 8:53</li>
+<li>Windows 10 Task Manager - 5:46</li>
+<li>Information and Configuration Tools - 10:48</li>
+<li>Performance Monitor - 11:31</li>
+<li>Event Viewer - 7:09</li>
+<li>Tools for Programmers - 7:32</li>
+</ul></li>
+<li>Book Chapter 13 - Users, Groups, and Permissions
+
+<ul>
+<li>Introduction to Users and Groups - 6:28</li>
+<li>Managing Users and Groups - 12:14</li>
+<li>NTFS Permissions - 8:18</li>
+<li>Linux and macOS Permissions - 4:59</li>
+<li>File Explorer - 13:36</li>
+<li>Sharing Resources - 10:34</li>
+<li>Security Policies - 7:52</li>
+</ul></li>
+<li>Book Chapter 14 - Maintaining and Optimizing Operating Systems
+
+<ul>
+<li>Patch Management - 11:13</li>
+<li>Working with Disks - 6:20</li>
+<li>Working with Applications - 7:19</li>
+<li>System Restore - 4:43</li>
+<li>Backing up Your Files - 7:25</li>
+<li>Task Scheduler - 6:48</li>
+</ul></li>
+<li>Book Chapter 15 - Working with the Command-Line Interface
+
+<ul>
+<li>Understanding the CLI - 11:02</li>
+<li>Navigating the CLI - 13:40</li>
+<li>Working with Folders - 6:39</li>
+<li>Working with Files - 11:06</li>
+<li>Working with Drives - 13:02</li>
+<li>Super Copy Commands - 8:32</li>
+<li>Advanced Windows Command Line - 7:51</li>
+<li>Advanced Linux Commands - 13:17</li>
+<li>Command-Line Permissions - 7:34</li>
+<li>Introduction to Scripting - 9:45</li>
+<li>Interpreted Languages - 12:25</li>
+</ul></li>
+<li>Book Chapter 16 - Troubleshooting Operating Systems
+
+<ul>
+<li>Windows Recovery Environment - 5:20</li>
+<li>Advanced Windows Startup Options - 7:07</li>
+<li>Troubleshooting Boot Problems - 9:44</li>
+<li>Troubleshooting at the GUI - 11:25</li>
+<li>Troubleshooting Applications - 6:42</li>
+<li>Kernel Panic - 5:10</li>
+</ul></li>
+<li>Book Chapter 17 - Display Technologies
+
+<ul>
+<li>Resolutions and Aspect Ratios - 6:16</li>
+<li>Multiple Monitors - 4:49</li>
+</ul></li>
+<li>Book Chapter 18 - Essentials of Networking
+
+<ul>
+<li>Network Card Troubleshooting - 9:24</li>
+</ul></li>
+<li>Book Chapter 19 - Local Area Networking
+
+<ul>
+<li>Working with Connections - 9:12</li>
+<li>Working with Workgroups - 8:11</li>
+<li>Working with Active Directory - 13:50</li>
+<li>Windows Sharing with Mac and Linux - 7:15</li>
+<li>Net Command - 4:27</li>
+<li>Firewall Configuration - 10:55</li>
+<li>Windows Firewall - 7:56</li>
+<li>Port Forwarding - 7:24</li>
+</ul></li>
+<li>Book Chapter 20 - Wireless Networking
+
+<ul>
+<li>Wireless Encryption - 10:40</li>
+<li>Enterprise Wireless - 15:41</li>
+</ul></li>
+<li>Book Chapter 21 - The Internet
+
+<ul>
+<li>Telnet and SSH - 6:59</li>
+<li>Remote Desktop Connections - 6:17</li>
+<li>The World Wide Web - 9:07</li>
+<li>Troubleshooting Internet Connections - 6:59</li>
+</ul></li>
+<li>Book Chapter 23 - Portable Computing
+
+<ul>
+<li>Power Management - 11:10</li>
+</ul></li>
+<li>Book Chapter 25 - Care and Feeding of Mobile Devices
+
+<ul>
+<li>Mobile Device Security - 7:52</li>
+<li>Mobile Security Troubleshooting - 5:48</li>
+<li>Mobile Device Troubleshooting - 9:36</li>
+</ul></li>
+<li>Book Chapter 27 - Securing Computers
+
+<ul>
+<li>Threats - 9:48</li>
+<li>Physical Security - 8:22</li>
+<li>Passwords and Authentication - 13:48</li>
+<li>Malware - 13:43</li>
+<li>Anti-Malware - 11:29</li>
+<li>Social Engineering - 5:50</li>
+<li>Licensing - 9:37</li>
+<li>Incident Response - 5:05</li>
+<li>Environmental Controls - 6:02</li>
+</ul></li>
+<li>Book Chapter 28 - Operational Procedures
+
+<ul>
+<li>Documents You Need to Know - 8:54</li>
+<li>Data You Need to Know - 4:08</li>
+<li>Change Management - 5:53</li>
+<li>The Zen of Backup - 11:16</li>
+<li>Recycling and Data Destruction - 6:37</li>
+</ul></li>
+</ul>
+
+    <p class="text-center">
+      <a class="open-all" data-target=".course-outline" href>View Full Curriculum</a>
+    </p>
+  </div>
+
+              </div>
+            </div>
+            <hr class="product-divider">
+            <div id="product-item-35919" class="js-product-details row pagination-details">
+              <div class="col-md-6">
+                <div id="sc-product-image-carousel35919" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+
+          <li class="active"></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="false" data-product-id="35919">
+
+          <figure class="image-item item active">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp2.stackassets.com/df1e9a8c1555ce058c671aef780a84867e63d183/store/opt/596/447/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp2.stackassets.com/65f50c53fc35c4de8f7f62167a3a875ed9a913a0/store/opt/720/541/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp2.stackassets.com/0113062d8f1a047d3e299d43965273a0cb419c5f/store/opt/489/367/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp2.stackassets.com/df1e9a8c1555ce058c671aef780a84867e63d183/store/opt/596/447/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp1.stackassets.com/0203df818a80c63e23d12d91c74dcc4383959f22/store/opt/596/447/c29f3308fe1743e31174a9e776cb6970de989b48e1a37e3d8856fc690474/product_35919_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp1.stackassets.com/6899b0558a2028a5aa7e35312e03806f12b6b86b/store/opt/720/541/c29f3308fe1743e31174a9e776cb6970de989b48e1a37e3d8856fc690474/product_35919_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp1.stackassets.com/b1f22bbe28f4ca94cd6a0ef9c2a2bccf545acd76/store/opt/489/367/c29f3308fe1743e31174a9e776cb6970de989b48e1a37e3d8856fc690474/product_35919_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp1.stackassets.com/0203df818a80c63e23d12d91c74dcc4383959f22/store/opt/596/447/c29f3308fe1743e31174a9e776cb6970de989b48e1a37e3d8856fc690474/product_35919_product_shots1.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35919"
+              data-slide-to="0"
+              class="product-thumbnail active primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp2.stackassets.com/d515a6358773fd38946215df02729641dd6c1a43/store/opt/73/55/fbe2f8195ac5b02a434445034ce9de5875cd5e67ece201ab6d6fa8f3a227/product_35919_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35919"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp1.stackassets.com/d2eaf901a7c577112eed8105a7a9bbd0d012c38c/store/opt/73/55/c29f3308fe1743e31174a9e776cb6970de989b48e1a37e3d8856fc690474/product_35919_product_shots1.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+
+                    <div class="bubble-bundle-page-product-details text-center">
+                      <div class="bubble">
+  <div class="title">Access</div>
+  <div class="value">Lifetime</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Content</div>
+  <div class="value">22.0 hours</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">172</div>
+</div>
+
+                    </div>
+              </div>
+              <div class="col-md-6 course">
+                <h3><strong>CompTIA Network+ N10-007 Prep Course: Troubleshooting &amp; Managing Networks</strong></h3>
+                <h4>
+                  Address the Current and Changing Network Technologies as a CompTI Network+ Professional 
+                </h4>
+
+                <p>
+                  By <a class="brand-primary" href="/brands/total-seminars">Total Seminars</a>
+                    | in <a class="brand-primary" href="/collections/online-courses">Online Courses</a>
+                </p>
+                  <div class="bundle-page-product-details">
+  
+  <ul class="nav nav-tabs " role="tablist">
+      <li class="col-xs-4 active primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35919-description"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35919-description-content">
+          Description
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35919-instructor"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35919-instructor-content">
+          Instructor
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35919-specs"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35919-specs-content">
+          Specs
+        </a>
+</li>  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="product_35919-description-content" role="tabpanel">
+      <p>The CompTIA Network+ Certification is a trusted mid-level certification for network technicians. Network+ professionals possess well-grounded knowledge and skills on troubleshooting, configuring, and managing networks. With 22 hours of instruction lead by the industry's leading authority on CompTIA Certifications, this course aims to make you a good Network Tech and, in the process, make sure you are ready to pass the CompTIA exam.
+<br><br>
+</p>
+<ul>
+<li>Access 172 lectures &amp; 22 hours of content 24/7</li>
+<li>Design &amp; implement functional networks</li>
+<li>Understand &amp; execute network security, standards, and protocols</li>
+<li>Troubleshoot basic to advanced network problems</li>
+</ul>
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35919-instructor-content" role="tabpanel">
+      Mike Meyers, affectionately called the "Alpha Geek", is the Industry's leading authority on CompTIA Certifications. He is the President and co-founder of Total Seminars, LLC, a provider of PC and network repair seminars, books, videos and courseware for thousands of organizations throughout the world. Mike has been involved in the computer and network repair industry since 1987 as a technician, instructor, author, consultant, and speaker.
+<br><br>
+Author of numerous popular PC books and videos, including the best-selling CompTIA A+ Certification All-in-One Exam Guide and CompTIA Network+ Certification All-in-One Exam Guide. Mike is also the series editor for the highly successful Mike Meyers' Certification Passport series and the Mike Meyers' Guide to series, all published by McGraw-Hill. Mike has sold over a million IT and certification books.
+<br><br>
+As well as writing Mike has personally taught thousands of students, including U.S. senators, U.S. Supreme Court Justices, members of the United Nation, every branch of the U.S. Armed Forces, many branches of the Department of Justice, hundreds of corporate clients and academic students at every level.
+<br><br>
+Mike's humorous and easy to follow approach to teaching comes through in his video training courses as well as his classroom instructor led courses. Making IT concepts easy to understand and fun to learn helps students stay engaged and retain the information.
+    </div>
+    <div class="tab-pane  fade in" id="product_35919-specs-content" role="tabpanel">
+      <p><b>Important Details</b></p>
+<ul>
+<li>Length of time users can access this course: lifetime</li>
+<li>Access options: web &amp; mobile streaming</li>
+<li>Certification of completion included</li>
+<li>Redemption deadline: redeem your code within 30 days of purchase</li>
+<li>Updates included</li>
+<li>Experience level required: intermediate</li>
+</ul>
+
+<p><b>Requirements</b></p>
+<ul>
+<li>Internet access required</li>
+<li>Basic familiarity with networks</li>
+</ul>
+    </div>
+  </div>
+
+</div>
+
+  <div class="course-outline inactive">
+    <h4 class="title">Course Outline <i class="fa sc-display-outline pull-right"></i></h4>
+
+      <ul>
+<li>Introduction
+
+<ul>
+<li>Introduction to Network+ N10-007 - 3:14</li>
+</ul></li>
+<li>Chapter 1 - Network Models
+
+<ul>
+<li>What is a Model? - 2:07</li>
+<li>OSI Model vs. TCP/IP Model - 7:02</li>
+<li>Walking Through OSI and TCP/IP - 12:08</li>
+<li>Meet the Frame - 5:52</li>
+<li>The MAC Address - 7:22</li>
+<li>Broadcast vs. Unicast - 4:19</li>
+<li>Introduction to IP Addressing - 7:41</li>
+<li>Packets and Ports - 4:57</li>
+</ul></li>
+<li>Chapter 2 - Cabling and Topology
+
+<ul>
+<li>Network Topologies - 10:14</li>
+<li>Coaxial Cabling - 5:23</li>
+<li>Twisted Pair Cabling - 6:24</li>
+<li>Cat Ratings - 6:05</li>
+<li>Fiber Optic Cabling - 8:41</li>
+<li>Fire Ratings - 5:21</li>
+<li>Legacy Network Connections - 7:04</li>
+</ul></li>
+<li>Chapter 3 - Ethernet Basics
+
+<ul>
+<li>What is Ethernet? - 6:31</li>
+<li>Ethernet Frames - 6:43</li>
+<li>Early Ethernet - 7:40</li>
+<li>The Daddy of Ethernet: 10BaseT - 3:23</li>
+<li>Terminating Twisted Pair - 14:25</li>
+<li>Hubs vs. Switches - 12:38</li>
+</ul></li>
+<li>Chapter 4 - Modern Ethernet
+
+<ul>
+<li>100BaseT - 5:24</li>
+<li>Connecting Switches - 5:15</li>
+<li>Gigabit Ethernet and 10-Gigabit Ethernet - 4:49</li>
+<li>Transceivers - 7:10</li>
+<li>Connecting Ethernet Scenarios - 13:57</li>
+</ul></li>
+<li>Chapter 5 - Installing a Physical Network
+
+<ul>
+<li>Introduction to Structured Cabling - 4:16</li>
+<li>Terminating Structured Cabling - 7:54</li>
+<li>Equipment Room - 7:18</li>
+<li>Alternative Distribution Panels - 3:49</li>
+<li>Testing Cable - 8:52</li>
+<li>Troubleshooting Structured Cabling, Part 1 - 5:05</li>
+<li>Troubleshooting Structured Cabling, Part 2 - 5:27</li>
+<li>Using a Toner and Probe - 2:45</li>
+<li>Wired Connection Scenarios - 10:30</li>
+</ul></li>
+<li>Chapter 6 - TCP/IP Basics
+
+<ul>
+<li>Introduction to IP Addressing and Binary - 12:42</li>
+<li>Introduction to ARP - 3:45</li>
+<li>Subnet Masks - 12:11</li>
+<li>Classful Addressing - 10:23</li>
+<li>Subnetting with CIDR - 9:48</li>
+<li>More CIDR Subnetting Practice - 10:01</li>
+<li>Dynamic and Static IP Addressing - 17:44</li>
+<li>Rogue DHCP Servers - 6:29</li>
+<li>Special IP Addresses - 7:01</li>
+<li>IP Addressing Scenarios - 14:46</li>
+</ul></li>
+<li>Chapter 7 - Routing
+
+<ul>
+<li>Introducing Routers - 15:18</li>
+<li>Understanding Ports - 5:25</li>
+<li>Network Address Translation - 6:24</li>
+<li>Implementing NAT - 2:36</li>
+<li>Forwarding Ports - 17:38</li>
+<li>Tour of a SOHO Router - 12:01</li>
+<li>SOHO vs. Enterprise - 8:41</li>
+<li>Static Routes - 12:39</li>
+<li>Dynamic Routing - 10:35</li>
+<li>RIP - 4:26</li>
+<li>OSPF - 3:33</li>
+<li>BGP - 5:39</li>
+</ul></li>
+<li>Chapter 8 - TCP/IP Applications
+
+<ul>
+<li>TCP and UDP - 7:22</li>
+<li>ICMP and IGMP</li>
+<li>Handy Tools - 6:43</li>
+<li>Introduction to Wireshark - 10:37</li>
+<li>Introduction to netstat - 8:49</li>
+<li>Web Servers - 11:52</li>
+<li>FTP - 11:48</li>
+<li>E-mail Servers and Clients - 9:27</li>
+<li>Securing E-mail - 5:47</li>
+<li>Telnet and SSH - 9:16</li>
+<li>Network Time Protocol - 1:59</li>
+<li>Network Service Scenarios - 9:33</li>
+</ul></li>
+<li>Chapter 9 - Network Naming
+
+<ul>
+<li>Understanding DNS - 12:10</li>
+<li>Applying DNS - 18:56</li>
+<li>The HOSTS File - 3:45</li>
+<li>Net Command - 8:12</li>
+<li>Windows Name Resolution - 11:22</li>
+<li>Dynamic DNS - 5:25</li>
+<li>DNS Troubleshooting - 13:13</li>
+</ul></li>
+<li>Chapter 10 - Securing TCP/IP
+
+<ul>
+<li>Making TCP/IP Secure - 4:25</li>
+<li>Symmetric Encryption - 5:32</li>
+<li>Asymmetric Encryption - 3:19</li>
+<li>Cryptographic Hashes - 4:56</li>
+<li>Identification - 12:11</li>
+<li>Access Control - 4:20</li>
+<li>AAA - 4:59</li>
+<li>Kerberos/EAP - 7:33</li>
+<li>Single Sign-On - 10:09</li>
+<li>Certificates and Trust - 13:51</li>
+<li>Certificate Error Scenarios - 8:06</li>
+</ul></li>
+<li>Chapter 11 - Advanced Networking Devices
+
+<ul>
+<li>Understanding IP Tunneling - 6:04</li>
+<li>Virtual Private Networks (VPNs) - 12:44</li>
+<li>Introduction to VLANs - 11:52</li>
+<li>InterVLAN Routing - 3:09</li>
+<li>Interfacing with Managed Switches - 11:02</li>
+<li>Switch Port Protection - 6:41</li>
+<li>Port Bonding - 7:15</li>
+<li>Port Mirroring - 3:32</li>
+<li>Quality of Service - 5:10</li>
+<li>IDS vs. IPS - 4:28</li>
+<li>Proxy Servers - 12:44</li>
+<li>Load Balancing - 8:32</li>
+<li>Device Placement Scenarios - 12:59</li>
+</ul></li>
+<li>Chapter 12 - IPv6
+
+<ul>
+<li>Intro to IPv6 - 12:52</li>
+<li>IPv6 Addressing - 15:09</li>
+<li>IPv6 in Action - 13:13</li>
+<li>IPv4 and IPv6 Tunneling - 5:20</li>
+</ul></li>
+<li>Chapter 13 - Remote Connectivity
+
+<ul>
+<li>Telephony Technologies - 8:59</li>
+<li>Optical Carriers - 3:08</li>
+<li>Packet Switching - 4:56</li>
+<li>Connecting with Dial-up - 4:53</li>
+<li>Digital Subscriber Line (DSL) - 4:32</li>
+<li>Connecting with Cable Modems - 4:16</li>
+<li>Connecting with Satellites - 2:30</li>
+<li>ISDN and BPL - 4:01</li>
+<li>Remote Desktop Connectivity - 4:49</li>
+<li>Advanced Remote Control Systems - 8:42</li>
+</ul></li>
+<li>Chapter 14 - Wireless Networking
+
+<ul>
+<li>Introduction to 802.11 - 11:38</li>
+<li>802.11 Standards - 12:17</li>
+<li>Power Over Ethernet (PoE) - 3:43</li>
+<li>Antennas - 8:38</li>
+<li>Wireless Security Standards - 15:46</li>
+<li>Implementing Wireless Security - 6:56</li>
+<li>Threats to Your Wireless Network - 7:01</li>
+<li>Retro Threats - 5:05</li>
+<li>Wi-Fi Protected Setup (WPS) - 5:21</li>
+<li>Enterprise Wireless - 6:07</li>
+<li>Installing a Wireless Network - 14:44</li>
+<li>Wireless Scenarios - 7:02</li>
+<li>More Wireless Scenarios - 8:50</li>
+</ul></li>
+<li>Chapter 15 - Virtualization and Cloud Computing
+
+<ul>
+<li>Virtualization Basics - 7:15</li>
+<li>Cloud Ownership - 2:41</li>
+<li>Cloud Implementation - 11:36</li>
+<li>Your First Virtual Machine - 9:15</li>
+<li>NAS and SAN - 16:23</li>
+<li>Platform as a Service (PaaS) - 8:54</li>
+<li>Software as a Service (SaaS) - 2:39</li>
+<li>Infrastructure as a Service (IaaS) - 9:32</li>
+</ul></li>
+<li>Chapter 16 - Mobile Networking
+
+<ul>
+<li>Cellular Technologies - 5:17</li>
+<li>Mobile Connectivity - 7:12</li>
+<li>Deploying Mobile Devices - 5:16</li>
+<li>Mobile Access Control - 6:26</li>
+</ul></li>
+<li>Chapter 17 - Building a Real-World Network
+
+<ul>
+<li>Network Types - 4:08</li>
+<li>Network Design - 9:46</li>
+<li>Power Management - 5:59</li>
+<li>Unified Communications - 11:12</li>
+<li>Network Documentation - 6:33</li>
+<li>Contingency Planning - 10:10</li>
+<li>Predicting Hardware Failure - 4:31</li>
+<li>Backups - 7:43</li>
+</ul></li>
+<li>Chapter 18 - Managing Risk
+
+<ul>
+<li>What is Risk Management? - 6:02</li>
+<li>Security Policies - 8:28</li>
+<li>Change Management - 6:41</li>
+<li>User Training - 2:56</li>
+<li>Standard Business Documentation - 5:08</li>
+<li>Mitigating Network Threats - 4:53</li>
+<li>High Availablity - 4:39</li>
+</ul></li>
+<li>Chapter 19 - Protecting Your Network
+
+<ul>
+<li>Denial of Service - 8:33</li>
+<li>Malware - 10:11</li>
+<li>Social Engineering - 3:55</li>
+<li>Access Control - 8:05</li>
+<li>Man-in-the-Middle - 22:07</li>
+<li>Introduction to Firewalls - 4:30</li>
+<li>Firewalls - 10:12</li>
+<li>DMZ - 5:30</li>
+<li>Hardening Devices - 13:49</li>
+<li>Physical Security Controls - 8:44</li>
+<li>Testing Network Security - 7:57</li>
+<li>Network Protection Scenarios - 14:18</li>
+</ul></li>
+<li>Chapter 20 - Network Monitoring
+
+<ul>
+<li>SNMP - 15:08</li>
+<li>Documenting Logs - 9:15</li>
+<li>System Monitoring - 8:01</li>
+<li>SIEM - 7:06</li>
+</ul></li>
+<li>Chapter 21 - Network Troubleshooting
+
+<ul>
+<li>Network Troubleshooting Theory - 5:12</li>
+</ul></li>
+</ul>
+
+    <p class="text-center">
+      <a class="open-all" data-target=".course-outline" href>View Full Curriculum</a>
+    </p>
+  </div>
+
+              </div>
+            </div>
+            <hr class="product-divider">
+            <div id="product-item-35920" class="js-product-details row pagination-details">
+              <div class="col-md-6">
+                <div id="sc-product-image-carousel35920" class="sc-product-image-carousel carousel slide" data-ride="carousel" data-toughness="0.25" data-interval=false>
+  
+      <ol class="carousel-indicators visible-xs">
+
+          <li class="active"></li>
+          <li class=""></li>
+      </ol>
+
+      <div class="carousel-inner" data-video-included="false" data-product-id="35920">
+
+          <figure class="image-item item active">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp0.stackassets.com/696ce86878133a4906bc5907894d716ea6998dfb/store/opt/596/447/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp0.stackassets.com/e5dbdd3ac4c743c9c19e1a24c485aadb07ff77d5/store/opt/720/541/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp0.stackassets.com/64fcd51ff9c9ebdfb61c18919dc5ac33232ec76f/store/opt/489/367/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 0" src="https://cdnp0.stackassets.com/696ce86878133a4906bc5907894d716ea6998dfb/store/opt/596/447/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" /></picture>
+          </figure>
+          <figure class="image-item item ">
+            <picture><source media="(max-width: 599px)" srcset="https://cdnp1.stackassets.com/712fbee619987c28c1bba38ee115ca787cf4f4a9/store/opt/596/447/b6d05fa382941fd9f665a2deb34c638fe970b8e232d37e3eabbca3389cf0/product_35920_product_shots1.jpg" /><source media="(min-width: 600px) and (max-width: 991px)" srcset="https://cdnp1.stackassets.com/956906f2090737509ba0c901aa49ce2370ee2e78/store/opt/720/541/b6d05fa382941fd9f665a2deb34c638fe970b8e232d37e3eabbca3389cf0/product_35920_product_shots1.jpg" /><source media="(min-width: 992px) and (max-width: 1199px)" srcset="https://cdnp1.stackassets.com/6bf67b3e1c53796ddfab60917f6d741a6cffeeff/store/opt/489/367/b6d05fa382941fd9f665a2deb34c638fe970b8e232d37e3eabbca3389cf0/product_35920_product_shots1.jpg" /><img class="img-responsive" alt="Product Image 1" src="https://cdnp1.stackassets.com/712fbee619987c28c1bba38ee115ca787cf4f4a9/store/opt/596/447/b6d05fa382941fd9f665a2deb34c638fe970b8e232d37e3eabbca3389cf0/product_35920_product_shots1.jpg" /></picture>
+          </figure>
+      </div>
+
+      <div class="clearfix sc-product-thumbnails hidden-xs">
+
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35920"
+              data-slide-to="0"
+              class="product-thumbnail active primary-border-color-active"
+            >
+              <img alt="Product Image 0" src="https://cdnp0.stackassets.com/deeda86bc6e2f5a650e542a0b4aeb00d9416817f/store/opt/73/55/3eb2545013a1abdf163fdd63906f4992b7eac33180eb708d23c8ebde52b5/product_35920_product_shots1.jpg" />
+            </figure>
+          </div>
+          <div class="col-xs-2">
+            <figure
+              data-target="#sc-product-image-carousel35920"
+              data-slide-to="1"
+              class="product-thumbnail  primary-border-color-active"
+            >
+              <img alt="Product Image 1" src="https://cdnp1.stackassets.com/6818c31c1d8094c5bc66239fc72f47136079d7c0/store/opt/73/55/b6d05fa382941fd9f665a2deb34c638fe970b8e232d37e3eabbca3389cf0/product_35920_product_shots1.jpg" />
+            </figure>
+          </div>
+      </div>
+
+</div>
+
+
+                    <div class="bubble-bundle-page-product-details text-center">
+                      <div class="bubble">
+  <div class="title">Access</div>
+  <div class="value">Lifetime</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Content</div>
+  <div class="value">18.0 hours</div>
+</div>
+
+                      <div class="bubble">
+  <div class="title">Lessons</div>
+  <div class="value">121</div>
+</div>
+
+                    </div>
+              </div>
+              <div class="col-md-6 course">
+                <h3><strong>CompTIA Security+ SY0-501 Prep Course: System Threats &amp; Vulnerabilities</strong></h3>
+                <h4>
+                  Ace the Globally-Recognized Exam on Network Threats &amp; Risks Identification, Management, and Mitigation
+                </h4>
+
+                <p>
+                  By <a class="brand-primary" href="/brands/total-seminars">Total Seminars</a>
+                    | in <a class="brand-primary" href="/collections/online-courses">Online Courses</a>
+                </p>
+                  <div class="bundle-page-product-details">
+  
+  <ul class="nav nav-tabs " role="tablist">
+      <li class="col-xs-4 active primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35920-description"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35920-description-content">
+          Description
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35920-instructor"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35920-instructor-content">
+          Instructor
+        </a>
+</li>      <li class="col-xs-4  primary-border-bottom-active">
+        <a data-toggle="tab"
+          id="product_35920-specs"
+          role="tab"
+          class="text-capitalize js-product-detail"
+          href="#product_35920-specs-content">
+          Specs
+        </a>
+</li>  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="product_35920-description-content" role="tabpanel">
+      <p>This course covers everything you need to know to pass your CompTIA Security+ Certification SY0-501 Exam. It includes 121 lectures lead by the industry's leading authority on CompTIA Certifications, focusing on the latest trends and techniques in risk management, risk mitigation, threat management, and intrusion detection. The first goal of the course is to make you a good IT security tech and, in the process, make sure you are ready to pass the CompTIA Security+ exam.
+<br><br>
+</p>
+<ul>
+<li>Access 121 lectures &amp; 18 hours of content 24/7</li>
+<li>Detect various types of threats, attacks, &amp; vulnerabilities</li>
+<li>Assess &amp; troubleshoot system issues w/ network components</li>
+<li>Implement secure network architecture concepts</li>
+</ul>
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35920-instructor-content" role="tabpanel">
+      Mike Meyers, affectionately called the "Alpha Geek", is the Industry's leading authority on CompTIA Certifications. He is the President and co-founder of Total Seminars, LLC, a provider of PC and network repair seminars, books, videos and courseware for thousands of organizations throughout the world. Mike has been involved in the computer and network repair industry since 1987 as a technician, instructor, author, consultant, and speaker.
+<br><br>
+Author of numerous popular PC books and videos, including the best-selling CompTIA A+ Certification All-in-One Exam Guide and CompTIA Network+ Certification All-in-One Exam Guide. Mike is also the series editor for the highly successful Mike Meyers' Certification Passport series and the Mike Meyers' Guide to series, all published by McGraw-Hill. Mike has sold over a million IT and certification books.
+<br><br>
+As well as writing Mike has personally taught thousands of students, including U.S. senators, U.S. Supreme Court Justices, members of the United Nation, every branch of the U.S. Armed Forces, many branches of the Department of Justice, hundreds of corporate clients and academic students at every level.
+<br><br>
+Mike's humorous and easy to follow approach to teaching comes through in his video training courses as well as his classroom instructor led courses. Making IT concepts easy to understand and fun to learn helps students stay engaged and retain the information.
+
+    </div>
+    <div class="tab-pane  fade in" id="product_35920-specs-content" role="tabpanel">
+      <p><b>Important Details</b></p>
+<ul>
+<li>Length of time users can access this course: lifetime</li>
+<li>Access options: web &amp; mobile streaming</li>
+<li>Certification of completion included</li>
+<li>Redemption deadline: redeem your code within 30 days of purchase</li>
+<li>Updates included
+</li>
+<li>Experience level required: intermediate</li>
+</ul>
+
+<p><b>Requirements</b></p>
+<ul>
+<li>Internet access required</li>
+<li>Basic familiarity with PCs and networks</li>
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+  <div class="course-outline inactive">
+    <h4 class="title">Course Outline <i class="fa sc-display-outline pull-right"></i></h4>
+
+      <ul>
+<li>Introduction
+
+<ul>
+<li>Introduction to Security+ SY0-501 - 3:21</li>
+</ul></li>
+<li>Chapter 1 - Risk Management
+
+<ul>
+<li>The CIA of Security - 3:45</li>
+<li>What is Risk? - 9:53</li>
+<li>Threat Actors - 6:39</li>
+<li>Managing Risk - 11:56</li>
+<li>Using Guides for Risk Assessment - 6:23</li>
+<li>Security Controls - 7:23</li>
+<li>Interesting Security Controls - 3:15</li>
+<li>Defense in Depth - 4:56</li>
+<li>IT Security Governance - 8:18</li>
+<li>Security Policies - 8:17</li>
+<li>Frameworks - 8:21</li>
+<li>Quantitative Risk Calculations - 8:11</li>
+<li>Business Impact Analysis - 11:58</li>
+<li>Organizing Data - 9:59</li>
+<li>Security Training - 10:01</li>
+<li>Third-Party Agreements - 8:42</li>
+</ul></li>
+<li>Chapter 2 - Cryptography
+
+<ul>
+<li>Cryptography Basics - 17:11</li>
+<li>Cryptographic Methods - 7:24</li>
+<li>Symmetric Cryptosystems - 11:44</li>
+<li>Symmetric Block Modes - 7:46</li>
+<li>RSA Cryptosystems - 10:18</li>
+<li>Diffie-Hellman - 6:42</li>
+<li>PGP/GPG - 9:45</li>
+<li>Hashing - 7:15</li>
+<li>HMAC - 3:46</li>
+<li>Steganography - 5:38</li>
+<li>Certificates and Trust - 14:15</li>
+<li>Public Key Infastucture - 20:48</li>
+<li>Cryptographic Attacks - 24:13</li>
+</ul></li>
+<li>Chapter 3 - Identity and Access Management
+
+<ul>
+<li>Identification - 12:42</li>
+<li>Authorization Concepts - 5:48</li>
+<li>Access Control List - 6:28</li>
+<li>Password Security - 9:13</li>
+<li>Linux File Permissions - 14:52</li>
+<li>Windows File Permissions - 13:38</li>
+<li>User Account Management - 6:43</li>
+<li>AAA - 8:03</li>
+<li>Authentication Methods - 19:40</li>
+<li>Single Sign-On - 10:09</li>
+</ul></li>
+<li>Chapter 4 - Tools of the Trade
+
+<ul>
+<li>OS Utilties, Part 1 - 14:46</li>
+<li>OS Utilties, Part 2 - 14:04</li>
+<li>Network Scanners - 10:47</li>
+<li>Protocol Analyzers - 10:51</li>
+<li>SNMP - 15:22</li>
+<li>Logs - 11:10</li>
+</ul></li>
+<li>Chapter 5 - Securing Individual Systems
+
+<ul>
+<li>Denial of Service - 8:33</li>
+<li>Host Threats - 9:01</li>
+<li>Man-in-the-Middle - 22:07</li>
+<li>System Resiliency - 11:17</li>
+<li>RAID - 11:18</li>
+<li>NAS and SAN - 15:52</li>
+<li>Physical Hardening - 7:26</li>
+<li>RFI, EMI, and ESD - 3:12</li>
+<li>Host Hardening - 16:17</li>
+<li>Data and System Security - 4:21</li>
+<li>Disk Encryption - 6:42</li>
+<li>Hardware/Firmware Security - 9:11</li>
+<li>Secure OS Types - 7:43</li>
+<li>Securing Peripherals - 11:03</li>
+<li>Malware - 10:11</li>
+<li>Analyzing Output - 14:54</li>
+<li>IDS and IPS - 4:28</li>
+<li>Automation Strategies - 4:57</li>
+<li>Data Destruction - 4:52</li>
+</ul></li>
+<li>Chapter 6 - The Basic LAN
+
+<ul>
+<li>LAN Review - 8:00</li>
+<li>Network Topologies Review - 5:03</li>
+<li>Network Zone Review - 10:26</li>
+<li>Network Access Controls - 10:31</li>
+<li>The Network Firewall - 13:05</li>
+<li>Proxy Servers - 12:44</li>
+<li>Honeypots - 4:32</li>
+<li>Virtual Private Networks - 13:46</li>
+<li>IPSec - 11:55</li>
+<li>NIDS/NIPS - 6:00</li>
+<li>SIEM (Security Information and Event Management) - 7:06</li>
+</ul></li>
+<li>Chapter 7 - Beyond the Basic LAN
+
+<ul>
+<li>Wireless Review - 9:43</li>
+<li>Living in Open Networks - 9:41</li>
+<li>Vulnerabilities with Wireless Access Points - 7:01</li>
+<li>Cracking 802.11, WEP - 11:58</li>
+<li>Cracking 802.11, WPA and WPA2 - 9:23</li>
+<li>Cracking 802.11, WPS - 9:47</li>
+<li>Wireless Hardening - 14:03</li>
+<li>Wireless Access Points - 13:13</li>
+<li>Virtualization Basics - 7:15</li>
+<li>Virtual Security - 15:05</li>
+<li>Containers - 10:46</li>
+<li>Infrastucture as a Service (IaaS) - 9:32</li>
+<li>Platform as a Service (PaaS) - 9:03</li>
+<li>Software as a Service (SaaS) - 2:39</li>
+<li>Deployment Models - 8:41</li>
+<li>Static Hosts - 7:30</li>
+<li>Mobile Connectivity - 12:03</li>
+<li>Deploying Mobile Devices - 5:24</li>
+<li>Mobile Enforcement - 12:32</li>
+<li>Mobile Device Management - 10:24</li>
+<li>Physical Controls - 8:44</li>
+<li>HVAC - 7:25</li>
+<li>Fire Suppression - 4:02</li>
+</ul></li>
+<li>Chapter 8 - Secure Protocols
+
+<ul>
+<li>Secure Encryption Applications and Protocols - 10:55</li>
+<li>Network Models - 6:45</li>
+<li>Know Your Protocols - TCP/IP - 6:07</li>
+<li>Know Your Protocols - Applications - 5:42</li>
+<li>Transport Layer Security (TLS) - 12:04</li>
+<li>Internet Service Hardening - 6:43</li>
+<li>Protecting Your Servers - 6:12</li>
+<li>Secure Code Development - 10:17</li>
+<li>Secure Deployment Concepts - 12:04</li>
+<li>Code Quality and Testing - 5:00</li>
+</ul></li>
+<li>Chapter 9 - Testing Your Infrastructure
+
+<ul>
+<li>Vulnerability Scanning Tools - 9:22</li>
+<li>Vulnerability Scanning Assessment - 4:43</li>
+<li>Social Engineering Principles - 2:14</li>
+<li>Social Engineering Attacks - 7:54</li>
+<li>Attacking Applications - 10:56</li>
+<li>Attacking Web Sites - 7:53</li>
+<li>Exploiting a Target - 11:17</li>
+<li>Vulnerability Impact - 10:48</li>
+</ul></li>
+<li>Chapter 10 - Dealing with Incidents
+
+<ul>
+<li>Incident Response - 6:34</li>
+<li>Digital Forensics - 11:35</li>
+<li>Contingency Planning - 10:10</li>
+<li>Backups - 7:43</li>
+</ul></li>
+</ul>
+
+    <p class="text-center">
+      <a class="open-all" data-target=".course-outline" href>View Full Curriculum</a>
+    </p>
+  </div>
+
+              </div>
+            </div>
+            <hr class="product-divider">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </section>
+  <div class="row">
+    <div class="col-xs-12"><hr></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="item">
+        <h4>Terms</h4>
+        <ul><li>Unredeemed licenses can be returned for store credit within 15 days of purchase. Once your license is redeemed, all sales are final.</li></ul>
+      </div>
+    </div>
+    <div class="col-md-6 sc-bundle-page-purchase-form">
+      <div class="row">
+        <div class="item hidden-xs hidden-sm">
+          <ng-form class="buy-form form-horizontal js-sc-purchase-form" data-type="Bundle" data-price="39.95" data-name="The Total CompTIA Core Certification Prep Bundle" data-ids="[26147]" role="form" ng-controller="AddToCartCtrl">
+
+  <input type="hidden" name="sale_id" id="sale_id" value="26147" data-sale-slug="the-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers" />
+
+    <div class="col-md-4 select--left hidden-sm hidden-xs col-lg-3">
+      <select name="quantity" id="quantity" class="form-control js-quantity" data-price="3995" data-recurring="false" ng-model="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+    </div>
+
+  <div class="col-md-8 col-xs-12 col-lg-9 ">
+    <add-to-cart-button class="hidden-xs hidden-sm btn btn-lg btn-block btn-success js-purchase-submit form-control additem" ng-click="addItem()" ng-disabled="addingToCart" data-button-type="buy_now">
+      Add to Cart - $39.95
+</add-to-cart-button>    <add-to-cart-button class="visible-xs visible-sm btn btn-lg btn-success js-sc-sale-form-submit-mobile form-control" ng-click="addItem()" ng-disabled="addingToCart" data-button-type="buy_now">
+      <span>
+        Add to Cart - $39.95
+      </span>
+</add-to-cart-button>  </div>
+
+    <div class="hidden-md hidden-lg select-mobile">
+      <select name="quantity" id="quantity" class="form-control js-quantity" data-price="3995" data-recurring="false" ng-model="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option></select>
+    </div>
+
+</ng-form>
+<div class="buy-now-fixed js-sc-sale-buy-now-fixed">
+  <div class="js-no-variant" data-type="Bundle" data-toggle="#sc-purchase-form"><add-to-cart-button class="btn btn-success btn-lg btn-block js-no-variant-text" data-button-type="buy_now">Add to Cart ($39.95)</add-to-cart-button></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container sale-reviews js-sale-reviews">
+    <div class="js-sale-reviews-header"></div>
+    <div class="js-sale-reviews-entries-container"></div>
+
+    <div class="sale-reviews-expand-reviews">
+      <a href="#" class="js-sale-reviews-see-more-link brand-primary">See More Reviews</a>
+    </div>
+  </div>
+
+  <script class="js-sale-reviews-header-template" type="text/html">
+    <div class="sale-reviews-header">
+      <ul class="sale-reviews-line">
+        <li class="sale-reviews-count">
+          <b>Reviews ({{ total_count }})</b>
+        </li>
+        <li class="sale-reviews-stars-average">
+          <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ average_score * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+        </li>
+        <li class="sale-reviews-advice">
+          <img class="sale-reviews-verified-mark" alt="Verified" src="https://shops2.stackassets.com/assets/checkmark-b6bb330dfb8d9035907a79040b8ba7fd46a4dffbad93d6e1334d20d343214888.svg" />
+          All reviews are from verified purchasers. Reviews are collected after purchase.
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <script class="js-sale-reviews-entry-template" type="text/html">
+    <div class="sale-reviews-entry">
+      <hr />
+      <ul class="sale-reviews-line">
+        <li class="sale-reviews-review-author">
+          <b>{{ author }}</b>
+          <img class="sale-reviews-verified-mark" alt="Verified" src="https://shops2.stackassets.com/assets/checkmark-b6bb330dfb8d9035907a79040b8ba7fd46a4dffbad93d6e1334d20d343214888.svg" />
+        </li>
+        <li>
+          <div class="rating">
+    <input
+      id="star_rating10"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 10 }}" />
+    <label
+      for="star_rating10"
+      class="full">
+    </label>
+    <input
+      id="star_rating9"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 9 }}" />
+    <label
+      for="star_rating9"
+      class="half">
+    </label>
+    <input
+      id="star_rating8"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 8 }}" />
+    <label
+      for="star_rating8"
+      class="full">
+    </label>
+    <input
+      id="star_rating7"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 7 }}" />
+    <label
+      for="star_rating7"
+      class="half">
+    </label>
+    <input
+      id="star_rating6"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 6 }}" />
+    <label
+      for="star_rating6"
+      class="full">
+    </label>
+    <input
+      id="star_rating5"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 5 }}" />
+    <label
+      for="star_rating5"
+      class="half">
+    </label>
+    <input
+      id="star_rating4"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 4 }}" />
+    <label
+      for="star_rating4"
+      class="full">
+    </label>
+    <input
+      id="star_rating3"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 3 }}" />
+    <label
+      for="star_rating3"
+      class="half">
+    </label>
+    <input
+      id="star_rating2"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 2 }}" />
+    <label
+      for="star_rating2"
+      class="full">
+    </label>
+    <input
+      id="star_rating1"
+      type="radio"
+      disabled="disabled"
+      data-checked="{{ rating * 2 >= 1 }}" />
+    <label
+      for="star_rating1"
+      class="half">
+    </label>
+</div>
+
+
+        </li>
+        <li class="sale-reviews-review-date">
+          {{ date }}
+        </li>
+      </ul>
+      <br />
+      <i class="sale-reviews-review-description">{{ comment }}</i>
+    </div>
+  </script>
+
+
+  <div class="bundle-page-best-sellers category-footer intelligent-modules-container">
+    <div class="js-intelligent-module-sale js-best-sellers intelligent-modules-section">
+      <div data-columns="4" data-title="Best Sellers" data-index-url="/best-sellers" data-entries="/v0/search/sales?exclude_sale_ids%5B%5D=26147&amp;per_page=4&amp;publisher_id=124&amp;sort=best_sellers" data-module-type="SalesIntelligentModule" class="intelligent-module js-intelligent-module sales-intelligent-module "></div>
+    </div>
+
+      <div class="js-intelligent-module-sale intelligent-modules-section">
+    <div data-columns="4" data-title="Recently Viewed" data-entries="/v0/search/sales?exclude_sale_ids%5B%5D=26147&amp;per_page=4&amp;publisher_id=124&amp;sale_ids%5B%5D=25535&amp;sale_ids%5B%5D=25889&amp;sale_ids%5B%5D=25714&amp;sale_ids%5B%5D=24767&amp;sort=sale_ids&amp;without_free=false" data-module-type="SalesIntelligentModule" class="intelligent-module js-intelligent-module sales-intelligent-module "></div>
+  </div>
+
+  </div>
+</div>
+<div class="hidden-xs">
+  <a href data-toggle="#stacksocial-wrapper" id="back-to-top" class="anchor-link hidden-phone" aria-label="scroll to top">
+    <i aria-hidden="true" class="icon-pushup" title="Scroll to Top"></i>
+  </a>
+</div>
+
+
+        </div>
+      </div>
+
+      <footer id="footer" class="footer">
+  <div class="container">
+
+    <div class="footer-menus-row row">
+      <div class="col-md-5">
+        <div class="footer-newsletter">
+    <h5 class="footer-title footer-newsletter-title">Sign up & get 10% Off</h5>
+
+  <form class="clearfix form-inline" id="newsletter-subscribe-form" data-use-recaptcha="true" role="form" action="/subscribe?footer_newsletter=1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ab51sxQzo97BHDdibE2yZTx0x74/M9nH6v166UFy7KupP+Xr6UEF3US5KaklIBG+jWB0Tur6yQuKZylXBR8G8A==" />
+    <div class="clearfix js-mailcheck-container">
+      <input type="hidden" name="source" id="footer-source" value="Footer" />
+      <label for="signup-newsletter" class="sr-only">Email address</label>
+      <input type="email" name="email" id="signup-newsletter" class="form-control js-email-field" placeholder="Email" />
+
+      <input type="hidden" name="g-recaptcha-response" class="g-recaptcha-response" />
+
+      <button type="submit" class="btn-primary">
+        Sign up
+      </button>
+    </div>
+
+      <span class="newsletter-legend">
+          *New customers only. Offer lasts 30 days. See Terms.
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+      </span>
+</form></div>
+
+<script type="text/javascript">
+  $('#newsletter-subscribe-form').on('submit', function(event) {
+    submitFormWithRecaptcha(event, "recaptcha_newsletter_subscription")
+  });
+</script>
+
+      </div>
+
+      <div class="col-md-7 footer-menus footer-menus-vendor">
+        <div class="row">
+          <div class="col-xs-4">
+  <h4 class="footer-title">My Account</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a href="/user?show=profile-tab">Profile</a>
+    </li>
+    <li>
+      <a href="/user?show=account-tab">Account</a>
+    </li>
+    <li>
+      <a href="/user/purchases">Purchases</a>
+    </li>
+    <li>
+      <a href="/user/credits">Credits</a>
+    </li>
+    <li>
+      <a href="/user?show=preferences-tab">Preferences</a>
+    </li>
+    <li>
+      <a href="/user?show=info-request">Do Not Sell My Personal Information</a>
+    </li>
+  </ul>
+</div>
+
+<div class="col-xs-4">
+  <h4 class="footer-title">Support</h4>
+
+  <ul class="list-unstyled">
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/requests/new?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26147&amp;sale_name=The+Total+CompTIA+Core+Certification+Prep+Bundle&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fthe-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers&amp;source=lower+footer+contact+link">Contact</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26147&amp;sale_name=The+Total+CompTIA+Core+Certification+Prep+Bundle&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fthe-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers&amp;source=lower+footer+FAQs+link">FAQs</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641992-Shipping?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26147&amp;sale_name=The+Total+CompTIA+Core+Certification+Prep+Bundle&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fthe-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers&amp;source=lower+footer+shipping+link">Shipping</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://support.stackcommerce.com/hc/en-us/categories/360000641952-Refund-and-Return-Policy?persona=Internet+Culture&amp;publisher_id=124&amp;publisher_logo=https%3A%2F%2Fcdnp2.stackassets.com%2F6bb1b0c4b5b2c69fbe228a7e8ed974eb3f33579b%2Fstore%2Fc955c12e55d585985198f1ace9a068fc5460be420701cce2f5f96f447b30%2F28cfa6b9164214d3cee54b990b00d4d09781aea6_logo_main.png&amp;sale_id=26147&amp;sale_name=The+Total+CompTIA+Core+Certification+Prep+Bundle&amp;sale_url=https%3A%2F%2Fstore.digg.com%2Fsales%2Fthe-comptia-core-exam-certification-prep-total-bundle-featuring-best-selling-author-mike-meyers&amp;source=lower+footer+returns+link">Returns</a>
+    </li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/accessibility">Accessibility</a></li>
+  </ul>
+</div>
+
+
+            <div class="col-xs-12 col-sm-4 footer-vendor-section">
+  <hr class="visible-xs">
+
+  <h4 class="footer-title">Are you a vendor?</h4>
+  <p class="footer-subtitle">Get exclusive coverage to the world's top publisher sites through the StackCommerce network.</p>
+
+  <a class="pub-footer-link primary-color" target="_blank" href="https://www.stackcommerce.com/vendors">Learn More</a>
+
+  <div class="powered-by">
+  <h6>Powered By</h6>
+
+  <a target="_blank" href="https://stackcommerce.com/">
+    <img alt="StackCommerce" src="https://shops2.stackassets.com/assets/core/logo-light-be04c77da6de1475cb2c1c82cf75120f338265aa36dfd6ed8a6404a720c28431.svg" />
+</a></div>
+
+
+  <div class="hidden-xs pub-copyright">
+    <p>Copyright &copy; 2020 StackCommerce. All Rights Reserved.</p>
+  </div>
+
+  <div class="bbb-badge-container">
+  <a class="sehzbus bbb-badge"
+    id="bbblink"
+    target="_blank" href="https://www.bbb.org/losangelessiliconvalley/business-reviews/online-retailer/stackcommerce-in-venice-ca-1013267#bbbseal"
+    title="StackCommerce, Online Retailer, Venice, CA">
+      <img
+        id="bbblinkimg"
+        src="https://seal-sanjose.bbb.org/logo/sehzbus/stackcommerce-1013267.png"
+        width="200"
+        height="38"
+        alt="StackCommerce, Online Retailer, Venice, CA">
+  </a>
+</div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+        <img alt="Digg logo" class="sc-footer-pub-logo hidden-xs" src="https://cdnp3.stackassets.com/3cd152b6e15fd8734497708cb799013cac905773/store/7c6bb1fa8e748ae29147a733147ae02bbb82ff2b08be0d229110d3b585bd/18485477206329f39051d32ebd95fa7629126b67_logo_footer.png" />
+
+
+  </div>
+</footer>
+
+<script>
+//<![CDATA[
+
+  var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+  document.write(unescape("%3Cscript src='" + bbbprotocol + 'seal-sanjose.bbb.org' + unescape('%2Flogo%2Fstackcommerce-1013267.js') + "' type='text/javascript'%3E%3C/script%3E"));
+
+//]]>
+</script>
+    </div>
+
+    <script src="//www.lightboxcdn.com/vendor/2b159396-5db4-4f36-950e-cd35347c27bb/lightbox_inline.js"></script>
+
+    
+    <script src="https://shops2.stackassets.com/assets/config-1f804646a773fcbfb637a5dced669235a1e51d565e9c8824dfb879ad60b483bb.js"></script>
+
+<script>
+  SC.config.setPublisher({"id":124,"name":"Digg","hostname":"store.digg.com","brand_primary_color":"#00B0FF","vertical":"lifestyle"});
+  SC.config.setUser(null);
+  SC.config.setOptions({
+    loyaltySpentAmount: 25,
+    loyaltyAmountInCredit: 1,
+    jetloreCartUpsellFilter: 'PROD_CART_UPSELL_FILTER'
+  });
+</script>
+
+    <script src="https://shops2.stackassets.com/assets/classic-67302364fece7ef493124de4680976ff9d17e5d71d047779a6831f7296275f48.js"></script>
+      <script type="text/javascript">
+    var _at = {}; window._at.track = window._at.track || function(){(window._at.track.q = window._at.track.q || []).push(arguments);};
+
+    _at.domain = 'store.digg.com/';
+    _at.idSite = '8310';
+    _at.webpushid = 'web.56.aimtell.com';
+    _at.owner = '2fcd12b568b6';
+    _at.attributes = {};
+
+    (function() { var u='//s3.amazonaws.com/cdn.aimtell.com/trackpush/'; var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'trackpush.min.js'; s.parentNode.insertBefore(g,s); })();
+  </script>
+
+    <script>
+  window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+    if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    t._e = []; t.ready = function(f) { t._e.push(f); };
+    return t;
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<script>
+</script>
+
+  <!-- Quantcast Tag, part 2 -->
+  <script type="text/javascript">
+    _qevents.push( { qacct:"p-443uI8zl5eTMM" } );
+  </script>
+  <noscript>
+    <div style="display:none;">
+      <img src="//pixel.quantserve.com/pixel/p-443uI8zl5eTMM.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+  </noscript>
+<!-- End Quantcast tag -->
+
+    
+    
+
+      
+      
+    <div bundle-club-modal visible="showModal"></div>
+    
+  </body>
+    <script>
+      var event  =  'SCDataLayer';
+      var action =  'BROWSE';
+
+      SC.dataLayer.enqueue(event, action, {"event":"SCDataLayer","action":"BROWSE","productId":26147,"productPrice":39.95});
+  </script>
+
+  
+</html>

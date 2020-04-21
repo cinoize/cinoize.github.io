@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- © 2016-present FlowCrypt a.s. (human@flowcrypt.com). All rights reserved. -->
+<html lang="en">
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/assets/stylesheets/bootstrap.min.css?version=68">
+  <link rel="stylesheet" href="/assets/stylesheets/styles.css?version=68">
+  <link rel="stylesheet" href="/assets/stylesheets/profile.css?version=68">
+  <link rel="stylesheet" href="/assets/stylesheets/animate.css?version=68">
+  <script type="text/template" src="/lib/attach.template.htm" id="qq-template"></script>
+  <title>Public Profile | FlowCrypt</title>
+  <meta name="description" content="FlowCrypt lets you Encrypt Gmail with PGP in 60 seconds. Easiest end-to-end encryption for Google Email." />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?version=68">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png?version=68">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png?version=68">
+  <link rel="manifest" href="/img/favicons/manifest.json?version=68">
+  <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg?version=68" color="#5bbad5">
+  <link rel="shortcut icon" href="/img/favicons/favicon.ico?version=68">
+  <meta name="msapplication-config" content="/img/favicons/browserconfig.xml?version=68">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <section id="loading"><i class="large_spinner"><img src="/img/svgs/spinner-green-small.svg" /></i><br /><br />Loading <span class="alias"></span>'s profile
+  </section>
+
+  <section id="notify" data-test="container-notification" class="hide_until_loaded"></section>
+
+  <section id="profile" class="hide_until_loaded">
+    <div class="container profile-container-gray">
+      <div class="row">
+        <div class="col-lg-3 hide_if_inside_iframe">
+          <span class="profile-image-container">
+            <img src="/assets/imgs/svgs/vexels-silhouette.svg" class="profile-image" alt="">
+          </span>
+          <a id="public-key" href="#">Public Key
+            <!-- <img src="/assets/imgs/svgs/chevron-down.svg" class="chevron-down" alt="chevron Down"> --></a>
+        </div>
+        <div class="col-lg-9 hide_if_inside_iframe">
+          <div class="row">
+            <h2>
+              <span id="profile-name">...</span> on FlowCrypt
+            </h2>
+            <div class="separator"></div>
+            <div class="row headline-row">
+              <p id="headline-copy" class="p-headline p-2"></p>
+            </div>
+          </div>
+        </div>
+        <div id="recipient" class="col-md-12" data-test="container-result-text">
+          <p class="senders-prompt">Send <span id="recipient-name"></span> an Encrypted Message:</p>
+          <textarea name="encrypted-compose" rows="8" cols="80" id="input_text" data-test="input-text"></textarea>
+          <div class="drag_sentence">Drag and drop files onto this page or <a href="#" id="fineuploader_button">choose a file</a> to add attachments securely
+          </div>
+          <div id="fineuploader"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="senders-content" class="hide_until_loaded">
+    <div class="container senders-container-gray">
+      <div class="row">
+        <h5 class="hide_if_inside_iframe">Please enter your email address</h5>
+        <div class="container gray-container">
+          <div class="row">
+            <div class="col-md-8">
+              <input type="text" placeholder="Your Email Address" class="email-input" data-test="input-email">
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="cta-button" id="btn_send" name="button" data-test="action-send-message">Send Encrypted Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-container hide_if_inside_iframe">
+    <section id="footer-links">
+      <div class="container">
+        <div>
+          <a href="/">FlowCrypt Home</a>
+          <a href="/blog/">Blog</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/me/tom">Contact</a>
+          <a href="/impressum">© 2016–present FlowCrypt a.s.</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/lib/jquery.min.js?version=68"></script>
+  <script src="/lib/tether.min.js?version=68"></script>
+  <script src="/lib/bootstrap.min.js?version=68"></script>
+  <script src="/lib/fine-uploader.js?version=68"></script>
+  <script src="/lib/openpgp.v4.min.js?version=68"></script>
+  <script src="/js/pages/profile.js?version=68"></script>
+</body>
+
+</html>

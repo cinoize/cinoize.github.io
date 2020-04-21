@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html ng-app="ngApp" ng-controller="MainController as mainCtrl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="fragment" content="!">
+	<base href="/">
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2cfd7f">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="stylesheet" type="text/css" media="all" href="https://reallifemag.com/wp-content/themes/rl1e/css/styles.css?v=1.06" />
+
+	<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://reallifemag.com/xmlrpc.php?rsd" />
+<link rel="canonical" href="https://reallifemag.com/the-authoritarian-trade-off/" />
+ 
+
+	<title>The Authoritarian Trade-Off — Real Life</title>
+	<meta name="description" content="Exchanging privacy rights for public health is a false compromise">	<meta property="og:title" content="The Authoritarian Trade-Off — Real Life" />
+	<meta property="og:description" content="Exchanging privacy rights for public health is a false compromise" />	<meta property="og:site_name" content="Real Life" />
+	<meta property="og:type" content="article" />
+				<meta property="og:url" content="https://reallifemag.com/the-authoritarian-trade-off/" />
+		
+
+		<meta property="og:image" content="https://reallifemag.com/wp-content/uploads/2020/04/TylerSpangler-1024x984.png" />	<meta property="og:image:width" content="1024" />	<meta property="og:image:height" content="984" />
+	<meta name="twitter:card" content="summary"/>
+
+	<meta name="twitter:description" content="Exchanging privacy rights for public health is a false compromise"/>	<meta name="twitter:title" content="The Authoritarian Trade-Off — Real Life"/>
+	<meta name="twitter:site" content="@_reallifemag">
+		<meta name="twitter:image" content="https://reallifemag.com/wp-content/uploads/2020/04/TylerSpangler-1024x984.png"/>
+
+	<link rel="alternate" type="application/rss+xml" title="RSS Feed for reallifemag.com" href="/feed/" />
+
+	<script type="text/javascript" src="https://reallifemag.com/wp-content/themes/rl1e/js/modernizr-custom.js"></script>
+</head>
+
+<body class="{{ pages.pageClass }}" ng-class="{'panels-out' : pages.panelActive, 'mobile-nav-on' : pages.mobileNav }">
+<header>
+	<div class="svg-parent maxW">
+		<div class="svg-wrap" ng-controller="LogoSVG as LogoSVGCtrl" ng-include="'https://reallifemag.com/wp-content/themes/rl1e/img/rl.svg'"></div>
+		<div class="svg-wrap mobile-svg-wrap" ng-controller="LogoSVG as LogoSVGCtrl" ng-include="'https://reallifemag.com/wp-content/themes/rl1e/img/rlmobile.svg'"></div>
+		<a href="/" class="overlayLink" data-event-category="Main Logo" data-event-action="click" ng-hide="pages.activeSection === 'home'">Home</a>
+	</div>
+</header>
+<div class="mobile-menu">
+	<span ng-click="pages.mobileNav = !pages.mobileNav"></span>
+	<a href="/" class="sub-logo" data-event-category="Sidebar Logo" data-event-action="click" ng-click="pages.mobileNav = false;"><small class="pupil"></small>Real Life</a>
+	<div class="menu-bg"></div>
+</div>
+<div class="nav-wrap courier-standard">
+	<a href="/" class="sub-logo sub-logo-desktop" data-event-category="Sidebar Logo" data-event-action="click" ng-class="{'subOn' : pages.panelActive }" ng-click="pages.panelActive = null"><span class="pupil"></span>Real Life</a>
+	<nav>
+		<a class="searchToggle" href="/search/" ng-click="pages.mobileNav = false; mainCtrl.activatePanel('search');"  ng-class="{'active-nav' : pages.panelActive === 'search' }"><span>Search</span></a>
+		<a class="contributorsToggle" href="/contributors" ng-click="pages.mobileNav = false; mainCtrl.activatePanel('contributors');"  ng-class="{'active-nav' : pages.panelActive === 'contributors' }"><span>Contributors</span></a>
+		<a class="dispatchToggle" href="/dispatches" ng-click="pages.mobileNav = false; mainCtrl.activatePanel('dispatches');"  ng-class="{'active-nav' : pages.panelActive === 'dispatches' }"><span>Dispatches</span></a>
+		<a href="/topics"><span>Topics</span></a>
+			</nav>
+	<span class="panel-close" ng-click="mainCtrl.resetPanels()"></span>
+</div>
+<div class="nav-btm"></div>
+<div class="share-wrap" ng-class="{'show-share' : pages.shareOn === true, 'disabled' : pages.activeSection === 'home' || pages.activeSection === 'panelcontributors' || pages.activeSection === 'panels' || pages.activeSection === 'paneldispatches' || pages.activeSection === 'paneltopics'}">
+	<span class="shareToggle" ng-click="pages.shareOn = !pages.shareOn">Share</span>
+	<div class="share-buttons">
+		<button class="sharer button" data-sharer="twitter" data-title="{{ pages.title() }}" data-url="{{ pages.url() }}"><span>Twitter</span></button>
+		<button class="sharer button" data-sharer="facebook" data-url="{{ pages.url() }}"><span>Facebook</span></button>
+		<button class="sharer button" data-sharer="email" data-title="{{ pages.title() }}" data-url="{{ pages.url() }}" data-subject="{{ pages.title() }}" data-to="some@email.com"><span>Email</span></button>
+	</div>
+</div>
+
+<div class="page {{ pages.pageClass }} angular-animate" ng-view>
+	<noscript>
+						<h6 class="section-label hollow-border hollow-btm" ng-init="homeCtrl.defaultBG('https://reallifemag.com/wp-content/uploads/2020/04/DianaCooper_Photographic-150x150.jpg')">CURRENT</h6>
+						<div class="single-feature hover-class today-feature">
+							<h1 class="title">
+								<a href="https://reallifemag.com/grounded/" blurbg="https://reallifemag.com/wp-content/uploads/2020/04/DianaCooper_Photographic-150x150.jpg">Grounded</a>
+							</h1>
+							<div class="post-preview">
+								<div class="post-info">
+									<span class="author">Christopher Schaberg</span>
+									<span class="date">04-20-2020</span>
+								</div>
+								<div class="post-excerpt">The human cost of the pandemic far outweighs the fate of the aviation industry. But air travel has long served to contain a range of contradictory ideals and aspirations about freedom, status, democracy, and technological progress and seemingly make them cohere. The coronavirus shutdown has destabilized that coherence along with the viability of routinized flight, which was already environmentally unsustainable. It's unclear is flying will ever seem anything more than a necessary evil again</div>
+							</div>
+							<a href="https://reallifemag.com/grounded/" blurbg="https://reallifemag.com/wp-content/uploads/2020/04/DianaCooper_Photographic-150x150.jpg" class="overlayLink overlayHover">Grounded</a>
+						</div>
+					</noscript>
+</div>
+<article class="clearfix instapaper_body no-js-fallback " ng-init="ArticleCtrl.initBG('https://reallifemag.com/wp-content/uploads/2020/04/TylerSpangler-150x150.png'); ArticleCtrl.docTitle('The Authoritarian Trade-Off'); pages.socialData.url = 'https://reallifemag.com/the-authoritarian-trade-off/'">
+			<div class="article-head">
+				<h1>The Authoritarian Trade-Off</h1><div class="dek"><p>Exchanging privacy rights for public health is a false compromise</p>
+</div>
+					<div class="byline-wrap">
+						<p><span class="author"><a data-event-category="Author Name" data-event-action="click" href="/contributors/jathan-sadowski">
+							Jathan Sadowski
+							</a></span> <span class="date">April 13, 2020</span> <span class="share-toggle">share</span></p>
+					</div></div><div class="featured-image "><img src="https://reallifemag.com/wp-content/uploads/2020/04/TylerSpangler-1024x984.png"><div class="featured-image-caption"><p>Image: By <a href="http://tylerspangler.com/">Tyler Spangler</a>. Courtesy the artist. </p></div></div>
+			<div class="article-body"><p>The 1918 influenza crisis makes for an obvious parallel to our own — two global pandemics, roughly 100 years apart, caused by viral outbreaks. But many also have in mind a more recent crisis that we are still living with today: the attacks on September 11, 2001 and the creation of the anti-terrorism state. Just as “post-9/11” is used to mark when the world became a different place — a worse place — so too will we now say “post-2020” or “post-Covid” as shorthand for a crisis that set in motion massive political and economic reverberations.</p>
+<p>The atmosphere of late 2001 has been largely forgotten, distorted in some quarters by nostalgia for the moment of unity it supposedly provided or by so much history having happened since then. At the height of the post-9/11 panic, people feared leaving their houses. Large gatherings felt risky. Dread lingered in the background of every trip to the shopping mall or a sporting event. What if another attack happened? Then came the threat of anthrax. Some turned their homes into bunkers to protect themselves from the possibility of biological warfare, stocking up on supplies and sealing off their homes from the outside world, save for the continuous barrage of fear and agitprop emanating from the always-on television, or, for the more plugged in, the internet forums where people shared survival tips and bits of “truthiness.”</p>
+<div class="pull-quote left-pull instapaper_ignore">
+<p>Those in the business of selling smart solutions for the world’s problems have a vested interest in muddling the differences between things</p>
+</div>
+<p>Many politicians and citizens alike wanted to see dramatic action taken in response to the attacks: An extraordinary event called for an even more extraordinary response. A week later, with near unanimity, the U.S. Congress passed the Authorization for Use of Military Force, which granted the executive office carte blanche to wage global war against terrorism, a concept. The resulting wars still rage today. Then, a month later, with near unanimity again, came the Patriot Act, which equipped the government with the ability to engage in mass surveillance and warrantless searches to fortify national security in the face of crisis.</p>
+<p>Now similar thinking is emerging about how to deal with the Covid-19 crisis. Old critics have become new converts (temporarily and in limited, specific circumstances, they say) to invasive methods of monitoring the population, arguing that exceptional times require immediate action. Governments have been building up these surveillance capacities for a long time. The monitoring and data-collection techniques we now associate with agencies like the NSA, CIA, and FBI, have their roots in more mundane forms of administering social order. We can trace that history back, for instance, to the creation of population records like the census or the invention of information technologies like the filing cabinet. As James C. Scott’s classic <a href="https://yalebooks.yale.edu/book/9780300078152/seeing-state"><em>Seeing Like a State</em></a> details, designing ways to render society legible and knowable, so it can be better managed and standardized by rational plans, has been a prime directive for modern governments. Now they have an almost irresistible justification — an urgent necessity — for further deployment and expansion.</p>
+<p>In an <a href="https://ojs.library.queensu.ca/index.php/surveillance-and-society/article/view/13985">editorial</a> for the journal <em>Surveillance &amp; Society,</em> Martin French and Torin Monahan note how even critics of surveillance have reconsidered their position in the pandemic’s wake: “The fact that the Chinese state has seemingly been able to arrest the spread of the virus by using some of the same heavy-handed techniques of surveillance-based control and containment has drawn praise from Western sources that might have previously denounced those tactics as abuses of human rights.” Hence the <a href="https://idlewords.com/2020/03/we_need_a_massive_surveillance_program.htm">stark words</a> of longtime privacy activist Maciej Cegłowski: “We need a massive surveillance program.” His reasoning is pragmatic: “Right now, the house is on fire. We need to pour water on it.” After all, the “terrifying surveillance infrastructure” already exists and is “in good working order,” so why not use it to actually save humanity?</p>
+<p>Each of those three words — <em>good working order — </em>are loaded with so much meaning, however. Together they raise hard questions about what it means to accept the existence of this surveillance infrastructure, let alone champion its use, even under emergency conditions. But the underlying utilitarian calculus would seem to require us to abstract away any broader context or concerns as irrelevant right now; all history is in the past and all consequences only extend a few links down the causal chain.</p>
+<p>Some direct and explicit forms of surveillance have been implemented to enforce social-distancing protocols. Drones hover above the streets of cities like Messina, Madrid, and Manhattan, issuing commands from speakers while watching for those disobeying confinement orders. International arrivals in Sydney and Beijing have been ushered into empty hotels for a mandatory 14 days of quarantine, while those in Hong Kong and Taiwan are required to wear GPS bracelets or log their location via WhatsApp to ensure they are staying at home. In the Indian state of Karnataka, quarantined people must similarly upload a geotagged selfie every half hour to a mobile app. Miss a check-in and the police will reportedly knock on your door. In New Zealand, even if you are just self-isolating, police now have the power to enter your home if they suspect people are gathering, no warrant required.</p>
+<p>Other surveillance techniques now being deployed against Covid-19 draw on data and analysis. On March 23, the <em>New York Times</em> <a href="https://www.nytimes.com/2020/03/23/technology/coronavirus-surveillance-tracking-privacy.html">reported</a> that many countries were “deploying digital surveillance tools as a means to exert social control, even turning security agency technologies on their own civilians.” With the aid of corporations like IBM, Microsoft, Facebook, Google, and Amazon, such tools include “contact tracing,” or the use of data about people’s locations and interactions, pieced together from across multiple networks of CCTV camera footage, phone data, credit card purchases, social media posts, and more. South Korea and Singapore have been at the forefront of this technique, providing inspiration for other governments’ responses and advice.</p>
+<p>These tools themselves are not new, just how they are being applied. Contact tracing sounds a lot like data analytics provider and defense contractor Palantir’s technique of “social network analysis.” Originally created to find terrorists and predict attacks, its approach is being redirected at citizens; personal profiles are being compiled, social relationships plotted, behavioral patterns uncovered. Organizations like the U.S. Centers for Disease Control and the U.K. National Health Service have <a href="https://techcrunch.com/2020/04/01/palantir-coronavirus-cdc-nhs-gotham-foundry/">partnered</a> with Palantir to analyze public health data and model the spread of the virus. Meanwhile, Palantir is <a href="https://www.forbes.com/sites/thomasbrewster/2020/04/08/the-us-coast-guard-just-ordered-palantir-tech-for-help-with-covid-19-readiness/#49dc98fe3b9e">helping</a> the U.S. Coast Guard with its “Readiness System” for the pandemic. The company provides a <a href="https://www.palantir.com/covid19/">list of ways</a> that it is “responding to Covid-19,” including by assisting with supply chain management for a “large Anglo-Australian mining company” and mapping the location of employees of a “major oil and gas company.” Palantir has always been secretive about just who it works with, so we can only assume this is just a glimpse of how widely their technology is being applied in the Covid-19 response.</p>
+<p>Now the pandemic will likely provide Palantir and other tech companies an opportunity to argue for wider applications of its tools, to fight crime and contagion, for national security and public health. Those in the business of selling smart solutions for the world’s problems have a vested interest in muddling the differences between multiple things. They provide what they claim is a universal solution — an approach seemingly capable of processing any data and optimizing the desired outcome, regardless of its source or content — so that any problem can be reframed to fit it. Just tweak the parameters, shovel different data into the analytics engine, and out comes “actionable insights.” The pandemic isn’t the first time this will happen (just consider the whole “<a href="https://reallifemag.com/the-captured-city/">smart city</a>” industry), and it won’t be the last.</p>
+<div class="pull-quote left-pull instapaper_ignore">
+<p>Authoritarianism — for the “right” reasons — starts looking tolerable, even good, because it looks like the only option</p>
+</div>
+<p>Meanwhile, people in cities throughout China are now required to use a phone app that assigns each person a color-coded classification for contagion risk and thereby determines if they must go into quarantine or if they will be allowed to ride public transport. As is often the case with such scoring systems, there’s no full explanation of how its scoring decisions are made and no due process for challenging it. This is not surprising considering it was developed by Ant Financial, the company also behind one of the major social credit scoring systems in China that have garnered much critical attention. People are left confused, at the mercy of another proprietary algorithm, as an army of human enforcers scan QR codes at the entrances of markets and subways. It’s another case of a system devised for different purposes being retooled and expanded for the current crisis, while also further entangling corporate and government power.</p>
+<p>Whether it’s social-network analysis or social-credit scoring, we should expect these opaque processes that depend on inherently biased data will lead to unjust discrimination and unaccountable outcomes. This is a familiar series of events, as <a href="https://www.hup.harvard.edu/catalog.php?isbn=9780674970847">many</a> have <a href="https://nyupress.org/9781479837243/algorithms-of-oppression/">pointed</a> out <a href="https://mitpress.mit.edu/books/too-smart">before</a>, that plays out again and again for the simple reason that data has a point of view; it’s embedded with human choices, and it’s the product of social processes. But the difference here is that governments and corporations now possess an end that justifies any means. They can paint any critical concerns as dangerous to the public, not by gesturing to some vague notion of national security or by repeating hollow warnings about increased crime this time but by using the sick as human alibis for anything they deem necessary.</p>
+<hr />
+<p>Even by the pragmatist’s standards, adopting these intrusive surveillance programs to contain the pandemic is at best a gamble. There’s a strong case, laid out <a href="https://www.lawfareblog.com/location-surveillance-counter-covid-19-efficacy-what-matters">here</a> by legal scholar Susan Landau, that location surveillance of cell phones does not work for contact tracing because of technical limitations. Similarly, privacy researcher Ashkan Soltani has <a href="https://twitter.com/ashk4n/status/1248659871622291456">laid out</a> strong critiques of a major <a href="https://www.apple.com/newsroom/2020/04/apple-and-google-partner-on-covid-19-contact-tracing-technology/">partnership</a> between Apple and Google to create a “Bluetooth-based contact tracing platform” that will be interoperable between iOS and Android phones. For Soltani, the data and capabilities from this initiative are “poor proxies” for actual infection rates and detract attention away from more widespread testing. The same skeptical eye should be cast over other tech solutions, which too often rely on the same justification, whether used for national security, public safety, or public health: “Trust us.” Why should we? There’s little evidence that digital surveillance tools developed for counterterrorism have prevented attacks (though the information may be classified), and <a href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2016.00960.x">independent</a> <a href="https://link.springer.com/article/10.1007/s11292-016-9272-0">studies</a> looking into the effectiveness of these tools for predictive policing are inconclusive, at best. The burden should fall on those designing and deploying such techniques to prove that this time would be different. But instead, the public may be expected to bear the consequences of the shortcomings, side effects, and externalities.</p>
+<p>“If a proposed ‘solution’ is not efficacious, there is no reason to consider the program,” Landau writes. But the exigencies of political economy say otherwise. The efficacy challenge does not actually govern policy. Exercising power is not just about effectively achieving particular outcomes or doing what “works”; it’s also deciding the parameters for how those ideas will be defined. It’s about preserving certain interests over others and reasserting the value of certain people over others. We need only look at how medical resources are currently being distributed and the <a href="https://www.nytimes.com/2020/03/15/world/europe/coronavirus-inequality.html">demographics of vulnerability</a> to the virus to see how that plays out. These problems extend beyond the violation of civil liberties, beyond intrusive data collection considered as an abstract harm, beyond the much-lamented tradeoffs between public health and personal privacy. Rather, they reflect structural biases in how governance is conducted and how society is organized — and for whose benefit.</p>
+<p>Casting &#8220;critical&#8221; perspectives on the pandemic in privacy-vs.-public-health terms perpetuates a false dichotomy that was repeatedly debunked post-9/11, when it was “national security” doing the heavy lifting. A decade ago, legal scholar Daniel Solove’s book <a href="https://www.aclu.org/blog/national-security/qa-daniel-solove-how-bad-security-arguments-are-undermining-our-privacy"><em>Nothing to Hide</em></a> compiled the various arguments for why &#8220;in times of crisis, we must trade privacy and liberty for greater security” and systematically refuted each one. But not only is the “tradeoffs” position trite; it’s dangerous. Its real power is not in convincing people to give up liberty for security but in instead framing the response to crisis as a false dilemma in which they have no reasonable choice but to make a sacrifice in return for a solution. If you offer people the chance for normalcy, they will say yes to giving up almost anything before you can finish laying out the terms. We will see this acquiescence wash over people now, just as it has before.</p>
+<div class="pull-quote left-pull instapaper_ignore">
+<p>The threat of terrorism will, by design, never be defeated. It’s not hard to imagine how that could play out with the virus</p>
+</div>
+<p>I understand this desire. I feel it too, when I start wondering why didn’t the authorities shut things down swiftly and immediately? Why did the borders take so long to close? Why are people still playing in the parks and going to the cafes? Why weren’t the police out there ordering people to go home and stay inside? Why don’t we have all the information possible? Why are protocols and standards slowing things down? Why don’t we use every possible tool and capability at our disposal? What good is all this shit if it can’t save us when it matters most? Authoritarianism — for the “right” reasons, just for this specific instance — starts looking tolerable, even good, because it looks like the only option. The horseshoe theory of politics begins looking like just the lucky charm we need to get through this crisis.</p>
+<p>It’s okay, I tell myself. We can bake in sunset clauses that phase out and “gracefully dismantle” these programs after the crisis, like the project proposed <a href="https://twitter.com/katecrawford/status/1246135370519064580?s=20">here</a> by academics concerned with government overreach. No, better yet they will be <em>self-destruction</em> clauses that guarantee these programs will be destroyed immediately, with no opportunity for extension.</p>
+<p>But why should we believe that this time will be different? We’ve been here before. We were forced to adapt to a never-ending global war on terror. Despite several attempts to repeal it, the Authorization for Use of Military Force is still in place and the war powers of the president have only grown. Despite blockbuster leaks and court cases about mass surveillance programs, these technologies have trickled down the chain as city police departments now operate under a counterterrorism mandate. The security hawk might say that’s because terrorism still exists, so these programs still have a purpose. Exactly. The threat will, by design, never be defeated. It’s constantly redefined according to the broadest possible parameters.</p>
+<p>It’s not hard to imagine how that could play out with the virus. It’s now expected that this novel coronavirus will probably never go away. The longtail of the pandemic could last for years and even then, like the flu, there will be regular outbreaks. As Anthony Fauci, the White House’s top immunologist, <a href="https://metro.co.uk/2020/04/07/top-coronavirus-expert-warns-new-normal-might-never-go-away-12522661/">stated</a>, “If you want to get to pre-coronavirus, that might never happen in the sense of, the fact, that the threat is there.” Sure, the impacts will lessen as the population builds up resistance, but shouldn’t we keep a close watch over the spread of infection just in case? And what about the next threat to public health or the economy? We cannot afford to be complacent, as those in power will be quick to tell us. We must take advantage of all measures available — and move to authorize even more intrusive and panoptic programs. After all, prevention is the best medicine.</p>
+<hr />
+<p>And here we are in a new global war against another faceless enemy, at least that’s the framing given by many who are directing or influencing the response efforts. “Faced with unforeseen circumstances, a change of mind-set is as necessary in this crisis as it would be in times of war,” <a href="https://www.ft.com/content/c6d2de3a-6ec5-11ea-89df-41bea055720b">says</a> the former president of the European Central Bank in the <em>Financial Times</em>. We “must mobilize accordingly.” Trump, labelling himself a “<a href="https://www.politico.com/news/2020/03/18/trump-administration-self-swab-coronavirus-tests-135590">wartime president</a>,” has leaned fully into this framing. In a recent press briefing, he <a href="https://www.politico.com/news/2020/03/30/my-pillow-lindell-trump-coronavirus-156335">introduced</a> the “great leaders” of large corporations like Honeywell and Procter &amp; Gamble, who he commended for doing “their patriotic duty” in the fight against the virus. Countries now wage proxy battles against each other through the medium of a health crisis as they fight over medical resources and close off borders in the name of national security — I mean, public health. Many things that are not technically wars are now framed as wars, almost by reflex, whether it’s the war on terror, drugs, or coronavirus. The primary option we are given for understanding crisis of any kind is through protracted mobilization and tragedy.</p>
+<div class="pull-quote left-pull instapaper_ignore">
+<p>Many things that are not technically wars are now framed as wars, almost by reflex</p>
+</div>
+<p>Exploiting crisis is a guiding principle — a best practice for good governance, as the consultant class would put it — for how power is enacted and expanded. The long-term consequences of allowing short-term &#8220;solutions&#8221; to be applied unabated will mean that, even once the pandemic is alleviated, the crisis will never go away. The programs will be in place and, in the name of prevention, they&#8217;ll never be shut off.</p>
+<p>The transition to a post-pandemic world isn’t coming at some indeterminate point in the future. It’s already happening, in uneven and variegated ways around the world, in ways that both reflect and distort existing contexts. There’s surveillance authoritarianism in places like China, where technical systems are used to exert more command and control over the vectors of contagion: people. There’s financial authoritarianism in places like the U.S., where politicians call for blood sacrifices to the market and private equity firms plot how to pick the bones of a dead economy. There’s dictatorial authoritarianism in places like Hungary, where prime minister Viktor Orbán has leveraged the pandemic to finally claim unlimited, indefinite power.</p>
+<p>As Malcolm Harris noted in this <a href="https://communemag.com/take-care/">analysis</a> of Covid-19 aid, “In today’s crisis, we’re building tomorrow’s normal.” We can see the steps toward the post-pandemic political order when governments seek “new emergency powers” that echo the powers they claimed after 9/11, like the ability to detain people indefinitely, or access all data deemed relevant, or construct new systems for population management. Or, when major acts of legislation like the $2.2 trillion CARES Act — a corporate bailout with a paltry stimulus check and minimal worker protections attached — is pushed through Congress with a voice vote so there’s no time for debate and no record of decision.</p>
+<p>It’s difficult to have foresight now with so much going on. Yet the consequences of more mass surveillance, more social control, more state-corporate power, more mobilizing for war of any kind are so predictable. We need more transparency, more accountability, and, most important, more humanity in how the response is planned and implemented. Otherwise I fear that those who welcome an anything-goes response to today’s crisis will look back in just a few years and wonder whether the crisis can ever end.</p>
+</div><div class="contributor-description"><p><a href="https://twitter.com/jathansadowski">Jathan Sadowski</a> is a research fellow in the Emerging Technologies Research Lab in the Faculty of Information Technology at Monash University.</p>
+</div></article><canvas class="blurCanvas" id="blurCanvas" width="200" height="200" data-canvas style="background-color:{{pages.randColor}}"></canvas>
+
+<div class="panels {{pages.panelActive}}-active">
+	<div class="panel panel-search" ng-show="pages.panelActive === 'search'">
+		<div ng-controller="SearchController as searchCtrl" class="panel-contents panel-contents-search">
+			<div class="maxW">
+				<form method="get" id="searchform" action="/search">
+					<label for="s">Search</label>
+					<input type="text" name="s" id="s" autocomplete="off" placeholder="Search…" />
+					<input type="submit" name="submit" id="searchsubmit" value="Search" />
+				</form>
+				<div class="searchLoading" ng-show="searchCtrl.isLoading == true">Searching Real Life archives&hellip;</div>
+				<div id="resultsArea"></div>
+			</div>
+		</div>
+	</div>
+		<div ng-controller="DispatchesController as dCtrl" class="panel panel-dispatches" ng-if="pages.panelActive === 'dispatches'">
+		<div class="dispatch-header-wrap">
+			<div class="dispatches-header maxW">
+				<a href="/" class="svg-wrap svg-wrap-link" ng-include="'https://reallifemag.com/wp-content/themes/rl1e/img/rl.svg'"></a>
+			</div>
+		</div>
+		<div class="maxW dispatches-list">
+			<div class="svg-wrap dispatch-head-pad"></div>
+			<article class="single-dispatch"  ng-if="dCtrl.allowDispatch(0,'introducing-topics')" data-dispatch-id="introducing-topics" ng-include="'/wp-content/uploads/data/dispatches/introducing-topics.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(1,'strangers-when-we-meet')" data-dispatch-id="strangers-when-we-meet" ng-include="'/wp-content/uploads/data/dispatches/strangers-when-we-meet.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(2,'without-dust-and-heat')" data-dispatch-id="without-dust-and-heat" ng-include="'/wp-content/uploads/data/dispatches/without-dust-and-heat.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(3,'not-hearing-the-oarsmen')" data-dispatch-id="not-hearing-the-oarsmen" ng-include="'/wp-content/uploads/data/dispatches/not-hearing-the-oarsmen.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(4,'the-new-math')" data-dispatch-id="the-new-math" ng-include="'/wp-content/uploads/data/dispatches/the-new-math.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(5,'the-communication-experience')" data-dispatch-id="the-communication-experience" ng-include="'/wp-content/uploads/data/dispatches/the-communication-experience.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(6,'a-profile-and-a-location')" data-dispatch-id="a-profile-and-a-location" ng-include="'/wp-content/uploads/data/dispatches/a-profile-and-a-location.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(7,'command-performance')" data-dispatch-id="command-performance" ng-include="'/wp-content/uploads/data/dispatches/command-performance.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(8,'commitment-to-reality')" data-dispatch-id="commitment-to-reality" ng-include="'/wp-content/uploads/data/dispatches/commitment-to-reality.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(9,'write-for-us-3')" data-dispatch-id="write-for-us-3" ng-include="'/wp-content/uploads/data/dispatches/write-for-us-3.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(10,'the-deserted-beach')" data-dispatch-id="the-deserted-beach" ng-include="'/wp-content/uploads/data/dispatches/the-deserted-beach.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(11,'internet-of-human-things')" data-dispatch-id="internet-of-human-things" ng-include="'/wp-content/uploads/data/dispatches/internet-of-human-things.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(12,'true-love-ways')" data-dispatch-id="true-love-ways" ng-include="'/wp-content/uploads/data/dispatches/true-love-ways.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(13,'vanity-metrics')" data-dispatch-id="vanity-metrics" ng-include="'/wp-content/uploads/data/dispatches/vanity-metrics.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(14,'reconciliation-and-further-estrangement')" data-dispatch-id="reconciliation-and-further-estrangement" ng-include="'/wp-content/uploads/data/dispatches/reconciliation-and-further-estrangement.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(15,'ive-never-misfiled-anything')" data-dispatch-id="ive-never-misfiled-anything" ng-include="'/wp-content/uploads/data/dispatches/ive-never-misfiled-anything.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(16,'escape-rooms')" data-dispatch-id="escape-rooms" ng-include="'/wp-content/uploads/data/dispatches/escape-rooms.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(17,'shareable-crime')" data-dispatch-id="shareable-crime" ng-include="'/wp-content/uploads/data/dispatches/shareable-crime.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(18,'single-entendre-principles')" data-dispatch-id="single-entendre-principles" ng-include="'/wp-content/uploads/data/dispatches/single-entendre-principles.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(19,'when-on-and-off-collide')" data-dispatch-id="when-on-and-off-collide" ng-include="'/wp-content/uploads/data/dispatches/when-on-and-off-collide.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(20,'all-gates-open')" data-dispatch-id="all-gates-open" ng-include="'/wp-content/uploads/data/dispatches/all-gates-open.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(21,'the-house-is-haunted-by-the-echo-of-your-last-goodbye')" data-dispatch-id="the-house-is-haunted-by-the-echo-of-your-last-goodbye" ng-include="'/wp-content/uploads/data/dispatches/the-house-is-haunted-by-the-echo-of-your-last-goodbye.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(22,'self-checkout')" data-dispatch-id="self-checkout" ng-include="'/wp-content/uploads/data/dispatches/self-checkout.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(23,'i-believe-this-is-my-festival')" data-dispatch-id="i-believe-this-is-my-festival" ng-include="'/wp-content/uploads/data/dispatches/i-believe-this-is-my-festival.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(24,'not-relevant-for-fantasy-purposes')" data-dispatch-id="not-relevant-for-fantasy-purposes" ng-include="'/wp-content/uploads/data/dispatches/not-relevant-for-fantasy-purposes.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(25,'daily-advice-for-virgo')" data-dispatch-id="daily-advice-for-virgo" ng-include="'/wp-content/uploads/data/dispatches/daily-advice-for-virgo.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(26,'outside-the-tower')" data-dispatch-id="outside-the-tower" ng-include="'/wp-content/uploads/data/dispatches/outside-the-tower.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(27,'when-the-owls-cry-in-the-night')" data-dispatch-id="when-the-owls-cry-in-the-night" ng-include="'/wp-content/uploads/data/dispatches/when-the-owls-cry-in-the-night.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(28,'infinite-death-metal')" data-dispatch-id="infinite-death-metal" ng-include="'/wp-content/uploads/data/dispatches/infinite-death-metal.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(29,'kiss-cam')" data-dispatch-id="kiss-cam" ng-include="'/wp-content/uploads/data/dispatches/kiss-cam.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(30,'moving-the-river')" data-dispatch-id="moving-the-river" ng-include="'/wp-content/uploads/data/dispatches/moving-the-river.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(31,'harvester-of-eyes')" data-dispatch-id="harvester-of-eyes" ng-include="'/wp-content/uploads/data/dispatches/harvester-of-eyes.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(32,'safeguarding-trust')" data-dispatch-id="safeguarding-trust" ng-include="'/wp-content/uploads/data/dispatches/safeguarding-trust.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(33,'bad-virality')" data-dispatch-id="bad-virality" ng-include="'/wp-content/uploads/data/dispatches/bad-virality.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(34,'the-house-we-live-in')" data-dispatch-id="the-house-we-live-in" ng-include="'/wp-content/uploads/data/dispatches/the-house-we-live-in.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(35,'eclipsing-binaries')" data-dispatch-id="eclipsing-binaries" ng-include="'/wp-content/uploads/data/dispatches/eclipsing-binaries.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(36,'feelings-unremembered')" data-dispatch-id="feelings-unremembered" ng-include="'/wp-content/uploads/data/dispatches/feelings-unremembered.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(37,'to-deny-oneself-is-a-luxury')" data-dispatch-id="to-deny-oneself-is-a-luxury" ng-include="'/wp-content/uploads/data/dispatches/to-deny-oneself-is-a-luxury.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(38,'execution-risks')" data-dispatch-id="execution-risks" ng-include="'/wp-content/uploads/data/dispatches/execution-risks.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(39,'let-me-have-this-dust')" data-dispatch-id="let-me-have-this-dust" ng-include="'/wp-content/uploads/data/dispatches/let-me-have-this-dust.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(40,'the-sea-was-not-a-mask')" data-dispatch-id="the-sea-was-not-a-mask" ng-include="'/wp-content/uploads/data/dispatches/the-sea-was-not-a-mask.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(41,'you-know-my-name-look-up-the-number')" data-dispatch-id="you-know-my-name-look-up-the-number" ng-include="'/wp-content/uploads/data/dispatches/you-know-my-name-look-up-the-number.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(42,'reversed-in-the-accumulating-mirror')" data-dispatch-id="reversed-in-the-accumulating-mirror" ng-include="'/wp-content/uploads/data/dispatches/reversed-in-the-accumulating-mirror.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(43,'understanding-makes-the-mind-lazy')" data-dispatch-id="understanding-makes-the-mind-lazy" ng-include="'/wp-content/uploads/data/dispatches/understanding-makes-the-mind-lazy.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(44,'beacon-moved-under-moon-and-star')" data-dispatch-id="beacon-moved-under-moon-and-star" ng-include="'/wp-content/uploads/data/dispatches/beacon-moved-under-moon-and-star.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(45,'take-this-stranger-from-my-boat')" data-dispatch-id="take-this-stranger-from-my-boat" ng-include="'/wp-content/uploads/data/dispatches/take-this-stranger-from-my-boat.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(46,'introducing-guided-tours')" data-dispatch-id="introducing-guided-tours" ng-include="'/wp-content/uploads/data/dispatches/introducing-guided-tours.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(47,'delicate-cutters')" data-dispatch-id="delicate-cutters" ng-include="'/wp-content/uploads/data/dispatches/delicate-cutters.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(48,'the-happiest-people-in-the-world')" data-dispatch-id="the-happiest-people-in-the-world" ng-include="'/wp-content/uploads/data/dispatches/the-happiest-people-in-the-world.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(49,'write-for-us-2')" data-dispatch-id="write-for-us-2" ng-include="'/wp-content/uploads/data/dispatches/write-for-us-2.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(50,'sos')" data-dispatch-id="sos" ng-include="'/wp-content/uploads/data/dispatches/sos.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(51,'real-life-live')" data-dispatch-id="real-life-live" ng-include="'/wp-content/uploads/data/dispatches/real-life-live.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(52,'write-for-us')" data-dispatch-id="write-for-us" ng-include="'/wp-content/uploads/data/dispatches/write-for-us.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(53,'theorizing-the-web-april-7-8')" data-dispatch-id="theorizing-the-web-april-7-8" ng-include="'/wp-content/uploads/data/dispatches/theorizing-the-web-april-7-8.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(54,'chaos-reigns')" data-dispatch-id="chaos-reigns" ng-include="'/wp-content/uploads/data/dispatches/chaos-reigns.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(55,'dualism-and-death')" data-dispatch-id="dualism-and-death" ng-include="'/wp-content/uploads/data/dispatches/dualism-and-death.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(56,'theyre-with-her')" data-dispatch-id="theyre-with-her" ng-include="'/wp-content/uploads/data/dispatches/theyre-with-her.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(57,'the-new-boredom')" data-dispatch-id="the-new-boredom" ng-include="'/wp-content/uploads/data/dispatches/the-new-boredom.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(58,'always-already-augmented')" data-dispatch-id="always-already-augmented" ng-include="'/wp-content/uploads/data/dispatches/always-already-augmented.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(59,'videodrome-tonight')" data-dispatch-id="videodrome-tonight" ng-include="'/wp-content/uploads/data/dispatches/videodrome-tonight.html'"></article><article class="single-dispatch"  ng-if="dCtrl.allowDispatch(60,'editors-letter')" data-dispatch-id="editors-letter" ng-include="'/wp-content/uploads/data/dispatches/editors-letter.html'"></article>			<div class="dispatches-footer"><footer class="clearfix hollow-border hollow-top">
+	<div class="copyright courier-standard">
+		<p>&copy;&thinsp;2020</p>
+	</div>
+	<div class="footer-desc"><p>Real Life is a magazine about living with technology. The emphasis is more on living.</p>
+<p>To find out more about us, <a href="https://reallifemag.com/about-real-life/">click here</a>. To find out more about our contributors, or to contribute yourself, <a href="/contributors/contact">click here</a>. To ask us a question about anything else, email info@reallifemag.com</p>
+<p>Real Life is made possible by funding from Snap Inc., and we operate with editorial independence and without ads.</p>
+<p class="contributors-only">Website: <a href="http://chips.nyc" target="_blank">CHIPS</a></p></div>
+	<div class="footer-legal courier-standard">
+		<p><a href="/terms-of-use/">Terms of Use</a>
+		<br /><a href="/privacy-policy/">Privacy Policy</a></p>
+	</div>
+</footer>				
+			</div>
+		</div>
+	</div>
+	<div ng-controller="ContributorsController as ContributorsCtrl" class="panel panel-contributors" ng-show="pages.panelActive === 'contributors'">
+		<div class="contributors-header maxW">
+			<a href="/" class="svg-wrap svg-wrap-link" ng-include="'https://reallifemag.com/wp-content/themes/rl1e/img/rl.svg'"></a>
+		</div>
+		<div ng-if="EditorsData.length > 1" class="contributors-section editors-section">
+			<h6 class="section-label hollow-border hollow-btm">Editors</h6>
+			<div class="editors-wrap clearfix">
+				 <div ng-repeat="limit in getLimits(EditorsData)" class="editor-column ed-col-{{$index+1}}">
+			        <div ng-repeat="editor in EditorsData | limitTo : limit" class="single-editor">
+						<h3 class="editor-name" ng-bind-html="editor.name"></h3>
+						<div class="bio-text" ng-bind-html="editor.bio"></div>
+					</div>
+			    </div>
+
+			</div>
+		</div>
+		<div class="contributors-section contact-section clearfix">
+			<h6 class="section-label hollow-border hollow-btm">Contact</h6>
+			<div class="contact-text contact-col" ng-bind-html="contactText"></div>
+			<div class="social-text contact-col" ng-bind-html="socialText"></div>
+		</div>
+		<div class="contributors-two-sections" ng-class="{'has-submission clearfix': submissionGuidelines.length > 1}">
+			<div class="contributors-section contributors-section">
+				<h6 class="section-label hollow-border hollow-btm">Contributors</h6>
+				<ul class="contributor-list" >
+					<li class="single-contributor {{ contribItem.slug }}" ng-class="{'expanded' : expanded === true}" ng-repeat="contribItem in ContributorsData | orderBy:'sName'" ng-controller="ContributorsItemController">
+						<a name="{{ contribItem.slug }}" class="contrib-anchor"></a>
+						<span class="item-toggle" ng-click="expanded = !expanded"></span>
+						<div class="contrib-min">
+							<h3 class="contributor-name" ng-bind-html="contribItem.name"></h3>
+							<span class="contrib-close" ng-click="expanded = true"></span>
+						</div>
+						<div class="full-info">
+							<h3 class="contributor-name" ng-bind-html="contribItem.name"></h3>
+							<div class="desc-text" ng-bind-html="contribItem.description" ng-if="contribItem.description !== ''"></div>
+							<ul class="post-links">
+								<li ng-repeat="contribPost in contribItem.posts" ng-controller="ContributorsPostsController">
+									<a ng-href="{{contribPost.url}}" ng-bind="contribPost.title"></a>, <span class="post-date" ng-bind="mainCtrl.formatDate(contribPost.date)"></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="contributors-section submission-section">
+				<h6 class="section-label hollow-border hollow-btm">Contribute</h6>
+				<div class="submission-guidelines-text" ng-bind-html="submissionGuidelines"></div>
+			</div>
+		</div>
+
+		<div class="contributors-footer contributors-section"><footer class="clearfix hollow-border hollow-top">
+	<div class="copyright courier-standard">
+		<p>&copy;&thinsp;2020</p>
+	</div>
+	<div class="footer-desc"><p>Real Life is a magazine about living with technology. The emphasis is more on living.</p>
+<p>To find out more about us, <a href="https://reallifemag.com/about-real-life/">click here</a>. To find out more about our contributors, or to contribute yourself, <a href="/contributors/contact">click here</a>. To ask us a question about anything else, email info@reallifemag.com</p>
+<p>Real Life is made possible by funding from Snap Inc., and we operate with editorial independence and without ads.</p>
+<p class="contributors-only">Website: <a href="http://chips.nyc" target="_blank">CHIPS</a></p></div>
+	<div class="footer-legal courier-standard">
+		<p><a href="/terms-of-use/">Terms of Use</a>
+		<br /><a href="/privacy-policy/">Privacy Policy</a></p>
+	</div>
+</footer></div>
+	</div>
+	<div class="panel-bg"></div>
+	<div class="panel-bg dispatch-bg" ng-class="{'dpbg-on' : pages.panelActive === 'dispatches'}"></div>
+	<div class="panel-bg topic-bg" ng-class="{'dpbg-on' : pages.panelActive === 'topics'}"></div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-animate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js"></script>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var cbVariable = "6def392319521d9647566d4be1b8d238";
+/* ]]> */
+</script>
+
+<script type='text/javascript' src="https://reallifemag.com/wp-content/themes/rl1e/js/vendor.js?v=1.05a"></script>
+<script type='text/javascript' src="https://reallifemag.com/wp-content/themes/rl1e/js/rl-min.js?v=1.05c"></script>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-78591102-1', 'auto');
+ga('require', 'autotrack');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

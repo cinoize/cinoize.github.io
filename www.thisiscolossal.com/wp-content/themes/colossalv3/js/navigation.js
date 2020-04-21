@@ -1,0 +1,2 @@
+$(function(){var $push=$('.push');$('.mobile-menu').on('click',function(e){e.preventDefault();var $t=$(this),$panel=$($t.data('panel')),dir=$t.data('dir');if($push.hasClass('pushed')){$push.removeClass('pushed left right');$panel.removeClass('open');}
+else{$push.addClass(dir+' pushed');$panel.addClass('open');}});});

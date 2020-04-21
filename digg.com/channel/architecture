@@ -1,0 +1,3315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="microtip" content="33NWbMsckoLcoVX6Tz9o6ksuBrJVeu3en2" data-currency="btc">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="preconnect" href="https://srv.buysellads.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<link rel="preconnect" href="https://www.google.com" crossorigin>
+<link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+<link rel="preconnect" href="https://cdn.ampproject.org" crossorigin>
+<link rel="preconnect" href="https://s3.amazonaws.com" crossorigin>
+<link rel="preconnect" href="https://images.digg.com" crossorigin>
+<link rel="manifest" href="/manifest.json?v=1587400711">
+<link rel="stylesheet" href="/static/base.css?v=1587400711">
+<link rel="canonical" href="https://digg.com/channel/architecture">
+
+<link rel="icon" href="/static/images/digg-favicon.png?v=1587400711" type="image/png">
+<link rel="apple-touch-icon" href="/static/images/digg-logo-512.png?v=1587400711">
+
+<script type='text/javascript'>
+      (function () {
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 30608;
+        _sf_async_config.domain = 'digg.com';
+        _sf_async_config.flickerControl = false;
+        _sf_async_config.useCanonical = true;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.sections = ''; //CHANGE THIS TO YOUR SECTION NAME(s)
+        _sf_async_config.authors = ''; //CHANGE THIS TO YOUR AUTHOR NAME(s)
+        function loadChartbeat() {
+          var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true; e.src = '//static.chartbeat.com/js/chartbeat.js';
+          var n = document.getElementsByTagName('script')[0]; n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+      })();
+    </script>
+<script async src="https://static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@digg">
+<meta name="twitter:title" content="Architecture - Digg">
+<meta name="twitter:image" content="https://digg.com/static/images/digg-logo-og.png">
+<meta name="twitter:description" content="Architecture on Digg: the best articles, videos, tweets, and original content that the web is talking about right now.">
+<meta property="fb:app_id" content="123277257693179">
+<meta property="og:url" content="https://digg.com/channel/architecture">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Architecture - Digg">
+<meta property="og:image" content="https://digg.com/static/images/digg-logo-og.png">
+<meta property="og:description" content="Architecture on Digg: the best articles, videos, tweets, and original content that the web is talking about right now.">
+<meta name="application-name" content="Digg">
+<meta name="msapplication-TileImage" content="https&#x3A;&#x2F;&#x2F;digg.com/static/images/digg-logo-144.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<title>Architecture - Digg</title>
+<meta name="description" content="Architecture on Digg: the best articles, videos, tweets, and original content that the web is talking about right now.">
+
+<link rel="alternate" type="application/rss+xml" title="Architecture - Digg" href="/rss/architecture.rss">
+<link rel="search" type="application/opensearchdescription+xml" title="Digg" href="/opensearch.xml">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-33556916-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-33556916-1', {
+        'custom_map': {
+          'dimension7': 'user_login_status'
+        }
+      });
+
+            gtag('event', 'page_load', { 'user_login_status': 'no' });
+          </script>
+</head>
+<body class=" ">
+<header class="main-navigation">
+<div class="main-navigation__inner">
+<div class="main-navigation__inactive-overlay"></div>
+<div class="main-navigation__inner-left left">
+<a href="/" class="logo">
+<svg viewBox="0 0 47 27" width="47" height="27" xmlns="http://www.w3.org/2000/svg" aria-label="Digg">
+<title>Digg</title>
+<path d="M5.025 10.025H7V17H5.025v-6.975zM0 21h12V0H7v6H0v15zM14 6h5v15h-5zm0-6h5v4h-5zm12 10h2v7h-2v-7zm-5 11h7v2h-7v4h12V6H21v15zm19-11h2v7h-2v-7zm-5 11h7v2h-7v4h12V6H35v15z" fill="#1B1A19" fill-rule="evenodd"></path>
+</svg>
+</a>
+<div class="main-navigation__primary">
+<a href="#" class="main-navigation__primary-trigger">
+<span>Architecture</span>
+<svg height="18" viewBox="0 0 48 48" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.83 16.42l9.17 9.17 9.17-9.17 2.83 2.83-12 12-12-12z"></path>
+</svg>
+</a>
+<nav role="navigation" class="main-navigation__primary-panel">
+<ul class="main-navigation__primary-links">
+<li>
+<a href="/">
+<svg viewBox="0 0 48 48" width="12" height="12" xmlns="http://www.w3.org/2000/svg" aria-label="Frontpage">
+<g fill="none" fill-rule="evenodd">
+<path fill="#000" d="M6.03 23.958H0L24 0l24 23.958h-6.03V46H6.03V23.958zM20 46h8V30h-8v16z"></path>
+</g>
+</svg>
+<span>Frontpage</span>
+</a>
+</li>
+<li>
+<a href="/video">
+<svg viewBox="0 0 48 48" width="12" height="12" xmlns="http://www.w3.org/2000/svg" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#000" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+<span>Video</span>
+</a>
+</li>
+<li>
+<a href="https://store.digg.com?utm_source=digg.com&amp;utm_medium=topnav" target="" rel="noopener" aria-label="Opens a new window">
+<svg viewBox="0 0 48 48" width="12" height="12" xmlns="http://www.w3.org/2000/svg" aria-label="Store">
+<g fill="none" fill-rule="evenodd">
+<path fill="#000" d="M36 12h8v36H4V12h8c0-6.627 5.373-12 12-12 6.626 0 12 5.373 12 12zm-20 0h16c0-4.417-3.583-8-8-8-4.418 0-8 3.583-8 8z"></path>
+</g>
+</svg>
+<span>Store</span>
+</a>
+</li>
+<li>
+<a href="/channel/digg-pick">
+<svg viewBox="0 0 92 92" width="12" height="12" xmlns="http://www.w3.org/2000/svg" aria-label="Picks">
+<path fill="#F38F31" fill-rule="nonzero" d="M50 80.362L20.61 95.45l5.27-32.614L2.447 39.55l32.646-5.067L50 5l14.907 29.482 32.646 5.067L74.12 62.837l5.27 32.614z">
+</path>
+</svg>
+<span>Picks</span>
+</a>
+</li>
+</ul>
+<div class="main-navigation__primary-channels">
+<ul class="main-navigation__primary-channels-left">
+<li><a href="/channel/technology" style="color: ">Technology</a></li>
+<li><a href="/channel/longreads" style="color: ">Long Reads</a></li>
+<li><a href="/channel/photos" style="color: ">Photos</a></li>
+<li><a href="/channel/science" style="color: ">Science</a></li>
+</ul>
+<ul class="main-navigation__primary-channels-right">
+<li><a href="/channel/design" style="color: ">Design</a></li>
+<li><a href="/channel/digg-feature" style="color: ">Digg Features</a></li>
+<li><a href="/channel/bitcoin" style="color: ">&#8383;itcoin</a></li>
+<li><a href="/channel/coronavirus" style="color: ">Coronavirus</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+<div class="main-navigation__secondary right ">
+<nav>
+<ul>
+<li>
+<label class="switch" title="Automatically detect dark mode?">
+<input type="checkbox" class="darkmode-toggle">
+<span class="slider"></span>
+</label>
+</li>
+<li>
+<a class="main-navigation__secondary-subscribe" href="/subscribe">
+<svg viewBox="0 0 32 32" width="13" height="13" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M16,15.834l13-7.8V8a2,2,0,0,0-2-2H5A2,2,0,0,0,3,8v.034Z" />
+<path d="M16.515,17.857a1,1,0,0,1-1.03,0L3,10.366V24a2,2,0,0,0,2,2H27a2,2,0,0,0,2-2V10.366Z" />
+</g>
+</svg>
+<span>Newsletter</span>
+</a>
+</li>
+<li>
+<a class="main-navigation__secondary-search">
+<label>
+<svg viewBox="0 0 48 48" width="13" height="13" xmlns="http://www.w3.org/2000/svg" aria-label="Search">
+<g fill="none" fill-rule="evenodd">
+<path fill="#000" d="M21.038 1.4c8.284 0 15 6.717 15 15 0 8.286-6.716 15-15 15-8.284 0-15-6.714-15-15 0-8.283 6.716-15 15-15m5.153 32.146L34.555 46.7l6.523-4.147-8.132-12.796c-1.925 1.718-4.222 3.026-6.753 3.79z">
+</path>
+</g>
+</svg>
+<span>Search</span>
+</label>
+<form action="/search" method="get">
+<input type="search" name="q" autocomplete="off" spellcheck="false" placeholder="Search Digg" aria-label="Search Digg">
+</form>
+</a>
+</li>
+<li class="main-navigation__secondary-account">
+<a href="/welcome" class="main-navigation__secondary-login">
+<span>Sign In</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<section class="channel-branding  channel-branding--is-channel " style="">
+<section class="wrapper">
+<div class="grid">
+<div class="col col--12-of-12">
+<div class="channel-branding__inner">
+<h1 style="color: ">Architecture</h1>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="wrapper">
+<div class="grid">
+<div class="col col--8-of-12">
+<div class="results" data-collect-stats="yes">
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="874720">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+DESIGN TO SURVIVE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90493034&#x2F;how-architects-can-stop-covid-19-from-being-transmitted-indoors&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How Architects Can Stop COVID-19 From Spreading Indoors
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/fastcompany.com" alt="fastcompany.com">fastcompany.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/coronavirus" alt="Coronavirus">Coronavirus</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/health" alt="Health">Health</a>
+</span>
+<span>
+<time datetime="2020-04-20&#x20;16&#x3A;17&#x3A;19 GMT">4 hours ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Daylight, natural ventilation and unfinished wood surfaces can all reduce the abundance of harmful pathogens.</p>
+</div>
+<div class="share-story" data-id="874720" data-url="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90493034&#x2F;how-architects-can-stop-covid-19-from-being-transmitted-indoors&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" data-title="How&#x20;Architects&#x20;Can&#x20;Stop&#x20;COVID-19&#x20;From&#x20;Spreading&#x20;Indoors">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90493034&#x2F;how-architects-can-stop-covid-19-from-being-transmitted-indoors&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;20161641&#x2F;1993759756-architecture.jpg" loading="lazy" alt="How&#x20;Architects&#x20;Can&#x20;Stop&#x20;COVID-19&#x20;From&#x20;Spreading&#x20;Indoors">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="872468">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+WE WANT TO GO TO THERE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;4&#x2F;14&#x2F;21216285&#x2F;private-island-for-sale-house-belden-island-connecticut&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Want A Private Island? You Can Have This One With A Historic Cottage For $1.5M
+</h2>
+</a>
+<div class="metadata">
+<span>
+8 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-04-15&#x20;19&#x3A;25&#x3A;04 GMT">5 days ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The one-acre island comes with a well-preserved historic cottage, dock and sandy beach.</p>
+</div>
+<div class="share-story" data-id="872468" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;4&#x2F;14&#x2F;21216285&#x2F;private-island-for-sale-house-belden-island-connecticut&#x3F;utm_source&#x3D;digg" data-title="Want&#x20;A&#x20;Private&#x20;Island&#x3F;&#x20;You&#x20;Can&#x20;Have&#x20;This&#x20;One&#x20;With&#x20;A&#x20;Historic&#x20;Cottage&#x20;For&#x20;&#x24;1.5M">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;4&#x2F;14&#x2F;21216285&#x2F;private-island-for-sale-house-belden-island-connecticut&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;15192450&#x2F;2138210161-island-cottage.png" loading="lazy" alt="Want&#x20;A&#x20;Private&#x20;Island&#x3F;&#x20;You&#x20;Can&#x20;Have&#x20;This&#x20;One&#x20;With&#x20;A&#x20;Historic&#x20;Cottage&#x20;For&#x20;&#x24;1.5M">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="872240">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+COTTAGE BREEZE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;commentisfree&#x2F;2020&#x2F;apr&#x2F;15&#x2F;why-is-cottagecore-booming-because-being-outside-is-now-the-ultimate-taboo&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Why Is 'Cottagecore' Booming?
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/theguardian.com" alt="theguardian.com">theguardian.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/nature" alt="Nature">Nature</a>
+</span>
+<span>
+<time datetime="2020-04-15&#x20;17&#x3A;03&#x3A;44 GMT">5 days ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The visual and lifestyle movement is designed to fetishize the wholesome purity of the outdoors.</p>
+</div>
+<div class="share-story" data-id="872240" data-url="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;commentisfree&#x2F;2020&#x2F;apr&#x2F;15&#x2F;why-is-cottagecore-booming-because-being-outside-is-now-the-ultimate-taboo&#x3F;utm_source&#x3D;digg" data-title="Why&#x20;Is&#x20;&#x27;Cottagecore&#x27;&#x20;Booming&#x3F;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;commentisfree&#x2F;2020&#x2F;apr&#x2F;15&#x2F;why-is-cottagecore-booming-because-being-outside-is-now-the-ultimate-taboo&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;15170320&#x2F;2081010660-cottagecore.jpg" loading="lazy" alt="Why&#x20;Is&#x20;&#x27;Cottagecore&#x27;&#x20;Booming&#x3F;">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="872178">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+MIRAGE OR OASIS </div>
+<a href="https&#x3A;&#x2F;&#x2F;failedarchitecture.com&#x2F;a-construction-mistake-in-rome-that-created-a-lake-and-united-a-neighborhood&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+A Construction Mistake In Rome That Created A Lake And United A Neighborhood
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/failedarchitecture.com" alt="failedarchitecture.com">failedarchitecture.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/cities" alt="Cities">Cities</a>
+</span>
+<span>
+ <a itemprop="keywords" rel="tag" href="/channel/nature" alt="Nature">Nature</a>
+</span>
+<span>
+<time datetime="2020-04-15&#x20;16&#x3A;33&#x3A;05 GMT">5 days ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>With no local government able to take control of the situation, an accidental lake became the unexpected catalyst of a community struggle for new ecological and urban imaginations.</p>
+</div>
+<div class="share-story" data-id="872178" data-url="https&#x3A;&#x2F;&#x2F;failedarchitecture.com&#x2F;a-construction-mistake-in-rome-that-created-a-lake-and-united-a-neighborhood&#x2F;&#x3F;utm_source&#x3D;digg" data-title="A&#x20;Construction&#x20;Mistake&#x20;In&#x20;Rome&#x20;That&#x20;Created&#x20;A&#x20;Lake&#x20;And&#x20;United&#x20;A&#x20;Neighborhood">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;failedarchitecture.com&#x2F;a-construction-mistake-in-rome-that-created-a-lake-and-united-a-neighborhood&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;15162842&#x2F;158122881-test-220.jpg" loading="lazy" alt="A&#x20;Construction&#x20;Mistake&#x20;In&#x20;Rome&#x20;That&#x20;Created&#x20;A&#x20;Lake&#x20;And&#x20;United&#x20;A&#x20;Neighborhood">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="871302">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+NAILED IT </div>
+<a href="&#x2F;video&#x2F;build-survival-shelter-without-nails" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Using No Nails At All, Two Men Build A Survival Shelter From Scratch
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-04-14&#x20;15&#x3A;15&#x3A;16 GMT">6 days ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Here's how a shelter in the woods might have been built by frontiersmen in the 18th century.</p>
+</div>
+<div class="share-story" data-id="871302" data-url="&#x2F;video&#x2F;build-survival-shelter-without-nails" data-title="Using&#x20;No&#x20;Nails&#x20;At&#x20;All,&#x20;Two&#x20;Men&#x20;Build&#x20;A&#x20;Survival&#x20;Shelter&#x20;From&#x20;Scratch">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;build-survival-shelter-without-nails" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;14151111&#x2F;925738389-Screen-Shot-2020-04-14-at-11.10.24-AM.png" loading="lazy" alt="Using&#x20;No&#x20;Nails&#x20;At&#x20;All,&#x20;Two&#x20;Men&#x20;Build&#x20;A&#x20;Survival&#x20;Shelter&#x20;From&#x20;Scratch">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="870651">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BUY IT, BUILD IT, LIVE IT </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;gut-renovation-airstream-rv-photos-36744225&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+A Previously Abandoned Airstream's Transformation Is Beautiful
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a href="/source/apartmenttherapy.com" alt="apartmenttherapy.com">apartmenttherapy.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-04-13&#x20;18&#x3A;09&#x3A;27 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>This creative couple bought an abandoned Airstream on the side of the road for $600, eventually spending two and a half years and $20K to completely renovate it themselves!</p>
+</div>
+<div class="share-story" data-id="870651" data-url="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;gut-renovation-airstream-rv-photos-36744225&#x3F;utm_source&#x3D;digg" data-title="A&#x20;Previously&#x20;Abandoned&#x20;Airstream&#x27;s&#x20;Transformation&#x20;Is&#x20;Beautiful">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;gut-renovation-airstream-rv-photos-36744225&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;13180625&#x2F;903221473-Screen-Shot-2020-04-13-at-2.04.24-PM.png" loading="lazy" alt="A&#x20;Previously&#x20;Abandoned&#x20;Airstream&#x27;s&#x20;Transformation&#x20;Is&#x20;Beautiful">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="870032">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+UNDER PRESSURE </div>
+<a href="&#x2F;video&#x2F;which-3d-printed-bridge-design-can-handle-the-most-force-from-a-hydraulic-press" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Which 3D Printed Bridge Design Can Handle The Most Force From A Hydraulic Press?
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/science" alt="Science">Science</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-04-11&#x20;17&#x3A;53&#x3A;59 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The Hydraulic Press Channel<br />
+held a design competition where viewers designed their own bridge designs. Here's how they fared under immense pressure.</p>
+</div>
+<div class="share-story" data-id="870032" data-url="&#x2F;video&#x2F;which-3d-printed-bridge-design-can-handle-the-most-force-from-a-hydraulic-press" data-title="Which&#x20;3D&#x20;Printed&#x20;Bridge&#x20;Design&#x20;Can&#x20;Handle&#x20;The&#x20;Most&#x20;Force&#x20;From&#x20;A&#x20;Hydraulic&#x20;Press&#x3F;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;which-3d-printed-bridge-design-can-handle-the-most-force-from-a-hydraulic-press" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;11174954&#x2F;947600143-Screen-Shot-2020-04-11-at-1.48.24-PM.jpg" loading="lazy" alt="Which&#x20;3D&#x20;Printed&#x20;Bridge&#x20;Design&#x20;Can&#x20;Handle&#x20;The&#x20;Most&#x20;Force&#x20;From&#x20;A&#x20;Hydraulic&#x20;Press&#x3F;">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="869890">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+A CLASH OF EMPIRES </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.nationalgeographic.com&#x2F;history&#x2F;magazine&#x2F;2020&#x2F;03-04&#x2F;abandoned-ani-once-city-1001-churches&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+This Abandoned Site Was Once The 'City Of 1,001 Churches'
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/nationalgeographic.com" alt="nationalgeographic.com">nationalgeographic.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/beliefs" alt="Beliefs">Beliefs</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/histories" alt="Histories">Histories</a>
+</span>
+<span>
+<time datetime="2020-04-10&#x20;21&#x3A;24&#x3A;33 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The capital of medieval Armenia, the city of Ani was a thriving center of trade and faith, survived by its haunting ruins.</p>
+</div>
+<div class="share-story" data-id="869890" data-url="https&#x3A;&#x2F;&#x2F;www.nationalgeographic.com&#x2F;history&#x2F;magazine&#x2F;2020&#x2F;03-04&#x2F;abandoned-ani-once-city-1001-churches&#x2F;&#x3F;utm_source&#x3D;digg" data-title="This&#x20;Abandoned&#x20;Site&#x20;Was&#x20;Once&#x20;The&#x20;&#x27;City&#x20;Of&#x20;1,001&#x20;Churches&#x27;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.nationalgeographic.com&#x2F;history&#x2F;magazine&#x2F;2020&#x2F;03-04&#x2F;abandoned-ani-once-city-1001-churches&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;10195529&#x2F;942415956-test-148.jpg" loading="lazy" alt="This&#x20;Abandoned&#x20;Site&#x20;Was&#x20;Once&#x20;The&#x20;&#x27;City&#x20;Of&#x20;1,001&#x20;Churches&#x27;">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="869696">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+PARKS & PRESERVATION </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;disinfecting-historic-sites&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Surreal Sight Of Disinfecting Historic Sites
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/atlasobscura.com" alt="atlasobscura.com">atlasobscura.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/coronavirus" alt="Coronavirus">Coronavirus</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/health" alt="Health">Health</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/histories" alt="Histories">Histories</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/world" alt="World">World</a>
+</span>
+<span>
+<time datetime="2020-04-10&#x20;17&#x3A;36&#x3A;59 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Unsung workers around the world on the front lines of the pandemic fight.</p>
+</div>
+<div class="share-story" data-id="869696" data-url="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;disinfecting-historic-sites&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Surreal&#x20;Sight&#x20;Of&#x20;Disinfecting&#x20;Historic&#x20;Sites">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;disinfecting-historic-sites&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;10173601&#x2F;1049824248-disinfecting-historic-sites.jpg" loading="lazy" alt="The&#x20;Surreal&#x20;Sight&#x20;Of&#x20;Disinfecting&#x20;Historic&#x20;Sites">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="868808">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+GET LOW </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90488321&#x2F;live-in-a-tall-building-you-may-be-more-at-risk-of-contracting-coronavirus&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+People In Tall Buildings May Be More At Risk
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/fastcompany.com" alt="fastcompany.com">fastcompany.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/coronavirus" alt="Coronavirus">Coronavirus</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/health" alt="Health">Health</a>
+</span>
+<span>
+<time datetime="2020-04-09&#x20;16&#x3A;09&#x3A;47 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>High-occupancy buildings, like towers and hospitals, could be a hidden risk in the battle against COVID-19.</p>
+</div>
+<div class="share-story" data-id="868808" data-url="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90488321&#x2F;live-in-a-tall-building-you-may-be-more-at-risk-of-contracting-coronavirus&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" data-title="People&#x20;In&#x20;Tall&#x20;Buildings&#x20;May&#x20;Be&#x20;More&#x20;At&#x20;Risk">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90488321&#x2F;live-in-a-tall-building-you-may-be-more-at-risk-of-contracting-coronavirus&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;09160924&#x2F;2061768746-coronavirus-tall-buildings.jpg" loading="lazy" alt="People&#x20;In&#x20;Tall&#x20;Buildings&#x20;May&#x20;Be&#x20;More&#x20;At&#x20;Risk">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="867790">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+SUCH GREAT HEIGHTS </div>
+<a href="&#x2F;video&#x2F;why-the-tallest-building-in-china-became-a-spectacular-failure" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Why The Tallest Building In China Became A Spectacular Failure
+</h2>
+</a>
+<div class="metadata">
+<span>
+7 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/explainer" alt="Explainer">Explainer</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/fail" alt="Fail">Fail</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-04-08&#x20;14&#x3A;30&#x3A;20 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Shanghai Tower, the second tallest building in the world, was supposed to be a symbol of China's economic success but ended up becoming an albatross. </p>
+</div>
+<div class="share-story" data-id="867790" data-url="&#x2F;video&#x2F;why-the-tallest-building-in-china-became-a-spectacular-failure" data-title="Why&#x20;The&#x20;Tallest&#x20;Building&#x20;In&#x20;China&#x20;Became&#x20;A&#x20;Spectacular&#x20;Failure">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;why-the-tallest-building-in-china-became-a-spectacular-failure" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;08142634&#x2F;844265234-Screen-Shot-2020-04-08-at-10.22.57-AM.jpg" loading="lazy" alt="Why&#x20;The&#x20;Tallest&#x20;Building&#x20;In&#x20;China&#x20;Became&#x20;A&#x20;Spectacular&#x20;Failure">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="867622">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+GOD'S FLOOR PLAN </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.architecturaldigest.com&#x2F;story&#x2F;inside-rapper-drakes-hometown-manor-in-toronto&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+A Look Inside Drake's Ridiculous, 50,000-Square-Foot Toronto Mansion
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a href="/source/architecturaldigest.com" alt="architecturaldigest.com">architecturaldigest.com</a>
+</span>
+
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/fame" alt="Fame">Fame</a>
+</span>
+<span>
+<time datetime="2020-04-08&#x20;12&#x3A;44&#x3A;13 GMT">1 week ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Measuring 50,000 square feet, the rapper's Toronto home features amenities such as an NBA regulation-size indoor basketball court crowned by a 21-square-foot pyramidal skylight.</p>
+</div>
+<div class="share-story" data-id="867622" data-url="https&#x3A;&#x2F;&#x2F;www.architecturaldigest.com&#x2F;story&#x2F;inside-rapper-drakes-hometown-manor-in-toronto&#x3F;utm_source&#x3D;digg" data-title="A&#x20;Look&#x20;Inside&#x20;Drake&#x27;s&#x20;Ridiculous,&#x20;50,000-Square-Foot&#x20;Toronto&#x20;Mansion">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.architecturaldigest.com&#x2F;story&#x2F;inside-rapper-drakes-hometown-manor-in-toronto&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;08124335&#x2F;692086385-Screen-Shot-2020-04-08-at-8.42.06-AM-scaled.jpg" loading="lazy" alt="A&#x20;Look&#x20;Inside&#x20;Drake&#x27;s&#x20;Ridiculous,&#x20;50,000-Square-Foot&#x20;Toronto&#x20;Mansion">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="866099">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+NO BOUNDARIES </div>
+<a href="https&#x3A;&#x2F;&#x2F;jezebel.com&#x2F;the-open-floor-plan-fantasy-is-about-doing-whatever-the-1842568671&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Open Floor Plan Fantasy Is About Doing Whatever the Hell You Want
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/jezebel.com" alt="jezebel.com">jezebel.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-04-06&#x20;15&#x3A;29&#x3A;32 GMT">2 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Every month or so, when boredom strikes, I fantasize about tearing down the wall between the living room and the kitchen in my apartment. </p>
+</div>
+<div class="share-story" data-id="866099" data-url="https&#x3A;&#x2F;&#x2F;jezebel.com&#x2F;the-open-floor-plan-fantasy-is-about-doing-whatever-the-1842568671&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Open&#x20;Floor&#x20;Plan&#x20;Fantasy&#x20;Is&#x20;About&#x20;Doing&#x20;Whatever&#x20;the&#x20;Hell&#x20;You&#x20;Want">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;jezebel.com&#x2F;the-open-floor-plan-fantasy-is-about-doing-whatever-the-1842568671&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;06152819&#x2F;1560799987-Screen-Shot-2020-04-06-at-11.27.41-AM.png" loading="lazy" alt="The&#x20;Open&#x20;Floor&#x20;Plan&#x20;Fantasy&#x20;Is&#x20;About&#x20;Doing&#x20;Whatever&#x20;the&#x20;Hell&#x20;You&#x20;Want">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="865211">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+THE SKY IS THE LIMIT </div>
+<a href="&#x2F;video&#x2F;watch-this-professional-card-stacker-build-impossibly-high-skyscrapers-out-of-playing-cards" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Watch This Professional Card Stacker Build Impossibly High Skyscrapers Out Of Playing Cards
+</h2>
+</a>
+<div class="metadata">
+<span>
+5 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/craft" alt="Craft">Craft</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-04-03&#x20;17&#x3A;28&#x3A;40 GMT">2 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The Guinness World Record holder for Tallest House of Cards Bryan Berg explains how he got so good at stacking cards.</p>
+</div>
+<div class="share-story" data-id="865211" data-url="&#x2F;video&#x2F;watch-this-professional-card-stacker-build-impossibly-high-skyscrapers-out-of-playing-cards" data-title="Watch&#x20;This&#x20;Professional&#x20;Card&#x20;Stacker&#x20;Build&#x20;Impossibly&#x20;High&#x20;Skyscrapers&#x20;Out&#x20;Of&#x20;Playing&#x20;Cards">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;watch-this-professional-card-stacker-build-impossibly-high-skyscrapers-out-of-playing-cards" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;04&#x2F;03172326&#x2F;1085934164-Screen-Shot-2020-04-03-at-1.21.44-PM.jpg" loading="lazy" alt="Watch&#x20;This&#x20;Professional&#x20;Card&#x20;Stacker&#x20;Build&#x20;Impossibly&#x20;High&#x20;Skyscrapers&#x20;Out&#x20;Of&#x20;Playing&#x20;Cards">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="862211">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HOLY GARAGE, BATMAN! </div>
+<a href="&#x2F;video&#x2F;take-a-look-inside-this-40-5-million-san-francisco-mansion-equipped-with-its-own-batcave" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Take A Look Inside This $40.5 Million San Francisco Mansion Equipped With Its Own 'Batcave'
+</h2>
+</a>
+<div class="metadata">
+<span>
+8 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-31&#x20;13&#x3A;22&#x3A;25 GMT">2 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>If money was no object, or if you happened to be the real Bruce Wayne, this would be the perfect house for you.</p>
+</div>
+<div class="share-story" data-id="862211" data-url="&#x2F;video&#x2F;take-a-look-inside-this-40-5-million-san-francisco-mansion-equipped-with-its-own-batcave" data-title="Take&#x20;A&#x20;Look&#x20;Inside&#x20;This&#x20;&#x24;40.5&#x20;Million&#x20;San&#x20;Francisco&#x20;Mansion&#x20;Equipped&#x20;With&#x20;Its&#x20;Own&#x20;&#x27;Batcave&#x27;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;take-a-look-inside-this-40-5-million-san-francisco-mansion-equipped-with-its-own-batcave" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;31131810&#x2F;450124376-Screen-Shot-2020-03-31-at-9.17.12-AM.jpg" loading="lazy" alt="Take&#x20;A&#x20;Look&#x20;Inside&#x20;This&#x20;&#x24;40.5&#x20;Million&#x20;San&#x20;Francisco&#x20;Mansion&#x20;Equipped&#x20;With&#x20;Its&#x20;Own&#x20;&#x27;Batcave&#x27;">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="861679">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+SCHOOL'S ONLINE FOR THE SUMMER </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;bronx-science-minecraft-school.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Bronx Science Students Re-Created Their School On Minecraft
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/vulture.com" alt="vulture.com">vulture.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/education" alt="Education">Education</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/gaming" alt="Gaming">Gaming</a>
+</span>
+<span>
+<time datetime="2020-03-30&#x20;17&#x3A;32&#x3A;22 GMT">3 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>A group of Bronx High School of Science students are reconstructing a virtual campus. They aren't finished yet, but it's clear how much detail has already gone into the product.</p>
+</div>
+<div class="share-story" data-id="861679" data-url="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;bronx-science-minecraft-school.html&#x3F;utm_source&#x3D;digg" data-title="Bronx&#x20;Science&#x20;Students&#x20;Re-Created&#x20;Their&#x20;School&#x20;On&#x20;Minecraft">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;bronx-science-minecraft-school.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;30173123&#x2F;1203989923-minecraft-school.jpg" loading="lazy" alt="Bronx&#x20;Science&#x20;Students&#x20;Re-Created&#x20;Their&#x20;School&#x20;On&#x20;Minecraft">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="860981">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+RETHINKNING NORMAL </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.theatlantic.com&#x2F;culture&#x2F;archive&#x2F;2020&#x2F;03&#x2F;finding-privacy-during-pandemic&#x2F;608944&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Homes Actually Need To Be Practical Now
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/theatlantic.com" alt="theatlantic.com">theatlantic.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/human-nature" alt="Human&#x20;Nature">Human Nature</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/style" alt="Style">Style</a>
+</span>
+<span>
+<time datetime="2020-03-29&#x20;19&#x3A;01&#x3A;32 GMT">3 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>One of the ironies of social distancing is that it can put privacy in short supply.</p>
+</div>
+<div class="share-story" data-id="860981" data-url="https&#x3A;&#x2F;&#x2F;www.theatlantic.com&#x2F;culture&#x2F;archive&#x2F;2020&#x2F;03&#x2F;finding-privacy-during-pandemic&#x2F;608944&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Homes&#x20;Actually&#x20;Need&#x20;To&#x20;Be&#x20;Practical&#x20;Now">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.theatlantic.com&#x2F;culture&#x2F;archive&#x2F;2020&#x2F;03&#x2F;finding-privacy-during-pandemic&#x2F;608944&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;29183028&#x2F;32757056-test-241.jpg" loading="lazy" alt="Homes&#x20;Actually&#x20;Need&#x20;To&#x20;Be&#x20;Practical&#x20;Now">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="859983">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BAD BUSINESS </div>
+<a href="https&#x3A;&#x2F;&#x2F;newrepublic.com&#x2F;article&#x2F;156859&#x2F;ethical-failures-modern-architecture&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Ethical Failures Of Modern Architecture
+</h2>
+</a>
+<div class="metadata">
+<span>
+8 diggs </span>
+<span>
+<a href="/source/newrepublic.com" alt="newrepublic.com">newrepublic.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/cities" alt="Cities">Cities</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/politics" alt="Politics">Politics</a>
+</span>
+<span>
+<time datetime="2020-03-26&#x20;20&#x3A;57&#x3A;56 GMT">3 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Why do famous architects continue to work with corrupt authoritarians and pernicious corporations?</p>
+</div>
+<div class="share-story" data-id="859983" data-url="https&#x3A;&#x2F;&#x2F;newrepublic.com&#x2F;article&#x2F;156859&#x2F;ethical-failures-modern-architecture&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Ethical&#x20;Failures&#x20;Of&#x20;Modern&#x20;Architecture">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;newrepublic.com&#x2F;article&#x2F;156859&#x2F;ethical-failures-modern-architecture&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;26203255&#x2F;2001933368-Screen-Shot-2020-03-26-at-4.30.59-PM.png" loading="lazy" alt="The&#x20;Ethical&#x20;Failures&#x20;Of&#x20;Modern&#x20;Architecture">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="858664">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+POLE AHEAD </div>
+<a href="&#x2F;video&#x2F;why-modern-stadiums-do-not-have-poles" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Genius Engineering Behind Why Modern Sports Stadiums No Longer Have Support Poles
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/explainer" alt="Explainer">Explainer</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/sports" alt="Sports">Sports</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-25&#x20;17&#x3A;55&#x3A;23 GMT">3 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>It's a cumbersome experience, trying to view what's happening in a stadium and not be obstructed by the view of a pole. Here are the architectural tricks employed that helped modern stadiums get rid of these structures.</p>
+</div>
+<div class="share-story" data-id="858664" data-url="&#x2F;video&#x2F;why-modern-stadiums-do-not-have-poles" data-title="The&#x20;Genius&#x20;Engineering&#x20;Behind&#x20;Why&#x20;Modern&#x20;Sports&#x20;Stadiums&#x20;No&#x20;Longer&#x20;Have&#x20;Support&#x20;Poles">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;why-modern-stadiums-do-not-have-poles" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;25175110&#x2F;1634526746-maxresdefault-1-2.jpg" loading="lazy" alt="The&#x20;Genius&#x20;Engineering&#x20;Behind&#x20;Why&#x20;Modern&#x20;Sports&#x20;Stadiums&#x20;No&#x20;Longer&#x20;Have&#x20;Support&#x20;Poles">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="857742">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+I'M GOING TO GOOGIE THAT </div>
+<a href="&#x2F;video&#x2F;where-did-googie-architecture-come-from" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Where Did Los Angeles Get Its Retrofuturistic Architecture Style From?
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/cities" alt="Cities">Cities</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/explainer" alt="Explainer">Explainer</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-24&#x20;19&#x3A;55&#x3A;25 GMT">3 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Take a drive around Los Angeles and you'll see a lot of buildings with sharp angles and kitschy neon lights. Douglas Haskell named it "Googie architecture" and the name stuck. How did the style take off?</p>
+</div>
+<div class="share-story" data-id="857742" data-url="&#x2F;video&#x2F;where-did-googie-architecture-come-from" data-title="Where&#x20;Did&#x20;Los&#x20;Angeles&#x20;Get&#x20;Its&#x20;Retrofuturistic&#x20;Architecture&#x20;Style&#x20;From&#x3F;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;where-did-googie-architecture-come-from" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;24195112&#x2F;421643286-Screen-Shot-2020-03-24-at-3.50.51-PM.jpg" loading="lazy" alt="Where&#x20;Did&#x20;Los&#x20;Angeles&#x20;Get&#x20;Its&#x20;Retrofuturistic&#x20;Architecture&#x20;Style&#x20;From&#x3F;">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="856417">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+FACTOR IN AN EXTRA SIX FEET FOR EVERY FOOT </div>
+<a href="&#x2F;2020&#x2F;real-estate-prices-by-state" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How Much Square Footage $500,000 Will Buy You In Every State, Visualized
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/data-viz" alt="Data&#x20;Viz">Data Viz</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/money" alt="Money">Money</a>
+</span>
+<span>
+<time datetime="2020-03-23&#x20;16&#x3A;14&#x3A;10 GMT">4 weeks ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>If we were currently allowed to do go outside and house-hunt and the economy weren't so precarious, how many square feet would $500,000 buy you?</p>
+</div>
+<div class="share-story" data-id="856417" data-url="&#x2F;2020&#x2F;real-estate-prices-by-state" data-title="How&#x20;Much&#x20;Square&#x20;Footage&#x20;&#x24;500,000&#x20;Will&#x20;Buy&#x20;You&#x20;In&#x20;Every&#x20;State,&#x20;Visualized">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;2020&#x2F;real-estate-prices-by-state" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;23161349&#x2F;1505496295-Screen-Shot-2020-03-23-at-12.13.25-PM-scaled.jpg" loading="lazy" alt="How&#x20;Much&#x20;Square&#x20;Footage&#x20;&#x24;500,000&#x20;Will&#x20;Buy&#x20;You&#x20;In&#x20;Every&#x20;State,&#x20;Visualized">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="854975">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+'AN INCUBATOR FOR NEW IDEAS' </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;20&#x2F;21187455&#x2F;mexico-concrete-home-affordable-housing-prototype&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+This Pink Concrete Home Is An Affordable Housing Prototype
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/www.curbed.com" alt="www.curbed.com">www.curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-20&#x20;16&#x3A;19&#x3A;13 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The design is part of a larger exploration of attractive homes for middle &mdash; and low &mdash; income families.</p>
+</div>
+<div class="share-story" data-id="854975" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;20&#x2F;21187455&#x2F;mexico-concrete-home-affordable-housing-prototype&#x3F;utm_source&#x3D;digg" data-title="This&#x20;Pink&#x20;Concrete&#x20;Home&#x20;Is&#x20;An&#x20;Affordable&#x20;Housing&#x20;Prototype">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;20&#x2F;21187455&#x2F;mexico-concrete-home-affordable-housing-prototype&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;20161634&#x2F;1344682162-test-92.jpg" loading="lazy" alt="This&#x20;Pink&#x20;Concrete&#x20;Home&#x20;Is&#x20;An&#x20;Affordable&#x20;Housing&#x20;Prototype">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="853949">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+GETTING WARMER... </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.quantamagazine.org&#x2F;sudden-ancient-global-warming-event-traced-to-magma-flood-20200319&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Sudden Ancient Global Warming Event Traced To Magma Flood
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+ <span>
+<a href="/source/quantamagazine.org" alt="quantamagazine.org">quantamagazine.org</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/climate-change" alt="Climate&#x20;Change">Climate Change</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/nature" alt="Nature">Nature</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/histories" alt="Histories">Histories</a>
+</span>
+<span>
+<time datetime="2020-03-19&#x20;15&#x3A;21&#x3A;43 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>A study has cemented the link between an intense global warming episode 56 million years ago and volcanism in the North Atlantic, with implications for modern climate change.</p>
+</div>
+<div class="share-story" data-id="853949" data-url="https&#x3A;&#x2F;&#x2F;www.quantamagazine.org&#x2F;sudden-ancient-global-warming-event-traced-to-magma-flood-20200319&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Sudden&#x20;Ancient&#x20;Global&#x20;Warming&#x20;Event&#x20;Traced&#x20;To&#x20;Magma&#x20;Flood">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.quantamagazine.org&#x2F;sudden-ancient-global-warming-event-traced-to-magma-flood-20200319&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;19152112&#x2F;104912771-warming-event-scaled.jpg" loading="lazy" alt="Sudden&#x20;Ancient&#x20;Global&#x20;Warming&#x20;Event&#x20;Traced&#x20;To&#x20;Magma&#x20;Flood">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="853085">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+THE POWER OF FLIGHT </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;flight&#x2F;a30921140&#x2F;build-your-own-airplane&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How To Build Your Own Airplane &mdash; From Cockpit To Parachute
+</h2>
+</a>
+<div class="metadata">
+<span>
+8 diggs </span>
+<span>
+<a href="/source/popularmechanics.com" alt="popularmechanics.com">popularmechanics.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/aviation" alt="Aviation">Aviation</a>
+</span>
+<span>
+<time datetime="2020-03-18&#x20;17&#x3A;14&#x3A;38 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>"It takes about 1,500 hours. You're trading time for money."</p>
+</div>
+<div class="share-story" data-id="853085" data-url="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;flight&#x2F;a30921140&#x2F;build-your-own-airplane&#x2F;&#x3F;utm_source&#x3D;digg" data-title="How&#x20;To&#x20;Build&#x20;Your&#x20;Own&#x20;Airplane&#x20;&amp;mdash&#x3B;&#x20;From&#x20;Cockpit&#x20;To&#x20;Parachute">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;flight&#x2F;a30921140&#x2F;build-your-own-airplane&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;18171347&#x2F;401532730-build-airplane.jpg" loading="lazy" alt="How&#x20;To&#x20;Build&#x20;Your&#x20;Own&#x20;Airplane&#x20;&amp;mdash&#x3B;&#x20;From&#x20;Cockpit&#x20;To&#x20;Parachute">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="852500">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+WESTWORLD HO </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;westworld-season-3-future-architecture.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How Real Architecture Inspired The Futuristic Cities Of 'Westworld'
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/vulture.com" alt="vulture.com">vulture.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/cities" alt="Cities">Cities</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/culture" alt="Culture">Culture</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/tv" alt="Tv">Tv</a>
+</span>
+<span>
+<time datetime="2020-03-17&#x20;21&#x3A;21&#x3A;29 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The deluxe urban dystopia in "Westworld" season three, agleam with prosperity and gentrified to a high polish, is the latest in a long line of meticulously fantasized cityscapes of tomorrow.</p>
+</div>
+<div class="share-story" data-id="852500" data-url="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;westworld-season-3-future-architecture.html&#x3F;utm_source&#x3D;digg" data-title="How&#x20;Real&#x20;Architecture&#x20;Inspired&#x20;The&#x20;Futuristic&#x20;Cities&#x20;Of&#x20;&#x27;Westworld&#x27;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.vulture.com&#x2F;2020&#x2F;03&#x2F;westworld-season-3-future-architecture.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;17211806&#x2F;1654951811-westworld-architecture.jpg" loading="lazy" alt="How&#x20;Real&#x20;Architecture&#x20;Inspired&#x20;The&#x20;Futuristic&#x20;Cities&#x20;Of&#x20;&#x27;Westworld&#x27;">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="852275">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+SCIENCE MEETS FAITH </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.sciencemag.org&#x2F;news&#x2F;2020&#x2F;03&#x2F;scientists-are-leading-notre-dame-s-restoration-and-probing-mysteries-laid-bare-its&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Scientists Are Leading Notre Dame's Restoration &mdash; And Probing Mysteries Laid Bare By Its Devastating Fire
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/sciencemag.org" alt="sciencemag.org">sciencemag.org</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/longreads" alt="Long&#x20;Reads">Long Reads</a>
+</span>
+<span>
+<time datetime="2020-03-17&#x20;18&#x3A;21&#x3A;35 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The cathedral, laid bare to inspection by the fire, is yielding clues to the mysteries of its medieval past.</p>
+</div>
+<div class="share-story" data-id="852275" data-url="https&#x3A;&#x2F;&#x2F;www.sciencemag.org&#x2F;news&#x2F;2020&#x2F;03&#x2F;scientists-are-leading-notre-dame-s-restoration-and-probing-mysteries-laid-bare-its&#x3F;utm_source&#x3D;digg" data-title="Scientists&#x20;Are&#x20;Leading&#x20;Notre&#x20;Dame&#x27;s&#x20;Restoration&#x20;&amp;mdash&#x3B;&#x20;And&#x20;Probing&#x20;Mysteries&#x20;Laid&#x20;Bare&#x20;By&#x20;Its&#x20;Devastating&#x20;Fire">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.sciencemag.org&#x2F;news&#x2F;2020&#x2F;03&#x2F;scientists-are-leading-notre-dame-s-restoration-and-probing-mysteries-laid-bare-its&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;17182049&#x2F;564870559-Screen-Shot-2020-03-17-at-2.20.28-PM-scaled.jpg" loading="lazy" alt="Scientists&#x20;Are&#x20;Leading&#x20;Notre&#x20;Dame&#x27;s&#x20;Restoration&#x20;&amp;mdash&#x3B;&#x20;And&#x20;Probing&#x20;Mysteries&#x20;Laid&#x20;Bare&#x20;By&#x20;Its&#x20;Devastating&#x20;Fire">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="849023">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+ENERGIZING NEWS </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.cnbc.com&#x2F;2020&#x2F;03&#x2F;12&#x2F;a-design-concept-is-transforming-the-energy-efficiency-of-buildings.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How A Decades-Old Design Concept Is Transforming The Energy Efficiency Of Buildings
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/cnbc.com" alt="cnbc.com">cnbc.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/technology" alt="Technology">Technology</a>
+</span>
+<span>
+<time datetime="2020-03-12&#x20;15&#x3A;48&#x3A;50 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Could the way we design buildings boost efficiency and create other benefits?</p>
+</div>
+<div class="share-story" data-id="849023" data-url="https&#x3A;&#x2F;&#x2F;www.cnbc.com&#x2F;2020&#x2F;03&#x2F;12&#x2F;a-design-concept-is-transforming-the-energy-efficiency-of-buildings.html&#x3F;utm_source&#x3D;digg" data-title="How&#x20;A&#x20;Decades-Old&#x20;Design&#x20;Concept&#x20;Is&#x20;Transforming&#x20;The&#x20;Energy&#x20;Efficiency&#x20;Of&#x20;Buildings">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.cnbc.com&#x2F;2020&#x2F;03&#x2F;12&#x2F;a-design-concept-is-transforming-the-energy-efficiency-of-buildings.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;12154538&#x2F;1647336006-bldg-energy-efficiency-scaled.jpg" loading="lazy" alt="How&#x20;A&#x20;Decades-Old&#x20;Design&#x20;Concept&#x20;Is&#x20;Transforming&#x20;The&#x20;Energy&#x20;Efficiency&#x20;Of&#x20;Buildings">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="848794">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+THE ROOF IS NOT ON FIRE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2020&#x2F;mar&#x2F;12&#x2F;millennium-dome-experience-disaster-inside-story-new-labour&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Inside Story Of The Millennium Dome And A (Not So) Total Disaster
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a href="/source/theguardian.com" alt="theguardian.com">theguardian.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/longreads" alt="Long&#x20;Reads">Long Reads</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/world" alt="World">World</a>
+</span>
+<span>
+<time datetime="2020-03-12&#x20;12&#x3A;33&#x3A;38 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+ <div itemprop="description" class="description">
+<p>Even before it opened at the dawn of the year 2000, London's Millennium Dome had become a byword for failure. But two decades on, it could be time for a reassessment.</p>
+</div>
+<div class="share-story" data-id="848794" data-url="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2020&#x2F;mar&#x2F;12&#x2F;millennium-dome-experience-disaster-inside-story-new-labour&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Inside&#x20;Story&#x20;Of&#x20;The&#x20;Millennium&#x20;Dome&#x20;And&#x20;A&#x20;&#x28;Not&#x20;So&#x29;&#x20;Total&#x20;Disaster">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2020&#x2F;mar&#x2F;12&#x2F;millennium-dome-experience-disaster-inside-story-new-labour&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;12123249&#x2F;295719639-Screen-Shot-2020-03-12-at-8.31.33-AM.jpg" loading="lazy" alt="The&#x20;Inside&#x20;Story&#x20;Of&#x20;The&#x20;Millennium&#x20;Dome&#x20;And&#x20;A&#x20;&#x28;Not&#x20;So&#x29;&#x20;Total&#x20;Disaster">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="848458">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+LA VILLA EST BELLE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.nytimes.com&#x2F;2020&#x2F;03&#x2F;11&#x2F;t-magazine&#x2F;rem-koolhaas-pierre-paulin.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How One French Modernist's Vision Was Finally Realized
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/nytimes.com" alt="nytimes.com">nytimes.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-03-11&#x20;19&#x3A;35&#x3A;16 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Outside Bordeaux, a Rem Koolhaas-designed villa has become a site for the inventiveness of Pierre Paulin, who dreamed up modular furniture made of foam, resin and fiberglass.</p>
+</div>
+<div class="share-story" data-id="848458" data-url="https&#x3A;&#x2F;&#x2F;www.nytimes.com&#x2F;2020&#x2F;03&#x2F;11&#x2F;t-magazine&#x2F;rem-koolhaas-pierre-paulin.html&#x3F;utm_source&#x3D;digg" data-title="How&#x20;One&#x20;French&#x20;Modernist&#x27;s&#x20;Vision&#x20;Was&#x20;Finally&#x20;Realized">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.nytimes.com&#x2F;2020&#x2F;03&#x2F;11&#x2F;t-magazine&#x2F;rem-koolhaas-pierre-paulin.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;11193420&#x2F;923585836-french-mod.jpg" loading="lazy" alt="How&#x20;One&#x20;French&#x20;Modernist&#x27;s&#x20;Vision&#x20;Was&#x20;Finally&#x20;Realized">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="848408">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+'I READ SCRIPTS IN HERE' </div>
+<a href="&#x2F;video&#x2F;dakota-johnson-house-architectural-digest-video" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Is Dakota Johnson Looking For A Roommate? Asking For Us
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/fame" alt="Fame">Fame</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-11&#x20;19&#x3A;27&#x3A;02 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The "Fifty Shades of Grey" star invites us into her sun-soaked Hollywood Hills home.</p>
+</div>
+<div class="share-story" data-id="848408" data-url="&#x2F;video&#x2F;dakota-johnson-house-architectural-digest-video" data-title="Is&#x20;Dakota&#x20;Johnson&#x20;Looking&#x20;For&#x20;A&#x20;Roommate&#x3F;&#x20;Asking&#x20;For&#x20;Us">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;dakota-johnson-house-architectural-digest-video" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;11191718&#x2F;Screen-Shot-2020-03-11-at-3.15.40-PM.jpg" loading="lazy" alt="Is&#x20;Dakota&#x20;Johnson&#x20;Looking&#x20;For&#x20;A&#x20;Roommate&#x3F;&#x20;Asking&#x20;For&#x20;Us">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="847970">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BUILDING A DREAM </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;931007&#x2F;obafemi-awolowo-university-a-look-at-africas-most-beautiful-campus&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Obafemi Awolowo University: A Look At Africa's Most Beautiful Campus
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/archdaily.com" alt="archdaily.com">archdaily.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-03-11&#x20;14&#x3A;09&#x3A;30 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>A look at the cultural and architectural history of Nigeria's Bauhaus-inspired university campus.</p>
+</div>
+<div class="share-story" data-id="847970" data-url="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;931007&#x2F;obafemi-awolowo-university-a-look-at-africas-most-beautiful-campus&#x3F;utm_source&#x3D;digg" data-title="Obafemi&#x20;Awolowo&#x20;University&#x3A;&#x20;A&#x20;Look&#x20;At&#x20;Africa&#x27;s&#x20;Most&#x20;Beautiful&#x20;Campus">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;931007&#x2F;obafemi-awolowo-university-a-look-at-africas-most-beautiful-campus&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;11140807&#x2F;2116391870-africa-campus.png" loading="lazy" alt="Obafemi&#x20;Awolowo&#x20;University&#x3A;&#x20;A&#x20;Look&#x20;At&#x20;Africa&#x27;s&#x20;Most&#x20;Beautiful&#x20;Campus">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="847866">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+DREAM A LITTLE DREAM </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;11&#x2F;21162147&#x2F;buying-a-house-2020-home-ownership&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Pros And Cons Of Homeownership In 2020
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-11&#x20;13&#x3A;25&#x3A;57 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Homeownership used to be part of the American dream. Now it's both a dream and a nightmare.</p>
+</div>
+<div class="share-story" data-id="847866" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;11&#x2F;21162147&#x2F;buying-a-house-2020-home-ownership&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Pros&#x20;And&#x20;Cons&#x20;Of&#x20;Homeownership&#x20;In&#x20;2020">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;11&#x2F;21162147&#x2F;buying-a-house-2020-home-ownership&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;11132503&#x2F;70551852-home-ownership.png" loading="lazy" alt="The&#x20;Pros&#x20;And&#x20;Cons&#x20;Of&#x20;Homeownership&#x20;In&#x20;2020">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="847845">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+DECONSTRUCT THIS </div>
+<a href="&#x2F;video&#x2F;the-insanely-difficult-process-behind-removing-an-old-skyscraper-to-build-a-bigger-one" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Insanely Difficult Process Behind Removing An Old Skyscraper To Build A Bigger One
+</h2>
+</a>
+<div class="metadata">
+<span>
+6 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/explainer" alt="Explainer">Explainer</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-11&#x20;13&#x3A;23&#x3A;09 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>There's been a boom for taller buildings &mdash; how do you clear the path for the next supertall skyscraper? The B1M explains the challenging process of taking out a preexisting building.</p>
+</div>
+<div class="share-story" data-id="847845" data-url="&#x2F;video&#x2F;the-insanely-difficult-process-behind-removing-an-old-skyscraper-to-build-a-bigger-one" data-title="The&#x20;Insanely&#x20;Difficult&#x20;Process&#x20;Behind&#x20;Removing&#x20;An&#x20;Old&#x20;Skyscraper&#x20;To&#x20;Build&#x20;A&#x20;Bigger&#x20;One">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;the-insanely-difficult-process-behind-removing-an-old-skyscraper-to-build-a-bigger-one" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;11131219&#x2F;Screen-Shot-2020-03-11-at-9.10.24-AM.jpg" loading="lazy" alt="The&#x20;Insanely&#x20;Difficult&#x20;Process&#x20;Behind&#x20;Removing&#x20;An&#x20;Old&#x20;Skyscraper&#x20;To&#x20;Build&#x20;A&#x20;Bigger&#x20;One">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="846929">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BRINGING DOWN THE HOUSE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;10&#x2F;21168519&#x2F;homes-for-sale-american-home-suburbs&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Why We Can't Build Small Homes Anymore
+</h2>
+</a>
+<div class="metadata">
+<span>
+5 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/cities" alt="Cities">Cities</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/economics" alt="Economics">Economics</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/money" alt="Money">Money</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/longreads" alt="Long&#x20;Reads">Long Reads</a>
+</span>
+<span>
+<time datetime="2020-03-10&#x20;12&#x3A;42&#x3A;10 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The American obsession with large homes, a matter of culture, policy, and economics, restricts smaller, more affordable options.</p>
+</div>
+<div class="share-story" data-id="846929" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;10&#x2F;21168519&#x2F;homes-for-sale-american-home-suburbs&#x3F;utm_source&#x3D;digg" data-title="Why&#x20;We&#x20;Can&#x27;t&#x20;Build&#x20;Small&#x20;Homes&#x20;Anymore">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;10&#x2F;21168519&#x2F;homes-for-sale-american-home-suburbs&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;10124123&#x2F;1573558857-Screen-Shot-2020-03-10-at-8.41.04-AM.jpg" loading="lazy" alt="Why&#x20;We&#x20;Can&#x27;t&#x20;Build&#x20;Small&#x20;Homes&#x20;Anymore">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="846513">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+DESIGNER SURGERY </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90452056&#x2F;the-alarming-link-between-c-sections-and-hospital-design&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Alarming Link Between C-Sections And Hospital Design
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a href="/source/fastcompany.com" alt="fastcompany.com">fastcompany.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/health" alt="Health">Health</a>
+</span>
+<span>
+<time datetime="2020-03-09&#x20;17&#x3A;02&#x3A;54 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The size and shape of a labor and delivery unit, the standardization of patient rooms and the distribution of nursing stations can all influence C-section rates at hospitals.</p>
+</div>
+<div class="share-story" data-id="846513" data-url="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90452056&#x2F;the-alarming-link-between-c-sections-and-hospital-design&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Alarming&#x20;Link&#x20;Between&#x20;C-Sections&#x20;And&#x20;Hospital&#x20;Design">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90452056&#x2F;the-alarming-link-between-c-sections-and-hospital-design&#x3F;partner&#x3D;feedburner&amp;utm_source&#x3D;feedburner&amp;utm_medium&#x3D;feed&amp;utm_campaign&#x3D;feedburner&#x2B;fastcompany&amp;utm_content&#x3D;feedburner&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;09170207&#x2F;1883264622-c-sections-hospital-design.png" loading="lazy" alt="The&#x20;Alarming&#x20;Link&#x20;Between&#x20;C-Sections&#x20;And&#x20;Hospital&#x20;Design">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="846492">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+ARE YOU IN THE RIGHT HEADSPACE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;935067&#x2F;how-colors-change-the-perception-of-interior-spaces&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+How Colors Change The Perception Of Interior Spaces
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a href="/source/archdaily.com" alt="archdaily.com">archdaily.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-09&#x20;16&#x3A;42&#x3A;19 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>In designing an interior, you have the power to alter important variables &mdash; artificial or natural lighting, proportions, materials &mdash; that will influence the experience you'll have in the space.</p>
+</div>
+<div class="share-story" data-id="846492" data-url="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;935067&#x2F;how-colors-change-the-perception-of-interior-spaces&#x3F;utm_source&#x3D;digg" data-title="How&#x20;Colors&#x20;Change&#x20;The&#x20;Perception&#x20;Of&#x20;Interior&#x20;Spaces">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.archdaily.com&#x2F;935067&#x2F;how-colors-change-the-perception-of-interior-spaces&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;09163906&#x2F;1308488210-colors-spaces.png" loading="lazy" alt="How&#x20;Colors&#x20;Change&#x20;The&#x20;Perception&#x20;Of&#x20;Interior&#x20;Spaces">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="845843">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HITTING ROCK BOTTOM </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.cnn.com&#x2F;travel&#x2F;article&#x2F;easter-island-moai-destroyed-intl-hnk&#x2F;index.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Easter Island Moai Statue Destroyed By Truck
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a href="/source/cnn.com" alt="cnn.com">cnn.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/archaeology" alt="Archaeology">Archaeology</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/fail" alt="Fail">Fail</a>
+</span>
+<span>
+<time datetime="2020-03-07&#x20;18&#x3A;37&#x3A;53 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>One of Easter Island's world-famous moai statues has been destroyed in an accident.</p>
+</div>
+<div class="share-story" data-id="845843" data-url="https&#x3A;&#x2F;&#x2F;www.cnn.com&#x2F;travel&#x2F;article&#x2F;easter-island-moai-destroyed-intl-hnk&#x2F;index.html&#x3F;utm_source&#x3D;digg" data-title="Easter&#x20;Island&#x20;Moai&#x20;Statue&#x20;Destroyed&#x20;By&#x20;Truck">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.cnn.com&#x2F;travel&#x2F;article&#x2F;easter-island-moai-destroyed-intl-hnk&#x2F;index.html&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;07183359&#x2F;248227540-Screen-Shot-2020-03-07-at-1.33.18-PM.jpg" loading="lazy" alt="Easter&#x20;Island&#x20;Moai&#x20;Statue&#x20;Destroyed&#x20;By&#x20;Truck">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="845810">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+TRAPPED IN A BOX </div>
+<a href="&#x2F;video&#x2F;why-are-all-fast-food-restaurants-starting-to-look-alike" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Why Are All Fast Food Restaurants Starting To Look Alike?
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/business" alt="Business">Business</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/food" alt="Food">Food</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/video" alt="Video">Video</a>
+</span>
+<span>
+<time datetime="2020-03-07&#x20;16&#x3A;26&#x3A;19 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>An explainer on why fast food restaurants are all starting to use the same architectural design. </p>
+</div>
+<div class="share-story" data-id="845810" data-url="&#x2F;video&#x2F;why-are-all-fast-food-restaurants-starting-to-look-alike" data-title="Why&#x20;Are&#x20;All&#x20;Fast&#x20;Food&#x20;Restaurants&#x20;Starting&#x20;To&#x20;Look&#x20;Alike&#x3F;">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="&#x2F;video&#x2F;why-are-all-fast-food-restaurants-starting-to-look-alike" itemprop="url" rel="bookmark" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;07162356&#x2F;108119044-Screen-Shot-2020-03-07-at-11.23.18-AM.jpg" loading="lazy" alt="Why&#x20;Are&#x20;All&#x20;Fast&#x20;Food&#x20;Restaurants&#x20;Starting&#x20;To&#x20;Look&#x20;Alike&#x3F;">
+<svg viewBox="0 0 48 48" width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="play-icon" aria-label="Video">
+<g fill="none" fill-rule="evenodd">
+<path fill="#fff" d="M8 2v44l37-22z"></path>
+</g>
+</svg>
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="844293">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+SPAN YOU BELIEVE IT? </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;science&#x2F;a31227950&#x2F;new-way-build-bridges-balanced-lift&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+This Is A Completely New, Possibly Perfect Way To Build Bridges
+</h2>
+</a>
+<div class="metadata">
+<span>
+9 diggs </span>
+<span>
+<a href="/source/popularmechanics.com" alt="popularmechanics.com">popularmechanics.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;21&#x3A;53&#x3A;15 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Structural engineers have built a new bridge using an unfolding, umbrella-like technique. It's a brand-new way to build bridges &mdash; and it's brilliant.</p>
+</div>
+<div class="share-story" data-id="844293" data-url="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;science&#x2F;a31227950&#x2F;new-way-build-bridges-balanced-lift&#x2F;&#x3F;utm_source&#x3D;digg" data-title="This&#x20;Is&#x20;A&#x20;Completely&#x20;New,&#x20;Possibly&#x20;Perfect&#x20;Way&#x20;To&#x20;Build&#x20;Bridges">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;science&#x2F;a31227950&#x2F;new-way-build-bridges-balanced-lift&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04215310&#x2F;1235337361-test-1.png" loading="lazy" alt="This&#x20;Is&#x20;A&#x20;Completely&#x20;New,&#x20;Possibly&#x20;Perfect&#x20;Way&#x20;To&#x20;Build&#x20;Bridges">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="844278">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+FARM TO TABLE </div>
+<a href="https&#x3A;&#x2F;&#x2F;inhabitat.com&#x2F;1850s-barn-in-italy-becomes-a-modern-sustainable-family-home&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+1850s Barn In Italy Becomes A Modern, Sustainable Family Home
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/inhabitat.com" alt="inhabitat.com">inhabitat.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;21&#x3A;46&#x3A;35 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Located at the foot of UNESCO World Heritage site Alpe di Siusi in the Italian province of South Tyrol, Messner House represents adaptive reuse at its finest. </p>
+</div>
+<div class="share-story" data-id="844278" data-url="https&#x3A;&#x2F;&#x2F;inhabitat.com&#x2F;1850s-barn-in-italy-becomes-a-modern-sustainable-family-home&#x2F;&#x3F;utm_source&#x3D;digg" data-title="1850s&#x20;Barn&#x20;In&#x20;Italy&#x20;Becomes&#x20;A&#x20;Modern,&#x20;Sustainable&#x20;Family&#x20;Home">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;inhabitat.com&#x2F;1850s-barn-in-italy-becomes-a-modern-sustainable-family-home&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04213626&#x2F;440303015-Screen-Shot-2020-03-04-at-4.36.03-PM.png" loading="lazy" alt="1850s&#x20;Barn&#x20;In&#x20;Italy&#x20;Becomes&#x20;A&#x20;Modern,&#x20;Sustainable&#x20;Family&#x20;Home">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="844083">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HAN THE BUILDER </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;culture&#x2F;a30927273&#x2F;custom-lego-sets&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Building A 20,000-Piece LEGO Star Destroyer
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/popularmechanics.com" alt="popularmechanics.com">popularmechanics.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;19&#x3A;01&#x3A;37 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>This custom LEGO model weighs 44 pounds. It's five feet long. It's changing how people build with bricks.</p>
+</div>
+<div class="share-story" data-id="844083" data-url="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;culture&#x2F;a30927273&#x2F;custom-lego-sets&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Building&#x20;A&#x20;20,000-Piece&#x20;LEGO&#x20;Star&#x20;Destroyer">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.popularmechanics.com&#x2F;culture&#x2F;a30927273&#x2F;custom-lego-sets&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04190036&#x2F;2037102387-lego-star-destroyer.jpg" loading="lazy" alt="Building&#x20;A&#x20;20,000-Piece&#x20;LEGO&#x20;Star&#x20;Destroyer">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="843815">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HOMES ON WHEELS </div>
+<a href="https&#x3A;&#x2F;&#x2F;designyoutrust.com&#x2F;2020&#x2F;03&#x2F;amazing-photographs-documented-victorian-houses-moving-in-san-francisco-in-the-1970s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Amazing Photographs Documented Victorian Houses Moving In San Francisco In The 1970s
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/designyoutrust.com" alt="designyoutrust.com">designyoutrust.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;16&#x3A;21&#x3A;38 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>There was once a time when San Francisco's Victorian architecture was not as highly respected and esteemed as it is today. </p>
+</div>
+<div class="share-story" data-id="843815" data-url="https&#x3A;&#x2F;&#x2F;designyoutrust.com&#x2F;2020&#x2F;03&#x2F;amazing-photographs-documented-victorian-houses-moving-in-san-francisco-in-the-1970s&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Amazing&#x20;Photographs&#x20;Documented&#x20;Victorian&#x20;Houses&#x20;Moving&#x20;In&#x20;San&#x20;Francisco&#x20;In&#x20;The&#x20;1970s">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;designyoutrust.com&#x2F;2020&#x2F;03&#x2F;amazing-photographs-documented-victorian-houses-moving-in-san-francisco-in-the-1970s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04161942&#x2F;1112343628-test-16-55.jpg" loading="lazy" alt="Amazing&#x20;Photographs&#x20;Documented&#x20;Victorian&#x20;Houses&#x20;Moving&#x20;In&#x20;San&#x20;Francisco&#x20;In&#x20;The&#x20;1970s">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="843720">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+VIBE CHECK </div>
+<a href="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Great Vintage Living Rooms From The 1950s And 60s
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/mossandfog.com" alt="mossandfog.com">mossandfog.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;15&#x3A;23&#x3A;52 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>We've gathered some great interiors of homes in the late 1950s and 1960s, with spaces and colors and decor that really symbolize the era.</p>
+</div>
+<div class="share-story" data-id="843720" data-url="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Great&#x20;Vintage&#x20;Living&#x20;Rooms&#x20;From&#x20;The&#x20;1950s&#x20;And&#x20;60s">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04152234&#x2F;1453022853-802204897-vintage-living-rooms.jpg" loading="lazy" alt="Great&#x20;Vintage&#x20;Living&#x20;Rooms&#x20;From&#x20;The&#x20;1950s&#x20;And&#x20;60s">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="843717">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+MUST LOVE WOOD PANELING </div>
+<a href="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Great Vintage Living Rooms From The 1950s And '60s
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/mossandfog.com" alt="mossandfog.com">mossandfog.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-03-04&#x20;15&#x3A;22&#x3A;45 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Gathered here are some great interiors of homes in the late 1950s and 1960s, with spaces and colors and decor that really symbolize the era.</p>
+</div>
+<div class="share-story" data-id="843717" data-url="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Great&#x20;Vintage&#x20;Living&#x20;Rooms&#x20;From&#x20;The&#x20;1950s&#x20;And&#x20;&#x27;60s">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;mossandfog.com&#x2F;great-vintage-living-rooms-from-the-1950s-and-60s&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;04152146&#x2F;1647937634-vintage-living-rooms.jpg" loading="lazy" alt="Great&#x20;Vintage&#x20;Living&#x20;Rooms&#x20;From&#x20;The&#x20;1950s&#x20;And&#x20;&#x27;60s">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="843380">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+EARTH ANGELS </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;2&#x2F;21157792&#x2F;rammed-earth-homes-the-art-of-earth-architecture&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The World's Most Beautiful Homes Are Also Down To Earth
+</h2>
+</a>
+<div class="metadata">
+<span>
+13 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/nature" alt="Nature">Nature</a>
+</span>
+<span>
+<time datetime="2020-03-03&#x20;22&#x3A;03&#x3A;44 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The new book The Art of Earth Architecture explores one of the oldest &mdash; and most ecologically sensitive &mdash; building techniques.</p>
+</div>
+<div class="share-story" data-id="843380" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;2&#x2F;21157792&#x2F;rammed-earth-homes-the-art-of-earth-architecture&#x3F;utm_source&#x3D;digg" data-title="The&#x20;World&#x27;s&#x20;Most&#x20;Beautiful&#x20;Homes&#x20;Are&#x20;Also&#x20;Down&#x20;To&#x20;Earth">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;3&#x2F;2&#x2F;21157792&#x2F;rammed-earth-homes-the-art-of-earth-architecture&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;03220236&#x2F;778393584-beautiful-homes.png" loading="lazy" alt="The&#x20;World&#x27;s&#x20;Most&#x20;Beautiful&#x20;Homes&#x20;Are&#x20;Also&#x20;Down&#x20;To&#x20;Earth">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="842753">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+'A DESIGN OASIS' </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.afar.com&#x2F;magazine&#x2F;why-you-should-visit-frank-lloyd-wrights-desert-home-in-scottsdale&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Why You Should Visit Frank Lloyd Wright's Desert Home In Scottsdale
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/afar.com" alt="afar.com">afar.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-03&#x20;14&#x3A;30&#x3A;41 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>A trip to see Frank Lloyd Wright's Taliesin West winter retreat and school&mdash;and the Sonoran Desert that inspired him&mdash;is a must for architecture lovers.</p>
+</div>
+<div class="share-story" data-id="842753" data-url="https&#x3A;&#x2F;&#x2F;www.afar.com&#x2F;magazine&#x2F;why-you-should-visit-frank-lloyd-wrights-desert-home-in-scottsdale&#x3F;utm_source&#x3D;digg" data-title="Why&#x20;You&#x20;Should&#x20;Visit&#x20;Frank&#x20;Lloyd&#x20;Wright&#x27;s&#x20;Desert&#x20;Home&#x20;In&#x20;Scottsdale">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.afar.com&#x2F;magazine&#x2F;why-you-should-visit-frank-lloyd-wrights-desert-home-in-scottsdale&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;03142914&#x2F;Screen-Shot-2020-03-03-at-9.28.55-AM.jpg" loading="lazy" alt="Why&#x20;You&#x20;Should&#x20;Visit&#x20;Frank&#x20;Lloyd&#x20;Wright&#x27;s&#x20;Desert&#x20;Home&#x20;In&#x20;Scottsdale">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="842387">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+EXTREMELY CUTE </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;tiny-house-sustainable-leaf-shaped-36721547&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Look At This Sustainable Tiny House In The Netherlands
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/apartmenttherapy.com" alt="apartmenttherapy.com">apartmenttherapy.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/world" alt="World">World</a>
+</span>
+<span>
+<time datetime="2020-03-02&#x20;20&#x3A;42&#x3A;13 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Check out this house built with natural materials and shaped like a leaf.</p>
+</div>
+<div class="share-story" data-id="842387" data-url="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;tiny-house-sustainable-leaf-shaped-36721547&#x3F;utm_source&#x3D;digg" data-title="Look&#x20;At&#x20;This&#x20;Sustainable&#x20;Tiny&#x20;House&#x20;In&#x20;The&#x20;Netherlands">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.apartmenttherapy.com&#x2F;tiny-house-sustainable-leaf-shaped-36721547&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;02204118&#x2F;760411266-netherlands-tiny-house.jpeg" loading="lazy" alt="Look&#x20;At&#x20;This&#x20;Sustainable&#x20;Tiny&#x20;House&#x20;In&#x20;The&#x20;Netherlands">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="841886">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+WHY SHOULD KIDS HAVE ALL THE FUN? </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90469523&#x2F;reis-new-headquarters-are-like-summer-camp-for-grownups&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+REI's New Headquarters Are Like Summer Camp For Grown-Ups
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/fastcompany.com" alt="fastcompany.com">fastcompany.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-03-02&#x20;14&#x3A;58&#x3A;00 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Complete with blueberry bogs and a campfire. </p>
+</div>
+<div class="share-story" data-id="841886" data-url="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90469523&#x2F;reis-new-headquarters-are-like-summer-camp-for-grownups&#x3F;utm_source&#x3D;digg" data-title="REI&#x27;s&#x20;New&#x20;Headquarters&#x20;Are&#x20;Like&#x20;Summer&#x20;Camp&#x20;For&#x20;Grown-Ups">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.fastcompany.com&#x2F;90469523&#x2F;reis-new-headquarters-are-like-summer-camp-for-grownups&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;03&#x2F;02145654&#x2F;1824122605-Screen-Shot-2020-03-02-at-9.56.23-AM.png" loading="lazy" alt="REI&#x27;s&#x20;New&#x20;Headquarters&#x20;Are&#x20;Like&#x20;Summer&#x20;Camp&#x20;For&#x20;Grown-Ups">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="840956">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+'SOMETHING FOR EVERYONE' </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;revisiting-margolies-roadside-attractions&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+A Collection Of Classic Photos Of Giant Roadside Curios
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/atlasobscura.com" alt="atlasobscura.com">atlasobscura.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-02-28&#x20;18&#x3A;02&#x3A;15 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>John Margolies played an outsize role in memorializing America's outsize attractions.</p>
+</div>
+<div class="share-story" data-id="840956" data-url="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;revisiting-margolies-roadside-attractions&#x3F;utm_source&#x3D;digg" data-title="A&#x20;Collection&#x20;Of&#x20;Classic&#x20;Photos&#x20;Of&#x20;Giant&#x20;Roadside&#x20;Curios">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;revisiting-margolies-roadside-attractions&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;28175551&#x2F;1624686658-test-509.jpg" loading="lazy" alt="A&#x20;Collection&#x20;Of&#x20;Classic&#x20;Photos&#x20;Of&#x20;Giant&#x20;Roadside&#x20;Curios">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="840153">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+FROM 'THE MOST POLARIZING DESIGNER' </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.businessinsider.com&#x2F;strict-regulations-famous-sf-architect-on-hold-2020-2&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Controversial $7 Million Bay Area House That Almost Didn't Get Built
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/businessinsider.com" alt="businessinsider.com">businessinsider.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-02-27&#x20;20&#x3A;13&#x3A;51 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The controversial designer Stanley Saitowiz went through three plans and five months of deliberation to get the home approved.</p>
+</div>
+<div class="share-story" data-id="840153" data-url="https&#x3A;&#x2F;&#x2F;www.businessinsider.com&#x2F;strict-regulations-famous-sf-architect-on-hold-2020-2&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Controversial&#x20;&#x24;7&#x20;Million&#x20;Bay&#x20;Area&#x20;House&#x20;That&#x20;Almost&#x20;Didn&#x27;t&#x20;Get&#x20;Built">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.businessinsider.com&#x2F;strict-regulations-famous-sf-architect-on-hold-2020-2&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;27201005&#x2F;806142097-Screen-Shot-2020-02-27-at-3.09.29-PM.png" loading="lazy" alt="The&#x20;Controversial&#x20;&#x24;7&#x20;Million&#x20;Bay&#x20;Area&#x20;House&#x20;That&#x20;Almost&#x20;Didn&#x27;t&#x20;Get&#x20;Built">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="839682">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+SACRED SPACES </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;jobie-hill-saving-slave-houses&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Meet The Iowa Architect Documenting Every Slave House Still Standing
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a href="/source/atlasobscura.com" alt="atlasobscura.com">atlasobscura.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/histories" alt="Histories">Histories</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/race" alt="Race">Race</a>
+</span>
+<span>
+<time datetime="2020-02-27&#x20;16&#x3A;04&#x3A;48 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Jobie Hill has visited 700 former residences. Many have been abandoned. Some have become storage space. Others are B&#038;Bs.</p>
+</div>
+<div class="share-story" data-id="839682" data-url="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;jobie-hill-saving-slave-houses&#x3F;utm_source&#x3D;digg" data-title="Meet&#x20;The&#x20;Iowa&#x20;Architect&#x20;Documenting&#x20;Every&#x20;Slave&#x20;House&#x20;Still&#x20;Standing">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;jobie-hill-saving-slave-houses&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;27160053&#x2F;248802383-test-478.jpg" loading="lazy" alt="Meet&#x20;The&#x20;Iowa&#x20;Architect&#x20;Documenting&#x20;Every&#x20;Slave&#x20;House&#x20;Still&#x20;Standing">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="839618">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HOME SWEET POD </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;someone-reinvented-the-futuro-house-and-put-it-on-airbnb&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Someone Reinvented The Futuro House And Put It On Airbnb
+</h2>
+</a>
+<div class="metadata">
+<span>
+5 diggs </span>
+<span>
+<a href="/source/messynessychic.com" alt="messynessychic.com">messynessychic.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-02-27&#x20;15&#x3A;42&#x3A;28 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>In 1968, a Finnish architect designed a controversial home inspired by the post-war futurism and space exploration. It didn't look super cozy then &mdash; but it sure does now.</p>
+</div>
+<div class="share-story" data-id="839618" data-url="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;someone-reinvented-the-futuro-house-and-put-it-on-airbnb&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Someone&#x20;Reinvented&#x20;The&#x20;Futuro&#x20;House&#x20;And&#x20;Put&#x20;It&#x20;On&#x20;Airbnb">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;someone-reinvented-the-futuro-house-and-put-it-on-airbnb&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;27153929&#x2F;256616806-futuro-house.jpg" loading="lazy" alt="Someone&#x20;Reinvented&#x20;The&#x20;Futuro&#x20;House&#x20;And&#x20;Put&#x20;It&#x20;On&#x20;Airbnb">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="838265">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+WHAT'S IN THE BOX? </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Minimalist Prefab Keeps The Spotlight On Nature
+</h2>
+</a>
+<div class="metadata">
+<span>
+3 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/travel" alt="Travel">Travel</a>
+</span>
+<span>
+<time datetime="2020-02-25&#x20;17&#x3A;51&#x3A;06 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The sleek Birdbox retreat is available as a vacation rental and for purchase </p>
+</div>
+<div class="share-story" data-id="838265" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit&#x3F;utm_source&#x3D;digg" data-title="Minimalist&#x20;Prefab&#x20;Keeps&#x20;The&#x20;Spotlight&#x20;On&#x20;Nature">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit.curbed.com&#x2F;2020&#x2F;2&#x2F;25&#x2F;21151809&#x2F;prefab-home-design-birdbox-livit&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;25175125&#x2F;Screen-Shot-2020-02-25-at-4.48.53-PM.jpg" loading="lazy" alt="Minimalist&#x20;Prefab&#x20;Keeps&#x20;The&#x20;Spotlight&#x20;On&#x20;Nature">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="838125">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HOME, HOME IN THE VOID </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;24&#x2F;21132456&#x2F;modern-home-portugal-design-rema&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+This Modern Home Slots Into A Void In The Landscape
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/curbed.com" alt="curbed.com">curbed.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/nature" alt="Nature">Nature</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/photos" alt="Photos">Photos</a>
+</span>
+<span>
+<time datetime="2020-02-25&#x20;15&#x3A;55&#x3A;00 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The two-story rectangular house slots into the void like a mismatched puzzle piece.</p>
+</div>
+<div class="share-story" data-id="838125" data-url="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;24&#x2F;21132456&#x2F;modern-home-portugal-design-rema&#x3F;utm_source&#x3D;digg" data-title="This&#x20;Modern&#x20;Home&#x20;Slots&#x20;Into&#x20;A&#x20;Void&#x20;In&#x20;The&#x20;Landscape">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.curbed.com&#x2F;2020&#x2F;2&#x2F;24&#x2F;21132456&#x2F;modern-home-portugal-design-rema&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;25155434&#x2F;718390220-modern-home.png" loading="lazy" alt="This&#x20;Modern&#x20;Home&#x20;Slots&#x20;Into&#x20;A&#x20;Void&#x20;In&#x20;The&#x20;Landscape">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="837577">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+HOME BEAUTIFUL HOME </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.dwell.com&#x2F;article&#x2F;architect-homes-roundup-63a8f5fe&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Take A Peek At 30 Architects' Private Homes
+</h2>
+</a>
+<div class="metadata">
+<span>
+4 diggs </span>
+<span>
+<a href="/source/dwell.com" alt="dwell.com">dwell.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-02-25&#x20;10&#x3A;05&#x3A;44 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>These 30 residences and private outdoor hideaways built by architects are all deeply personal projects.</p>
+</div>
+<div class="share-story" data-id="837577" data-url="https&#x3A;&#x2F;&#x2F;www.dwell.com&#x2F;article&#x2F;architect-homes-roundup-63a8f5fe&#x3F;utm_source&#x3D;digg" data-title="Take&#x20;A&#x20;Peek&#x20;At&#x20;30&#x20;Architects&#x27;&#x20;Private&#x20;Homes">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.dwell.com&#x2F;article&#x2F;architect-homes-roundup-63a8f5fe&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;25100529&#x2F;264996815-Screen-Shot-2020-02-25-at-9.04.54-AM.jpg" loading="lazy" alt="Take&#x20;A&#x20;Peek&#x20;At&#x20;30&#x20;Architects&#x27;&#x20;Private&#x20;Homes">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="835844">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+PROGRESSIVE SETBACKS </div>
+<a href="https&#x3A;&#x2F;&#x2F;99percentinvisible.org&#x2F;article&#x2F;progressive-setbacks-the-century-old-nyc-mandate-that-shaped-modern-skylines&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+The Century-Old NYC Mandate That Shaped Modern Skylines
+</h2>
+</a>
+<div class="metadata">
+<span>
+1 digg </span>
+<span>
+<a href="/source/99percentinvisible.org" alt="99percentinvisible.org">99percentinvisible.org</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<time datetime="2020-02-21&#x20;16&#x3A;30&#x3A;12 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p> The shape of some classic NYC towers, like the Chrysler Building, can make it seem like setbacks are aesthetic design decisions, but in reality they reflect a highly specific, city-shaping ordinance dating back to 1916.</p>
+</div>
+<div class="share-story" data-id="835844" data-url="https&#x3A;&#x2F;&#x2F;99percentinvisible.org&#x2F;article&#x2F;progressive-setbacks-the-century-old-nyc-mandate-that-shaped-modern-skylines&#x2F;&#x3F;utm_source&#x3D;digg" data-title="The&#x20;Century-Old&#x20;NYC&#x20;Mandate&#x20;That&#x20;Shaped&#x20;Modern&#x20;Skylines">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;99percentinvisible.org&#x2F;article&#x2F;progressive-setbacks-the-century-old-nyc-mandate-that-shaped-modern-skylines&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;21162926&#x2F;1495743097-test-371.jpg" loading="lazy" alt="The&#x20;Century-Old&#x20;NYC&#x20;Mandate&#x20;That&#x20;Shaped&#x20;Modern&#x20;Skylines">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="835760">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BONJOUR </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;21&#x2F;mother-daughter-buy-an-abandoned-chateau-invite-you-to-stay-as-they-restore-it&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+A Mother And Daughter Buy An Abandoned Chateau, Invite You To Stay As They Restore It
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+
+<span>
+<a href="/source/messynessychic.com" alt="messynessychic.com">messynessychic.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/curious" alt="Curious">Curious</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/travel" alt="Travel">Travel</a>
+</span>
+<span>
+<time datetime="2020-02-21&#x20;15&#x3A;21&#x3A;22 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Chateau de Freschines was once owned by a famous French scientist who was guillotined at the end of the French revolution. Welcome home!</p>
+</div>
+<div class="share-story" data-id="835760" data-url="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;21&#x2F;mother-daughter-buy-an-abandoned-chateau-invite-you-to-stay-as-they-restore-it&#x2F;&#x3F;utm_source&#x3D;digg" data-title="A&#x20;Mother&#x20;And&#x20;Daughter&#x20;Buy&#x20;An&#x20;Abandoned&#x20;Chateau,&#x20;Invite&#x20;You&#x20;To&#x20;Stay&#x20;As&#x20;They&#x20;Restore&#x20;It">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.messynessychic.com&#x2F;2020&#x2F;02&#x2F;21&#x2F;mother-daughter-buy-an-abandoned-chateau-invite-you-to-stay-as-they-restore-it&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;21152004&#x2F;1913505692-abandoned-chateau.jpg" loading="lazy" alt="A&#x20;Mother&#x20;And&#x20;Daughter&#x20;Buy&#x20;An&#x20;Abandoned&#x20;Chateau,&#x20;Invite&#x20;You&#x20;To&#x20;Stay&#x20;As&#x20;They&#x20;Restore&#x20;It">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="835435">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+BUILD AND REBUILD </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.smithsonianmag.com&#x2F;history&#x2F;angkor-wat-reservoir-engineering-catastrophe-180974227&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Angkor Wat May Owe Its Existence To An Engineering Catastrophe
+</h2>
+</a>
+<div class="metadata">
+<span>
+<a href="/source/smithsonianmag.com" alt="smithsonianmag.com">smithsonianmag.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/culture" alt="Culture">Culture</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/histories" alt="Histories">Histories</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/world" alt="World">World</a>
+</span>
+<span>
+<time datetime="2020-02-21&#x20;12&#x3A;35&#x3A;43 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>The collapse of a Khmer Empire reservoir in Koh Ker may have helped Angkor gain supremacy, leading to Angkor Wat and Ta Prohm.</p>
+</div>
+<div class="share-story" data-id="835435" data-url="https&#x3A;&#x2F;&#x2F;www.smithsonianmag.com&#x2F;history&#x2F;angkor-wat-reservoir-engineering-catastrophe-180974227&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Angkor&#x20;Wat&#x20;May&#x20;Owe&#x20;Its&#x20;Existence&#x20;To&#x20;An&#x20;Engineering&#x20;Catastrophe">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.smithsonianmag.com&#x2F;history&#x2F;angkor-wat-reservoir-engineering-catastrophe-180974227&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;21123146&#x2F;1271334819-test-356.jpg" loading="lazy" alt="Angkor&#x20;Wat&#x20;May&#x20;Owe&#x20;Its&#x20;Existence&#x20;To&#x20;An&#x20;Engineering&#x20;Catastrophe">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="835392">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+MONEY FLOATS </div>
+<a href="https&#x3A;&#x2F;&#x2F;www.washingtonpost.com&#x2F;travel&#x2F;2020&#x2F;02&#x2F;20&#x2F;overwater-bungalows-became-pinnacle-aspirational-travel-now-you-can-find-them-everywhere&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+Overwater Bungalows Became The Pinnacle Of Aspirational Travel. Now You Can Find Them Everywhere
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/washingtonpost.com" alt="washingtonpost.com">washingtonpost.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/money" alt="Money">Money</a>
+</span>
+<span>
+<time datetime="2020-02-21&#x20;12&#x3A;23&#x3A;58 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>Once exclusive to faraway locations, overwater bungalows have made their way closer to home for Americans. But that doesn't mean they're any more affordable.</p>
+</div>
+<div class="share-story" data-id="835392" data-url="https&#x3A;&#x2F;&#x2F;www.washingtonpost.com&#x2F;travel&#x2F;2020&#x2F;02&#x2F;20&#x2F;overwater-bungalows-became-pinnacle-aspirational-travel-now-you-can-find-them-everywhere&#x2F;&#x3F;utm_source&#x3D;digg" data-title="Overwater&#x20;Bungalows&#x20;Became&#x20;The&#x20;Pinnacle&#x20;Of&#x20;Aspirational&#x20;Travel.&#x20;Now&#x20;You&#x20;Can&#x20;Find&#x20;Them&#x20;Everywhere">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;www.washingtonpost.com&#x2F;travel&#x2F;2020&#x2F;02&#x2F;20&#x2F;overwater-bungalows-became-pinnacle-aspirational-travel-now-you-can-find-them-everywhere&#x2F;&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;21122229&#x2F;1666336938-Screen-Shot-2020-02-21-at-11.21.09-AM.png" loading="lazy" alt="Overwater&#x20;Bungalows&#x20;Became&#x20;The&#x20;Pinnacle&#x20;Of&#x20;Aspirational&#x20;Travel.&#x20;Now&#x20;You&#x20;Can&#x20;Find&#x20;Them&#x20;Everywhere">
+</picture>
+</a>
+</div>
+</div>
+</article>
+<article class="c-vertical-story" itemtype="http://schema.org/Article" data-id="835016">
+<div class="grid">
+<div class="col col--6-of-12 col--m-2-of-4">
+<header>
+<div itemprop="alternativeHeadline" class="alternativeHeadline" style="color:">
+RAMPING UP </div>
+<a href="https&#x3A;&#x2F;&#x2F;gizmodo.com&#x2F;one-woman-and-thousands-of-lego-bricks-are-building-a-t-1841813835&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<h2 itemprop="headline" class="headline">
+One Woman And Thousands Of Lego Bricks Are Building A Town Much-Needed Wheelchair Ramps
+</h2>
+</a>
+<div class="metadata">
+<span>
+2 diggs </span>
+<span>
+<a href="/source/gizmodo.com" alt="gizmodo.com">gizmodo.com</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/design" alt="Design">Design</a>
+</span>
+<span>
+<a itemprop="keywords" rel="tag" href="/channel/technology" alt="Technology">Technology</a>
+</span>
+<span>
+<time datetime="2020-02-20&#x20;17&#x3A;51&#x3A;34 GMT">1 month ago</time>
+</span>
+</div>
+</header>
+<div itemprop="description" class="description">
+<p>In an effort to undo decades of design that's made spaces inaccessible to those with mobility challenges, 62-year old Rita Ebel is spending part building wheelchair ramps out of colorful Lego bricks.</p>
+</div>
+<div class="share-story" data-id="835016" data-url="https&#x3A;&#x2F;&#x2F;gizmodo.com&#x2F;one-woman-and-thousands-of-lego-bricks-are-building-a-t-1841813835&#x3F;utm_source&#x3D;digg" data-title="One&#x20;Woman&#x20;And&#x20;Thousands&#x20;Of&#x20;Lego&#x20;Bricks&#x20;Are&#x20;Building&#x20;A&#x20;Town&#x20;Much-Needed&#x20;Wheelchair&#x20;Ramps">
+<span data-controller="digg" class="digg"></span>
+<span data-controller="save" class="save"></span>
+<span data-controller="facebook" class="facebook"></span>
+<span data-controller="twitter" class="twitter"></span>
+</div>
+</div>
+<div class="col col--6-of-12 col--m-2-of-4">
+<a href="https&#x3A;&#x2F;&#x2F;gizmodo.com&#x2F;one-woman-and-thousands-of-lego-bricks-are-building-a-t-1841813835&#x3F;utm_source&#x3D;digg" itemprop="url" rel="bookmark&#x20;noopener" target="_blank" aria-label="Opens a new window">
+<picture>
+<img src="https&#x3A;&#x2F;&#x2F;cdn.digg.com&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;02&#x2F;20174907&#x2F;609526877-wheelchair-ramp.png" loading="lazy" alt="One&#x20;Woman&#x20;And&#x20;Thousands&#x20;Of&#x20;Lego&#x20;Bricks&#x20;Are&#x20;Building&#x20;A&#x20;Town&#x20;Much-Needed&#x20;Wheelchair&#x20;Ramps">
+</picture>
+</a>
+</div>
+</div>
+</article>
+</div>
+<footer class="load-more-stories" data-endpoint="channel&#x3F;slug&#x3D;architecture" data-view="c-vertical-story" data-total="1448" data-size="20" data-placeholder="results" data-page="1">
+<span>Load More Stories</span>
+<img src="/static/images/loading.gif">
+</footer>
+</div>
+<div class="col col--4-of-12">
+<div class="channel-share">
+<a class="item" href="https://www.facebook.com/digg" target="_blank">
+<svg class="ico-fb-like" viewBox="0 0 18 18" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+<path fill="#191919" fill-rule="evenodd" d="M16.117 1H1.883A.883.883 0 0 0 1 1.883v14.234c0 .488.395.883.883.883h7.663v-6.196H7.46V8.39h2.086V6.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.476-1.195 1.176v1.54h2.39l-.31 2.416h-2.08V17h4.077a.883.883 0 0 0 .883-.883V1.883A.883.883 0 0 0 16.117 1">
+</path>
+</svg>
+<span>Like us on Facebook</span>
+</a>
+<a class="item" href="https://twitter.com/digg" target="_blank">
+<svg class="ico-twitter-follow" viewBox="0 0 18 18" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+<path fill="#191919" fill-rule="evenodd" d="M16.999 4.54a6.62 6.62 0 0 1-1.885.517 3.298 3.298 0 0 0 1.443-1.816 6.591 6.591 0 0 1-2.085.795A3.273 3.273 0 0 0 12.076 3a3.28 3.28 0 0 0-3.197 4.03 9.33 9.33 0 0 1-6.766-3.428 3.241 3.241 0 0 0-.444 1.65c0 1.14.58 2.142 1.46 2.73a3.279 3.279 0 0 1-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22a3.337 3.337 0 0 1-1.482.056 3.287 3.287 0 0 0 3.067 2.28 6.593 6.593 0 0 1-4.077 1.403A6.75 6.75 0 0 1 1 14.526 9.304 9.304 0 0 0 6.032 16c6.038 0 9.34-4.999 9.34-9.336 0-.143-.004-.284-.01-.425A6.67 6.67 0 0 0 17 4.54h-.001z">
+</path>
+</svg>
+<span>Follow us on Twitter</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="wrapper">
+<footer class="footer" role="contentinfo">
+<div class="grid">
+<div class="col col--9-of-12">
+<ul>
+<li><a href="/about">About</a></li>
+<li><a href="/faq">FAQ</a></li>
+<li><a href="/advertising">Advertise</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/digg-new-tab-extension/ifhmmfkaojalpgphoaknehmekeoilfhh" target="" class="chrome">Get the Digg New Tab Extension</a></li>
+</ul>
+</div>
+<div class="col col--3-of-12 right">
+<ul class="copyright">
+<li><a href="/tos">Terms</a></li>
+<li><a href="/privacy">Privacy</a></li>
+<li>&copy; 2020 Digg</li>
+</ul>
+</div>
+</div>
+</footer>
+</section>
+<script src="/static/bundle.js?v=1587400711" async></script>
+<script type="text/javascript" src="https://js.createsend1.com/javascript/copypastesubscribeformlogic.js"></script>
+<script>
+      if ('serviceWorker' in navigator) {
+        //navigator.serviceWorker.register('/service-worker.js');
+      }
+    </script>
+<script>
+      const diggUserData = {
+        diggs: [],
+        saves: [],
+      };
+    </script>
+
+<script src="https://stats.digg.com/library/tracker.js?v=1587400711" async></script>
+
+<script>
+      window.diggTargetAttribute = '_blank';
+    </script>
+
+<script type="text/javascript">
+      let displayAds = true;
+
+      if (typeof (Storage) !== 'undefined') {
+        if (localStorage.getItem('disable-digg-ads')) {
+          displayAds = false;
+        }
+      }
+      var videoEmbedDiv = document.getElementsByClassName('embedd-code')[0],
+        videoFrame = videoEmbedDiv ? videoEmbedDiv.getElementsByTagName('iframe')[0] : false,
+        isRumble = videoFrame ? (videoFrame.className == 'rumble' ? true : false) : false;
+
+      if (displayAds && !isRumble) {
+        (function () {
+          var bsa_optimize = document.createElement('script');
+          bsa_optimize.type = 'text/javascript';
+          bsa_optimize.async = true;
+          bsa_optimize.src = 'https://cdn4.buysellads.net/pub/digg.js?' + (new Date() - new Date() % 960000);
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa_optimize);
+        })();
+      }
+      else {
+        var dfp1 = document.createElement('script');
+        dfp1.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dfp1);
+        var dfp2 = document.createElement('script');
+        dfp2.src = 'https://imasdk.googleapis.com/js/sdkloader/gpt_proxy.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dfp2);
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function () {
+          googletag.defineSlot('/8691100/Digg_S2S_RightRail_Companion_ATF', [300, 250], 'div-gpt-ad-1568682532978-0')
+            .addService(googletag.companionAds())
+            .addService(googletag.pubads());
+          googletag.companionAds().setRefreshUnfilledSlots(true);
+          googletag.pubads().enableVideoAds();
+          googletag.enableServices();
+          googletag.display('div-gpt-ad-1568682532978-0');
+        });
+      }
+    </script>
+<script src="//m.servedby-buysellads.com/monetization.js?1571424878" type="text/javascript"></script>
+<script>
+      (function () {
+        if (typeof _bsa !== 'undefined' && _bsa) {
+          if (window.location.pathname == '/') {
+            _bsa.init('flexbar', 'CE7DCKJJ', 'placement:digg');
+          } else if (window.location.pathname.substring(0, 6) == "/video") {
+            _bsa.init('flexbar', 'CE7ITK3N', 'placement:digg');
+          }
+          _bsa.init('stickybox', 'CK7I4K7Y', 'placement:digg');
+
+          var template = '<a href="##link##" itemprop="url" rel="bookmark noopener" target="_blank" aria-label="Opens a new window"><picture><img src="##image##" loading="lazy" alt="##headline##" width="350" height="190"></picture></a><header><div itemprop="alternativeHeadline" class="alternativeHeadline" data-store="##store##">##kicker##</div><h2 itemprop="headline" class="headline"><a href="##link##" itemprop="url" rel="bookmark noopener" target="_blank" aria-label="Opens a new window">##headline##</a></h2><div class="metadata"><span><a itemprop="keywords" rel="tag" href="/advertising" alt="Promotion">Promotion</a></span></div></header><div itemprop="description" class="description">##description##</div>';
+
+          _bsa.init('custom', 'CK7ICKQE', 'placement:digg', {
+            target: 'article.fp-vertical-story[data-id="742304"]',
+            template: template,
+            clear_contents: true
+          });
+
+          _bsa.init('custom', 'CE7DC2QI', 'placement:digg', {
+            target: 'article.fp-vertical-story[data-id="742403"]',
+            template: template,
+            clear_contents: true
+          });
+
+          _bsa.init('custom', 'CE7DC2JE', 'placement:digg', {
+            target: 'article.fp-vertical-story[data-id="827995"]',
+            template: template,
+            clear_contents: true
+          });
+
+          _bsa.init('custom', 'CE7DC2JJ', 'placement:digg', {
+            target: 'article.fp-vertical-story[data-id="838019"]',
+            template: template,
+            clear_contents: true
+          });
+
+        }
+      })();
+      function BSANativeCallback(a) {
+        if (a.ads && a.ads.length > 0 && (a.ads[0].zonekey == 'CE7DCKJJ' || a.ads[0].zonekey == 'CE7ITK3N')) {
+          var body = document.getElementsByTagName('body')[0];
+          body.className += ' not-fixed';
+        }
+        if (a.key == 'CK7ICKQE') {
+          var element = document.querySelector('article.fp-vertical-story[data-id="742304"]');
+          element.classList.remove('placeholder');
+        }
+        if (a.key == 'CE7DC2QI') {
+          var element = document.querySelector('article.fp-vertical-story[data-id="742403"]');
+          element.classList.remove('placeholder');
+        }
+        if (a.key == 'CE7DC2JE') {
+          var element = document.querySelector('article.fp-vertical-story[data-id="827995"]');
+          element.classList.remove('placeholder');
+        }
+        if (a.key == 'CE7DC2JJ') {
+          var element = document.querySelector('article.fp-vertical-story[data-id="838019"]');
+          element.classList.remove('placeholder');
+        }
+      }
+    </script>
+
+<script>
+      function getCookie(name) {
+        var nameEQ = name + '=',
+          ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ')
+            c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      function hideElementCheck(which) {
+        if (getCookie(which))
+          hideElement(which);
+      }
+
+      function hideElement(id) {
+        var s = document.getElementById(id);
+        if (typeof s !== 'undefined' && s != null)
+          s.style.display = 'none';
+      }
+      function hideElementAndSetCookie(id, hours) {
+        var s = document.getElementById(id);
+        var now = new Date();
+        now.setHours(now.getHours() + hours);
+        if (typeof s !== 'undefined' && s != null)
+          document.cookie = id + '=hide;expires=' + now.toGMTString() + '; SameSite=Lax; path=/';
+        s.style.display = 'none';
+      }
+      hideElementCheck('subscribePromotion');
+      hideElementCheck('subscribeBar');
+    </script>
+</body>
+</html>

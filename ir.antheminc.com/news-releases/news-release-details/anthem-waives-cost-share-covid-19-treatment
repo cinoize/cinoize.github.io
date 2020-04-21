@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Anthem Waives Cost Share for COVID-19 Treatment | Anthem, Inc." />
+<meta property="og:site_name" content="Anthem, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.antheminc.com/news-releases/news-release-details/anthem-waives-cost-share-covid-19-treatment" />
+<meta property="og:title" content="Anthem Waives Cost Share for COVID-19 Treatment | Anthem, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Anthem, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.4" />
+<link rel="alternate" hreflang="en" href="https://ir.antheminc.com/news-releases/news-release-details/anthem-waives-cost-share-covid-19-treatment" />
+<link rel="canonical" href="https://ir.antheminc.com/news-releases/news-release-details/anthem-waives-cost-share-covid-19-treatment" />
+<link rel="shortlink" href="https://ir.antheminc.com/node/28136" />
+<link rel="revision" href="https://ir.antheminc.com/news-releases/news-release-details/anthem-waives-cost-share-covid-19-treatment" />
+
+    <title>Anthem Waives Cost Share for COVID-19 Treatment | Anthem, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb15511/files/css/css_8zWKN6qWWUtDIuPxDLTytXs0iepG3wRB9x86fVDdjDc.css?q7vdrd" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb15511/files/css/css_MkpYEAF-YMArSK-PKvZzWGERQrUycBcvULIkA_SbViw.css?q7vdrd" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb15511/files/css/css_4lBgVOp7XuKYcgs6evddOmWhg8kYw8UjsRc4l9G5iy8.css?q7vdrd" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb15511/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-news nir-node--28136 path-node page-node-type-nir-news">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="wrapper">
+    <div id="header">
+        <div class="logo">
+            <a href="http://www.antheminc.com/index.htm"><img src="/sites/g/files/knoqqb15511/themes/site/nir_pid1427/client/images/anthem_logo.gif" alt="Logo">
+            </a>
+        </div>
+        <div class="floatRt">
+            <div id="stockInfoDiv" class="stockInfo">  <div class="region region-header">
+    <div id="block-nir-pid1427-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5826 block--header--market-data-block__stock-quote block--header--market-data-block__stock-quote--5826 block--1c981dcf-bd24-43b8-b61a-a36c26584903 block--1c981dcf-bd24-43b8-b61a-a36c26584903--5826 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                            <div class="ccbnIFrameDiv">
+                <span class="ccbnQSymbol"><span class="SandP ccbnTxtBold">S&P 500 </span><span class="nasdaq ccbnTxtBold">NASDAQ </span><span class="common_stock">(Common Stock)</span></span>
+                <span class="ccbnTxtNormal ccbnTxtBold"></span>
+                <span class=""></span>
+                <br><span class="ccbnStockTopDate">as of Apr 20 2020 1:06 AM EDT</span>
+            </div>
+            </div>
+</div>
+  </div>
+
+  </div>
+</div>
+            <form method="GET" action="https://www.antheminc.com/AboutAnthemInc/Search/index.htm">
+                <div class="googleSearch">
+                    <input type="text" value="" class="searchBox" maxlength="256" size="32" name="q">
+                    <input type="image" src="/sites/g/files/knoqqb15511/themes/site/nir_pid1427/client/images/btn_search_off.png" class="searchBtn button" title="Submit Search">
+                    <input type="hidden" value="anthemincall" name="site">
+                    <input type="hidden" value="fe_antheminc" name="client">
+                    <input type="hidden" value="xml_no_dtd" name="output">
+                    <input type="hidden" value="fe_antheminc" name="proxystylesheet">
+                    <input type="hidden" value="0" id="filter" name="filter">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="siteNav">
+        <ul class="dropdown">
+            <li class=""><a href="http://www.antheminc.com/index.htm"><span>Home</span></a>
+            </li>
+            <li class=""><a href="http://www.antheminc.com/AboutAnthemInc/index.htm"><span class="twoLines">About
+                    <br>
+                    Anthem, Inc.</span></a>
+                <ul class="sub_menu" style="visibility: hidden;">
+                    <li class=""><a href="http://www.antheminc.com/AboutAnthemInc/MissionValues/index.htm">Purpose, Vision and Values</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/AboutAnthemInc/CompanyHistory/index.htm">Company History</a>
+                    </li>
+                    <li><a href="http://www.antheminc.com/AboutAnthemInc/BusinessStrategy/index.htm">Business Strategy</a>
+                    </li>
+                    <li><a href="http://www.antheminc.com/AboutAnthemInc/CustomerSegments/index.htm">Customer Segments</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/AboutAnthemInc/ProductsServices/index.htm">Products &amp; Services</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/AboutAnthemInc/Leadership/index.htm">Leadership</a>
+                    </li>
+                    <li><a href="https://www.antheminc.com/AboutAnthemInc/PublicAffairs/index.htm">Public Affairs</a>
+                    </li>
+					<li><a href="http://www.anthemcorporateresponsibility.com/awards-and-recognition ">Awards &amp; Recognition</a>
+					</li>
+                </ul>
+            </li>
+            <li class=""><a href="http://www.antheminc.com/Companies/index.htm"><span>Companies</span></a>
+                <ul class="sub_menu" style="visibility: hidden;">
+                    <li><a href="http://www.antheminc.com/Companies/AnthemBlueCrossBlueShield/index.htm">Anthem Blue Cross and Blue Shield</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/Companies/AnthemBlueCross/index.htm">Anthem Blue Cross</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/Companies/EmpireBlueCrossBlueShield/index.htm">Empire BlueCross BlueShield</a>
+                    </li>
+                    <li><a href="http://www.antheminc.com/Companies/AnthemLifeInsurance/index.htm">Anthem Life Insurance</a>
+                    </li>
+                    <li><a href="http://www.antheminc.com/Companies/AffiliatedSpecialtyCompanies/index.htm">Affiliated / Specialty Companies</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="" style="border-right: none; padding-right: 0px;"><a href="http://www.antheminc.com/NewsMedia/AnthemintheNews/index.htm"><span>News &amp; Media</span></a>
+                <ul class="sub_menu" style="visibility: hidden;">
+                    <li><a href="/press-releases">Press Releases</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/NewsMedia/AnthemintheNews/index.htm">Anthem, Inc. in the News</a>
+                    </li>
+                    <li class=""><a href="http://www.antheminc.com/NewsMedia/FrequentlyRequestedMaterials/index.htm">Frequently Requested Materials</a>
+                    </li>
+                    <li class=""><a href="http://www.anthempublicpolicyinstitute.com/">Public Policy Institute</a>
+                    </li>
+                    <li><a href="http://www.antheminc.com/NewsMedia/MediaContact/index.htm">Media Contacts</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="selected"><a href="/" style="color: #8C000D;"><span>Investors</span></a>
+                <ul class="sub_menu" style="visibility: hidden;">
+                    <li class=""><a href="/financial-information-0">Financial Information</a>
+                    </li>
+                    <li class=""><a href="/stock-information/analyst-coverage">Analyst Coverage</a>
+                    </li>
+                    <li class=""><a href="/individual-investors">Individual Investors</a>
+                    </li>
+                    <li class=""><a href="/corporate-governance-0">Corporate Governance</a>
+                    </li>
+                    <li class=""><a href="/stock-information-0">Stock Information</a>
+                    </li>
+                    <li class=""><a href="/events-and-presentations/upcoming-events">Events &amp; Webcasts</a>
+                    </li>
+                    <li class=""><a href="/shareholder-services/contact-ir">Investor Contacts</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=""><a href="http://www.anthemcorporateresponsibility.com"><span class="twoLines">Corporate <br>Responsibility</span></a>
+                <ul class="sub_menu" style="visibility: hidden;">
+                    <li><a href="http://www.anthemcorporateresponsibility.com/cr/foundation">Our Foundation</a>
+                    </li>
+                    <li><a href=" http://www.anthemcorporateresponsibility.com/our-workplace">Diversity and Inclusion </a>
+                    </li>
+                    <li><a href="http://www.anthemcorporateresponsibility.com/our-environment">Environment</a>
+                    </li>
+                    <li><a href="http://www.anthemcorporateresponsibility.com/community-health-initiatives">Community Health</a>
+                    </li>
+                    <li><a href="https://antheminc.com/CR/Suppliers/index.htm">Suppliers</a>
+                    </li>
+                </ul>
+            </li>
+            <li style="border-right: none;"><a href="https://careers.antheminc.com"><span>Careers</span></a>
+                <ul class="sub_menu" style="right: 0px; left: auto;">
+                    <li><a href="http://careers.antheminc.com">Search Jobs</a>
+                    </li>
+                    <li><a href="https://careers.antheminc.com/student-programs/">Discover Student Programs</a>
+                    </li>
+                    <li><a href="https://careers.antheminc.com/military-and-veterans">Careers for Military & Veterans</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="contentArea">
+        <div id="leftNav">  <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1427-investorrelations-menu" id="block-nir-pid1427-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--27486 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--27486 block--86aa6b9c-3038-4d2c-8441-5046113f5269 block--86aa6b9c-3038-4d2c-8441-5046113f5269--27486 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1427-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="86aa6b9c-3038-4d2c-8441-5046113f5269" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information-0" target="" rel="" data-drupal-link-system-path="node/25396">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/analyst-coverage" target="" rel="" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/individual-investors" target="" rel="" data-drupal-link-system-path="node/25431">Individual Investors </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/2020-annual-meeting" target="" rel="" data-drupal-link-system-path="node/26516">2020 Annual Meeting</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance-0" target="" rel="" data-drupal-link-system-path="node/18201">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information-0" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" target="" rel="" data-drupal-link-system-path="node/5826">Events &amp; Webcasts </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Investor Contacts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+</div>
+        <div class="mainContent_leftCol">
+            <div class="content_Header">
+                <a name="content"></a>
+                <h1>
+
+                                    Press Releases
+                                </h1>
+            </div>
+            <div class="content_Main">  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1427-content" class="block--system-main-block block--system-main-block--28136 block--content--system-main-block block--content--system-main-block--28136 block--a5cf203e-7511-4489-bedb-bd5dc0af2a4a block--a5cf203e-7511-4489-bedb-bd5dc0af2a4a--28136 block block-system block-system-main-block">
+  
+    
+      
+<article role="article" class="node node--nir-news--full node--type-nir-news node--view-mode-full node--promoted">
+    <div class="main_heading"><h1>Press Release</h1></div>
+    <div class="newsArticle">
+        <div class="table-container">
+            <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                <tbody>
+                <tr class="ccbnBgLnk">
+                    <td width="100%" align="right" valign="top"><span class="ccbnLnk"><a href="javascript:window.history.go(-1);">Back</a></span>
+                    </td>
+                </tr>
+                <tr class="ccbnBgTtl">
+                    <td valign="top"><span class="ccbnNewsTtl">
+
+        Anthem Waives Cost Share for COVID-19 Treatment
+    
+</span>
+                    </td>
+                </tr>
+                <tr class="ccbnBgTxt">
+                    <td valign="top">                                  <p><location idsrc="xmltag.org" value="LU/us.in.indpol">INDIANAPOLIS</location>--(BUSINESS WIRE)--Apr. 1, 2020-- Anthem’s commitment to improving lives and supporting our local communities is more important than ever as the nation joins together to address the COVID-19 crisis. As part of Anthem’s ongoing actions to meet the needs of those directly impacted by the disease, the company announced it will expand coverage, effective <chron>April 1</chron>, for members in its affiliated health plans undergoing treatment related to a COVID-19 diagnosis.</p>
+
+<p>“During these challenging times, <org idsrc="xmltag.org" value="ANTM">Anthem</org> stands by our legacy and commitment to living our values and supporting those we serve,” said <org idsrc="xmltag.org" value="ANTM">Anthem</org> President and CEO <person>Gail K. Boudreaux</person>. “By applying our approach for innovation, compassion and inclusion, we are focused on the issues needed most in this time of crisis, including affordability and access to care for those dealing with treatment related to COVID-19. We are also proud to serve as a partner to frontline caregivers and community leaders to meet the evolving needs of our nation.”</p>
+
+<p>The expansion covers the waiver of cost share for COVID-19 treatment received through <chron>May 31, 2020</chron>. <org idsrc="xmltag.org" value="ANTM">Anthem</org> will reimburse health care providers at in-network rates or Medicare rates, as applicable, for Anthem’s affiliated health plan fully insured, Individual, Medicaid and Medicare Advantage members. <org idsrc="xmltag.org" value="ANTM">Anthem</org> is strongly encouraging participation by our self-funded employers and will work with them to ensure their employees’ needs are met. These employers will, however, still have the option to opt out of participation.</p>
+
+<p><org idsrc="xmltag.org" value="ANTM">Anthem</org> will also provide post-discharge support to Medicare members with complex care needs who may need additional assistance as they transition back to home following hospitalization. Anthem’s care managers can help provide coordination of medications and home health needs, scheduling follow up appointments and transportation, and arranging for post-discharge meal delivery.</p>
+
+<p>This action expands upon the proactive steps <org idsrc="xmltag.org" value="ANTM">Anthem</org> has already taken to support care providers and protect our members, associates and communities against COVID-19, which include:</p>
+
+<ul class="bwlistdisc"><li>Waiving copays, coinsurance and deductibles for the diagnostic test related to COVID-19, as well as for visits associated with COVID-19 testing, whether the care is received in a physician’s office, an urgent care center or an emergency department.</li>
+	<li>Relaxing early prescription refill limits for members who wish to receive a 30-day supply of most maintenance medications, where permissible.</li>
+	<li>Waiving any member cost share until <chron>June 14, 2020</chron> for telehealth visits, including visits for mental health and select Physical, Occupational and Speech therapies, for our fully insured employer plans, Individual plans, Medicare plans and Medicaid plans, where permissible.</li>
+	<li>Launching a COVID-19 symptom assessment tool available <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=https%3A%2F%2Fwww.anthem.com%2Fmicrosites%2Fcovid19-assessment%2F&amp;esheet=52198033&amp;newsitemid=20200401005822&amp;lan=en-US&amp;anchor=online&amp;index=1&amp;md5=83faa74663d27c4ac5b5dccefe875805" rel="nofollow" shape="rect">online</a> and via the Sydney Care mobile app.</li>
+	<li>Suspending select prior authorization requirements to allow care providers to focus on caring for patients diagnosed with COVID-19. This includes suspension of prior authorization requirements for patient transfers, prior authorization requirements for skilled nursing facilities, along with the suspension of prior authorization requirements for the use of medical equipment critical to COVID-19 treatment.</li>
+	<li>Temporarily adjusting the approach to monitoring claims and audits.</li>
+	<li>Launching the Medical Associate Volunteer Program, which allows <org idsrc="xmltag.org" value="ANTM">Anthem</org> associates who are licensed and credentialed medical professionals the opportunity to take paid leave from their regular <org idsrc="xmltag.org" value="ANTM">Anthem</org> role and use their medical expertise and training to support care providers and deliver relief.</li>
+	<li>Expanding <org idsrc="xmltag.org" value="ANTM">Anthem</org> associate benefits to include up to 80 hours of paid emergency leave for qualifying needs – which aids with time for those experiencing symptoms of COVID-19 and to address caregiving needs for children or others due to issues related to COVID-19.</li>
+	<li>In coordination with the <org>Anthem Foundation</org>, and as part of our legacy of aid to those in need, we are providing extensive support to meet the needs of communities across the country. Engagement with long-term partners such as the <org>Red Cross</org>, Direct Relief, Americares and <org idsrc="xmltag.org" value="3648299192">Feeding America</org>, along with countless other local nonprofit partners, is ensuring aid is directed to meet the distinct needs brought by COVID-19. <org idsrc="xmltag.org" value="ANTM">Anthem</org> associates are also active in community support in a variety of ways, backed by a 100% match from the organization.</li>
+</ul><p><org idsrc="xmltag.org" value="ANTM">Anthem</org> continues to closely monitor the COVID-19 developments and listen to the needs of our communities, <org idsrc="xmltag.org" value="ANTM">Anthem</org> associates and all of the members and care providers we serve.</p>
+
+<p><strong>About <org idsrc="xmltag.org" value="ANTM">Anthem, Inc.</org></strong></p>
+
+<p><org idsrc="xmltag.org" value="ANTM">Anthem</org> is a leading health benefits company dedicated to improving lives and communities, and making healthcare simpler. Through its affiliated companies, <org idsrc="xmltag.org" value="ANTM">Anthem</org> serves more than 79 million people, including 41 million within its family of health plans. We aim to be the most innovative, valuable and inclusive partner. For more information, please visit <a href="https://cts.businesswire.com/ct/CT?id=smartlink&amp;url=http%3A%2F%2Fwww.antheminc.com&amp;esheet=52198033&amp;newsitemid=20200401005822&amp;lan=en-US&amp;anchor=www.antheminc.com&amp;index=2&amp;md5=2c1fc5401fedd20eb83f46ed72cba1e7" rel="nofollow" shape="rect">www.antheminc.com</a> or follow @AnthemInc on Twitter.</p>
+
+<p><img alt="" src="https://cts.businesswire.com/ct/CT?id=bwnews&amp;sty=20200401005822r1&amp;sid=acqr8&amp;distro=nx&amp;lang=en" /><span class="bwct31415"></span></p>
+
+<p id="mmgallerylink"><span id="mmgallerylink-phrase">View source version on <a href="http://businesswire.com">businesswire.com</a>: </span><span id="mmgallerylink-link"><a href="https://www.businesswire.com/news/home/20200401005822/en/" rel="nofollow">https://www.businesswire.com/news/home/20200401005822/en/</a></span></p>
+
+<p><org idsrc="xmltag.org" value="ANTM">Anthem</org> Contacts:<br /><strong>Media: </strong><br /><person>Jill Becher</person><br /><a href="mailto:Jill.Becher@anthem.com" rel="nofollow" shape="rect">Jill.Becher@anthem.com</a></p>
+
+<p><strong>Investor Relations: </strong><br /><person>Chris Rigg</person><br /><a href="mailto:Chris.Rigg@anthem.com" rel="nofollow" shape="rect">Chris.Rigg@anthem.com</a></p>
+
+<p>Source: <org idsrc="xmltag.org" value="ANTM">Anthem, Inc.</org></p>
+  
+                                            </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+            <div class="content_Footer"></div>
+        </div>
+        <div class="contentRight"></div>
+        <div class="socialNetwk">
+
+            <a href="https://twitter.com/AnthemInc" target="_blank"><img src="/sites/g/files/knoqqb15511/themes/site/nir_pid1427/client/images/twitter-icon.png" alt="Twitter" title="Anthem Twitter">
+            </a>
+            <a target="_blank" href="https://www.youtube.com/c/ThinkAnthem" id="youtube"><img title="Anthem YouTube" alt="Anthem YouTube" src="/sites/g/files/knoqqb15511/themes/site/nir_pid1427/client/images/Youtube-icon.png">
+            </a>
+        </div>
+        <a target="_blank" href="http://www.youtube.com/thinkwellpoint" id="youtube">
+        </a>
+    </div>
+</div>
+<div class="pageFooter">
+    <div id="footer">
+        <ul>
+            <li style="border-left: none; padding-left: 0px;"><a href="http://www.antheminc.com/Legal/index.htm">Legal</a>
+            </li>
+            <li><a href="http://www.antheminc.com/Privacy/index.htm">Privacy</a>
+            </li>
+            <li><a href="http://hrsolutions.antheminc.com">Associates</a>
+            </li>
+            <li><a href="https://www.antheminc.com/CR/Suppliers/index.htm">Suppliers</a>
+            </li>
+            <li><a href="http://www.antheminc.com/SiteMap/index.htm">Site Map</a>
+            </li>
+            <li><a href="http://www.antheminc.com/ContactUs/index.htm">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+    <div class="copyRight">
+        © 2005-2020 Anthem, Inc. All Rights Reserved.
+    </div>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb543";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/28136","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"field_nir_news_date_value":{"min":""}}},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"classy\/node,core\/drupal.collapse,core\/html5shiv,nir_base\/adobe_omniture,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1427\/client-js,nir_pid1427\/override,system\/base","theme":"nir_pid1427","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"f27096e4bdd23c0e52bb72edc988c3b14c4f064e13cdc8dc7a6528a1da102b24"}}</script>
+<script src="/sites/g/files/knoqqb15511/files/js/js_PWmtjFUpA4uaREkzbEa0-fTPrP1Af1eVaOktyKNHDO8.js"></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fYEcMTlxbVF1ITUBZQA==","queueTime":0,"applicationTime":71,"atts":"ShJUF18aSEg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

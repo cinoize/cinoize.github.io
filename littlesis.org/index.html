@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LittleSis - Profiling the powers that be</title>
+    <link rel="stylesheet" media="all" href="https://littlesis.org/assets/application-8a8175021867bef7abf1e2a55731087291e32b1f624d40fdf5334171459176dc.css" />
+    <script src="https://littlesis.org/packs/js/application-0bfaa6020a399f120370.js"></script> 
+    <script src="https://littlesis.org/assets/application-281af1a25ca09ce2e215494a2ddec138d1040900c368def669c2f3b3f3e6c69c.js"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="NU7JCVURpiiXrhN8t5g4uawlM3ryb94WyI7owDABjD7W2lKdG6679ZMA3C+qQHuPZRpDMDvx4LSmNm7GSajTpw==" />
+    
+      <meta name="google-site-verification" content="yG68EhMUPtgFuaauKHizaQWdECLMRwDi270tCBL8kR4" />
+
+  </head>
+  <body class="">
+
+      <div id="top">
+	
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light" id="main-navbar-container">
+  
+  <div id="navbar-content-wrapper" class="">
+    
+    <div id="navbar-content">
+      <div id="brand mr-auto">
+	<a href="/"><img src="https://littlesis.org/assets/lilsis-logo-trans-200-74169fd94db9637c31388ad2060b48720f94450b40c45c23a3889cf480f02c52.png" /></a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+	
+
+  <ul class="nav mr-auto ml-2">
+
+	<li class="nav-item">
+	  <a class="nav-link" href="/login" id="navbar-header-Login">Login</a>
+</li>
+
+	<li class="nav-item">
+	  <a class="nav-link" href="/join" id="navbar-header-Sign Up">Sign Up</a>
+</li>
+	<li class="nav-item dropdown">
+	  <a class="nav-link dropdown-toggle" href="#" id="navbar-header-Explore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
+	  <div class="dropdown-menu"><a class="dropdown-item" href="/maps">Maps</a><a class="dropdown-item" href="/lists">Lists</a><a class="dropdown-item" href="/tags">Tags</a><a class="dropdown-item" href="/edits">Edits</a></div>
+</li>
+	<li class="nav-item dropdown">
+	  <a class="nav-link dropdown-toggle" href="#" id="navbar-header-Help" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help</a>
+	  <div class="dropdown-menu"><a class="dropdown-item" href="/toolkit">Toolkit</a><a class="dropdown-item" href="/help">Help</a><a class="dropdown-item" href="/bug_report">Report a bug</a></div>
+</li>
+	<li class="nav-item dropdown">
+	  <a class="nav-link dropdown-toggle" href="#" id="navbar-header-About" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+	  <div class="dropdown-menu"><a class="dropdown-item" href="/about">LittleSis</a><a class="dropdown-item" href="/features">Features</a><a class="dropdown-item" href="/team">Our Team</a><a class="dropdown-item" href="https://news.littlesis.org">Blog</a><a class="dropdown-item" href="/api">Data API</a><a class="dropdown-item" href="https://github.com/public-accountability/littlesis-rails">Source Code</a><a class="dropdown-item" href="/disclaimer">Disclaimer</a><a class="dropdown-item" href="/contact">Contact Us</a><a class="dropdown-item" href="https://public-accountability.org/category/job/">Jobs</a><a class="dropdown-item" href="/donate">Donate</a></div>
+</li>
+
+	<li class="nav-item">
+	  <a class="nav-link" href="https://news.littlesis.org" id="navbar-header-Blog">Blog</a>
+</li>
+  </ul>
+
+
+
+	
+	<div id="top_donate_link">
+	  <span><strong><a id="donate-link-button" href="/donate">Donate</a></strong></span>
+	</div>
+
+	
+<form action="/search" method="get" role="search" id="navbar-search">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Search LittleSis" />
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-clear" style="border-color: #ccc;">
+	<span class="glyphicon glyphicon-search"></span>
+      </button>
+    </div>
+  </div>
+</form>
+
+      </div>
+
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	   <span class="navbar-toggler-icon"></span>
+	   </button> -->
+    </div>
+  </div>
+</nav>
+
+      </div>
+
+
+
+      <div id="container-wrapper">
+	<div id="container">
+	  
+<div class="row mt-5" id="first-homepage-row">
+  <div class="col-sm-7">
+    <div class="row no-gutters">
+      <h1>LittleSis<span style="color: #cc5454;">*</span> is a free database of who-knows-who at the heights of business and government.</h1>
+      <div style="font-weight: 300; font-size: 14px; color: #cc5454;"><span style="font-size: 16px; font-weight: bold;">*</span> opposite of Big Brother</div>
+
+      <div id="homepage-splash-subheader">
+        We're a grassroots watchdog network connecting the dots between the world's most powerful people and organizations.
+      </div>
+    </div>
+    
+    <div class="row position-relative">
+      <div class="col-6 nopadding">
+	  <form id="newsletter-signup-form" action="/home/newsletter_signup" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="npG6eml/rbxlWHi6CBmWnPacg2mMa5Dosr56cdrkoZ99BSHuJ8CwYWH2t+kVwdWqP6PzI0X1rkrcBvx3o03+Bg==" />
+  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+    <input type="text" name="very_important_wink_wink" id="very_important_wink_wink" />
+  </div>
+  
+  <div class="input-group">
+    
+    <input type="email" name="email" id="newsletter-signup-form-email" class="form-control" placeholder="Your email" required="required" />
+
+    <div class="input-group-append">
+      <button class="btn btn-clear" type="submit">Join!</button>
+    </div>
+
+  </div>
+</form>
+      </div>
+      
+      <div class="col-6 double-left-padding">
+	<div class="social-media-buttons">
+  <div>
+    <a href="https://www.facebook.com/LittleSis.org"><img src="https://littlesis.org/assets/facebook-icon-daa689f7d87bd7063b2dd266dfa3a029366fdfa50e5a5f0a2893e5c157a79728.jpg" /></a>
+    <a href="https://twitter.com/twittlesis"><img src="https://littlesis.org/assets/twitter-icon-a19ed02c92597359cbca14bf14b6ce2474964b4b2841ad9014f17c14eb291040.jpg" /></a>
+    <a href="https://feeds2.feedburner.com/EyesOnTheTies"><img src="https://littlesis.org/assets/rss-icon-ea22db418e1155b0d8bdfe6db4d652324424e547c9a8c698d618fff0b5103afa.jpg" /></a>
+    <div id="donate-button-container">
+      <a href="https://public-accountability.org/donate/" class="btn btn-sm"><span class="">Donate</span></a>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-4">
+    <div id="homepage-lists">
+
+    <div id="dots-connected-counter">
+        <span>
+                <div class="homepage-counter">3</div>
+                <div class="homepage-counter">6</div>
+                <div class="homepage-counter">6</div>
+                <div class="homepage-counter">1</div>
+                <div class="homepage-counter">8</div>
+                <div class="homepage-counter">7</div>
+        </span>
+        <span>dots connected:</span>
+    </div>
+
+    <div id="dots-connected-links">
+            ✔ <a href="/lists/41-all-members-of-congress-since-1981">Paid for politicians</a><br />
+            ✔ <a href="/lists/88-the-bubble-barons">Corporate fat cats</a><br />
+            ✔ <a href="/lists/102-wall-street-s-revolving-door-lobbyists">Revolving door lobbyists</a><br />
+            ✔ <a href="/lists/114-super-pacs">Secretive Super PACs</a><br />
+            ✔ <a href="/lists/34-25-most-cited-think-tanks">Elite think tanks</a><br />
+    </div>
+
+    <div class="row mt-3" id="dots-connected-search">
+      
+<form action="/search" method="get" role="search" id="navbar-search">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Search for a name" />
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-red" style="border-color: #ccc;">
+	<span class="glyphicon glyphicon-search"></span>
+      </button>
+    </div>
+  </div>
+</form>
+
+    </div>
+
+</div>
+
+  </div>
+</div>
+
+<div class="row align-content-center mt-5 mb-2">
+  <div class="col">
+    <h2 class="text-center" style="font-weight: 300">Explore trainings, news, & tools</h2>
+  </div>
+</div>
+
+<div id="explore-row">
+  <div class="explore-col">
+    <a href="/toolkit">
+      <img class="img-responsive center-block" src="https://littlesis.org/assets/map_the_power_RGB-ca929fc3f82d3c9b57dcab112a56edadf6d091e7e73d9cfa07e3baaf39161720.gif" />
+</a>  </div>
+  <div class="explore-col">
+    <a href="https://news.littlesis.org">
+      <img id="eyes-on-ties-homepage-img" src="https://littlesis.org/assets/eye-on-ties-e8b5cd102617040e3801c2dd9d2c7fffe6f878d65a7709bf567349603af34c6c.png" />
+</a>  </div>
+  <div class="explore-col">
+    <a class="oligrapher-link" href="https://littlesis.org/oligrapher">
+      <h1 class="oligrapher" style="font-weight: 300"><strong>Oligrapher</strong></h1>
+</a>  </div>
+</div>
+
+<div class="row text-center m-bottom-3em">
+  <div class="col-4">
+    <a href="/toolkit">
+      <p>Power research toolkit and trainings</p>
+</a>  </div>
+  <div class="col-4">
+    <a href="https://news.littlesis.org">
+      <p>News and analysis from LittleSis</p>
+</a>  </div>
+  <div class="col-4">
+    <a href="https://littlesis.org/oligrapher">
+      <p>Visual online mapping tool</p>
+</a>  </div>
+</div>
+
+<!-- CAROUSEL -->
+    <div class="row mb-4 mt-2">
+        <div class="col-sm-12">
+            <div class="littlesis_carousel">
+	        <div class="littlesis_carousel">
+  <a class="buttons prev" href="#"><img src="https://littlesis.org/assets/carousel_left_semi-b9d1c6480c9260b498ca62b16540865043f22f9369c4d71e42dc8b83a0c73f0d.png" /></a>
+  <div class="viewport">
+      <ul class="overview">
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/76/76717d147aec6b8ed1a2e429e6d08a4af8335589_1226284399.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/15108-Donald_Trump">Donald Trump</a></div>
+
+      <span class="entity_carousel_description">45th President of the United States<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/person/140921-James_Jay_Carafano">James Jay Carafano</a>
+        <br />
+        <a href="/person/56046-Nigel_Farage">Nigel Farage</a>
+        <br />
+        <a href="/org/37134-Trump_Entertainment_Resorts,_Inc.">Trump Entertainment Resorts, Inc.</a>
+        <br />
+        <a href="/person/330784-Thomas_Joseph_Barrack">Thomas Joseph Barrack</a>
+        <br />
+        <a href="/person/49948-Felix_Sater">Felix Sater</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/85815-Ivanka_Trump">Ivanka Trump</a>
+        <br />
+        <a href="/person/102192-Allen_Weisselberg">Allen Weisselberg</a>
+        <br />
+        <a href="/person/102193-Donald_J_Trump_Jr">Donald J Trump Jr</a>
+        <br />
+        <a href="/person/102194-Eric_F_Trump">Eric F Trump</a>
+        <br />
+        <a href="/person/265918-Rhona_Graff">Rhona Graff</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/4c/4c8d12364c083b7a50faa7ef0f82aa3a26520c27_1226284280.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/14997-Stephen_Schwarzman">Stephen Schwarzman</a></div>
+
+      <span class="entity_carousel_description">CEO of Blackstone Group<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/669-Blackstone_Group">Blackstone Group</a>
+        <br />
+        <a href="/org/14952-Yale_University">Yale University</a>
+        <br />
+        <a href="/org/38938-John_F_Kennedy_Center_for_the_Performing_Arts">John F Kennedy Center for the Performing Arts</a>
+        <br />
+        <a href="/org/37537-New_York_Public_Library">New York Public Library</a>
+        <br />
+        <a href="/person/28776-George_W_Bush">George W Bush</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/1201-Jamie_Dimon">Jamie Dimon</a>
+        <br />
+        <a href="/person/15122-David_Rubenstein">David Rubenstein</a>
+        <br />
+        <a href="/person/33576-Henry_R_Kravis">Henry R Kravis</a>
+        <br />
+        <a href="/person/1159-Vikram_S_Pandit">Vikram S Pandit</a>
+        <br />
+        <a href="/person/1813-Jeffrey_L_Bewkes">Jeffrey L Bewkes</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/f8/f8864b91cfb5305fd8a912c91ae7542955b29571_1226284237.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/6634-Carl_C_Icahn">Carl C Icahn</a></div>
+
+      <span class="entity_carousel_description">Billionaire business magnate and investor; longtime Trump friend<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/681-Icahn_Enterprises_L.P.">Icahn Enterprises L.P.</a>
+        <br />
+        <a href="/org/37224-Mount_Sinai_Medical_Center">Mount Sinai Medical Center</a>
+        <br />
+        <a href="/org/86470-Cadus_Corporation">Cadus Corporation</a>
+        <br />
+        <a href="/org/109794-Starfire_Holding_Corporation">Starfire Holding Corporation</a>
+        <br />
+        <a href="/org/683-CVR_Energy,_Inc.">CVR Energy, Inc.</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/3155-Vincent_J_Intrieri">Vincent J Intrieri</a>
+        <br />
+        <a href="/person/10551-Daniel_S_Loeb">Daniel S Loeb</a>
+        <br />
+        <a href="/person/49623-Gail_Golden">Gail Golden</a>
+        <br />
+        <a href="/person/87068-Brett_Icahn">Brett Icahn</a>
+        <br />
+        <a href="/person/190633-Courtney_Mather">Courtney Mather</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/7f/7fdcb601826dd98dc3fdce69971efb86.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/org/20-Goldman_Sachs">Goldman Sachs</a></div>
+
+      <span class="entity_carousel_description">Wall Street investment banking, securities and investment management firm<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key people
+      </h4>
+
+        <a href="/person/1358-Edward_C_Forst">Edward C Forst</a>
+        <br />
+        <a href="/person/1345-Lloyd_C_Blankfein">Lloyd C Blankfein</a>
+        <br />
+        <a href="/person/1348-David_A_Viniar">David A Viniar</a>
+        <br />
+        <a href="/person/33346-Henry_M_Paulson_Jr">Henry M Paulson Jr</a>
+        <br />
+        <a href="/person/37219-Eric_Mindich">Eric Mindich</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related orgs
+      </h4>
+
+
+        <a href="/org/33271-Council_on_Foreign_Relations">Council on Foreign Relations</a>
+        <br />
+        <a href="/org/14629-U.S._Department_of_the_Treasury">U.S. Department of the Treasury</a>
+        <br />
+        <a href="/org/146742-Kappa_Beta_Phi">Kappa Beta Phi</a>
+        <br />
+        <a href="/org/41023-McKinsey_&amp;_Company">McKinsey &amp; Company</a>
+        <br />
+        <a href="/org/8-Citigroup_Inc.">Citigroup Inc.</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/21/21660e5ef7014d64d4e72a8af6b8103e.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/71297-Jared_Kushner">Jared Kushner</a></div>
+
+      <span class="entity_carousel_description">Trump&#39;s Senior Advisor. Principal with the Kushner Companies.<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/75507-Kushner_Companies">Kushner Companies</a>
+        <br />
+        <a href="/org/233834-Cadre">Cadre</a>
+        <br />
+        <a href="/person/15108-Donald_Trump">Donald Trump</a>
+        <br />
+        <a href="/org/71252-Real_Estate_Board_of_New_York">Real Estate Board of New York</a>
+        <br />
+        <a href="/person/13468-Robert_Menendez">Robert Menendez</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/48468-Brooke_Rollins">Brooke Rollins</a>
+        <br />
+        <a href="/person/71348-Jed_Walentas">Jed Walentas</a>
+        <br />
+        <a href="/person/226632-Nicole_Kushner_Meyer">Nicole Kushner Meyer</a>
+        <br />
+        <a href="/person/256951-Reed_Cordish">Reed Cordish</a>
+        <br />
+        <a href="/person/1045-Rex_Tillerson">Rex Tillerson</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/20/20d68dcf144b6c3a3c0f8878f18dc6129f3038c0_1226284318.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/15032-John_A_Paulson">John A Paulson</a></div>
+
+      <span class="entity_carousel_description">Hedge fund manager who reaped billions betting against subprime<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/15003-New_York_University">New York University</a>
+        <br />
+        <a href="/org/33342-Harvard_Business_School">Harvard Business School</a>
+        <br />
+        <a href="/org/228234-OneWest_Bank">OneWest Bank</a>
+        <br />
+        <a href="/org/37759-Paulson_&amp;_Co._Inc.">Paulson &amp; Co. Inc.</a>
+        <br />
+        <a href="/org/157-Bear_Stearns">Bear Stearns</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/1232-Martin_S_Feldstein">Martin S Feldstein</a>
+        <br />
+        <a href="/person/1370-James_P_Gorman">James P Gorman</a>
+        <br />
+        <a href="/person/8302-Leon_D_Black">Leon D Black</a>
+        <br />
+        <a href="/person/14997-Stephen_Schwarzman">Stephen Schwarzman</a>
+        <br />
+        <a href="/person/33565-Maurice_R_Greenberg">Maurice R Greenberg</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/0a/0ac271651b9ce34b675d27b41d923ecb.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/1045-Rex_Tillerson">Rex Tillerson</a></div>
+
+      <span class="entity_carousel_description">former Secretary of State. former Chairman and CEO of Exxon Mobil. former Boy Scouts president.<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/2-ExxonMobil">ExxonMobil</a>
+        <br />
+        <a href="/org/41453-University_of_Texas_Austin">University of Texas Austin</a>
+        <br />
+        <a href="/org/33607-Center_for_Strategic_and_International_Studies">Center for Strategic and International Studies</a>
+        <br />
+        <a href="/org/40336-National_Petroleum_Council">National Petroleum Council</a>
+        <br />
+        <a href="/org/33791-Business_Roundtable">Business Roundtable</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/115251-Darren_W_Woods">Darren W Woods</a>
+        <br />
+        <a href="/person/1152-Andrew_N_Liveris">Andrew N Liveris</a>
+        <br />
+        <a href="/person/1412-Patricia_A_Woertz">Patricia A Woertz</a>
+        <br />
+        <a href="/person/1722-John_B_Hess">John B Hess</a>
+        <br />
+        <a href="/person/2219-Ursula_M_Burns">Ursula M Burns</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/74/74554da5d54555b99dd37cf3f7b79f55.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/org/2-ExxonMobil">ExxonMobil</a></div>
+
+      <span class="entity_carousel_description">Oil and gas exploration, production, and marketing<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key people
+      </h4>
+
+        <a href="/org/49463-American_Legislative_Exchange_Council">American Legislative Exchange Council</a>
+        <br />
+        <a href="/org/43536-National_Black_Chamber_of_Commerce">National Black Chamber of Commerce</a>
+        <br />
+        <a href="/org/33260-American_Enterprise_Institute">American Enterprise Institute</a>
+        <br />
+        <a href="/person/1045-Rex_Tillerson">Rex Tillerson</a>
+        <br />
+        <a href="/person/5166-Eugene_A_Renna">Eugene A Renna</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related orgs
+      </h4>
+
+
+        <a href="/org/111585-ExxonMobil_Petroleum_&amp;_Chemical,_BVBA">ExxonMobil Petroleum &amp; Chemical, BVBA</a>
+        <br />
+        <a href="/org/220994-Celtic_Exploration_Ltd">Celtic Exploration Ltd</a>
+        <br />
+        <a href="/org/283120-Exxonmobil_Canada">Exxonmobil Canada</a>
+        <br />
+        <a href="/org/35638-Augusta_National_Golf_Club">Augusta National Golf Club</a>
+        <br />
+        <a href="/org/12-JPMorgan_Chase_&amp;_Co.">JPMorgan Chase &amp; Co.</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/7c/7c16e03f3420bbfdc4f46c3a94c36190.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/38467-Betsy_DeVos">Betsy DeVos</a></div>
+
+      <span class="entity_carousel_description">Trump&#39;s education secretary - family net worth of $5.1 billion<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/28914-Michigan_Republican_Party">Michigan Republican Party</a>
+        <br />
+        <a href="/org/52227-Acton_Institute_for_the_Study_of_Religion_and_Liberty">Acton Institute for the Study of Religion and Liberty</a>
+        <br />
+        <a href="/person/37136-Erik_D_Prince">Erik D Prince</a>
+        <br />
+        <a href="/person/38470-Richard_M._DeVos,_Jr.">Richard M. DeVos, Jr.</a>
+        <br />
+        <a href="/org/38938-John_F_Kennedy_Center_for_the_Performing_Arts">John F Kennedy Center for the Performing Arts</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/273288-James_Blew">James Blew</a>
+        <br />
+        <a href="/person/15252-John_J_Fisher">John J Fisher</a>
+        <br />
+        <a href="/person/34950-Joseph_E_Robert_Jr">Joseph E Robert Jr</a>
+        <br />
+        <a href="/person/47581-William_E_Oberndorf">William E Oberndorf</a>
+        <br />
+        <a href="/person/72301-Eric_A_Hanushek">Eric A Hanushek</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/90/90efd32610b96fea9f3ad479a869a91d.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/1761-Steve_Mnuchin">Steve Mnuchin</a></div>
+
+      <span class="entity_carousel_description">Trump&#39;s Treasury Secretary; co-founder, Dune Capital Management<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/org/37225-Whitney_Museum_of_American_Art">Whitney Museum of American Art</a>
+        <br />
+        <a href="/org/41517-Los_Angeles_Museum_of_Contemporary_Art">Los Angeles Museum of Contemporary Art</a>
+        <br />
+        <a href="/person/15108-Donald_Trump">Donald Trump</a>
+        <br />
+        <a href="/org/152724-Hirshhorn_Museum">Hirshhorn Museum</a>
+        <br />
+        <a href="/person/36930-Andrew_Cuomo">Andrew Cuomo</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/2941-William_C_Crowley">William C Crowley</a>
+        <br />
+        <a href="/person/15104-Eddie_Lampert">Eddie Lampert</a>
+        <br />
+        <a href="/person/71360-John_C_Phelan">John C Phelan</a>
+        <br />
+        <a href="/person/82556-Anthony_Scaramucci">Anthony Scaramucci</a>
+        <br />
+        <a href="/person/1164-Robert_E_Rubin">Robert E Rubin</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/57/576428dca168cda27d6e1967b3681e88.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/org/669-Blackstone_Group">Blackstone Group</a></div>
+
+      <span class="entity_carousel_description">Private equity, investment banking, alternative asset management and financial services<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key people
+      </h4>
+
+        <a href="/person/43933-Jonathan_D._Gray">Jonathan D. Gray</a>
+        <br />
+        <a href="/person/1530-Hamilton_E_James">Hamilton E James</a>
+        <br />
+        <a href="/person/33572-J_Tomilson_Hill">J Tomilson Hill</a>
+        <br />
+        <a href="/person/14997-Stephen_Schwarzman">Stephen Schwarzman</a>
+        <br />
+        <a href="/person/7643-Brian_Mulroney">Brian Mulroney</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related orgs
+      </h4>
+
+
+        <a href="/org/21-Morgan_Stanley">Morgan Stanley</a>
+        <br />
+        <a href="/org/33271-Council_on_Foreign_Relations">Council on Foreign Relations</a>
+        <br />
+        <a href="/org/38263-Donaldson_Lufkin_&amp;_Jenrette">Donaldson Lufkin &amp; Jenrette</a>
+        <br />
+        <a href="/org/37-Lehman_Brothers_Holdings,_Inc">Lehman Brothers Holdings, Inc</a>
+        <br />
+        <a href="/org/14629-U.S._Department_of_the_Treasury">U.S. Department of the Treasury</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/3f/3f9e2772d58ef706d5d38a0ad12a3ad7c340fb86_1327075774.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/91613-Mike_Pompeo">Mike Pompeo</a></div>
+
+      <span class="entity_carousel_description">Trump&#39;s director of central intelligence and Secretary of State; former US Representative from Kansas<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/person/44316-Harvey_Jabara">Harvey Jabara</a>
+        <br />
+        <a href="/person/146909-Christopher_R_Parinello">Christopher R Parinello</a>
+        <br />
+        <a href="/person/91613-Mike_Pompeo">Mike Pompeo</a>
+        <br />
+        <a href="/person/32139-Lynn_Jenkins">Lynn Jenkins</a>
+        <br />
+        <a href="/person/356458-Ulrich_Brechbuhl">Ulrich Brechbuhl</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/13358-Darrell_Issa">Darrell Issa</a>
+        <br />
+        <a href="/person/13550-Mike_Rogers">Mike Rogers</a>
+        <br />
+        <a href="/person/13206-K_Michael_Conaway">K Michael Conaway</a>
+        <br />
+        <a href="/person/13297-Elton_W_Gallegly">Elton W Gallegly</a>
+        <br />
+        <a href="/person/13422-Frank_A_Lobiondo">Frank A Lobiondo</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/97/970310e301d0b3866d1391f6ffe9b6ad.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/125703-Wilbur_L_Ross_Jr">Wilbur L Ross Jr</a></div>
+
+      <span class="entity_carousel_description">39th US Secretary of Commerce; self proclaimed billionaire; CEO of WL Ross &amp; Co. LLC<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/person/28801-Rudy_Giuliani">Rudy Giuliani</a>
+        <br />
+        <a href="/org/141450-Air_Lease_Corporation">Air Lease Corporation</a>
+        <br />
+        <a href="/org/146562-El_Vedado,_LLC">El Vedado, LLC</a>
+        <br />
+        <a href="/org/146742-Kappa_Beta_Phi">Kappa Beta Phi</a>
+        <br />
+        <a href="/person/15108-Donald_Trump">Donald Trump</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/1171-Klaus_Kleinfeld">Klaus Kleinfeld</a>
+        <br />
+        <a href="/person/14997-Stephen_Schwarzman">Stephen Schwarzman</a>
+        <br />
+        <a href="/person/1133-John_L_Thornton">John L Thornton</a>
+        <br />
+        <a href="/person/1159-Vikram_S_Pandit">Vikram S Pandit</a>
+        <br />
+        <a href="/person/1201-Jamie_Dimon">Jamie Dimon</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/ff/ff47fb8b1d0383d0882bb0aa820078cd.png);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/org/49525-Bridgewater_Associates">Bridgewater Associates</a></div>
+
+      <span class="entity_carousel_description">Major hedge fund<br /></span>
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key people
+      </h4>
+
+        <a href="/person/15027-Ray_Dalio">Ray Dalio</a>
+        <br />
+        <a href="/org/37664-Managed_Funds_Association">Managed Funds Association</a>
+        <br />
+        <a href="/person/50406-Bob_Prince">Bob Prince</a>
+        <br />
+        <a href="/org/15196-Georgetown_University">Georgetown University</a>
+        <br />
+        <a href="/org/50514-Pennsylvania_State_Employees&#39;_Retirement_System">Pennsylvania State Employees&#39; Retirement System</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related orgs
+      </h4>
+
+
+        <a href="/org/14-Hewlett-Packard">Hewlett-Packard</a>
+        <br />
+        <a href="/org/58-Lockheed_Martin_Corporation">Lockheed Martin Corporation</a>
+        <br />
+        <a href="/org/172-Amazon.com,_Inc.">Amazon.com, Inc.</a>
+        <br />
+        <a href="/org/298-QUALCOMM_Incorporated">QUALCOMM Incorporated</a>
+        <br />
+        <a href="/org/14605-United_States_Department_of_Justice">United States Department of Justice</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+        <li>
+            <div class="entity_carousel">
+  <div class="entity_carousel_image" style="background-image: url(/images/profile/77/77ed61e53f36ccc77945e53b105d86c7.jpg);">
+  </div>
+
+  <div class="entity_carousel_text">
+    <div class="entity_carousel_name"><a href="/person/330784-Thomas_Joseph_Barrack">Thomas Joseph Barrack</a></div>
+
+
+    <table class="entity_carousel_connections">
+    <tr>
+    <td>
+      <h4>
+        Key affiliations
+      </h4>
+
+        <a href="/person/15108-Donald_Trump">Donald Trump</a>
+        <br />
+        <a href="/org/87155-Colony_Capital_LLC">Colony Capital LLC</a>
+        <br />
+        <a href="/org/254700-Starwood_Waypoint_Homes">Starwood Waypoint Homes</a>
+        <br />
+        <a href="/person/232865-Paul_Manafort">Paul Manafort</a>
+        <br />
+        <a href="/org/241069-Carrefour_SA">Carrefour SA</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+
+    <td>
+      <h4>
+        Related people
+      </h4>
+
+
+        <a href="/person/1505-Richard_D_Nanula">Richard D Nanula</a>
+        <br />
+        <a href="/person/12790-Harold_G_Hamm">Harold G Hamm</a>
+        <br />
+        <a href="/person/15149-Diane_Hendricks">Diane Hendricks</a>
+        <br />
+        <a href="/person/82556-Anthony_Scaramucci">Anthony Scaramucci</a>
+        <br />
+        <a href="/person/1761-Steve_Mnuchin">Steve Mnuchin</a>
+        <br />
+
+      <strong><a href="/">More &raquo;</a></strong>
+    </td>
+    </tr>
+    </table>
+  </div>
+</div>
+
+        </li>
+      </ul>
+  </div>
+  <a class="buttons next" href="#"><img src="https://littlesis.org/assets/carousel_right_semi-0f6e00174ff632c8dcf3c27a38b5e4771f4d3ba272eebcae698cf511ab9cffd5.png" /></a>
+</div>
+
+<script type="text/javascript">         
+    $(document).ready(function(){               
+        $(".littlesis_carousel li").shuffle();              
+        $(".littlesis_carousel").tinycarousel({ 
+          pager: true, 
+          start: 1, 
+          interval: true, 
+          intervaltime: 5000, 
+          rewind: true, 
+          animation: true 
+        });       
+    });
+</script> 
+
+            </div>
+        </div>
+    </div>
+
+<!-- OLIGRAPHER -->
+<div class="row mt-4">
+  <div class="col-sm-12" style="text-align: center;">
+        <h1 class="big-text">Map the power with <strong>Oligrapher</strong></h1>
+        <h4><a href="/oligrapher">Oligrapher</a> is a new tool for visualizing networks of influence using LIttlesis Data.</h4>
+        <br>
+        <a class="btn btn-lg" role="button" style="background-color: #A04040; color: #fff" href="/maps/new">Get started on a new map</a>
+        <p class="top-1em">or <a href="/join">sign up</a> for a LittleSis account</p>
+    </div>
+</div>
+
+<div class="row mt-2 mb-4">
+  <div id="homepage-oligrapher-images">
+  <div class="col-sm" >
+    <a href="/maps/1634-who-s-banking-on-the-dakota-access-pipeline"><img class="gray-img-border" src="https://littlesis.org/images/dakota-banking-map.png/update" /></a>
+    <a class="link-blue" href="/maps/1634-who-s-banking-on-the-dakota-access-pipeline">Who&#39;s Banking on the Dakota Access Pipeline?</a>
+  </div>
+  <div class="col-sm">
+    <a href="/partypolitics"><img class="gray-img-border" src="https://littlesis.org/images/data-society-map.jpg/update" /></a>
+    <a class="link-blue" href="/partypolitics">Big Data, Small World</a>
+  </div>
+  <div class="col-sm">
+    <a href="/maps/259-profiting-from-ferguson"><img class="gray-img-border" src="https://littlesis.org/images/ferguson-map.jpg/update" /></a>
+    <a class="link-blue" href="/maps/259-profiting-from-ferguson">Profiting from Ferguson</a>
+  </div>
+</div>
+
+</div>
+
+
+<div class="row mb-5 mt-5">
+  <div class="col-sm-12 text-center">
+        <h1 class="big-text text-center">A unique resource for investigating cronyism, conflicts of interest, and systemic corruption.</h1>
+  </div>
+</div>
+
+<div class="row mt-4">
+
+  <div class="col-sm-7 pb-3">
+    <div class="thin-grey-bottom-border mb-3"><h3>An involuntary facebook of the 1%</h3></div>
+
+    <p>We bring transparency to influential social networks by tracking the key relationships of politicians, business leaders, lobbyists, financiers, and their affiliated institutions. We help answer questions such as:</p>
+    <ul>
+      <li><em>Who do the wealthiest Americans donate their money to?</em></li>
+      <li><em>Where did White House officials work before they were appointed?</em></li>
+      <li><em>Which lobbyists are married to politicians? Who do they lobby for?</em></li>
+    </ul>
+
+    <p>All of this information is public, but scattered. We bring it together in one place. Our data derives from government filings, news articles, and other reputable sources. Some data sets are updated automatically; the rest is filled in by our user community. <a class="link-blue" href="/features">More Features</a></p>
+
+    <div class="thin-grey-bottom-border mb-3"><h3>Names behind the news</h3></div>
+
+    <p>Who are the movers and shakers behind the bailouts, government contracts, and austerity policies? We’re working around the clock to stock LittleSis with information about bigwigs who make the news, and their connections to those who don’t. For updates and analysis visit our blog, <a class="link-blue" href="http://blog.littlesis.org">Eyes on the Ties</a></p>
+
+    <div class="thin-grey-bottom-border mb-3"><h3>Made for watchdogs</h3></div>
+
+    <p>We're bringing together a community of watchdogs who believe in transparency and accountability where it matters most. We're looking for journalists, researchers, programmers, artists and organizers to lend a hand. </p>
+
+    <div class="thin-grey-bottom-border mb-3"><h3>Think and do tank</h3></div>
+
+    <p>LittleSis is a project of Public Accountability Initiative, a 501(c)3 organization focused on corporate and government accountability. We receive financial support from <a class="link-blue" href="http://public-accountability.org/about/funding/">foundations</a> and benefit from free software written by the open source community.</p>
+    <p>The <a class="link-blue" href="https://github.com/public-accountability/littlesis-rails">code</a> powering LittleSis is free & open source.</p>
+
+  </div>
+
+  <div class="col-sm-1"></div>
+
+  <div class="col-sm-4">
+    <div class="thin-grey-bottom-border mb-3"><h3>Data Summary</h3></div>
+    <table id="data-summary-table">
+    <tbody>
+            <tr>
+                <td><strong>4,061,295</strong></td>
+                <td class="text-nowrap">Citations</td>
+            </tr>
+            <tr>
+                <td><strong>1,509,264</strong></td>
+                <td class="text-nowrap">Relationships</td>
+            </tr>
+            <tr>
+                <td><strong>256,983</strong></td>
+                <td class="text-nowrap">People</td>
+            </tr>
+            <tr>
+                <td><strong>97,919</strong></td>
+                <td class="text-nowrap">Organizations</td>
+            </tr>
+            <tr>
+                <td><strong>73,759</strong></td>
+                <td class="text-nowrap">Business People</td>
+            </tr>
+            <tr>
+                <td><strong>31,428</strong></td>
+                <td class="text-nowrap">Businesses</td>
+            </tr>
+            <tr>
+                <td><strong>18,328</strong></td>
+                <td class="text-nowrap">Political Fundraising Committees</td>
+            </tr>
+            <tr>
+                <td><strong>12,910</strong></td>
+                <td class="text-nowrap">Academics</td>
+            </tr>
+            <tr>
+                <td><strong>12,266</strong></td>
+                <td class="text-nowrap">Lobbyists</td>
+            </tr>
+            <tr>
+                <td><strong>9,886</strong></td>
+                <td class="text-nowrap">Lawyers</td>
+            </tr>
+            <tr>
+                <td><strong>9,061</strong></td>
+                <td class="text-nowrap">Political Candidates</td>
+            </tr>
+            <tr>
+                <td><strong>8,992</strong></td>
+                <td class="text-nowrap">Public Officials</td>
+            </tr>
+            <tr>
+                <td><strong>7,487</strong></td>
+                <td class="text-nowrap">Private Companies</td>
+            </tr>
+            <tr>
+                <td><strong>5,160</strong></td>
+                <td class="text-nowrap">Elected Representatives</td>
+            </tr>
+            <tr>
+                <td><strong>4,277</strong></td>
+                <td class="text-nowrap">Government Bodies</td>
+            </tr>
+            <tr>
+                <td><strong>4,237</strong></td>
+                <td class="text-nowrap">Media Personalities</td>
+            </tr>
+            <tr>
+                <td><strong>4,123</strong></td>
+                <td class="text-nowrap">Other Not-for-Profits</td>
+            </tr>
+            <tr>
+                <td><strong>3,858</strong></td>
+                <td class="text-nowrap">Schools</td>
+            </tr>
+            <tr>
+                <td><strong>3,132</strong></td>
+                <td class="text-nowrap">Public Companies</td>
+            </tr>
+            <tr>
+                <td><strong>2,144</strong></td>
+                <td class="text-nowrap">Individual Campaign Committees</td>
+            </tr>
+            <tr>
+                <td><strong>1,962</strong></td>
+                <td class="text-nowrap">Philanthropies</td>
+            </tr>
+            <tr>
+                <td><strong>1,793</strong></td>
+                <td class="text-nowrap">Other Campaign Committees</td>
+            </tr>
+            <tr>
+                <td><strong>1,576</strong></td>
+                <td class="text-nowrap">Lobbying Firms</td>
+            </tr>
+            <tr>
+                <td><strong>1,528</strong></td>
+                <td class="text-nowrap">Membership Organizations</td>
+            </tr>
+            <tr>
+                <td><strong>1,089</strong></td>
+                <td class="text-nowrap">Law Firms</td>
+            </tr>
+            <tr>
+                <td><strong>861</strong></td>
+                <td class="text-nowrap">Industry/Trade Associations</td>
+            </tr>
+            <tr>
+                <td><strong>619</strong></td>
+                <td class="text-nowrap">Couples</td>
+            </tr>
+            <tr>
+                <td><strong>516</strong></td>
+                <td class="text-nowrap">Policy/Think Tanks</td>
+            </tr>
+            <tr>
+                <td><strong>488</strong></td>
+                <td class="text-nowrap">PACs</td>
+            </tr>
+            <tr>
+                <td><strong>401</strong></td>
+                <td class="text-nowrap">Consulting Firms</td>
+            </tr>
+            <tr>
+                <td><strong>335</strong></td>
+                <td class="text-nowrap">Public Intellectuals</td>
+            </tr>
+            <tr>
+                <td><strong>329</strong></td>
+                <td class="text-nowrap">Cultural/Arts</td>
+            </tr>
+            <tr>
+                <td><strong>312</strong></td>
+                <td class="text-nowrap">Media Organizations</td>
+            </tr>
+            <tr>
+                <td><strong>264</strong></td>
+                <td class="text-nowrap">Political Parties</td>
+            </tr>
+            <tr>
+                <td><strong>250</strong></td>
+                <td class="text-nowrap">Government-Sponsored Enterprises</td>
+            </tr>
+            <tr>
+                <td><strong>183</strong></td>
+                <td class="text-nowrap">Professional Associations</td>
+            </tr>
+            <tr>
+                <td><strong>163</strong></td>
+                <td class="text-nowrap">Labor Unions</td>
+            </tr>
+            <tr>
+                <td><strong>143</strong></td>
+                <td class="text-nowrap">Social Clubs</td>
+            </tr>
+            <tr>
+                <td><strong>142</strong></td>
+                <td class="text-nowrap">Public Relations Firms</td>
+            </tr>
+            <tr>
+                <td><strong>104</strong></td>
+                <td class="text-nowrap">Government Advisory Bodies</td>
+            </tr>
+            <tr>
+                <td><strong>92</strong></td>
+                <td class="text-nowrap">Academic Research Institutes</td>
+            </tr>
+            <tr>
+                <td><strong>52</strong></td>
+                <td class="text-nowrap">Elite Consensus Groups</td>
+            </tr>
+    </tbody>
+</table>
+
+  </div>
+
+</div>
+
+	</div>
+      </div>
+
+      <div id="footer_clear"></div>
+      <div id="footer">
+	A project of the <a href="http://public-accountability.org">Public Accountability Initiative</a>. 
+	More <a href="/about">about LittleSis</a>.
+	Read the <a href="/disclaimer">disclaimer</a>.
+      </div>
+
+    
+<!-- GOOGLE ANALYTICS -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6918242-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+  </body>
+</html>

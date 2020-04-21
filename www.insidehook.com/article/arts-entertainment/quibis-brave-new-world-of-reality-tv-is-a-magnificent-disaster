@@ -1,0 +1,1623 @@
+
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"fbb8c27af9",applicationID:"188815085"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.insidehook.com/xmlrpc.php">
+
+<title>Quibi’s Brave New World of Reality TV Is a Magnificent Disaster - InsideHook</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v12.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="By bringing together some of the biggest celebrity names for off-beat streaming shows, Jeffrey Katzenberg&#039;s new ventture is odd and confusing."/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://www.insidehook.com/article/arts-entertainment/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="We Watched All 12 of Quibi&#039;s &quot;Unscripted&quot; Shows and Learned Absolutely Nothing" />
+<meta property="og:description" content="It&#039;s like a &quot;30 Rock&quot; joke come to life. And not in a good way." />
+<meta property="og:url" content="https://www.insidehook.com/article/arts-entertainment/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster" />
+<meta property="og:site_name" content="InsideHook" />
+<meta property="article:section" content="Arts &amp; Entertainment" />
+<meta property="og:image" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=1200,800" />
+<meta property="og:image:secure_url" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=1200,800" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="800" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="By bringing together some of the biggest celebrity names for off-beat streaming shows, Jeffrey Katzenberg&#039;s new ventture is odd and confusing." />
+<meta name="twitter:title" content="Quibi’s Brave New World of Reality TV Is a Magnificent Disaster - InsideHook" />
+<meta name="twitter:image" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?fit=1200%2C800" />
+<meta name="twitter:creator" content="@intothecrevasse" />
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//s.skimresources.com' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//extend.vimeocdn.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.insidehook.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.insidehook.com/_static/??-eJyljcsOgjAQRX/IMhgluDF+Sx8TGOkrnTaEv6cSMSS6c3fn5tw5MEehg8/oM0RbBvIMQ6mnwjSAKmQNKBv0JCypJNMCnBeLjWY+wWGbR3TIUOdkcAxhElsDDg1JMMQZJDNm/lh4poipceS/nu1IraJMjHY5xD/UdQkyxp9OV8SufWKOUk8b/s4v/OHu5+7Wt92l7a8r3ot06g==' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<script src='https://www.insidehook.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script src='https://www.insidehook.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script src='//ak.sail-horizon.com/spm/spm.v1.min.js?ver=5.4'></script>
+<script src='https://www.google.com/recaptcha/api.js?render=6LeKvLwUAAAAAFiAbQKBnK3-QbcqCIvAnLiPGyXd&#038;ver=5.4'></script>
+<link rel='https://api.w.org/' href='https://www.insidehook.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.insidehook.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.insidehook.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4" />
+<link rel='shortlink' href='https://bit.ly/2Vbuth3' />
+<link rel="alternate" type="application/json+oembed" href="https://www.insidehook.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.insidehook.com%2Farticle%2Farts-entertainment%2Fquibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.insidehook.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.insidehook.com%2Farticle%2Farts-entertainment%2Fquibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster&#038;format=xml" />
+
+
+<!-- BEGIN Sailthru Horizon Meta Information -->
+<meta name="sailthru.date" content="2020-04-08 11:32:05" />
+<meta name="sailthru.title" content="Quibi’s Brave New World of Reality TV Is a Magnificent Disaster" />
+<meta name="sailthru.tags" content="arts-entertainment,internet,television" />
+<meta name="sailthru.author" content="Charles Bramesco" />
+<meta name="sailthru.description" content="Since the earliest announcement of its conception, the new streaming service Quibi has inspired a recurring joke (among critics and comparably sad people who must find humor in industry programming news bulletins) that it does not actually exist. Ascribe it to the possibly-deranged-possibly-brilliant business model of “TV, but no longer than 10 minutes,” or the [&hellip;]" />
+<meta name="sailthru.image.full" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?fit=1500%2C1000" />
+<meta name="sailthru.image.thumb" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=150%2C150" />
+<meta name="st_post_type" content="article" />
+<meta name="st_feed_title" content="We Watched All 12 of Quibi&#039;s &quot;Unscripted&quot; Shows and Learned Absolutely Nothing" />
+<meta name="st_subtitle" content="It&#039;s like a &quot;30 Rock&quot; joke come to life. And not in a good way." />
+<meta name="st_sections" content="arts-entertainment,internet,television" />
+<meta name="sailthru.image.featured" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?fit=1200%2C800" />
+<meta name="sailthru.image.grid" content="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=750%2C500" />
+<meta name="st_template" content="default" />
+<!-- END Sailthru Horizon Meta Information -->
+
+
+<!-- BEGIN wp-parsely Plugin Version 1.14 -->
+<meta name="wp-parsely_version" id="wp-parsely_version" content="1.14"/>
+			<script type="application/ld+json">
+		{"@context":"http:\/\/schema.org\/","@type":"NewsArticle","url":"https:\/\/www.insidehook.com\/article\/arts-entertainment\/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster","author":{"@type":"Person","name":"Charles Bramesco"},"creator":{"@type":"Person","name":"Charles Bramesco"},"mainEntityOfPage":"https:\/\/www.insidehook.com\/article\/arts-entertainment\/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster","headline":"Quibi\u2019s Brave New World of Reality TV Is a Magnificent Disaster","description":"By bringing together some of the biggest celebrity names for off-beat streaming shows, Jeffrey Katzenberg's new ventture is odd and confusing.","datePublished":"2020-04-08 11:32:05","dateModified":"2020-04-08T13:13:10-04:00","image":["https:\/\/www.insidehook.com\/wp-content\/uploads\/2020\/04\/quibi_2.jpg?fit=1500%2C1000","https:\/\/www.insidehook.com\/wp-content\/uploads\/2020\/04\/quibi_2.jpg?resize=750%2C500","https:\/\/www.insidehook.com\/wp-content\/uploads\/2020\/04\/quibi_2.jpg?resize=150%2C150"],"keywords":["Arts &amp; Entertainment","Internet","TV"],"articleSection":"Arts &amp; Entertainment","alternativeHeadline":"We Watched All 12 of Quibi's \"Unscripted\" Shows and Learned Absolutely Nothing","articleBody":"Since the earliest announcement of its conception, the new streaming service Quibi has inspired a recurring joke (among critics and comparably sad people who must find humor in industry programming news bulletins) that it does not actually exist. Ascribe it to the possibly-deranged-possibly-brilliant business model of \u201cTV, but no longer than 10 minutes,\u201d or the fact that it can only be viewed via smartphone, or the revelation that its name is a portmanteau of \u201cquick bites.\u201d Whatever the cause, it all smacks of a 30 Rock joke about the deteriorating standards of small-screen entertainment, come miraculously to life. But it is real, it is here and it is a magnificent disaster.\n\n\n\nThis week, Quibi greets a world well-primed for its arrival, with everyone sequestered at home and starved for something, anything to watch. Its premiere couldn\u2019t have met with friendlier conditions, and yet perusing the avalanche of screeners sent to press in advance, a captive audience seems like the kind of viewership that the executives were banking on. \u201cYou people will watch anything, won\u2019t you?\u201d emerges as the guiding creative principle in assembling this motley lineup of mini-shows, most of which top out at being preferable to watching nothing. Whether it will succeed is anyone\u2019s guess; seven minutes turns out to be short for a TV show, but long for a single video on your phone. But hey, to paraphrase H.L. Mencken, nobody ever went broke underestimating the attention span of the American people.\n\n\n\nFor the sake of sanity and morbid fascination, this critic tackled all 12 of the shows listed as \u201cUnscripted\u201d on Quibi\u2019s official press release, a category questionably distinct from \u201cDocumentary.\u201d (Many of the Unscripted programs play as far more scripted than the one Documentary I did check out, a series about an American chef traveling Italy in search of the rarest, least-known pasta shapes. Pure goddamn rapture.) Quibi\u2019s vision of reality TV is so cheap, so sloppy, and so baldly driven by algorithmic favor that it makes Netflix\u2019s lesser output look like an exemplar of professionalism, polish and creative integrity. Anyone still clinging to the idea that making television takes some measure of artistry, even to the more workable notion that good reality TV requires craft and craftiness from its producers, will see the Quibi house style as a lowering of the barrel\u2019s bottom.\n\n\n\nIn the spirit of brevity, I've herewith whipped up delicious quick-bites of criticism assessing each of Quibi\u2019s 12 Unscripted offerings, a smorgasbord of solid concepts thoroughly bungled in execution \u2014 with a few notable exceptions. In each case, a person can clearly imagine the pitch meeting, and see why Mr. Quibi would\u2019ve given the green light. Here\u2019s how it all went spectacularly awry.\n\n\n\nMurder House Flip\n\n\n\nFoolproof idea: Everyone loves real-estate shows, and everyone loves macabre true-crime stuff, so why not combine the two? A pair of real estate agents have to spruce up the site of a grisly slaying and then convince some prospective buyers not to get the heebie-jeebies just because some poor bastard got decapitated in their breakfast nook. The joy of home remodeling, the thrill of the kill, and a lovely touch of absurdity where the two meet.\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=ukVp9ZpfEUo\n\n\n\n\nHow they blew it: When the two realtor-hosts drop the pearl \u201cMurder and makeover don\u2019t usually go together, but that\u2019s all about to change,\u201d early in the first episode, it suggests that they\u2019re in on the joke. Alas, we\u2019ve been sold a false bill of goods \u2014 they don\u2019t even flip the murder house! The current owners aren\u2019t moving out or anything, they just want a less-murdery vibe for their living quarters, which means that we\u2019re deprived of watching the hard sell for a house that may contain loose body parts. I assumed that the far more accurate title of Murder House Makeover was already copyrighted, but could find no such evidence. Stranger still, a local Sacramento news story reporting on Quibi\u2019s renovation of the Dorothea Puente house uses Murder House Makeover as its hook. As if there weren\u2019t enough banal mysteries swirling around this program, they censor the word \u201cfuck\u201d but not \u201cshit.\u201d Other shows censor both, and one censors neither. Have you no rules, Quibi?\n\n\n\nThanks a Million\n\n\n\nFoolproof idea: Celebrities have money. Regular folks need money. This show does what little it can to right the scales, as Famouses reach out to people in need from their pasts or personal lives and gift them the life-changing sum of $100,000. There will be tears. There will be the spirit of good Christian charity. There will be J. Lo. (She\u2019s an executive producer, her Nuyorican Productions one of the many small production companies enlisted to whip up a quick-and-dirty hour\u2019s worth of content.)\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=IbtsI6nSed4&amp;list=PLUV5USa5Bsa6fi9JxoRGzocCwdZAUAmOc&amp;index=3&amp;t=0s\n\n\n\n\nHow they blew it: Let\u2019s just breeze right past the detail that two of the A-listers handing out wads of cash happen to be Karlie Kloss and Kevin Hart, lending the whole affair the cynical reek of image rehabilitation. The real flaw has been hardwired into the structure: yes, each household name awards one hundred grand to someone deserving. (Though Hart just gives it to the hospital that fixed his back after a recent car crash. Are those doctors going to see any of that money?) The kick in the pants comes when the recipient learns that they must then give half of their windfall to someone else, who has to halve and donate that money again, leaving the final link on the \u201cchain of gratitude\u201d with $25,000. Convoluted? Yes. Emotionally pornographic? You betcha. Self-defeating? I\u2019d say so! This sadistic game unwittingly illustrates of the evils of capitalism, in the way financial aid comes with moral strings attached that leave the individual far less better-off than they would\u2019ve been in the first place. Plus, as the beneficiary of his largesse, Nick Jonas just picks the leader of the Jonas Brothers fan club!\n\n\n\nGayme Show\n\n\n\nFoolproof idea: \u201cQueer Eye, but a game show\u201d sells itself. Round up the schlubbiest, most clueless heteros the casting agent can find and send them through a gauntlet of trivia and other tests of their manners, fashion sense, et cetera. Some good-natured chuckles at their humiliation \u2014 they\u2019re straight men, they can take it, they\u2019ll be fine \u2014 and at the end of the day, hopefully they\u2019ve all learned how to step the game up, becoming the best versions of themselves. Maybe someone discovers that exfoliating rocks aren\u2019t just for women, or how to make a dignified, basic pasta sauce from scratch, and gay-straight relations continue to improve.\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=_NI1XOJESRQ\n\n\n\n\nHow they blew it: Pro funnymen Matt Rogers and Dave Mizzoni bring their long-running live show online, and the result certainly hews closer to sketch comedy than reality TV. One heterosexual contestant gets paired with a Wise Gay (Bowen Yang, Joel Kim Booster, Brendan Scannell), the other to a Woman Who Gets It (Nicole Byer, Patti Harrison, Ilana Glazer), and must complete goofy challenges more Double Dare 2000 than Jeopardy! testing their knowledge of gay culture. The trouble is that any show taking up such a broad purview must necessarily promote a restrictive, monolithic idea of what \u201cgay culture\u201d means. (We learn that being poorly informed is, in fact, a \u201cgay thing.\u201d) Beyond that, the straight contestants are all recognizable actors or comedy writers, most of whom already possess a functioning understanding of pop culture, fashion, basic politeness, what-have-you. The highlight is in-house singer Vonzell Solomon, who ushers in each new segment with a mighty Whitney Houston belt.\n\n\n\nChrissy\u2019s Court\n\n\n\nFoolproof idea: Think Judge Judy, but instead of being met with the piercing gaze of Judy Sheindlin, small-claims squabblers must explain themselves before erstwhile model and Internet darling Chrissy Teigen. Whaddaya need, a road map?\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=ojVPXD09x4U\n\n\n\n\nHow they blew it: Any veteran viewer of lowest-common-denominator court TV knows that a show lives and dies on plaintiff and defendant selection. Teigen can make her zingers and draft her mother Pepper to play baliff\/comic relief, but it won\u2019t go anywhere unless the kooks in her courtroom meet her halfway, and they\u2019re just not cutting it. A dispute over a Lizzo sweatshirt that says \u201c100% That Bitch\u201d courts a topicality that never amounts to anything, and a lounge singer\u2019s refusal to do hip-hop hums with a racial tension no one has the stones to articulate. (The third of the three available hits the right note of low-stakes pettiness.) Somewhere between the haunting noise of Teigen laughing at her own wit and her earnest inquiry as to whether the Culver City resident on the stand has visited her favorite upscale eateries in the area, I felt Peak TV entering its decadent last-days-of-Rome period.\n\n\n\nPunk\u2019d\n\n\n\nFoolproof idea: It\u2019s Punk\u2019d, but with Chance the Rapper. You remember Punk\u2019d, don\u2019t you? Ashton Kutcher, trucker hats, celebrity pranks, the heyday of MTV\u2019s race-to-the-bottom reality era? Same deal, only with Chance. Seems harmless, right?\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=3awKJu7EN6I\n\n\n\n\nHow they blew it: Quick, without looking it up, can you tell me who Sabrina Carpenter is? How about Liza Koshy? They\u2019re both social-media personalities known exclusively to the world\u2019s more plugged-in 16-year-olds, the presumptive audience for this pale reincarnation of the best stoopid-brilliance that the Dubya years had to offer. Quibi\u2019s emphasis on reverse-engineering success by hiring enough Instagram-friendly personnel to guarantee a reach shines most brightly here, recalling the line from Nineteen Eighty-Four about the image of the future being a boot stamping on the face of humanity forever. Having said that, the one where Megan thee Stallion \u2014 an actual famous person \u2014 freaks out because she thinks a gorilla\u2019s attacking her works like a charm. Can\u2019t get away with cutting costs or corners, not here.\n\n\n\nNikki Fre$h\n\n\n\nFoolproof idea: Nicole Richie, wealth scion turned minimum-wage icon turned actress, wants to add another \u201cturned\u201d to that clause. This mockumentary (this one really stretches the definition of \u201cUnscripted\u201d entertainment) chronicles her effort to reinvent herself once again, this time as a \u201ctrap star\u201d dropping bangers about ecological responsibility. As she attempts to get her career\u2019s latest phase off the ground, she promotes a holistic wellness lifestyle taking satirical potshots at the admittedly sizable target of Goop.\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=GZSn6T5Kjec\n\n\n\n\nHow they blew it: They didn\u2019t! This outclasses the rest of the batch by far, the only to attain consistent, purposeful, genuine funniness. Richie knows how to deliver a line, where to place emphasis, how to do a serviceable deadpan. She has an easy, natural rapport with her preening, obsequious assistant character, and she can work her physicality of smallness and skinniness for laughs. Wading through these series and finally encountering someone with actual comedic instincts hits you like a splash of fresh water to the face in a Bior\u00e9 commercial. The \u201cunscripted\u201d material really sings, too; her offhanded mention of a failed \u201cMet Gala for toddlers\u201d makes it sound like one of Richie\u2019s scribes on her underrated sitcom Good News followed her here.\n\n\n\nDishmantled\n\n\n\nFoolproof idea: Just when you thought the TV industry had fully exhausted the well of gimmicks for food competition shows, here\u2019s an explosive new angle. Literally \u2014 a high-pressure cannon shoots food into the faces of two rival chefs, who must then use only their sense of taste to recreate the dish on their own. It is in no small respect a pretense for us to watch some shit get blown up, an appeal the show wears on its sleeve with the catchphrase, \u201cY\u2019all ready to watch me blow some shit up?\u201d\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=f4fx6V7ura0\n\n\n\n\nHow they blew it: Another hit, thanks entirely to the utterer of the above phrase, host Tituss Burgess. An indefatigable dynamo of energy, Burgess was born to host game shows, turning any beat of tedium into a laugh through the sheer force of over-the-top shrieking. He lets us know not to take any of this too seriously, an attitude reinforced by one contestant\u2019s stated intention to use her relatively paltry $5,000 winnings to buy Celine Dion tickets. The game itself doesn\u2019t really serve as a test of any valuable skill, though of course that\u2019s not the point. We\u2019re here to watch shit get blown up, and get blown up it does. Trigger warning: this was obviously shot in a pre-corona world, and footage of people licking walls and eating glop off their own shoes has grown remarkably stress-inducing.\n\n\n\nMemory Hole\n\n\n\nFoolproof idea: The closest thing we\u2019ve got would be The Soup, but rather than clowning on embarrassing things from the day\u2019s reality TV or Internet goings-on, the host of this program revisits wince-worthy obscurities from the recent past. The detritus left in the lost-and-found bin of pop culture is excavated and thoroughly mocked, equal parts two-hour Wikipedia K-hole and Mystery Science Theater 3000 wisecracking.\n\n\n\nHow they blew it: There\u2019s some edifying and amusing stuff in here, such as a play-by-play of the Toronto SkyDome\u2019s calamitous 1989 opening, but it\u2019s all relayed to us by a visibly checked-out Will Arnett. He\u2019s been slumming it a lot as of late, this being his second simultaneous hosting gig along with LEGO Masters on Fox, and he\u2019s making minimal effort to conceal exactly how he feels about that. There\u2019s a far-off sadness behind his eyes as he reminisces about the regrettable trend of pro sports team novelty songs, or the silliness of the so-bad-it\u2019s-amazing cult film Gymkata. We feel a secondhand pain when he must contextualize who Alan Thicke is by explaining that he\u2019s the father of Robin Thicke. \u201cHave you ever cringed so hard you could feel your DNA unraveling,\u201d Arnett asks, referring to a some mortification from the \u201880s. By this point, we have.\n\n\n\nSingled Out\n\n\n\nFoolproof idea: A revival of the \u201890s-era MTV dating show, in which one lucky \u201cPicker\u201d sifts through 50 potential matches by eliminating them based on personality criteria and answers to personalized questions. The one catch? They can\u2019t look at any of their possible beaus, which means that they could, and did, stumble into a pairing with some major-league oddballs.\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=E7zyJy588XA\n\n\n\n\nHow they blew it: It\u2019s pretty much the same deal, precious little lost or gained in either direction. Keke Palmer has stepped in as host, and she does a bangup job, though her presence does compel one to imagine the far superior game show What Doesn\u2019t Keke Palmer Know? (Our gal has never heard of a wombat before!) With assistant host Joel Kim Booster, doubling up on those Quibi checks, they guide a gay man, a bisexual woman and a drag queen to a future romance. Getting outside the hetero status quo pays dividends in cheeky one-liners, but the mechanics of the game have gotten gummed up. The new wrinkle is that the dater has connected to each potential date-ee via social media, and in this new version, Round 2 involves appraising an Instagram selfie with the face blocked out. As such, the person can take a gander at their mate-to-be\u2019s physique, effectively defeating the whole purpose of the blind-testing.&nbsp;\n\n\n\nGone Mental with Lior\n\n\n\nFoolproof idea: Israeli mentalist Lior Suchard, a viral sensation with an Ellen appearance already on his IMDb, comes Stateside to pull some psycho-mystical fast ones on a host of celebrity guests. The guy\u2019s no mindfreak, closer to a street-corner persuasion magician, but even so, you won\u2019t believe your eyes.\n\n\n\nHow they blew it: Except that you will have no trouble believing your eyes, because nothing shocking happens onscreen. Every one of Lior\u2019s would-be amazements requires a lot of good faith and willing suspension of disbelief on the part of the viewer. For example: he first meets with Rob Gronkowski, who must tackle one of two doors while Lior uses inception to steer the charging Gronk away from the one Lior has hidden behind. Miraculously, Gronk tackles the right door every time. Every trick works like that, something that could be so easily faked that watching it happen can\u2019t possibly impress the viewer. There\u2019s too much cutting, too many disjointed edits leaving space for the magic to be forged behind the scenes. Ludacris grabs a handful of quarters from a jar, and after a few close-ups, Lior rightly predicts the exact number; this would only be impressive if conducted in a single unbroken shot, and it isn\u2019t, leaving the skeptics with plenty of rope with which to hang him.\n\n\n\nSkrrrt with Offset\n\n\n\nFoolproof idea: It\u2019s just Top Gear, with Migos member Offset taking the place of those three old English guys. He drives luxury cars, pulls some stunts, makes some mischief, travels the globe, brings in some friends \u2014 a good time for all.\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=1I-be_t2HhU\n\n\n\n\nHow they blew it: The dynamic of rough-and-tumble friendship between the three blokes of this series\u2019 clear inspiration made the thing go. Offset, on the other hand, behaves awkwardly around every other living being in his immediate proximity. He makes uncomfortable chit-chat with Jay Leno in one segment, during which he refers to the former Tonight Show host as an \u201cOG\u201d twice. Lil Yachty shows up to stage a controlled getaway chase, and the fellow rappers can\u2019t strike up a repartee with one another. Offset can\u2019t even telegraph looseness around his own damn wife; Cardi B eventually shows up with their child Kulture for a baby go-kart race and Offset treats them like business associates. His voiceover narration, halting and tentative and weirdly emphasized, proves once and for all that no, not everyone can act.\n\n\n\nThe Sauce\n\n\n\nFoolproof idea: Online rug-cutting superstars Ayo and Teo embark upon a nationwide, city-by-city search for America\u2019s best dance crew. Just like in America\u2019s Best Dance Crew!\n\n\n\n\nhttps:\/\/www.youtube.com\/watch?v=4TCUJZoaQI4\n\n\n\n\nHow they blew it: This ranks among the best of Quibi\u2019s Unscripted section for its ability to not get in its own way. The lion\u2019s share of this platform\u2019s programming does too much to a simple, direct premise, but Ayo and Teo just let the kids show their stuff unimpeded by gimmickry or side shows. In New York, for instance, the dudes doing the SHOWTIME! routines on the L train get a chance to strut for a national audience, while 2 Real Boyz bring Brooklyn\u2019s \u201cflexing\u201d or \u201cbone-breaking\u2019 technique to the rest of the country. Every time, the sheer talent (something in frightfully short supply in Quibi\u2019s stable) wins out. The special guests leave something to be desired, unless the viewer knows offhand who Shiggy and Blocboy JB happen to be.\n\n\n\nThey\u2019re both creators of widely imitated dance-memes, an appropriate distinction on a platform fueled by the desire for virality more shamelessly than any other. In the faraway time when TV reigned as king, Quibi might have been referred to as a Poochy, something perceptibly created to capitalize on youth market trends as interpreted by the adults in the room. The term recalls another neologism brought to us by television, the kind of instant-classic moment of which this watery substitute is completely devoid: How do you do, fellow kids?","Publisher":{"@type":"Organization","name":"InsideHook","url":"https:\/\/www.insidehook.com","sameAs":["https:\/\/twitter.com\/insidehook","https:\/\/www.facebook.com\/InsideHook","https:\/\/www.linkedin.com\/company\/insidehook\/","https:\/\/www.instagram.com\/insidehook\/"],"logo":{"@type":"ImageObject","url":"https:\/\/www.insidehook.com\/wp-content\/themes\/insidehook-theme\/media\/dist\/assets\/img\/site\/ih-web-logo-schema.png"}}}
+		</script>
+
+			<!-- END wp-parsely Plugin Version 1.14 -->
+<style type='text/css'>img#wpstats{display:none}</style><meta name="article:id" content="361082" />
+<meta name="article:category" content="arts-entertainment" />
+<meta property="article:tag" content="arts-entertainment" />
+<meta name="article:category" content="internet" />
+<meta property="article:tag" content="internet" />
+<meta name="article:category" content="arts-entertainment" />
+<meta property="article:tag" content="arts-entertainment" />
+<meta name="article:category" content="television" />
+<meta property="article:tag" content="television" />
+<meta name="article:category" content="arts-entertainment" />
+<meta property="article:tag" content="arts-entertainment" />
+
+			<!-- BEGIN BC JSON GENERATOR -->
+			<script type="application/ld+json">{"@context":"http:\/\/schema.org\/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"InsideHook","item":{"@type":"Thing","@id":"https:\/\/www.insidehook.com"}},{"@type":"ListItem","position":2,"name":"Arts &amp; Entertainment","item":{"@type":"Thing","@id":"https:\/\/www.insidehook.com\/category\/sections\/arts-entertainment"}}]}</script>
+			<!-- END BC JSON GENERATOR --><link rel="amphtml" href="https://www.insidehook.com/article/arts-entertainment/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster/amp"><link rel="icon" href="https://www.insidehook.com/wp-content/uploads/2019/04/cropped-ih-icon.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://www.insidehook.com/wp-content/uploads/2019/04/cropped-ih-icon.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.insidehook.com/wp-content/uploads/2019/04/cropped-ih-icon.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://www.insidehook.com/wp-content/uploads/2019/04/cropped-ih-icon.png?fit=270%2C270" />
+</head>
+
+<body class="article-template-default single single-article postid-361082">
+<div data-sticky-container>
+	<div data-magellan-expedition="fixed" class="nav sticky" data-sticky data-margin-top="0" data-top-anchor="1" data-sticky-on="small" data-stick-to="top" data-margin-top="0">
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x margin-collapse">
+				<div class="cell small-12">
+
+					<!-- Mobile Nav Header-->
+					<div class="title-bar topbar-center-logo-mobile" data-responsive-toggle="ih-topbar-center-logo" data-hide-for="large">
+						<div class="title-bar-left">
+							<div class="title-bar-title"><a href="/campaign/joinfree" modal-trigger="" data-reveal-id="modal-sign-up" class="subscribe">Subscribe</a></div>
+						</div>
+						<div class="top-bar-center">
+							<a href="/"><span>InsideHook</span></a>
+						</div>
+						<div class="title-bar-right">
+							<ul class="menu horizontal align-right">
+							<li class="search search-nav">
+								<div class="icon icon-search"></div>
+								<form role="search" method="get" action="">
+									<input type="search" placeholder="Type here and hit enter" name="s" id="s" class="search-input" />
+								</form>
+							</li>
+							<li><button class="menu-icon" type="button" data-toggle="ih-topbar-center-logo"></button></li>
+							</ul>
+						</div>
+					</div>
+					<!-- End Mobile Nav Header-->
+
+					<!-- Desktop Nav Header-->
+					<div class="top-bar stacked-for-medium" id="ih-topbar-center-logo">
+						<!-- Left Nav Section-->
+						<div class="top-bar-left">
+							<ul id="mainMenu" class="dropdown menu vertical large-horizontal" data-responsive-menu="accordion large-dropdown"><li id="menu-item-325188" class="menu-item menu-item-type-taxonomy menu-item-object-category current-article-ancestor menu-item-has-children menu-item-325188"><a href="https://www.insidehook.com/category/sections">Sections</a>
+<ul class="sub-menu">
+	<li id="menu-item-188850" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188850"><a href="https://www.insidehook.com/category/sections/news-opinion">News &#038; Opinion</a></li>
+	<li id="menu-item-188846" class="menu-item menu-item-type-taxonomy menu-item-object-category current-article-ancestor current-menu-parent current-article-parent menu-item-188846"><a href="https://www.insidehook.com/category/sections/arts-entertainment">Arts &#038; Entertainment</a></li>
+	<li id="menu-item-188853" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188853"><a href="https://www.insidehook.com/category/sections/sports">Sports</a></li>
+	<li id="menu-item-188849" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188849"><a href="https://www.insidehook.com/category/sections/health-and-fitness">Health &#038; Fitness</a></li>
+	<li id="menu-item-188855" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188855"><a href="https://www.insidehook.com/category/sections/travel">Travel</a></li>
+	<li id="menu-item-188856" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188856"><a href="https://www.insidehook.com/category/sections/vehicles">Vehicles</a></li>
+	<li id="menu-item-228649" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-228649"><a href="https://www.insidehook.com/category/sections/personal-tech">Personal Tech</a></li>
+	<li id="menu-item-188848" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188848"><a href="https://www.insidehook.com/category/sections/gear">Gear</a></li>
+	<li id="menu-item-188854" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188854"><a href="https://www.insidehook.com/category/sections/style">Style</a></li>
+	<li id="menu-item-188847" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188847"><a href="https://www.insidehook.com/category/sections/food-and-drink">Food &#038; Drink</a></li>
+	<li id="menu-item-188852" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188852"><a href="https://www.insidehook.com/category/sections/home-design">Home &#038; Design</a></li>
+	<li id="menu-item-188851" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188851"><a href="https://www.insidehook.com/category/sections/sex-and-dating">Sex &#038; Dating</a></li>
+	<li id="menu-item-188845" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188845"><a href="https://www.insidehook.com/category/sections/advice">Advice</a></li>
+	<li id="menu-item-188857" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188857"><a href="https://www.insidehook.com/category/sections/watches">Watches</a></li>
+</ul>
+</li>
+<li id="menu-item-325189" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-325189"><a href="https://www.insidehook.com/category/cities">Cities</a>
+<ul class="sub-menu">
+	<li id="menu-item-188859" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188859"><a href="https://www.insidehook.com/category/cities/chicago">Chicago</a></li>
+	<li id="menu-item-188860" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188860"><a href="https://www.insidehook.com/category/cities/los-angeles">Los Angeles</a></li>
+	<li id="menu-item-188861" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188861"><a href="https://www.insidehook.com/category/cities/new-york">New York</a></li>
+	<li id="menu-item-188862" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-188862"><a href="https://www.insidehook.com/category/cities/san-francisco">San Francisco</a></li>
+	<li id="menu-item-283920" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-283920"><a href="https://www.insidehook.com/category/cities/washington-dc">Washington DC</a></li>
+</ul>
+</li>
+<li class="search menu-text search-nav">
+			<div class="icon icon-search"></div>
+			<form role="search" method="get" action="https://www.insidehook.com/">
+				<input type="search" placeholder="Type here and hit enter" name="s" id="s" class="search-input" />
+			</form>
+		</li></ul>						</div>
+						<!-- end Left Nav Section-->
+
+						<div class="top-bar-center">
+							<a href="/"><span>InsideHook</span></a>
+						</div>
+
+						<!-- Right Nav Section-->
+						<div class="top-bar-right">
+							<!-- Social Nav Section-->
+							<ul class="menu vertical large-horizontal">
+								<li><a href="/campaign/joinfree" modal-trigger="" data-reveal-id="modal-sign-up" class="subscribe">Subscribe</a><a href="/editions" class="manage" style="display:none">Manage Subscriptions</a></li>
+
+								<li class="follow">
+									<span class="hide-for-large">Follow Us</span>
+									<ul class="menu horizontal align-center ">
+										<li class="show-for-large-up"><a href="https://www.facebook.com/InsideHook" target="_blank" class="icon icon-facebook"><span>instagram</span></a></li>
+										<li class="show-for-large-up"><a href="https://www.instagram.com/insidehook/" target="_blank" class="icon icon-instagram"><span>instagram</span></a></li>
+										<li class="show-for-large-up"><a href="https://twitter.com/insidehook" target="_blank" class="icon icon-twitter"><span>twitter</span></a></li>
+										<li class="show-for-large-up"><a href="https://www.linkedin.com/company/insidehook" target="_blank" class="icon icon-linkedin"><span>twitter</span></a></li>
+									</ul>
+								</li>
+							</ul>
+							<!-- end Social Nav Section-->
+
+						</div>
+						<!-- end Right Nav Section-->
+					</div>
+					<!-- end Desktop Nav Header-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="ad-container ad-full-width">
+	<div class="ad"
+	id="ad-top"
+				>
+	</div>
+</div>
+
+		<!-- Main Content in Grid -->
+		<div class="page-container">
+			<div class="grid-container">
+				<div class="grid-x grid-margin-x">
+
+					<!-- Article Content Grid -->
+					<div class="cell small-12">
+
+						<article>
+
+							
+<!-- Article Title -->
+<div class="title-block text-center">
+			<div class="label">
+							<a href="https://www.insidehook.com/category/sections/arts-entertainment">Arts &amp; Entertainment</a>
+						 		</div>
+	
+	<h1><span>Quibi’s Brave New World of Reality TV Is a Magnificent Disaster</span></h1>
+
+			<h2><span>It&#039;s like a &quot;30 Rock&quot; joke come to life. And not in a good way.</span></h2>
+	</div>
+<!-- End Article Title -->
+
+							<div class="article-grid grid-x grid-margin-x">
+								<div class="main-content cell large-auto">
+									<div class="grid-x grid-margin-x">
+										<!-- Article Social -->
+										<div class="cell large-shrink text-center sticky-parent">
+											<div class="sticky-container">
+												<!-- Social Share Section-->
+												
+<ul class="social-share no-bullet sticky">
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.insidehook.com%2Farticle%2Farts-entertainment%2Fquibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster" target="_blank" class="icon icon-facebook"><span>facebook</span></a></li>
+	<li><a href="https://twitter.com/intent/tweet?text=We+Watched+All+12+of+Quibi%27s+%22Unscripted%22+Shows+and+Learned+Absolutely+Nothing&#038;url=https%3A%2F%2Fbit.ly%2F2Vbuth3" target="_blank" class="icon icon-twitter"><span>twitter</span></a></li>
+	<li><a href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.insidehook.com%2Farticle%2Farts-entertainment%2Fquibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster&#038;media=https%3A%2F%2Fwww.insidehook.com%2Fwp-content%2Fuploads%2F2020%2F04%2Fquibi_2.jpg%3Ffit%3D1200%252C800" target="_blank" class="icon icon-pinterest"><span>pinterest</span></a></li>
+    <li><a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.insidehook.com%2Farticle%2Farts-entertainment%2Fquibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster&#038;title=We%20Watched%20All%2012%20of%20Quibi%27s%20%22Unscripted%22%20Shows%20and%20Learned%20Absolutely%20Nothing&#038;summary=It%27s%20like%20a%20%2230%20Rock%22%20joke%20come%20to%20life.%20And%20not%20in%20a%20good%20way." target="_blank" class="icon icon-linkedin"><span>linkedin</span></a></li>
+    <li><a href="javascript:void(0)" class="icon icon-share" sendtofriends data-open="Modal-send-to-friends"><span>Send to Friend</span></a></li>
+</ul>
+												<!-- end Social Share Section-->
+											</div>
+										</div>
+										<!-- End Article Social -->
+										<!-- Article Image and Body -->
+										<div class="cell large-auto">
+
+											<div class="main-hero">
+	<img data-pin-url="https://www.insidehook.com/article/arts-entertainment/quibis-brave-new-world-of-reality-tv-is-a-magnificent-disaster" width="1500" height="1000" src="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?fit=1500%2C1000" class="attachment-featured-large size-featured-large wp-post-image" alt="quibi first review" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/quibi_2.jpg?resize=50,33 50w" sizes="(max-width: 1500px) 100vw, 1500px" />				<div class="grid-x grid-margin-x caption-container">
+			<div class="cell medium-auto caption">
+									We watched all 12 of Quibi&#039;s &quot;Unscripted&quot; shows and learned absolutely nothing. Is that the premise?							</div>
+			<div class="cell medium-shrink medium-text-right credit">
+									Mike Falco/Quibi							</div>
+		</div>
+		</div>
+
+											
+<div class="author">By
+            <a href="https://www.insidehook.com/author/charles-bramesco">Charles Bramesco</a>
+         / April 8, 2020 11:32 am </div>
+
+											<div class="main-body">
+												
+<p>Since the earliest announcement of its conception, the new streaming service Quibi has inspired a recurring joke (among critics and comparably sad people who must find humor in industry programming news bulletins) that it does not actually exist. Ascribe it to the possibly-deranged-possibly-brilliant business model of “TV, but no longer than 10 minutes,” or the fact that it can only be viewed via smartphone, or the revelation that its name is a portmanteau of “quick bites.” Whatever the cause, it all smacks of a <em>30 Rock </em>joke about the deteriorating standards of small-screen entertainment, come miraculously to life. But it is real, it is here and it is a magnificent disaster.</p> 
+
+
+
+<p>This week, Quibi greets a world well-primed for its arrival, with everyone sequestered at home and starved for something, anything to watch. Its premiere couldn’t have met with friendlier conditions, and yet perusing the avalanche of screeners sent to press in advance, a captive audience seems like the kind of viewership that the executives were banking on. “You people will watch anything, won’t you?” emerges as the guiding creative principle in assembling this motley lineup of mini-shows, most of which top out at being preferable to watching nothing. Whether it will succeed is anyone’s guess; seven minutes turns out to be short for a TV show, but long for a single video on your phone. But hey, to paraphrase H.L. Mencken, nobody ever went broke underestimating the attention span of the American people.</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content1"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="1"	>
+	</div>
+</div>
+ 
+
+
+
+<p>For the sake of sanity and morbid fascination, this critic tackled all 12 of the shows listed as “Unscripted” on Quibi’s official press release, a category questionably distinct from “Documentary.” (Many of the Unscripted programs play as far more scripted than the one Documentary I did check out, a series about an American chef traveling Italy in search of the rarest, least-known pasta shapes. Pure goddamn rapture.) Quibi’s vision of reality TV is so cheap, so sloppy, and so baldly driven by algorithmic favor that it makes Netflix’s lesser output look like an exemplar of professionalism, polish and creative integrity. Anyone still clinging to the idea that making television takes some measure of artistry, even to the more workable notion that good reality TV requires craft and craftiness from its producers, will see the Quibi house style as a lowering of the barrel’s bottom.</p> 
+
+
+
+<p>In the spirit of brevity, I&#8217;ve herewith whipped up delicious quick-bites of criticism assessing each of Quibi’s 12 Unscripted offerings, a smorgasbord of solid concepts thoroughly bungled in execution — with a few notable exceptions. In each case, a person can clearly imagine the pitch meeting, and see why Mr. Quibi would’ve given the green light. Here’s how it all went spectacularly awry.</p> 
+
+
+
+<h4><strong><em>Murder House Flip</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Everyone loves real-estate shows, and everyone loves macabre true-crime stuff, so why not combine the two? A pair of real estate agents have to spruce up the site of a grisly slaying and then convince some prospective buyers not to get the heebie-jeebies just because some poor bastard got decapitated in their breakfast nook. The joy of home remodeling, the thrill of the kill, and a lovely touch of absurdity where the two meet.</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Murder House Flip | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/ukVp9ZpfEUo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>When the two realtor-hosts drop the pearl “Murder and makeover don’t usually go together, but that’s all about to change,” early in the first episode, it suggests that they’re in on the joke. Alas, we’ve been sold a false bill of goods — they don’t even flip the murder house! The current owners aren’t moving out or anything, they just want a less-murdery vibe for their living quarters, which means that we’re deprived of watching the hard sell for a house that may contain loose body parts. I assumed that the far more accurate title of Murder House Makeover was already copyrighted, but could find no such evidence. Stranger still, a local Sacramento <a href="https://sacramento.cbslocal.com/video/4197096-sacramento-murder-house-makeover/">news story</a> reporting on Quibi’s renovation of the Dorothea Puente house uses Murder House Makeover as its hook. As if there weren’t enough banal mysteries swirling around this program, they censor the word “fuck” but not “shit.” Other shows censor both, and one censors neither. Have you no rules, Quibi?</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content2"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="2"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Thanks a Million</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Celebrities have money. Regular folks need money. This show does what little it can to right the scales, as Famouses reach out to people in need from their pasts or personal lives and gift them the life-changing sum of $100,000. There will be tears. There will be the spirit of good Christian charity. There will be J. Lo. (She’s an executive producer, her Nuyorican Productions one of the many small production companies enlisted to whip up a quick-and-dirty hour’s worth of content.)</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Thanks A Million | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/videoseries?list=PLUV5USa5Bsa6fi9JxoRGzocCwdZAUAmOc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>Let’s just breeze right past the detail that two of the A-listers handing out wads of cash happen to be <a href="https://www.businessinsider.com/karlie-kloss-joshua-kushner-trump-politics-2018-3">Karlie Kloss</a> and <a href="https://www.billboard.com/articles/events/oscars/8492982/kevin-hart-oscar-hosting-controversy-timeline">Kevin Hart</a>, lending the whole affair the cynical reek of image rehabilitation. The real flaw has been hardwired into the structure: yes, each household name awards one hundred grand to someone deserving. (Though Hart just gives it to the hospital that fixed his back after a recent car crash. Are those doctors going to see any of that money?) The kick in the pants comes when the recipient learns that they must then give half of their windfall to someone else, who has to halve and donate that money again, leaving the final link on the “chain of gratitude” with $25,000. Convoluted? Yes. Emotionally pornographic? You betcha. Self-defeating? I’d say so! This sadistic game unwittingly illustrates of the evils of capitalism, in the way financial aid comes with moral strings attached that leave the individual far less better-off than they would’ve been in the first place. Plus, as the beneficiary of his largesse, Nick Jonas just picks the leader of the Jonas Brothers fan club!</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content3"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="3"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Gayme Show</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>“<em>Queer Eye</em>, but a game show” sells itself. Round up the schlubbiest, most clueless heteros the casting agent can find and send them through a gauntlet of trivia and other tests of their manners, fashion sense, et cetera. Some good-natured chuckles at their humiliation — they’re straight men, they can take it, they’ll be fine — and at the end of the day, hopefully they’ve all learned how to step the game up, becoming the best versions of themselves. Maybe someone discovers that exfoliating rocks aren’t just for women, or how to make a dignified, basic pasta sauce from scratch, and gay-straight relations continue to improve.</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Gayme Show | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/_NI1XOJESRQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>Pro funnymen Matt Rogers and Dave Mizzoni bring their long-running live show online, and the result certainly hews closer to sketch comedy than reality TV. One heterosexual contestant gets paired with a Wise Gay (Bowen Yang, Joel Kim Booster, Brendan Scannell), the other to a Woman Who Gets It (Nicole Byer, Patti Harrison, Ilana Glazer), and must complete goofy challenges more <em>Double Dare 2000 </em>than <em>Jeopardy! </em>testing their knowledge of gay culture. The trouble is that any show taking up such a broad purview must necessarily promote a restrictive, monolithic idea of what “gay culture” means. (We learn that being poorly informed is, in fact, a “gay thing.”) Beyond that, the straight contestants are all recognizable actors or comedy writers, most of whom already possess a functioning understanding of pop culture, fashion, basic politeness, what-have-you. The highlight is in-house singer Vonzell Solomon, who ushers in each new segment with a mighty Whitney Houston belt.</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content4"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="4"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Chrissy’s Court</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Think <em>Judge Judy</em>, but instead of being met with the piercing gaze of Judy Sheindlin, small-claims squabblers must explain themselves before erstwhile model and Internet darling Chrissy Teigen. Whaddaya need, a road map?</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Chrissy&#039;s Court | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/ojVPXD09x4U?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>Any veteran viewer of lowest-common-denominator court TV knows that a show lives and dies on plaintiff and defendant selection. Teigen can make her zingers and draft her mother Pepper to play baliff/comic relief, but it won’t go anywhere unless the kooks in her courtroom meet her halfway, and they’re just not cutting it. A dispute over a Lizzo sweatshirt that says “100% That Bitch” courts a topicality that never amounts to anything, and a lounge singer’s refusal to do hip-hop hums with a racial tension no one has the stones to articulate. (The third of the three available hits the right note of low-stakes pettiness.) Somewhere between the haunting noise of Teigen laughing at her own wit and her earnest inquiry as to whether the Culver City resident on the stand has visited her favorite upscale eateries in the area, I felt Peak TV entering its decadent last-days-of-Rome period.</p> 
+
+
+
+<h4><strong><em>Punk’d</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>It’s <em>Punk’d</em>, but with Chance the Rapper. You remember <em>Punk’d</em>, don’t you? Ashton Kutcher, trucker hats, celebrity pranks, the heyday of MTV’s race-to-the-bottom reality era? Same deal, only with Chance. Seems harmless, right?</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Punk&#039;d | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/3awKJu7EN6I?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>Quick, without looking it up, can you tell me who Sabrina Carpenter is? How about Liza Koshy? They’re both social-media personalities known exclusively to the world’s more plugged-in 16-year-olds, the presumptive audience for this pale reincarnation of the best stoopid-brilliance that the Dubya years had to offer. Quibi’s emphasis on reverse-engineering success by hiring enough Instagram-friendly personnel to guarantee a reach shines most brightly here, recalling the line from <em>Nineteen Eighty-Four </em>about the image of the future being a boot stamping on the face of humanity forever. Having said that, the one where Megan thee Stallion — an actual famous person — freaks out because she thinks a gorilla’s attacking her works like a charm. Can’t get away with cutting costs or corners, not here.</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content5"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="5"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Nikki Fre$h</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Nicole Richie, wealth scion turned minimum-wage icon turned actress, wants to add another “turned” to that clause. This mockumentary (this one really stretches the definition of “Unscripted” entertainment) chronicles her effort to reinvent herself once again, this time as a “trap star” dropping bangers about ecological responsibility. As she attempts to get her career’s latest phase off the ground, she promotes a holistic wellness lifestyle taking satirical potshots at the admittedly sizable target of Goop.</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="NIKKI FRE$H Official Trailer (HD) Nicole Richie" width="500" height="281" src="https://www.youtube.com/embed/GZSn6T5Kjec?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>They didn’t! This outclasses the rest of the batch by far, the only to attain consistent, purposeful, genuine funniness. Richie knows how to deliver a line, where to place emphasis, how to do a serviceable deadpan. She has an easy, natural rapport with her preening, obsequious assistant character, and she can work her physicality of smallness and skinniness for laughs. Wading through these series and finally encountering someone with actual comedic instincts hits you like a splash of fresh water to the face in a Bioré commercial. The “unscripted” material really sings, too; her offhanded mention of a failed “Met Gala for toddlers” makes it sound like one of Richie’s scribes on her underrated sitcom <em>Good News </em>followed her here.</p> 
+
+
+
+<h4><strong><em>Dishmantled</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Just when you thought the TV industry had fully exhausted the well of gimmicks for food competition shows, here’s an explosive new angle. Literally — a high-pressure cannon shoots food into the faces of two rival chefs, who must then use only their sense of taste to recreate the dish on their own. It is in no small respect a pretense for us to watch some shit get blown up, an appeal the show wears on its sleeve with the catchphrase, “Y’all ready to watch me blow some shit up?”</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Dishmantled | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/f4fx6V7ura0?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>Another hit, thanks entirely to the utterer of the above phrase, host Tituss Burgess. An indefatigable dynamo of energy, Burgess was born to host game shows, turning any beat of tedium into a laugh through the sheer force of over-the-top shrieking. He lets us know not to take any of this too seriously, an attitude reinforced by one contestant’s stated intention to use her relatively paltry $5,000 winnings to buy Celine Dion tickets. The game itself doesn’t really serve as a test of any valuable skill, though of course that’s not the point. We’re here to watch shit get blown up, and get blown up it does. Trigger warning: this was obviously shot in a pre-corona world, and footage of people licking walls and eating glop off their own shoes has grown remarkably stress-inducing.</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content6"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="6"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Memory Hole</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>The closest thing we’ve got would be <em>The Soup</em>, but rather than clowning on embarrassing things from the day’s reality TV or Internet goings-on, the host of this program revisits wince-worthy obscurities from the recent past. The detritus left in the lost-and-found bin of pop culture is excavated and thoroughly mocked, equal parts two-hour Wikipedia K-hole and <em>Mystery Science Theater 3000 </em>wisecracking.</p> 
+
+
+
+<p><strong>How they blew it: </strong>There’s some edifying and amusing stuff in here, such as a play-by-play of the Toronto SkyDome’s calamitous 1989 opening, but it’s all relayed to us by a visibly checked-out Will Arnett. He’s been slumming it a lot as of late, this being his second simultaneous hosting gig along with <em>LEGO Masters </em>on Fox, and he’s making minimal effort to conceal exactly how he feels about that. There’s a far-off sadness behind his eyes as he reminisces about the regrettable trend of pro sports team novelty songs, or the silliness of the so-bad-it’s-amazing cult film <em>Gymkata</em>. We feel a secondhand pain when he must contextualize who Alan Thicke is by explaining that he’s the father of Robin Thicke. “Have you ever cringed so hard you could feel your DNA unraveling,” Arnett asks, referring to a some mortification from the ‘80s. By this point, we have.</p> 
+
+
+
+<h4><strong><em>Singled Out</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>A revival of the ‘90s-era MTV dating show, in which one lucky “Picker” sifts through 50 potential matches by eliminating them based on personality criteria and answers to personalized questions. The one catch? They can’t look at any of their possible beaus, which means that they could, and did, stumble into a pairing with some major-league oddballs.</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Singled Out | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/E7zyJy588XA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>It’s pretty much the same deal, precious little lost or gained in either direction. Keke Palmer has stepped in as host, and she does a bangup job, though her presence does compel one to imagine the far superior game show <em>What Doesn’t Keke Palmer Know?</em> (Our gal has never heard of a wombat before!) With assistant host Joel Kim Booster, doubling up on those Quibi checks, they guide a gay man, a bisexual woman and a drag queen to a future romance. Getting outside the hetero status quo pays dividends in cheeky one-liners, but the mechanics of the game have gotten gummed up. The new wrinkle is that the dater has connected to each potential date-ee via social media, and in this new version, Round 2 involves appraising an Instagram selfie with the face blocked out. As such, the person can take a gander at their mate-to-be’s physique, effectively defeating the whole purpose of the blind-testing.&nbsp;</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content7"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="7"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>Gone Mental with Lior</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Israeli mentalist Lior Suchard, a viral sensation with an <a href="https://www.youtube.com/watch?v=nCtR9T0wKms">Ellen</a> appearance already on his IMDb, comes Stateside to pull some psycho-mystical fast ones on a host of celebrity guests. The guy’s no mindfreak, closer to a street-corner persuasion magician, but even so, you won’t believe your eyes.</p> 
+
+
+
+<p><strong>How they blew it: </strong>Except that you will have no trouble believing your eyes, because nothing shocking happens onscreen. Every one of Lior’s would-be amazements requires a lot of good faith and willing suspension of disbelief on the part of the viewer. For example: he first meets with Rob Gronkowski, who must tackle one of two doors while Lior uses inception to steer the charging Gronk away from the one Lior has hidden behind. Miraculously, Gronk tackles the right door every time. Every trick works like that, something that could be so easily faked that watching it happen can’t possibly impress the viewer. There’s too much cutting, too many disjointed edits leaving space for the magic to be forged behind the scenes. Ludacris grabs a handful of quarters from a jar, and after a few close-ups, Lior rightly predicts the exact number; this would only be impressive if conducted in a single unbroken shot, and it isn’t, leaving the skeptics with plenty of rope with which to hang him.</p> 
+
+
+
+<h4><strong><em>Skrrrt with Offset</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>It’s just <em>Top Gear</em>, with Migos member Offset taking the place of those three old English guys. He drives luxury cars, pulls some stunts, makes some mischief, travels the globe, brings in some friends — a good time for all.</p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="SKRRT With Offset | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/1I-be_t2HhU?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>The dynamic of rough-and-tumble friendship between the three blokes of this series’ clear inspiration made the thing go. Offset, on the other hand, behaves awkwardly around every other living being in his immediate proximity. He makes uncomfortable chit-chat with Jay Leno in one segment, during which he refers to the former <em>Tonight Show </em>host as an “OG” twice. Lil Yachty shows up to stage a controlled getaway chase, and the fellow rappers can’t strike up a repartee with one another. Offset can’t even telegraph looseness around his own damn wife; Cardi B eventually shows up with their child Kulture for a baby go-kart race and Offset treats them like business associates. His voiceover narration, halting and tentative and weirdly emphasized, proves once and for all that no, not everyone can act.</p><div class="ad-container inline">
+	<div class="ad inline-ad-block"
+	id="inline-content8"
+	data-ad-type="inline-content"	data-ad-id="ad-arts-entertainment-inline-content"	data-pos="8"	>
+	</div>
+</div>
+ 
+
+
+
+<h4><strong><em>The Sauce</em></strong></h4>
+
+
+
+<p><br><strong>Foolproof idea: </strong>Online rug-cutting superstars Ayo and Teo embark upon a nationwide, city-by-city search for America’s best dance crew. Just like in <em>America’s Best Dance Crew!</em></p> 
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="The Sauce | Official Trailer | Quibi" width="500" height="281" src="https://www.youtube.com/embed/4TCUJZoaQI4?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><strong>How they blew it: </strong>This ranks among the best of Quibi’s Unscripted section for its ability to not get in its own way. The lion’s share of this platform’s programming does too much to a simple, direct premise, but Ayo and Teo just let the kids show their stuff unimpeded by gimmickry or side shows. In New York, for instance, the dudes doing the SHOWTIME! routines on the L train get a chance to strut for a national audience, while 2 Real Boyz bring Brooklyn’s “flexing” or “bone-breaking’ technique to the rest of the country. Every time, the sheer talent (something in frightfully short supply in Quibi’s stable) wins out. The special guests leave something to be desired, unless the viewer knows offhand who Shiggy and Blocboy JB happen to be.</p> 
+
+
+
+<p>They’re both creators of widely imitated dance-memes, an appropriate distinction on a platform fueled by the desire for virality more shamelessly than any other. In the faraway time when TV reigned as king, Quibi might have been referred to as a <a href="https://www.youtube.com/watch?v=Xlf2G0O_VY0">Poochy</a>, something perceptibly created to capitalize on youth market trends as interpreted by the adults in the room. The term recalls another neologism brought to us by television, the kind of instant-classic moment of which this watery substitute is completely devoid: <a href="https://www.youtube.com/watch?v=fiOMbqPHFwo">How do you do, fellow kids?</a></p> 
+</p>											</div>
+
+											<div class="main-insert">
+												
+<div class="card daily-brief main hide-for-large">
+	<div class="card-divider">
+		<h4>Most Popular</h4>
+			</div>
+	<div class="card-container grid-x">
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/daily_brief/travel/how-airline-flight-change-post-coronavirus?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>This Is How Flights Will Change Post-Coronavirus													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/books/bookshop-independent-bookstores-amazon?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>Thanks to Bookshop, There Is No Reason to Buy Books on Amazon Anymore													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/food-and-drink/how-make-better-coffee-home-science?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>The Coffee Scientist’s Guide to Making Better Coffee at Home													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/internet/what-is-a-simp?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>Youthsplaining: What the Hell Is a Simp? Are You a Simp?													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/vehicles/review-2020-toyota-tundra-truck-city?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>How Practical Is a Pickup Truck as a Daily Driver in a Big City?													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/games/play-online-board-games-during-quarantine?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>Virtual Board Gaming Is Your Unlikely Quarantine Savior													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/health-and-fitness/how-to-train-like-a-real-life-roman-gladiator?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>We Asked a Classics Professor How to Train Like a Roman Gladiator													</h5></a>
+											</div>
+				</div>
+			</div>
+					
+			<div class="cell medium-6 large-12">
+				<div class="card-section grid-x">
+					<div class="card-content medium-auto">
+						<a href="https://www.insidehook.com/article/sex-and-dating/a-post-quarantine-divorce-boom-is-looming?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=maincolumnmostpopular"><h5>A Post-Quarantine Divorce Boom Is Looming													</h5></a>
+											</div>
+				</div>
+			</div>
+				<div class="text-center db-more">
+			<a class="button" href="#more">Show More</a>
+		</div>
+	</div>
+</div>
+											</div>
+
+
+										</div>
+										<!-- End Article Image and Body -->
+									</div>
+
+								</div>
+								<div class="right-content cell large-shrink sticky-parent">
+									<div class="ad-container flush show-for-small-only">
+	<div class="ad"
+	id="ad-right2"
+				>
+	</div>
+</div>
+
+									<div class="ad-container right sticky show-for-medium">
+	<div class="ad"
+	id="ad-right1"
+				>
+	</div>
+</div>
+
+									
+<div class="card popular right show-for-large">
+	<div class="card-divider">
+		<h4>Most Popular</h4>
+			</div>
+	<div class="card-container">
+					<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/daily_brief/travel/how-airline-flight-change-post-coronavirus?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/daily_brief/travel/how-airline-flight-change-post-coronavirus" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=750%2C500" class="full wp-post-image" alt="airline seats" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/airlineseats.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/daily_brief/travel/how-airline-flight-change-post-coronavirus?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>This Is How Flights Will Change Post-Coronavirus											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/books/bookshop-independent-bookstores-amazon?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/books/bookshop-independent-bookstores-amazon" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=750%2C500" class="full wp-post-image" alt="Andy Hunter, CEO of online bookstore Bookshop" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/Andy-Hunter-Bookshop.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/books/bookshop-independent-bookstores-amazon?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>Thanks to Bookshop, There Is No Reason to Buy Books on Amazon Anymore											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/food-and-drink/how-make-better-coffee-home-science?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/food-and-drink/how-make-better-coffee-home-science" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=750%2C500" class="full wp-post-image" alt="how to make better coffee" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/Science_Coffee-01_Edit.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/food-and-drink/how-make-better-coffee-home-science?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>The Coffee Scientist’s Guide to Making Better Coffee at Home											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/internet/what-is-a-simp?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/internet/what-is-a-simp" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=750%2C500" class="full wp-post-image" alt="Leo do be simpin tho" srcset="https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg 1440w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/03/claire-danes-leonardo-dicaprio_SIMP.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/internet/what-is-a-simp?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>Youthsplaining: What the Hell Is a Simp? Are You a Simp?											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/vehicles/review-2020-toyota-tundra-truck-city?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/vehicles/review-2020-toyota-tundra-truck-city" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=750%2C500" class="full wp-post-image" alt="Does the Toyota Tundra work in the big city? " srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg 2430w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=1536,1024 1536w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=2048,1365 2048w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=1800,1200 1800w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/Tundra_Hero_Toyota_Crewmax_2020.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/vehicles/review-2020-toyota-tundra-truck-city?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>How Practical Is a Pickup Truck as a Daily Driver in a Big City?											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/games/play-online-board-games-during-quarantine?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/games/play-online-board-games-during-quarantine" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=750%2C500" class="full wp-post-image" alt="The Settlers of Catan on Tabletop Simulator" srcset="https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/03/Settlers-of-Catan-Tabletop-Simulator.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/games/play-online-board-games-during-quarantine?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>Virtual Board Gaming Is Your Unlikely Quarantine Savior											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/health-and-fitness/how-to-train-like-a-real-life-roman-gladiator?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/health-and-fitness/how-to-train-like-a-real-life-roman-gladiator" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=750%2C500" class="full wp-post-image" alt="We Asked a Classics Professor How to Train Like a Real-Life Roman Gladiator" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-32.jpg?resize=1122,750 1122w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/health-and-fitness/how-to-train-like-a-real-life-roman-gladiator?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>We Asked a Classics Professor How to Train Like a Roman Gladiator											</h5></a>
+									</div>
+			</div>
+				<div class="card-section">
+				<div class="card-content">
+					<a href="https://www.insidehook.com/article/sex-and-dating/a-post-quarantine-divorce-boom-is-looming?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular">
+																			<source media="(min-width: 768px)"
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=750%2C500 1200w"
+								sizes="(min-width: 768rem) 450px, 100vw">
+							<!-- Small art direction -->
+							<source
+								srcset="https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=150%2C150 150w"
+								sizes="100vw">
+							<!-- Fallback image for browsers that don't support the picture element -->
+							<img data-pin-url="https://www.insidehook.com/article/sex-and-dating/a-post-quarantine-divorce-boom-is-looming" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=750%2C500" class="full wp-post-image" alt="coronavirus divorce boom" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg 3000w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=1536,1024 1536w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=2048,1365 2048w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=1800,1200 1800w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/divorce_after_coronavirus.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />										</a>
+					<a href="https://www.insidehook.com/article/sex-and-dating/a-post-quarantine-divorce-boom-is-looming?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=rightrailmostpopular"><h5>A Post-Quarantine Divorce Boom Is Looming											</h5></a>
+									</div>
+			</div>
+		</div>
+</div>
+
+									<div class="ad-container right sticky native">
+	<div class="ad"
+	id="ad-right3"
+				>
+	</div>
+</div>
+
+									<!-- Instagram latest post widget -->
+									<div class="social-follow instagram_feed show-for-large">
+	<h4>Follow Us</h4>
+
+	<div class="card">
+		<div class="card-container">
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-12">
+					<a href="https://www.instagram.com/p/B-PtM4JDTWE/" class="social link" target="_blank"></a>
+					<div class="social-profile">
+						<img src="https://www.insidehook.com/wp-content/themes/insidehook-theme/media/dist/assets/img/site/ih-social-logo.jpg">
+						<h5>insidehook</h5>
+					</div>
+					<div class="social-img">
+						<img src="https://scontent.xx.fbcdn.net/v/t51.2885-15/91338370_580352575898176_8121486165844939986_n.jpg?_nc_cat=106&#038;_nc_sid=8ae9d6&#038;_nc_ohc=9YwJpRhcs_kAX8PL5aa&#038;_nc_ht=scontent.xx&#038;oh=f5de8062d4745be01e3a7a5258f84751&#038;oe=5EA388E3">
+					</div>
+
+					<div class="social-content">
+													<p class="label">3 weeks ago</p>
+												<p class="text">Happy Friday. Today on the site ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀ •The Adidas Tracksuit Is the Perfect WFH Uniform •Why We're All So... <span class="light">more</span></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<ul class="menu horizontal align-center">
+		<li class="show-for-large-up"><a href="https://www.facebook.com/InsideHook" target="_blank" class="icon icon-facebook"><span>instagram</span></a></li>
+		<li class="show-for-large-up"><a href="https://instagram.com/insidehook" target="_blank" class="icon icon-instagram"><span>instagram</span></a></li>
+		<li class="show-for-large-up"><a href="https://twitter.com/insidehook" target="_blank" class="icon icon-twitter"><span>twitter</span></a></li>
+		<li class="show-for-large-up"><a href="https://www.linkedin.com/company/insidehook" target="_blank" class="icon icon-linkedin"><span>twitter</span></a></li>
+	</ul>
+
+</div>
+									<!-- END Instagram latest post widget -->
+
+									
+<div class="sticky-container">
+	<div class="signup sticky">
+		<h4>Get InsideHook in your inbox on the daily.</h4>
+		<form id="signupFormRight" class="signup-form" data-abide="ajax" novalidate="novalidate">
+			<div class="large-12 columns">
+				<label class="ih-field-system" for="signupFormRight-email"></label>
+				<input name="email" value="" placeholder="Email" id="signupFormRight-email" type="email" class="ih-field-system" autocomplete="off">
+
+				<label for="signupFormRight-ihemailKL6AybCbIn" class="show-for-sr">Email</label>
+				<input name="ihemailKL6AybCbIn" value="" placeholder="Email" required="" id="signupFormRight-ihemailKL6AybCbIn" type="email" aria-errormessage="signupFormRight-ErrorihemailKL6AybCbIn" required pattern="email">
+				<span class="form-error" id="signupFormRight-ErrorihemailKL6AybCbIn">
+					Please enter a valid email address.
+				</span>
+			</div>
+			<div class="large-12 columns">
+				<label class="ih-field-system" for="signupFormRight-zip"></label>
+				<input name="zip" value="" placeholder="Zip" id="signupFormRight-zip" type="text" class="ih-field-system" autocomplete="off">
+				<label for="signupFormJourney-ihzipKL6AybCbIn" class="show-for-sr">Zip</label>
+				<input name="ihzipKL6AybCbIn" value="" placeholder="Zip Code" id="signupFormRight-ihzipKL6AybCbIn" type="text">
+			</div>
+			<div class="large-12 columns checkbox">
+				<input id="signupFormRight-agree" type="checkbox" name="terms" checked>
+				<label for="signupFormRight-agree">
+					I accept the <a href="/terms-conditions" target="_blank">Terms and Conditions</a>, and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.  I am over 21 years.
+				</label>
+			</div>
+
+			<div class="large-12 columns">
+				<button type="submit" class="button postfix">Subscribe</button>
+				<div class="hide">
+					<input type="hidden" name="sign_up_form" value="form-tall-rightrail">
+					<input type="hidden" name="response_type" value="modal">
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>
+								</div>
+							</div>
+						</article>
+
+
+					</div>
+					<!-- End Article Content Grid -->
+
+				</div>
+			</div>
+		</div>
+		<!-- End Main Content in Grid -->
+
+	
+
+<div class="ad-container framed show-for-small-only">
+	<div class="ad"
+	id="ad-middle3"
+				>
+	</div>
+</div>
+
+<div class="ad-container ad-full-width bottom show-for-medium">
+	<div class="ad"
+	id="ad-footer"
+				>
+	</div>
+</div>
+
+
+<div class="page-container recommended">
+	<div class="grid-container">
+		<h4>			Recommended
+				</h4>
+		<div class="grid-x grid-margin-x">
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/feature/food-and-drink/eduardo-bionic-chef-garcia-against-all-odds-deschutes?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=750%2C500" class="attachment-featured-grid size-featured-grid" alt="How Eduardo &quot;The Bionic Chef&quot; Garcia Earned His Nickname" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg 5760w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=1536,1024 1536w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=2048,1365 2048w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=1800,1200 1800w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/C4A8124-1.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/food-and-drink?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Food &amp; Drink</a>
+																									<span class="sponsor">Sponsored</span>
+																						</p>
+														<a href="https://www.insidehook.com/feature/food-and-drink/eduardo-bionic-chef-garcia-against-all-odds-deschutes?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>How Eduardo &quot;The Bionic Chef&quot; Garcia Earned His Nickname</h5></a>
+							<p>The story starts with a routine elk hunt in his native Montana backcountry ...</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/food-and-drink/fruits-for-better-sleep?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/food-and-drink/fruits-for-better-sleep" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Start Eating These Two Fruits for a Better Night&#039;s Sleep" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-39.jpg?resize=1122,750 1122w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/food-and-drink?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Food &amp; Drink</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/food-and-drink/fruits-for-better-sleep?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Start Eating These Two Fruits for a Better Night&#039;s Sleep</h5></a>
+							<p>The produce aisle is here to help</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/news-opinion/john-sipher-what-its-like-to-be-followed-by-a-kgb-agent-in-the-1990s?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/news-opinion/john-sipher-what-its-like-to-be-followed-by-a-kgb-agent-in-the-1990s" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Getting followed by a KGB agent is all part of the job if you want to be in the CIA." srcset="https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/followed_kgb_agent.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/news-opinion?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">News &amp; Opinion</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/news-opinion/john-sipher-what-its-like-to-be-followed-by-a-kgb-agent-in-the-1990s?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>What It Was Like to Be Followed by a KGB Agent in the 1990s</h5></a>
+							<p>It&#039;s all part of a day&#039;s training for the CIA’s National Clandestine Service</p>
+						</div>
+					</div>
+				</div>
+														<div class="cell medium-6 large-3 native-ad-block" data-ad-type="recommended-posts-grid" id="recommended-slot4" data-ad-id="ad-arts-entertainment-recommended-posts-grid" data-pos="4"></div>
+										<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/gear/products-getting-our-editors-through-quarantine?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/quarantine_goods_r2_compressed.gif?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/quarantine_goods_r2_compressed.gif?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/quarantine_goods_r2_compressed.gif?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/gear/products-getting-our-editors-through-quarantine" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/quarantine_goods_r2_compressed.gif?resize=750%2C500" class="alignleft wp-post-image" alt="quarantine goods" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/gear?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Gear</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/gear/products-getting-our-editors-through-quarantine?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Staff Picks: The Products Getting Our Editors Through Quarantine</h5></a>
+							<p>We&#039;re stuck at home just like everybody else. These are the items that have been making it a little bit easier.</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/sports/what-we-learned-michael-jordan-from-the-first-two-episodes-of-espn-the-last-dance?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/sports/what-we-learned-michael-jordan-from-the-first-two-episodes-of-espn-the-last-dance" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="The first two episodes of ESPN&#039;s &quot;The Last Dance&quot; highlighted just how much Jordan and Pippen hated Jerry Krause.(VINCENT LAFORET/AFP via Getty Images)" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg 1024w, https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/GettyImages-51643605-e1587365094199.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/sports?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Sports</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/sports/what-we-learned-michael-jordan-from-the-first-two-episodes-of-espn-the-last-dance?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>What We Learned From the First Two Episodes of &quot;The Last Dance&quot;</h5></a>
+							<p>Featuring a &quot;traveling cocaine circus,&quot; how a bad golf game fueled one of M.J.&#039;s best games and plenty of Jerry Krause hate</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/audio/bose-700-headphones-cheapest-price?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/audio/bose-700-headphones-cheapest-price" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Bose 700" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/bose700-h.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/personal-tech/audio?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Audio</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/audio/bose-700-headphones-cheapest-price?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Bose’s Best Wireless Noise Cancelling Headphones Are at Their Lowest Price Ever</h5></a>
+							<p>The 700 model gets a rare discount at Amazon</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/home-goods/michael-jordan-whiskey-glass-last-dance?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/home-goods/michael-jordan-whiskey-glass-last-dance" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Michael Jordan" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/MJ-drink.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/home-design/home-goods?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Home Goods</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/home-goods/michael-jordan-whiskey-glass-last-dance?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Michael Jordan&#039;s Preferred Whiskey Glass Is a Stunner</h5></a>
+							<p>These crystal double old-fashioned glasses from Waterford will elevate your whiskey game</p>
+						</div>
+					</div>
+				</div>
+														<div class="cell medium-6 large-3 native-ad-block" data-ad-type="recommended-posts-grid" id="recommended-slot9" data-ad-id="ad-arts-entertainment-recommended-posts-grid" data-pos="9"></div>
+										<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/menswear/everlane-organic-cotton-tee-18-bucks?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/menswear/everlane-organic-cotton-tee-18-bucks" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Everlane&#039;s Cotton Tee Is Now Organic &#8230; and Only $18" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/hero3-1.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/style/menswear?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Menswear</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/menswear/everlane-organic-cotton-tee-18-bucks?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Everlane&#039;s Cotton Tee Is Now Organic &#8230; and Only $18</h5></a>
+							<p>A very small price to pay for conscious consumerism</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/accessories/raen-sunglasses-half-off-nordstrom-rack?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/accessories/raen-sunglasses-half-off-nordstrom-rack" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Deal: This Is Your New Favorite Sunglasses Brand" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/raenmain.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/style/accessories?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Accessories</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/accessories/raen-sunglasses-half-off-nordstrom-rack?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>This Is Your New Favorite Sunglasses Brand</h5></a>
+							<p>Meet Raen, now more than half-off at Nordstrom Rack</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/menswear/saturdays-nyc-sitewide-menswear-sale?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/menswear/saturdays-nyc-sitewide-menswear-sale" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Saturdays NYC hoodies, T-shirts, pants and board shorts" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/Saturdays-NYC-Sale.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/style/menswear?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Menswear</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/menswear/saturdays-nyc-sitewide-menswear-sale?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Everything Is on Sale at Saturdays NYC. Here&#039;s What to Buy.</h5></a>
+							<p>Classic hoodies, coaches jackets, board shorts and more</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/menswear/60-off-j-crew-linen-collection?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/menswear/60-off-j-crew-linen-collection" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Deal: Take Up to 60% Off J.Crew&#039;s Entire Linen Collection" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/hero-41.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/style/menswear?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Menswear</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/menswear/60-off-j-crew-linen-collection?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>Take Up to 60% Off J.Crew&#039;s Entire Linen Collection</h5></a>
+							<p>The lightweight fabric you wanna be sporting in the coming months</p>
+						</div>
+					</div>
+				</div>
+											<div class="cell medium-6 large-3">
+					<div class="grid-x grid-margin-x">
+						<div class="cell small-3 medium-12">
+							<a href="https://www.insidehook.com/article/menswear/american-trench-new-zip-jacket-20-off?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">
+																<picture class="img">
+																			<!-- Large art direction -->
+										<source media="(min-width: 768px)"
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=450%2C300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=750%2C500 1200w"
+											sizes="(min-width: 768rem) 450px, 100vw">
+										<!-- Small art direction -->
+										<source
+											srcset="https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=150%2C150 150w"
+											sizes="100vw">
+										<!-- Fallback image for browsers that don't support the picture element -->
+										<img data-pin-url="https://www.insidehook.com/article/menswear/american-trench-new-zip-jacket-20-off" width="750" height="500" src="https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=750%2C500" class="alignleft wp-post-image" alt="Deal: American Trench&#039;s New Zip Jackets Are 20% Off" srcset="https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg 1500w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=1200,800 1200w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=750,500 750w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=450,300 450w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=150,100 150w, https://www.insidehook.com/wp-content/uploads/2020/04/americantrenchzipjacket.jpg?resize=50,33 50w" sizes="(max-width: 750px) 100vw, 750px" />																	</picture>
+							</a>
+						</div>
+						<div class="cell small-9 medium-12">
+							<p class="label">
+																								<a href="https://www.insidehook.com/category/sections/style/menswear?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended">Menswear</a>
+																														</p>
+														<a href="https://www.insidehook.com/article/menswear/american-trench-new-zip-jacket-20-off?utm_source=direct&utm_medium=module&utm_campaign=recirc&utm_content=bottomrecommended"><h5>American Trench&#039;s New Zip Jackets Are 20% Off</h5></a>
+							<p>The only jacket you&#039;ll need come summer</p>
+						</div>
+					</div>
+				</div>
+					</div>
+	</div>
+</div>
+<!-- Sent to Friend modal-->
+<div id="Modal-send-to-friends" data-reveal aria-labelledby="Send To Friends" aria-hidden="true" role="dialog" class="reveal modal-dialog" data-close-on-esc="true" data-close-on-click="true">
+	<div class="signup-head">
+		<h3>Send this article to your friends</h2>
+	</div>
+
+	<div class="grid-x grid-margin-x">
+		<div class="large-12 cell">
+
+			<div class="stf-form-container">
+				<p>&nbsp;</p>
+
+				<form id="stf-form" class="stf-form" data-abide="ajax" data-redirect="modal" novalidate="novalidate">
+
+				<div class="grid-x grid-margin-x">
+					<div class="large-12 cell">
+						<label for="email" class="show-for-sr">Your Email (required)</label>
+						<input name="email" value="" placeholder="Your Email (required)" required="" id="stfForm-email" type="email" aria-errormessage="stfForm-ErrorEmail" pattern="email" aria-describedby="stfForm-ErrorEmail">
+						<span class="form-error" id="stfForm-ErrorEmail" role="alert">Please enter a valid email address.</span>
+					</div>
+
+					<div class="large-6 cell">
+						<label for="first_name" class="show-for-sr">Your First Name (required)</label>
+						<input name="first_name" value="" placeholder="Your First Name (required)" required="" id="stfForm-Fname" type="text" aria-errormessage="stfForm-ErrorFname" pattern="text" aria-describedby="stfForm-ErrorFname">
+						<span class="form-error" id="stfForm-ErrorFname" role="alert">Please enter your first name.</span>
+					</div>
+					<div class="large-6 cell">
+						<label for="last_name" class="show-for-sr">Your Last Name (required)</label>
+						<input name="last_name" value="" placeholder="Your Last Name (required)" required="" id="stfForm-Lname" type="text" aria-errormessage="stfForm-ErrorLname" pattern="text" aria-describedby="stfForm-ErrorLName">
+						<span class="form-error" id="stfForm-ErrorLname" role="alert">Please enter your last name.</span>
+					</div>
+
+					<div class="large-12 cell">
+						<label for="share-addresses" class="show-for-sr">Friends' email</label>
+						<textarea name="share_addresses" value="" placeholder="Enter email addresses, separated by commas or new lines (Required)" id="share-addresses" rows="4" required="" aria-errormessage="stfForm-ErrorAddresses" aria-describedby="stfForm-ErrorAddresses"></textarea>
+						<span class="form-error" id="stfForm-ErrorAddresses" role="alert">At least one valid email address is required.</small>
+					</div>
+
+					<div class="large-5 cell">
+						<button type="submit" class="button submit expanded">Let 'em Know</button>
+						<div class="hide">
+							<input type="hidden" name="share_title" value="">
+							<input type="hidden" name="share_description" value="">
+							<input type="hidden" name="share_url" value="">
+							<input type="hidden" name="share_image" value="">
+						</div>
+					</div>
+
+					<div class="large-7 align-self-middle cell">
+						<span class="form-error general-error"></span>
+					</div>
+
+				</div>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&#215;</span>
+	</button>
+
+</div>
+<!-- end Member Manage Subscription modal--><!-- Member Manage Subscription modal-->
+<div id="Modal-thanksstf" data-reveal aria-labelledby="Thanks" aria-hidden="true" role="dialog" class="reveal modal-dialog">
+	<div class="signup-head">
+		<h3>&nbsp;</h2>
+	</div>
+
+	<div class="grid-x grid-margin-x">
+		<div class="large-12 cell">
+
+		<div class="signup-form">
+			<h4>Thanks for sharing, <span data-name></span></h4>
+			<p>&nbsp;</p>
+			<p>Sign up for InsideHook to get our best content delivered to your inbox every weekday. It’s free. And awesome.</p>
+
+			<form id="stfThxForm" class="signup-form" data-abide="ajax" novalidate="novalidate">
+			<div class="grid-x grid-margin-x">
+				<div class="large-12 cell">
+
+					<div class="input-group">
+						<label for="email" class="show-for-sr">Email</label>
+
+						<input name="email" value="" placeholder="Email" required="" id="stfThx-email" type="email" aria-errormessage="stfThx-ErrorEmail" pattern="email" aria-describedby="stfThx-ErrorEmail" class="input-group-field" value="">
+
+						<div class="input-group-button">
+							<button type="submit" class="button submit expanded">SIGN UP</button>
+							<div class="hide">
+								<input type="hidden" name="sign_up_form" value="form-modal-stf">
+								<input type="hidden" name="response_type" value="modal">
+							</div>
+						</div>
+					</div>
+					<span class="form-error" id="stfThx-ErrorEmail" data-form-error-for="stfThx-email">Please enter a valid email address.</span>
+
+				</div>
+
+				<div class="large-12 cell checkbox">
+					<input id="stfThx-agree" type="checkbox" name="terms" required="">
+					<label for="stfThx-agree">
+						I accept the <a href="/terms-conditions" target="_blank">Terms and Conditions</a>, and <a href="/privacy-policy" target="_blank">Privacy Policy</a>. I am over 21 years.
+					</label>
+				</div>
+
+			</div>
+			</form>
+
+		</div>
+		</div>
+
+	</div>
+
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+		<span aria-hidden="true">&#215;</span>
+	</button>
+
+</div>
+<!-- end Member Manage Subscription modal-->
+<footer>
+	<div class="grid-container">
+		<div class="footer-container grid-x grid-margin-x">
+			<div class="cell large-6">
+				<!-- Footer Signup Block -->
+				<div class="footer-tag subscribe">
+					<p class="invite-line">Get InsideHook in your inbox. It's free. And Awesome.</p>
+					<form id="signupFootForm" method = "post" class="signup-form" data-abide="ajax" novalidate="novalidate" winmessenger="wm_1536262436788-n530f62m72n">
+						<div class="grid-x grid-margin-x">
+							<div class="cell medium-8">
+								<label class="ih-field-system" for="email" class="show-for-sr"></label>
+								<input class="ih-field-system" name="email" value="" placeholder="Email" id="emailField" type="email" autocomplete="off">
+								<label for="signupFormJourney-ihemailKL6AybCbIn" class="show-for-sr">Email</label>
+								<input name="ihemailKL6AybCbIn" value="" placeholder="Email" required="" id="signupFormJourney-ihemailKL6AybCbIn" type="email"  aria-errormessage="signupFormJourney-ErrorihemailKL6AybCbIn" required pattern="email">
+							</div>
+							<div class="medium-4 cell">
+								<label class="ih-field-system" for="zip" class="show-for-sr"></label>
+								<input class="ih-field-system" name="zip" value="" placeholder="Zip Code" id="zipField" type="text" autocomplete="off">
+								<label for="signupFormJourney-ihzipKL6AybCbIn" class="show-for-sr">Zip</label>
+								<input name="ihzipKL6AybCbIn" value="" placeholder="Zip Code" id="signupFormJourney-ihzipKL6AybCbIn" type="text">
+							</div>
+							<div class="large-12 cell">
+								<input id="footerAgree" type="checkbox" name="terms" required="">
+								<label for="footerAgree">
+									I accept the <a href="/terms-conditions" target="_blank">Terms and Conditions</a>, and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.  I am over 21 years.
+								</label>
+							</div>
+							<div class="large-12 cell">
+								<button type="submit" class="button submit postfix small">Subscribe</button>
+							<div class="hide">
+								<input type="hidden" name="sign_up_form" value="form internal-footer" />
+								<input type="hidden" name="response_type" value="modal" />
+							</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="footer-tag manage" style="display: none">
+					<p class="invite-line">Got questions or feedback?<br><a href="mailto:tips@insidehook.com"><span class="emph">Hit us up</span></a></p>
+					<p class="manage"><a href="/editions">Manage My Subscription</a></p>
+				</div>
+				<!-- End Footer Signup Block -->
+			</div>
+			<div class="cell large-6">
+				<!-- Footer Links -->
+				<div class="grid-x grid-margin-x">
+				
+							<div class="cell small-6 medium-4 ">
+								<h5 >US, ELSEWHERE </h5>
+
+															<ul class="no-bullet">
+																	<li >
+										<a   href="https://www.facebook.com/InsideHook">Facebook</a>
+									</li>
+															<li >
+										<a   href="https://www.instagram.com/insidehook/">Instagram</a>
+									</li>
+															<li >
+										<a   href="https://twitter.com/insidehook">Twitter</a>
+									</li>
+															<li >
+										<a   href="https://www.linkedin.com/company/insidehook/">LinkedIn</a>
+									</li>
+															<li >
+										<a   href="/campaign/joinfree">Newsletter</a>
+									</li>
+						
+								</ul>
+							</div>
+
+							
+							<div class="cell small-6 medium-4 ">
+								<h5 >THE BASICS </h5>
+
+															<ul class="no-bullet">
+																	<li >
+										<a   href="/about-us">About Us</a>
+									</li>
+															<li >
+										<a   href="/editorial-policy">Editorial Policy</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/contact-us">Contact Us</a>
+									</li>
+															<li >
+										<a   href="/advertise">Advertise</a>
+									</li>
+															<li >
+										<a   href="/terms-conditions">Terms</a>
+									</li>
+															<li >
+										<a   href="/privacy-policy">Privacy</a>
+									</li>
+															<li >
+										<a   href="/careers">Careers</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/do-not-sell-my-personal-information">Do Not Sell My Personal Information</a>
+									</li>
+															<li >
+										<a   href="/editions">Manage Subscription</a>
+									</li>
+						
+								</ul>
+							</div>
+
+							
+							<div class="cell small-6 medium-4 show-for-small">
+								<h5 >Sections </h5>
+
+															<ul class="no-bullet">
+																	<li >
+										<a   href="https://www.insidehook.com/category/sections/news-opinion">News &amp; Opinion</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/arts-entertainment">Arts &amp; Entertainment</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/sports">Sports</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/health-and-fitness">Health &amp; Fitness</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/travel">Travel</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/personal-tech">Personal Tech</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/vehicles">Vehicles</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/gear">Gear</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/style">Style</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/food-and-drink">Food &amp; Drink</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/home-design">Home &amp; Design</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/advice">Advice</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/sex-and-dating">Sex &amp; Dating</a>
+									</li>
+															<li >
+										<a   href="https://www.insidehook.com/category/sections/watches">Watches</a>
+									</li>
+										</div>
+				<!-- End Footer Links -->
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="cell medium-12 text-center">
+				<p class="footer-bottom">Copyright © 2020 InsideHook. All rights reserved.</p>
+			</div>
+		</div>
+	</div>
+
+</footer>
+
+
+
+<!-- START Parse.ly Include: Standard -->
+	<script data-cfasync="false">
+
+		function uuidProfileCall() {
+			var rootUrl = 'https://api.parsely.com/v2/profile?apikey=insidehook.com';
+			var uuid = '&uuid=' + PARSELY.config.parsely_site_uuid;
+			var requestUrl = rootUrl + uuid + '&url=' + window.location.href;
+			jQuery.ajax({
+				url: requestUrl,
+				dataType: "jsonp"
+			});
+		}
+
+		if (typeof PARSELY == 'object') {
+			var oldonload = PARSELY.onload;
+			if (typeof PARSELY.onload != 'function') {
+				PARSELY.onload = uuidProfileCall
+			}
+			else {
+				PARSELY.onload = function () {
+					if (oldonload) {
+						oldonload();
+					}
+					uuidProfileCall();
+				};
+			}
+		}
+
+		else {
+			PARSELY = {
+				onload: uuidProfileCall
+			}
+		}
+	</script>
+
+<script data-cfasync="false" id="parsely-cfg" data-parsely-site="insidehook.com" src="//cdn.parsely.com/keys/insidehook.com/p.js"></script>
+
+<!-- END Parse.ly Include: Standard -->
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','//connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '381165108746682');
+		</script><script>
+	fbq('track', 'PageView');
+</script>
+<noscript><img height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=381165108746682&ev=PageView&noscript=1'/></noscript><!-- End Facebook Pixel Code -->
+		<!-- LiveConnectTag for advertisers -->
+		<script type="text/javascript" src="//b-code.liadm.com/a-033s.min.js" async="true" charset="utf-8"></script>
+		<!-- LiveConnectTag for advertisers -->
+		<script>
+			(function(w,d) {
+				w.kwa || (w.kwa = function() {
+				  (w.kwa.q = w.kwa.q || []).push(arguments);
+				});
+				se = d.createElement('script'),
+				fs = d.scripts[0];
+				se.src = '//cdn.keywee.co/dist/analytics.min.js';
+				fs.parentNode.insertBefore(se,fs)
+			}(window, document));
+		</script>
+
+		<script>
+			kwa('initialize',762);
+		</script>
+		<!-- Setup Ad -->
+		<script>
+		window.siteStatConfig = {disableAds: true};
+		</script><!-- HashtagLabs for ads -->
+		<script type="text/javascript" src="//htlbid.com/v3/insidehook.com/htlbid.js"></script><script>
+			  var htlbid = htlbid || {};
+			  htlbid.cmd = htlbid.cmd || [];
+			  htlbid.cmd.push(function() {
+			    htlbid.layout("standard_template");
+			    htlbid.setTargeting("is_home", "NO");
+			    htlbid.setTargeting("is_testing", "NO");
+			    htlbid.setTargeting("post_id", "361082");
+			    htlbid.setTargeting("tags", []);
+			    htlbid.setTargeting("categories", ["arts-entertainment","internet","television"]);
+			  });
+			</script><!-- end HashtagLabs for ads --><script src='https://www.insidehook.com/wp-content/mu-plugins/jetpack/_inc/build/photon/photon.min.js?ver=20191001'></script>
+<script src='https://www.insidehook.com/wp-content/themes/insidehook-theme/media/dist/assets/plugins/swiper.min.js'></script>
+<script>
+var tag = {"options":{"customerId":"190b85d69485e7e94ca8b38c9cc66ea6"},"isCustom":"1"};
+</script>
+<script src='https://www.insidehook.com/wp-content/plugins/sailthru-widget/js/tag.js?ver=5.4'></script>
+<script>
+var ih_ajax = {"ih_ajaxurl":"https:\/\/www.insidehook.com\/wp-admin\/admin-ajax.php","ih_nounce":"6fd2be5f28","recaptcha_site_key":"6LeKvLwUAAAAAFiAbQKBnK3-QbcqCIvAnLiPGyXd"};
+</script>
+<script src='https://www.insidehook.com/wp-content/themes/insidehook-theme/media/dist/assets/js/app.min.js?ver=1587074110'></script>
+<script async="async" src='https://www.googletagservices.com/tag/js/gpt.js?ver=5.4'></script>
+<script src='//s.skimresources.com/js/68503X1516544.skimlinks.js?ver=5.4'></script>
+<script src='https://extend.vimeocdn.com/ga/16737855.js?ver=1'></script>
+<script src='https://www.insidehook.com/wp-includes/js/wp-embed.min.js?ver=5.4'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202017.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.4.2',blog:'158460346',post:'361082',tz:'-4',srv:'www.insidehook.com'} ]);
+	_stq.push([ 'clickTrackerInit', '158460346', '361082' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"fbb8c27af9","applicationID":"188815085","transactionName":"Z1EDMUpWXRAHAEdQWF4bIAZMXlwNSRBaV1BcUUwESkNaAAoG","queueTime":0,"applicationTime":543,"atts":"SxYURwJMTk9EAhEDTE1J","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

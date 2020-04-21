@@ -1,0 +1,951 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-en_US" lang="en-US" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>Developer Resources – Amazon Simple Storage Service (S3) – AWS</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="description" content="Developer tools, documentation, tutorials, SDKs, Release Notes, sample code and related services for Amazon S3 cloud storage" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/s3/developer-resources/" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/s3/developer-resources/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/s3/developer-resources/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/s3/developer-resources/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/s3/developer-resources/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/s3/developer-resources/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/s3/developer-resources/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/s3/developer-resources/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/s3/developer-resources/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/s3/developer-resources/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/s3/developer-resources/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/s3/developer-resources/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="Developer Resources – Amazon Simple Storage Service (S3) – AWS" /> 
+  <meta property="twitter:description" content="Developer tools, documentation, tutorials, SDKs, Release Notes, sample code and related services for Amazon S3 cloud storage" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="Developer Resources – Amazon Simple Storage Service (S3) – AWS" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/s3/developer-resources/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'en-US',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'en'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/contact-us/?nc2=h_header">Contact Sales</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Support&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="en">English&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">My Account&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Create an AWS Account</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Products</a></li> 
+        <li><a href="/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Solutions</a></li> 
+        <li><a href="/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Pricing</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentation</a></li> 
+        <li><a href="/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">Learn</a></li> 
+        <li><a href="/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Partner Network</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Customer Enablement</a></li> 
+        <li><a href="/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">Events</a></li> 
+        <li><a href="/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Explore More </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Account Settings</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Billing &amp; Cost Management</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Security Credentials</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Support Center</a> </li> 
+      <li> <a href="/premiumsupport/knowledge-center/?nc2=h_m_ma">Knowledge Center</a> </li> 
+      <li> <a href="/premiumsupport/?nc2=h_m_bc">AWS Support Overview</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Pricing</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentation</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Products</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Related Pages</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutorials</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">See more results for "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/products/?nc2=h_mo">Products</a> </li> 
+      <li> <a href="/solutions/?nc2=h_mo">Solutions</a> </li> 
+      <li> <a href="/pricing/?nc2=h_mo">Pricing</a> </li> 
+      <li> <a href="/what-is-aws/?nc2=h_mo">Introduction to AWS</a> </li> 
+      <li> <a href="/getting-started/?nc2=h_mo">Getting Started</a> </li> 
+      <li> <a href="/documentation/?nc2=h_mo">Documentation</a> </li> 
+      <li> <a href="/training/?nc2=h_mo">Training and Certification</a> </li> 
+      <li> <a href="/developer/?nc2=h_mo">Developer Center</a> </li> 
+      <li> <a href="/solutions/case-studies/?nc2=h_mo">Customer Success</a> </li> 
+      <li> <a href="/partners/?nc2=h_mo">Partner Network</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Support</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Log into Console</a> </li> 
+      <li> <a href="/console/mobile/">Download the Mobile App</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/s3/developer-resources/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt" href="/s3/?nc=sn&amp;loc=0"> Amazon S3</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt" href="/s3/?nc=sn&amp;loc=1"> Overview</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/s3/features/?nc=sn&amp;loc=2"> Features</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/s3/storage-classes/?nc=sn&amp;loc=3"> Storage classes</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/s3/pricing/?nc=sn&amp;loc=4"> Pricing</a> 
+       <a class="lb-txt-none lb-txt" href="/s3/getting-started/?nc=sn&amp;loc=5"> Getting started</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="resources"> Resources&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/s3/faqs/?nc=sn&amp;loc=7"> FAQs</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="resources" data-action="hover" data-position="top"> 
+    <a class="lb-txt-none lb-txt lb-current-page-link" href="/s3/developer-resources/?nc=sn&amp;loc=6&amp;dn=1"> Resources</a> 
+    <a class="lb-txt" href="/s3/videos/?nc=sn&amp;loc=6&amp;dn=2"> Videos</a> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-bg-left-top-cover data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-image:url('//d1.awsstatic.com/Digital%20Marketing/cubes-bg.efd5ddc1e626b993aeb294536b59efd13c8e35ff.png');" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="breadcrumb" data-da-so-url="/s3"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <div class="lb-breadcrumbs lb-breadcrumbs-dropTitle"> 
+        <ul> 
+         <li> <a href="/products/">Products</a> </li> 
+         <li> <a href="/products/storage/">Storage</a> </li> 
+         <li> <a href="/s3/"><span>Amazon S3</span></a> </li> 
+         <li> <a href="/s3/developer-resources/"><span>Amazon S3 resources</span></a> </li> 
+        </ul> 
+        <h1>Amazon S3 resources</h1> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-small-v-margin lb-grid lb-row lb-row-max-large lb-snap" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="grid3" data-da-so-url="/s3"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Documentation" class="lb-txt-bold lb-h2 lb-title" style="margin-bottom:0px;"> Documentation</h2> 
+      <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-rtxt"> 
+         <p>Developer Guide&nbsp; <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/">HTML</a> | <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-dg.pdf">PDF</a> | <a href="http://www.amazon.com/dp/B0763Z4YVV">Kindle</a></p> 
+         <p>Console User Guide <a href="http://docs.aws.amazon.com/AmazonS3/latest/user-guide/what-is-s3.html" target="_blank">HTML</a> | <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/s3-user-guide.pdf" target="_blank">PDF</a> | <a href="https://www.amazon.com/dp/B078XC7TRC" target="_blank">Kindle</a></p> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-rtxt"> 
+         <p>API References&nbsp; <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">HTML</a> | <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/s3-api.pdf">PDF</a></p> 
+         <p>Getting Started Guide <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html" target="_blank">HTML</a> | <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/s3-gsg.pdf" target="_blank">PDF</a>&nbsp;| <a href="https://www.amazon.com/dp/B076444XFR" target="_blank">Kindle</a></p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f3f7;" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="grid2" data-da-so-url="/s3"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Whitepapers_.26_tutorials" class="lb-txt-bold lb-h2 lb-title"> Whitepapers &amp; tutorials</h2> 
+       <div class="lb-txt-normal lb-txt-14 lb-txt-lead lb-tiny-v-margin lb-rtxt"> 
+        <div> 
+         <a href="https://d1.awsstatic.com/whitepapers/AmazonS3BestPractices.pdf?did=wp_card&amp;trk=wp_card" target="_blank">Best Practices Design Patterns: Optimizing Amazon S3 Performance</a> 
+        </div> 
+        <div>
+          Best Practies for building a Data Lake on Amazon S3 - Whitepaper&nbsp; 
+         <a href="https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/building-data-lake-aws.html" target="_blank">HTML</a> | 
+         <a href="https://d1.awsstatic.com/whitepapers/Storage/data-lake-on-aws.pdf" target="_blank">PDF</a> 
+        </div> 
+        <div> 
+         <a href="https://aws.amazon.com/solutions/data-lake-solution/" target="_blank">Building a data lake on S3&nbsp;- Solution Guide</a> 
+        </div> 
+        <div> 
+         <a href="https://d1.awsstatic.com/whitepapers/Migrating_to_Apache_Hbase_on_Amazon_S3_on_Amazon_EMR.pdf?did=wp_card&amp;trk=wp_card" target="_blank">Migrating to Apache HBase on Amazon S3 - Whitepaper</a> 
+        </div> 
+        <div> 
+         <a href="https://d1.awsstatic.com/whitepapers/architecture/AWS-HPC-Lens.pdf?did=wp_card&amp;trk=wp_card" target="_blank">High Performance Computing on S3 - Whitepaper</a> 
+        </div> 
+        <div> 
+         <a href="https://d1.awsstatic.com/whitepapers/architecture/AWS-Serverless-Applications-Lens.pdf?did=wp_card&amp;trk=wp_card" target="_blank">Serverless Application Storage on S3 - Whitepaper</a> 
+        </div> 
+        <div> 
+         <a href="https://d1.awsstatic.com/whitepapers/Big_Data_Analytics_Options_on_AWS.pdf?did=wp_card&amp;trk=wp_card" target="_blank">Big Data Analytics Storage - Whitepaper</a> 
+        </div> 
+        <div> 
+         <a href="/s3/videos/" target="_blank">S3 Video Tutorials</a> 
+        </div> 
+        <div> 
+         <a href="https://d1.awsstatic.com/products/S3/AmazonS3_IndustryBrief_Financial_Services_042519.pdf" target="_blank">Amazon S3 for Financial Services PDF</a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-grid lb-row lb-row-max-large lb-snap" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="grid3" data-da-so-url="/s3"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="Webinars" class="lb-txt-bold lb-h2 lb-title" style="margin-bottom:0px;"> Webinars</h2> 
+      <div class="lb-xb-grid-wrap" style="margin-top:0px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="VS9OzJclhDk" data-source="youtube" data-video-title="What's new with Amazon S3 (2020)"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              What's new with Amazon S3 (2020) 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=VS9OzJclhDk" /> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="-0-jujMLw6Y" data-source="youtube" data-video-title="S3 Replication best practices"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              S3 Replication best practices 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=-0-jujMLw6Y" /> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="S3356Vu45Mg" data-source="youtube" data-video-title="Optimize your data lake on Amazon S3"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              Optimize your data lake on Amazon S3 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=S3356Vu45Mg" /> 
+          </figure> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="margin-top:0px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="7M3s_ix9ljE" data-source="youtube" data-video-title="Amazon S3 Security Best Practices"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              Amazon S3 Security Best Practices 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=7M3s_ix9ljE" /> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="wFSv2gSQADI" data-source="youtube" data-video-title="Amazon S3 Storage Classes"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              Amazon S3 Storage Classes 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=wFSv2gSQADI" /> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="x-YjzkPg-1Y" data-source="youtube" data-video-title="S3 Batch Operations: Manage millions of objects"> 
+          <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+           <div class="video-js"></div> 
+           <figcaption> 
+            <div itemprop="name">
+              S3 Batch Operations: Manage millions of objects 
+            </div> 
+           </figcaption> 
+           <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=x-YjzkPg-1Y" /> 
+          </figure> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f3f7;" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="grid2" data-da-so-url="/s3"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Overview_videos" class="lb-txt-bold lb-h2 lb-title" style="margin-bottom:0px;"> Overview videos</h2> 
+       <div class="lb-xb-grid-wrap" style="margin-top:0px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3"> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="mLV0GT2UVcs" data-source="youtube" data-video-title="Best practices for Amazon S3: re:Invent 2019"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Best practices for Amazon S3: re:Invent 2019 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=mLV0GT2UVcs" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="VUFX8W8bvjo" data-source="youtube" data-video-title="What's new with Amazon S3: re:Invent 2019"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               What's new with Amazon S3: re:Invent 2019 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=VUFX8W8bvjo" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="9MzaGFdPfg4" data-source="youtube" data-video-title="Best Practices for Building a Data Lake on Amazon S3"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Best Practices for Building a Data Lake on Amazon S3 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=9MzaGFdPfg4" /> 
+           </figure> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-xb-grid-wrap" style="margin-top:0px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3"> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="DzRyrvUF-C0" data-source="youtube" data-video-title="Beyond eleven nines: Lessons from Amazon S3 culture of durability"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Beyond eleven nines: Lessons from Amazon S3 culture of durability 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=DzRyrvUF-C0" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="tGICWSP-kC4" data-source="youtube" data-video-title="Managing your data at scale with Amazon S3 storage management tools"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Managing your data at scale with Amazon S3 storage management tools 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=tGICWSP-kC4" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="2nkF_AK96BE" data-source="youtube" data-video-title="Deep dive on Amazon S3 security and management "> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Deep dive on Amazon S3 security and management 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=2nkF_AK96BE" /> 
+           </figure> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-xb-grid-wrap" style="margin-top:0px;"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3"> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="UPzsRk2lFWE" data-source="youtube" data-video-title="Guidelines and design patterns for optimizing cost in Amazon S3"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Guidelines and design patterns for optimizing cost in Amazon S3 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=UPzsRk2lFWE" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="M4eFZtZJDKk" data-source="youtube" data-video-title="Data archiving &amp; digital preservation solutions with AWS"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Data archiving &amp; digital preservation solutions with AWS 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=M4eFZtZJDKk" /> 
+           </figure> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="54AhwfME6wI" data-source="youtube" data-video-title="Optimize your storage performance with Amazon S3"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               Optimize your storage performance with Amazon S3 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=54AhwfME6wI" /> 
+           </figure> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-grid lb-row lb-row-max-large lb-snap" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="resources" data-da-so-type="viewport" data-da-so-version="grid3" data-da-so-url="/s3"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h2 id="SDKs" class="lb-txt-bold lb-txt-none lb-h2 lb-title" style="color:#232F3E;"> SDKs</h2> 
+      <div class="lb-rtxt"> 
+       <p>Developers building applications can choose from a wide variety of AWS SDKs that simplify using Amazon S3 in their use case. AWS SDKs for Amazon S3 include libraries, code samples and documentation for the following programming languages and platforms.</p> 
+      </div> 
+      <div class="lb-none-v-margin lb-xb-grid-wrap"> 
+       <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-2 lb-mid-xb-6"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id="Java_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> Java SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-java/?trk=s3-gs"> <img alt="Java SDK" title="Java SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-13.7d8644e81120c22f4d253cb7ff921e5fbe36bafa.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id=".NET_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> .NET SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-net/?trk=s3-gs"> <img alt=".NET SDK" title=".NET SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-061.5dd6c3b00e3c64541a230ca9be2f2cc678a02a90.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id="Python_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> Python SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-python/?trk=s3-gs"> <img alt="Python SDK" title="Python SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-031.64bedaeba7b7550285b931405e9a79695d3156aa.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id="Php_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> Php SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-php/?trk=s3-gs"> <img alt="Php SDK" title="Php SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-051.784caae7f643c02eeb727dbd9b4cd96b1a423e6c.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id="Node.js_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> Node.js SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-node-js/?trk=s3-gs"> <img alt="Node.js SDK" title="Node.js SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-14.02d2e9c0976a0777af9ec363ced126a644eeb8b8.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-box lb-box-pw"> 
+          <h3 id="Ruby_SDK" class="lb-txt-none lb-txt-14 lb-h3 lb-title"> Ruby SDK</h3> 
+          <figure class="lb-img"> 
+           <a href="/sdk-for-ruby/?trk=s3-gs"> <img alt="Ruby SDK" title="Ruby SDK" src="//d1.awsstatic.com/Getting%20Started/icons-language/v2/SDK_icons-071.fa82e3e33affd0d230254747160e3932c4190855.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <h3 id="Blogs" class="lb-txt-none lb-h3 lb-title"> Blogs</h3> 
+      <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="s3/developer-resources" data-da-so-version="bloglist" data-da-so-language="en" data-da-so-name="tile7" data-da-so-type="viewport" data-da-type="so"> 
+       <div class="lb-directory-cards aws-directories-items m-cards-light" data-api="search" data-directory-id="blog-posts" data-cards-id="amazon-simple-storage-services-s3-resources-blog" data-sort_order="desc" data-size="10" data-last-page-num="false" data-theme-config="{&quot;themeName&quot;:&quot;wp-article-list&quot;,&quot;themeVersion&quot;:&quot;1.0.0&quot;,&quot;formatVersion&quot;:&quot;1.0.0&quot;,&quot;themeJS&quot;:null,&quot;hasThemeJS&quot;:false,&quot;hasShare&quot;:false,&quot;hasRelated&quot;:false,&quot;hasConnect&quot;:false,&quot;hasAddToCalendar&quot;:false,&quot;isList&quot;:false,&quot;mappings&quot;:{&quot;requiredFields&quot;:{&quot;title&quot;:&quot;title&quot;,&quot;link&quot;:&quot;link&quot;},&quot;optionalFields&quot;:{&quot;publishedDate&quot;:&quot;createdDate&quot;},&quot;dialogFields&quot;:{}}}" data-error-message="Something went wrong. We have been notified and are working to fix the issue." data-lb-comp="cards" data-sort_by="item.additionalFields.createdDate" data-tag="blog-posts#category-storage#s3-select|blog-posts#category-storage#glacier-select"> 
+        <div class="m-cards-skl m-cards-skl-"> 
+        </div> 
+        <div class="m-cards-header"> 
+         <span class="m-card-sort-container"> 
+          <div class="lb-form-item m-disabled m-sort" data-lb-comp="sort" data-sort-scope="blog-posts" data-ui-scope="amazon-simple-storage-services-s3-resources-blog"> 
+           <div class="lb-dropdown lb-dropdown-p"> 
+            <input class="lb-dropdown-selected" type="hidden" /> 
+            <ul class="lb-dropdown-list" role="listbox"> 
+            </ul> 
+           </div> 
+          </div> </span> 
+        </div> 
+        <script type="text/x-handlebars-template">
+        {{#each items}}
+<li class="m-card"
+{{#if mappedFields.trkOutputParam}}data-trk-output-param="{{cleanText mappedFields.trkOutputParam}}"{{/if}}
+{{#if mappedFields.trkCampaign}}data-trk-campaign="{{cleanText mappedFields.trkCampaign}}"{{/if}}
+data-trk-override-with-qs="{{cleanText mappedFields.trkOverrideWithQs}}">
+  <div class="m-card-title"><a href="{{mappedFields.link}}">{{cleanHTMLEntity mappedFields.title}}</a></div>
+  <div class="m-card-secondary">by {{stringArray item.author true}}, {{formatDate mappedFields.publishedDate "L"}}</div>
+</li>
+{{/each}}</script> 
+        <div class="aws-directories-container-wrapper"> 
+         <section class="m-card-wp-article-list lb-row lb-snap lb-row-max-large"> 
+          <ul class="aws-directories-container"> 
+          </ul> 
+         </section> 
+        </div> 
+        <div class="m-cards-no-items"> 
+         <div class="lb-rtxt"> 
+          <p>No blog posts have been found at this time. Please see the <a href="/blogs/">AWS Blog</a> for other resources.&nbsp;</p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="data-attr-wrapper lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f3f7;" data-da-type="so" data-da-so-category="monitoring" data-da-so-language="en" data-da-so-name="getting-started" data-da-so-type="viewport" data-da-so-version="grid4" data-da-so-url="/s3"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Ready_to_get_started.3F" class="lb-txt-bold lb-h2 lb-title"> Ready to get started?</h2> 
+       <div class="lb-mid-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div> 
+           <img alt="Product-Page_Standard-Icons_01_Product-Features_SqInk" title="Product-Page_Standard-Icons_01_Product-Features_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_01_Product-Features_SqInk.a8d5666758afc5121b4eb818ae18126031c4b61e.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+           Check out the product features 
+         </div> 
+         <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;">Learn more about features for data management, security, access management, analytics, and more.<br /> </p> 
+         </div> 
+         <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="/s3/features/"> Learn more&nbsp;<i class="icon-angle-double-right"></i></a> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div> 
+           <img alt="Product-Page_Standard-Icons_02_Sign-Up_SqInk" title="Product-Page_Standard-Icons_02_Sign-Up_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+           Sign up for a free account 
+         </div> 
+         <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;">Instantly get access to the AWS Free Tier and start experimenting with Amazon S3.&nbsp;</p> 
+         </div> 
+         <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://aws.amazon.com/free/"> Sign up&nbsp;<i class="icon-angle-double-right"></i></a> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div> 
+           <img alt="Product-Page_Standard-Icons_03_Start-Building_SqInk" title="Product-Page_Standard-Icons_03_Start-Building_SqInk" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_03_Start-Building_SqInk.6a1ef4429a6604cda9b0857084aa13e2ee4eebca.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-18 lb-txt">
+           Start building in the console 
+         </div> 
+         <div class="lb-tiny-align-center lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;">Get started building with Amazon S3 in the AWS Console.<br /> </p> 
+         </div> 
+         <a class="lb-tiny-align-center lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt" href="https://console.aws.amazon.com/"> Get started&nbsp;<i class="icon-angle-double-right"></i></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Sign In to the Console</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Learn About AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/what-is-aws/?nc1=f_cc" target="_blank">What Is AWS?</a></li> 
+       <li><a href="/what-is-cloud-computing/?nc1=f_cc" target="_blank">What Is Cloud Computing?</a></li> 
+       <li><a href="/devops/what-is-devops/?nc1=f_cc" target="_blank">What Is DevOps?</a></li> 
+       <li><a href="/containers/?nc1=f_cc" target="_blank">What Is a Container?</a></li> 
+       <li><a href="/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">What Is a Data Lake?</a></li> 
+       <li><a href="/security/?nc1=f_cc" target="_blank">AWS Cloud Security</a></li> 
+       <li><a href="/new/?nc1=f_cc" target="_blank">What's New</a></li> 
+       <li><a href="/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Press Releases</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Resources for AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/getting-started/?nc1=f_cc" target="_blank">Getting Started</a></li> 
+       <li><a href="/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+       <li><a href="/solutions/?nc1=f_cc" target="_blank">AWS Solutions Portfolio</a></li> 
+       <li><a href="/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+       <li><a href="/faqs/?nc1=f_dr" target="_blank">Product and Technical FAQs</a></li> 
+       <li><a href="/resources/analyst-reports/?nc1=f_cc" target="_blank">Analyst Reports</a></li> 
+       <li><a href="/partners/?nc1=f_dr" target="_blank">AWS Partner Network</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Developers on AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/developer/?nc1=f_dr" target="_blank">Developer Center</a></li> 
+       <li><a href="/developer/tools/?nc1=f_dr" target="_blank">SDKs &amp; Tools</a></li> 
+       <li><a href="/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+       <li><a href="/developer/language/python/?nc1=f_dr" target="_blank">Python on AWS</a></li> 
+       <li><a href="/developer/language/java/?nc1=f_dr" target="_blank">Java on AWS</a></li> 
+       <li><a href="/developer/language/php/?nc1=f_cc" target="_blank">PHP on AWS</a></li> 
+       <li><a href="/developer/language/javascript/?nc1=f_dr" target="_blank">Javascript on AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Help</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/contact-us/?nc1=f_m" target="_blank">Contact Us</a></li> 
+       <li><a href="/careers/?nc1=f_hi" target="_blank">AWS Careers</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">File a Support Ticket</a></li> 
+       <li><a href="/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Knowledge Center</a></li> 
+       <li><a href="/premiumsupport/?nc1=f_dr" target="_blank">AWS Support Overview</a></li> 
+       <li><a href="/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Create an AWS Account</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon is an Equal Opportunity Employer: 
+        <i> Minority / Women / Disability / Veteran / Gender Identity / Sexual Orientation / Age.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Language</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:47:23.476-0700 -->  
+ </body>
+</html>

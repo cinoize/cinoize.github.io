@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+<meta charset="utf-8">
+<title>Guessing Names Based on What They Start With | FlowingData</title>
+<meta name="description" content="FlowingData">
+<meta name="author" content="Nathan Yau">
+<meta name="generator" content="WordPress 5.3.2" /> 
+<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7626174/696048/css/fonts.css" />
+<link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="//flowingdata.com/feed" />
+<link rel="pingback" href="https://flowingdata.com/xmlrpc.php" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+<link rel="stylesheet" href="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/stylesheets/skeleton-3.css">
+<link rel="stylesheet" href="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/stylesheets/layout.css">
+<!--[if lt IE 9]>
+		<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+<link rel="shortcut icon" href="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+<link rel='dns-prefetch' href='//s.w.org' />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/flowingdata.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='yarppWidgetCss-css' href='https://flowingdata.com/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://flowingdata.com/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='bbp-default-css' href='https://flowingdata.com/wp-content/plugins/bbpress/templates/default/css/bbpress.min.css?ver=2.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='hm_bbpui-css' href='https://flowingdata.com/wp-content/plugins/image-upload-for-bbpress/css/bbp-image-upload.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='https://flowingdata.com/wp-content/plugins/jetpack/css/jetpack.css?ver=8.4.2' type='text/css' media='all' />
+<script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type='text/javascript' src='https://flowingdata.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://flowingdata.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://flowingdata.com/wp-content/plugins/image-upload-for-bbpress/js/bbp-image-upload.js?ver=5.3.2'></script>
+<link rel='https://api.w.org/' href='https://flowingdata.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://flowingdata.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://flowingdata.com/wp-includes/wlwmanifest.xml" />
+<link rel='prev' title='Make a streets map of anywhere in the world' href='https://flowingdata.com/2020/01/20/make-a-streets-map-of-anywhere-in-the-world/' />
+<link rel='next' title='How police use facial recogntion' href='https://flowingdata.com/2020/01/22/how-police-use-facial-recogntion/' />
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://flowingdata.com/2020/01/21/name-guess/" />
+<link rel='shortlink' href='https://flowingdata.com/?p=58804' />
+<link rel="alternate" type="application/json+oembed" href="https://flowingdata.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fflowingdata.com%2F2020%2F01%2F21%2Fname-guess%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://flowingdata.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fflowingdata.com%2F2020%2F01%2F21%2Fname-guess%2F&#038;format=xml" />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel='dns-prefetch' href='//i0.wp.com' />
+<link rel='dns-prefetch' href='//i1.wp.com' />
+<link rel='dns-prefetch' href='//i2.wp.com' />
+<style type='text/css'>img#wpstats{display:none}</style>
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Guessing Names Based on What They Start With" />
+<meta property="og:url" content="https://flowingdata.com/2020/01/21/name-guess/" />
+<meta property="og:description" content="I&#8217;m terrible at names, but maybe data can help. Put in your sex, the decade when you were born, and start putting in your name. I&#8217;ll try to guess before you&#8217;re done." />
+<meta property="article:published_time" content="2020-01-21T11:44:16+00:00" />
+<meta property="article:modified_time" content="2020-01-21T16:31:15+00:00" />
+<meta property="og:site_name" content="FlowingData" />
+<meta property="og:image" content="https://i1.wp.com/flowingdata.com/wp-content/uploads/2020/01/name-guess-featured.png?fit=1200%2C698&amp;ssl=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="698" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@flowingdata" />
+<meta name="twitter:text:title" content="Guessing Names Based on What They Start With" />
+<meta name="twitter:image" content="https://i1.wp.com/flowingdata.com/wp-content/uploads/2020/01/name-guess-featured.png?fit=1200%2C698&#038;ssl=1&#038;w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="https://i2.wp.com/flowingdata.com/wp-content/uploads/2014/10/logo-lone-square-600-5451c585_site_icon.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i2.wp.com/flowingdata.com/wp-content/uploads/2014/10/logo-lone-square-600-5451c585_site_icon.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://i2.wp.com/flowingdata.com/wp-content/uploads/2014/10/logo-lone-square-600-5451c585_site_icon.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i2.wp.com/flowingdata.com/wp-content/uploads/2014/10/logo-lone-square-600-5451c585_site_icon.png?fit=270%2C270&#038;ssl=1" />
+</head>
+<body data-rsssl=1>
+<div id="main-wrapper">
+<a name="top"></a>
+<div id="header-wrapper">
+<div id="header" class="container">
+<div id="logo" class="four columns">
+<a href="https://flowingdata.com/">
+<img src="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/logo-v2d.png" />
+</a>
+</div>
+<div id="nav" class="eight columns">
+<ul>
+<li><a href="https://flowingdata.com/about/">About</a></li>
+
+<li><a href="//flowingdata.com/category/projects/">
+Projects</a>
+</li>
+<li><a href="//flowingdata.com/category/tutorials/">
+Tutorials</a>
+</li>
+<li class="hide-on-small"><a href="https://flowingdata.com/courses/">Courses</a></li>
+<li class="social hide-on-small">
+<a href="https://flowingdata.com/newsletter/"><img src="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/email-icon100.png" /></a>
+<a href="https://twitter.com/flowingdata" target="_blank"><img src="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/twitter-logo100.png" /></a>
+<a href="https://flowingdata.com/feed" target="_blank"><img src="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/rss-icon100.png" /></a>
+</li>
+</ul>
+</div>
+<div id="login" class="four columns">
+<ul>
+<li><a href="https://flowingdata.com/membership/" class="highlight">Become a Member</a></li>
+<li>&nbsp;|&nbsp;</li>
+<li><a href="https://flowingdata.com/wp-login.php">Log in</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content-wrapper" class="container">
+<div id="single-feature-post" class="archive-post">
+<div class="centered sixteen columns">
+<div id="preview" style="margin-bottom:1rem">
+<img src="https://flowingdata.com/wp-content/uploads/2020/01/name-guess-featured-210x122.png" alt="" width="210" height="122" class="alignnone size-thumbnail wp-image-58813" /> </div>
+<div class="meta-bar">
+<strong><a href="https://flowingdata.com/category/projects/data-underload/" rel="category tag">Data Underload</a></strong> &nbsp;/&nbsp; <a href="https://flowingdata.com/tag/amelia-mcnamara/" rel="tag">Amelia McNamara</a>, <a href="https://flowingdata.com/tag/guess/" rel="tag">guess</a>, <a href="https://flowingdata.com/tag/names/" rel="tag">names</a> </div>
+<h1>Guessing Names Based on What They Start With</h1>
+<div class="author">
+By <strong><a href="https://flowingdata.com/about-nathan" title="Visit Nathan Yau&#8217;s website" rel="author external">Nathan Yau</a></strong>
+</div>
+</div>
+<div class="entry ten columns offset-by-three">
+<p>I&#8217;m really bad at names. A lot of the time when I meet someone new, the name goes in one ear and out the other. If I manage to remember the name short-term, remembering long-term is still a toss-up in favor of forgetting.</p>
+<p>But sometimes I can remember the first letter and then I can cycle the alphabet on the second letter to jog my memory.</p>
+<p>I wonder: If I can remember the first letter or two, can I use name data from the Social Security Administration to make an educated guess about the full name?</p>
+<p>Put in your sex, the decade you were born, and start entering your name below. I&#8217;ll try to guess your full name before you&#8217;re done.<br />
+&nbsp;</p>
+<div class="extrawide" style="border-bottom:2px solid #e0e0e0;border-top:2px solid #e0e0e0;padding:2rem 0 0 0">
+<div id="nameguess"></div>
+</div>
+<p>&nbsp;</p>
+<p>Oh, so that&#8217;s why sometimes people call me Nick (or why people often <a href="https://www.amelia.mn/blog/misc/2017/01/13/Amanda.html" rel="noopener noreferrer" target="_blank">call Amelia the more common Amanda</a>).</p>
+<p>This is based on data from the Social Security Administration, up to 2018. It&#8217;s relatively comprehensive, but there are a few limitations. First, it&#8217;s data for the United States, so the numbers don&#8217;t really apply elsewhere. Second, the SSA doesn&#8217;t include names with fewer than five people in a year, so the chart doesn&#8217;t cover more unique names. Third, there were no Social Security Numbers before 1935, so the name counts are fuzzier for years before that.</p>
+<p>But like I said, the data still has a wide range. I aggregated the annual data by decade and calculated percentages by dividing name counts by total number of Social Security Numbers provided.</p>
+<p>Before you enter anything, the chart shows the most popular names for the given sex and decade. Then as you enter a name, the chart shows conditional probabilities. The more information you give it, the stronger the guess.</p>
+<p>It&#8217;s a simplification of how we remember names I am sure, but it seems to do a decent job.</p>
+<p>In reality, this is me all of the time:</p>
+<div class="arve-wrapper" data-mode="normal" data-provider="youtube" id="arve-IkX-hmH2FQ" style="max-width:1090px;" itemscope itemtype="http://schema.org/VideoObject">
+<div class="arve-embed-container" style="padding-bottom:56.250000%"><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="arve-iframe fitvidsignore" frameborder="0" name sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox" scrolling="no" src="https://www.youtube-nocookie.com/embed/I_kX-hmH2FQ?iv_load_policy=3&#038;modestbranding=1&#038;rel=0&#038;autohide=1&#038;playsinline=1&#038;autoplay=0" width="480" height="270"></iframe></div>
+</div>
+<p>But from now on, when I can&#8217;t remember someone&#8217;s name, I&#8217;ll make them slowly spell it out so that I can guess based on this data. It will be so awkward, yet so satisfying.</p>
+<div class="section-break"></div>
+<h3>Notes</h3>
+<ul>
+<li>This was inspired by Amelia McNamara&#8217;s curiosity as to <a href="https://www.amelia.mn/blog/misc/2017/01/13/Amanda.html" rel="noopener noreferrer" target="_blank">why so many people call her Amanda</a>.</li>
+<li>I used name data from the Social Security Administration, which is current up to 2018. But Social Security Numbers weren&#8217;t a thing until 1935, so the name data before that is more fuzzy.</li>
+<li>The SSA data, which is annual, doesn&#8217;t include names with fewer than five people. And to keep file size down, I limited the above names to those with at least 100 people in each decade.</li>
+<li>I used <a href="https://r-project.org" rel="noopener noreferrer" target="_blank">R</a> for analysis and <a href="https://d3js.org" rel="noopener noreferrer" target="_blank">D3.js</a> for the interactive.</li>
+</ul>
+<p><script type="text/javascript" src="//flowingdata.com/js/pym.min.js"></script><br />
+<script>
+var nameguess = new pym.Parent('nameguess', '//flowingdata.com/projects/2020/name-guess/', {});
+</script></p>
+</div>
+<div class="ten columns offset-by-three">
+<span id="comments"></span>
+</div>
+<div class="clr"></div>
+<div id="join-now" style='margin-top:0px;' class="sixteen columns">
+<div class="ten columns offset-by-three alpha omega">
+<p><strong><span class="sanserif">Become a Member</span></strong><br /> <em>Support an independent site. Make great charts.</em></p>
+<a href="https://flowingdata.com/membership/" class="action-button monthly">Join Now</a>
+</div>
+<div class="clr"></div>
+</div>
+<div class="clr"></div>
+<div id="favorites" class="container across post-list">
+<div class="sixteen columns">
+<h3 class="toplevel" style="border-top:1px solid #ccc;padding-top:30px;">Favorites</h3>
+</div>
+<div class="archive-post preview four columns">
+<a href="https://flowingdata.com/2010/03/20/graphical-perception-learn-the-fundamentals-first/" rel="bookmark">
+<div class="archive-featured-image cropped">
+<img width="400" height="250" src="https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?resize=400%2C250&amp;ssl=1" class="attachment-archive-cropped size-archive-cropped wp-post-image" alt="" srcset="https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?resize=210%2C130&amp;ssl=1 210w, https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?resize=400%2C250&amp;ssl=1 400w" sizes="(max-width: 400px) 100vw, 400px" data-attachment-id="29603" data-permalink="https://flowingdata.com/2010/03/20/graphical-perception-learn-the-fundamentals-first/perception/" data-orig-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?fit=545%2C337&amp;ssl=1" data-orig-size="545,337" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="perception" data-image-description="" data-medium-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?fit=545%2C337&amp;ssl=1" data-large-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2010/03/perception1.png?fit=545%2C337&amp;ssl=1" /> </div>
+<h4>Graphical perception &#8211; learn the fundamentals first</h4>
+<div class="excerpt"><p>Before you dive into the advanced stuff &#8211; like just about everything in your life &#8211; you have to learn the fundamentals before you know when you can break the rules. </p>
+</div>
+</a>
+</div>
+<div class="archive-post preview four columns">
+<a href="https://flowingdata.com/2017/12/28/10-best-data-visualization-projects-of-2017/" rel="bookmark">
+<div class="archive-featured-image cropped">
+<img width="400" height="250" src="https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?resize=400%2C250&amp;ssl=1" class="attachment-archive-cropped size-archive-cropped wp-post-image" alt="" srcset="https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?resize=400%2C250&amp;ssl=1 400w, https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?zoom=2&amp;resize=400%2C250&amp;ssl=1 800w, https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?zoom=3&amp;resize=400%2C250&amp;ssl=1 1200w" sizes="(max-width: 400px) 100vw, 400px" data-attachment-id="50676" data-permalink="https://flowingdata.com/2017/12/28/10-best-data-visualization-projects-of-2017/best-of-2017/" data-orig-file="https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?fit=2180%2C878&amp;ssl=1" data-orig-size="2180,878" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Best of 2017" data-image-description="" data-medium-file="https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?fit=720%2C290&amp;ssl=1" data-large-file="https://i0.wp.com/flowingdata.com/wp-content/uploads/2017/12/best-of-2017.png?fit=1090%2C439&amp;ssl=1" /> </div>
+<h4>10 Best Data Visualization Projects of 2017</h4>
+<div class="excerpt"><p>It was a rough year, which brought about a lot of good work. Here are my favorite data visualization projects of the year. </p>
+</div>
+</a>
+</div>
+<div class="archive-post preview four columns">
+<a href="https://flowingdata.com/2014/02/05/where-people-run/" rel="bookmark">
+<div class="archive-featured-image cropped">
+<img width="400" height="250" src="https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?resize=400%2C250&amp;ssl=1" class="attachment-archive-cropped size-archive-cropped wp-post-image" alt="" srcset="https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?resize=400%2C250&amp;ssl=1 400w, https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?zoom=2&amp;resize=400%2C250&amp;ssl=1 800w" sizes="(max-width: 400px) 100vw, 400px" data-attachment-id="33760" data-permalink="https://flowingdata.com/2014/02/05/where-people-run/dc-feature/" data-orig-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?fit=954%2C473&amp;ssl=1" data-orig-size="954,473" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Where people run" data-image-description="" data-medium-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?fit=720%2C357&amp;ssl=1" data-large-file="https://i1.wp.com/flowingdata.com/wp-content/uploads/2014/02/DC-feature.png?fit=954%2C473&amp;ssl=1" /> </div>
+<h4>Where People Run in Major Cities</h4>
+<div class="excerpt"><p>There are many exercise apps that allow you to keep &hellip;</p>
+</div>
+</a>
+</div>
+<div class="archive-post preview four columns">
+<a href="https://flowingdata.com/2019/04/12/middle-income-ranges-in-each-state/" rel="bookmark">
+<div class="archive-featured-image cropped">
+<img width="400" height="250" src="https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?resize=400%2C250&amp;ssl=1" class="attachment-archive-cropped size-archive-cropped wp-post-image" alt="" srcset="https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?resize=400%2C250&amp;ssl=1 400w, https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?zoom=2&amp;resize=400%2C250&amp;ssl=1 800w, https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?zoom=3&amp;resize=400%2C250&amp;ssl=1 1200w" sizes="(max-width: 400px) 100vw, 400px" data-attachment-id="55817" data-permalink="https://flowingdata.com/2019/04/12/middle-income-ranges-in-each-state/middle-income-featured/" data-orig-file="https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?fit=1944%2C1100&amp;ssl=1" data-orig-size="1944,1100" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="middle-income-featured" data-image-description="" data-medium-file="https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?fit=750%2C424&amp;ssl=1" data-large-file="https://i2.wp.com/flowingdata.com/wp-content/uploads/2019/04/middle-income-featured.png?fit=1090%2C617&amp;ssl=1" /> </div>
+<h4>What Qualifies as Middle-Income in Each State</h4>
+<div class="excerpt"><p>The meaning of &#8220;middle-income&#8221; changes a lot depending on where you live and your household size.</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="clr"></div>
+</div>
+<div id="footer-wrapper">
+<div id="footer" class="container">
+<ul id="final-links">
+<li><a href="https://flowingdata.com/about">About</a></li>
+<li><a href="https://flowingdata.com/contact">Contact</a></li>
+<li><a href="https://twitter.com/flowingdata" target="_blank">Twitter</a></li>
+<li><a href="https://flowingdata.com/newsletter/">Newsletter</a></li>
+<li><a href="https://flowingdata.com/feed" target="_blank">RSS</a></li>
+</ul>
+<div id="bottom">Copyright &copy; 2007-Present FlowingData. All rights reserved.</div>
+<div id="bottom-logo"><a href="https://flowingdata.com"><img src="https://flowingdata.com/wp-content/themes/fd-modern-5-8-3/images/logo-lone-v2d.png" /></a></div>
+</div>
+</div>
+<link rel='stylesheet' id='advanced-responsive-video-embedder-css' href='https://flowingdata.com/wp-content/plugins/advanced-responsive-video-embedder/public/arve.min.css?ver=8.10.20' type='text/css' media='all' />
+<script type='text/javascript' src='https://flowingdata.com/wp-includes/js/comment-reply.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://flowingdata.com/wp-content/plugins/jetpack/_inc/build/photon/photon.min.js?ver=20191001'></script>
+<script type='text/javascript' src='https://flowingdata.com/wp-includes/js/wp-embed.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://flowingdata.com/wp-content/plugins/advanced-responsive-video-embedder/public/arve.min.js?ver=8.10.20'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202017.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.4.2',blog:'1938889',post:'58804',tz:'-7',srv:'flowingdata.com'} ]);
+	_stq.push([ 'clickTrackerInit', '1938889', '58804' ]);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

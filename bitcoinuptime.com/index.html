@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>bitcoin-uptime</title>
+  <meta name="description" content="bitcoin network reliability">
+  <meta name="keywords" content="bitcoin uptime btc bitcoin network reliability decentralized currency cryptocurrency digital-currency virtual-currency cryptography blockchain block crypto">
+  
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script src="scripts/jquery-3.1.1.min.js"></script>
+  <script src="semantic/semantic.min.js"></script>
+
+</head>
+<body>
+  <div class="ui container" style="padding-top: 2em; text-align: center;">
+    <h2>The Bitcoin network has been functional for</h2>
+
+    <div class="ui statistic">
+      <h1 id="uptime-container" class="value"></h1>
+    </div>
+
+    <h2>of the time since its inception on Jan 3 2009 02:54:25 GMT</h2>
+
+    <h3 style="margin-top: 5em;">Downtime events</h3>
+    
+    <p><a href="https://en.bitcoin.it/wiki/Value_overflow_incident">CVE-2010-5139:</a> 8 hours and 27 minutes</p>
+
+    <p><a href="https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki">CVE-2013-3220:</a> 6 hours and 20 minutes</p>
+    
+    <h3 style="margin-top: 5em;">Contributions</h3>
+
+    <h4>Bitcoin</h4>
+    <a title="donations keep this server up :)" href="bitcoin:352896JDeD1jajmaUYy4xzqgGocDsQY6Hz" class="ui labeled icon button"><i class="ui bitcoin icon"></i>352896JDeD1jajmaUYy4xzqgGocDsQY6Hz</a>
+
+    <h4>Code</h4>
+    <a href="https://github.com/findbl0k/bitcoinUptime" class="ui labeled icon button"><i class="ui fork icon"></i>Fork me!</a>
+  </div>
+
+  <script>
+    function displayUptime() {
+      // Current time in seconds from the unix epoch start
+      var timenow = Math.floor(new Date().getTime() / 1000);
+
+      // Seconds since the bitcoin epoch.
+      // Where 1230951265 is the number of seconds since the unix epoch start at
+      // the time of the first block on Jan 3 2009 02:54:25 GMT
+      var totaltime = timenow - 1230951265;
+
+      // Downtime for CVE-2010-5139: 8 hours, 27 minutes or 507 minutes = 30420 seconds.
+      // See https://en.bitcoin.it/wiki/Value_overflow_incident
+      // Discussion https://github.com/findbl0k/bitcoinUptime/issues/3
+      var downtime2010 = 30420;
+
+      // Downtime for CVE-2013-3220: 6 hours, 20 minutes or 380 minutes = 22800 seconds.
+      // See https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki
+      var downtime2013 = 22800;
+
+      var downtimeTotal = downtime2010 + downtime2013;
+
+      var uptimePercent = 100 * (totaltime - downtimeTotal) / totaltime;
+      var uptimeString = uptimePercent.toFixed(10).toString().concat(" %");
+
+      document.getElementById("uptime-container").innerHTML = uptimeString;
+    }
+
+    displayUptime();
+    setInterval(displayUptime, 100);
+  </script>
+</body>
+</html>

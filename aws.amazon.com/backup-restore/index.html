@@ -1,0 +1,928 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="no-js aws-lng-en_US" lang="en-US" data-static-assets="https://a0.awsstatic.com" data-js-version="1.0.326" data-css-version="1.0.337">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="dns-prefetch" href="https://a0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d0.awsstatic.com" /> 
+  <link rel="dns-prefetch" href="//d1.awsstatic.com" /> 
+  <title>Backup and Data Protection Solutions | Amazon Web Services</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="robots" content="index, follow" /> 
+  <link rel="canonical" href="https://aws.amazon.com/backup-restore/" /> 
+  <link rel="alternate" href="//aws.amazon.com/de/backup-restore/" hreflang="de-de" /> 
+  <link rel="alternate" href="//aws.amazon.com/backup-restore/" hreflang="en-us" /> 
+  <link rel="alternate" href="//aws.amazon.com/es/backup-restore/" hreflang="es-es" /> 
+  <link rel="alternate" href="//aws.amazon.com/fr/backup-restore/" hreflang="fr-fr" /> 
+  <link rel="alternate" href="//aws.amazon.com/id/backup-restore/" hreflang="id-id" /> 
+  <link rel="alternate" href="//aws.amazon.com/it/backup-restore/" hreflang="it-it" /> 
+  <link rel="alternate" href="//aws.amazon.com/jp/backup-restore/" hreflang="ja-jp" /> 
+  <link rel="alternate" href="//aws.amazon.com/ko/backup-restore/" hreflang="ko-kr" /> 
+  <link rel="alternate" href="//aws.amazon.com/pt/backup-restore/" hreflang="pt-br" /> 
+  <link rel="alternate" href="//aws.amazon.com/ru/backup-restore/" hreflang="ru-ru" /> 
+  <link rel="alternate" href="//aws.amazon.com/th/backup-restore/" hreflang="th-th" /> 
+  <link rel="alternate" href="//aws.amazon.com/tr/backup-restore/" hreflang="tr-tr" /> 
+  <link rel="alternate" href="//aws.amazon.com/vi/backup-restore/" hreflang="vi-vn" /> 
+  <link rel="alternate" href="//aws.amazon.com/cn/backup-restore/" hreflang="zh-cn" /> 
+  <link rel="alternate" href="//aws.amazon.com/tw/backup-restore/" hreflang="zh-tw" /> 
+  <link rel="icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="shortcut icon" type="image/ico" href="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" /> 
+  <link rel="apple-touch-icon" sizes="57x57" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="72x72" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="114x114" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-iphone-114-smile.png" /> 
+  <link rel="apple-touch-icon" sizes="144x144" href="https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png" /> 
+  <meta property="twitter:card" content="summary" /> 
+  <meta property="twitter:title" content="Backup and Data Protection Solutions | Amazon Web Services" /> 
+  <meta property="twitter:description" content="" /> 
+  <meta property="twitter:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_179x109.png" /> 
+  <meta property="twitter:site" content="@awscloud" /> 
+  <meta property="og:title" content="Backup and Data Protection Solutions | Amazon Web Services" /> 
+  <meta property="og:type" content="company" /> 
+  <meta property="og:url" content="https://aws.amazon.com/backup-restore/" /> 
+  <meta property="og:image" content="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" /> 
+  <meta property="og:site_name" content="Amazon Web Services, Inc." /> 
+  <meta property="fb:pages" content="153063591397681" /> 
+  <meta name="google-site-verification" content="XHghG81ulgiW-3EylGcF48sG28tBW5EH0bNUhgo_DrU" /> 
+  <meta name="msvalidate.01" content="6F92E52A288E266E30C2797ECB5FCCF3" /> 
+  <meta name="baidu-site-verification" content="pjxJUyWxae" /> 
+  <link rel="stylesheet" href="https://a0.awsstatic.com/libra-css/css/1.0.337/style-awsm.css" /> 
+  <script>
+  var AWS = {
+    PageSettings: {
+      supportedLanguages: ['ar', 'en', 'es', 'de', 'fr', 'id', 'it', 'jp', 'ko', 'pt', 'ru', 'th', 'tr', 'vi', 'cn', 'tw'],
+      defaultLanguage: 'en',
+      logDataSet: 'LIVE:PROD',
+      logInstance: 'PUB',
+      csdsEndpoint: 'https://aws.amazon.com/',
+      framework: 'v2',
+      g11nLibPath: 'https://a0.awsstatic.com/g11n-lib/2.0.53',
+      i18nStringPath: 'https://i18n-string.us-west-2.prod.pricing.aws.a2z.com',
+      libraCSSPath: 'https://a0.awsstatic.com/libra-css/css/1.0.337',
+      libraCSSImagePath: 'https://a0.awsstatic.com/libra-css/images',
+      isLoggingEnabled: true,
+      currentLanguage: 'en-US',
+      isMarketplace: false,
+      isRTL: false
+    }
+  };
+
+  var require = {
+    baseUrl: 'https://a0.awsstatic.com',
+    packages: [
+      { name: 'libra', location: 'libra/1.0.326' }
+    ],
+    paths: {
+      "directories": "https://a0.awsstatic.com/libra/1.0.326/directories",
+      "libra-cardsui": "https://a0.awsstatic.com/libra/1.0.326/libra-cardsui",
+      "librastandardlib": "https://a0.awsstatic.com/libra/1.0.326/librastandardlib",
+      "aws-blog": "https://a0.awsstatic.com/aws-blog/1.0.34/js",
+      "plc": "https://a0.awsstatic.com/plc/js/1.0.95/plc",
+      "scripts": "libra/1.0.326/v1-polyfills/scripts",
+      "psf": "https://a0.awsstatic.com/psf/1.1.8",
+      "libra-search": "https://a0.awsstatic.com/libra-search/1.0.11/js",
+      "pricing-calculator": "https://a0.awsstatic.com/pricing-calculator/js/1.0.2",
+      "pricing-savings-plan": "https://a0.awsstatic.com/pricing-savings-plan/js/1.0.4"
+    },
+    waitSeconds: 15
+  };
+</script> 
+  <script src="https://a0.awsstatic.com/libra/1.0.326/libra-head.js"></script> 
+  <script src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script> 
+  <script>
+      AWS.TargetMediator = {
+        supportedLanguages: AWS.PageSettings.supportedLanguages,offerOrigin: 'https://s0.awsstatic.com',pageLanguage: 'en'
+      };
+    </script> 
+  <script data-js-script="target-mediator" src="https://a0.awsstatic.com/target/1.0.102/aws-target-mediator.js"></script> 
+ </head> 
+ <body class="awsm"> 
+  <header id="aws-page-header" class="awsm m-page-header" role="banner"> 
+   <div id="m-nav" class="m-nav" role="navigation"> 
+    <div class="m-nav-header lb-clearfix" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/desktop/index.html"> 
+     <div class="m-nav-logo"> 
+      <div class="lb-bg-logo aws-amazon_web_services_smile-header-desktop-en"> 
+       <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+      </div> 
+     </div> 
+     <div class="m-nav-secondary-links" style="min-width: 620px"> 
+      <a href="/contact-us/?nc2=h_header">Contact Sales</a> 
+      <a class="lb-txt-none lb-tiny-iblock lb-txt-13 lb-txt lb-has-trigger-indicator" href="#" data-mbox-ignore="true" data-lb-popover-trigger="popover-support-selector"> Support&nbsp; <i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a id="m-nav-language-selector" class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-language-selector" data-language="en">English&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <a class="lb-tiny-iblock lb-txt lb-has-trigger-indicator" href="#" data-lb-popover-trigger="popover-my-account">My Account&nbsp;<i class="icon-caret-down lb-trigger-mount"></i></a> 
+      <div class="m-nav-cta-btn"> 
+       <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_header_nav_cta" data-lb-comp-ignore="true"> 
+        <div class="lb-btn"> 
+         <a id="aws-nav-cta-button" class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&amp;src=default" style="min-width:171px;"><span>Create an AWS Account</span></a> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="m-nav-primary-group"> 
+      <div class="m-nav-primary-links"> 
+       <i class="m-nav-angle-left-icon" aria-hidden="true"></i> 
+       <ul> 
+        <li><a href="/products/?nc2=h_ql_prod" data-panel="m-nav-panel-products">Products</a></li> 
+        <li><a href="/solutions/?nc2=h_ql_sol" data-panel="m-nav-panel-solutions">Solutions</a></li> 
+        <li><a href="/pricing/?nc2=h_ql_pr" data-panel="m-nav-panel-pricing">Pricing</a></li> 
+        <li><a href="https://docs.aws.amazon.com/index.html?nc2=h_ql_doc" data-panel="m-nav-panel-documentation">Documentation</a></li> 
+        <li><a href="/getting-started/?nc2=h_ql_le" data-panel="m-nav-panel-learn">Learn</a></li> 
+        <li><a href="/partners/?nc2=h_ql_pn" data-panel="m-nav-panel-partner">Partner Network</a></li> 
+        <li><a href="https://aws.amazon.com/marketplace/?nc2=h_ql_mp" data-panel="m-nav-panel-marketplace">AWS Marketplace</a></li> 
+        <li><a href="/customer-enablement/?nc2=h_ql_ce" data-panel="m-nav-panel-customer">Customer Enablement</a></li> 
+        <li><a href="/events/?nc2=h_ql_ev" data-panel="m-nav-panel-events">Events</a></li> 
+        <li><a href="/contact-us/?nc2=h_ql_exm" data-panel="m-nav-panel-more">Explore More </a></li> 
+       </ul> 
+       <div class="m-nav-icon-group"> 
+        <i class="m-nav-angle-right-icon" aria-hidden="true"></i> 
+        <i class="m-nav-search-icon"></i> 
+       </div> 
+      </div> 
+      <div class="m-nav-search"> 
+       <form action="https://aws.amazon.com/search" role="search"> 
+        <div class="m-typeahead" data-directory-id="typeahead-suggestions" data-lb-comp="typeahead"> 
+         <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+        </div> 
+       </form> 
+       <i class="m-nav-close-icon"></i> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-language-selector" data-action="hover" data-position="top"> 
+     <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="ar"> <a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a> </li> 
+        <li data-language="id"> <a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a> </li> 
+        <li data-language="de"> <a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a> </li> 
+        <li data-language="en"> <a href="https://aws.amazon.com/?nc1=h_ls">English</a> </li> 
+        <li data-language="es"> <a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a> </li> 
+        <li data-language="fr"> <a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a> </li> 
+        <li data-language="it"> <a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a> </li> 
+        <li data-language="pt"> <a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a> </li> 
+       </ul> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-12"> 
+       <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+        <li data-language="vi"> <a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a> </li> 
+        <li data-language="tr"> <a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a> </li> 
+        <li data-language="ru"> <a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a> </li> 
+        <li data-language="th"> <a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a> </li> 
+        <li data-language="jp"> <a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a> </li> 
+        <li data-language="ko"> <a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a> </li> 
+        <li data-language="cn"> <a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a> </li> 
+        <li data-language="tw"> <a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a> </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-my-account" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/?nc2=h_m_mc">AWS Management Console</a> </li> 
+      <li> <a href="https://portal.aws.amazon.com/gp/aws/manageYourAccount?nc2=h_m_ma">Account Settings</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/billing/home?nc2=h_m_bc">Billing &amp; Cost Management</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/iam/home?nc2=h_m_sc#security_credential">Security Credentials</a> </li> 
+      <li> <a href="https://phd.aws.amazon.com/?nc2=h_m_sc">AWS Personal Health Dashboard</a> </li> 
+     </ul> 
+    </div> 
+    <div class="lb-popover lb-popover-aui lb-popover-tiny" data-lb-comp="popover" data-id="popover-support-selector" data-action="hover" data-position="top"> 
+     <ul class="lb-txt-none lb-ul lb-list-style-none lb-tiny-ul-block"> 
+      <li> <a href="https://console.aws.amazon.com/support/home/?nc2=h_ql_cu">Support Center</a> </li> 
+      <li> <a href="/premiumsupport/knowledge-center/?nc2=h_m_ma">Knowledge Center</a> </li> 
+      <li> <a href="/premiumsupport/?nc2=h_m_bc">AWS Support Overview</a> </li> 
+     </ul> 
+    </div> 
+    <script class="tt-suggestion-tpl" type="text/x-handlebars-template">
+    <div>
+      <a href="{{primaryUrl}}">
+        <div class="tt-title">
+          {{title}}
+        </div>
+        {{#if desc}}
+          <div class="tt-desc">
+            {{desc}}
+          </div>
+        {{/if}}
+      </a>
+      <div class="tt-btn-group">
+        {{#if pricingUrl}}
+          <a href="{{pricingUrl}}">
+            <div class="tt-btn">Pricing</div>
+          </a>
+        {{/if}}
+        {{#if docsUrl}}
+          <a href="{{docsUrl}}">
+            <div class="tt-btn">Documentation</div>
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </script> 
+    <script class="tt-products-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Products</p>
+    </div>
+  </script> 
+    <script class="tt-keypages-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Related Pages</p>
+    </div>
+  </script> 
+    <script class="tt-tutorials-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Tutorials</p>
+    </div>
+  </script> 
+    <script class="tt-blogs-head-tpl" type="text/x-handlebars-template">
+    <div class="tt-header lb-txt-bold">
+      <p>Blogs</p>
+    </div>
+  </script> 
+    <script class="tt-see-all-tpl" type="text/x-handlebars-template">
+    <div class="tt-see-all">
+      <a href="https://aws.amazon.com/search/?searchQuery={{ query }}">See more results for "{{ query }}"&lrm;</a>
+    </div>
+  </script> 
+   </div> 
+   <div id="m-nav-mobile" class="m-nav-mobile"> 
+    <div id="m-nav-mobile-header" class="m-nav-mobile-header" data-menu-url="https://s0.awsstatic.com/en_US/nav/v3/panel-content/mobile/index.html"> 
+     <div class="lb-bg-logo aws-amazon_web_services_smile-header-mobile-en"> 
+      <a href="https://aws.amazon.com/?nc2=h_lg"><span>Click here to return to Amazon Web Services homepage</span></a> 
+     </div> 
+     <div class="m-nav-mobile-button-group"> 
+      <i class="m-nav-mobile-button icon-search"></i> 
+      <i class="m-nav-mobile-button icon-reorder"></i> 
+     </div> 
+    </div> 
+    <div id="m-nav-mobile-search" class="m-nav-mobile-search"> 
+     <form action="https://aws.amazon.com/search" role="search"> 
+      <div class="m-typeahead"> 
+       <input class="m-nav-search-field" placeholder="Search" autocomplete="off" spellcheck="false" dir="auto" type="text" name="searchQuery" /> 
+      </div> 
+     </form> 
+    </div> 
+    <nav id="m-nav-trimdown" role="navigation"> 
+     <ul class="m-nav-mobile-menu-group"> 
+      <li> <a href="/products/?nc2=h_mo">Products</a> </li> 
+      <li> <a href="/solutions/?nc2=h_mo">Solutions</a> </li> 
+      <li> <a href="/pricing/?nc2=h_mo">Pricing</a> </li> 
+      <li> <a href="/what-is-aws/?nc2=h_mo">Introduction to AWS</a> </li> 
+      <li> <a href="/getting-started/?nc2=h_mo">Getting Started</a> </li> 
+      <li> <a href="/documentation/?nc2=h_mo">Documentation</a> </li> 
+      <li> <a href="/training/?nc2=h_mo">Training and Certification</a> </li> 
+      <li> <a href="/developer/?nc2=h_mo">Developer Center</a> </li> 
+      <li> <a href="/solutions/case-studies/?nc2=h_mo">Customer Success</a> </li> 
+      <li> <a href="/partners/?nc2=h_mo">Partner Network</a> </li> 
+      <li> <a href="https://aws.amazon.com/marketplace/?nc2=h_mo">AWS Marketplace</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/support/home?nc2=h_ql_cu">Support</a> </li> 
+      <li> <a href="https://console.aws.amazon.com/console/home">Log into Console</a> </li> 
+      <li> <a href="/console/mobile/">Download the Mobile App</a> </li> 
+     </ul> 
+    </nav> 
+   </div> 
+   <div class="lb-sticky-subnav" data-lb-comp="sticky-subnav" data-lb-page-path="/backup-restore/"> 
+    <div class="lb-row lb-row-max-large lb-snap"> 
+     <div class="lb-tiny-24 lb-sticky-subnav-content"> 
+      <div class="lb-sticky-subnav-title"> 
+       <a class="lb-txt lb-current-page-link" href="/backup-restore/"> Backup &amp; Restore</a> 
+      </div> 
+      <div class="lb-sticky-subnav-links"> 
+       <a class="lb-txt-bold lb-txt lb-current-page-link" href="/backup-restore/"> Overview</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/backup-restore/services/"> Services</a> 
+       <a class="lb-txt-bold lb-txt-none lb-txt" href="/backup-restore/use-cases/"> Use Cases</a> 
+       <a class="lb-txt-none lb-txt" href="/backup-restore/getting-started/"> Getting Started</a> 
+       <a class="lb-txt-none lb-txt" href="/backup-recovery/partner-solutions/"> Partners</a> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </header> 
+  <div id="aws-page-content" class="lb-page-content lb-page-with-sticky-subnav" style="padding-top:0px; padding-bottom:0px;" data-page-alert-target="true"> 
+   <main role="main"> 
+    <div class="lb-bg-left-top-cover lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#232f3e; margin-top:0px; background-image:url('//d1.awsstatic.com/backup_banner_AWS.865565f42a6479dfff8a9643329bcdd054e1c667.png');"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px; margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-24"> 
+         <h1 id="Backup_.26_Restore" class="lb-txt-bold lb-txt-white lb-txt-44 lb-none-v-margin lb-h1-large lb-title" style="margin-top:10px; margin-bottom:0px;"> Backup &amp; Restore</h1> 
+         <div class="lb-txt-light lb-txt-none lb-txt-white lb-txt-20 lb-txt">
+           Build scalable, durable, and secure data-protection solutions with AWS 
+         </div> 
+         <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+          <div class="lb-col lb-tiny-24 lb-mid-8"> 
+           <div class="lb-btn"> 
+            <a class="lb-btn-a-primary" href="https://pages.awscloud.com/BackupRestore-ContactUs.html" role="button"> <span> Request more information</span> </a> 
+           </div> 
+          </div> 
+          <div class="lb-col lb-tiny-24 lb-mid-8"> 
+           <div class="lb-btn"> 
+            <a class="lb-btn-a" href="https://console.aws.amazon.com/console/home" role="button"> <span> Create a free account</span> </a> 
+           </div> 
+          </div> 
+          <div class="lb-col lb-tiny-24 lb-mid-8"> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_ribbon_below-hero" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-16"> 
+       <div class="lb-tiny-align-left lb-small-align-left lb-mid-align-left lb-large-align-left lb-xlarge-align-left lb-txt-16 lb-rtxt" style="color:#232f3e;"> 
+        <p>The exponential growth of data worldwide has made managing backups more difficult than ever before. With traditional methods such as tape libraries and secondary sites falling behind, many organizations are extending backup targets to the cloud. While the cloud offers better scalability, building cloud-enabled backup solutions requires careful consideration of existing IT investments, recovery objectives, and available resources.</p> 
+        <p>This is where Amazon Web Services (AWS) can help. We offer the most storage services, data-transfer methods, and networking options to build solutions that protect your data with unmatched durability and security. Learn more about <a href="#Benefits_of_Backing_Up_to_the_AWS_Cloud">Benefits of AWS Backup</a>, <a href="#The_AWS_Partner_Network_for_Storage_.26_Backup">the AWS Partner Network for Storage &amp; Backup</a>, <a href="#Common_Backup_Use_Cases">Use Cases</a>, <a href="#Customer_Case_Studies">Customer Case Studies</a>, and <a href="#Evolving_Beyond_Backup">Evolving Backup into Archive &amp; Disaster Recovery.</a></p> 
+       </div> 
+      </div> 
+      <div class="lb-col lb-tiny-24 lb-mid-8"> 
+       <div class="lb-none-pad lb-box"> 
+        <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="5R2M9UnDi5o" data-source="youtube" data-video-title="Why Backup &amp; Restore with AWS? (0:59)"> 
+         <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+          <div class="video-js"></div> 
+          <figcaption> 
+           <div itemprop="name">
+             Why Backup &amp; Restore with AWS? (0:59) 
+           </div> 
+          </figcaption> 
+          <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=5R2M9UnDi5o" /> 
+         </figure> 
+        </div> 
+        <div class="lb-none-v-margin lb-rtxt"> 
+         <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">Learn about the benefits customers are realizing by working with AWS to extend backup targets to the cloud.<br /> </p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Benefits_of_backing_up_to_the_AWS_Cloud" class="lb-txt-bold lb-h2 lb-title" style="color:#232f3e;"> Benefits of backing up to the AWS Cloud</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Data_durability" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Data durability</h3> 
+         <div class="lb-rtxt"> 
+          <p>Protect backups with 99.999999999% data durability. Copies of all data uploaded to Amazon S3 and Amazon S3 Glacier are created and stored across at least three devices in a single AWS Region. Even when following best practices, on-premises capabilities cannot match AWS’ durability due to our global scale and security.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Flexibility_.26_scalability" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Flexibility &amp; scalability</h3> 
+         <div class="lb-rtxt"> 
+          <p>Scale up your backup resources in minutes as data requirements change . With AWS, you no longer need to wait weeks-to-months to procure tapes, disks, and other IT resources to increase your storage infrastructure. This ability to scale on demand can improve operational flexibility, innovation, and business agility.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Cost_efficiencies" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Cost efficiencies</h3> 
+         <div class="lb-rtxt"> 
+          <p>Spend efficiently with pay-as-you-go pricing, cost-management tools, data lifecycle policies, and the EFS and S3 Storage Classes, including EFS Infrequent Access, S3 Standard-Infrequent Access, S3 One Zone-Infrequent Access, S3 Glacier, and S3 Glacier Deep Archive. With these capabilities, you can cost-effectively protect data in the cloud without sacrificing performance. Sending backups to AWS can be the first step in reducing total cost of ownership and your data center footprint.<br /> </p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Backup_for_all_data_types" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Backup for all data types</h3> 
+         <div class="lb-rtxt"> 
+          <p>Back up all data types with AWS. Our storage services for object (<b>Amazon S3 </b>and <b>Amazon S3 Glacier</b>), file (<b>Amazon Elastic File System</b>), and block (<b>Amazon Elastic Block Storage</b>) support industry-leading scalability, availability, durability, and security so your backups are protected and available when needed. <a href="/backup-restore/services/#Amazon_Simple_Storage_Service_.28Amazon_S3.29" target="_blank">Learn more &raquo;</a><br /> </p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Security_.26_compliance" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Security &amp; compliance</h3> 
+         <div class="lb-rtxt"> 
+          <p>Protect backups with a data center and network architecture built for the most security-sensitive organizations. Manage access, detect irregular activity, encrypt data, and perform audits with <a href="/security/" target="_blank">AWS Security services</a>. AWS also maintains<a href="/compliance/" target="_blank">&nbsp;compliance programs</a>&nbsp;to help you meet all of your regulatory requirements.<br /> </p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Data-transfer_methods" class="lb-txt-bold lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Data-transfer methods</h3> 
+         <div class="lb-rtxt"> 
+          <p>Work with AWS to optimize data transfers over the Internet (<b>Amazon Direct Connect</b> and <b>S3 Transfer Acceleration</b>), move petabytes to exabytes of data offline (<b>AWS Snowball,</b> <b>AWS Snowmobile</b>, and <b>AWS Snowball Edge</b>), and deploy <b>AWS Storage Gateway </b>to connect on-premises operations to AWS. <a href="/backup-restore/services/#Data_Transfer" target="_blank">Learn more &raquo;</a><br /> </p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-tiny-pad lb-tiny-v-margin lb-grid" style="background-color:#000000; margin-top:0px;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-20"> 
+         <div class="lb-none-v-margin lb-rtxt" style="color:#FF9900;"> 
+          <p><b>EBook</b></p> 
+         </div> 
+         <div class="lb-none-v-margin lb-rtxt" style="color:#FFFFFF;"> 
+          <p><b>Backing Up to AWS</b><br /> Learn more about protecting your growing data stores,&nbsp;while enhancing security and durability<br /> </p> 
+         </div> 
+         <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+          <div class="lb-col lb-tiny-24 lb-mid-6"> 
+           <div class="lb-btn"> 
+            <a class="lb-btn-p" href="https://pages.awscloud.com/rs/112-TZM-766/images/AWS004%20B%26R%20eBook%20R4i.pdf" target="_blank" role="button"> <span> Download</span> </a> 
+           </div> 
+          </div> 
+          <div class="lb-col lb-tiny-24 lb-mid-6"> 
+          </div> 
+          <div class="lb-col lb-tiny-24 lb-mid-6"> 
+          </div> 
+          <div class="lb-col lb-tiny-24 lb-mid-6"> 
+          </div> 
+         </div> 
+         <div class="lb-none-v-margin lb-rtxt" style="color:#FFFFFF;"> 
+          <p>Learn more about&nbsp;<a href="/backup-restore/services/" target="_blank">B&amp;R AWS services</a> and experiment with&nbsp;<a href="/backup-restore/getting-started/" target="_blank">Tutorials, Projects, and Guides</a>.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-4"> 
+         <div class="lb-none-pad lb-none-v-margin lb-box"> 
+          <figure class="lb-none-v-margin lb-img"> 
+           <a class="lb-tiny-pad" href="https://pages.awscloud.com/backup-and-restore-with-AWS-eBook.html"> </a> 
+           <a href="https://pages.awscloud.com/rs/112-TZM-766/images/AWS004%20B%26R%20eBook%20R4i.pdf"><img alt="ebook_bnr_thimb" title="ebook_bnr_thimb" src="//d1.awsstatic.com/PAC/CSI/BnR/ebook_bnr_thimb.ccda2358a0439d557bb087795904681ea790c470.png" /></a> 
+          </figure> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div id="mid_page"></div> 
+    <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_banner_product-mid_page" data-lb-comp-ignore="true"> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="The_AWS_Partner_Network_for_Storage_.26_Backup" class="lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> The AWS Partner Network for Storage &amp; Backup</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-16"> 
+         <div class="lb-rtxt"> 
+          <p>The <b>AWS Partner Network (APN)</b>&nbsp;is the largest community of cloud consulting and technology providers. All APN partners have proven technical expertise of the AWS platform and customer success with their products and services. AWS Storage Competency partners offer AWS-integrated storage solutions for primary storage, backup &amp; restore, disaster recovery, and data archive. Working with these partners can help your organization (particularly if you're managing legacy infrastructure and applications) deploy capabilities that send data to the AWS Cloud for durable storage and protection.</p> 
+          <p>Another customer resource is the <b>AWS Marketplace</b>, an online catalogue offering over 3,500 software listings from over 1,100 independent software vendors, where you can explore, purchase, and deploy off-the-shelf cloud storage solutions. All listed solutions support a variety of AWS storage services, and are ready for deployment and immediate use.<br /> </p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-none-pad lb-box"> 
+          <div class="lb-video lb-video-p" data-lb-comp="video" data-placement="inPlace" data-youtube-id="z3zQY6Pemrc" data-source="youtube" data-video-title="AWS Partner Network and the Storage Competency (0:50)"> 
+           <figure itemscope="true" itemtype="http://schema.org/VideoObject"> 
+            <div class="video-js"></div> 
+            <figcaption> 
+             <div itemprop="name">
+               AWS Partner Network and the Storage Competency (0:50) 
+             </div> 
+            </figcaption> 
+            <meta itemprop="embedUrl" content="https://www.youtube.com/watch?v=z3zQY6Pemrc" /> 
+           </figure> 
+          </div> 
+          <div class="lb-none-v-margin lb-rtxt"> 
+           <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">Learn how you can work with partners to back up data to AWS.<br /> </p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <a href="https://aws.amazon.com/backup-recovery/partner-solutions/" target="_blank"> <img alt="AWS Partner Network for Storage" title="AWS Partner Network for Storage" src="//d1.awsstatic.com/Solutions/Backup/APN_Backup.23e0c26b8f3c8b0aab443ed87bf12e052bbb4398.png" /></a> 
+         </figure> 
+         <div class="lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;"><a href="/backup-recovery/partner-solutions/" target="_blank">Learn more about APN Storage Competency Partners</a></p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <a href="https://aws.amazon.com/marketplace" target="_blank"> <img alt="AWS Marketplace" title="AWS Marketplace" src="//d1.awsstatic.com/BackupRecovery/BR_MP.d7da369325ca3a6efa020797d39f64b6cdf56bdd.png" /></a> 
+         </figure> 
+         <div class="lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;"><a href="http://aws.amazon.com/marketplace" target="_blank">Find a deployable solution on the AWS Marketplace</a></p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <a href="https://aws.amazon.com/backup-recovery/featured-partner-solutions/" target="_blank"> <img alt="APN Backup Solutions and Webinars" title="APN Backup Solutions and Webinars" src="//d1.awsstatic.com/BackupRecovery/BR_APNSOLUTIONS.114d2368334897ebdbacb5881c0156876684b095.png" /></a> 
+         </figure> 
+         <div class="lb-none-v-margin lb-rtxt"> 
+          <p style="text-align: center;"><a href="/backup-recovery/featured-partner-solutions/" target="_blank">Deep dive into an APN backup solution</a></p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#f1f4f6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Common_backup_use_cases" class="lb-txt-bold lb-h2 lb-title" style="color:#232f3e;"> Common backup use cases</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-bottom:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Hybrid_cloud_backup" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Hybrid cloud backup</h3> 
+         <div class="lb-rtxt"> 
+          <p>With cloud connectors and gateways, customers can begin backing up their on-premises data to the AWS Cloud for durable data protection.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Tape_replacement" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Tape replacement</h3> 
+         <div class="lb-rtxt"> 
+          <p>Use <b>AWS Storage Gateway </b>to create virtual tape libraries and eliminate the responsibilities of overseeing procurement cycles and error-prone processes.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Database_backup" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Database backup</h3> 
+         <div class="lb-rtxt"> 
+          <p>Many AWS database services (relational and non-relational) have built-in, automated backup capabilities to protect your data and applications.&nbsp;</p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap lb-gutter-mid" style="margin-top:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Data_lifecycle_management" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Data lifecycle management</h3> 
+         <div class="lb-rtxt"> 
+          <p>Amazon S3 offers different storage classes to store less frequently accessed data at variable costs. Use lifecycle policies to automate tiering or do this on demand.</p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Global_data_resiliency" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Global data resiliency</h3> 
+         <div class="lb-rtxt"> 
+          <p>Amazon S3 offers&nbsp;cross-region replication to replicate data in other AWS Regions for compliance, security, disaster recovery, and other use cases.&nbsp;&nbsp;<i></i></p> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <h3 id="Archive_.26_compliance" class="lb-txt-none lb-h3 lb-title" style="color:#232f3e;"> Archive &amp; compliance</h3> 
+         <div class="lb-rtxt"> 
+          <p>Organizations with data-retention requirements can use Amazon S3, S3 Glacier, and S3 Glacier Deep Archive for low-cost, long-term storage that has built-in capabilities to enforce WORM controls.<br /> </p> 
+         </div> 
+         <div class="lb-none-v-margin lb-rtxt"> 
+          <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; text-align: right;"><a href="/backup-restore/use-cases/">Learn more about these use cases &raquo;</a><br /> </p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Customer_case_studies" class="lb-none-v-margin lb-h2 lb-title" style="color:#232f3e;"> Customer case studies</h2> 
+       <div class="lb-xb-grid-wrap"> 
+        <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-2 lb-large-xb-4"> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <a href="https://aws.amazon.com/solutions/case-studies/king-county/" target="_blank"> <img alt="King County case study" title="King County case study" src="//d1.awsstatic.com/BackupRecovery/BR_KingCounty.01d1c2e28be8c04b33e3bf6bd1eab88dc1ac606c.png" /></a> 
+          </figure> 
+          <div class="lb-rtxt"> 
+           <p>King County uses AWS for long-term archiving and backup solutions.</p> 
+           <p><a href="https://aws.amazon.com/solutions/case-studies/king-county/" target="_blank">Read King County case study &gt;&gt;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <a href="https://aws.amazon.com/solutions/case-studies/thomson-reuters/" target="_blank"> <img alt="Thomson Reuters case study" title="Thomson Reuters case study" src="//d1.awsstatic.com/BackupRecovery/BR_Thomson_Reuters.23279e0e14782c7009814a30d298e055fcd7bfd0.png" /></a> 
+          </figure> 
+          <div class="lb-rtxt"> 
+           <p>Thomson Reuters leverages Amazon S3 to store and protect permanent backups.</p> 
+           <p><a href="https://aws.amazon.com/solutions/case-studies/thomson-reuters/" target="_blank">Read Thomson Reuters case study &gt;&gt;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <a href="https://aws.amazon.com/solutions/case-studies/unilever/" target="_blank"> <img alt="Unilever case study" title="Unilever case study" src="//d1.awsstatic.com/logos/200x100_logos/200x100_Unilever_Logo.a5b532f2d9b4832882214ead33db6c50d8c4070a.png" /></a> 
+          </figure> 
+          <div class="lb-rtxt"> 
+           <p>Unliever uses Amazon S3 and Amazon EBS snapshots to protect backup data in the cloud.</p> 
+           <p><a href="https://aws.amazon.com/solutions/case-studies/unilever/" target="_blank">Read Unliever case study &gt;&gt;</a></p> 
+          </div> 
+         </div> 
+         <div class="lb-xbcol"> 
+          <figure class="lb-img"> 
+           <a href="https://aws.amazon.com/solutions/case-studies/hess-corporation" target="_blank"> <img alt="Hess case study" title="Hess case study" src="//d1.awsstatic.com/logos/200x100_logos/200x100_Hess-Corporation_Logo.b9bd6f04fc07c09a86451726d6a05c385659dd73.png" /></a> 
+          </figure> 
+          <div class="lb-rtxt"> 
+           <p>Hess uses Amazon EBS snapshots to create nightly backups, and then stores database backups in Amazon S3 and the S3 Glacier storage class for long-term archiving.</p> 
+           <p><a href="https://aws.amazon.com/solutions/case-studies/hess-corporation" target="_blank">Read Hess case study &gt;&gt;</a></p> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-none-v-margin lb-grid" style="background-color:#F1F4F6;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Evolving_beyond_backup" class="lb-h2 lb-title" style="color:#232f3e;"> Evolving beyond backup</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-12"> 
+         <h3 id="Archive" class="lb-txt-none lb-h3 lb-title"> <a href="/archive/"> Archive</a> </h3> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px; border-color:#C0C0C0;"> 
+          <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+           <div class="lb-col lb-tiny-24 lb-mid-6"> 
+            <figure class="lb-img"> 
+             <a class="lb-round-radius" href="/archive/"> <span class="lb-round-radius"> <img alt="Archive" title="Archive" src="//d1.awsstatic.com/BackupRecovery/BR_ARCHIVE_MAIN.43e317b4bc911cbb808c81cfc7fa24e22b421aad.png" /></span> </a> 
+            </figure> 
+           </div> 
+           <div class="lb-col lb-tiny-24 lb-mid-18"> 
+            <div class="lb-rtxt"> 
+             <p>Once backups are in the AWS Cloud, you can cost-effectively archive them. S3 Glacier and S3 Glacier Deep Archive are designed to deliver 99.999999999% durability, have capabilities to meet compliance requirements related to data retention, and cost $0.004 per gigabyte per month and $0.00099 per gigabyte per month, respectively.<br /> </p> 
+             <p><a href="/archive/">Learn more &raquo;</a></p> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-12"> 
+         <h3 id="Disaster_recovery" class="lb-txt-none lb-h3 lb-title"> <a href="/disaster-recovery/"> Disaster recovery</a> </h3> 
+         <div class="lb-border-p lb-box" style="padding-top:0px; padding-bottom:0px; border-color:#C0C0C0;"> 
+          <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+           <div class="lb-col lb-tiny-24 lb-mid-6"> 
+            <figure class="lb-img"> 
+             <a class="lb-round-radius" href="/disaster-recovery/"> <span class="lb-round-radius"> <img alt="Disaster recovery" title="Disaster recovery" src="//d1.awsstatic.com/BackupRecovery/BR_DR_MAIN.69798d20bbe0d9bc2097ea8334cec6300a1890b2.png" /></span> </a> 
+            </figure> 
+           </div> 
+           <div class="lb-col lb-tiny-24 lb-mid-18"> 
+            <div class="lb-rtxt"> 
+             <p>Another benefit of having backup data in AWS is the access you have to cloud-native tools that can evolve your backup solution into one for disaster recovery. Use AWS services to rebuild on-premises environments and create resiliency against natural disasters and failures.</p> 
+             <p><a href="/disaster-recovery/">Learn more &raquo;</a></p> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-mid-pad lb-small-v-margin lb-grid"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <h2 id="Get_started_with_AWS" class="lb-txt-bold lb-none-v-margin lb-h2 lb-title" style="color:#232f3e; margin-top:0px; margin-bottom:0px;"> Get started with AWS</h2> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap" style="margin-top:0px;"> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div class="lb-none-pad"> 
+           <img alt="Sign up for an AWS account" title="Sign up for an AWS account" src="//d1.awsstatic.com/webteam/product-pages/Product-Page_Standard-Icons_02_Sign-Up_SqInk.f43d5ddc9c43883eec6187f34c68155402b13312.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-txt-18 lb-rtxt" style="color:#007DBC; margin-bottom:0px;"> 
+          <p style="text-align: center;"><b>Sign up for an AWS account</b></p> 
+         </div> 
+         <div class="lb-txt-14 lb-rtxt" style="color:#232f3e; margin-top:0px;"> 
+          <div style="text-align: center;">
+            Instantly get access to the 
+           <a href="https://aws.amazon.com/free">AWS Free Tier</a>. 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div> 
+           <img alt="Learn with simple tutorials" title="Learn with simple tutorials" src="//d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Tutorial.aa70b53bd4bd0f01a111e6217d619475d8149b74.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-txt-18 lb-rtxt" style="color:#007DBC; margin-bottom:0px;"> 
+          <p style="text-align: center;"><b>Learn with 10-minute tutorials<br /> </b></p> 
+         </div> 
+         <div class="lb-txt-14 lb-rtxt" style="color:#232f3e; margin-top:0px;"> 
+          <div style="text-align: center;">
+            Explore and learn with 
+           <a href="https://aws.amazon.com/getting-started/tutorials/">simple tutorials</a>. 
+          </div> 
+         </div> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <figure class="lb-img"> 
+          <div> 
+           <img alt="Start building in the console" title="Start building in the console" src="//d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Toolkit.5884928b94b82f4f35b0e0edeaeece13f2229279.png" /> 
+          </div> 
+         </figure> 
+         <div class="lb-txt-18 lb-rtxt" style="color:#007DBC; margin-bottom:0px;"> 
+          <p style="text-align: center;"><b>Start building with AWS<br /> </b></p> 
+         </div> 
+         <div class="lb-txt-14 lb-rtxt" style="color:#232f3e; margin-top:0px;"> 
+          <div style="text-align: center;">
+            Begin building with step-by-step guides to help you launch your 
+           <a href="https://aws.amazon.com/getting-started/projects/">AWS project</a>. 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-pad lb-none-v-margin lb-grid" style="background-color:#232F3E;"> 
+     <div class="lb-row lb-row-max-large lb-snap"> 
+      <div class="lb-col lb-tiny-24 lb-mid-24"> 
+       <div class="lb-grid lb-row lb-row-max-large lb-snap"> 
+        <div class="lb-col lb-tiny-24 lb-mid-16"> 
+         <div class="lb-txt-bold lb-txt-white lb-txt-32 lb-tiny-v-margin lb-rtxt" style="margin-bottom:0px;"> 
+          <p>For information on backup-related AWS services</p> 
+         </div> 
+         <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-18 lb-txt-lead lb-txt" style="color:#00A1C9;" href="/backup-restore/services/"> Visit AWS Backup &amp; Restore Services</a> 
+        </div> 
+        <div class="lb-col lb-tiny-24 lb-mid-8"> 
+         <div class="lb-border-left lb-border-p lb-mid-pad lb-box" style="border-width:2px; border-color:#FFFFFF;"> 
+          <div class="lb-txt-bold lb-txt-white lb-txt-18 lb-txt">
+            Ready to build? 
+          </div> 
+          <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-16 lb-txt" style="color:#00A1C9; margin-bottom:25px;" href="https://aws.amazon.com/backup-restore/getting-started"> Get started with backup to AWS</a> 
+          <div class="lb-txt-bold lb-txt-none lb-txt-white lb-txt-18 lb-txt">
+            Have more questions? 
+          </div> 
+          <a class="lb-txt-bold lb-txt-none lb-txt-blue-link lb-txt-16 lb-txt" style="color:#00A1C9;" href="https://pages.awscloud.com/BackupRestore-ContactUs.html"> Contact us</a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap" style="margin-bottom:0px;"> 
+     <div class="lb-col lb-tiny-24 lb-mid-24"> 
+      <div class="lb-none-pad lb-none-v-margin lb-grid lb-row lb-row-max-large lb-snap"> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-left" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+       <div class="lb-col lb-tiny-24 lb-mid-12"> 
+        <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_2up_product-right" data-lb-comp-ignore="true"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_1up_product" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+    </div> 
+   </main> 
+  </div> 
+  <footer id="aws-page-footer" class="m-page-footer" role="contentinfo"> 
+   <div data-url="https://dc.ads.linkedin.com/collect/?pid=3038&amp;fmt=gif" data-lb-comp="tracking-pixel"></div> 
+   <div data-lb-comp="google-rlsa-pixel"></div> 
+   <div class="data-attr-wrapper lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer" data-da-so-version="a"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1 lb-small-xb-3 lb-large-xb-5"> 
+     <div class="lb-xbcol"> 
+      <div class="data-attr-wrapper lb-small-hide lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signin-mobile-default"> 
+       <a class="lb-btn-p-primary" href="https://console.aws.amazon.com/console/home?nc1=f_ct&amp;src=footer-signin-mobile" role="button"> <span> Sign In to the Console</span> </a> 
+      </div> 
+      <h3 id="Learn_About_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Learn About AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/what-is-aws/?nc1=f_cc" target="_blank">What Is AWS?</a></li> 
+       <li><a href="/what-is-cloud-computing/?nc1=f_cc" target="_blank">What Is Cloud Computing?</a></li> 
+       <li><a href="/devops/what-is-devops/?nc1=f_cc" target="_blank">What Is DevOps?</a></li> 
+       <li><a href="/containers/?nc1=f_cc" target="_blank">What Is a Container?</a></li> 
+       <li><a href="/big-data/datalakes-and-analytics/what-is-a-data-lake/?nc1=f_cc" target="_blank">What Is a Data Lake?</a></li> 
+       <li><a href="/security/?nc1=f_cc" target="_blank">AWS Cloud Security</a></li> 
+       <li><a href="/new/?nc1=f_cc" target="_blank">What's New</a></li> 
+       <li><a href="/blogs/?nc1=f_cc" target="_blank">Blogs</a></li> 
+       <li><a href="https://press.aboutamazon.com/press-releases/aws" target="_blank" title="Press Releases">Press Releases</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Resources_for_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Resources for AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/getting-started/?nc1=f_cc" target="_blank">Getting Started</a></li> 
+       <li><a href="/training/?nc1=f_cc" target="_blank">Training and Certification</a></li> 
+       <li><a href="/solutions/?nc1=f_cc" target="_blank">AWS Solutions Portfolio</a></li> 
+       <li><a href="/architecture/?nc1=f_cc" target="_blank">Architecture Center</a></li> 
+       <li><a href="/faqs/?nc1=f_dr" target="_blank">Product and Technical FAQs</a></li> 
+       <li><a href="/resources/analyst-reports/?nc1=f_cc" target="_blank">Analyst Reports</a></li> 
+       <li><a href="/partners/?nc1=f_dr" target="_blank">AWS Partner Network</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Developers_on_AWS" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Developers on AWS</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/developer/?nc1=f_dr" target="_blank">Developer Center</a></li> 
+       <li><a href="/developer/tools/?nc1=f_dr" target="_blank">SDKs &amp; Tools</a></li> 
+       <li><a href="/developer/language/net/?nc1=f_dr" target="_blank">.NET on AWS</a></li> 
+       <li><a href="/developer/language/python/?nc1=f_dr" target="_blank">Python on AWS</a></li> 
+       <li><a href="/developer/language/java/?nc1=f_dr" target="_blank">Java on AWS</a></li> 
+       <li><a href="/developer/language/php/?nc1=f_cc" target="_blank">PHP on AWS</a></li> 
+       <li><a href="/developer/language/javascript/?nc1=f_dr" target="_blank">Javascript on AWS</a></li> 
+      </ul> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <h3 id="Help" class="lb-txt-none lb-txt-p-chromium lb-tiny-v-margin lb-h3 lb-title"> Help</h3> 
+      <ul class="lb-txt-p-chromium lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-block" style="margin-bottom:0px;"> 
+       <li><a href="/contact-us/?nc1=f_m" target="_blank">Contact Us</a></li> 
+       <li><a href="/careers/?nc1=f_hi" target="_blank">AWS Careers</a></li> 
+       <li><a href="https://console.aws.amazon.com/support/home/?nc1=f_dr" target="_blank">File a Support Ticket</a></li> 
+       <li><a href="/premiumsupport/knowledge-center/?nc1=f_dr" target="_blank">Knowledge Center</a></li> 
+       <li><a href="/premiumsupport/?nc1=f_dr" target="_blank">AWS Support Overview</a></li> 
+       <li><a href="/legal/?nc1=f_cc" target="_blank">Legal</a></li> 
+      </ul> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_addl-help" data-lb-comp-ignore="true"> 
+      </div> 
+     </div> 
+     <div class="lb-xbcol"> 
+      <div class="lb-mbox js-mbox" data-lb-comp="mbox" data-mbox="en_footer-v3_cta" data-lb-comp-ignore="true"> 
+       <div class="data-attr-wrapper lb-tiny-hide lb-small-show lb-btn" data-da-type="so" data-da-so-type="viewport" data-da-so-language="en" data-da-so-category="monitoring" data-da-so-name="footer_buttons" data-da-so-url="all" data-da-so-version="footer_signup-default"> 
+        <a class="lb-btn-p-primary" href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc1=f_ct&amp;src=default" role="button"> <span> Create an AWS Account</span> </a> 
+       </div> 
+      </div> 
+      <div class="lb-xb-grid-wrap" style="padding-left:0px; margin-top:20px;"> 
+       <div class="lb-xb-grid lb-row-max-large lb-xb-equal-height lb-snap lb-gutter-collapse lb-vgutter-collapse lb-tiny-xb-auto"> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-left:0px; padding-right:12px;" href="https://twitter.com/awscloud" target="_blank" title="Twitter"> <i class="icon-twitter"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="facebook" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-none-v-margin lb-txt" style="padding-right:12px;" href="https://www.facebook.com/amazonwebservices" target="_blank" title="Facebook"> <i class="icon-facebook"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="twitch" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://www.twitch.tv/aws" target="_blank" title="Twitch"> <i class="icon-twitch"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="aws-podcast" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://aws.amazon.com/podcasts/aws-podcast/" target="_blank" title="Podcast"> <i class="icon-podcast"></i></a> 
+         </div> 
+        </div> 
+        <div class="lb-xbcol"> 
+         <div class="lb-data-attr-wrapper data-attr-wrapper" data-da-so-category="monitoring" data-da-so-url="all" data-da-so-version="newsletter" data-da-so-language="en" data-da-so-name="footer-socials" data-da-type="so" data-da-so-type="viewport"> 
+          <a class="lb-txt-none lb-txt-p-chromium lb-none-pad lb-txt" style="padding-right:12px;" href="https://pages.awscloud.com/communication-preferences?trk=homepage" target="_blank" title="Email"> <i class="icon-envelope-o"></i></a> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="lb-txt-normal lb-txt-white lb-txt-14 lb-rtxt" style="color:#eaeded; margin-top:0px;"> 
+       <div>
+         Amazon is an Equal Opportunity Employer: 
+        <i> Minority / Women / Disability / Veteran / Gender Identity / Sexual Orientation / Age.</i> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#242F3E;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-chromium lb-tiny-iblock lb-none-v-margin lb-ul lb-list-style-none lb-li-micro-v-margin lb-tiny-ul-iblock"> 
+       <li class="lb-txt-bold">Language</li> 
+       <li data-language="ar"><a href="https://aws.amazon.com/ar/?nc1=h_ls">عربي</a></li> 
+       <li data-language="id"><a href="https://aws.amazon.com/id/?nc1=h_ls">Bahasa Indonesia</a></li> 
+       <li data-language="de"><a href="https://aws.amazon.com/de/?nc1=h_ls">Deutsch</a></li> 
+       <li data-language="en"><a href="https://aws.amazon.com/?nc1=h_ls">English</a></li> 
+       <li data-language="es"><a href="https://aws.amazon.com/es/?nc1=h_ls">Espa&ntilde;ol</a></li> 
+       <li data-language="fr"><a href="https://aws.amazon.com/fr/?nc1=h_ls">Fran&ccedil;ais</a></li> 
+       <li data-language="it"><a href="https://aws.amazon.com/it/?nc1=h_ls">Italiano</a></li> 
+       <li data-language="pt"><a href="https://aws.amazon.com/pt/?nc1=h_ls">Portugu&ecirc;s</a></li> 
+       <li data-language="vi"><a href="https://aws.amazon.com/vi/?nc1=f_ls">Tiếng Việt</a></li> 
+       <li data-language="tr"><a href="https://aws.amazon.com/tr/?nc1=h_ls">T&uuml;rk&ccedil;e</a></li> 
+       <li data-language="ru"><a href="https://aws.amazon.com/ru/?nc1=h_ls">Ρусский</a></li> 
+       <li data-language="th"><a href="https://aws.amazon.com/th/?nc1=f_ls">ไทย</a></li> 
+       <li data-language="jp"><a href="https://aws.amazon.com/jp/?nc1=h_ls">日本語</a></li> 
+       <li data-language="ko"><a href="https://aws.amazon.com/ko/?nc1=h_ls">한국어</a></li> 
+       <li data-language="cn"><a href="https://aws.amazon.com/cn/?nc1=h_ls">中文 (简体)</a></li> 
+       <li data-language="tw"><a href="https://aws.amazon.com/tw/?nc1=h_ls">中文 (繁體)</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="lb-none-pad lb-none-v-margin lb-xb-grid-wrap" style="background-color:#EAEDED; padding-top:5px;"> 
+    <div class="lb-xb-grid lb-row-max-large lb-snap lb-tiny-xb-1"> 
+     <div class="lb-xbcol"> 
+      <ul class="lb-txt-p-squid-ink lb-none-v-margin lb-ul lb-list-style-none lb-li-none-v-margin lb-tiny-ul-iblock"> 
+       <li><a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a></li> 
+       <li>|</li> 
+       <li><a href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a></li> 
+       <li>|</li> 
+       <li>&copy; 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <div id="aws-page-end"></div> 
+  <div id="lb-page-end"></div> 
+  <script src="https://a0.awsstatic.com/pre-offer/1.0.11/content/sitePriv/main.js" async=""></script> 
+  <script src="https://a0.awsstatic.com/da/js/1.0.38/aws-da.js"></script> 
+  <!-- SiteCatalyst code version: H.25.1. Copyright 1996-2012 Adobe, Inc. All Rights Reserved --> 
+  <script><!--
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+  <script><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script> 
+  <noscript> 
+   <img src="//amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazonalldev2/1/H.25.1--NS/0" height="1" width="1" border="0" alt="" /> 
+  </noscript> 
+  <!--/DO NOT REMOVE/--> 
+  <!-- End SiteCatalyst code version: H.25.1. --> 
+  <!--[if lte IE 9]>
+  <script>
+    jQuery = $ = undefined;
+  </script>
+  <p class="deprecated-browser-support-message">
+    You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567"
+           alt="deprecated-browser pixel tag" />
+      </p>
+<![endif]--> 
+  <script>
+  if (document.documentMode === 10) {
+    var msg = 'You are using an <strong>outdated</strong> browser. Please upgrade to Internet Explorer 11 or another modern browser to improve your experience.';
+    $('html').addClass('unsupported-version');
+    $(document.body).append('<p class="deprecated-browser-support-message">' + msg + '<img src="https://fls-na.amazon.com/1/action-impressions/1/OE/aws-mktg/action/awsm_:comp_DeprecatedBrowser@v=1:u=c?dataset=LIVE:PROD&instance=PUB&client=dsk&method=NA&marketplaceId=A12QK8IU0H0XW5&requestId=ABCDEFGHIJKLMNOPQRST&session=123-1234567-1234567" alt="deprecated-browser pixel tag" /></p>');
+    jQuery = $ = undefined;
+  }
+</script> 
+  <!-- updated_at: 2020-04-02T20:21:31.427-0700 -->  
+ </body>
+</html>

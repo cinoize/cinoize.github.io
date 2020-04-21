@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/static/91.png">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@profwade_" />
+    <meta name="twitter:creator" content="@profwade_" />
+    <meta name="twitter:title" content="91-DIVOC : Flip the script on COVID-19" />
+    <meta name="twitter:description" content="An interactive visualization of the exponential spread of COVID-19" />
+    <meta name="twitter:image" content="https://91-divoc.com/pages/covid-visualization/img.png" />
+
+    <meta property="og:title" content="91-DIVOC : Flip the script on COVID-19">
+    <meta property="og:description" content="An interactive visualization of the exponential spread of COVID-19">
+    <meta property="og:image" content="https://91-divoc.com/pages/covid-visualization/img.png">
+    <meta property="og:url" content="https://91-divoc.com/pages/covid-visualization/">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/91.css">
+
+    <title>91-DIVOC : Flip the script on COVID-19</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67232409-3"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-67232409-3');</script>
+  </head>
+  <body>
+    <div>
+    <header class="container-fluid header-small">
+  <div class="container">
+    <h1>
+      <a href="/">91-DIVOC</a>
+    </h1>
+  </div>
+</header>
+
+<link rel="stylesheet" href="css.css">
+
+<div class="container-fluid viz" style="border-bottom: dashed 1px hsla(199, 100%, 6%, 1);">
+  <div class="container lead">
+    <h2>An interactive visualization of the exponential spread of COVID-19</h2>
+    A project to explore the global growth of COVID-19.  Updated daily.  <a href="overview.html">Overview and motivations</a>.
+  </div>
+</div>
+
+
+<div class="container viz">
+  <div class="alert alert-secondary" style="margin-top: 10px; padding-top: 20px;">
+    A few interesting bits I found interesting to explore:
+    <ul>
+      <li>
+        These graphs are not just images.  <b>Hover over any data point</b> to see the data behind it.
+      </li>
+      <li>
+        There are two different ways to view the exact same data:
+        <ul>
+          <li>The <b>logarithmic scale</b> shows a great comparison of the magnitude of growth between countries, but less of the human impact.</li>
+          <li>The <b>linear scale</b> shows the real human impact -- a growth twice the size is twice the number of real people infected.</li>    
+          <li><b>Switch between the two</b> by toggling the scale at the bottom of each graph.</li>
+        </ul>
+      </li>
+      <li>
+        [Apr 16]: New &quot;Data&quot; options to display one week trailing averages of cases/deaths.  <a href="changes.html" style="color: hsla(199, 100%, 40%, 1);">See full change log</a>.
+        <!--
+        Finally, <a href="changes.html" style="color: hsla(199, 100%, 40%, 1);">the change log</a> documents all major changes and improvements made to this visualization.
+        -->
+      </li>
+    </ul>
+    <hr>
+    This visualization is <b>updated daily</b> with the Johns Hopkins CSSE data, which is typically released around 7:00pm Central.
+    <i id="jhu-updated"></i>
+  </div>
+
+  <div id="sizer"></div>
+  <!-- -->
+  <div class="chart-header" style="margin-top: 20px;">
+    <h2>COVID-19 Cases by Country</h2>
+  </div>
+  <div id="chart-countries" class="chart-viz">
+    <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+  </div>
+  <div class="chart-footer">
+    <div>
+      <div class="data-scale-float">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Data:</span>
+          </div>
+          <select class="form-control data-select" data-chart="countries">
+            <option value="active">Total Active Cases</option>
+            <option value="cases" selected>Total Confirmed Cases</option>
+            <option value="cases-daily">New Cases /Day</option>
+            <option value="cases-daily-7">New Cases, 1 Wk. Avg.</option>
+            <option value="deaths">Total Deaths</option>
+            <option value="deaths-daily">New Deaths /Day</option>
+            <option value="deaths-daily-7">New Deaths, 1 Wk. Avg.</option>
+            <option value="recovered">Total Recovered</option>
+          </select>
+        </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Scale:</span>
+          </div>          
+          <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="countries">
+            <input type="radio" name="scale" autocomplete="off" checked> Log
+          </label>
+          <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="countries">
+            <input type="radio" name="scale" autocomplete="off"> Linear
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Highlight:</span>
+        </div>
+        <select class="form-control highlight-select" id="highlight-chart-countries" data-chart="countries">
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Show:</span>
+        </div>
+        <select class="form-control filter-select" id="filter-chart-countries" data-chart="countries">
+          <option value="highlight-only">Highlight Only</option>
+          <option value="10">Top 10</option>
+          <option value="50" selected>Top 50</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Y-Axis:</span>
+        </div>
+        <select class="form-control yaxis-select" data-chart="countries">
+          <option value="log">Fixed</option>
+          <option value="highlight">Scale to Highlight</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Trendline:</span>
+        </div>
+        <select class="form-control trendline-select" data-chart="countries">
+          <option value="default">Default</option>
+          <option value="none">None</option>
+          <option value="highlight-1week">One week trend</option>
+          <option value="highlight-3day">Three-day trend</option>
+          <option value="highlight-1day">One day trend</option>
+          <option value="all">All trendlines</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!--
+    <div style="float: right;" data-chart="countries">
+      Download Image: <a href="#" onclick="saveAsPNG(event)">PNG</a> | <a href="#" onclick="saveAsSVG(event)">SVG</a>
+    </div>
+  -->
+  <div class="chart-footer" style="border-top: 0px; font-size: 10px;">
+    <div class="extra-highlights" data-chart="countries"></div>
+    <a href="#" class="add-highlight" data-chart="countries">+ Add Additional Highlight</a>
+  </div>
+
+  <!-- -->
+  <div class="chart-header" style="margin-top: 20px;">
+    <h2>COVID-19 Cases by US States/Territories</h2>
+  </div>
+  <div id="chart-states" class="chart-viz">
+    <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+  </div>
+  <div class="chart-footer">
+    <div>
+      <div class="data-scale-float">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Data:</span>
+          </div>
+          <select class="form-control data-select" data-chart="states">
+            <option value="active">Total Active Cases</option>
+            <option value="cases" selected>Total Confirmed Cases</option>
+            <option value="cases-daily">New Cases /Day</option>
+            <option value="cases-daily-7">New Cases, 1 Wk. Avg.</option>
+            <option value="deaths">Total Deaths</option>
+            <option value="deaths-daily">New Deaths /Day</option>
+            <option value="deaths-daily-7">New Deaths, 1 Wk. Avg.</option>
+            <option value="recovered">Total Recovered</option>
+          </select>
+        </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Scale:</span>
+          </div>          
+          <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="states">
+            <input type="radio" name="scale" autocomplete="off" checked> Log
+          </label>
+          <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="states">
+            <input type="radio" name="scale" autocomplete="off"> Linear
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Highlight:</span>
+        </div>
+        <select class="form-control highlight-select" id="highlight-chart-states" data-chart="states">
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Show:</span>
+        </div>
+        <select class="form-control filter-select" id="filter-chart-states" data-chart="states">
+          <option value="highlight-only">Highlight Only</option>
+          <option value="10">Top 10</option>
+          <option value="50">Top 50</option>
+          <option value="all" selected>All</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Y-Axis:</span>
+        </div>
+        <select class="form-control yaxis-select" data-chart="states">
+          <option value="log">Fixed</option>
+          <option value="highlight">Scale to Highlight</option>
+        </select>
+      </div>        
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Trendline:</span>
+        </div>
+        <select class="form-control trendline-select" data-chart="states">
+          <option value="default">Default</option>
+          <option value="none">None</option>
+          <option value="highlight-1week">One week trend</option>
+          <option value="highlight-3day">Three-day trend</option>
+          <option value="highlight-1day">One day trend</option>
+          <option value="all">All trendlines</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="chart-footer" style="border-top: 0px; font-size: 10px;">
+    <div class="extra-highlights" data-chart="states"></div>
+    <a href="#" class="add-highlight" data-chart="states">+ Add Additional Highlight</a>
+  </div>
+
+
+  <div class="card" style="margin-top: 15px;">
+    <a href="../covid-by-your-locations/">91-DIVOC #02: See US county-level data for locations that matter most to you &gt;&gt;</a>
+  </div>  
+</div>
+
+<div class="container-fluid viz" style="border-bottom: dashed 1px hsla(199, 100%, 6%, 1); margin-top: 15px;">
+</div>
+
+<div class="container viz">
+  <div class="alert alert-secondary" style="margin-top: 10px; padding-top: 20px;">
+    <h4>Same Data -- Normalized by Population</h4>
+
+    The visualizations below use the exact same COVID-19 data from Johns Hopkins except that the data is now normalized by dividing
+    by the country or state population.
+    <ul>
+      <li>
+        The data is presented as <b>confirmed cases per 1,000,000 people</b>, based on the <a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank">country</a> or <a href="https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population">US state/territory</a> population found on Wikipedia.
+      </li>
+    </ul>
+  </div>
+
+  <!-- -->
+  <div class="chart-header" style="margin-top: 20px;">
+    <h2>COVID-19 Cases by Country, normalized by country population</h2>
+  </div>
+  <div id="chart-countries-normalized" class="chart-viz">
+    <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+  </div>
+  <div class="chart-footer">
+    <div>
+      <div class="data-scale-float">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Data:</span>
+          </div>
+          <select class="form-control data-select" data-chart="countries-normalized">
+            <option value="active">Total Active Cases</option>
+            <option value="cases" selected>Total Confirmed Cases</option>
+            <option value="cases-daily">New Cases /Day</option>
+            <option value="cases-daily-7">New Cases, 1 Wk. Avg.</option>
+            <option value="deaths">Total Deaths</option>
+            <option value="deaths-daily">New Deaths /Day</option>
+            <option value="deaths-daily-7">New Deaths, 1 Wk. Avg.</option>
+            <option value="recovered">Total Recovered</option>
+          </select>
+        </div>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Scale:</span>
+          </div>
+          <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="countries-normalized">
+            <input type="radio" name="scale" autocomplete="off" checked> Log
+          </label>
+          <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="countries-normalized">
+            <input type="radio" name="scale" autocomplete="off"> Linear
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Highlight:</span>
+        </div>
+        <select class="form-control highlight-select" id="highlight-chart-countries-normalized" data-chart="countries-normalized">
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Show:</span>
+        </div>
+        <select class="form-control filter-select" id="filter-chart-countries-normalized" data-chart="countries-normalized">
+          <option value="highlight-only">Highlight Only</option>
+          <option value="10">Top 10</option>
+          <option value="50" selected>Top 50</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Y-Axis:</span>
+        </div>
+        <select class="form-control yaxis-select" data-chart="countries-normalized">
+          <option value="log">Fixed</option>
+          <option value="highlight">Scale to Highlight</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Trendline:</span>
+        </div>
+        <select class="form-control trendline-select" data-chart="countries-normalized">
+          <option value="default">Default</option>
+          <option value="none">None</option>
+          <option value="highlight-1week">One week trend</option>
+          <option value="highlight-3day">Three-day trend</option>
+          <option value="highlight-1day">One day trend</option>
+          <option value="all">All trendlines</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="chart-footer" style="border-top: 0px; font-size: 10px;">
+    <div class="extra-highlights" data-chart="countries-normalized"></div>
+    <a href="#" class="add-highlight" data-chart="countries-normalized">+ Add Additional Highlight</a>
+  </div>  
+  <!-- -->
+  <div class="chart-header" style="margin-top: 20px;">
+    <h2>COVID-19 Cases by US States/Territories, normalized by population</h2>
+  </div>
+  <div id="chart-states-normalized" class="chart-viz">
+    <div class="text-center" style="height: 500px;"><b>Loading Data...</b></div>
+  </div>
+  <div class="chart-footer">
+    <div>
+      <div class="data-scale-float">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Data:</span>
+          </div>
+          <select class="form-control data-select" data-chart="states-normalized">
+            <option value="active">Total Active Cases</option>
+            <option value="cases" selected>Total Confirmed Cases</option>
+            <option value="cases-daily">New Cases /Day</option>
+            <option value="cases-daily-7">New Cases, 1 Wk. Avg.</option>
+            <option value="deaths">Total Deaths</option>
+            <option value="deaths-daily">New Deaths /Day</option>
+            <option value="deaths-daily-7">New Deaths, 1 Wk. Avg.</option>
+            <option value="recovered">Total Recovered</option>
+          </select>
+        </div>
+                
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Scale:</span>
+          </div>          
+          <label class="btn btn-info active scaleSelection" data-scale="log" data-chart="states-normalized">
+            <input type="radio" name="scale" autocomplete="off" checked> Log
+          </label>
+          <label class="btn btn-info scaleSelection" data-scale="linear" data-chart="states-normalized">
+            <input type="radio" name="scale" autocomplete="off"> Linear
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Highlight:</span>
+        </div>
+        <select class="form-control highlight-select" id="highlight-chart-states-normalized" data-chart="states-normalized">
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Show:</span>
+        </div>
+        <select class="form-control filter-select" id="filter-chart-states-normalized" data-chart="states-normalized">
+          <option value="highlight-only">Highlight Only</option>
+          <option value="10">Top 10</option>
+          <option value="50">Top 50</option>
+          <option value="all" selected>All</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Y-Axis:</span>
+        </div>
+        <select class="form-control yaxis-select" data-chart="states-normalized">
+          <option value="log">Fixed</option>
+          <option value="highlight">Scale to Highlight</option>
+        </select>
+      </div>
+
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 3px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Trendline:</span>
+        </div>
+        <select class="form-control trendline-select" data-chart="states-normalized">
+          <option value="default">Default</option>
+          <option value="none">None</option>
+          <option value="highlight-1week">One week trend</option>
+          <option value="highlight-3day">Three-day trend</option>
+          <option value="highlight-1day">One day trend</option>
+          <option value="all">All trendlines</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+  <div class="chart-footer" style="border-top: 0px; font-size: 10px;">
+    <div class="extra-highlights" data-chart="states-normalized"></div>
+    <a href="#" class="add-highlight" data-chart="states-normalized">+ Add Additional Highlight</a>
+  </div>
+
+  <div class="card" style="margin-top: 15px;">
+    <a href="../covid-by-your-locations/">91-DIVOC #02: See US county-level data for locations that matter most to you &gt;&gt;</a>
+  </div>  
+
+  <!-- -->
+  
+</div>
+
+<div class="container-fluid viz" style="margin-top: 20px;">
+  <div class="container lead">
+    <div><b>More Details</b>: <a href="/">91-DIVOC #01 - COVID-19 Dataset</a></div>
+    <div><b>COVID-19 Dataset</b>: <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series" target="_blank">2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE</a></div>
+    <div><b>Population Datasets</b>:
+      <a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population">Wikipedia, list of countries</a> and 
+      <a href="https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population">Wikipedia, list of US states</a>
+    </div>
+  </div>
+</div>
+
+<noscript>
+  <style>.social-hide { display: none; }</style>
+  <img class="social-hide" itemprop="image" src="img.png">
+</noscript>
+
+<footer class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <br>
+        <div style="font-size: 12px;">
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">(CC) BY-SA 4.0</a>
+        </div>
+      </div>
+      <div class="col-9" style="text-align: right;">
+        <div style="color: #ddd;">&ndash; wade</div>
+        <div style="font-size: 12px;">
+          <a href="https://waf.cs.illinois.edu">Website</a> | 
+          <a href="https://www.instagram.com/profwade/">Instagram</a> |
+          <a href="https://www.twitter.com/profwade_/">Twitter</a> |
+          <a href="https://www.github.com/wadefagen/">GitHub</a>
+        </div>    
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="d3-tip.js"></script>
+<script src="../jhu-updated.js"></script>
+<script src="vis.js?v=20200411"></script>
+
+<!--
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha256-u/J1Urdrk3nCYFefpoeTMgI5viU1ujCDu2fXXoSJjhg=" crossorigin="anonymous"></script>
+-->
+    </div>
+  </body>
+</html>

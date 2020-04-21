@@ -1,0 +1,2 @@
+(function(){function f(){var e=document.querySelector(".signed-in_dropdown"),a=document.querySelector(".login-container"),b=void 0,c=void 0,d=void 0;e&&(b=e.getAttribute("data-profile-language"));a&&(c=a.getAttribute("data-browser-language"),d=a.getAttribute("data-geo-country-code"));return b||c||d?{profileLanguage:b,browserLanguage:c,geoCountryCode:d}:null}window.twtrCommon=window.twtrCommon||{};window.twtrCommon.profile=window.twtrCommon.profile||{};window.twtrCommon.profile.getSiteProfile=window.twtrCommon.profile.getSiteProfile||
+f})();

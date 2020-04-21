@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en-US" class="">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"53cef82690",applicationID:"189190456"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Police Warn Guilford Residents About Suspicious Flyer &#8211; NBC Connecticut</title>
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//native.sharethrough.com' />
+<link rel='dns-prefetch' href='//js-sec.indexww.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="NBC Connecticut &raquo; Feed" href="https://www.nbcconnecticut.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="NBC Connecticut &raquo; Police Warn Guilford Residents About Suspicious Flyer Comments Feed" href="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.nbcconnecticut.com/_static/??-eJyVjUsOwjAMBS+Ea4JUukKcxfkAFq4bxamq3J4ICcSmC7bzZvRwyxAWrUkrZlnvrIYUQailYqA+YLBfEm956OSA/3XfhjXIGpO958hW0csSniDsC5WGVpukYWbdKcge3H9tX6HYJ/BUPsp1vrhxOk/OHU/jC/nZV1k=' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='admin-bar-inline-css'>
+#wp-admin-bar-my-sites-search.hide-if-no-js {
+	display: none;
+}
+#wp-admin-bar-my-sites-search label[for="my-sites-search-text"] {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+#wp-admin-bar-my-sites-search {
+	height: 38px;
+}
+#wp-admin-bar-my-sites-search .ab-item {
+	height: 34px;
+}
+#wp-admin-bar-my-sites-search input {
+	padding: 0 2px;
+	width: 95%;
+	width: calc( 100% - 4px );
+}
+	
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='font-awesome-css'  href='https://use.fontawesome.com/releases/v5.9.0/css/all.css' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.nbcconnecticut.com/_static/??-eJydzksOwjAMBNAL0fyIm2SBOIvjujQin4qm4vqUBQegmuWMnka+14Fa7Vy77AsX3mSNNGwde2pVUk7fJu4pT5K2o2wVyyo8E4yGXACwEEZlTbSipCqOzUX+aVIrpVWhgwHNbp4jeqWjMoGVoGWvz9PyI7eIWaiJj7MQwujZTWTBgT9t4qsnyiysdlcbQONskRRFxcg/9F5uGvwRY6z+AHXHehE=' type='text/css' media='all' />
+<script src='https://www.nbcconnecticut.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script>
+jQuery(document).ready( function($) {
+	$('#wp-admin-bar-my-sites-search.hide-if-no-js').show();
+	$('#wp-admin-bar-my-sites-search input').keyup( function( ) {
+
+		var searchValRegex = new RegExp( $(this).val(), 'i');
+
+		$('#wp-admin-bar-my-sites-list > li.menupop').hide().filter(function() {
+
+			return searchValRegex.test( $(this).find('> a').text() );
+
+		}).show();
+
+	});
+});
+	
+</script>
+<script>
+var adLayersDFP = {"layerDebugLabel":"Current ad layer","consoleDebugLabel":"Switch to Google console","adUnitPrefix":"div-gpt-ad-"};
+</script>
+<script>
+var adLayersAdServer = {"jsAPIClass":"AdLayersDFPAPI"};
+</script>
+<script type='text/javascript' src='https://www.nbcconnecticut.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZubmV6UWJKql5uZp5dVrKMPVJycn1eSmleiX5BTmp6ZV6yfmKKbk1iZWlSsm5eUDDIBIZCSVkC6LqAO+1xbQ1MLEzMTM0sLoywAQvg6jw=='></script>
+<script src='https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.4.4'></script>
+<script>
+( 'fetch' in window ) || document.write( '<script src="https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script>
+var nbc = {"brand":"nbc","callLetters":"WVIT","env":"production","fullDomain":"nbcconnecticut.com","globalSiteKey":"har","comscore_c4":"NBC CONNECTICUT","on_air_name":"NBC Connecticut TV","host":"nbcconnecticut.com","market":"nbcconnecticut","pdkAcct":"Yh1nAC","sensitive":"","siteKey":"har","themeUrl":"https:\/\/www.nbcconnecticut.com\/wp-content\/themes\/nbc-station","twitterVia":"nbcconnecticut","zipCode":"06096","dataLayer":{"adobe":{"prop1":"news","eVar1":"news","prop2":"article - general","prop3":"local","eVar3":"local","prop4":"","eVar4":"","eVar8":"nbc","prop8":"nbc","prop9":"D=v9","eVar9":"HAR","prop10":"D=v10","eVar10":"WVIT","prop20":"nbcuotsdivisiontotal","prop21":"10071966938","eVar21":"10071966938","prop22":"Police Warn Guilford Residents About Suspicious Flyer","eVar22":"Police Warn Guilford Residents About Suspicious Flyer","prop28":"","eVar28":"","prop29":"news, local, ","prop32":"no keyword","prop57":"Home Top Stories, Local, News Top Stories","eVar57":"Home Top Stories, Local, News Top Stories","eVar68":"265842021","eVar70":"Jul 04, 2014","prop74":"D=v74","eVar74":"page not sponsored","eVar76":"page not sponsored","eVar80":"article - general","eVar81":"10071966938","eVar90":"","list2":"news, local, ","attrs":[],"contextData":{"pagename":"","events":"","rsid":"nbcuotsdivisiontotal","callsign":"WVIT","businessunit":"nbcconnecticut","division":"nbc","sitekey":"har","section":"news","subsection":"local","subsubsection":"","exitlink":"","url":"https:\/\/www.nbcconnecticut.com\/news\/local\/police-warn-guilford-residents-about-suspicious-flyer\/1966938\/","contentid":1966938,"localid":"1:7:1966938","contenttitle":"Police Warn Guilford Residents About Suspicious Flyer","contenttype":"article","nationalized":false,"byline_authors":"","date":"July 4, 2014","sourceid":"265842021","source":"","pageName":"local:detail content page","collections":"Home Top Stories, Local, News Top Stories"},"prop30":"Hartford","prop18":"migration","pageName":"local:detail content page","pageType":"","prop23":"article ","eVar23":"article ","prop19":"false","prop25":"D=c18","eVar25":"D=c25"},"page_name":["local:detail","content","page"],"site_events":{},"division":"nbc","market":"WVIT","sitekey":"har","type":"post","network_id":"1:7:1966938","id":1966938,"source":"","title":"Police Warn Guilford Residents About Suspicious Flyer","summary":"<p>Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference &#8220;gang stalking&#8221; in the area and advise residents to throw them out.<\/p>\n","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/police-warn-guilford-residents-about-suspicious-flyer\/1966938\/","date":"July 4, 2014","subtitle":"The flyer looks like a public service notice about 'gang stalking,' but police say the flyers contain fraudulent information.","sponsor":"","sst_source_id":"265842021","linkout":"","linkout_url":"","syndicated":false,"nationalized":false,"originating_market":"","content_tag":"","section":"news","subsection":"local","subsubsection":"","all_sections":"news|local","sponsored":false,"contentid":"10071966938","localid":"1:7:1966938","localid_combined":"10071966938","contenttitle":"Police Warn Guilford Residents About Suspicious Flyer","contenttype":"article ","syndicatedid":"1:7:1966938","byline_authors":"","sourceid":"265842021","pageName":"local:detail content page","collections":"Home Top Stories, Local, News Top Stories","uri":"\/news\/local\/police-warn-guilford-residents-about-suspicious-flyer\/1966938\/","uri_length":6,"section_name":"news","detail_section_name":"local","detail_subsection_name":"","this_contenttype":"article ","template":"article - general","this_request_type":"singular"},"browserTitle":"%s - NBC Connecticut","pageType":"article","locale":"en_US","video":{"playerType":"articleplayer","fwSSID":"ots_wvit_news_local","fwSSID_liveNoPre":"ots_live_nopreroll","fwNetworkID":"382114","fwManager":{"network":"_live","siteKey":""},"config":{"volume":100,"htmlPreRoll":true,"htmlOmniture":false,"tremorFlashKey":"52289094b872c","tremorFlashSyndKey":"5239b2feaee2e","tremorHTMLKey":"5239c44e7e9e1","tremorHTMLSyndKey":"5239c4849009"},"htmlOmniture":false,"pdkPath":"https:\/\/www.nbcnewyork.com\/assets\/pdk587","plugins":["akamaiHD","FreeWheel","comscore","captions","capcon","liveCaptions","streamsense","chartbeat"]},"adobe":{"rsid":"nbcuotsdivisiontotal","link_internal_filters":"javascript:,nbcconnecticut.com,media.nbcconnecticut.com,events.nbcconnecticut.com,tsn.nbcconnecticut.com,autos.nbcconnecticut.com"},"weather":{"weather_url":"https:\/\/www.nbcconnecticut.com\/weather\/","alerts_url":"https:\/\/www.nbcconnecticut.com\/weather\/severe-weather-alerts\/","closings_url":"https:\/\/www.nbcconnecticut.com\/weather\/school-closings\/"},"sharethrough_codes":["nP3EagztciAhUuFBbE24BQsi"],"param_zipcode":"","appleStoreUrl":"https:\/\/ad.apps.fm\/CWFkskLpwG7wPV8mmmRdlLmEqdAzHrteUpaQzsBej-1XfulTx2-T9D8hDnUdlBaZuI0F0TjN3ymp7IN8qI8aZg","androidStoreUrl":"https:\/\/ad.apps.fm\/7FJZ3H4H-zDE1jFSOa33i15KLoEjTszcQMJsV6-2VnHFDLXitVHB6BlL95nuoNYfD4DN9cA_K7isGKodpGGvSwZXchAy1QDgLLfh3nfpIa0PYu0wIMz9qzXvx-RM8FAGMv19l5B0HQTplGz--6z0Mw"};
+</script>
+<script type='text/javascript' src='https://www.nbcconnecticut.com/_static/??/wp-includes/js/dist/i18n.min.js,/wp-content/themes/nbc-station/client/build/js/analytics.3bb9db65c214c92d8c9f.bundle.min.js?m=1584470666j'></script>
+<link rel='https://api.w.org/' href='https://www.nbcconnecticut.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.nbcconnecticut.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.nbcconnecticut.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/" />
+<link rel="alternate" type="application/json+oembed" href="https://www.nbcconnecticut.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.nbcconnecticut.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F&#038;format=xml" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+		<style type='text/css'>img#wpstats{display:none}</style><style type="text/css">
+	@media (max-width: 375px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcconnecticut.com/2019/09/1920_CT-1.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 376px) and (max-width: 768px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcconnecticut.com/2019/09/1920_CT-1.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 769px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%), url('https://media.nbcconnecticut.com/2019/09/1920_CT-1.png?resize=1440%2C415'); }
+	}
+</style>
+		<!-- Begin comScore Tag -->
+		<script>
+		var _comscore = _comscore || [];
+		_comscore.push({ c1: "2", c2: "6035083" });
+		(function() {
+			var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+			s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+			el.parentNode.insertBefore(s, el);
+		})();
+		</script>
+		<noscript>
+		<img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035083&cv=2.0&cj=1" />
+		</noscript>
+		<!-- End comScore Tag -->
+				<script type="text/javascript">
+				window._taboola = window._taboola || [];
+						_taboola.push({'article':'1966938', tracking:'_osource=taboola-recirc'});
+						!function (e, f, u) {
+					e.async = 1;
+					e.src = u;
+					f.parentNode.insertBefore(e, f);
+				}(document.createElement('script'),
+				document.getElementsByTagName('script')[0],
+				'//cdn.taboola.com/libtrc/nbcots-network/loader.js');
+		</script><script>
+			window._newsroom = window._newsroom || [];
+					!function (e, f, u) {
+				e.async = 1;
+				e.src = u;
+				f.parentNode.insertBefore(e, f);
+			}(document.createElement('script'),
+			document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/nbcots-wvit/newsroom.js');
+		</script>
+		<meta property="og:site_name" content="NBC Connecticut" /><meta name="google-site-verification" content="9DR-KZ3Q4cScEQmsx4MezWlQQHm13mICp8H7ZDGvvug" /><meta property="fb:app_id" content="81242742459" /><meta name="twitter:site" content="@nbcconnecticut" /><meta property="og:type" content="article" /><meta property="article:opinion" content="false" /><meta property="article:content_tier" content="free" /><meta name="twitter:creator" content="@nbcconnecticut" /><meta name="article:publisher" content="http://www.facebook.com/NBCConnecticut" /><meta name="description" content="Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference “gang stalking” in the area and advise..." /><meta property="og:description" content="Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference “gang stalking” in the area and advise residents to throw them out." /><meta name="twitter:description" content="Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference “gang stalking” in the area and advise residents to throw them out." /><meta property="og:title" content="Police Warn Guilford Residents About Suspicious Flyer" /><meta name="twitter:title" content="Police Warn Guilford Residents About Suspicious Flyer" /><meta property="og:url" content="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/" /><meta name="twitter:url" content="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/" /><meta name="sailthru.title" content="Police Warn Guilford Residents About Suspicious Flyer" /><meta name="sailthru.description" content="Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference “gang stalking” in the area and advise..." /><meta name="sailthru.type" content="article" /><meta name="sailthru.date" content="2014-07-04T15:39:36+00:00" /><meta property="og:image" content="https://media.nbcconnecticut.com/2019/09/takqYFlwVoQcemjRcjJn-2.jpg?resize=1182%2C675" /><meta name="twitter:image" content="https://media.nbcconnecticut.com/2019/09/takqYFlwVoQcemjRcjJn-2.jpg?resize=1182%2C675" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.nbcconnecticut.com\/news\/local\/police-warn-guilford-residents-about-suspicious-flyer\/1966938\/","headline":"Police Warn Guilford Residents About Suspicious Flyer","datePublished":"2014-07-04T15:39:36","dateModified":"2014-07-04T15:45:55","description":"Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference &#8220;gang stalking&#8221; in the area and...","speakable":{"@type":"SpeakableSpecification","cssSelector":[".article-headline",".article-subtitle"]},"keywords":"","publisher":{"@type":"Organization","name":"NBC Connecticut","logo":{"@type":"ImageObject","height":60,"url":"https:\/\/media.nbcconnecticut.com\/wp-content\/uploads\/2019\/09\/light_amp_wvit.png","width":160}},"image":{"@type":"ImageObject","height":675,"url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/takqYFlwVoQcemjRcjJn-2.jpg?resize=1182%2C675","width":1182},"author":{"@type":"Person","name":"NBC Connecticut"}}</script>							<script type='text/javascript'>
+				var dfpAdUnits = {};
+				var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				(function() {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				})();
+				</script>
+												<script type="text/javascript">
+			var dfpBuiltMappings = {}, dfpAdUnits = {};
+
+			if (768 <= window.innerWidth) {									googletag.cmd.push(function() {
+					dfpBuiltMappings["bottombanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["bottombox"] = googletag.sizeMapping().addSize([768,1],[[300,250]]).build();
+dfpBuiltMappings["topbox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["logo"] = googletag.sizeMapping().addSize([768,1],[[88,31],[120,60]]).build();
+dfpBuiltMappings["interstitial"] = googletag.sizeMapping().addSize([768,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"topbox":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[300,250],[300,600]],"targeting":[]},"bottombox":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[300,250]],"targeting":[]},"logo":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[88,31],[120,60]],"targeting":[]},"topbanner":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"interstitial":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[1,1]],"targeting":[]},"bottombanner":{"path":"\/2620\/ots_web\/wvit\/news\/local","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]}};
+					var dfpSizeMapping = {"bottombanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"bottombox":[[[768,1],[[300,250]]]],"topbox":[[[768,1],[[300,250],[300,600]]]],"topbanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"logo":[[[768,1],[[88,31],[120,60]]]],"interstitial":[[[768,1],[[1,1]]]]};
+
+					 } else { 									googletag.cmd.push(function() {
+					dfpBuiltMappings["mobiletopbanner"] = googletag.sizeMapping().addSize([1,1],[[320,50]]).build();
+dfpBuiltMappings["mobilemultibox"] = googletag.sizeMapping().addSize([1,1],[[300,250],[300,100],[320,50]]).build();
+dfpBuiltMappings["mobilebottombanner"] = googletag.sizeMapping().addSize([1,1],[[320,50]]).build();
+dfpBuiltMappings["mobilebackstage"] = googletag.sizeMapping().addSize([1,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"mobilemultibox":{"path":"\/2620\/ots_mobile\/wvit_mobileweb\/news\/local","sizes":[[300,250],[300,100],[320,50]],"targeting":[]},"mobilebackstage":{"path":"\/2620\/ots_mobile\/wvit_mobileweb\/news\/local","sizes":[[1,1]],"targeting":[]},"mobilebottombanner":{"path":"\/2620\/ots_mobile\/wvit_mobileweb\/news\/local","sizes":[[320,50]],"targeting":[]},"mobiletopbanner":{"path":"\/2620\/ots_mobile\/wvit_mobileweb\/news\/local","sizes":[[320,50]],"targeting":[]}};
+					var dfpSizeMapping = {"mobiletopbanner":[[[1,1],[[320,50]]]],"mobilemultibox":[[[1,1],[[300,250],[300,100],[320,50]]]],"mobilebottombanner":[[[1,1],[[320,50]]]],"mobilebackstage":[[[1,1],[[1,1]]]]};
+
+													}					googletag.cmd.push(function() {
+					googletag.pubads().enableAsyncRendering();
+googletag.pubads().collapseEmptyDivs();
+					googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						if (false === event.isEmpty) {
+							var slotElementId = event.slot.getSlotElementId();
+							if (0 <= slotElementId.indexOf('topbanner')) {
+								document.body.classList.add("topbanner");
+							}
+						}
+					});
+						googletag.pubads().setTargeting("zipcode", localStorage.getItem("zipCode") || nbc.zipCode );
+
+	var isMobile = window.matchMedia('screen and (max-width: 767px)').matches;
+	googletag.pubads().setTargeting("gpt1", isMobile ? "ots_mobile" : "ots_web");
+	googletag.pubads().setTargeting("platform", isMobile ? "mobile" : "desktop");
+			googletag.pubads().setTargeting("source", "fightgangstalking.com");
+				googletag.pubads().setTargeting("pageid", "10071966938");
+				googletag.pubads().setTargeting("pageid2", "10071966938");
+				googletag.pubads().setTargeting("sect", "news");
+				googletag.pubads().setTargeting("sub", "local");
+				googletag.pubads().setTargeting("call", "WVIT");
+				googletag.pubads().setTargeting("region", "hartford");
+				googletag.pubads().setTargeting("stationtype", "nbc");
+				googletag.pubads().setTargeting("tags", "news,local,");
+				googletag.pubads().setTargeting("gpt2", "WVIT");
+				googletag.pubads().setTargeting("station", "ots");
+				googletag.pubads().setTargeting("sponsor", "");
+				googletag.pubads().setTargeting("excl_cat", "news,local");
+		
+					if ( typeof AdLayersAPI === 'undefined' || ! AdLayersAPI.isDebug() ) {
+						googletag.enableServices();
+					}
+				});
+								var dfpAdLayer = {"post_id":"2153386","title":"Article Ad Layer"};
+
+			</script>
+			<link rel="amphtml" href="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/?amp"><link rel="icon" href="https://media.nbcconnecticut.com/2019/09/cropped-NBC_Connecticut.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://media.nbcconnecticut.com/2019/09/cropped-NBC_Connecticut.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://media.nbcconnecticut.com/2019/09/cropped-NBC_Connecticut.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://media.nbcconnecticut.com/2019/09/cropped-NBC_Connecticut.png?fit=270%2C270" />
+</head>
+
+<body class="post-template-default single single-post postid-1966938 single-format-standard station-nbc wvit has-featured-image breaking_w_eyebrow visible-alert-bar short-hero">
+	<div id="fb-root"></div>
+		<script
+			async
+			defer
+			crossorigin="anonymous"
+			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=81242742459&autoLogAppEvents=1"></script>
+	<div class="leaderboard_ad">
+	<div id="div-gpt-ad-topbanner_" class=" gpt-topbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbanner_', format: 'topbanner', targeting: {"slot":"topbanner","pos":"topbanner"} });
+			</script><div id="div-gpt-ad-mobiletopbanner_" class=" gpt-mobiletopbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobiletopbanner_', format: 'mobiletopbanner', targeting: {"slot":"mobiletopbanner","pos":"mobiletopbanner"} });
+			</script></div>
+<div id="page" class="site" data-component="wrapper">
+	
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="alert-bar full-width breaking_w_eyebrow">
+	<div class="alert-bar__content">
+		<h4 class="alert-bar__heading">
+			Breaking		</h4>
+		<span class="alert-bar__title">
+			<a href="https://www.nbcconnecticut.com/news/coronavirus/coronavirus-in-connecticut-17962-cases-1127-deaths-reported-statewide/2257830/">
+				<span
+					class="alert-bar__inner"
+					data-react-component="NBCTruncate"
+					data-maxlines="1"
+					data-maxlinesmobile="2"
+					data-readmore=""
+					data-text="Coronavirus in Connecticut: Nearly 18,000 Cases, 1,127 Deaths Reported Statewide"
+					data-ellipsis="true">
+					Coronavirus in Connecticut: Nearly 18,000 Cases, 1,127 Deaths Reported Statewide				</span>
+			</a>
+	</div>
+</div>
+	<div class="site-header__primary">
+		<div class="site-header__wrap">
+							<div class="site-header__logo">
+					<a href="https://www.nbcconnecticut.com/">
+						<img
+							src="https://media.nbcconnecticut.com/2019/09/CT_On_Dark@3x-3.png?fit=186%2C120"
+							alt="NBC Connecticut"
+						/>
+					</a>
+				</div>
+						<div class="site-header__nav-search">
+				<div class="site-header__nav-main">
+					<button class="site-header__nav-main-toggle">
+						<span class="site-header__nav-main-toggle-text">Main Navigation</span>
+					</button>
+				</div>
+				<div class="site-header__search" data-component="headerSearch">
+					<button class="site-header__search-toggle">
+						<span class="site-header__search-toggle-text">Search</span>
+					</button>
+					<div class="site-header__search-form">
+						
+<form class="search-form" role="search" method="get" action="https://www.nbcconnecticut.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+					</div>
+				</div>
+			</div>
+			<div class="site-header__animated-section">
+				<nav class="site-header__nav-sections">
+					<div class="menu-header-container"><nav id="primary-menu" class="menu"><a class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent" href="/news/local/">Local</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/weather/">Weather</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/investigations/">Investigations</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/videos/">Video</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/entertainment/">Entertainment</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/traffic/">Traffic</a></li>
+</nav></div>				</nav>
+				<div class="site-header__weather-tv">
+					<div
+						class="site-header__local-weather"
+						data-react-component="NBCWeather"
+						data-view="conditions"
+					>
+					</div>
+										<a class="site-header__live-tv" href="https://www.nbcconnecticut.com/live">Live TV</a>
+									</div>
+				<button class="site-header__mobile-share-toggle">
+					<span class="text-share">Share</span>
+					<span class="text-close">Close</span>
+				</button>
+			</div>
+		</div> <!-- site-header__wrap -->
+	</div> <!-- site-header__primary -->
+	<div class="site-header__secondary">
+		<div class="site-header__wrap">
+							<div class="site-header__trending">
+					<span class="site-header__trending-label">Trending</span>
+											<nav class="site-header__trending-nav">
+												<a href="/news/coronavirus/" class="site-header__trending-nav-item">Coronavirus Pandemic</a>
+					<a href="https://www.nbcconnecticut.com/news/local/how-many-in-tri-state-have-tested-positive-for-coronavirus-here-are-latest-cases-by-the-numbers/2234982/" class="site-header__trending-nav-item">Tracking Tri-State Infections</a>
+					<a href="https://www.nbcconnecticut.com/news/coronavirus/ct-resource-connection-community-services-for-you-and-your-family-during-the-coronavirus-pandemic/2249264/" class="site-header__trending-nav-item">CT Resource Connection</a>
+					<a href="/newsletters/" class="site-header__trending-nav-item">CT Coronavirus Newsletter</a>
+					<a href="/entertainment/ct-live/" class="site-header__trending-nav-item">CT Live</a>
+		
+							</nav>
+										<div class="site-header__trending-toggle">
+						<button class="trending-toggle"><span class="screen-reader-text">Expand</span></button>
+					</div>
+				</div>
+
+				
+<div class="site-header__alerts">
+	<div
+		class="site-header__weather with-divider"
+		data-react-component="NBCWeather"
+		data-view="alerts"
+		data-alert-singular="Weather Alert"
+		data-alert-plural="Weather Alerts"
+		data-zip-code="6096">
+	</div>
+			<a
+			href="https://www.nbcconnecticut.com/weather/school-closings/"
+			class="site-header__alerts-item site-header__alerts-item--general"
+		>
+			24 School Closings		</a>
+	</div> <!-- site-header__wrap -->
+					</div> <!-- site-header__secondary -->
+	</div>
+	</header>
+	<div id="content" class="site-content " data-component="formsContainer">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<article id="post-1966938" data-component="article">
+
+	<div
+			id="template-hero"
+		class="template-hero "
+		data-component="templateHero"
+	>
+			<div class="hero-background"></div>
+	
+	
+	
+					
+	
+	
+	
+	
+	
+	
+	</div>
+		<div class="section-content--header below-hero">
+		<div class="article-eyebrow__container">
+	<div class="article-eyebrow__wrap">
+									<span class="article-eyebrow" ></span>						</div>
+</div>
+<div class="article-header--wrap ">
+	<h1 class="article-headline">
+		Police Warn Guilford Residents About Suspicious Flyer	</h1>
+			<h2 class="article-subtitle">
+			The flyer looks like a public service notice about 'gang stalking,' but police say the flyers contain fraudulent information.		</h2>
+				
+<div class="article-meta" data-component="articleMeta">
+	<h4 class="article-byline">
+		
+							<span class="time-wrap">
+				<time class="entry-date published" datetime="2014-07-04T19:39:36-04:00">Published July 4, 2014</time>					<span class="meta-dot">&bull;</span>
+				<time class="entry-date updated" datetime="2014-07-04T15:45:55-04:00">Updated on <span class="date">July 4, 2014</span> at <span class="time">3:45 pm</span></time>			</span>
+			</h4>
+	<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F&#038;Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer?_osource=db_npd_nbc_wvit_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer&#038;url=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F?_osource=db_npd_nbc_wvit_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F?_osource=db_npd_nbc_wvit_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+	</div>
+</div>
+	</div>
+	</div>
+	<div class="section-content--full below-hero">
+		<div class="section-content--primary">
+			<div class="article-content--wrap">
+				<figure class="article-featured-media">
+	<img
+		src="https://media.nbcconnecticut.com/2019/09/takqYFlwVoQcemjRcjJn-2.jpg?resize=850%2C478"
+		alt="police_generic21"
+	/>
+	</figure>
+				<div class="article-content rich-text">
+
+					
+<p>Police have received numerous complaints about suspicious flyers being placed in Guilford mailboxes that reference "gang stalking" in the area and advise residents to throw them out.</p>
+
+<p>The flyers have the header, "Public Safety Notice: Gang Stalking" and warn readers of "illegal surveillance and harassment of targeted individuals" and say "often the stalking is done for vengeance or to silence potential whistle blowers."</p>
+
+<p>The flyer identifies its author as Shoreline Real Estate Company and the operation coordinator as Tony Fappiano, also referring people to call police for more information. But police said Fappiano filed a complaint with police stating that he is not associated with the flyers and police said the department isn't involved either.</p>
+<div class="recirc-module">
+	<h3 class="recirc__heading">Local</h3>
+	<p class="recirc__subheading"></p>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbcconnecticut.com/news/local/hartford-man-killed-after-crashing-into-house-vehicle-fire-in-bloomfield/2258169/">
+							<img class="post__image" src="https://media.nbcconnecticut.com/2019/09/IMG_2145-1.jpg?resize=850%2C478" alt="" />
+						</a>
+
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbcconnecticut.com/tag/bloomfield/">Bloomfield</a>
+																			<span class="post__date post__date--has-category">
+								16 mins ago							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbcconnecticut.com/news/local/hartford-man-killed-after-crashing-into-house-vehicle-fire-in-bloomfield/2258169/">
+								<span data-ellipsis="true" data-text="Hartford Man Killed After Crashing Into House, Vehicle Fire in Bloomfield" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									Hartford Man Killed After Crashing Into House, Vehicle Fire in Bloomfield								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbcconnecticut.com/news/coronavirus/plainville-hot-air-balloon-festival-canceled-this-year-amid-coronavirus-pandemic/2258163/">
+							<img class="post__image" src="https://media.nbcconnecticut.com/2019/09/Plainville-hot-air-balloons-1200.jpg?resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbcconnecticut.com/tag/plainville/">Plainville</a>
+																			<span class="post__date post__date--has-category">
+								29 mins ago							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbcconnecticut.com/news/coronavirus/plainville-hot-air-balloon-festival-canceled-this-year-amid-coronavirus-pandemic/2258163/">
+								<span data-ellipsis="true" data-text="Plainville Hot Air Balloon Festival Canceled This Year Amid Coronavirus Pandemic" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									Plainville Hot Air Balloon Festival Canceled This Year Amid Coronavirus Pandemic								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+	</div>
+
+<p>"This flyer is not endorsed by the Guilford Police Department and there have been no reports of stalking similar to this in the town of Guilford," police said in a news release.</p>
+
+<p>Police advised residents to throw the flyers out and contact police if they have questions. Anyone who can identify the sender is asked to contact police at 203-453-8061 or call the anonymous tip line at 203-453-8240.&nbsp;</p>
+
+									</div>
+					
+	<div class="article-footer">
+				<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F&#038;Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer?_osource=db_npd_nbc_wvit_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer&#038;url=https%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F?_osource=db_npd_nbc_wvit_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Police%20Warn%20Guilford%20Residents%20About%20Suspicious%20Flyer%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbcconnecticut.com%2Fnews%2Flocal%2Fpolice-warn-guilford-residents-about-suspicious-flyer%2F1966938%2F?_osource=db_npd_nbc_wvit_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+			<a href="#" data-service="comments">
+			<i class="fas fa-comment-alt"></i>
+
+			<div class="share-buttons__comment-count">
+				<div class="fb-comments-count" data-href="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/">0</div>
+			</div>
+		</a>
+	</div>
+	</div>
+				<div id="div-gpt-ad-mobilemultibox_belowarticle" class="widget_ad_layers_ad_widget gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_belowarticle', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script>	<div id="taboola-below-article-thumbnails"></div>
+
+	<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+		if (document.cookie.indexOf("scroll0=") < 0) {
+			window._taboola = window._taboola || [];
+			_taboola.push({
+				mode: 'thumbnails-a',
+				container: 'taboola-below-article-thumbnails',
+				placement: 'Below Article Thumbnails',
+				target_type: 'text'
+			});
+		};
+	</script>
+	<div id="taboola-below-article-text-links"></div>
+		<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+			if (document.cookie.indexOf("scroll0=") < 0) {
+				window._taboola = window._taboola || [];
+				_taboola.push({
+					mode: 'hybrid-text-links-a',
+					container: 'taboola-below-article-text-links',
+					placement: 'Below Article Text Links',
+					target_type: 'text'
+				});
+			};
+		</script>
+				</div>
+		</div>
+		<div class="section-content--secondary">
+			<aside class="sidebar article-sidebar">
+						<section id="ad_layers_ad_widget-2" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-topbox_569" class=" gpt-topbox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbox_569', format: 'topbox', targeting: {"slot":"topbox","pos":"topbox"} });
+			</script></section><section id="nbc_most_popular-2" class="widget widget_nbc_most_popular"><div class="nbc-most-popular" data-react-component="MostPopular" data-title="Trending Stories" data-include-sponsored="true" data-beforetext="Presented By"></div></section><section id="nbc_weather_widget-3" class="widget widget_nbc_weather_widget">		<div class="nbc-weather-widget">
+			<div class="nbc_owned_television_stations_weather_iframe">
+	<h2>Weather Forecast</h2><div class="widget_location">Hartford, CT</div>
+	<a class="weather-module__conditions" href="https://www.nbcconnecticut.com/weather/">
+		<div data-react-component="IframeConditions" data-location="6096"></div>
+	</a>
+		<div class="widget_sponsor">
+		<div id="div-gpt-ad-logo_weather_169" class="sponsored-ad-unit gpt-logo" data-beforetext="Presented By" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'logo_weather_169', format: 'logo', targeting: {"module":"weather","slot":"logo","pos":"logo"} });
+			</script>	</div>
+</div>
+		</div>
+		</section><section id="ad_layers_ad_widget-9" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilemultibox_191" class=" gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_191', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script></section><section id="nbc_civic_science-2" class="widget widget_nbc_civic_science"><div id="civsci-1770517932" class="module-civicScience"></div></section><section id="ad_layers_ad_widget-6" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-bottombox_391" class=" gpt-bottombox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'bottombox_391', format: 'bottombox', targeting: {"slot":"bottombox","pos":"bottombox"} });
+			</script></section><section id="ad_layers_ad_widget-12" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-interstitial_489" class=" gpt-interstitial" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'interstitial_489', format: 'interstitial', targeting: {"slot":"interstitial","pos":"interstitial"} });
+			</script></section><section id="ad_layers_ad_widget-13" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilebackstage_694" class=" gpt-mobilebackstage" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilebackstage_694', format: 'mobilebackstage', targeting: {"slot":"mobilebackstage","pos":"mobilebackstage"} });
+			</script></section>			</aside>
+		</div>
+	</div>
+</article>
+
+			</main>
+		</div>
+
+							
+	</div><!-- #content -->
+	
+<footer role="contentinfo" class="site-footer">
+	<div class="site-footer__wrapper">
+		<div class="site-footer__identity">
+							<a href="https://www.nbcconnecticut.com/" class="site-footer__logo">
+					<img
+						src="https://media.nbcconnecticut.com/2019/09/On_Light@3x-1.png?fit=189%2C120"
+						alt="NBC Connecticut"
+					/>
+				</a>
+			
+			<ul class="site-footer__social-list">
+				
+									<li class="site-footer__social-list-item facebook">
+						<a href="http://www.facebook.com/NBCConnecticut" target="_blank">
+							<span class="screen-reader-text">Facebook</span>
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item twitter">
+						<a href="https://twitter.com/nbcconnecticut" target="_blank">
+							<span class="screen-reader-text">Twitter</span>
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item instagram">
+						<a href="https://instagram.com/nbcconnecticut" target="_blank">
+							<span class="screen-reader-text">Instagram</span>
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+							</ul>
+		</div>
+
+		<ul id="menu-footer" class="footer-menu site-footer__menu-primary"><li id="menu-item-2175766" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2175766"><a href="/investigations/submit-tip/">Submit Tips for Investigations</a></li>
+<li id="menu-item-2175709" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2175709"><a href="https://www.nbcconnecticut.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-2175710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2175710"><a href="https://www.nbcconnecticut.com/contact-us/">Contact Us</a></li>
+</ul><ul id="menu-secondary-footer" class="footer-menu-secondary site-footer__menu-secondary"><li id="menu-item-1942066" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1942066"><a href="https://publicfiles.fcc.gov/tv-profile/wvit/">WVIT Public Inspection File</a></li>
+<li id="menu-item-1942067" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1942067"><a href="http://www.nbcuniversal.com/privacy/?brandA=Owned_Stations&#038;intake=NBC_Connecticut/">Privacy policy &#8211; New</a></li>
+<li id="menu-item-2154770" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2154770"><a href="http://www.nbcuniversal.com/privacy/notrtoo?brandA=Owned_Stations&#038;intake=NBC_Connecticut/">Do Not Sell My Personal Information</a></li>
+<li id="menu-item-1942081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1942081"><a href="https://www.nbcconnecticut.com/wvit-employment-information/">WVIT Employment Information</a></li>
+<li id="menu-item-1942080" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1942080"><a href="https://www.nbcconnecticut.com/terms-of-service/">Terms of Service</a></li>
+<li id="menu-item-1942068" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1942068"><a href="https://info.evidon.com/pub_info/209?v=1&#038;nt=0&#038;nw=false/">Ad Choices</a></li>
+<li id="menu-item-1942069" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1942069"><a href="mailto:WVITViewerMail.Advertising@nbcuni.com?subject=Advertise%20with%20Us%20HP/">Advertise with us</a></li>
+<li id="menu-item-1942079" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1942079"><a href="https://www.nbcconnecticut.com/send-feedback/">Send Feedback</a></li>
+</ul>
+				<div class="site-footer__corporate">
+			
+			<span class="site-footer__corporate-copyright">
+				Copyright © 2020 NBC Universal Inc. All rights reserved			</span>
+		</div>
+	</div><!-- wrapper -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<script type='text/javascript'>
+	(function() {
+		function CreateEvent(type, data) {
+			var event;
+
+			if ('undefined' === typeof data) {
+				data = {};
+			}
+
+			try {
+				event = new CustomEvent(type, { detail: data });
+			} catch (err) {
+				event = document.createEvent('CustomEvent');
+				event.initCustomEvent(type, true, true, data);
+			}
+
+			return event;
+		}
+
+		var pdk6Url = "https://www.nbcconnecticut.com/wp-content/themes/nbc-station/static/video/pdk6/player.6.1.3.js";		var pdkScript = pdk6Url;
+
+		if ('undefined' !== typeof window['win7ie']) {
+			pdkScript = window['win7ie'] ?
+			"https://www.nbcconnecticut.com/wp-content/themes/nbc-station/static/video/pdk5/tpPdk.js"			: pdk6Url;
+		}
+
+		if (pdkScript) {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = pdkScript;
+			s.onload = function() {
+				window.dispatchEvent(
+					CreateEvent('nbc:pdkLoaded')
+				);
+			};
+			document.body.appendChild(s);
+		}
+	})();
+	</script>
+	<link rel="stylesheet" href="https://www.nbcconnecticut.com/wp-content/themes/nbc-station/static/video/pdk6/player_smooth.css?v=102319" type="text/css" />		<script type="text/javascript">
+		(function() {
+						var _sf_async_config      = window._sf_async_config = (window._sf_async_config || {});
+			_sf_async_config.domain   = "nbcconnecticut.com";
+			_sf_async_config.uid      = 15527;
+			_sf_async_config.sections = "local";
+			_sf_async_config.authors  = "";
+			_sf_async_config.title    = "Police Warn Guilford Residents About Suspicious Flyer";
+
+			function loadChartbeat() {
+				var e = document.createElement('script');
+				var n = document.getElementsByTagName('script')[0];
+				e.type = 'text/javascript';
+				e.async = true;
+				e.src = '//static.chartbeat.com/js/chartbeat.js';
+				n.parentNode.insertBefore(e, n);
+			}
+			loadChartbeat();
+		})();
+		</script>
+				<div class="facebook-comments">
+			<button class="facebook-comments__close"><i class="fas fa-chevron-left"></i> Back to Article</button>
+			<div class="fb-comments" data-href="https://www.nbcconnecticut.com/news/local/police-warn-guilford-residents-about-suspicious-flyer/1966938/" data-width="100%"></div>
+		</div>
+		<div class="flyout-nav" data-component="flyoutNav">
+	<button class="flyout-nav__close"><i class="fas fa-times"></i> <span class="screen-reader-text">Close Menu</span></button>
+	<div class="flyout-nav__logo">
+		<a href="https://www.nbcconnecticut.com/">
+					<img
+						src="https://media.nbcconnecticut.com/2019/09/On_Light@3x-1.png?fit=189%2C120"
+						alt="NBC Connecticut"
+					/>
+		</a>
+	</div>
+	<div class="flyout-nav__search">
+<form class="search-form" role="search" method="get" action="https://www.nbcconnecticut.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+</div>
+	<div class="flyout-nav__menu">
+		<div class="flyout-nav__menu--upper">
+							<a class="flyout-nav__menu-item parent-item" href="/news/coronavirus/">
+					Coronavirus Pandemic				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcconnecticut.com/news/coronavirus/ct-resource-connection-community-services-for-you-and-your-family-during-the-coronavirus-pandemic/2249264/">
+					CT Resource Connection				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/local/">
+					Local				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/national-international/">
+					U.S. &amp; World				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.nbcconnecticut.com/videos/">
+					Video				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/weather/">
+					Weather				</a>
+							<a class="flyout-nav__menu-item child-item" href="/weather/severe-weather-alerts/">
+					Weather Alerts				</a>
+							<a class="flyout-nav__menu-item child-item" href="/weather/school-closings/">
+					School Closings				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://my.textcaster.com/asa/1775">
+					Sign Up For School Closing Text Alerts				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/investigations/">
+					Investigations				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/investigations/nbc-ct-responds/">
+					NBC CT Responds				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/entertainment/">
+					Entertainment				</a>
+							<a class="flyout-nav__menu-item child-item" href="/entertainment/entertainment-news/">
+					Entertainment News				</a>
+							<a class="flyout-nav__menu-item child-item" href="/entertainment/ct-live/">
+					CT Live				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/sports/">
+					Sports				</a>
+							<a class="flyout-nav__menu-item child-item" href="/news/sports/dog-house/">
+					Dog House				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/community/">
+					Community				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/health/connecttohealthier/">
+					Connect To Healthier				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/traffic/">
+					Traffic				</a>
+					</div>
+		<div class="flyout-nav__menu--lower">
+							<a class="flyout-nav__menu-item child-item" href="/consumer-form/">
+					Submit a Consumer Complaint				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcconnecticut.com/ugc/">
+					Submit Photos and Video				</a>
+							<a class="flyout-nav__menu-item child-item" href="/on-air/contests/">
+					Contests				</a>
+							<a class="flyout-nav__menu-item child-item" href="/products/">
+					Our Apps				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcconnecticut.com/newsletters/">
+					Newsletters				</a>
+					</div>
+	</div>
+	<div class="flyout-nav__social">
+		<h4 class="flyout-nav__social-heading">Follow Us</h4>
+		<ul class="flyout-nav__social-list">
+			
+							<li class="site-footer__social-list-item facebook">
+					<a href="http://www.facebook.com/NBCConnecticut" target="_blank">
+						<span class="screen-reader-text">Facebook</span>
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item twitter">
+					<a href="https://twitter.com/nbcconnecticut" target="_blank">
+						<span class="screen-reader-text">Twitter</span>
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item instagram">
+					<a href="https://instagram.com/nbcconnecticut" target="_blank">
+						<span class="screen-reader-text">Instagram</span>
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<a class="flyout-contact-button"
+			href="/contact-us"
+	>
+	Contact Us</a>
+<script type='text/javascript' src='https://www.nbcconnecticut.com/_static/??-eJx9i7EOwjAMBX+I9hWhqjAgPgXRJKJOEzvCtvh9MnRmuuHu8G1DELbEhupDK/4mVuRk7RV2PIkDVqcS0TYx4QNjJR6zntD3nhSPqU+KSGrwT/nrN5Fdj+JR7+f5ukzzZVpu+QfWOjM7'></script>
+<script>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script src='https://www.nbcconnecticut.com/wp-includes/js/dist/api-fetch.min.js?ver=3.6.4'></script>
+<script>
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.nbcconnecticut.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "93811e74c4" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://www.nbcconnecticut.com/wp-admin/admin-ajax.php?action=rest-nonce";
+wp.apiFetch.use( wp.apiFetch.createPreloadingMiddleware( {"\/nbc\/v1\/weather-alerts":{"body":[{"city_name":"Middletown","type":"Frost Advisory","start_time":"20:04:21:02:00:00","end_time":"20:04:21:12:00:00","headline":"Frost Advisory","bulletin":"CTZ011-012-NYZ079-081-202000-\n\/O.NEW.KOKX.FR.Y.0001.200421T0200Z-200421T1200Z\/\nSouthern Middlesex-Southern New London-Northeastern Suffolk-\nSoutheastern Suffolk-\n422 AM EDT Mon Apr 20 2020\n\n...FROST ADVISORY IN EFFECT FROM 10 PM THIS EVENING TO 8 AM EDT\nTUESDAY...\n\n* WHAT...Temperatures in the mid 30s will result in frost \n  formation.\n\n* WHERE...In Connecticut, Southern Middlesex and Southern New\n  London Counties. In New York, Eastern Suffolk County. \n\n* WHEN...From 10 PM this evening to 8 AM EDT Tuesday.\n\n* IMPACTS...Frost could kill sensitive outdoor vegetation if \n  left uncovered.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nTake steps now to protect tender plants from the cold.\n\n&&\n\n$$\n","county_name":"Middlesex","state_abbr":"CT","state_name":"Connecticut","severity":3},{"city_name":"Groton","type":"Frost Advisory","start_time":"20:04:21:02:00:00","end_time":"20:04:21:12:00:00","headline":"Frost Advisory","bulletin":"CTZ011-012-NYZ079-081-202000-\n\/O.NEW.KOKX.FR.Y.0001.200421T0200Z-200421T1200Z\/\nSouthern Middlesex-Southern New London-Northeastern Suffolk-\nSoutheastern Suffolk-\n422 AM EDT Mon Apr 20 2020\n\n...FROST ADVISORY IN EFFECT FROM 10 PM THIS EVENING TO 8 AM EDT\nTUESDAY...\n\n* WHAT...Temperatures in the mid 30s will result in frost \n  formation.\n\n* WHERE...In Connecticut, Southern Middlesex and Southern New\n  London Counties. In New York, Eastern Suffolk County. \n\n* WHEN...From 10 PM this evening to 8 AM EDT Tuesday.\n\n* IMPACTS...Frost could kill sensitive outdoor vegetation if \n  left uncovered.\n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nTake steps now to protect tender plants from the cold.\n\n&&\n\n$$\n","county_name":"New London","state_abbr":"CT","state_name":"Connecticut","severity":3}],"headers":[]},"\/nbc\/v1\/top-stories?include_sponsored=1&section=news":{"body":[{"title":"7 Governors in Northeast Announce Appointees for Multi-State Council to Restore Economy","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/governors-announce-appointees-for-multi-state-council-to-get-people-back-to-work-restore-economy\/2257853\/","eyebrow":"multi state council","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/multi-state-council\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/GettyImages-1163463830.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Masks or Cloth Face Coverings Required in Public in Conn. Starting Tonight to Slow COVID-19","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/masks-or-cloth-face-coverings-required-in-public-in-conn-starting-tonight-to-slow-covid-19\/2258053\/","eyebrow":"coronavirus in connecticut","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus-in-connecticut\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/homemade-face-masks.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Gov. Lamont Signs Order Requiring Masks or Cloth Face Coverings in Public in Conn. to Slow COVID-19","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/gov-lamont-signs-order-requiring-masks-or-cloth-face-coverings-in-public\/2257419\/","eyebrow":"coronavirus","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/apr-3-20-mask.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Rally Planned Today to Protest State Shutdown During Coronavirus Pandemic","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/rally-planned-today-to-protest-state-shutdown-during-coronavirus-pandemic\/2258145\/","eyebrow":"Connecticut","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/connecticut\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/connecticut-state-capitol.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Advances in Antibody Treatment for COVID-19","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/advances-in-antibody-treatment-for-covid-19\/2257287\/","eyebrow":"Sponsored","eyebrow_link":"","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/HHC-Thumbnail_Option-b_4.20.jpg?resize=100%2C56","type":"sponsored","presented_by":"Promoted By Hartford HealthCare"},{"title":"Coronavirus in Connecticut: Nearly 18,000 Cases, 1,127 Deaths Reported Statewide","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/coronavirus-in-connecticut-17962-cases-1127-deaths-reported-statewide\/2257830\/","eyebrow":"connecticut coronavirus","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/connecticut-coronavirus\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/GettyImages-1211795539.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Foodshare Drive-Thru Food Distribution Site in East Hartford Draws Huge Lines","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/foodshare-launches-drive-thru-food-distribution-in-east-hartford\/2258036\/","eyebrow":"EAST HARTFORD","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/east-hartford\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/drone-foodshare-lines-rentschler.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Reports Suggest Many Have Had Coronavirus With No Symptoms","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/reports-suggest-many-have-had-coronavirus-with-no-symptoms\/2258018\/","eyebrow":"symptoms","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/symptoms\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Virus-Outbreak-No-Symptoms.jpg?crop=43px%2C214px%2C5327px%2C2998px&resize=100%2C56","type":"article","presented_by":""},{"title":"This Is Where There Are Confirmed Cases of Coronavirus in Connecticut","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/this-is-where-there-are-confirmed-cases-of-coronavirus-in-connecticut\/2243429\/","eyebrow":"Coronavirus Outbreak","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus-outbreak\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/coronavirus-cases-april-16.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Tracking A Tuesday Storm Threat","link":"https:\/\/www.nbcconnecticut.com\/weather-news\/tracking-a-tuesday-storm-threat\/2258043\/","eyebrow":"weather","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/weather\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Model-RPM4-Precip-Cloud-CT-57.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Man Accused of Choking Woman While She Slept Days After Trying to Break Into Her South Windsor Home","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/man-accused-of-choking-woman-while-she-slept-days-after-trying-to-break-into-her-south-windsor-home\/2258074\/","eyebrow":"South Windsor","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/south-windsor\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Screen-Shot-2020-04-20-at-8.27.18-AM.png?resize=100%2C56","type":"article","presented_by":""},{"title":"US Coronavirus Updates: Border Travel Restrictions Extended; Ex-FDA Chief on Risks of Reopening","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/us-coronavirus-updates-4-20-arrives-amid-stay-at-home-orders-protesters-rally-across-country\/2258027\/","eyebrow":"coronavirus pandemic","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus-pandemic\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Ambulances-Lined-in-Queens.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Hartford Man Killed After Crashing Into House, Vehicle Fire in Bloomfield","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/hartford-man-killed-after-crashing-into-house-vehicle-fire-in-bloomfield\/2258169\/","eyebrow":"Bloomfield","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/bloomfield\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/IMG_2145-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Locations for Drive-Through COVID-19 Testing in Connecticut","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/locations-for-drive-though-covid-19-testing-in-connecticut\/2244133\/","eyebrow":"COVID-19","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/covid-19\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/UCONN-HEALTH-TRIAGE.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"This Is Where There Are Confirmed Cases of COVID-19 in CT Nursing Homes","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/this-is-where-there-are-confirmed-cases-of-covid-19-in-ct-nursing-homes\/2256775\/","eyebrow":"Coronavirus Outbreak","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus-outbreak\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/nursing-home.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Man Accused of Shooting at Vehicle at Cromwell Gas Station","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/man-accused-of-shooting-at-vehicle-at-cromwell-gas-station\/2258041\/","eyebrow":"Cromwell","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/cromwell\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/BOS-GENERIC-Police-Lights-Night-8.jpeg?resize=100%2C56","type":"article","presented_by":""},{"title":"Nursing Home Workers, Owners Describe Heavy Toll of Virus","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/nursing-home-workers-owners-describe-heavy-toll-of-virus\/2257683\/","eyebrow":"nursing homes","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/nursing-homes\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/GettyImages-991298010.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"NY Begins Widespread Antibody Testing as COVID-19 Deaths Trend Down","link":"https:\/\/www.nbcconnecticut.com\/news\/national-international\/coronavirus-model-suggests-tri-state-could-start-reopening-after-june-1\/2257765\/","eyebrow":"coronavirus","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/AP_20109732267120-e1587333306590.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Marinas, Boatyards Allowed to Open for Personal Use in the Tri-State","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/marinas-boatyards-allowed-to-open-for-personal-use-in-the-tri-state\/2257697\/","eyebrow":"coronavirus","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/mar-22-20-marina-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Man Accused of Breaking Into Closed New Haven Restaurant and Eating, Drinking for Days","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/man-accused-of-breaking-into-closed-new-haven-restaurant-and-eating-drinking-for-days\/2255929\/","eyebrow":"new haven","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/new-haven\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/luis-angel-ortiz-mug.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"4\/20 Fizzle: Pot Industry Tested as Virus Slams Economy","link":"https:\/\/www.nbcconnecticut.com\/news\/business\/4-20-fizzle-pot-industry-tested-as-virus-slams-economy\/2258026\/","eyebrow":"cannabis","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/cannabis\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/420-Under-Virus.jpg?crop=39px%2C266px%2C3902px%2C2195px&resize=100%2C56","type":"article","presented_by":""},{"title":"CT Resource Connection: Community Services and Businesses for You and Your Family During the Coronavirus Pandemic","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/ct-resource-connection-community-services-for-you-and-your-family-during-the-coronavirus-pandemic\/2249264\/","eyebrow":"ct resource connection","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/ct-resource-connection\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/CT-Resource-Connection-1200x675-040320.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Expert Explains How to Make, Properly Use Face Coverings","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/expert-explains-how-to-make-properly-use-face-coverings\/2256338\/","eyebrow":"Face Masks","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/face-masks\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Generic-face-mask.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Young Climate Activists Slowed by Pandemic, But Not Defeated","link":"https:\/\/www.nbcconnecticut.com\/news\/national-international-news\/changing-climate\/young-climate-activists-slowed-by-pandemic-but-not-defeated\/2258076\/","eyebrow":"Earth Day","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/earth-day\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/AP_20106513519306.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Plainville Hot Air Balloon Festival Canceled This Year Amid Coronavirus Pandemic","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/plainville-hot-air-balloon-festival-canceled-this-year-amid-coronavirus-pandemic\/2258163\/","eyebrow":"Plainville","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/plainville\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/Plainville-hot-air-balloons-1200.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"IRS Explains the Stimulus Checks: What You Need to Know","link":"https:\/\/www.nbcconnecticut.com\/news\/coronavirus\/irs-explains-the-stimulus-checks-what-you-need-to-know\/2247781\/","eyebrow":"stimulus checks","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/stimulus-checks\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/GettyImages-81027601.jpg?crop=0px%2C0px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Multiple State Parks Close After Reaching Parking Capacity","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/multiple-state-parks-close-after-reaching-parking-capacity\/2257838\/","eyebrow":"Connecticut State Parks","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/connecticut-state-parks\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/wadsworth-falls-state-park_1200.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"First CT Rapid COVID-19 Testing Center Opening in New Haven","link":"https:\/\/www.nbcconnecticut.com\/news\/local\/connecticuts-first-rapid-covid-19-testing-center-opening-in-new-haven\/2256926\/","eyebrow":"Rapis COVID-19 testing","eyebrow_link":"https:\/\/www.nbcconnecticut.com\/tag\/rapis-covid-19-testing\/","thumbnail_url":"https:\/\/media.nbcconnecticut.com\/2019\/09\/CVS-rapid-COVID-testing-in-New-Haven.jpg?resize=100%2C56","type":"article","presented_by":""}],"headers":[]}} ) );
+</script>
+<script type='text/javascript' src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/common.26e7ae6f2045095b5264.chunk.min.js?m=1586977363g'></script>
+<script>
+nbc.preloadedResources = nbc.preloadedResources || {}; nbc.preloadedResources = Object.assign({}, nbc.preloadedResources, {"https:\/\/wsidata.weather.com\/200904-01\/369362872\/Weather\/Report\/06096?filter=1,4,9":"<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<Cities>\r\n  <City Id=\"USCT0266\" Name=\"Windsor Locks\" StateAbbr=\"CT\" StateName=\"Connecticut\" CountyFips=\"09003\" CountyName=\"Hartford\" CountryName=\"United States\" CountryFips=\"US\" StnIcao=\"KBDL\" ClimateStn=\"063456\" Latitude=\"41.93\" Longitude=\"-72.63\" TimeZone=\"-5\" IsDaylightSavings=\"True\" ObservesDaylightSavings=\"True\" PreferredZipCode=\"06096\" PreferredAirport=\"BDL \" PreferredTide=\"1717\" PreferredBuoy=\"nwhc3\" PreferredSkiResort=\"999010152\" Dma=\"533\">\r\n    <CurrentObservation StnIcao=\"KBDL\" ReportTime=\"4\/20\/2020 2:51:00 PM\" TempF=\"50\" TempC=\"10\" DewPtF=\"30\" DewPtC=\"-1\" RelHumidity=\"46\" WndSpdMph=\"13\" WndDirDegr=\"10\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"29.7\" Weather=\"\" Sky=\"Overcast\" IconCode=\"67\" Ceiling=\"18000\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"46\" TwentyFourHrMax=\"64\" SixHrMin=\"40\" TwentyFourHrMin=\"28\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"0.03\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KBDL 201451Z 01011KT 10SM FEW042 FEW110 BKN180 OVC250 10\/M01     A2970 RMK AO2 SLP056 T01001011 55012 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n    <WeatherStations>\r\n      <Station Icao=\"KBDL\" DistanceMiles=\"2.75\" Name=\"WINDSOR LOCKS\" CountryAbbr=\"US\" StateAbbr=\"CT\" Latitude=\"41.9374\" Longitude=\"-72.682\" ElevationFeet=\"53\">\r\n        <Conditions StnIcao=\"KBDL\" ReportTime=\"4\/20\/2020 2:51:00 PM\" TempF=\"50\" TempC=\"10\" DewPtF=\"30\" DewPtC=\"-1\" RelHumidity=\"46\" WndSpdMph=\"13\" WndDirDegr=\"10\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"29.7\" Weather=\"\" Sky=\"Overcast\" IconCode=\"67\" Ceiling=\"18000\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"46\" TwentyFourHrMax=\"64\" SixHrMin=\"40\" TwentyFourHrMin=\"28\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"0.03\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KBDL 201451Z 01011KT 10SM FEW042 FEW110 BKN180 OVC250 10\/M01     A2970 RMK AO2 SLP056 T01001011 55012 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KHFD\" DistanceMiles=\"13.63\" Name=\"HARTFORD\" CountryAbbr=\"US\" StateAbbr=\"CT\" Latitude=\"41.7352\" Longitude=\"-72.6512\" ElevationFeet=\"6\">\r\n        <Conditions StnIcao=\"KHFD\" ReportTime=\"4\/20\/2020 2:53:00 PM\" TempF=\"50\" TempC=\"10\" DewPtF=\"33\" DewPtC=\"1\" RelHumidity=\"52\" WndSpdMph=\"7\" WndDirDegr=\"20\" WndDirCardinal=\"NNE\" WndGustMph=\"\" Pressure=\"29.69\" Weather=\"\" Sky=\"Clear\" IconCode=\"85\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"50\" HeatIdxC=\"10\" WndChillF=\"50\" WndChillC=\"10\" FeelsLikeF=\"50\" FeelsLikeC=\"10\" SnowDepth=\"\" SixHrMax=\"49\" TwentyFourHrMax=\"62\" SixHrMin=\"43\" TwentyFourHrMin=\"30\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"0.05\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KHFD 201453Z 02006KT 10SM CLR 10\/01 A2969 RMK AO2 SLP054     T01000006 57009 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KBAF\" DistanceMiles=\"16.95\" Name=\"WESTFIELD\" CountryAbbr=\"US\" StateAbbr=\"MA\" Latitude=\"42.1579\" Longitude=\"-72.7159\" ElevationFeet=\"82\">\r\n        <Conditions StnIcao=\"KBAF\" ReportTime=\"4\/20\/2020 2:53:00 PM\" TempF=\"47\" TempC=\"8\" DewPtF=\"25\" DewPtC=\"-4\" RelHumidity=\"42\" WndSpdMph=\"7\" WndDirDegr=\"60\" WndDirCardinal=\"ENE\" WndGustMph=\"\" Pressure=\"29.7\" Weather=\"\" Sky=\"Clear\" IconCode=\"85\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"47\" HeatIdxC=\"8\" WndChillF=\"44\" WndChillC=\"6\" FeelsLikeF=\"44\" FeelsLikeC=\"6\" SnowDepth=\"\" SixHrMax=\"49\" TwentyFourHrMax=\"64\" SixHrMin=\"42\" TwentyFourHrMin=\"25\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"0.04\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KBAF 201453Z 06006KT 10SM CLR 08\/M04 A2970 RMK AO2 SLP059     T00831039 55007 \" DayNight=\"D\" TempTrend=\"STEADY\" \/>\r\n      <\/Station>\r\n    <\/WeatherStations>\r\n    <DailyForecast>\r\n      <Day DayNum=\"1\" DayOfWk=\"Monday\" ValidDateUtc=\"4\/20\/2020 12:00:00 AM\" ValidDateLocal=\"4\/20\/2020 7:00:00 AM\" HiTempF=\"55\" LoTempF=\"34\" HiTempC=\"13\" LoTempC=\"1\" ShortPhrase=\"Cloudy\" PhraseDay=\"Generally cloudy. High near 55F. Winds N at 10 to 15 mph.\" PhraseNight=\"Partly cloudy skies. Low 34F. Winds SW at 5 to 10 mph.\" IconCode=\"67\" SkyCode=\"26\" SkyText=\"Cloudy\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"32\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"2\" WndDirCardinal=\"N\" CloudCoverage=\"83\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:01:47 am\" Sunset=\"07:38:13 pm\" Moonrise=\"05:23:16 am\" Moonset=\"05:19:53 pm\" MoonPhase=\"7\" MoonPhaseText=\"Waning Crescent\" SkyCodeDay=\"26\" SkyCodeNight=\"29\" PrecipChanceDay=\"0\" PrecipChanceNight=\"10\" IconCodeDay=\"67\" IconCodeNight=\"98\" SkyTextDay=\"Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"58\" WndSpdMphNight=\"8\" WndSpdKmNight=\"13\" WndSpdKnNight=\"7\" WndDirDegrNight=\"226\" WndDirCardinalNight=\"SW\" PhraseDayC=\"Mainly cloudy. A few peeks of sunshine possible. High 13C. Winds N at 15 to 25 km\/h.\" PhraseNightC=\"Partly cloudy skies. Low 1C. Winds SW at 10 to 15 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"2\" DayOfWk=\"Tuesday\" ValidDateUtc=\"4\/21\/2020 12:00:00 AM\" ValidDateLocal=\"4\/21\/2020 7:00:00 AM\" HiTempF=\"54\" LoTempF=\"31\" HiTempC=\"12\" LoTempC=\"-1\" ShortPhrase=\"Thunderstorms\" PhraseDay=\"Rain with thunderstorms by evening. Gusty winds and small hail are possible. High 54F. Winds SSW at 15 to 25 mph. Chance of rain 90%.\" PhraseNight=\"Mostly clear skies. Low 31F. Winds WNW at 10 to 15 mph.\" IconCode=\"84\" SkyCode=\"4\" SkyText=\"Thunderstorms\" PrecipChance=\"90\" SnowChance=\"0\" RelHumidity=\"68\" WndSpdMph=\"18\" WndSpdKm=\"29\" WndSpdKn=\"16\" WndDirDegr=\"197\" WndDirCardinal=\"SSW\" CloudCoverage=\"80\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:00:18 am\" Sunset=\"07:39:20 pm\" Moonrise=\"05:45:50 am\" Moonset=\"06:18:23 pm\" MoonPhase=\"7\" MoonPhaseText=\"Waning Crescent\" SkyCodeDay=\"4\" SkyCodeNight=\"33\" PrecipChanceDay=\"90\" PrecipChanceNight=\"20\" IconCodeDay=\"84\" IconCodeNight=\"102\" SkyTextDay=\"Thunderstorms\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"54\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"291\" WndDirCardinalNight=\"WNW\" PhraseDayC=\"Rain showers in the morning with thunderstorms developing in the afternoon. Gusty winds and small hail are possible. High 13C. Winds SSW at 25 to 40 km\/h. Chance of rain 90%.\" PhraseNightC=\"Mostly clear skies. Low -1C. Winds WNW at 15 to 25 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"3\" DayOfWk=\"Wednesday\" ValidDateUtc=\"4\/22\/2020 12:00:00 AM\" ValidDateLocal=\"4\/22\/2020 7:00:00 AM\" HiTempF=\"48\" LoTempF=\"29\" HiTempC=\"9\" LoTempC=\"-2\" ShortPhrase=\"Windy with a mix of sun and clouds\" PhraseDay=\"Partly cloudy and windy. Highs in the upper 40s and lows in the upper 20s.\" PhraseNight=\"\" IconCode=\"78\" SkyCode=\"24\" SkyText=\"Partly Cloudy\/Wind\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"35\" WndSpdMph=\"21\" WndSpdKm=\"34\" WndSpdKn=\"18\" WndDirDegr=\"290\" WndDirCardinal=\"WNW\" CloudCoverage=\"42\" UvIdx=\"7\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:58:51 am\" Sunset=\"07:40:26 pm\" Moonrise=\"06:08:16 am\" Moonset=\"07:18:15 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"24\" SkyCodeNight=\"31\" PrecipChanceDay=\"10\" PrecipChanceNight=\"0\" IconCodeDay=\"78\" IconCodeNight=\"97\" SkyTextDay=\"Partly Cloudy\/Wind\" SkyTextNight=\"Clear\" RelHumidityNight=\"45\" WndSpdMphNight=\"15\" WndSpdKmNight=\"24\" WndSpdKnNight=\"13\" WndDirDegrNight=\"283\" WndDirCardinalNight=\"WNW\" PhraseDayC=\"Partly cloudy skies, with gusty winds developing during the afternoon. High 9C. Winds WNW at 30 to 50 km\/h.  Higher wind gusts possible.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"4\" DayOfWk=\"Thursday\" ValidDateUtc=\"4\/23\/2020 12:00:00 AM\" ValidDateLocal=\"4\/23\/2020 7:00:00 AM\" HiTempF=\"54\" LoTempF=\"40\" HiTempC=\"12\" LoTempC=\"4\" ShortPhrase=\"Considerable cloudiness\" PhraseDay=\"More clouds than sun. Highs in the mid 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"69\" SkyCode=\"28\" SkyText=\"Mostly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"42\" WndSpdMph=\"10\" WndSpdKm=\"16\" WndSpdKn=\"9\" WndDirDegr=\"258\" WndDirCardinal=\"WSW\" CloudCoverage=\"61\" UvIdx=\"6\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:57:24 am\" Sunset=\"07:41:32 pm\" Moonrise=\"06:32:12 am\" Moonset=\"08:18:15 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"28\" SkyCodeNight=\"12\" PrecipChanceDay=\"20\" PrecipChanceNight=\"80\" IconCodeDay=\"69\" IconCodeNight=\"107\" SkyTextDay=\"Mostly Cloudy\" SkyTextNight=\"Rain\" RelHumidityNight=\"75\" WndSpdMphNight=\"8\" WndSpdKmNight=\"13\" WndSpdKnNight=\"7\" WndDirDegrNight=\"59\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Partly cloudy skies during the morning hours will become overcast in the afternoon. High 13C. Winds W at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"5\" DayOfWk=\"Friday\" ValidDateUtc=\"4\/24\/2020 12:00:00 AM\" ValidDateLocal=\"4\/24\/2020 7:00:00 AM\" HiTempF=\"53\" LoTempF=\"35\" HiTempC=\"12\" LoTempC=\"2\" ShortPhrase=\"Showers possible\" PhraseDay=\"Showers. Highs in the low 50s and lows in the mid 30s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"80\" SnowChance=\"0\" RelHumidity=\"62\" WndSpdMph=\"15\" WndSpdKm=\"24\" WndSpdKn=\"13\" WndDirDegr=\"18\" WndDirCardinal=\"NNE\" CloudCoverage=\"89\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:55:58 am\" Sunset=\"07:42:38 pm\" Moonrise=\"06:58:52 am\" Moonset=\"09:20:07 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"29\" PrecipChanceDay=\"80\" PrecipChanceNight=\"20\" IconCodeDay=\"87\" IconCodeNight=\"98\" SkyTextDay=\"Showers\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"64\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"355\" WndDirCardinalNight=\"N\" PhraseDayC=\"Overcast with rain showers at times. High 12C. Winds NNE at 15 to 30 km\/h. Chance of rain 80%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"6\" DayOfWk=\"Saturday\" ValidDateUtc=\"4\/25\/2020 12:00:00 AM\" ValidDateLocal=\"4\/25\/2020 7:00:00 AM\" HiTempF=\"61\" LoTempF=\"42\" HiTempC=\"16\" LoTempC=\"6\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Times of sun and clouds. Highs in the low 60s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"45\" WndSpdMph=\"9\" WndSpdKm=\"14\" WndSpdKn=\"8\" WndDirDegr=\"347\" WndDirCardinal=\"NNW\" CloudCoverage=\"57\" UvIdx=\"6\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:54:32 am\" Sunset=\"07:43:44 pm\" Moonrise=\"07:29:15 am\" Moonset=\"10:21:40 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"45\" PrecipChanceDay=\"20\" PrecipChanceNight=\"40\" IconCodeDay=\"66\" IconCodeNight=\"106\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Showers Late\" RelHumidityNight=\"69\" WndSpdMphNight=\"8\" WndSpdKmNight=\"13\" WndSpdKnNight=\"7\" WndDirDegrNight=\"103\" WndDirCardinalNight=\"ESE\" PhraseDayC=\"Partly cloudy. High 16C. Winds NNW at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"7\" DayOfWk=\"Sunday\" ValidDateUtc=\"4\/26\/2020 12:00:00 AM\" ValidDateLocal=\"4\/26\/2020 7:00:00 AM\" HiTempF=\"55\" LoTempF=\"43\" HiTempC=\"13\" LoTempC=\"6\" ShortPhrase=\"Chance of showers\" PhraseDay=\"Showers possible. Highs in the mid 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"50\" SnowChance=\"0\" RelHumidity=\"72\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"32\" WndDirCardinal=\"NNE\" CloudCoverage=\"87\" UvIdx=\"4\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:53:08 am\" Sunset=\"07:44:49 pm\" Moonrise=\"08:04:16 am\" Moonset=\"11:23:25 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"11\" PrecipChanceDay=\"50\" PrecipChanceNight=\"40\" IconCodeDay=\"87\" IconCodeNight=\"106\" SkyTextDay=\"Showers\" SkyTextNight=\"Showers\" RelHumidityNight=\"78\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"0\" WndDirCardinalNight=\"N\" PhraseDayC=\"Overcast with rain showers at times. High 12C. Winds NNE at 15 to 25 km\/h. Chance of rain 50%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"8\" DayOfWk=\"Monday\" ValidDateUtc=\"4\/27\/2020 12:00:00 AM\" ValidDateLocal=\"4\/27\/2020 7:00:00 AM\" HiTempF=\"54\" LoTempF=\"41\" HiTempC=\"12\" LoTempC=\"5\" ShortPhrase=\"Showers possible\" PhraseDay=\"Showers. Highs in the mid 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"67\" WndSpdMph=\"13\" WndSpdKm=\"21\" WndSpdKn=\"11\" WndDirDegr=\"348\" WndDirCardinal=\"NNW\" CloudCoverage=\"87\" UvIdx=\"4\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:51:45 am\" Sunset=\"07:45:55 pm\" Moonrise=\"08:46:13 am\" Moonset=\"12:01:00 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"45\" PrecipChanceDay=\"40\" PrecipChanceNight=\"40\" IconCodeDay=\"87\" IconCodeNight=\"106\" SkyTextDay=\"Showers\" SkyTextNight=\"Showers Early\" RelHumidityNight=\"70\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"313\" WndDirCardinalNight=\"NW\" PhraseDayC=\"Considerable cloudiness with occasional rain showers. High 12C. Winds NNW at 15 to 30 km\/h. Chance of rain 40%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"9\" DayOfWk=\"Tuesday\" ValidDateUtc=\"4\/28\/2020 12:00:00 AM\" ValidDateLocal=\"4\/28\/2020 7:00:00 AM\" HiTempF=\"58\" LoTempF=\"42\" HiTempC=\"14\" LoTempC=\"6\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Partly cloudy. Highs in the upper 50s and lows in the low 40s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"56\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"301\" WndDirCardinal=\"WNW\" CloudCoverage=\"57\" UvIdx=\"6\" UvDescr=\"High\" UvWarn=\"0\" Sunrise=\"05:50:22 am\" Sunset=\"07:47:00 pm\" Moonrise=\"09:36:26 am\" Moonset=\"12:21:41 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"10\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"68\" WndSpdMphNight=\"9\" WndSpdKmNight=\"14\" WndSpdKnNight=\"8\" WndDirDegrNight=\"297\" WndDirCardinalNight=\"WNW\" PhraseDayC=\"Intervals of clouds and sunshine in the morning with more clouds for later in the day. High around 15C. Winds WNW at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"10\" DayOfWk=\"Wednesday\" ValidDateUtc=\"4\/29\/2020 12:00:00 AM\" ValidDateLocal=\"4\/29\/2020 7:00:00 AM\" HiTempF=\"61\" LoTempF=\"45\" HiTempC=\"16\" LoTempC=\"7\" ShortPhrase=\"Showers\" PhraseDay=\"Showers possible. Highs in the low 60s and lows in the mid 40s.\" PhraseNight=\"\" IconCode=\"87\" SkyCode=\"11\" SkyText=\"Showers\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"59\" WndSpdMph=\"11\" WndSpdKm=\"18\" WndSpdKn=\"10\" WndDirDegr=\"268\" WndDirCardinal=\"W\" CloudCoverage=\"69\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"05:49:01 am\" Sunset=\"07:48:06 pm\" Moonrise=\"10:33:51 am\" Moonset=\"01:16:14 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"11\" SkyCodeNight=\"11\" PrecipChanceDay=\"40\" PrecipChanceNight=\"40\" IconCodeDay=\"87\" IconCodeNight=\"106\" SkyTextDay=\"Showers\" SkyTextNight=\"Showers\" RelHumidityNight=\"72\" WndSpdMphNight=\"9\" WndSpdKmNight=\"14\" WndSpdKnNight=\"8\" WndDirDegrNight=\"244\" WndDirCardinalNight=\"WSW\" PhraseDayC=\"Showers early becoming less numerous later in the day. High 16C. Winds W at 15 to 25 km\/h. Chance of rain 40%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n    <\/DailyForecast>\r\n    <WeatherAlerts \/>\r\n  <\/City>\r\n<\/Cities>"});
+</script>
+<script src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/nonamp.50da75a6cb682b6e93b9.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/weatherConditions.5a6267eee8727c2e0f5d.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/global.77c15e7618664035dfc2.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/article.d1f7ad391a7ef757cae4.bundle.min.js?ver=1.0.2'></script>
+<script src='https://ak.sail-horizon.com/spm/spm.v1.min.js?ver=1.0.0'></script>
+<script>
+if ("undefined" !== typeof Sailthru) { Sailthru.init({"customerId":"757cc89c051f4552fa5708e6f3b93a01"}); }
+</script>
+<script async src='https://www.nbcconnecticut.com/wp-content/themes/nbc-station/client/build/js/videoPlayer.faa6254630c6f634397a.bundle.min.js?ver=1.0.2'></script>
+<script src='https://native.sharethrough.com/assets/sfp.js?ver=5.3.2'></script>
+<script defer src='https://js-sec.indexww.com/ht/p/186439-109265750698089.js?ver=1.0.2'></script>
+<script src='https://www.nbcconnecticut.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
+<script>
+window.lodash = _.noConflict();
+</script>
+<script type='text/javascript' src='https://www.nbcconnecticut.com/wp-includes/js/wp-embed.min.js?m=1576711026g'></script>
+<script src='https://www.civicscience.com/widget/jspoll/?elt=civsci-1770517932&#038;tgtid=1f68dd5f-a75a-70f4-2df8-00eacbc47222&#038;ver=1.0.0'></script>
+<script src='https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202017.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.4.2',blog:'165596134',post:'1966938',tz:'-4',srv:'www.nbcconnecticut.com'} ]);
+	_stq.push([ 'clickTrackerInit', '165596134', '1966938' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53cef82690","applicationID":"189190456","transactionName":"YVBXYBEFVkZSU00NVlgadFcXDVdbHEdLBUlGUEc=","queueTime":0,"applicationTime":759,"atts":"TRdAFlkfRRkRURteQktI","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
