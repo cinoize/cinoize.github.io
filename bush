@@ -1,0 +1,149 @@
+#!/bin/bash
+## AT SHIXA AND JUDE; CME DONATE QUICK
+export PATH=$PATH:/root/.cargo/bin
+
+
+function try()
+{
+    [[ $- = *e* ]]; SAVED_OPT_E=$?
+    set +e
+}
+
+function throw()
+{
+    exit $1
+}
+
+function catch()
+{
+    export ex_code=$?
+    (( $SAVED_OPT_E )) && set +e
+    return $ex_code
+}
+
+function throwErrors()
+{
+    set -e
+}
+
+function ignoreErrors()
+{
+    set +e
+}
+
+cd /root/atham/SHEOLYIT/BLOG
+mdbook build
+cd /root/atham/SHEOLYIT/ALEDOBSOP
+mdbook build
+cd /root/atham/SHEOLYIT/MATCHBOX20
+mdbook build
+
+sed -i -e 's/print.html/bloback.html/g' /root/atham/SHEOLYIT/BLOG/book/*.html
+mv /root/atham/SHEOLYIT/BLOG/book/print.html /root/atham/SHEOLYIT/BLOG/book/bloback.html
+cp /root/atham/SHEOLYIT/BLOG/book/*.html /root/atham/SHEOLYIT/pp
+
+sed -i -e 's/print.html/matchbox.html/g' /root/atham/SHEOLYIT/MATCHBOX20/book/*.html
+mv /root/atham/SHEOLYIT/MATCHBOX20/print.html /root/atham/SHEOLYIT/MATCHBOX20/book/matchbox.html
+cp /root/atham/SHEOLYIT/MATCHBOX20/book/*.html /root/atham/SHEOLYIT/pp
+
+
+sed -i -e 's/print.html/alobsop.html/g' /root/atham/SHEOLYIT/ALEDOBSOP/book/*.html
+mv /root/atham/SHEOLYIT/ALEDOBSOP/book/print.html /root/atham/SHEOLYIT/ALEDOBSOP/book/alobsop.html
+cp /root/atham/SHEOLYIT/ALEDOBSOP/book/*.html /root/atham/SHEOLYIT/pp
+
+cd /root/atham/SHEOLYIT/SHEOLYIT
+mdbook build
+sed -i -e 's/print.html/sheolyit.html/g' /root/atham/SHEOLYIT/SHEOLYIT/book/*.html
+mv /root/atham/SHEOLYIT/SHEOLYIT/book/print.html /root/atham/SHEOLYIT/SHEOLYIT/book/sheolyit.html
+
+cd /root/atham/SHEOLYIT/SHEOLYIT/book
+#- [MALORKAY ET LUX](./MALORKAY.md)
+#- [BLISS/ALO](./BLISS.md)
+#- [KISMET/ALO](./KISMET.md)
+#- [OUITHEPPL/ALO](./OUITHEPPL.md)
+#- [KEYNES2/ALO](./KEYNES2.md)
+#- [JERUSALEM/ALO](./JERUSALEM.md)
+#- [FI CVS ET MAL Q](./MALOVIOUS.md)
+
+rm KISMET.html
+rm MALORKAY.html
+rm BLISS.html
+rm OUITHEPPL.html
+rm KEYNES.html
+rm KEYNES2.html
+rm JERUSALEM.html
+
+cp /root/atham/SHEOLYIT/SHEOLYIT/book/*.html /root/atham/SHEOLYIT/pp
+
+##preprocess lol
+cd /root/atham/SHEOLYIT/pp
+for file in *; do
+#echo "- [$file](./$file)" >> SUMMARY.md
+if [ -f $file ]; then
+mv $file tempfile
+cat /root/atham/SHEOLYIT/SHEOLYIT/pphead.md >> $file
+head -n -30 tempfile >> $file
+cat /root/atham/SHEOLYIT/SHEOLYIT/ppfoot.md >> $file
+fi
+done
+
+#sed -i -e 's/\<i id\=\"sidebar-toggle\"/\<script src=\"https:\/\/addsearch.com\/js/\?key=aef0cdbf75731a213cbcd92387a7a4a8\">\<\/script><i id=\"sidebar-toggle\"/g' *.html
+#sed -i -e 's/\"sidebar\">/\"sidebar\"><script src="https:\/\/addsearch.com\/js\/?key=05d8959843df656d13a70fd037dc07b6"><\/script>/g' *.html
+
+
+sed -i -e 's/reqs\/i.img/\/i.img/g' *.html
+
+sed -i -e 's/\"sidebar\">/\"sidebar\"><script src="https:\/\/addsearch.com\/js\/?key=1665711c9123bf7488b1b5127916aeff"><\/script>/g' *.html
+sed -i -e 's/<div id=\"content\" class=\"content\">/<div id=\"content\" class=\"content\"><center><p>I am accepting char<a href=\"http\:\/\/tithehe.lamc.la\">itable dona<\/a>tions,. <br>ETH\: 0x66e2871ef39334962fb75ce34407f825d67ec434 \| BTC\: 3JmcKz2HfUDM4DTS2yufgexAmJ5Dh7PTM2 \| xDAI\: 0x66e2871ef39334962fb75ce34407f825d67ec434<\/p><\/center>\n\nREPLACE_ME_ERROR\n\n/g' *.html
+
+cp /root/atham/SHEOLYIT/pp/* /root/atham
+#for file in *; do
+##
+# echo $@|gpg -s -a --passphrase-fd 0 $file
+echo ""
+echo "START POST PROCESS"
+echo "------------------"
+#done
+echo ""
+cd /root/atham
+rm Mail*
+#tar cf html.tar *.html
+#tar rf /root/atham/html.tar /root/atham/*.pdf
+#cp /root/atham/N8SRADIN.html /root/atham/index.html
+#sed -i -e 's/ADIODAS - /You are in the Matrix.  I answer \"how come?\" and \"prove it!\"/g' /root/atham/index.html
+
+cd /root/atham/
+for file in *.html; do
+try 
+ (
+#echo "- [$file](./$file)" >> SUMMARY.md
+echo PROCESSING $file ...
+
+cp /root/atham/SHEOLYIT/SHEOLYIT/TMPL_ERROR /root/atham/FILE_ERROR
+
+sed -i -e 's/ROAR/"'${file}'"/g' /root/atham/FILE_ERROR
+
+#DEROR=$(printf '%q' $(cat /root/atham/FILE_ERROR))
+LINENUM=`sed -n '/REPLACE_ME_ERROR/=' $file`
+
+head -n $(($LINENUM-1)) $file > tmp
+
+cat /root/atham/FILE_ERROR >> tmp
+
+TOTAL=`wc -l < $file`
+
+tail -n -$(($TOTAL-$LINENUM-1)) $file >> tmp
+
+#echo $DEROR
+##sed -i -e 's/REPLACE_ME_ERROR/{r /root/atham/FILE_ERROR' -e 'd}/g' $file
+#echo sed -i -e 's/REPLACE_ME_ERROR/'$DEROR'/g' $file
+cp tmp $file
+)
+catch || {
+
+ echo $ex_code
+}
+done
+
+cp /root/atham/DEVLANEU.html /root/atham/index.html
+
