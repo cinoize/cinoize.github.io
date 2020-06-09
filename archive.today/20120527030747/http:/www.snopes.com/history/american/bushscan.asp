@@ -1,0 +1,1 @@
+<html><body><script>setTimeout(function(){document.location.replace("https://archive.vn/20120527030747/http://www.snopes.com/history/american/bushscan.asp",0)</script>Redirecting to https://archive.vn/20120527030747/http://www.snopes.com/history/american/bushscan.asp</body></html>

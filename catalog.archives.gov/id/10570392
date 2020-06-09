@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if IE 8 ]>    <html class="ie8" xmlns="http://www.w3.org/1999/html" lang="en" id="ng-app" ng-app="opaApp"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" xmlns="http://www.w3.org/1999/html" lang="en" id="ng-app" ng-app="opaApp"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/html" lang="en" id="ng-app" ng-app="opaApp"> <!--<![endif]-->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WLMC86');</script>
+  <!-- End Google Tag Manager -->
+  <script type="text/javascript">
+    document.write("<base href='' />");
+  </script>
+  <!-- TFS-84419 - IE doesn't implement String.includes() method -->
+  <script type="text/javascript">
+    if (!String.prototype.includes) {
+      String.prototype.includes = function(search, start) {
+        'use strict';
+        if (typeof start !== 'number') {
+          start = 0;
+        }
+
+        if (start + search.length > this.length) {
+          return false;
+        } else {
+          return this.indexOf(search, start) !== -1;
+        }
+      };
+    }
+  </script>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <!--<meta charset="UTF-8">-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title ng-bind="title || 'The National Archives Catalog'"></title>
+  <meta name="description" content="{{ metaDescription }}">
+  <meta name="keywords" content="{{ metaKeywords }}">
+  <meta name="viewport" content="initial-scale=1,width=device-width">
+
+  <link rel="shortcut icon" href="https://catalog.archives.gov/favicon.ico"/>
+  <link rel="apple-touch-icon" href="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//images/nara.png" />
+
+  <link rel="stylesheet" href="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//styles/98da5462.vendor.css"/>
+  <link rel="stylesheet" href="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//styles/335bae34.main.css"/>
+
+  <!-- Javascript -->
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <link rel="stylesheet" href="styles/0569bf6d.ie8.css"/>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="scripts/3b40df82.html5shiv.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script type='text/javascript' src="scripts/assets/e759f50a.respond.js"></script>
+  <![endif]-->
+  <!-- Javascript -->
+  <script>
+    var addthis_share =
+    {
+      url: window.location.href,
+      title: 'The National Archives Catalog',
+      description: ' '
+    };
+    var addthis_config = {};
+
+  </script>
+  <script src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//scripts/assets/6201281d.modernizr.custom.47375.js"></script>
+  <script type="text/javascript" id="_fed_an_js_tag"
+          src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//scripts/assets/digitalgov/federated-analytics.all.min.js?agency=NARA"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMC86"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div spinner></div>
+<div id="wrap" class="col-xs-12 noPaddingSides height100">
+  <div data-header></div>
+  <div id="menuBar" menu-header class="col-xs-12 noPaddingSides collapse in" ng-if="!$root.isHome"></div>
+  <div data-searchbar ng-if="$root.showSearchBar"></div>
+  <div id="contentOPA" ng-view="" class="col-xs-12 noPaddingSides" ng-class="{contentOPAHome: $root.isHome}" tabindex="0"></div>
+</div>
+<!--[if lt IE 9]>
+<script src="scripts/3c68790b.ltie9.js"></script>
+<![endif]-->
+
+<script src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//scripts/42a2d94e.vendor.js"></script>
+<script src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//apiLocation.js"></script>
+<script src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//scripts/ed4a71ff.config.js"></script>
+<script src="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//scripts/e78c5995.scripts.js"></script>
+<script type="text/javascript" src="../../s7.addthis.com/js/300/addthis_widget.js#domready=1&async=0"></script>
+<script>
+  if (/(iPad|iPhone|iPod)/g.test(navigator.userAgent)) {
+    $('<link rel="stylesheet" type="text/css" href="https://catalog.archives.gov/id/&quot;&#32;+&#32;document.location.protocol&#32;+&#32;&quot;//styles/54838370.ios.css" />').appendTo("head");
+  }
+</script>
+
+</body>
+</html>
